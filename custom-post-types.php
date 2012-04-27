@@ -486,6 +486,53 @@ class Page extends CustomPostType {
 	}
 }
 
+
+/**
+ * Describes an Alumni Note 
+ * 
+ * @author Jo Greybill
+ *
+**/
+class AlumNote extends CustomPostType{
+	public 
+		$name           = 'alumninote',
+		$plural_name    = 'Alumni Notes',
+		$singular_name  = 'Alumni Note',
+		$add_new_item   = 'Add New Alumni Note',
+		$edit_item      = 'Edit Alumni Note',
+		$new_item       = 'New Alumni Note',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = False,
+		$use_order      = True,
+		$use_title      = True,
+		$use_metabox    = True;
+	
+	public function toHTML($alumninote){
+		return sc_alumninote(array('alumninote' => $alumninote));
+	}
+	
+	public function fields(){
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name'  => 'Author',
+				'desc' => 'I guess this can be the person\'s name?',
+				'id'   => $prefix.'author',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'Date',
+				'desc' => 'Some announcement-related date',
+				'id'   => $prefix.'date',
+				'type' => 'text',
+			),
+		);
+	}
+}
+
+
+
 /**
  * Describes a staff member
  *
