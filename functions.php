@@ -39,7 +39,7 @@ Config::$custom_post_types = array(
 	'Publication',
 	'Page',
 	'Person',
-	'Alumni Note'
+	'AlumniNote'
 );
 
 Config::$custom_taxonomies = array(

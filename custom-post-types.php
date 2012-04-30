@@ -493,7 +493,7 @@ class Page extends CustomPostType {
  * @author Jo Greybill
  *
 **/
-class AlumNote extends CustomPostType{
+class AlumniNote extends CustomPostType{
 	public 
 		$name           = 'alumninote',
 		$plural_name    = 'Alumni Notes',
@@ -517,14 +517,20 @@ class AlumNote extends CustomPostType{
 		return array(
 			array(
 				'name'  => 'Author',
-				'desc' => 'I guess this can be the person\'s name?',
+				'desc' => 'The note\'s author\'s name',
 				'id'   => $prefix.'author',
 				'type' => 'text',
 			),
 			array(
-				'name' => 'Date',
-				'desc' => 'Some announcement-related date',
-				'id'   => $prefix.'date',
+				'name'  => 'Email',
+				'desc' => 'The author\'s email address',
+				'id'   => $prefix.'email',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'Class Year',
+				'desc' => 'The year in which the author graduated from UCF',
+				'id'   => $prefix.'class_year',
 				'type' => 'text',
 			),
 		);
