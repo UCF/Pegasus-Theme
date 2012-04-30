@@ -342,3 +342,26 @@ if ($theme_options['bw_verify']){
 		'content' => htmlentities($theme_options['bw_verify']),
 	);
 }
+
+/**
+ * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
+ * 
+ * Note that the new input select name and id values must match the name and id of the empty dropdown within the
+ * form that this function is replacing
+ *
+ * @author Jo Greybill
+ *  
+**/
+
+add_action("gform_field_input", "class_year_input", 10, 5);	
+function class_year_input($input, $field, $value, $lead_id, $form_id){
+    if($field["cssClass"] == "alumninotes_class_year"){
+        $input = '<div class="ginput_container"><select id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
+		$current_year = date('Y');
+		foreach ( range($current_year, 1968) as $year ) {
+			$input .= '<option value="$year">'.$year.'</option>';
+		}
+		$input .= '</select></div>';
+    }
+    return $input;
+}
