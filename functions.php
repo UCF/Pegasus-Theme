@@ -359,7 +359,7 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
         $input = '<div class="ginput_container"><select id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
 		$current_year = date('Y');
 		foreach ( range($current_year, 1968) as $year ) {
-			$input .= '<option value="$year">'.$year.'</option>';
+			$input .= '<option value='.$year.'>'.$year.'</option>';
 		}
 		$input .= '</select></div>';
     }
