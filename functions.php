@@ -313,7 +313,6 @@ Config::$styles = array(
 
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	'http://universityheader.ucf.edu/bar/js/university-header.js',
 	array('name' => 'jquery', 'src' => 'http://code.jquery.com/jquery-1.7.1.min.js',),
 	THEME_STATIC_URL.'/bootstrap/build/js/bootstrap.js',
 	//THEME_JS_URL.'/jquery-extras.js',
