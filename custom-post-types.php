@@ -477,10 +477,10 @@ class Page extends CustomPostType {
 		$prefix = $this->options('name').'_';
 		return array(
 			array(
-				'name' => 'Hide Lower Section',
-				'desc' => 'This section normally contains the Flickr, News and Events widgets. The footer will not be hidden',
-				'id'   => $prefix.'hide_fold',
-				'type' => 'checkbox',
+				'name' => 'Stylesheet',
+				'desc' => '',
+				'id'   => $prefix.'stylesheet',
+				'type' => 'file',
 			)
 		);
 	}
