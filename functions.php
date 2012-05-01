@@ -34,11 +34,7 @@ require_once('functions-admin.php');    # Admin/login functions
  * object.
  **/
 Config::$custom_post_types = array(
-	'Video',
-	'Document',
-	'Publication',
 	'Page',
-	'Person',
 	'AlumniNote'
 );
 
