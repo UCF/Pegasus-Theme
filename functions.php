@@ -299,8 +299,8 @@ Config::$links = array(
 
 Config::$styles = array(
 	array('admin' => True, 'src' => THEME_CSS_URL.'/admin.css',),
-	THEME_STATIC_URL.'/bootstrap/build/css/bootstrap.css',
-	THEME_STATIC_URL.'/bootstrap/build/css/bootstrap-responsive.css',
+	THEME_STATIC_URL.'/bootstrap/css/bootstrap.css',
+	THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css',
 	get_bloginfo('stylesheet_url'),
 );
 
@@ -308,7 +308,7 @@ Config::$styles = array(
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	array('name' => 'jquery', 'src' => 'http://code.jquery.com/jquery-1.7.1.min.js',),
-	THEME_STATIC_URL.'/bootstrap/build/js/bootstrap.js',
+	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
 	//THEME_JS_URL.'/jquery-extras.js',
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
