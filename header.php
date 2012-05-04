@@ -3,9 +3,6 @@
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<?="\n".header_()."\n"?>
-		<!--[if IE]>
-		<link href="http://cdn.ucf.edu/webcom/-/css/blueprint-ie.css" rel="stylesheet" media="screen, projection">
-		<![endif]-->
 		<?php if(GA_ACCOUNT or CB_UID):?>
 		
 		<script type="text/javascript">
@@ -27,6 +24,11 @@
 			
 		</script>
 		<?php endif;?>
+		<? if(is_page() 
+			&& ($stylesheet_id = get_post_meta($post->ID, 'page_stylesheet', True)) !== False
+			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
+			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
+		<? } ?>
 		
 	</head>
 	<body class="<?=body_classes()?>">
