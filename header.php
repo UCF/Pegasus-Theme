@@ -47,14 +47,6 @@
 								The magazine of the University of Central Florida
 							</div>
 						</div>
-						<div class="row hidden-desktop">
-							<div class="span3 title">
-								PEGASUS
-							</div>
-							<div class="span9 edition hidden-phone">
-								Summer 2012
-							</div>
-						</div>
 					</div>
 				</div>
 			</div>

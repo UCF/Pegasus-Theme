@@ -23,13 +23,19 @@ Version: v0.0.0
 p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
 
 /* Header */
-#header {background-color:#7e6400;height:50px;width:100%;color:rgba(255,255,255,.3);}
+#header {background-color:#e3c353;height:50px;width:100%;color:#FFF;}
 #header .title,
 #header .edition,
 #header .description {}
-#header .title {font-size:35px;text-indent:35px;padding-top:15px;}
-#header .edition {font-size:18px;text-indent:15px;padding-top:20px;}
-#header .description {font-size:12px;padding-top:22px;text-align:right;}
+#header .title {
+	height:25px;
+	margin-top:12px;
+	text-indent:-500em;
+	background-repeat:no-repeat;
+	background-image: url(static/img/pegasus-logo.png);
+	background-position:top center;}
+#header .edition {font-size:18px;text-indent:15px;padding-top:20px;font-family:Arial;}
+#header .description {font-size:12px;padding-top:22px;text-align:right;font-family:Georgia;font-style:italic;}
 
 #header .hidden-desktop .edition {text-align:right;font-size:25px;padding-top:15px;}
 /* Forms: */
