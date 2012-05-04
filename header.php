@@ -30,7 +30,32 @@
 		
 	</head>
 	<body class="<?=body_classes()?>">
-		<div class="container">
-			<div class="row">
-				
+		<div id="header">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<div class="row hidden-tablet hidden-phone">
+							<div class="span3 title">
+								PEGASUS
+							</div>
+							<div class="span4 edition">
+								Summer 2012
+							</div>
+							<div class="span5 description">
+								The magazine of the University of Central Florida
+							</div>
+						</div>
+						<div class="row hidden-desktop">
+							<div class="span3 title">
+								PEGASUS
+							</div>
+							<div class="span9 edition hidden-phone">
+								Summer 2012
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
+		</div>
+		<div class="container">
+			
