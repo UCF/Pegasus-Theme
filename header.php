@@ -37,9 +37,9 @@
 				<div class="row">
 					<div class="span12">
 						<div class="row hidden-tablet hidden-phone">
-							<div class="span3 title">
+							<a href="<?=site_url()?>" class="span3 title">
 								PEGASUS
-							</div>
+							</a>
 							<div class="span4 edition">
 								Summer 2012
 							</div>
