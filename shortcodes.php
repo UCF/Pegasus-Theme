@@ -84,7 +84,7 @@ function sc_image($attr) {
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
 		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s"', $wpdb->posts, $wpdb->escape($filename));
-		$rows = $wpdb->results($sql);
+		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$post = $rows[0];
 			if($post->post_type == 'attachment' && stripos($post->post_mime_type, 'image/') == 0) {
