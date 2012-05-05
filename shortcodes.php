@@ -73,4 +73,26 @@ function sc_search_form() {
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
+
+/*
+ * Search for a image by file name and return its URL.
+ *
+ */
+function sc_image($attr) {
+	global $wpdb;
+
+	$url = '';
+	if(isset($attr['filename']) && $attr['filename'] != '') {
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s"', $wpdb->posts, $wpdb->escape($filename));
+		$rows = $wpdb->results($sql);
+		if(count($rows) > 0) {
+			$post = $rows[0];
+			if($post->post_type == 'attachment' && stripos($post->post_mime_type, 'image/') == 0) {
+				$url = wp_get_attachment_url($post->ID);
+			}
+		}
+	}
+	return $url;
+}
+add_shortcode('image', 'sc_image');
 ?>
