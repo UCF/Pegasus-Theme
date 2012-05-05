@@ -19,8 +19,15 @@ Version: v0.0.0
 	.right-column {margin-top:0}
 }
 
-
 p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
+
+.wide {
+	z-index:-1;
+	width:1278px;
+	position:relative;
+	left:-169px;
+}
+.wide > div {position:relative;left:169px;}
 
 /* Header */
 #header {background-color:#e3c353;height:50px;width:100%;color:#FFF;}
