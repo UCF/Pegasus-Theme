@@ -20,6 +20,8 @@ Version: v0.0.0
 }
 
 p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
+p.excerpt {font-size:23px;font-style:italic;}
+p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
 .wide {
 	z-index:-1;
@@ -49,3 +51,4 @@ p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
 .gform_wrapper .gfield_description {
     margin: -10px 0 10px 0;
 }
+
