@@ -43,10 +43,16 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	background-repeat:no-repeat;
 	background-image: url(static/img/pegasus-logo.png);
 	background-position:top center;}
-#header .edition {font-size:18px;text-indent:15px;padding-top:20px;font-family:Arial;text-transform:uppercase;letter-spacing:1.5px;}
-#header .description {font-size:12px;padding-top:22px;text-align:right;font-family:Georgia;font-style:italic;}
+#header .edition {padding-top:20px;}
+#header .edition a{color:#FFF;font-size:18px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1.5px;}
+#header .edition .dropdown-toggle:hover {background-color:inherit;}
+#header .edition .dropdown-menu {background-color:#e3c353;}
+#header .edition .dropdown-menu a {text-transform:none;line-height:1em;font-size:17px;color:#EEE;padding:10px 15px;font-family:"Helvetica Neue";font-weight:bold;}
+#header .edition .dropdown-menu a span {display:block;margin-top:5px;font-size:14px;font-family:"Georgia";letter-spacing:0;color:#efefef;font-weight:normal;}
+#header .edition .dropdown-menu li {line-height:1em;}
+#header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
 
-#header .hidden-desktop .edition {text-align:right;font-size:25px;padding-top:15px;}
+
 /* Forms: */
 .gform_wrapper .gfield_description {
     margin: -10px 0 10px 0;
