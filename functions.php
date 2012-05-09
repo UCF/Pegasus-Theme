@@ -27,6 +27,11 @@ require_once('custom-post-types.php');  # Where per theme post types are defined
 require_once('shortcodes.php');         # Per theme shortcodes
 require_once('functions-admin.php');    # Admin/login functions
 
+/* 
+ * Slug of the current Pegasus Magazein edition term in the 
+ * editions taxonomy
+ */ 
+define('CURRENT_EDITION_TERM_SLUG', '2012-summer');
 
 /**
  * Set config values including meta tags, registered custom post types, styles,
@@ -357,4 +362,44 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 		$input .= '</select></div>';
     }
     return $input;
+}
+
+/* 
+ * Retrieve a list of the current edition stories
+ */
+function get_current_edition_stories($exclude_id=NULL) {
+
+	$current_edition_term = get_term_by('slug', CURRENT_EDITION_TERM_SLUG, 'editions');
+	if($current_edition_term === FALSE) {
+		return array();
+	} else {
+		$stories = get_posts(array(
+			'numberposts' => -1,
+			'post_type'   => 'story',
+			'tax_query'   => array(
+				'taxonomy' => 'editions',
+				'field'    => 'id',
+				'terms'    => $current_edition_term->term_id
+			)
+		));
+
+		if(is_null($exclude_id)) {
+			return $stories;
+		} else {
+			return array_filter($stories, create_function('$p', 'return !($p->ID == '.((int)$exclude_id).');'));
+		}
+	}
+}
+
+/*
+ * Returns featured image URL of a specified post ID
+ */
+function get_featured_image_url($id) {
+	$url = '';
+	if(has_post_thumbnail($id)
+		&& ($thumb_id = get_post_thumbnail_id($id)) !== False
+		&& ($image = wp_get_attachment_image_src($thumb_id, 'single-post-thumbnail')) !== False) {
+		return $image[0];
+	}
+	return $url;
 }
