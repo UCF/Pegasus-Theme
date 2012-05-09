@@ -1,3 +1,4 @@
+		</div><!-- close body .container -->
 			<div class="container" id="footer">
             
 				<div class="row" id="footer_stories">

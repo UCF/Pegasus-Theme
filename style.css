@@ -52,6 +52,43 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header .edition .dropdown-menu li {line-height:1em;}
 #header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
 
+/* Footer */
+#footer {
+	width: 100%;
+	background-color: #e3c353;
+	padding: 55px 0;
+}
+#footer .row {
+	width: 960px;
+	margin: auto;	
+}
+	#footer_stories {
+		padding: 0 0 30px 0;
+	}
+	#footer_navigation {
+		font-size: 16px;
+	}
+		#footer_navigation a {
+			color: #fff;
+			font-weight: bold;	
+		}
+		#footer_navigation h2.widgettitle {
+			font-size: 16px;
+			line-height: 34px;
+			text-transform: uppercase;
+			letter-spacing: 3px;
+			font-weight: bold;
+			color: #fff;
+			margin-bottom: 15px;
+		}
+		ul#menu-footer_navigation {
+			list-style-type: none;
+			margin: 24px 0 30px 0;
+		}
+			ul#menu-footer_navigation li {
+				padding-bottom: 8px;	
+			}
+
 
 /* Forms: */
 .gform_wrapper .gfield_description {
