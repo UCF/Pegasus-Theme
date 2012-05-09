@@ -35,11 +35,11 @@ require_once('functions-admin.php');    # Admin/login functions
  **/
 Config::$custom_post_types = array(
 	'Page',
-	'AlumniNote'
+	'AlumniNote',
 );
 
 Config::$custom_taxonomies = array(
-	'OrganizationalGroups'
+	'Editions'
 );
 
 Config::$body_classes = array('default',);

@@ -108,4 +108,27 @@ class OrganizationalGroups extends CustomTaxonomy
 		$hierarchical = True;
 } // END class 
 
+/**
+ * Describes a Pegasus Magazine Edition
+ *
+ * @author Chris Conover
+ **/
+class Editions extends CustomTaxonomy
+{
+	public
+		$name               = 'editions',
+		$general_name       = 'Editions',
+		$singular_name      = 'Edition',
+		$search_items       = 'Search Editions',
+		$popular_items      = 'Popular Editions',
+		$all_times          = 'All Editions',
+		$parent_item        = 'Parent Edition',
+		$parent_item_colon  = 'Parent Edition:',
+		$edit_item          = 'Edit Edition',
+		$update_item        = 'Update Edition',
+		$add_new_item       = 'Add New Edition',
+		$new_item_name      = 'New Tag Edition',
+		
+		$hierarchical = True;
+} // END class 
 ?>
