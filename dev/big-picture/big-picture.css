@@ -15,9 +15,9 @@ div#header .container {
 	width: 940px;	
 }
 div#header .container .row {
-	margin-left: 0;	
+	margin-left: -20px;	
 }
-div#header .container .span4 {
+div#header .row .description {
 	width: 280px;	
 }
 
