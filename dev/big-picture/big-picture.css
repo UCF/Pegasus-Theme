@@ -1,0 +1,158 @@
+/** 
+ * Big Picture article styles
+ * @author Jo Greybill
+ *  
+**/
+
+/* Site Header/Footer Styles */
+div#header {
+	background-color: #d2232a;
+}
+div#header .span12 {
+	height: 50px;	
+}
+div#header .container {
+	width: 940px;	
+}
+div#header .container .row {
+	margin-left: -20px;	
+}
+div#header .container .span4 {
+	width: 280px;	
+}
+
+#footer {
+	background-color: #fff;
+}
+#footer, #footer a, #footer h2.widgettitle, #footer h2 {
+	color: #000;	
+}
+#footer_stories, #footer_navigation {
+	border-top: 1px solid #dedede;
+}
+
+/* Article Styles */
+	body {
+		background: #fff;
+		color: #000;
+	}
+	
+	p {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   		font-weight: 400;
+		font-size: 16px;
+		line-height: 24px;
+		padding: 0 0 5px 0;
+	}
+	
+	hr {
+		border-color: #dedede;	
+	}
+	
+	div.container {
+		width:100%;	
+	}
+	
+	.row {
+		margin-left: 0;	
+	}
+	
+	.span7 {
+		width: 590px;	
+	}
+	
+	.intro h1, .intro h2 {
+		text-indent: -9999px;
+	}
+	
+	h3, h4 {
+		font-weight: bold;
+		color: #000;
+	}
+		h3 {
+			font-size: 16px;
+			display: block;
+			float: left;
+			margin-right: 6px;
+			margin-top: 1em;
+			text-transform: uppercase;
+			line-height: 24px;
+		}
+		h4 {
+			font-weight: bold;
+			text-transform: uppercase;
+			margin-bottom: 3px;
+			line-height: 14px;
+		}
+	
+	div.rowwrap {
+		width: 960px;
+		margin: auto;
+		overflow: auto;
+	}
+	
+	div.intro {
+		width: 100%;
+		min-height: 915px;
+		margin-top: 40px;
+		overflow: auto;
+		margin-bottom: 20px;
+	}
+		.intro #heavy_reading {
+			padding-top: 840px;
+				
+		}
+	div#section1 {
+		margin: auto;
+		padding: 40px 0;
+		border-top: 1px solid #dedede;
+		border-bottom: 1px solid #dedede;
+	}
+		#section1_bottom #caption_thinkingbig {
+			width: 298px;	
+			margin-left: 50px;
+		}
+	div#section2 {
+		margin: auto;
+		padding: 40px 0 0 0;
+	}
+	div#section3 {
+		margin: auto;
+		padding: 0 0 40px 0;
+	}
+		.carousel-control {
+			top: 87%;	
+		}
+		.carousel-caption {
+			position: static;
+			background: #fff;
+			width: 80%;
+			margin: auto;
+		}
+			.carousel-caption h4, .carousel-caption p {
+				color: #000;	
+			}
+	div#section4 {
+		margin: auto;
+		border-top: 1px solid #dedede;
+		padding: 45px 0 0 0;
+	}
+		#chef_img_wrap {
+			width: 100%;
+		}
+		#jersey_guy {
+			padding: 760px 50px 0 0;
+			border-right: 1px solid #dedede;
+			margin-bottom: 40px;
+		}
+			#jersey_guy p {
+				margin-bottom: 0;
+				padding-bottom: 0;	
+			}
+		#grape_ape {
+			margin-left: 50px;
+			padding-top: 70px;
+		}
+		#other_facts {
+			margin-top: 30px;	
+		}
