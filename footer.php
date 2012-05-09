@@ -2,22 +2,22 @@
 			<div class="container" id="footer">
             
 				<div class="row" id="footer_stories">
-                	<div class="span12">More in Pegasus:</div>
-                	<div class="span3">
-                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
-                        <a href="#">Story Title Here</a>
+                	<div class="span12"><h2>More in Pegasus:</h2></div>
+                	<div class="span3 firststory">
+                    	<a href="#"><div class="storyimg" style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
-                        <a href="#">Story Title Here</a>
+                    	<a href="#"><div class="storyimg" style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
-                        <a href="#">Story Title Here</a>
+                    	<a href="#"><div class="storyimg" style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
-                        <a href="#">Story Title Here</a>
+                    	<a href="#"><div class="storyimg" style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        Story Title Here</a>
                     </div>
                 </div>
                 
