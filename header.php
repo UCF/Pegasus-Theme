@@ -36,7 +36,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						<div class="row hidden-tablet hidden-phone">
+						<div class="row">
 							<a href="<?=site_url()?>" class="span3 title">
 								PEGASUS
 							</a>
