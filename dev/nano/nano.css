@@ -21,6 +21,13 @@ div#header .container .span4 {
 	width: 280px;	
 }
 
+#footer {
+	background-color: #182a45;	
+}
+#footer_navigation {
+	border-top: 1px solid #101B2D;
+}
+
 /* Article Styles */
 	body {
 		background: #000211;
