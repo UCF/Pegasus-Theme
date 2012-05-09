@@ -35,7 +35,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .container.wide > .row {width:967px;margin-left:auto;margin-right:auto;}
 
 /* Header */
-#header {background-color:#e3c353;height:50px;width:100%;color:#FFF;}
+#header {background-color:#e3c353;height:50px;color:#FFF;}
 #header .title,
 #header .edition,
 #header .description {}
@@ -45,7 +45,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	text-indent:-500em;
 	background-repeat:no-repeat;
 	background-image: url(static/img/pegasus-logo.png);
-	background-position:top center;}
+	background-position:center left;}
 #header .edition {padding-top:20px;color:#FFF;font-size:18px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1.5px;}
 
 #header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
