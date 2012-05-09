@@ -15,7 +15,7 @@ div#header .container {
 	width: 940px;	
 }
 div#header .container .row {
-	margin-left: -20px;	
+	margin-left: 0;	
 }
 div#header .container .span4 {
 	width: 280px;	
