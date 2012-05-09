@@ -41,34 +41,7 @@
 								PEGASUS
 							</a>
 							<div class="span5 edition">
-								<ul class="nav">
-									<li class="dropdown">
-										<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-											Summer 2012
-										<b class="caret"></b>
-										</a>
-										<ul class="dropdown-menu">
-											<li>
-												<a href="#">
-													Harris Rosen
-													<span>From Hell's Kitchen in New York to a Quality Inn in Orlando</span>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													58,578
-													<span>Is Bigger Better?</span>
-												</a>
-											</li>
-											<li>
-												<a href="#">
-													Nano
-													<span>Will the Science of Small Ever Have its Big Moment?</span>
-												</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
+								Summer 2012
 							</div>
 
 							<div class="span4 description">
