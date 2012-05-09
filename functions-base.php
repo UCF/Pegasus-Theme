@@ -750,6 +750,7 @@ function __init__(){
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 	));
+	/*
 	register_sidebar(array(
 		'name'          => __('Below the Fold - Left'),
 		'id'            => 'bottom-left',
@@ -768,6 +769,35 @@ function __init__(){
 		'name'          => __('Below the Fold - Right'),
 		'id'            => 'bottom-right',
 		'description'   => 'Right column on the bottom of pages, after events if enabled.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+	));
+	*/
+	register_sidebar(array(
+		'name'          => __('Footer - Column One'),
+		'id'            => 'bottom-one',
+		'description'   => 'Far left column in footer on the bottom of pages.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+	));
+	register_sidebar(array(
+		'name'          => __('Footer - Column Two'),
+		'id'            => 'bottom-two',
+		'description'   => 'Second column from the left in footer, on the bottom of pages.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+	));
+	register_sidebar(array(
+		'name'          => __('Footer - Column Three'),
+		'id'            => 'bottom-three',
+		'description'   => 'Third column from the left in footer, on the bottom of pages.',
+		'before_widget' => '<div id="%1$s" class="widget %2$s">',
+		'after_widget'  => '</div>',
+	));
+	register_sidebar(array(
+		'name'          => __('Footer - Column Four'),
+		'id'            => 'bottom-four',
+		'description'   => 'Far right in footer on the bottom of pages.',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
 	));
