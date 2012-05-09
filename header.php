@@ -32,22 +32,46 @@
 		
 	</head>
 	<body class="<?=body_classes()?>">
-		<div id="header">
-			<div class="container">
-				<div class="row">
-					<div class="span12">
-						<div class="row">
-							<a href="<?=site_url()?>" class="span3 title">
-								PEGASUS
+		<div class="container wide" id="story_nav">
+			<div class="row">
+				<div class="span12">
+					<h3>More in this Issue</h3>
+				</div>
+				<div class="span12">
+					<div class="row">
+						<? foreach(get_current_edition_stories($post->ID) as $story) {?> 
+						<div class="span3">
+							<a href="<?=get_permalink($story->ID)?>">
+								<div class="thumb">
+									<img src="<?=get_featured_image_url($story->ID)?>" />
+								</div>
+								<div class="title">
+									<?=apply_filters('the_title', $story->post_title)?>
+								</div>
 							</a>
-							<div class="span5 edition">
-								Summer 2012
-							</div>
-
-							<div class="span4 description">
-								The Magazine of the University of Central Florida
-							</div>
 						</div>
+						<? } ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container wide" id="header">
+			<div class="row">
+				<div class="span12">
+					<div class="row" style="position:relative;">
+						<a href="<?=site_url()?>" class="span3 title">
+							PEGASUS
+						</a>
+						<div class="span5 edition">
+							Summer 2012
+						</div>
+
+						<div class="span4 description">
+							The Magazine of the University of Central Florida
+						</div>
+						<a class="toggle_story_nav">
+							&#9660;
+						</a>
 					</div>
 				</div>
 			</div>
