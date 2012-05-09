@@ -2,17 +2,22 @@
 			<div class="container" id="footer">
             
 				<div class="row" id="footer_stories">
+                	<div class="span12">More in Pegasus:</div>
                 	<div class="span3">
-                    	(story image goes here)
+                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        <a href="#">Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	(story image goes here)
+                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        <a href="#">Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	(story image goes here)
+                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        <a href="#">Story Title Here</a>
                     </div>
                     <div class="span3">
-                    	(story image goes here)
+                    	<div style="background: #333; width: 220px; height: 275px;">Story Image Here</div>
+                        <a href="#">Story Title Here</a>
                     </div>
                 </div>
                 
