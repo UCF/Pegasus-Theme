@@ -1,0 +1,47 @@
+/* Bigger Better */
+span.gold,
+span.white {font-weight:bold;font-family:"Helvetica Neue",Helvetica,sans-serif;}
+span.gold {color:#ffc907;}
+p.excerpt.small {font-size:23px;text-align:right;}
+p.excerpt.large {font-size:30px;}
+/*
+ * Intro
+ */
+.intro {
+	background-repeat:no-repeat;
+	background-position:top center;
+	min-height:650px;
+}
+.intro #number {
+	font-size:170px;
+	font-family:"Arial Black";
+	color:#FFF;
+	line-height:1em;
+}
+.intro #better {
+	color:#FFF;
+	font-size:40px;
+	margin-top:400px;
+}
+
+.section {
+	padding-top:1.5em;
+}
+.section.first {
+	padding-top:0;
+}
+.section.black {
+	background-color:#000;
+	color:#FFF;
+}
+.section p.excerpt {
+	color:#e8ac08;
+}
+.section h4 {
+	font-size:25px;
+	font-weight:200;
+	line-height:1em;
+}
+.photo {background-color:#333333;padding-top:1em;padding-bottom:1em;margin-bottom:2em;}
+.photo h4 {font-size:18px;font-weight:inherit;}
+.photo p.caption {font-size:13px;}

@@ -5,7 +5,7 @@ p.prominent {font-size:20px;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;color:#b59d48;}
 p.excerpt {font-size:23px;font-style:italic;}
 .section p.excerpt {color:#e3c353;}
-.section.gold p.excerpt {color:#fdeebb;}
+.container.gold p.excerpt {color:#fdeebb;}
 /*
  * Intro
  */
@@ -39,9 +39,9 @@ p.excerpt {font-size:23px;font-style:italic;}
 .section {padding-top:1.5em;}
 .section h3 {font-size:20px;letter-spacing:1.5px;line-height:1em;}
 .section.photo {padding-top:0;}
-.section.gold {background-color:#e3c353;}
-.section.gold .caption {color:#262626;font-family:Georgia;}
-.section.gold h3 {color:#fbfaf6;}
+.container.gold {background-color:#e3c353;}
+.container.gold .caption {color:#262626;font-family:Georgia;}
+.container.gold h3 {color:#fbfaf6;}
 .section.first {
 	padding-top:0;
 	z-index:1;
