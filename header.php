@@ -24,7 +24,7 @@
 			
 		</script>
 		<?php endif;?>
-		<? if($post->post_type = 'story'
+		<? if($post->post_type == 'story'
 			&& ($stylesheet_id = get_post_meta($post->ID, 'story_stylesheet', True)) !== False
 			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
 			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
