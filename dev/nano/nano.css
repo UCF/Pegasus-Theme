@@ -99,12 +99,11 @@ div#header .container .span4 {
 	
 	div#hand_bg_wrap {
 		width: 100%;
-		background: url(http://webcom.dev.smca.ucf.edu/wp3/pegasus/files/2012/05/top_bg_2.jpg) top center no-repeat;
 		overflow: auto;	
 	}
 	
 	div.intro {
-		background: #0d254e url(http://webcom.dev.smca.ucf.edu/wp3/pegasus/files/2012/05/top_bg_gradient.jpg) top center repeat-x;
+		background: #0d254e top center repeat-x;
 		width: 100%;
 		/*max-width: 1284px;*/
 	}
@@ -191,14 +190,12 @@ div#header .container .span4 {
 			display: block;
 			width: 60px;
 			height: 46px;
-			background: url(http://webcom.dev.smca.ucf.edu/wp3/pegasus/files/2012/05/quote_left.png) center center no-repeat;
 			margin: 100px 0 0 12px;
 		}
 		#section3 span.quote_right {
 			display: block;
 			width: 60px;
 			height: 46px;
-			background: url(http://webcom.dev.smca.ucf.edu/wp3/pegasus/files/2012/05/quote_right.png) center center no-repeat;
 			margin: 15px 0 0 12px;
 		}
 	div#section4 {
