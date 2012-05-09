@@ -36,6 +36,7 @@ require_once('functions-admin.php');    # Admin/login functions
 Config::$custom_post_types = array(
 	'Page',
 	'AlumniNote',
+	'Story'
 );
 
 Config::$custom_taxonomies = array(

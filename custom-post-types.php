@@ -472,18 +472,6 @@ class Page extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$built_in       = True;
-
-	public function fields() {
-		$prefix = $this->options('name').'_';
-		return array(
-			array(
-				'name' => 'Stylesheet',
-				'desc' => '',
-				'id'   => $prefix.'stylesheet',
-				'type' => 'file',
-			)
-		);
-	}
 }
 
 
@@ -711,4 +699,37 @@ class Person extends CustomPostType
 		return ob_get_clean();
 	}
 } // END class 
+
+/**
+ * Describes a staff member
+ *
+ * @author Chris Conover
+ **/
+class Story extends CustomPostType {
+	public
+		$name           = 'story',
+		$plural_name    = 'Stories',
+		$singular_name  = 'Story',
+		$add_new_item   = 'Add Story',
+		$edit_item      = 'Edit Story',
+		$new_item       = 'New Story',
+		$public         = True,
+		$use_shortcode  = True,
+		$use_metabox    = True,
+		$use_thumbnails = True,
+		$use_order      = False,
+		$taxonomies     = array('editions');
+
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'Stylesheet',
+				'desc' => '',
+				'id'   => $prefix.'stylesheet',
+				'type' => 'file',
+			)
+		);
+	}
+}
 ?>
