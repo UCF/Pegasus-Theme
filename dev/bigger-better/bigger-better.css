@@ -1,7 +1,9 @@
 /* Bigger Better */
 span.gold,
-span.white {font-weight:bold;font-family:"Helvetica Neue",Helvetica,sans-serif;}
+span.white {font-weight:bold;}
 span.gold {color:#ffc907;}
+p {font-family:"Helvetica Neue",Helvetica,sans-serif;}
+p.excert {font-family:Georgia,sans-serif;}
 p.excerpt.small {font-size:23px;text-align:right;}
 p.excerpt.large {font-size:30px;}
 /*
