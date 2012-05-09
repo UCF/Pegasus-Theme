@@ -72,7 +72,7 @@
 							</div>
 
 							<div class="span4 description">
-								The magazine of the University of Central Florida
+								The Magazine of the University of Central Florida
 							</div>
 						</div>
 					</div>
