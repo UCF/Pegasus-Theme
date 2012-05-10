@@ -35,9 +35,9 @@ if (typeof jQuery != 'undefined'){
 					e.preventDefault();
 					var story_nav = $('#story_nav');
 					if(story_nav.is(':visible')) {
-						$(this).html('&#9660;');
-					} else {
 						$(this).html('&#9650;');
+					} else {
+						$(this).html('&#9660;');
 					}
 					story_nav.slideToggle();
 				});

@@ -81,7 +81,7 @@
 							The Magazine of the University of Central Florida
 						</div>
 						<div class="toggle_story_nav">
-							<a>&#9660;</a>
+							<a>&#9650;</a>
 						</div>
 					</div>
 				</div>
