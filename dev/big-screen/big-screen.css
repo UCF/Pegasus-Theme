@@ -24,6 +24,13 @@ div#header .row .description {
 #story_nav .row .span12 .row {
 	margin-left: -20px;	
 }
+#story_nav h3 {
+	font-weight: bold;
+	color: #fff;
+	margin-top: 25px;
+	text-transform: none;
+	letter-spacing: normal;
+}
 
 #footer {
 	background-color: #000;	
