@@ -114,6 +114,7 @@ div#header .row .description {
 		margin-top: 40px;
 		overflow: auto;
 		margin-bottom: 20px;
+		margin-left: 0;
 	}
 		.intro #heavy_reading {
 			padding-top: 800px;

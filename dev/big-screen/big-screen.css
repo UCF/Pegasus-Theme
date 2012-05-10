@@ -115,6 +115,7 @@ div#header .row .description {
 		width: 100%;
 		height: 646px;
 		/*max-width: 1284px;*/
+		margin-left: 0;
 	}
 		#intro_title {
 			margin-top: 360px;
@@ -122,7 +123,7 @@ div#header .row .description {
 		}
 		#intro_quote .span10 {
 			background: #fff;
-			margin-left: 100px;
+			margin-left: 80px;
 		}
 			#intro_quote p {
 				font-size: 26px;
