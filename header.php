@@ -31,7 +31,11 @@
 		<? } ?>
 		
 	</head>
-	<body class="<?=body_classes()?>">
+	<!--[if lt IE 7 ]>  <body class="ie ie6 <?=body_classes()?>"> <![endif]-->
+	<!--[if IE 7 ]>     <body class="ie ie7 <?=body_classes()?>"> <![endif]-->
+	<!--[if IE 8 ]>     <body class="ie ie8 <?=body_classes()?>"> <![endif]-->
+	<!--[if IE 9 ]>     <body class="ie ie9 <?=body_classes()?>"> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!--> <body class="<?=body_classes()?>"> <!--<![endif]-->
 		<div class="container wide" id="story_nav">
 			<div class="row">
 				<div class="span12">
