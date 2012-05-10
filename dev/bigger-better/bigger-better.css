@@ -1,5 +1,6 @@
 /* Bigger Better */
-#header {background-color:#575757;}
+#header,
+#footer {background-color:#575757;}
 span.gold,
 span.white {font-weight:bold;}
 .gold {color:#ffc907;}
