@@ -52,6 +52,8 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header .edition,
 #header .description {}
 #header .title {
+	position:relative;
+	left:25px;
 	height:25px;
 	margin-top:12px;
 	text-indent:-500em;
@@ -63,11 +65,11 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
 #header .toggle_story_nav {
 	position:absolute;
-	left:-35px;
+	left:0;
 	color:rgba(255,255,255,.7);
 	font-size:20px;
 	border-right:1px solid rgba(255,255,255,.3);
-	padding:16px 15px 16px 0;
+	padding:16px 10px 16px 0;
 }
 .ie7 #header .toggle_story_nav,
 .ie8 #header .toggle_story_nav {
