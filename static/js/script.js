@@ -30,6 +30,7 @@ if (typeof jQuery != 'undefined'){
 					title  :'<strong>Click here <br /> for more stories</strong>'
 				};
 
+			toggle_nav.tooltip(tooltip_options);
 			toggle_nav
 				.click(function(e) {
 					e.preventDefault();
@@ -40,8 +41,8 @@ if (typeof jQuery != 'undefined'){
 						$(this).html('&#9660;');
 					}
 					story_nav.slideToggle();
+					toggle_nav.tooltip('hide');
 				});
-			toggle_nav.tooltip(tooltip_options);
 		})();
 
 		/* iPad Model */
