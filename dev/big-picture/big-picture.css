@@ -107,10 +107,12 @@ div#header .row .description {
 		}
 	div#section1 {
 		margin: auto;
-		padding: 40px 0;
-		border-top: 1px solid #dedede;
-		border-bottom: 1px solid #dedede;
 	}
+		#section1 .rowwrap {
+			padding: 40px 0;
+			border-top: 1px solid #dedede;
+			border-bottom: 1px solid #dedede;
+		}
 		#section1_bottom #caption_thinkingbig {
 			width: 298px;	
 			margin-left: 50px;
@@ -121,8 +123,11 @@ div#header .row .description {
 	}
 	div#section3 {
 		margin: auto;
-		padding: 0 0 40px 0;
+		padding: 0;
 	}
+		#section3 .rowwrap {
+			border-bottom: 1px solid #dedede;	
+		}
 		.carousel-control {
 			top: 680px;	
 		}
@@ -137,7 +142,6 @@ div#header .row .description {
 			}
 	div#section4 {
 		margin: auto;
-		border-top: 1px solid #dedede;
 		padding: 45px 0 0 0;
 	}
 		#chef_img_wrap {
@@ -155,6 +159,11 @@ div#header .row .description {
 		#grape_ape {
 			margin-left: 50px;
 			padding-top: 70px;
+		}
+		#hr {
+			height: 1px;
+			border-top: 1px solid #dedede;
+			padding: 0;	
 		}
 		#other_facts {
 		}
