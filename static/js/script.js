@@ -6,18 +6,39 @@ if (typeof jQuery != 'undefined'){
 		Webcom.handleExternalLinks($);
 		Webcom.loadMoreSearchResults($);
 		
-		$('#story_nav').hide();
-		$('.toggle_story_nav a')
-			.click(function(e) {
-				e.preventDefault();
-				var story_nav = $('#story_nav');
-				if(story_nav.is(':visible')) {
-					$(this).html('&#9660;');
-				} else {
-					$(this).html('&#9650;');
-				}
-				story_nav.slideToggle();
-			});
+		// Is this the user's first visit to the site?
+		var initial_visit = $.cookie('initial-visit') == null ? true : false;
+
+		(function() {
+			$('#story_nav').hide();
+			
+			var toggle_nav         = $('.toggle_story_nav a'),
+				toggle_nav_tooltip = null,
+				tooltip_options    = {
+					placement:'bottom',
+					title  :'<strong>Click here <br /> for more stories</strong>'
+				};
+
+			toggle_nav
+				.click(function(e) {
+					e.preventDefault();
+					var story_nav = $('#story_nav');
+					if(story_nav.is(':visible')) {
+						$(this).html('&#9660;');
+					} else {
+						$(this).html('&#9650;');
+					}
+					story_nav.slideToggle();
+				});
+			toggle_nav.tooltip(tooltip_options);
+
+			// If this is the user's first visit,
+			// show the tooltip for 7 seconds
+			if(initial_visit) {
+				toggle_nav.tooltip('show');
+				setTimeout(function() {toggle_nav.tooltip('hide');}, 7000);
+			}
+		})();
 
 		/* iPad Model */
 		(function() {
@@ -30,7 +51,7 @@ if (typeof jQuery != 'undefined'){
 					});
 			}
 		})();
-		
 
+		$.cookie('initial-visit', true);
 	});
 }else{console.log('jQuery dependancy failed to load');}

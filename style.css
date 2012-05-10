@@ -26,6 +26,8 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .container.wide {width:100%;}
 .container.wide > .row {width:967px;margin-left:auto;margin-right:auto;}
 
+.tooltip-inner {border:1px solid #666;}
+
 /* iPad Modal */
 #ipad {display:none;text-align:center;}
 
