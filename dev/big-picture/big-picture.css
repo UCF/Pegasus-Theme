@@ -81,6 +81,12 @@ div#header .row .description {
 			text-transform: uppercase;
 			line-height: 24px;
 		}
+			*:first-child+html h3 { /* IE7 fix */
+				margin-top: 0;	
+			}
+			*:first-child+html #section1 h3, *:first-child+html #section2 h3 { /* IE7 fix */
+				margin-top: 1em;	
+			}
 		h4 {
 			font-weight: bold;
 			text-transform: uppercase;
