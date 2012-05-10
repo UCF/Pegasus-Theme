@@ -21,16 +21,19 @@ p.excerpt {font-size:23px;font-style:italic;}
 	font-size:160px;
 	font-family:Georgia;
 	margin-top:110px;
-	line-height:1em;
+	line-height:1.2em;
 }
 .intro #enough {
 	color:#FFF;
 	font-size:45px;
+	line-height:1.1em;
+	position:relative;
+	top:-40px;
 }
 .intro #tag {
 	color:#FFF;
 	font-size:18px;
-	margin-top:55px;
+	margin-top:40px;
 }
 
 /*
@@ -47,5 +50,8 @@ p.excerpt {font-size:23px;font-style:italic;}
 	z-index:1;
 	margin-top:-270px;
 	background-color:rgba(255,255,255,.85);
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#D8FFFFFF,endColorstr=#D8FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#D8FFFFFF,endColorstr=#D8FFFFFF);
+	zoom: 1;
 }
 #rosen-dogs {margin-top:45px;}
