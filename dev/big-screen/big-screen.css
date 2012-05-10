@@ -146,7 +146,7 @@ div#header .row .description {
 		background: #262a31;
 		margin: auto;
 		width: 100%;
-		padding: 20px 0;
+		padding: 20px 0 0 0;
 	}
 		#videoshead {
 			margin: 0 0 15px 100px;	
@@ -171,12 +171,15 @@ div#header .row .description {
 		.carousel img {
 			width: 100%;	
 		}
-		.carousel-control.left {
-			left: 25px;	
+		.carousel-control {
+			top: 210px;
 		}
-		.carousel-control.right {
-			right: 25px;
-		}
+			.carousel-control.left {
+				left: 25px;	
+			}
+			.carousel-control.right {
+				right: 25px;
+			}
 	div#section3 {
 		background: #000;
 		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
