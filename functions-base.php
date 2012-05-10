@@ -740,7 +740,8 @@ function __init__(){
 	add_theme_support('menus');
 	add_theme_support('post-thumbnails');
 	add_image_size('homepage', 620);
-	add_image_size('homepage-secondary', 540);
+	add_image_size('single-post-thumbnail', 220, 230, true);
+	add_image_size('personnel-img', 110, 128, false);	
 	register_nav_menu('header-menu', __('Header Menu'));
 	register_nav_menu('footer-menu', __('Footer Menu'));
 	register_sidebar(array(
