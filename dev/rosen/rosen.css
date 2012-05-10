@@ -12,6 +12,8 @@ p.excerpt {font-size:23px;font-style:italic;}
 
 .intro {
 	min-height:802px;
+	background-position:top center;
+	background-repeat:no-repeat;
 }
 .intro #big,
 .intro #enough,
