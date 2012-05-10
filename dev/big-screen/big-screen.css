@@ -28,6 +28,10 @@ div#header .row .description {
 	border-top: 1px solid #333;
 }
 
+#header h2, #footer h2 {
+	text-align: left;	
+}
+
 /* Article Styles */
 	body {
 		background: #000;
@@ -114,7 +118,7 @@ div#header .row .description {
 				font-style: italic;
 				letter-spacing: 0.5px;
 				color: #51a3a3;
-				padding: 40px 80px 0 80px;
+				padding: 15px 80px 0 80px;
 				font-weight: 300;
 			}
 			span.quote_alt {
@@ -133,10 +137,10 @@ div#header .row .description {
 	}
 		#section1 .span10 {
 			background: #fff;
-			padding: 5px 0 30px 0;
+			padding: 0 0 30px 0;
 		}
 			#section1 .span10 p {
-				padding: 8px 80px;
+				padding: 0 80px;
 			}
 	div#section2 {
 		background: #262a31;
@@ -184,7 +188,7 @@ div#header .row .description {
 			padding: 30px 0;
 		}
 			#section3 .span10 p {
-				padding: 8px 80px;
+				padding: 0 80px;
 			}
 			span.quote {
 				font-size: 26px;
