@@ -22,7 +22,7 @@ if (typeof jQuery != 'undefined'){
 		/* iPad Model */
 		(function() {
 			var ipad_hide = $.cookie('ipad-hide');
-			if((ipad_hide == null || !ipad_hide) && navigator.userAgent.match('/iPad/i') != null) {
+			if((ipad_hide == null || !ipad_hide) && navigator.userAgent.match(/iPad/i) != null) {
 				$('#ipad')
 					.modal()
 					.on('hidden', function() {
