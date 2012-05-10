@@ -1,0 +1,196 @@
+/** 
+ * Big Screen article styles
+ * @author Jo Greybill
+ *  
+**/
+
+/* Site Header/Footer Styles */
+div#header {
+	background-color: #000;
+}
+div#header .span12 {
+	height: 50px;	
+}
+div#header .container {
+	width: 940px;	
+}
+div#header .container .row {
+	margin-left: -20px;	
+}
+div#header .row .description {
+	width: 280px;	
+}
+
+#footer {
+	background-color: #000;	
+}
+#footer_navigation {
+	border-top: 1px solid #333;
+}
+
+/* Article Styles */
+	body {
+		background: #000;
+		color: #000;
+	}
+	
+	p {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   		font-weight: 400;
+		font-size: 16px;
+		line-height: 20px;
+		padding: 0 0 10px 0;
+	}
+	
+	div.container {
+		width:100%;	
+	}
+	
+	.row {
+		margin-left: 0;	
+	}
+	
+	h1 {
+		text-indent: -9999px;
+	}
+	h2 {
+		font-size: 26px;
+		color: #dbf0f0;
+		text-align: center;
+	}
+	h3, h4 {
+		font-weight: bold;
+		color: #fff;
+		text-transform: uppercase;
+		font-size: 16px;
+		letter-spacing: 1.3px;
+	}
+		h3 {
+			display: block;
+			float: left;
+			margin-right: 6px;
+			line-height: 24px;
+		}
+		h3 span.h3_alt, h4 span.h4_alt {
+			font-weight: 200;
+			text-transform: none;
+			letter-spacing: normal;
+		}
+	div.rowwrap {
+		width: 960px;
+		margin: auto;
+		overflow: auto;
+	}
+		.rowwrap div.span10 {
+			margin-left: 80px;	
+		}
+	div.caption p {
+		font-size: 14px;
+		line-height: 18px;
+		color: #cee3f6;	
+	}
+	
+	div#intro_bg_wrap {
+		width: 100%;
+		overflow: auto;
+	}
+	
+	div.intro {
+		background: #677077;
+		width: 100%;
+		height: 646px;
+		/*max-width: 1284px;*/
+	}
+		#intro_title {
+			margin-top: 360px;
+			margin-bottom: 15px;
+		}
+		#intro_quote .span10 {
+			background: #fff;
+		}
+			#intro_quote p {
+				font-size: 26px;
+				line-height: 30px;
+				font-style: italic;
+				letter-spacing: 0.5px;
+				color: #51a3a3;
+				padding: 40px 80px 0 80px;
+				font-weight: 300;
+			}
+			span.quote_alt {
+				text-transform: uppercase;
+				line-height: 20px;
+				font-size: 16px;
+				color: #000;
+				font-style: normal;
+			}
+	
+	div#section1 {
+		background: #000;
+		width: 100%;
+		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
+		margin: auto;
+	}
+		#section1 .span10 {
+			background: #fff;
+			padding: 5px 0 30px 0;
+		}
+			#section1 .span10 p {
+				padding: 8px 80px;
+			}
+	div#section2 {
+		background: #262a31;
+		margin: auto;
+		width: 100%;
+		padding: 20px 0;
+	}
+		#videoshead {
+			margin: 0 0 15px 100px;	
+		}
+		#videoswrap {	
+		}
+			#videoswrap .span10 {
+					
+			}
+		#videoslides {
+			padding: 0 20px;
+		}
+		.carousel-caption {
+			position: static;
+			margin: auto;
+			background: #262a31;
+			padding: 10px 0 0 0;
+		}
+		.carousel-caption p {
+			font-weight: 300;	
+		}
+		.carousel img {
+			width: 100%;	
+		}
+		.carousel-control.left {
+			left: 25px;	
+		}
+		.carousel-control.right {
+			right: 25px;
+		}
+	div#section3 {
+		background: #000;
+		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
+		margin: 0 auto 30px auto;
+		width: 100%;
+	}
+		#section3 .span10 {
+			background: #fff;
+			padding: 30px 0;
+		}
+			#section3 .span10 p {
+				padding: 8px 80px;
+			}
+			span.quote {
+				font-size: 26px;
+				line-height: 30px;
+				font-style: italic;
+				letter-spacing: 0.5px;
+				color: #51a3a3;
+				font-weight: 300;
+			}
