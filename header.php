@@ -36,6 +36,17 @@
 	<!--[if IE 8 ]>     <body class="ie ie8 <?=body_classes()?>"> <![endif]-->
 	<!--[if IE 9 ]>     <body class="ie ie9 <?=body_classes()?>"> <![endif]-->
 	<!--[if (gt IE 9)|!(IE)]><!--> <body class="<?=body_classes()?>"> <!--<![endif]-->
+		<div id="ipad" class="modal">
+			<div class="modal-header">
+				<h3>Pegasus Magazine is Available on the iPad!</h3>
+			</div>
+			<div class="modal-body">
+				<a href="#" class="btn btn-primary">Go to iTunes and Download</a>
+				<a href="#" class="btn" data-dismiss="modal">Continue to View the Web Version</a>
+			</div>
+			<div class="modal-footer">
+			</div>
+		</div>
 		<div class="container wide" id="story_nav">
 			<div class="row">
 				<div class="span12">

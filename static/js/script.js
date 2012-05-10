@@ -18,5 +18,19 @@ if (typeof jQuery != 'undefined'){
 				}
 				story_nav.slideToggle();
 			});
+
+		/* iPad Model */
+		(function() {
+			var ipad_hide = $.cookie('ipad-hide');
+			if((ipad_hide == null || !ipad_hide) && navigator.userAgent.match('/iPad/i') != null) {
+				$('#ipad')
+					.modal()
+					.on('hidden', function() {
+						$.cookie('ipad-hide', true);
+					});
+			}
+		})();
+		
+
 	});
 }else{console.log('jQuery dependancy failed to load');}
