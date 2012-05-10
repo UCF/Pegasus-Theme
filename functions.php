@@ -296,6 +296,15 @@ Config::$theme_settings = array(
 			),
 		)),
 	),
+	'Device Detection' => array(
+		new TextField(array(
+			'name'        => 'iTunes Store iPad App URL',
+			'id'          => THEME_OPTIONS_NAME.'[ipad_app_url]',
+			'description' => 'URL of the Pegasus Magazine iPad app in the iTunes store. Used for the iPad modal.',
+			'default'     => '',
+			'value'       => $theme_options['ipad_app_url'],
+		))
+	),
 );
 
 Config::$links = array(
@@ -402,4 +411,12 @@ function get_featured_image_url($id) {
 		return $image[0];
 	}
 	return $url;
+}
+
+/*
+ * Returns a theme option value or NULL if it doesn't exist
+ */
+function get_theme_option($key) {
+	global $theme_options;
+	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
 }
