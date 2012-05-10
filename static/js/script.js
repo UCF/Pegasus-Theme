@@ -42,13 +42,6 @@ if (typeof jQuery != 'undefined'){
 					story_nav.slideToggle();
 				});
 			toggle_nav.tooltip(tooltip_options);
-
-			// If this is the user's first visit,
-			// show the tooltip for 7 seconds
-			if(initial_visit) {
-				toggle_nav.tooltip('show');
-				setTimeout(function() {toggle_nav.tooltip('hide');}, 7000);
-			}
 		})();
 
 		/* iPad Model */
