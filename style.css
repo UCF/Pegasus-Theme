@@ -155,11 +155,11 @@ h2#footer_logo {
 		border-top: 1px solid #fff;
 		padding: 30px 0 0;
 	}
-		ul#menu-footer_navigation {
+		#footer_navigation ul {
 			list-style-type: none;
 			margin: 24px 0 30px 0;
 		}
-			ul#menu-footer_navigation li {
+			#footer_navigation ul li {
 				padding-bottom: 8px;	
 			}
 
