@@ -57,18 +57,31 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header .toggle_story_nav {
 	position:absolute;
 	left:-10px;
+	border-right:1px solid rgba(255,255,255,.3);
+	height:50px;
+}
+#header .toggle_story_nav a {
+	display:block;
 	color:rgba(255,255,255,.7);
 	font-size:20px;
-	border-right:1px solid rgba(255,255,255,.3);
-	padding:16px 15px 16px 0;
+	padding:5px;
+	margin-top:10px;
+	margin-right:10px;
 }
-.ie7 #header .toggle_story_nav,
-.ie8 #header .toggle_story_nav {
+.ie7 #header .toggle_story_nav a,
+.ie8 #header .toggle_story_nav a {
 	color:#e7e7e7;
 	border-right:1px solid #e7e7e7;
 }
 
-#header .toggle_story_nav:hover {cursor:pointer;text-decoration:none;}
+#header .toggle_story_nav a:hover {
+	cursor:pointer;
+	text-decoration:none;
+	border:1px solid rgba(255,255,255,.2);
+	border-radius:5px;
+	margin-right:8px;
+	background-color:rgba(255,255,255,.2);
+}
 
 /* Footer */
 #footer {

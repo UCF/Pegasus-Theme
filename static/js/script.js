@@ -7,7 +7,7 @@ if (typeof jQuery != 'undefined'){
 		Webcom.loadMoreSearchResults($);
 		
 		$('#story_nav').hide();
-		$('.toggle_story_nav')
+		$('.toggle_story_nav a')
 			.click(function(e) {
 				e.preventDefault();
 				var story_nav = $('#story_nav');
