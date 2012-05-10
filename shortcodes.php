@@ -83,7 +83,7 @@ function sc_image($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s"', $wpdb->posts, $wpdb->escape($attr['filename']));
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']));
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$post = $rows[0];
