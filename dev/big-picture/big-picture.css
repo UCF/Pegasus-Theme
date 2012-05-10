@@ -57,7 +57,7 @@ div#header .row .description {
 	}
 	
 	.row {
-		margin-left: 0;	
+		margin-left: -20px;
 	}
 	
 	.span7 {
@@ -95,7 +95,7 @@ div#header .row .description {
 		}
 	
 	div.rowwrap {
-		width: 960px;
+		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}

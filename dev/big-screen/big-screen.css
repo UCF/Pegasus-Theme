@@ -21,6 +21,10 @@ div#header .row .description {
 	width: 280px;	
 }
 
+#story_nav .row .span12 .row {
+	margin-left: -20px;	
+}
+
 #footer {
 	background-color: #000;	
 }
@@ -51,7 +55,7 @@ div#header .row .description {
 	}
 	
 	.row {
-		margin-left: 0;	
+		margin-left: -20px;	
 	}
 	
 	h1 {
@@ -81,7 +85,7 @@ div#header .row .description {
 			letter-spacing: normal;
 		}
 	div.rowwrap {
-		width: 960px;
+		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}
@@ -111,6 +115,7 @@ div#header .row .description {
 		}
 		#intro_quote .span10 {
 			background: #fff;
+			margin-left: 100px;
 		}
 			#intro_quote p {
 				font-size: 26px;
