@@ -60,6 +60,8 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	border-right:1px solid rgba(255,255,255,.3);
 	height:50px;
 }
+.ie7 #header .toggle_story_nav,
+.ie8 #header .toggle_story_nav {border-right:1px solid #e7e7e7;}
 #header .toggle_story_nav a {
 	display:block;
 	color:rgba(255,255,255,.7);
@@ -71,7 +73,6 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .ie7 #header .toggle_story_nav a,
 .ie8 #header .toggle_story_nav a {
 	color:#e7e7e7;
-	border-right:1px solid #e7e7e7;
 }
 
 #header .toggle_story_nav a:hover {
@@ -81,6 +82,13 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	border-radius:5px;
 	margin-right:8px;
 	background-color:rgba(255,255,255,.2);
+}
+.ie7 #header .toggle_story_nav a:hover,
+.ie8 #header .toggle_story_nav a:hover {
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
+	margin-right:10px;
+	zoom:1;
 }
 
 /* Footer */
