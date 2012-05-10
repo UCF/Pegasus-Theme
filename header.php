@@ -41,8 +41,8 @@
 				<h3>Pegasus Magazine is Available on the iPad!</h3>
 			</div>
 			<div class="modal-body">
-				<a href="#" class="btn btn-primary">Go to iTunes and Download</a>
-				<a href="#" class="btn" data-dismiss="modal">Continue to View the Web Version</a>
+				<a href="#" class="btn btn-primary">Go to iTunes</a>
+				<a href="#" class="btn" data-dismiss="modal">Continue to Web Version</a>
 			</div>
 			<div class="modal-footer">
 			</div>
