@@ -75,3 +75,12 @@ p.fact {color:#fdebad;}
 .photo {background-color:#333333;padding-top:1em;padding-bottom:1em;color:#FFF;}
 .photo h4 {font-size:16px;font-weight:inherit;font-weight:bold;}
 .photo p.caption {font-size:13px;}
+
+/* RGraph styles */
+#sats_canvaswrap, #enrollment_canvaswrap { margin-left: 20px; float: left; overflow: auto; }
+#sats_canvaswrap { width: 780px; }
+#enrollment_canvaswrap { width: 700px; }
+
+canvas#line1, canvas#line2 { position: relative; }
+.gradientwrap { position: relative; }
+img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; top: 0; left: 0; }

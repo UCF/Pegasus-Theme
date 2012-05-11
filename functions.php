@@ -334,6 +334,7 @@ Config::$scripts = array(
 	array('name' => 'rgraph-dynamic', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.dynamic.js',),
 	array('name' => 'rgraph-line', 'src' => THEME_JS_URL.'/rgraph/RGraph.line.js',),
 	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
+	array('name' => 'bigger-better', 'src' => THEME_DIR.'/dev/bigger-better/bigger-better.js',)
 );
 
 Config::$metas = array(
