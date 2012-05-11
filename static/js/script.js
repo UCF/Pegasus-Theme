@@ -18,7 +18,8 @@ if (typeof jQuery != 'undefined'){
 		Webcom.loadMoreSearchResults($);
 		
 		// Is this the user's first visit to the site?
-		var initial_visit = $.cookie('initial-visit') == null ? true : false;
+		var initial_visit = $.cookie('initial-visit') == null ? true : false,
+			ipad          = navigator.userAgent.match(/iPad/i) == null ? false : true;
 
 		(function() {
 			$('#story_nav').hide();
@@ -30,9 +31,11 @@ if (typeof jQuery != 'undefined'){
 					title  :'<strong>Click here <br /> for more stories</strong>'
 				};
 
-			toggle_nav.tooltip(tooltip_options);
+			if(!ipad) {
+				toggle_nav.tooltip(tooltip_options);
+			}
 			toggle_nav
-				.click(function(e) {
+				.on( (ipad) ? 'touchend' : 'click', function(e) {
 					e.preventDefault();
 					var story_nav = $('#story_nav');
 					if(story_nav.is(':visible')) {
@@ -41,14 +44,16 @@ if (typeof jQuery != 'undefined'){
 						$(this).html('&#9660;');
 					}
 					story_nav.slideToggle();
-					toggle_nav.tooltip('hide');
+					if(!ipad) {
+						toggle_nav.tooltip('hide');
+					}
 				});
 		})();
 
 		/* iPad Model */
 		(function() {
 			var ipad_hide = $.cookie('ipad-hide');
-			if((ipad_hide == null || !ipad_hide) && navigator.userAgent.match(/iPad/i) != null) {
+			if((ipad_hide == null || !ipad_hide) && ipad) {
 				$('#ipad')
 					.modal()
 					.on('hidden', function() {
