@@ -326,6 +326,14 @@ Config::$scripts = array(
 	THEME_STATIC_URL.'/js/jquery.cookie.js',
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
+	/* TODO: Write this functionality into a shortcode, only call these libraries when necessary: */
+	array('name' => 'rgraph-effects', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.effects.js',),
+	array('name' => 'rgraph-core', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.core.js',),
+	array('name' => 'rgraph-tooltips', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.tooltips.js',),
+	array('name' => 'rgraph-key', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.key.js',),
+	array('name' => 'rgraph-dynamic', 'src' => THEME_JS_URL.'/rgraph/RGraph.common.dynamic.js',),
+	array('name' => 'rgraph-line', 'src' => THEME_JS_URL.'/rgraph/RGraph.line.js',),
+	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
 );
 
 Config::$metas = array(
