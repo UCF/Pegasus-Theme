@@ -1,3 +1,5 @@
+if (typeof jQuery != 'undefined'){
+	jQuery(document).ready(function($) {
         window.onload = function ()
         {
 			/* 15-year enrollment comparison between state universities chart */
@@ -85,3 +87,5 @@
 			});
 			
         }
+	});
+}
