@@ -176,22 +176,24 @@ div#header .row .description {
 		.carousel-caption p {
 			font-weight: 300;	
 		}
-		.carousel img {
-			width: 100%;	
+		.carousel iframe {
+			width: 100%;
+			height: 425px;	
 		}
 		.carousel-control {
 			top: 210px;
 		}
 			.carousel-control.left {
-				left: 25px;	
+				left: -35px;	
 			}
 			.carousel-control.right {
-				right: 25px;
+				right: -35px;
 			}
 	div#section3 {
 		background: #000;
 		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
-		margin: 0 auto 100px auto;
+		margin: 0 auto;
+		padding-bottom: 100px;
 		width: 100%;
 	}
 		#section3 .span10 {
