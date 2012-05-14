@@ -7,7 +7,7 @@
                         
                         <? foreach(get_current_edition_stories($post->ID) as $story) {
 							$isfeatured = get_post_meta($story->ID, 'story_isfeatured', True);
-							if (!($isfeatured)) {
+							if (!($isfeatured) && is_home()) {
 						?> 
                             <div class="span3">
                                 <a href="<?=get_permalink($story->ID)?>">
@@ -19,7 +19,21 @@
                                     </div>
                                 </a>
                             </div>
-                        <? } } ?>
+                        <? } else if (!(is_home())) {
+							 ?> 
+                            <div class="span3">
+                                <a href="<?=get_permalink($story->ID)?>">
+                                    <div class="thumb">
+                                        <img src="<?=get_featured_image_url($story->ID)?>" />
+                                    </div>
+                                    <div class="title">
+                                        <?=apply_filters('the_title', $story->post_title)?>
+                                    </div>
+                                </a>
+                            </div>
+                        <? }
+						}
+						?>
                         
                     </div>
                     
