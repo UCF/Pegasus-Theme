@@ -62,14 +62,11 @@ div#header .row .description {
 	}
 	
 	h1 {
-		font-size: 176px;
+		font-size: 125px;
 		/*text-transform: uppercase;*/
 		font-weight: 100;
 		line-height: 150px;
 	}
-		h1 span.smallcaps {
-			font-size: 125px;
-		}
 	
 	h2, h3, h4 {
 		font-weight: 200;
