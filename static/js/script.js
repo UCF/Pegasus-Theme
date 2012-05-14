@@ -64,6 +64,9 @@ if (typeof jQuery != 'undefined'){
 
 		$.cookie('initial-visit', true);
 
+		
+		/* Get first story in footer and add class 'firststory' */
+		$('#footer_stories').children('.span3:first').addClass('firststory');
 
 		/* Prevent video sliders from automatically advancing */
 		$('#videoslides').carousel({

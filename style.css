@@ -41,7 +41,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #story_nav .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:200;}
 #story_nav .thumb img {border-radius:3px;}
 #story_nav a {display:block;border-radius:3px;}
-#story_nav a:hover {text-decoration:none;color:#FFF;box-shadow:0px 0px 15px #FFF;}
+#story_nav a img:hover {text-decoration:none;color:#FFF;box-shadow:0px 0px 15px #FFF;}
 
 /* Header */
 #header {background-color:#e3c353;height:50px;color:#FFF;position:relative;}
@@ -113,17 +113,15 @@ h2#footer_logo {
 	margin: 0;
 }
 #footer .firststory {
-	margin-left: 10px;	
+	margin-left: 0;	
 }
-#footer .row {
-	width: 960px;
-	margin: auto;	
+#footer_stories {
+	padding: 30px 0;	
 }
+
 	#footer_navigation h2.widgettitle, #footer_stories h2 {
 		font-size: 16px;
 		line-height: 34px;
-		text-transform: uppercase;
-		letter-spacing: 3px;
 		font-weight: bold;
 		color: #fff;
 		margin-bottom: 15px;
@@ -134,12 +132,8 @@ h2#footer_logo {
 		font-weight: bold;
 	}
 	
-	#footer_stories {
-		padding: 30px 0;
-		margin-left: -20px;
-	}
 		#footer_stories h2 {
-			margin-left: -10px;	
+			margin-left: -20px;	
 		}
 		#footer_stories img {
 			border: 0;
@@ -149,7 +143,7 @@ h2#footer_logo {
 		#footer_stories .title {margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:200;}
 		#footer_stories .thumb img {border-radius:3px;}
 		#footer_stories a {display:block;border-radius:3px;}
-		#footer_stories a:hover {text-decoration:none;box-shadow:0px 0px 15px #FFF;}
+		#footer_stories a img:hover {text-decoration:none;box-shadow:0px 0px 15px #FFF;}
 		
 	#footer_navigation {
 		border-top: 1px solid #fff;
