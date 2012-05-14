@@ -113,10 +113,10 @@ h2#footer_logo {
 	margin: 0;
 }
 #footer .firststory {
-	margin-left: 0;	
+	/*margin-left: 0;	*/
 }
 #footer_stories {
-	padding: 30px 0;	
+	padding: 30px 0;
 }
 
 	#footer_navigation h2.widgettitle, #footer_stories h2 {
@@ -126,6 +126,10 @@ h2#footer_logo {
 		color: #fff;
 		margin-bottom: 15px;
 	}
+		#footer_navigation h2.widgettitle {
+			text-transform: uppercase;
+			letter-spacing: 3px;
+		}
 	
 	#footer a {
 		color: #fff;
@@ -133,7 +137,7 @@ h2#footer_logo {
 	}
 	
 		#footer_stories h2 {
-			margin-left: -20px;	
+
 		}
 		#footer_stories img {
 			border: 0;
