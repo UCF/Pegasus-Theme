@@ -63,7 +63,26 @@ if (typeof jQuery != 'undefined'){
 		})();
 
 		$.cookie('initial-visit', true);
+
+		/* Prevent video sliders from automatically advancing */
+		$('#videoslides').carousel({
+			interval: 0
+		})
+
+		/* Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time: */
 		
+		$('#videoslides').bind('slide', function() {
+			$('.active').addClass('last');
+			var videoSrc = $('.last').children('iframe').attr('src');
+			$('.last').children('iframe').attr('switchsrc', videoSrc);
+		});
+		$('#videoslides').bind('slid', function() {
+			$('.last').children('iframe').attr('src', 'none');
+			var videoSwitchSrc = $('.last').children('iframe').attr('switchsrc');
+			$('.last').children('iframe').attr('src', videoSwitchSrc);
+			$('.last').removeClass('last');
+		});
+
 		
 		(function() {
 			
