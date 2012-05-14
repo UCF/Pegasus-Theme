@@ -64,6 +64,11 @@ if (typeof jQuery != 'undefined'){
 
 		$.cookie('initial-visit', true);
 
+		/* Home page slider should always advance automatically */
+		    $('#homeslides').carousel({
+				interval: 5000
+			})
+
 		/* Prevent video sliders from automatically advancing */
 		$('#videoslides').carousel({
 			interval: 0
