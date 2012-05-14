@@ -5,7 +5,10 @@
 					<div class="row" id="footer_stories">
                         <div class="span12"><h2>More in this Issue</h2></div>
                         
-                        <? foreach(get_current_edition_stories($post->ID) as $story) {?> 
+                        <? foreach(get_current_edition_stories($post->ID) as $story) {
+							$isfeatured = get_post_meta($story->ID, 'story_isfeatured', True);
+							if (!($isfeatured)) {
+						?> 
                             <div class="span3">
                                 <a href="<?=get_permalink($story->ID)?>">
                                     <div class="thumb">
@@ -16,12 +19,13 @@
                                     </div>
                                 </a>
                             </div>
-                        <? } ?>
+                        <? } } ?>
                         
                     </div>
                     
                     <div class="row" id="footer_navigation">
                         <div class="span3">
+							<a href="<?=site_url()?>"><h2 id="footer_logo">Pegasus</h2></a>
                             <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column One')):?><?php endif;?>
                         </div>
                         <div class="span3">

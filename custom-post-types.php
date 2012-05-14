@@ -701,7 +701,7 @@ class Person extends CustomPostType
 } // END class 
 
 /**
- * Describes a staff member
+ * Describes a story
  *
  * @author Chris Conover
  **/
@@ -728,6 +728,12 @@ class Story extends CustomPostType {
 				'desc' => '',
 				'id'   => $prefix.'stylesheet',
 				'type' => 'file',
+			),
+			array(
+				'name' => 'Home Page Feature',
+				'desc' => 'Check this box if this story is a main featured story on the home page.  It will not appear as a duplicate story in the footer on the home page if this box is checked.',
+				'id'   => $prefix.'isfeatured',
+				'type' => 'checkbox',
 			)
 		);
 	}
