@@ -95,4 +95,16 @@ function sc_image($attr) {
 	return $url;
 }
 add_shortcode('image', 'sc_image');
+
+/*
+ * Link to a static image. Requires extension
+ */
+function sc_static_image($attr) {
+	$url = '';
+	if(isset($attr['path']) && $attr['path'] != '') {
+		$url = get_bloginfo('stylesheet_directory').$attr['path'];
+	}
+	return $url;
+}
+add_shortcode('static-image', 'sc_static_image');
 ?>

@@ -1,12 +1,10 @@
-
 body,
 #header,
-#footer {background-color:#FFF;}
+#footer {background-color:#FFF;color:#000;}
 
 #header {color:#000;}
 #header .title {
 	position:static;
-	background-image: url(static/img/pegasus-logo-black.png);
 }
 #header #toggle_story_nav {display:none;}
 #header .edition {visibility: hidden;}
