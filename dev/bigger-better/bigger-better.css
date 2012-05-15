@@ -41,12 +41,14 @@ p.fact {color:#fdebad;}
 }
 
 .section {
-	padding-top:1.5em;
+	padding-top:40px;
+	padding-bottom:40px;
 }
 .section.first {
 	background-color:rgba(38,41,46,.84);
 	color:#FFF;
 	margin-top:-300px;
+	padding-top:15px;
 }
 .ie7 .section.first,
 .ie8 .section.first {
@@ -72,6 +74,15 @@ p.fact {color:#fdebad;}
 	font-weight:200;
 	line-height:1em;
 }
-.photo {background-color:#333333;padding-top:1em;padding-bottom:1em;color:#FFF;}
+.photo {background-color:#333333;;color:#FFF;}
 .photo h4 {font-size:16px;font-weight:inherit;font-weight:bold;}
 .photo p.caption {font-size:13px;}
+
+/* RGraph styles */
+#sats_canvaswrap, #enrollment_canvaswrap { margin-left: 20px; float: left; overflow: auto; }
+#sats_canvaswrap { width: 780px; }
+#enrollment_canvaswrap { width: 700px; }
+
+canvas#line1, canvas#line2 { position: relative; }
+.gradientwrap { position: relative; }
+img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; top: 0; left: 0; }

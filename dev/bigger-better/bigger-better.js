@@ -1,95 +1,7 @@
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
-		if($.browser.msie) {
-			var version = $.browser.version;
-			if(version >= 7 && version < 8) {
-				$('body').addClass('ie7');
-			} else if(version >= 8 && version < 9) {
-				$('body').addClass('ie8');
-			} else if(version >= 9 && version < 10) {
-				$('body').addClass('ie9');
-			}
-		}
-
-		Webcom.slideshow($);
-		Webcom.chartbeat($);
-		Webcom.analytics($);
-		Webcom.handleExternalLinks($);
-		Webcom.loadMoreSearchResults($);
-		
-		// Is this the user's first visit to the site?
-		var initial_visit = $.cookie('initial-visit') == null ? true : false,
-			ipad          = navigator.userAgent.match(/iPad/i) == null ? false : true;
-
-		(function() {
-			$('#story_nav').hide();
-			
-			var toggle_nav         = $('.toggle_story_nav a'),
-				toggle_nav_tooltip = null,
-				tooltip_options    = {
-					placement:'bottom',
-					title  :'<strong>Click here <br /> for more stories</strong>'
-				};
-
-			if(!ipad) {
-				toggle_nav.tooltip(tooltip_options);
-			}
-			toggle_nav
-				.on( (ipad) ? 'touchend' : 'click', function(e) {
-					e.preventDefault();
-					var story_nav = $('#story_nav');
-					if(story_nav.is(':visible')) {
-						$(this).html('&#9650;');
-					} else {
-						$(this).html('&#9660;');
-					}
-					story_nav.slideToggle();
-					if(!ipad) {
-						toggle_nav.tooltip('hide');
-					}
-				});
-		})();
-
-		/* iPad Model */
-		(function() {
-			var ipad_hide = $.cookie('ipad-hide');
-			if((ipad_hide == null || !ipad_hide) && ipad) {
-				$('#ipad')
-					.modal()
-					.on('hidden', function() {
-						$.cookie('ipad-hide', true);
-					});
-			}
-		})();
-
-		$.cookie('initial-visit', true);
-
-		
-		/* Get first story in footer and add class 'firststory' */
-		$('#footer_stories').children('.span3:first').addClass('firststory');
-
-		/* Prevent video sliders from automatically advancing */
-		$('#videoslides').carousel({
-			interval: 0
-		})
-
-		/* Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time: */
-		
-		$('#videoslides').bind('slide', function() {
-			$('.active').addClass('last');
-			var videoSrc = $('.last').children('iframe').attr('src');
-			$('.last').children('iframe').attr('switchsrc', videoSrc);
-		});
-		$('#videoslides').bind('slid', function() {
-			$('.last').children('iframe').attr('src', 'none');
-			var videoSwitchSrc = $('.last').children('iframe').attr('switchsrc');
-			$('.last').children('iframe').attr('src', videoSwitchSrc);
-			$('.last').removeClass('last');
-		});
-
-		
-		(function() {
-			
+        window.onload = function ()
+        {
 			/* 15-year enrollment comparison between state universities chart */
 			
 					   /* '96  '97   '98    '99   '00   '01   '02   '03   '04   '05   '06   '07   '08   '09   '10   '11 */
@@ -174,8 +86,6 @@ if (typeof jQuery != 'undefined'){
 				}
 			});
 			
-		})();
-		
-		
+        }
 	});
-}else{console.log('jQuery dependancy failed to load');}
+}

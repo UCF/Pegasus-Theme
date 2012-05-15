@@ -21,6 +21,17 @@ div#header .row .description {
 	width: 280px;	
 }
 
+#story_nav .row .span12 .row {
+	margin-left: -20px;	
+}
+#story_nav h3 {
+	font-weight: bold;
+	color: #fff;
+	margin-top: 25px;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
 #footer {
 	background-color: #000;	
 }
@@ -51,7 +62,7 @@ div#header .row .description {
 	}
 	
 	.row {
-		margin-left: 0;	
+		margin-left: -20px;	
 	}
 	
 	h1 {
@@ -81,18 +92,13 @@ div#header .row .description {
 			letter-spacing: normal;
 		}
 	div.rowwrap {
-		width: 960px;
+		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}
 		.rowwrap div.span10 {
 			margin-left: 80px;	
 		}
-	div.caption p {
-		font-size: 14px;
-		line-height: 18px;
-		color: #cee3f6;	
-	}
 	
 	div#intro_bg_wrap {
 		width: 100%;
@@ -104,6 +110,7 @@ div#header .row .description {
 		width: 100%;
 		height: 646px;
 		/*max-width: 1284px;*/
+		margin-left: 0;
 	}
 		#intro_title {
 			margin-top: 360px;
@@ -111,6 +118,7 @@ div#header .row .description {
 		}
 		#intro_quote .span10 {
 			background: #fff;
+			margin-left: 80px;
 		}
 			#intro_quote p {
 				font-size: 26px;
@@ -168,22 +176,24 @@ div#header .row .description {
 		.carousel-caption p {
 			font-weight: 300;	
 		}
-		.carousel img {
-			width: 100%;	
+		.carousel iframe {
+			width: 100%;
+			height: 425px;	
 		}
 		.carousel-control {
 			top: 210px;
 		}
 			.carousel-control.left {
-				left: 25px;	
+				left: -35px;	
 			}
 			.carousel-control.right {
-				right: 25px;
+				right: -35px;
 			}
 	div#section3 {
 		background: #000;
 		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
-		margin: 0 auto 100px auto;
+		margin: 0 auto;
+		padding-bottom: 100px;
 		width: 100%;
 	}
 		#section3 .span10 {
@@ -200,4 +210,7 @@ div#header .row .description {
 				letter-spacing: 0.5px;
 				color: #51a3a3;
 				font-weight: 300;
+			}
+			span.quote, #intro_quote p {
+				font-size: 23px\0/;
 			}

@@ -29,7 +29,11 @@
 			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
 			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
-		
+		<? if($post->post_type == 'page'
+			&& ($stylesheet_id = get_post_meta($post->ID, 'page_stylesheet', True)) !== False
+			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
+			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
+		<? } ?>
 	</head>
 	 <body class="<?=body_classes()?>">
 		<div id="ipad" class="modal">
@@ -50,7 +54,7 @@
 				</div>
 				<div class="span12">
 					<div class="row">
-						<? foreach(get_current_edition_stories($post->ID) as $story) {?> 
+						<? foreach(get_navigation_stories() as $story) {?> 
 						<div class="span3">
 							<a href="<?=get_permalink($story->ID)?>">
 								<div class="thumb">

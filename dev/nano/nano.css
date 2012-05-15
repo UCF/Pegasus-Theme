@@ -21,6 +21,13 @@ div#header .row .description {
 	width: 280px;	
 }
 
+#story_nav h3 {
+	font-weight: bold;
+	color: #fff;
+	margin-top: 25px;
+}
+
+
 #footer {
 	background-color: #182a45;	
 }
@@ -47,7 +54,7 @@ div#header .row .description {
 	}
 	
 	.row {
-		margin-left: 0;	
+		margin-left: -20px;	
 	}
 	
 	.span7 {
@@ -55,14 +62,11 @@ div#header .row .description {
 	}
 	
 	h1 {
-		font-size: 176px;
+		font-size: 125px;
 		/*text-transform: uppercase;*/
 		font-weight: 100;
 		line-height: 150px;
 	}
-		h1 span.smallcaps {
-			font-size: 125px;
-		}
 	
 	h2, h3, h4 {
 		font-weight: 200;
@@ -86,7 +90,7 @@ div#header .row .description {
 		}
 	
 	div.rowwrap {
-		width: 960px;
+		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}
@@ -105,6 +109,7 @@ div#header .row .description {
 	div.intro {
 		background: #0d254e top center repeat-x;
 		width: 100%;
+		margin-left: 0;
 		/*max-width: 1284px;*/
 	}
 		.intro .span7 {

@@ -21,6 +21,14 @@ div#header .row .description {
 	width: 280px;	
 }
 
+#story_nav h3 {
+	font-weight: bold;
+	color: #fff;
+	margin-top: 25px;
+	text-transform: none;
+	letter-spacing: normal;
+}
+
 #footer {
 	background-color: #fff;
 }
@@ -57,7 +65,7 @@ div#header .row .description {
 	}
 	
 	.row {
-		margin-left: 0;	
+		margin-left: -20px;
 	}
 	
 	.span7 {
@@ -95,7 +103,7 @@ div#header .row .description {
 		}
 	
 	div.rowwrap {
-		width: 960px;
+		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}
@@ -106,6 +114,7 @@ div#header .row .description {
 		margin-top: 40px;
 		overflow: auto;
 		margin-bottom: 20px;
+		margin-left: 0;
 	}
 		.intro #heavy_reading {
 			padding-top: 800px;
