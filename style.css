@@ -189,7 +189,7 @@ body.subpage,
 .subpage #header .description {font-size:13px;}
 
 .subpage #footer a {color:#000;}
-.subpage #footer_navigation h2.widgettitle, #footer_stories h2 {color:#000;}
+.subpage #footer_navigation h2.widgettitle, .subpage #footer_stories h2 {color:#000;}
 .subpage #footer_stories .title {font-weight:bold;}
 .subpage #footer .textwidget a,
 .subpage #footer .widget a {font-weight:normal;}
