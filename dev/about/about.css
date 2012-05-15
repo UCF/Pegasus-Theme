@@ -1,6 +1,6 @@
 body,
 #header,
-#footer {background-color:#FFF;color:#000;}
+#footer {background-color:#FFF;}
 
 #header {color:#000;}
 #header .title {
@@ -20,3 +20,8 @@ body,
 .opinions,
 .rights {font-size:12px;}
 span.note {font-size:10px;}
+
+#footer a {color:#000;}
+#footer_navigation h2.widgettitle, #footer_stories h2 {color:#000;}
+#footer .textwidget a,
+#footer .widget a {font-weight:normal;}
