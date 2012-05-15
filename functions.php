@@ -289,14 +289,14 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 /* 
  * Retrieve a list of the current edition stories
  */
-function get_current_edition_stories($exclude=array()) {
+function get_current_edition_stories($exclude=array(), $limit=-1) {
 
 	$current_edition_term = get_term_by('slug', CURRENT_EDITION_TERM_SLUG, 'editions');
 	if($current_edition_term === FALSE) {
 		return array();
 	} else {
 		return get_posts(array(
-			'numberposts' => 4,
+			'numberposts' => $limit,
 			'post_type'   => 'story',
 			'orderby'     => 'rand',
 			'exclude'     => $exclude,
@@ -326,7 +326,7 @@ function get_navigation_stories() {
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
-	return get_current_edition_stories($exclude);
+	return get_current_edition_stories($exclude, 4);
 }
 
 /*
