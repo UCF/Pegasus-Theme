@@ -1,0 +1,22 @@
+body,
+#header,
+#footer {background-color:#031123;}
+
+#header {
+	height: 80px;
+	color:#FFF;
+	position:relative;
+}
+#header .title {
+	position:static;
+}
+#header .toggle_story_nav {
+	display:none;
+}
+#header .edition {
+	width:100%;
+}
+#header .description {
+	position:absolute;
+	right:0;
+}
