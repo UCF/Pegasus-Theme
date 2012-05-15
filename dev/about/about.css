@@ -1,15 +1,3 @@
-body,
-#header,
-#footer {background-color:#FFF;}
-
-#header {color:#000;}
-#header .title {
-	position:static;
-}
-#header #toggle_story_nav {display:none;}
-#header .edition {visibility: hidden;}
-#header .description {font-size:13px;}
-
 #about {margin-top:50px;}
 #about * {font-family:"Helvetica Neue",Helvetica,sans-serif;}
 #about h2 {font-weight:200;font-size:30px;}
@@ -20,11 +8,3 @@ body,
 .opinions,
 .rights {font-size:12px;}
 span.note {font-size:10px;}
-
-#footer a {color:#000;}
-#footer_navigation h2.widgettitle, #footer_stories h2 {color:#000;}
-#footer_stories .title {font-weight:bold;}
-#footer .textwidget a,
-#footer .widget a {font-weight:normal;}
-#footer_navigation {padding-top:0;}
-#footer_navigation > .span12 {padding-top:30px;border-top:1px solid #d7d7d7;}
