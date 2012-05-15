@@ -48,7 +48,7 @@ Config::$custom_taxonomies = array(
 	'Editions'
 );
 
-Config::$body_classes = array('default',);
+Config::$body_classes = array();
 
 /**
  * Configure theme settings, see abstract class Field's descendants for
