@@ -54,7 +54,7 @@
 				</div>
 				<div class="span12">
 					<div class="row">
-						<? foreach(get_current_edition_stories($post->ID) as $story) {?> 
+						<? foreach(get_navigation_stories() as $story) {?> 
 						<div class="span3">
 							<a href="<?=get_permalink($story->ID)?>">
 								<div class="thumb">

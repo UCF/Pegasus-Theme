@@ -289,20 +289,22 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 /* 
  * Retrieve a list of the current edition stories
  */
-function get_current_edition_stories($exclude_id=NULL) {
+function get_current_edition_stories($exclude=array()) {
 
 	$current_edition_term = get_term_by('slug', CURRENT_EDITION_TERM_SLUG, 'editions');
 	if($current_edition_term === FALSE) {
 		return array();
 	} else {
 		$stories = get_posts(array(
-			'numberposts' => -1,
+			'numberposts' => 4,
 			'post_type'   => 'story',
+			'orderby'     => 'rand',
+			'exclude'     => $exclude,
 			'tax_query'   => array(
 				'taxonomy' => 'editions',
 				'field'    => 'id',
 				'terms'    => $current_edition_term->term_id
-			)
+			),
 		));
 
 		if(is_null($exclude_id)) {
@@ -311,6 +313,20 @@ function get_current_edition_stories($exclude_id=NULL) {
 			return array_filter($stories, create_function('$p', 'return !($p->ID == '.((int)$exclude_id).');'));
 		}
 	}
+}
+
+/*
+ *Retrieve a list of stories for navigation. Exclude a story if we are on
+ * its page otherwise pick 4 at random.
+ */
+function get_navigation_stories() {
+	global $post;
+
+	$exclude = array();
+	if($post->post_type == 'story') {
+		$exclude[] = $post->ID;
+	}
+	return get_current_edition_stories($exclude);
 }
 
 /*

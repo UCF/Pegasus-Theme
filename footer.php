@@ -3,55 +3,40 @@
 			<div class="container wide">
 
 					<div class="row" id="footer_stories">
-                        <div class="span12"><h2>More in this Issue</h2></div>
-                        
-                        <? foreach(get_current_edition_stories($post->ID) as $story) {
-							$isfeatured = get_post_meta($story->ID, 'story_isfeatured', True);
-							if (!($isfeatured) && is_home()) {
+						<div class="span12"><h2>More in this Issue</h2></div>
+						
+						<? 
+						foreach(get_navigation_stories() as $story) {
 						?> 
-                            <div class="span3">
-                                <a href="<?=get_permalink($story->ID)?>">
-                                    <div class="thumb">
-                                        <img src="<?=get_featured_image_url($story->ID)?>" />
-                                    </div>
-                                    <div class="title">
-                                        <?=apply_filters('the_title', $story->post_title)?>
-                                    </div>
-                                </a>
-                            </div>
-                        <? } else if (!(is_home())) {
-							 ?> 
-                            <div class="span3">
-                                <a href="<?=get_permalink($story->ID)?>">
-                                    <div class="thumb">
-                                        <img src="<?=get_featured_image_url($story->ID)?>" />
-                                    </div>
-                                    <div class="title">
-                                        <?=apply_filters('the_title', $story->post_title)?>
-                                    </div>
-                                </a>
-                            </div>
-                        <? }
-						}
-						?>
-                        
-                    </div>
-                    
-                    <div class="row" id="footer_navigation">
-                        <div class="span3">
+							<div class="span3">
+								<a href="<?=get_permalink($story->ID)?>">
+									<div class="thumb">
+										<img src="<?=get_featured_image_url($story->ID)?>" />
+									</div>
+									<div class="title">
+										<?=apply_filters('the_title', $story->post_title)?>
+									</div>
+								</a>
+							</div>
+						<? } ?>
+						
+					</div>
+					
+					<div class="row" id="footer_navigation">
+						<div class="span3">
 							<a href="<?=site_url()?>"><h2 id="footer_logo">Pegasus</h2></a>
-                            <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column One')):?><?php endif;?>
-                        </div>
-                        <div class="span3">
-                            <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?><?php endif;?>
-                        </div>
-                        <div class="span3">
-                            <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Three')):?><?php endif;?>
-                        </div>
-                        <div class="span3">
-                            <?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column four')):?><?php endif;?>
-                        </div>
-                    </div>
+							<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column One')):?><?php endif;?>
+						</div>
+						<div class="span3">
+							<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?><?php endif;?>
+						</div>
+						<div class="span3">
+							<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Three')):?><?php endif;?>
+						</div>
+						<div class="span3">
+							<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column four')):?><?php endif;?>
+						</div>
+					</div>
 				
 			</div>
 		</div>
