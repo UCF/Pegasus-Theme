@@ -1,0 +1,24 @@
+
+body,
+#header,
+#footer {background-color:#FFF;}
+
+#header {color:#000;}
+#header .title {
+	position:static;
+	background-image: url(static/img/pegasus-logo-black.png);
+}
+#header #toggle_story_nav {display:none;}
+#header .edition {visibility: hidden;}
+#header .description {font-size:13px;}
+
+#about {margin-top:50px;}
+#about * {font-family:"Helvetica Neue",Helvetica,sans-serif;}
+#about h2 {font-weight:200;font-size:30px;}
+
+.email {margin-top:5px;}
+.email a {color:#000;text-decoration:underline;}
+
+.opinions,
+.rights {font-size:12px;}
+span.note {font-size:10px;}
