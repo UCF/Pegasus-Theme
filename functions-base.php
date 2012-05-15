@@ -1644,7 +1644,16 @@ function header_title(){
  * Returns string to use for value of class attribute on body tag
  **/
 function body_classes(){
+	global $post;
+
 	$classes = Config::$body_classes;
+
+	if(is_front_page() && !in_array('frontpage', $classes)) {
+		$classes[] = 'frontpage';
+	} else if($post->post_type == 'page' && !in_array('subpage', $classes)) {
+		$classes[] = 'subpage';
+	}
+	
 	return implode(' ', $classes);
 }
 
