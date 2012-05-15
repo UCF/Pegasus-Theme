@@ -99,85 +99,7 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['cb_domain'],
 		)),
 	),
-	'Events' => array(
-		new RadioField(array(
-			'name'        => 'Enable Events Below the Fold',
-			'id'          => THEME_OPTIONS_NAME.'[enable_events]',
-			'description' => 'Display events in the bottom page content, appearing on most pages.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['enable_events'],
-		)),
-		new RadioField(array(
-			'name'        => 'Enable Events on Search Page',
-			'id'          => THEME_OPTIONS_NAME.'[enable_search_events]',
-			'description' => 'Display events on the search results page.',
-			'value'       => $theme_options['enable_search_events'],
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-		)),
-		new SelectField(array(
-			'name'        => 'Events Max Items',
-			'id'          => THEME_OPTIONS_NAME.'[events_max_items]',
-			'description' => 'Maximum number of events to display whenever outputting event information.',
-			'value'       => $theme_options['events_max_items'],
-			'default'     => 4,
-			'choices'     => array(
-				'1' => 1,
-				'2' => 2,
-				'3' => 3,
-				'4' => 4,
-				'5' => 5,
-			),
-		)),
-		new TextField(array(
-			'name'        => 'Events Calendar URL',
-			'id'          => THEME_OPTIONS_NAME.'[events_url]',
-			'description' => 'Base URL for the calendar you wish to use. Example: <em>http://events.ucf.edu/mycalendar</em>',
-			'value'       => $theme_options['events_url'],
-			'default'     => 'http://events.ucf.edu',
-		)),
-	),
-	'News' => array(
-		new RadioField(array(
-			'name'        => 'Enable News Below the Fold',
-			'id'          => THEME_OPTIONS_NAME.'[enable_news]',
-			'description' => 'Display UCF Today news in the bottom page content, appearing on most pages.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['enable_news'],
-		)),
-		new SelectField(array(
-			'name'        => 'News Max Items',
-			'id'          => THEME_OPTIONS_NAME.'[news_max_items]',
-			'description' => 'Maximum number of articles to display when outputting news information.',
-			'value'       => $theme_options['news_max_items'],
-			'default'     => 2,
-			'choices'     => array(
-				'1' => 1,
-				'2' => 2,
-				'3' => 3,
-				'4' => 4,
-				'5' => 5,
-			),
-		)),
-		new TextField(array(
-			'name'        => 'News Feed',
-			'id'          => THEME_OPTIONS_NAME.'[news_url]',
-			'description' => 'Use the following URL for the news RSS feed <br />Example: <em>http://today.ucf.edu/feed/</em>',
-			'value'       => $theme_options['news_url'],
-			'default'     => 'http://today.ucf.edu/feed/',
-		)),
-	),
+	
 	'Search' => array(
 		new RadioField(array(
 			'name'        => 'Enable Google Search',
@@ -206,32 +128,7 @@ Config::$theme_settings = array(
 		)),
 	),
 	'Site' => array(
-		new TextField(array(
-			'name'        => 'Contact Email',
-			'id'          => THEME_OPTIONS_NAME.'[site_contact]',
-			'description' => 'Contact email address that visitors to your site can use to contact you.',
-			'value'       => $theme_options['site_contact'],
-		)),
-		new TextField(array(
-			'name'        => 'Organization Name',
-			'id'          => THEME_OPTIONS_NAME.'[organization_name]',
-			'description' => 'Your organization\'s name',
-			'value'       => $theme_options['organization_name'],
-		)),
-		new SelectField(array(
-			'name'        => 'Home Image',
-			'id'          => THEME_OPTIONS_NAME.'[site_image]',
-			'description' => 'Image to feature on the homepage.  Select any image uploaded to the <a href="'.get_admin_url().'upload.php">media gallery</a> or <a href="'.get_admin_url().'media-new.php">upload a new image</a>.',
-			'choices'     => get_image_choices(),
-			'value'       => $theme_options['site_image'],
-		)),
-		new TextareaField(array(
-			'name'        => 'Site Description',
-			'id'          => THEME_OPTIONS_NAME.'[site_description]',
-			'description' => 'A quick description of your organization and its role.',
-			'default'     => 'This is the site\'s default description, change or remove it on the <a href="'.get_admin_url().'admin.php?page=theme-options#site">theme options page</a> in the admin site.',
-			'value'       => $theme_options['site_description'],
-		)),
+		
 	),
 	'Social' => array(
 		new RadioField(array(
