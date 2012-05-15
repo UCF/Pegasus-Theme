@@ -23,5 +23,8 @@ span.note {font-size:10px;}
 
 #footer a {color:#000;}
 #footer_navigation h2.widgettitle, #footer_stories h2 {color:#000;}
+#footer_stories .title {font-weight:bold;}
 #footer .textwidget a,
 #footer .widget a {font-weight:normal;}
+#footer_navigation {padding-top:0;}
+#footer_navigation > .span12 {padding-top:30px;border-top:1px solid #d7d7d7;}
