@@ -310,7 +310,7 @@ function get_current_edition_stories($exclude=array()) {
 }
 
 /*
- *Retrieve a list of stories for navigation. Exclude a story if we are on
+ * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
  */
 function get_navigation_stories() {
