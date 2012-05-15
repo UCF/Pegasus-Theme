@@ -323,7 +323,13 @@ function get_navigation_stories() {
 	global $post;
 
 	$exclude = array();
-	if($post->post_type == 'story') {
+
+	if(is_front_page()) {
+		$story_id = get_theme_option('front_page_story');
+		if( ($story = get_post($story_id)) !== Fales) {
+			$exclude = $story->ID;
+		}
+	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
 	return get_current_edition_stories($exclude);
