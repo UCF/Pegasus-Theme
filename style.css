@@ -97,33 +97,6 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	zoom:1;
 }
 
-/* Home page styles -- move these later? */
-#home_header {
-	height: 80px;
-	background-color:#031123;
-	color:#FFF;
-	position:relative;
-}
-#home_header .title {
-	margin-top:12px;
-	text-indent:-500em;
-	background: url(static/img/pegasus-logo.png) center left no-repeat;
-	height: 25px;
-	display: block;
-}
-#home_header .description {
-	text-align: right;
-}
-#home_header .edition {
-	padding-top:20px;
-	padding-bottom: 5px;
-	color:#FFF;
-	font-size:16px;
-	font-family:"Helvetica Neue",Helvetica,sans-serif;
-	text-transform:uppercase;
-	letter-spacing:3px;
-}
-
 /* Footer */
 #footer {
 	width: 100%;
