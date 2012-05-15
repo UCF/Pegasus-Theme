@@ -367,6 +367,18 @@ class Page extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$built_in       = True;
+
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'Stylesheet',
+				'desc' => '',
+				'id'   => $prefix.'stylesheet',
+				'type' => 'file',
+			)
+		);
+	}
 }
 
 
