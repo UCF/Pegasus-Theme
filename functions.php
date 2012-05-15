@@ -295,7 +295,7 @@ function get_current_edition_stories($exclude=array()) {
 	if($current_edition_term === FALSE) {
 		return array();
 	} else {
-		$stories = get_posts(array(
+		return get_posts(array(
 			'numberposts' => 4,
 			'post_type'   => 'story',
 			'orderby'     => 'rand',
@@ -306,12 +306,6 @@ function get_current_edition_stories($exclude=array()) {
 				'terms'    => $current_edition_term->term_id
 			),
 		));
-
-		if(is_null($exclude_id)) {
-			return $stories;
-		} else {
-			return array_filter($stories, create_function('$p', 'return !($p->ID == '.((int)$exclude_id).');'));
-		}
 	}
 }
 
