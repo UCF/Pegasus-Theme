@@ -456,6 +456,12 @@ class Story extends CustomPostType {
 		$prefix = $this->options('name').'_';
 		return array(
 			array(
+				'name' => 'Story Subtitle',
+				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
+				'id'   => $prefix.'subtitle',
+				'type' => 'text',
+			),
+			array(
 				'name' => 'Stylesheet',
 				'desc' => '',
 				'id'   => $prefix.'stylesheet',
