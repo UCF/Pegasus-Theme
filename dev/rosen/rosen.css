@@ -57,3 +57,21 @@ p.excerpt {font-size:23px;font-style:italic;}
 	zoom: 1;
 }
 #rosen-dogs {margin-top:45px;}
+/* Carousel styles */
+#rosenslides { 
+	height: 443px;
+	width: 967px;
+}
+.carousel img {
+	float: right;
+	margin-right: 7px;
+}
+.carousel-caption {
+	background: none;	
+	top: 0;
+	bottom: none;
+	padding: 0 25px 0 0;
+}
+.carousel-control {
+	top: 60%;
+}
