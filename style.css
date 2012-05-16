@@ -36,7 +36,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	margin-left: 0px;
 }
 
-#story_nav {background-color:#333;color:#FFF;padding-bottom:15px;}
+#story_nav {background-color:#333;color:#FFF;padding-bottom:15px;display:none;}
 #story_nav h3 {margin-bottom:10px;font-size:16px;}
 #story_nav .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:200;}
 #story_nav .thumb img {border-radius:3px;}
