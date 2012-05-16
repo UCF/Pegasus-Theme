@@ -1,6 +1,6 @@
 /* Rosen */
 
-p {color:#262626;}
+p {color:#262626;line-height: 22px;}
 p.prominent {font-size:20px;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;color:#b59d48;}
 p.excerpt {font-size:23px;font-style:italic;}

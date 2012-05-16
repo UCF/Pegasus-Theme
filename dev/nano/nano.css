@@ -29,9 +29,9 @@ div#header .row .description {
 
 
 #footer {
-	background-color: #182a45;	
+	background-color: #0d254e;	
 }
-#footer_navigation {
+#footer_navigation, #footer_stories {
 	border-top: 1px solid #101B2D;
 }
 
@@ -45,7 +45,7 @@ div#header .row .description {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
    		font-weight: 300;
 		font-size: 16px;
-		line-height: 20px;
+		line-height: 22px;
 		padding: 0 0 5px 0;
 	}
 	

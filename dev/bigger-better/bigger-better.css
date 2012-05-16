@@ -4,10 +4,10 @@
 span.gold,
 span.white {font-weight:bold;}
 .gold {color:#ffc907;}
-p {font-family:"Helvetica Neue",Helvetica,sans-serif;}
-p.excerpt {font-family:Georgia,sans-serif;}
-p.excerpt.small {font-size:23px;text-align:right;}
-p.excerpt.large {font-size:30px;}
+p {font-family:"Helvetica Neue",Helvetica,sans-serif; line-height:22px;}
+p.excerpt {font-family:Georgia,sans-serif; line-height:28px;}
+p.excerpt.small {font-size:23px;text-align:right; line-height:28px;}
+p.excerpt.large {font-size:30px; line-height:32px;}
 p.fact {color:#fdebad;}
 #peoples-choice {
 	border-bottom:1px solid #CCC;
