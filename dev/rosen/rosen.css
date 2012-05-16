@@ -70,7 +70,10 @@ p.excerpt {font-size:23px;font-style:italic;}
 	background: none;	
 	top: 0;
 	bottom: none;
-	padding: 0 25px 0 0;
+	padding: 0;
+}
+.carousel-caption p.caption {
+	padding-top: 25px;
 }
 .carousel-control {
 	top: 60%;
