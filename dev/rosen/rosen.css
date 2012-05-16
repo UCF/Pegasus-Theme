@@ -1,9 +1,9 @@
 /* Rosen */
 
-p {color:#262626;line-height: 22px;}
+p {color:#262626;line-height: 22px;margin-bottom:0;}
 p.prominent {font-size:20px;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;color:#b59d48;}
-p.excerpt {font-size:23px;font-style:italic;}
+p.excerpt {font-size:23px;font-style:italic;line-height:28px;}
 .section p.excerpt {color:#e3c353;}
 .container.gold p.excerpt {color:#fdeebb;}
 /*
@@ -59,7 +59,7 @@ p.excerpt {font-size:23px;font-style:italic;}
 #rosen-dogs {margin-top:45px;}
 /* Carousel styles */
 #rosenslides { 
-	height: 443px;
+	height: 446px;
 	width: 967px;
 }
 .carousel img {

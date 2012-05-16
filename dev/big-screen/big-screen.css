@@ -54,7 +54,8 @@ div#header .row .description {
    		font-weight: 400;
 		font-size: 16px;
 		line-height: 22px;
-		padding: 0 0 10px 0;
+		margin-bottom: 0;
+		padding: 0;
 	}
 	
 	div.container {
@@ -128,6 +129,7 @@ div#header .row .description {
 				color: #51a3a3;
 				padding: 15px 80px 0 80px;
 				font-weight: 300;
+				margin-bottom: 1.5em;
 			}
 			span.quote_alt {
 				text-transform: uppercase;
