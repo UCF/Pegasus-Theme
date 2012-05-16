@@ -188,14 +188,14 @@ body.subpage,
 
 .subpage #header {color:#000;}
 .subpage #header .title {position:static;}
-.subpage #header #toggle_story_nav {display:none;}
+.subpage #header .toggle_story_nav {display:none;}
 .subpage #header .edition {visibility: hidden;}
 .subpage #header .description {font-size:13px;}
 
 .subpage #footer a {color:#000;}
 .subpage #footer_navigation h2.widgettitle, .subpage #footer_stories h2 {color:#000;}
 .subpage #footer_stories .title span.title_text {font-weight:bold;}
-.subpage #footer_stories .title span.subtitle_text {font-weight:normal;}
+.subpage #footer_stories .title span.subtitle_text {font-weight:200;}
 .subpage #footer .textwidget a,
 .subpage #footer .widget a {font-weight:normal;}
 .subpage #footer_navigation {padding-top:0;}
