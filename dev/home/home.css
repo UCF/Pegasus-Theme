@@ -7,5 +7,9 @@ body,
 #header .toggle_story_nav {display:none;}
 #header .edition {display:none;}
 #header .description {position:absolute;right:0;}
+#header .row .span12 .row { position:relative; z-index:9999; }
 
+#featured_story { position:relative; top:-50px; }
+
+#footer_stories { padding: 0 0 30px 0; }
 #footer_stories h2 {color:#FFF;}
