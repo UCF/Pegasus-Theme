@@ -176,7 +176,7 @@ div#header .row .description {
 		.carousel-caption p {
 			font-weight: 300;	
 		}
-		.carousel iframe {
+		.carousel iframe, .carousel object embed {
 			width: 100%;
 			height: 425px;	
 		}
