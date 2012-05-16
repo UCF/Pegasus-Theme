@@ -61,7 +61,7 @@
 									<img src="<?=get_featured_image_url($story->ID)?>" />
 								</div>
 								<div class="title">
-									<?=apply_filters('the_title', $story->post_title)?>
+									<strong><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: <?php } ?></strong><?=get_post_meta($story->ID, 'story_subtitle', True)?>
 								</div>
 							</a>
 						</div>
