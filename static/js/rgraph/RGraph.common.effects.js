@@ -2095,3 +2095,149 @@
 
         RGraph.Effects.UpdateCanvas(Grow);
     }
+
+
+
+/* --------------------- */
+
+    /**
+    * Slow Trace
+    * 
+    * Copy of standard Trace animation, but with slower speed
+    * 
+    */
+    RGraph.Effects.Line.jQuery.TraceSlow = function (obj)
+    {
+        RGraph.Clear(obj.canvas);
+        //obj.Draw();
+        RGraph.RedrawCanvas(obj.canvas);
+
+        /**
+        * Create the DIV that the second canvas will sit in
+        */
+        var div = document.createElement('DIV');
+            var xy = RGraph.getCanvasXY(obj.canvas);
+            div.id = '__rgraph_trace_animation_' + RGraph.random(0, 4351623) + '__';
+            div.style.left = xy[0] + 'px';
+            div.style.top = xy[1] + 'px';
+            div.style.width = obj.Get('chart.gutter.left');
+            div.style.height = obj.canvas.height + 'px';
+            div.style.position = 'absolute';
+            div.style.overflow = 'hidden';
+        document.body.appendChild(div);
+        
+        /**
+        * Make the second canvas
+        */
+        var id      = '__rgraph_line_reveal_animation_' + RGraph.random(0, 99999999) + '__';
+        var canvas2 = document.createElement('CANVAS');
+        canvas2.width = obj.canvas.width;
+        canvas2.height = obj.canvas.height;
+        canvas2.style.position = 'absolute';
+        canvas2.style.left = 0;
+        canvas2.style.top  = 0;
+
+        canvas2.id         = id;
+        div.appendChild(canvas2);
+        
+        var reposition_canvas2 = function (e)
+        {
+            var xy = RGraph.getCanvasXY(obj.canvas);
+            
+            div.style.left = xy[0] + 'px';
+            div.style.top = xy[1] + 'px';
+        }
+        window.addEventListener('resize', reposition_canvas2, false)
+        
+        /**
+        * Make a copy of the original Line object
+        */
+        var obj2 = new RGraph.Line(id, RGraph.array_clone(obj.original_data));
+        
+        // Remove the new line from the ObjectRegistry so that it isn't redawn
+        RGraph.ObjectRegistry.Remove(obj2);
+
+        for (i in obj.properties) {
+            if (typeof(i) == 'string') {
+                obj2.Set(i, obj.properties[i]);
+            }
+        }
+
+        //obj2.Set('chart.tooltips', null);
+        obj2.Set('chart.labels', []);
+        obj2.Set('chart.background.grid', false);
+        obj2.Set('chart.ylabels', false);
+        obj2.Set('chart.noaxes', true);
+        obj2.Set('chart.title', '');
+        obj2.Set('chart.title.xaxis', '');
+        obj2.Set('chart.title.yaxis', '');
+        obj2.Set('chart.filled.accumulative', obj.Get('chart.filled.accumulative'));
+        obj.Set('chart.key', []);
+        obj2.Draw();
+
+
+        /**
+        * This effectively hides the line
+        */
+        obj.Set('chart.line.visible', false);
+        obj.Set('chart.colors', ['rgba(0,0,0,0)']);
+        if (obj.Get('chart.filled')) {
+            var original_fillstyle = obj.Get('chart.fillstyle');
+            obj.Set('chart.fillstyle', 'rgba(0,0,0,0)');
+        }
+
+        RGraph.Clear(obj.canvas);
+        //obj.Draw();
+        RGraph.RedrawCanvas(obj.canvas);
+        
+        /**
+        * Place a DIV over the canvas to stop interaction with it
+        */
+        var div2 = document.createElement('DIV');
+            div2.id = '__rgraph_trace_animation_' + RGraph.random(0, 4351623) + '__';
+            div2.style.left = xy[0] + 'px';
+            div2.style.top = xy[1] + 'px';
+            div2.style.width = obj.canvas.width + 'px';
+            div2.style.height = obj.canvas.height + 'px';
+            div2.style.position = 'absolute';
+            div2.style.overflow = 'hidden';
+            div2.style.backgroundColor = 'rgba(0,0,0,0)';
+            div.div2 = div2;
+            obj.canvas.__rgraph_trace_cover__ = div2
+        document.body.appendChild(div2);
+
+        /**
+        * Animate the DIV that contains the canvas
+        */
+        $('#' + div.id).animate({
+            width: obj.canvas.width + 'px'
+        }, arguments[2] ? arguments[2] : 2200, function () {RGraph.Effects.Line.TraceSlow_callback()}); /* 2200 is manually added in */
+
+
+        /**
+        * Get rid of the second canvas and turn the line back on
+        * on the original.
+        */
+        RGraph.Effects.Line.TraceSlow_callback = function ()
+        {
+
+            // Remove the window resize listener
+            window.removeEventListener('resize', reposition_canvas2, false);
+
+            div.parentNode.removeChild(div);
+            document.body.removeChild(div2);
+
+            div.removeChild(canvas2);
+            obj.Set('chart.line.visible', true);
+            
+            // Revert the filled status back to as it was
+            obj.Set('chart.filled', RGraph.array_clone(obj2.Get('chart.filled')));
+            obj.Set('chart.fillstyle', original_fillstyle);
+            obj.Set('chart.colors', RGraph.array_clone(obj2.Get('chart.colors')));
+            obj.Set('chart.key', RGraph.array_clone(obj2.Get('chart.key')));
+
+            RGraph.RedrawCanvas(obj.canvas);
+            
+            obj.canvas.__rgraph_trace_cover__ = null;
+        }
+    }

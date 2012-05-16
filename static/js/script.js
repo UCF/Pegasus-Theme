@@ -158,16 +158,16 @@ if (typeof jQuery != 'undefined'){
 			
 			$('canvas#line1').bind('inview', function (event, visible) {
 				if (visible == true) {
-					RGraph.Effects.Line.jQuery.Trace(line1); /* Line animation */
-					$('img#enrollment_gradient').delay(600).fadeIn(1100); /* Fade in the gradient fill afterward */
+					RGraph.Effects.Line.jQuery.TraceSlow(line1); /* Line animation */
+					$('img#enrollment_gradient').delay(1200).fadeIn(1100); /* Fade in the gradient fill afterward */
 				} else {
 					$('canvas#line1').unbind('inview');
 				}
 			});
 			$('canvas#line2').bind('inview', function (event, visible) {
 				if (visible == true) {
-					RGraph.Effects.Line.jQuery.Trace(line2);
-					$('img#sats_gradient').delay(600).fadeIn(1100);
+					RGraph.Effects.Line.jQuery.TraceSlow(line2);
+					$('img#sats_gradient').delay(1200).fadeIn(1100);
 					
 				} else {
 					$('canvas#line2').unbind('inview');
