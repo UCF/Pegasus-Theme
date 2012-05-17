@@ -398,7 +398,7 @@ class AlumniNote extends CustomPostType{
 		$new_item       = 'New Alumni Note',
 		$public         = True,
 		$use_editor     = True,
-		$use_thumbnails = False,
+		$use_thumbnails = True,
 		$use_order      = True,
 		$use_title      = True,
 		$use_metabox    = True;
@@ -412,7 +412,7 @@ class AlumniNote extends CustomPostType{
 		return array(
 			array(
 				'name'  => 'Author',
-				'desc' => 'The note\'s author\'s name',
+				'desc' => 'The note\'s author(\'s) name',
 				'id'   => $prefix.'author',
 				'type' => 'text',
 			),
@@ -424,7 +424,7 @@ class AlumniNote extends CustomPostType{
 			),
 			array(
 				'name' => 'Class Year',
-				'desc' => 'The year in which the author graduated from UCF',
+				'desc' => 'The year(s) in which the author graduated from UCF',
 				'id'   => $prefix.'class_year',
 				'type' => 'text',
 			),
