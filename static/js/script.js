@@ -40,13 +40,16 @@ if (typeof jQuery != 'undefined'){
 					var story_nav = $('#story_nav');
 					if(story_nav.is(':visible')) {
 						$(this).html('&#9650;');
+						if(!ipad) {
+							toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Click here <br /> for more stories</strong>').tooltip('fixTitle').tooltip('show');
+						}
 					} else {
 						$(this).html('&#9660;');
+						if(!ipad) {
+							toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Close menu</strong>').tooltip('fixTitle').tooltip('show');
+						}
 					}
 					story_nav.slideToggle();
-					if(!ipad) {
-						toggle_nav.tooltip('hide');
-					}
 				});
 		})();
 
