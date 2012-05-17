@@ -146,6 +146,7 @@ div#header .row .description {
 		}
 		.carousel-control {
 			top: 680px;	
+			font-family: Georgia, "Times New Roman", Times, serif;
 		}
 		.carousel-caption {
 			position: static;
