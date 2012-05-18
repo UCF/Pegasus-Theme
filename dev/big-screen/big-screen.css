@@ -123,7 +123,7 @@ div#header .row .description {
 		}
 			#intro_quote p {
 				font-size: 26px;
-				line-height: 30px;
+				line-height: 26px;
 				font-style: italic;
 				letter-spacing: 0.5px;
 				color: #51a3a3;
@@ -133,7 +133,6 @@ div#header .row .description {
 			}
 			span.quote_alt {
 				text-transform: uppercase;
-				line-height: 20px;
 				font-size: 16px;
 				color: #000;
 				font-style: normal;
