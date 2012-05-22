@@ -24,21 +24,19 @@
 				<div class="row" id="footer_navigation">
 					<div class="span12">
 						<div class="row">
-							<div class="span4">
+							<div class="span3">
 								<a href="<?=site_url()?>"><h2 id="footer_logo">Pegasus</h2></a>
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column One')):?><?php endif;?>
 							</div>
-							<div class="span4">
+							<div class="span3">
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?><?php endif;?>
 							</div>
-							<div class="span4">
+							<div class="span3">
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Three')):?><?php endif;?>
 							</div>
-							<!--
 							<div class="span3">
-								<?php //if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column four')):?><?php //endif;?>
+								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column four')):?><?php endif;?>
 							</div>
-							-->
 						</div>
 					</div>
 				</div>
