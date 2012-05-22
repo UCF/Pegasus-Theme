@@ -147,7 +147,13 @@ div#header .row .description {
 		.carousel-control {
 			top: 680px;	
 			font-family: Georgia, "Times New Roman", Times, serif;
+			opacity: 1;
+			background: #aaa;
 		}
+			.carousel-control:hover {
+				opacity: 1;
+				background: #333;
+			}
 		.carousel-caption {
 			position: static;
 			background: #fff;
