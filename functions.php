@@ -272,11 +272,11 @@ if ($theme_options['bw_verify']){
  * @author Jo Greybill
  *  
 **/
-/*
+
 add_action("gform_field_input", "class_year_input", 10, 5);	
 function class_year_input($input, $field, $value, $lead_id, $form_id){
     if($field["cssClass"] == "alumninotes_class_year"){
-        $input = '<div class="ginput_container"><select id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
+        $input = '<div class="ginput_container"><select multiple="multiple" id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
 		$current_year = date('Y');
 		foreach ( range($current_year, 1968) as $year ) {
 			$input .= '<option value='.$year.'>'.$year.'</option>';
@@ -284,7 +284,7 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 		$input .= '</select></div>';
     }
     return $input;
-}*/
+}
 
 /* 
  * Retrieve a list of the current edition stories
