@@ -56,7 +56,7 @@ if (typeof jQuery != 'undefined'){
 		/* iPad Model */
 		(function() {
 			var ipad_hide = $.cookie('ipad-hide');
-			if((ipad_hide == null || !ipad_hide) && ipad) {
+			if((ipad_hide == null || !ipad_hide) && ipad && IPAD_DEPLOYED) {
 				$('#ipad')
 					.modal()
 					.on('hidden', function() {

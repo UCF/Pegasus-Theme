@@ -21,9 +21,13 @@
 			var CB_UID      = '<?=CB_UID?>';
 			var CB_DOMAIN   = '<?=CB_DOMAIN?>';
 			<?php endif?>
-			
 		</script>
 		<?php endif;?>
+		
+		<script type="text/javascript">
+			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
+		</script>
+		
 		<? if($post->post_type == 'story'
 			&& ($stylesheet_id = get_post_meta($post->ID, 'story_stylesheet', True)) !== False
 			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>

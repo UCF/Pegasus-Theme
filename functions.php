@@ -200,11 +200,11 @@ Config::$theme_settings = array(
 			),
 		)),
 	),
-	'Device Detection' => array(
+	'Devices' => array(
 		new TextField(array(
 			'name'        => 'iTunes Store iPad App URL',
 			'id'          => THEME_OPTIONS_NAME.'[ipad_app_url]',
-			'description' => 'URL of the Pegasus Magazine iPad app in the iTunes store. Used for the iPad modal.',
+			'description' => 'URL of the Pegasus Magazine iPad app in the iTunes store. Used for the iPad modal. The modal and footer link will not be displayed if this field is blank.',
 			'default'     => '',
 			'value'       => $theme_options['ipad_app_url'],
 		))
@@ -361,4 +361,12 @@ function get_front_page_story_choices() {
 		$choices[$story->post_title] = $story->ID;
 	}
 	return $choices;
+}
+
+/*
+ * Is the iPad app deployed or not
+ */
+function ipad_deployed() {
+	$ipad_app_url = get_theme_option('ipad_app_url');
+	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
 }

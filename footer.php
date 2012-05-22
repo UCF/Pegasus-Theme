@@ -27,6 +27,11 @@
 							<div class="span3">
 								<a href="<?=site_url()?>"><h2 id="footer_logo">Pegasus</h2></a>
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column One')):?><?php endif;?>
+								<? if(ipad_deployed()) {?>
+									<a href="<?=get_theme_option('ipad_app_url')?>" id="ipad_app">
+										Available on the App Store
+									</a>
+								<?}?>
 							</div>
 							<div class="span3">
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column Two')):?><?php endif;?>

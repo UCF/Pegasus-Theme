@@ -182,7 +182,15 @@ h2#footer_logo {
 			#footer_navigation ul li {
 				padding-bottom: 8px;	
 			}
-
+#ipad_app {
+	display:block;
+	text-indent:-200em;
+	height:56px;
+	width:160px;
+	background-image:url(static/img/appstore.png);
+	background-repeat:no-repeat;
+	background-position:center center;
+}
 
 /* Forms: */
 .gform_wrapper .gfield_description {
