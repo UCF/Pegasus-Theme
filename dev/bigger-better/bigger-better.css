@@ -1,0 +1,90 @@
+/* Bigger Better */
+#header,
+#footer {background-color:#575757;}
+span.gold,
+span.white {font-weight:bold;}
+.gold {color:#ffc907;}
+p {font-family:"Helvetica Neue",Helvetica,sans-serif; line-height:22px; margin-bottom: 0;}
+p.excerpt {font-family:Georgia,sans-serif; line-height:28px;}
+p.excerpt.small {font-size:23px;text-align:right; line-height:28px;}
+p.excerpt.large {font-size:30px; line-height:32px;}
+p.fact {color:#fdebad;}
+h4 { margin: 1em 0 1.5em 0; }
+#peoples-choice {
+	border-bottom:1px solid #CCC;
+	border-top:1px solid #CCC;
+	padding-bottom:2em;
+	margin-bottom:1em;
+	padding-top:2em;
+	margin-top:1em;
+}
+/*
+ * Intro
+ */
+.intro {
+
+	background-repeat:no-repeat;
+	background-position:top center;
+	min-height:650px;
+}
+.intro #number {
+	font-size:170px;
+	font-family:"Arial Black",Arial;
+	color:#FFF;
+	line-height:1.1em;
+	text-align:center;
+}
+.intro #better {
+	color:#FFF;
+	font-size:38px;
+	margin-top:50px;
+	line-height:1.1em;
+}
+
+.section {
+	padding-top:40px;
+	padding-bottom:40px;
+}
+.section.first {
+	background-color:rgba(38,41,46,.84);
+	color:#FFF;
+	margin-top:-300px;
+	padding-top:15px;
+}
+.ie7 .section.first,
+.ie8 .section.first {
+	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#D626292E,endColorstr=#D626292E);
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#D626292E,endColorstr=#D626292E);
+}
+.container.black {
+	background-color:#000;
+	color:#FFF;
+}
+.row.white {
+	padding-top:5em;
+	padding-bottom:5em;
+	background-color:#FFF;
+	color:#333;
+	margin-top: 3em;
+	margin-bottom: 3em;
+}
+.section p.excerpt {
+	color:#e8ac08;
+}
+.section h3 {
+	font-size:25px;
+	font-weight:200;
+	line-height:1em;
+}
+.photo {background-color:#333333;;color:#FFF;}
+.photo h4 {font-size:16px;font-weight:inherit;font-weight:bold;}
+.photo p.caption {font-size:13px;}
+
+/* RGraph styles */
+#sats_canvaswrap, #enrollment_canvaswrap { margin-left: 20px; float: left; overflow: auto; }
+#sats_canvaswrap { width: 780px; }
+#enrollment_canvaswrap { width: 700px; }
+
+canvas#line1, canvas#line2 { position: relative; }
+.gradientwrap { position: relative; }
+img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; top: 0; left: 0; }

@@ -1,0 +1,220 @@
+/** 
+ * Nano article styles
+ * @author Jo Greybill
+ *  
+**/
+
+/* Site Header/Footer Styles */
+div#header, #header .edition .dropdown-menu {
+	background-color: #182a45;
+}
+div#header .span12 {
+	height: 50px;	
+}
+div#header .container {
+	width: 940px;	
+}
+div#header .container .row {
+	margin-left: -20px;	
+}
+div#header .row .description {
+	width: 280px;	
+}
+
+#story_nav h3 {
+	font-weight: bold;
+	color: #fff;
+	margin-top: 25px;
+}
+
+
+#footer {
+	background-color: #0d254e;	
+}
+#footer_navigation, #footer_stories {
+	border-top: 1px solid #101B2D;
+}
+
+/* Article Styles */
+	body {
+		background: #000211;
+		color: #fff;
+	}
+	
+	p {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+   		font-weight: 300;
+		font-size: 16px;
+		line-height: 22px;
+		margin-bottom: 0;
+		padding: 0;
+	}
+	
+	div.container {
+		width:100%;	
+	}
+	
+	.row {
+		margin-left: -20px;	
+	}
+	
+	.span7 {
+		width: 590px;	
+	}
+	
+	h1 {
+		font-size: 125px;
+		/*text-transform: uppercase;*/
+		font-weight: 100;
+		line-height: 150px;
+	}
+	
+	h2, h3, h4 {
+		font-weight: 200;
+		color: #3a86cc;
+	}
+		h2 {
+			font-size: 36px;
+			margin-bottom: 40px;
+			line-height: 40px;
+		}
+		h3 {
+			font-size: 24px;
+			margin: 25px 0 -7px 0;
+			line-height: 24px;
+		}
+		h4 {
+			font-weight: bold;
+			text-transform: uppercase;
+			margin-bottom: 3px;
+			line-height: 14px;
+			margin-top: 1.5em;
+		}
+	
+	div.rowwrap {
+		width: 967px;
+		margin: auto;
+		overflow: auto;
+	}
+	
+	div.caption p {
+		font-size: 14px;
+		line-height: 18px;
+		color: #cee3f6;	
+	}
+	
+	div#hand_bg_wrap {
+		width: 100%;
+		overflow: auto;	
+	}
+	
+	div.intro {
+		background: #0d254e top center repeat-x;
+		width: 100%;
+		margin-left: 0;
+		/*max-width: 1284px;*/
+	}
+		.intro .span7 {
+			padding-top: 110px;
+		}
+		.intro #caption_microchip {
+			padding-top: 740px;	
+			width: 140px;
+		}
+	div#section1_bottom {
+		background: #0d254e bottom center repeat-x;
+		margin: auto;
+		/*max-width: 1284px;*/
+		padding-bottom: 50px;
+	}
+		#section1_bottom #caption_thinkingbig {
+			width: 298px;	
+			margin-left: 50px;
+		}
+	div#section2 {
+		background: #d6dfee;
+		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
+		margin: auto;
+		padding-bottom: 30px;
+	}
+		#section2 h3 {
+			text-transform: uppercase;
+			font-size: 22px;
+			line-height: 22px;	
+			padding-top: 12px;
+		}
+		#section2 h4 {
+			text-transform: none;
+			color: #000;
+			font-size: 16px;
+		}
+		#section2 p, #section2 ul {
+			color: #000;	
+		}
+		#section2 a {
+			text-decoration: underline;	
+		}
+		#section2 ul, #section2 .caption p {
+			font-size: 14px;	
+		}
+			#section2 ul.list_left, #section2 ul.list_right {
+				width: 42%;
+			}
+			#section2 ul li {
+				margin-bottom: 10px;
+				list-style-type: disc;
+			}
+		#section2 .caption {
+			padding-top: 25px;
+		}
+			#section2 .caption img {
+				border: 2px solid #fff;
+			}
+	div#section3 {
+		background: #0d254e top center repeat-x;
+		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
+		margin: auto;
+		padding: 50px 0;
+	}
+		#section3 .offset1 {
+			margin-left: 50px;	
+		}
+		#section3 blockquote {
+			width: 260px;
+			border-left: 1px solid #d6dfee;
+			margin-top: -20px;
+		}
+			#section3 blockquote p {
+				font-weight: 100;
+				color: #cee3f6;
+				font-style: italic;
+				font-size: 22px;
+				line-height: 26px;
+				letter-spacing: 1px;
+				padding: 0;
+			}
+		#section3 span.quote_left {
+			display: block;
+			width: 60px;
+			height: 46px;
+			margin: 100px 0 0 12px;
+		}
+		#section3 span.quote_right {
+			display: block;
+			width: 60px;
+			height: 46px;
+			margin: 15px 0 0 12px;
+		}
+	div#section4 {
+		background: #031123;	
+		/*max-width: 1284px;*/	/* Remove this to make this section span 100% width of page */
+		margin: auto;
+		padding: 0 0 120px 0;
+	}
+		#section4 h3 {
+			font-weight: bold;
+			padding-top: 15px;
+		}
+		#section4 .span9 {
+			padding-top: 78px;	
+		}
