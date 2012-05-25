@@ -236,6 +236,122 @@ abstract class CustomPostType{
 }
 
 
+class Document extends CustomPostType{
+	public
+		$name           = 'document',
+		$plural_name    = 'Documents',
+		$singular_name  = 'Document',
+		$add_new_item   = 'Add New Document',
+		$edit_item      = 'Edit Document',
+		$new_item       = 'New Document',
+		$use_title      = True,
+		$use_editor     = False,
+		$use_shortcode  = True,
+		$use_metabox    = True;
+	
+	public function fields(){
+		$fields   = parent::fields();
+		$fields[] = array(
+			'name' => __('URL'),
+			'desc' => __('Associate this document with a URL.  This will take precedence over any uploaded file, so leave empty if you want to use a file instead.'),
+			'id'   => $this->options('name').'_url',
+			'type' => 'text',
+		);
+		$fields[] = array(
+			'name'    => __('File'),
+			'desc'    => __('Associate this document with an already existing file.'),
+			'id'      => $this->options('name').'_file',
+			'type'    => 'file',
+		);
+		return $fields;
+	}
+	
+	
+	static function get_document_application($form){
+		return mimetype_to_application(self::get_mimetype($form));
+	}
+	
+	
+	static function get_mimetype($form){
+		if (is_numeric($form)){
+			$form = get_post($form);
+		}
+		
+		$prefix   = post_type($form);
+		$document = get_post(get_post_meta($form->ID, $prefix.'_file', True));
+		
+		$is_url = get_post_meta($form->ID, $prefix.'_url', True);
+		
+		return ($is_url) ? "text/html" : $document->post_mime_type;
+	}
+	
+	
+	static function get_title($form){
+		if (is_numeric($form)){
+			$form = get_post($form);
+		}
+		
+		$prefix = post_type($form);
+		
+		return $form->post_title;
+	}
+	
+	static function get_url($form){
+		if (is_numeric($form)){
+			$form = get_post($form);
+		}
+		
+		$prefix = post_type($form);
+		
+		$x = get_post_meta($form->ID, $prefix.'_url', True);
+		$y = wp_get_attachment_url(get_post_meta($form->ID, $prefix.'_file', True));
+		
+		if (!$x and !$y){
+			return '#';
+		}
+		
+		return ($x) ? $x : $y;
+	}
+	
+	
+	/**
+	 * Handles output for a list of objects, can be overridden for descendants.
+	 * If you want to override how a list of objects are outputted, override
+	 * this, if you just want to override how a single object is outputted, see
+	 * the toHTML method.
+	 **/
+	public function objectsToHTML($objects, $css_classes){
+		if (count($objects) < 1){ return '';}
+		
+		$class_name = get_custom_post_type($objects[0]->post_type);
+		$class      = new $class_name;
+		
+		ob_start();
+		?>
+		<ul class="nobullet <?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
+			<?php foreach($objects as $o):?>
+			<li class="document <?=$class_name::get_document_application($o)?>">
+				<?=$class->toHTML($o)?>
+			</li>
+			<?php endforeach;?>
+		</ul>
+		<?php
+		$html = ob_get_clean();
+		return $html;
+	}
+	
+	
+	/**
+	 * Outputs this item in HTML.  Can be overridden for descendants.
+	 **/
+	public function toHTML($object){
+		$title = Document::get_title($object);
+		$url   = Document::get_url($object);
+		$html = "<a href='{$url}'>{$title}</a>";
+		return $html;
+	}
+}
+
 class Page extends CustomPostType {
 	public
 		$name           = 'page',
@@ -266,4 +382,98 @@ class Page extends CustomPostType {
 }
 
 
+/**
+ * Describes an Alumni Note 
+ * 
+ * @author Jo Greybill
+ *
+**/
+class AlumniNote extends CustomPostType{
+	public 
+		$name           = 'alumninote',
+		$plural_name    = 'Alumni Notes',
+		$singular_name  = 'Alumni Note',
+		$add_new_item   = 'Add New Alumni Note',
+		$edit_item      = 'Edit Alumni Note',
+		$new_item       = 'New Alumni Note',
+		$public         = True,
+		$use_editor     = True,
+		$use_thumbnails = True,
+		$use_order      = True,
+		$use_title      = True,
+		$use_metabox    = True;
+	
+	public function toHTML($alumninote){
+		return sc_alumninote(array('alumninote' => $alumninote));
+	}
+	
+	public function fields(){
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name'  => 'Author',
+				'desc' => 'The note\'s author(\'s) name',
+				'id'   => $prefix.'author',
+				'type' => 'text',
+			),
+			array(
+				'name'  => 'Email',
+				'desc' => 'The author\'s email address',
+				'id'   => $prefix.'email',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'Class Year',
+				'desc' => 'The year(s) in which the author graduated from UCF',
+				'id'   => $prefix.'class_year',
+				'type' => 'text',
+			),
+		);
+	}
+}
+
+/**
+ * Describes a story
+ *
+ * @author Chris Conover
+ **/
+class Story extends CustomPostType {
+	public
+		$name           = 'story',
+		$plural_name    = 'Stories',
+		$singular_name  = 'Story',
+		$add_new_item   = 'Add Story',
+		$edit_item      = 'Edit Story',
+		$new_item       = 'New Story',
+		$public         = True,
+		$use_shortcode  = True,
+		$use_metabox    = True,
+		$use_thumbnails = True,
+		$use_order      = False,
+		$taxonomies     = array('editions');
+
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'Story Subtitle',
+				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
+				'id'   => $prefix.'subtitle',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'Stylesheet',
+				'desc' => '',
+				'id'   => $prefix.'stylesheet',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Home Page Feature',
+				'desc' => 'Check this box if this story is a main featured story on the home page.  It will not appear as a duplicate story in the footer on the home page if this box is checked.',
+				'id'   => $prefix.'isfeatured',
+				'type' => 'checkbox',
+			)
+		);
+	}
+}
 ?>
