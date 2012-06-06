@@ -2,7 +2,7 @@
 		<div id="footer">
 			<div class="container wide">
 				<div class="row" id="footer_stories">
-					<div class="span12"><h2>More in this Issue</h2></div>
+					<div class="span12"><h2>More in This Issue</h2></div>
 					
 					<? 
 					foreach(get_navigation_stories() as $story) {
