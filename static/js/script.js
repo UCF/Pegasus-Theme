@@ -77,17 +77,12 @@ if (typeof jQuery != 'undefined'){
 		})
 
 		/* Move Gravity Forms Address sublabels above the fields: */
-
-		      $(document).ready(function() {
-
-		          $('.ginput_container label').each(function(i,e){
-		              fielddesc = jQuery('<div>').append(jQuery(e).clone()).remove().html();
-		              jQuery(e).siblings('.ginput_container input').before(fielddesc); //moves sub label above input fields
-		              jQuery(e).siblings('.ginput_container select').before(fielddesc); //moves sub label above select fields (e.g. country drop-down)
-		              jQuery(e).remove();
-		          });
-
-		      });
+		$('.ginput_container label').each(function(i,e){
+			var field_desc = $('<div>').append($(e).clone()).remove().html();
+			$(e).siblings('.ginput_container input').before(field_desc); //moves sub label above input fields
+			$(e).siblings('.ginput_container select').before(field_desc); //moves sub label above select fields (e.g. country drop-down)
+			$(e).remove();
+		});
 
 
 		/* Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time: */
