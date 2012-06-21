@@ -78,3 +78,270 @@ p.excerpt {font-size:23px;font-style:italic;line-height:28px;}
 .carousel-control {
 	top: 60%;
 }
+
+
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+}
+     
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 102% !important;
+		margin-left: -20px;
+	}
+	
+	#story_nav .span3, #footer_stories .span3 {
+		width: 128px;	
+		margin-bottom: 20px;
+		display: inline-block;
+		float: none;
+		margin-bottom: 20px;
+		vertical-align: top;
+	}
+	
+	#header .span12 {
+		margin-left: 0;
+		width: 315px;	
+	}
+	#header .title {
+		width: 125px;
+		background-size: 125px 19px;
+		left: 45px;
+	}
+	#header .edition {
+		width: 85px;
+		font-size: 10px;
+		letter-spacing: 1.1px;
+		padding-top: 20px;
+		margin-left: 55px;
+	}
+	.description {
+		display: none;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+	
+	/* Rosen */
+	.container, .container .row, .container, .container.wide > .row {
+		width: 100%;
+	}
+	.container .row .span12 {
+		width: 93%;	
+	}
+	.container .row .span12 .row {
+		width: 92%;	
+	}
+	
+	.row {
+		margin-left: 0;	
+	}
+	.span7 {
+		width: 100%;	
+	}
+	.span5 {
+		width: 100%;
+	}
+	
+	p.excerpt {
+		display: none;	
+	}
+	
+	#big, #enough {
+		width: 100%;
+		margin-left: 0;
+	}
+	#big {
+		margin-top: 40px !important;
+		font-size: 140px !important;	
+	}
+	#enough {
+		font-size: 39px !important;	
+	}
+	#tag {
+		margin-left: -20px;	
+		width: 100%;
+		margin-top: -10px !important;
+	}
+	
+	.intro {
+		background-size: 900px 564px;	
+	}
+	
+	.intro .row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.section.first {
+		margin-top: -380px;	
+	}
+	
+	.first .span7, .first #rosen-dogs {
+		width: 92%;	
+	}
+	#rosen-dogs {
+		margin-top: 20px;
+		margin-bottom: 20px;	
+	}	
+	#rosen-dogs img {
+		float: left;
+		width: 45%;
+	}
+	#rosen-dogs .row {
+		width: 45%;
+		float: left;
+		margin-left: 20px;	
+	}
+	#rosen-dogs .row .span5 {
+		margin-left: 0;
+		width: 100%;	
+	}
+	#rosen-dogs p.caption {
+		margin-top: 0;	
+	}
+	
+	.container .row.section .span12 {
+		margin-left: 0;	
+	}
+	
+	#rosenslides {
+		height: auto;
+		width: 100%;
+	}
+	.carousel .item>img {
+		height: auto;	
+		margin-right: 0;
+	}
+	.carousel p.caption {
+		padding: 10px 35px 5px 0;
+	}
+	.carousel-caption {
+		width: 100%;	
+		position: static !important;
+	}
+	a.carousel-control {
+		top: 150px;	
+	}
+	
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 100%;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 93%;	
+	}
+	#footer_navigation h2.widgettitle {
+		margin-bottom: 5px !important;	
+	}
+	.widget, .textwidget {
+		margin-bottom: 25px !important;	
+	}
+	
+}
+     
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 750px !important;
+		margin-left: -20px;	
+	}
+	#header .span12 {
+		margin-left: 0;	
+	}
+	.description {
+		display: none;	
+	}
+	#story_nav .span3, #footer .span3 {
+		width: 167px;	
+	}
+	
+	/* Rosen */
+	.container, .container .row, .container, .container.wide > .row {
+		width: 750px;
+	}
+	.container .row .span12 {
+		width: 730px;	
+	}
+	.container .row .span12 .row {
+		width: 729px;	
+	}
+	
+	.row {
+		margin-left: 0;	
+	}
+	.span7 {
+		width: 449px;	
+	}
+	.span5 {
+		width: 240px;
+	}
+	
+	#big, #enough {
+		width: 	600px;
+		margin-left: 0;
+	}
+	#tag {
+		margin-left: -20px;	
+	}
+	
+	.intro .row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.first .span7, .first #rosen-dogs {
+		width: 710px;	
+	}
+	#rosen-dogs {
+		margin-top: 20px;
+		margin-bottom: 20px;	
+	}	
+	#rosen-dogs img {
+		float: left;
+	}
+	#rosen-dogs .row {
+		width: 340px;
+		float: left;
+		margin-left: 20px;	
+	}
+	#rosen-dogs .row .span5 {
+		margin-left: 0;
+		width: 340px;	
+	}
+	
+	.container .row.section .span12 {
+		margin-left: 0;	
+	}
+	
+	#rosenslides {
+		height: 350px;
+		width: 750px;
+	}
+	.carousel .item>img {
+		height: 350px;	
+	}
+	.carousel p.caption {
+		padding-right: 20px;	
+	}
+	
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 750px;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 750px;	
+	}
+		
+}
