@@ -224,3 +224,99 @@ body.subpage,
 .subpage #footer_navigation > .span12 {padding-top:30px;border-top:1px solid #d7d7d7;}
 
 
+/* Responsiveness (header and footer) */
+
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 102% !important;
+		margin-left: -20px;
+	}
+	
+	#story_nav .span3, #footer_stories .span3 {
+		width: 128px;	
+		margin-bottom: 20px;
+		display: inline-block;
+		float: none;
+		margin-bottom: 20px;
+		vertical-align: top;
+	}
+	
+	#header .span12 {
+		margin-left: 0;
+		width: 315px;	
+	}
+	#header .title {
+		width: 125px;
+		background-size: 125px 19px;
+		left: 45px;
+	}
+	#header .edition {
+		width: 85px;
+		font-size: 10px;
+		letter-spacing: 1.1px;
+		padding-top: 20px;
+		margin-left: 55px;
+	}
+	.description {
+		display: none;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 100%;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 93%;	
+	}
+	#footer_navigation h2.widgettitle {
+		margin-bottom: 5px !important;	
+	}
+	.widget, .textwidget {
+		margin-bottom: 25px !important;	
+	}
+	
+}
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 750px !important;
+		margin-left: -20px;	
+	}
+	#header .span12 {
+		margin-left: 0;	
+	}
+	.description {
+		display: none;	
+	}
+	#story_nav .span3, #footer .span3 {
+		width: 167px;	
+	}
+
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 750px;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 750px;	
+	}
+		
+}
