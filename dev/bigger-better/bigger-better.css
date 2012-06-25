@@ -88,3 +88,171 @@ h4 { margin: 1em 0 1.5em 0; }
 canvas#line1, canvas#line2 { position: relative; }
 .gradientwrap { position: relative; }
 img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; top: 0; left: 0; }
+
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+}
+     
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	.container, .container .row, .container, .container.wide > .row {
+		width: 100%;
+	}
+	.container .row .span12 {
+		width: 93%;	
+	}
+	.container .row .span12 .row {
+		width: 92%;	
+	}
+	
+	.row {
+		margin-left: 0;	
+	}
+	.span4, .span8 {
+		width: 100%;	
+	}
+	
+	p.excerpt {
+		display: none;	
+	}
+	
+	#number, #better {
+		width: 100%;
+		margin-left: 0;
+	}
+	#number {
+		margin-top: 40px !important;
+		font-size: 140px !important;	
+	}
+	#better {
+		font-size: 39px !important;	
+	}
+	
+	.intro {
+		background-size: 900px 564px;	
+	}
+	
+	.intro .row {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	
+	.first {
+		margin-top: -380px;	
+	}
+	
+	
+	.container .row.section .span12 {
+		margin-left: 0;	
+	}
+	
+}
+     
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* remove stray .container below #header */
+	#header+.container {
+		display: none;
+	}
+	
+	/* row/span12 reset to 750px instead of 967px */	
+	.container, .container .row, .container, .container.wide > .row {
+		width: 750px;
+	}
+	.container .row .span12 {
+		width: 730px;	
+	}
+	.container .row .span12 .row {
+		width: 729px;	
+	}
+	.container .row.section .span12 {
+		margin-left: 0;	
+	}
+	
+	/* eliminate offsets; all .spans in this viewport size should not have an offset */
+	.offset1, .offset2, .offset4 {
+		margin-left: 0;	
+	}
+	
+	/* reset .spans to be the full width of the row */
+	.row {
+		margin-left: 0;	
+	}
+	.row.section .span2, .row.section .span3, .row.section .span4, .row.section .span7, .row.section .span8, .first, .first .span10 {
+		width: 710px;	
+	}
+	
+	/* intro content */
+	#number {
+		margin-left: 7.3%;	
+	}
+	#better {
+		margin-left: 29.2%;	
+	}
+	
+	/* top 10 universities table reset */
+	.span4.offset1 {
+		margin-left: 20px;	
+	}
+	
+	/* captions and excerpts */
+	p.excerpt {
+		width: 469px;	
+		float: left;
+		margin-top: 0;
+	}
+		p.excerpt.small {
+			text-align: left;	
+		}
+	p.caption {
+		width: 220px !important;
+		margin-left: 20px;
+		float: left;
+		clear: right;
+		margin-bottom: 40px;
+	}
+	#peoples-choice {
+		margin-top: 40px;	
+	}
+	
+	/* people's choice specific styles */
+	#peoples-choice .span3 {
+		width: 220px;	
+	}
+	
+	/* graphs */
+	#enrollment_canvaswrap {
+		width: 469px;	
+		height: 361px;
+		background: url('../05/bigger-comparison11.jpg') center center no-repeat !important;
+		background-size: 469px 361px !important;
+	}
+	#sats_canvaswrap {
+		width: 709px;	
+		height: 416px;
+		background: url('../05/bigger-stats1.jpg') center center no-repeat !important;
+		background-size: 709px 416px !important;
+	}
+	.gradientwrap, #line1, #line2 {
+		display: none;	
+	}
+	
+	/* under video caption */
+	.photo .span3 {
+		width: 710px;	
+	}
+	.span3 p.caption {
+		margin-left: 0;
+		width: 100% !important;	
+	}
+	.span3 h4 { 
+		margin: 1em 0 0;	
+	}
+		
+}
