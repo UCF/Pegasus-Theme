@@ -218,3 +218,204 @@ div#header .row .description {
 		#section4 .span9 {
 			padding-top: 78px;	
 		}
+		
+     
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	div.rowwrap, .rowwrap .span10.offset1 {
+		width: 88%;
+		margin: auto !important;	
+	}
+
+	.span7, .span6, .span4 {
+		width: 100%;	
+		margin-left: 0 !important;
+	}
+	#hand_bg_wrap .span7 {
+		width: 66%;
+		margin-left: 0 !important;
+	}
+	
+	.caption {
+		display: none;	
+	}
+	
+	.intro {
+		background-image: none !important;	
+	}
+	#hand_bg_wrap {
+		background-size: 767px 471px !important;	
+	}
+	h1 {
+		font-size: 100px;
+		line-height: 100px;	
+	}
+	h2 {
+		font-size: 25px;
+		line-height: 25px;	
+	}
+	
+	#section2 ul.list_left, #section2 ul.list_right {
+		width: 40% !important;
+	}
+	
+	/* Header fixes */
+	#header .row, #header .row .span12, #header .row .span12 .row {
+		width: 100%;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+	#header .row .span12 .row {
+		width: 100%;
+		margin: auto;	
+	}
+	#story_nav .row {
+		width: 100%;	
+	}
+	#story_nav .row .span12 {
+		width: 100%;
+		float: none !important;	
+	}
+		#story_nav .row .span12 h3 {
+			width: 90%;
+		}
+		#story_nav .row .span12 .row {
+			margin: auto;
+		}
+		#story_nav .row .span12 {
+			margin-left: 0;	
+		}
+			#story_nav .row .span12 h3 {
+				margin-left: 20px;
+			}
+	.title {
+		left: 45px !important;	
+	}
+		
+	/* Footer fixes */
+	#footer_stories {
+		width: 100%;	
+	}
+	#footer_stories .span12, #footer_navigation .span12 {
+		width: 93%;	
+	}
+	#footer_stories {
+		margin-left: 0;	
+	}
+	#footer_stories .span12 h2, #footer_navigation {
+		width: 100%;	
+	}
+	#footer_navigation .span12 {
+		margin-left: 20px;
+	}
+	
+}
+     
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	div.rowwrap, .rowwrap .span10.offset1 {
+		width: 750px;
+		margin: auto;	
+	}
+	
+	.span7 {
+		width: 500px;	
+	}
+	.span4.offset1 {
+		width: 230px;
+		margin-left: 70px !important;	
+	}
+	#caption_thinkingbig {
+		width: 200px !important;
+		margin-left: 20px !important;	
+	}
+	
+	.span6 {
+		width: 345px;	
+	}
+	
+	#section3 .span4 {
+		width: 195px !important;
+		margin-left: 20px !important;	
+	}
+	#section3 blockquote {
+		width: 190px !important;	
+	}
+		
+	/* Header fixes */
+	#header .row, #header .row .span12, #header .row .span12 .row {
+		width: 100%;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+	#header .row .span12 .row {
+		width: 750px;
+		margin: auto;	
+	}
+	#story_nav .row {
+		width: 750px;	
+	}
+	#story_nav .row .span12 {
+		width: 750px;
+		float: none !important;	
+	}
+		#story_nav .row .span12 h3 {
+			width: 750px;
+		}
+		#story_nav .row .span12 .row {
+			margin: auto;
+		}
+		#story_nav .row .span12 {
+			margin-left: 0;	
+		}
+			#story_nav .row .span12 h3 {
+				margin-left: 20px;
+			}
+	.title {
+		left: 45px !important;	
+	}
+		
+	/* Footer fixes */
+	#footer_stories, #footer_stories .span12, #footer_stories .span12 h2, #footer_navigation {
+		width: 750px;	
+	}	
+		#footer_stories, #footer_navigation {
+			margin: auto;	
+		}
+	#footer_navigation .span12 {
+		margin-left: 20px;
+	}
+}		
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+	
+	.span7 {
+		width: 100% !important;	
+	}
+	
+	#hand_bg_wrap {
+		background-size: 488px 300px !important;	
+	}
+	.intro .span7 {
+		padding-top: 40px;	
+	}
+	h1 {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight: 100 !important;
+		font-size: 80px;
+	}
+	h2 {
+		width: 70%;	
+	}
+
+}
