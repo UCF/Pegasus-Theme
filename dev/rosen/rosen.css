@@ -189,21 +189,6 @@ p.excerpt {font-size:23px;font-style:italic;line-height:28px;}
 		top: 150px;	
 	}
 	
-	/* Footer */
-	#footer_navigation .span12 {
-		width: 100%;
-		margin-left: 0;
-	}
-	#footer_navigation .span12 .row {
-		width: 93%;	
-	}
-	#footer_navigation h2.widgettitle {
-		margin-bottom: 5px !important;	
-	}
-	.widget, .textwidget {
-		margin-bottom: 25px !important;	
-	}
-	
 }
      
 
