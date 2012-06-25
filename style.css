@@ -236,7 +236,7 @@ body.subpage,
 	
 	/* Header */
 	#story_nav .span12 .row {
-		width: 102% !important;
+		width: 100% !important;
 		margin-left: -20px;
 	}
 	
@@ -317,6 +317,10 @@ and (max-width: 979px) {
 	}
 	#footer_navigation .span12 .row {
 		width: 750px;	
+	}
+	
+	#footer_stories, #footer_stories .span12, #footer_navigation {
+		width: 100%;	
 	}
 		
 }
