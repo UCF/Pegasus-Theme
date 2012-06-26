@@ -319,8 +319,12 @@ and (max-width: 979px) {
 		width: 750px;	
 	}
 	
-	#footer_stories, #footer_stories .span12, #footer_navigation {
-		width: 100%;	
+	#footer_stories, #footer_navigation {
+		width: 750px;	
+	}
+	
+	#footer_stories .span12 {
+		width: 720px;	
 	}
 		
 }

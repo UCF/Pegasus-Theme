@@ -396,7 +396,7 @@ and (max-width: 979px) {
 		float: none !important;	
 	}
 		#story_nav .row .span12 h3 {
-			width: 750px;
+			width: 720px;
 		}
 		#story_nav .row .span12 .row {
 			margin: auto;
@@ -412,13 +412,17 @@ and (max-width: 979px) {
 	}
 		
 	/* Footer fixes */
-	#footer_stories, #footer_stories .span12, #footer_stories .span12 h2, #footer_navigation {
+	#footer_stories, #footer_navigation {
 		width: 750px;	
 	}	
 		#footer_stories, #footer_navigation {
 			margin: auto;	
 		}
+		#footer_stories .span12, #footer_stories .span12 h2 {
+			width: 720px;	
+		}
 	#footer_navigation .span12 {
 		margin-left: 20px;
+		width: 720px;
 	}
 }
