@@ -191,3 +191,180 @@ div#header .row .description {
 		#other_facts {
 			padding-top: 15px;
 		}
+		
+		
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	/* Header fixes */
+	#header .row, #header .row .span12, #header .row .span12 .row {
+		width: 100%;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+	#header .row .span12 .row {
+		width: 100%;
+		margin: auto;	
+	}
+	#story_nav .row {
+		width: 100%;	
+	}
+	#story_nav .row .span12 {
+		width: 100%;
+		float: none !important;	
+	}
+		#story_nav .row .span12 h3 {
+			width: 90%;
+		}
+		#story_nav .row .span12 .row {
+			margin: auto;
+		}
+		#story_nav .row .span12 {
+			margin-left: 0;	
+		}
+			#story_nav .row .span12 h3 {
+				margin-left: 20px;
+			}
+	.title {
+		left: 45px !important;	
+	}
+		
+	/* Footer fixes */
+	#footer_stories {
+		width: 100%;	
+	}
+	#footer_stories .span12, #footer_navigation .span12 {
+		width: 93%;	
+	}
+	#footer_stories {
+		margin-left: 0;	
+	}
+	#footer_stories .span12 h2, #footer_navigation {
+		width: 100%;	
+	}
+	#footer_navigation .span12 {
+		margin-left: 20px;
+	}
+	
+}
+     
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	div.rowwrap, .rowwrap .span10.offset1 {
+		width: 750px;
+		margin: auto;	
+	}
+	
+	.intro {
+		background-size: 900px 711px !important;	
+	}
+		.intro .rowwrap {
+			overflow: hidden;	
+		}
+		#heavy_reading {
+			width: 730px;
+			margin-left: 20px;	
+			padding-top: 610px !important;
+		}
+	
+	#section1 .span8 {
+		width: 475px;	
+	}
+	#section1 .span4 {
+		width: 235px;	
+	}
+	
+	#section2 .rowwrap {
+		overflow: hidden;	
+	}
+		#section2 .rowwrap,	#section2 .rowwrap .span10 {
+			width: 750px;	
+		}
+		#section2 .rowwrap .span10 p {
+			width: 730px;	
+		}
+	
+	#section3 .rowwrap {
+		overflow: hidden;
+		height: auto;
+	}
+		#section3 .span12 {
+			width: 730px;	
+		}
+		.carousel-control {
+			top: 515px;	
+		}
+	
+	#chef_img_wrap {
+		background-size: 900px 982px !important;	
+	}
+		#jersey_guy {
+			width: 235px;
+			padding-top: 620px;	
+		}
+		#grape_ape {
+			margin-left: 50px;
+			width: 262px;
+			padding-top: 5px;	
+		}
+		#section4 #hr {
+			width: 332px;	
+		}
+		#other_facts {
+			width: 730px;	
+		}
+		
+	
+	/* Header fixes */
+	#header .row, #header .row .span12, #header .row .span12 .row {
+		width: 100%;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+	#header .row .span12 .row {
+		width: 750px;
+		margin: auto;	
+	}
+	#story_nav .row {
+		width: 750px;	
+	}
+	#story_nav .row .span12 {
+		width: 750px;
+		float: none !important;	
+	}
+		#story_nav .row .span12 h3 {
+			width: 750px;
+		}
+		#story_nav .row .span12 .row {
+			margin: auto;
+		}
+		#story_nav .row .span12 {
+			margin-left: 0;	
+		}
+			#story_nav .row .span12 h3 {
+				margin-left: 20px;
+			}
+	.title {
+		left: 45px !important;	
+	}
+		
+	/* Footer fixes */
+	#footer_stories, #footer_stories .span12, #footer_stories .span12 h2, #footer_navigation {
+		width: 750px;	
+	}	
+		#footer_stories, #footer_navigation {
+			margin: auto;	
+		}
+	#footer_navigation .span12 {
+		margin-left: 20px;
+	}
+}		
+		
