@@ -128,14 +128,19 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 		min-height: 300px;
 		background-size: 767px 389px;	
 	}
+	.intro .row .span12 {
+		width: 100%;
+		margin-left: 0;
+	}
 	#number, #better {
 		width: 100%;
 		text-align: center;	
-		margin-left: 0;
 	}
 		#number {
 			font-size: 80px !important;	
 			margin-top: 15px !important;
+			font-family: Helvetica, Arial, sans-serif;
+			font-weight: 900;
 		}
 		#better {
 			font-size: 25px !important;	
@@ -151,14 +156,37 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 		padding-top: 0;
 		width: 100%;
 	}
-	.first .span10 {
-		margin-left: 20px;
-		width: 92% !important;
+	.first .span10 p, .first .span10 h3 {
+		width: 88%;
+		margin: auto;	
+	}
+	.first p {
+		padding-top: 20px;	
+	}
+	
+	/* Changing the Subject to Top 10 chart changes */
+	.section .span12 {
+		width: 88% !important;	
 	}
 	
 	/* top 10 universities table reset */
 	.span4.offset1 {
 		margin-left: 20px;	
+	}
+	
+	/* Black container styles (because some sections are not wrapped in extra .span12's, we need to compromise and alter the p and header tags) */
+	.container.wide.black .section .span12 {
+		width: 100% !important;	
+	}
+	.container.wide.black p, .container.wide.black h3 {
+		margin: auto;
+		width: 88%;
+	}
+	.container.wide.black p {
+		padding-top: 20px;	
+	}
+	.container.wide.black .section .span12 {
+		margin-left: 0;	
 	}
 	
 	/* captions and excerpts */
@@ -185,13 +213,9 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	/* SATs specific styles */
 	.row.white {
 		width: 280px !important;
-		margin: auto;
+		margin-left: 20px;
 		padding-top: 20px;
 		padding-bottom: 20px;
-	}
-	.row.white .span2 {
-		width: 90%;
-		margin-left: 20px;	
 	}
 	
 	/* graphs */
@@ -214,10 +238,10 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	
 	/* under video caption */
 	.row.photo {
-		width: 90% !important;
+		width: 88% !important;
 	}
 	.row.photo .span3, .row.photo .span9 {
-		width: 93%;	
+		width: 100%;	
 		margin-left: 0;
 	}
 	iframe {
@@ -233,6 +257,15 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	}
 	.span3 h4 { 
 		margin: 1em 0 0;	
+	}
+	
+	
+	/* Header modifications */
+	#story_nav .span12 {
+		width: 94%;	
+	}
+	#story_nav .span12 .row {
+		width: 100%;	
 	}
 	
 }
