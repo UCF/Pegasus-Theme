@@ -14,3 +14,85 @@ body,
 
 #footer_stories { padding: 0 0 30px 0; }
 #footer_stories h2 {color:#FFF;}
+
+
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	.container, .container.wide {
+		width: 100%;	
+	}
+	#featured_story, #featured_story .span12 {
+		width: 100%;
+		margin-left: 0;
+	}
+	#featured_story .span12 img {
+		margin-left: -1%;
+		width: 101%;	
+	}
+	
+	/* Header fixes */
+	
+	#header, #header .row, #header .span12, #header .span12 .row {
+		width: 100%;
+		margin-left: 0;
+	}
+	.row {
+		width: 93%;
+		margin-left: 20px;
+	}
+	#header .title {
+		margin-top: 12px;
+	}
+		
+	/* Footer fixes */
+	
+	#footer_navigation, #footer_stories {
+		width: 100%;	
+	}
+	#footer_navigation .span12, #footer_stories .span12 {
+		width: 93%;	
+	}
+	#footer_navigation .row {
+		margin-left: 0;	
+	}
+	
+}
+     
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	.container {
+		width: 100%;	
+	}
+	
+	/* Header fixes */
+	
+	#header, .row {
+		width: 750px;
+		margin: auto;	
+	}
+	#header .row, #header .span12, #header .span12 .row, #featured_story .span12 {
+		width: 720px;
+		margin: 0;	
+	}
+	#header .title {
+		margin-top: 12px;
+	}
+		
+	/* Footer fixes */
+	#footer_stories {
+		margin:auto;	
+	}
+		#footer_stories .span12, #footer_stories .firststory {
+		}
+}		
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+
+}
