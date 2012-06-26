@@ -193,8 +193,68 @@ div#header .row .description {
 		}
 		
 		
+		
+		
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
+	
+	div.rowwrap, .rowwrap .span10.offset1 {
+		width: 88%;
+		margin: auto;	
+	}
+	
+	.intro {
+		background-size: 700px 553px !important;
+		min-height: 0 !important;	
+		margin-top: 20px !important;
+	}
+		.intro .rowwrap {
+			overflow: hidden;	
+		}
+		#heavy_reading {
+			width: 100%;
+			padding-top: 450px !important;
+			margin-left: 0;
+		}
+	
+	.rowwrap .span12, .rowwrap .span10, .rowwrap .span8, .rowwrap .span5, .rowwrap .span4 {
+		width: 100%;
+		margin-left: 0;	
+	}
+	
+	#chef_img_wrap {
+		background-size: 767px 836px !important;
+	}
+	#section4 .rowwrap:first-child {
+		min-height: 836px;	
+	}
+	
+	.carousel-control {
+		top: 280px !important;	
+	}
+	
+	#jersey_guy {
+		width: 33%;
+		padding-top: 520px !important;
+	}
+	#grape_ape {
+		width: 40%;	
+		padding-top: 0 !important;
+	}
+		#jersey_guy p, #grape_ape p {
+			font-size: 11px !important;	
+			margin-top: 0;
+		}
+		#jersey_guy h3, #grape_ape h3 {
+			font-size: 14px;
+			display: inline;
+			float: none;	
+		}
+	
+	#hr {
+		width: 88%;	
+	}
+	
 	
 	/* Header fixes */
 	#header .row, #header .row .span12, #header .row .span12 .row {
@@ -367,4 +427,72 @@ and (max-width: 979px) {
 		margin-left: 20px;
 	}
 }		
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+	
+	.intro {
+		background-size: 360px 284px !important;
+		margin-top: 10px !important; }/*
+		padding-top: 30px !important;
+	}
+		.intro .rowwrap {
+			margin-top: -30px !important;	
+		}
+		h2 {
+			text-indent: 0 !important;
+			font-size: 11px;
+			line-height: 10px;
+			width: 100%;
+			background: #fff;
+			font-weight: 200;
+		}*/
+		#heavy_reading {
+			padding-top: 200px !important;
+		}
+	#section1 .rowwrap {
+		padding: 40px 0 20px 0 !important;	
+	}
+	#section2, #section4 {
+		padding: 20px 0 !important;	
+	}
+	
+	#chef_img_wrap {
+		background-size: 350px 381px !important;	
+	}
+	#section4 .rowwrap:first-child {
+		min-height: 381px !important;	
+	}
+	
+	.carousel-control {
+		top: 190px !important;	
+	}
+	
+	#jersey_guy {
+		width: 38%;
+		padding-top: 240px !important;
+		padding-right: 0 !important;
+		border-right: 0;
+	}
+	#grape_ape {
+		width: 40%;	
+		padding-top: 384px !important;
+	}
+		#jersey_guy p, #grape_ape p {
+			font-size: 11px !important;	
+			margin-top: 0;
+			line-height: 16px;
+		}
+		#jersey_guy h3, #grape_ape h3 {
+			font-size: 13px;
+			display: inline;
+			float: none;	
+		}
+	
+	#hr {
+		width: 88%;	
+		margin-top: 20px;
+	}
+
+}
 		
