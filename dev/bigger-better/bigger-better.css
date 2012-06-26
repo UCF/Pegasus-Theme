@@ -246,7 +246,7 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	}
 	iframe {
 		width: 100% !important;
-		height: auto !important;	
+		height: 250px !important;	
 	}
 	.photo .span3 {
 		width: 100%;	
