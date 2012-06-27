@@ -189,6 +189,12 @@ p.excerpt {font-size:23px;font-style:italic;line-height:28px;}
 		top: 150px;	
 	}
 	
+	/* Footer fixes */
+	
+	#footer_navigation .span12 {
+		margin-left: 0;	
+	}
+	
 }
      
 

@@ -249,10 +249,17 @@ body.subpage,
 		vertical-align: top;
 	}
 	
-	#header .span12 {
-		margin-left: 0;
-		width: 315px;	
+	#header .row {
+		width: 100%;	
 	}
+	#header .span12 {
+		width: 315px !important;	
+		margin-left: 0;
+	}
+		body.subpage #header .span12 {
+			margin-left: 20px !important;	
+		}
+	
 	#header .title {
 		width: 125px;
 		background-size: 125px 19px;
@@ -299,8 +306,9 @@ and (max-width: 979px) {
 		width: 750px !important;
 		margin-left: -20px;	
 	}
-	#header .span12 {
-		margin-left: 0;	
+	
+	#header .row {
+		width: 750px !important;	
 	}
 	.description {
 		display: none;	
