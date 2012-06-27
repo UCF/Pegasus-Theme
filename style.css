@@ -234,6 +234,28 @@ body.subpage,
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
 	
+	/* Subpages */
+	body.subpage #header+.container {
+		width: 88%;
+		float: none;
+		margin: auto;	
+	}
+	body.subpage #header .span12 {
+		width: 93%;	
+	}
+	/* About the Magazine */
+	#about {
+		margin-left: 6.1%;	
+		width: 80%;
+	}
+	#about .span12, #about .span7, #about .span4, #about #credits .span3 {
+		width: 100%;
+		margin-left: 0;
+	}
+	#about .span12 h2 {
+		width: 100%;	
+	}
+	
 	/* Header */
 	#story_nav .span12 .row {
 		width: 100% !important;
@@ -281,8 +303,11 @@ body.subpage,
 	}
 
 	/* Footer */
-	#footer_navigation .span12 {
-		width: 100%;
+	#footer_stories, #footer_navigation {
+		width: 100%;	
+	}
+	#footer_stories .span12, #footer_navigation .span12 {
+		width: 93%;
 	}
 	#footer_navigation .span12 .row {
 		width: 93%;	
@@ -300,6 +325,30 @@ body.subpage,
 @media only screen and
 (min-width: 768px) 
 and (max-width: 979px) {
+	
+	/* Subpages */
+	body.subpage #header+.container {
+		width: 730px;	
+		padding-left: 20px;	
+	}
+	body.subpage #header .span12 {
+		width: 710px;	
+	}
+	
+	/* About the Magazine */
+	#about .span12, #about .span12 h2 {
+		width: 710px !important;	
+	}
+	#about .span7 {
+		width: 437px;	
+	}
+	#about .span4 {
+		width: 247px;
+		margin-left: 20px;	
+	}
+	#about #credits .span3 {
+		width: 167px;
+	}
 	
 	/* Header */
 	#story_nav .span12 .row {
@@ -328,7 +377,7 @@ and (max-width: 979px) {
 	}
 	
 	#footer_stories, #footer_navigation {
-		width: 750px;	
+		width: 750px !important;	
 	}
 	
 	#footer_stories .span12 {
