@@ -244,15 +244,14 @@ body.subpage,
 		width: 93%;	
 	}
 	/* About the Magazine */
-	#about {
-		margin-left: 7.6%;	
-		width: 92%;
+	body.subpage #header+.container {
+		width: 88%;
 	}
-	#about .span12, #about .span7, #about .span4, #about #credits .span3 {
+	body.subpage #header+.container .row, body.subpage #header+.container .span12, body.subpage #header+.container .span7, body.subpage #header+.container .span4, body.subpage #header+.container .span3 {
 		width: 100%;
 		margin-left: 0;
 	}
-	#about .span12 h2 {
+	body.subpage #header+.container .span12 h2 {
 		width: 100%;	
 	}
 	
@@ -336,17 +335,17 @@ and (max-width: 979px) {
 	}
 	
 	/* About the Magazine */
-	#about .span12, #about .span12 h2 {
+	body.subpage #header+.container .span12, body.subpage #header+.container .span12 h2 {
 		width: 710px !important;	
 	}
-	#about .span7 {
+	body.subpage #header+.container .span7 {
 		width: 437px;	
 	}
-	#about .span4 {
+	body.subpage #header+.container .span4 {
 		width: 247px;
 		margin-left: 20px;	
 	}
-	#about #credits .span3 {
+	body.subpage #header+.container .span3 {
 		width: 167px;
 	}
 	
