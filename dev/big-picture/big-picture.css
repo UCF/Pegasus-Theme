@@ -423,9 +423,6 @@ and (max-width: 979px) {
 		#footer_stories, #footer_navigation {
 			margin: auto;	
 		}
-	#footer_navigation .span12 {
-		margin-left: 20px;
-	}
 }		
 
 /* Landscape phones and down */

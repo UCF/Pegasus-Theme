@@ -276,7 +276,6 @@ body.subpage,
 	/* Footer */
 	#footer_navigation .span12 {
 		width: 100%;
-		margin-left: 0;
 	}
 	#footer_navigation .span12 .row {
 		width: 93%;	
@@ -317,6 +316,7 @@ and (max-width: 979px) {
 	}
 	#footer_navigation .span12 .row {
 		width: 750px;	
+		margin-left: 0;
 	}
 	
 	#footer_stories, #footer_navigation {
