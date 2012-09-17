@@ -29,9 +29,14 @@ require_once('functions-admin.php');    # Admin/login functions
 
 /* 
  * Slug of the current Pegasus Magazine issue term in the 
- * editions taxonomy
+ * issues taxonomy
  */ 
 define('CURRENT_ISSUE_TERM_SLUG', '2012-summer');
+
+/* 
+ * Slug of the current Pegasus Magazine Issue post type
+ */ 
+define('CURRENT_ISSUE_SLUG', 'summer-2012');
 
 /**
  * Set config values including meta tags, registered custom post types, styles,
@@ -371,3 +376,21 @@ function ipad_deployed() {
 	$ipad_app_url = get_theme_option('ipad_app_url');
 	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
 }
+
+/*
+ *	Returns current issue post type based on CURRENT_ISSUE_TERM_SLUG
+ */
+function get_current_issue() {
+	$posts = get_posts(array(
+		'post_type' => 'issue',
+		'name'      => CURRENT_ISSUE_SLUG
+	));
+
+	if(count($posts) == 0) {
+		die('There must be an Issue with a slug that mactches the CURRENT_ISSUE_SLUG constant value.');
+	} else {
+		return $posts[0];
+	}
+}
+
+?>

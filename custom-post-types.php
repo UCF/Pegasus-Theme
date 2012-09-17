@@ -496,5 +496,17 @@ class Issue extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$taxonomies     = array();
+
+	public function fields() {
+		$prefix = $this->options('name').'_';
+		return array(
+			array(
+				'name' => 'Stylesheet',
+				'desc' => '',
+				'id'   => $prefix.'stylesheet',
+				'type' => 'file',
+			)
+		);
+	}
 }
 ?>
