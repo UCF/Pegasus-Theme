@@ -2,30 +2,10 @@
 <?php disallow_direct_load('404.php');?>
 
 <?php get_header(); the_post();?>
-	<div class="page-content" id="page-not-found">
-		<div class="span-18">
-			<h1>Page Not Found</h1>
-			<?php 
-				$page = get_page_by_title('404');
-				if($page){
-					$content = $page->post_content;
-					$content = apply_filters('the_content', $content);
-					$content = str_replace(']]>', ']]>', $content);
-				}
-			?>
-			<?php if($content):?>
-			<?=$content?>
-			<?php else:?>
-			<p>The page you requested doesn't exist.  Sorry about that.</p>
-			<?php endif;?>
-		</div>
-		
-		<div id="sidebar" class="span-6 last">
-			<?=get_sidebar();?>
-		</div>
-		
-		<div class="clear"><!-- --></div>
-		<?php get_template_part('includes/below-the-fold'); ?>
+<div class="row">
+	<div class="span12" style="margin-bottom:200px;">
+		<h2><big>Page Not Found</big></h2>
+		<p><big>The page you were looking for was not found. Please check the address and try again. If you believe you reached this page in error, please contact the Web Communications Team at <a href="mailto:webcom@ucf.edu">webcom@ucf.edu</a>.</big></p>
 	</div>
-
+</div>
 <?php get_footer();?>
