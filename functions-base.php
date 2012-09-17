@@ -1663,7 +1663,7 @@ function body_classes(){
  **/
 function disallow_direct_load($page){
 	if ($page == basename($_SERVER['SCRIPT_FILENAME'])){
-		die('No');
+		include('404.php');
 	}
 }
 
