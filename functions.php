@@ -409,7 +409,11 @@ add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
  * Add a rewrite rule to handle the new Issue post type permalink structure
  */
 function issue_init() {
-	add_rewrite_rule('([^/]+)', 'index.php?issue=$matches[1]','top');
+	$issue_slugs  = array_map(
+		create_function('$i', 'return preg_quote($i->post_name);'),
+		get_posts(array('post_type' => 'issue')
+	));
+	add_rewrite_rule('^('.implode('|', $issue_slugs).')$', 'index.php?issue=$matches[1]', 'top');
 	flush_rewrite_rules(false);
 }
 add_action('init', 'issue_init');
