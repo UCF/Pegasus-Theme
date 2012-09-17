@@ -393,4 +393,25 @@ function get_current_issue() {
 	}
 }
 
+/*
+ * Modify the permalinks for the Issue post type to the following form:
+ * http://pegasus.ucf.edu/<issue slug>/
+ */
+function modify_issue_permalinks($url, $post) {
+	if($post->post_type == 'issue') {
+		return get_bloginfo('url').'/'.$post->post_name.'/';
+	}
+	return $url;
+} 
+add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
+
+/*
+ * Add a rewrite rule to handle the new Issue post type permalink structure
+ */
+function issue_init() {
+	add_rewrite_rule('([^/]+)', 'index.php?issue=$matches[1]','top');
+	flush_rewrite_rules(false);
+}
+add_action('init', 'issue_init');
+
 ?>
