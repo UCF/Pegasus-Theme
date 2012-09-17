@@ -476,4 +476,25 @@ class Story extends CustomPostType {
 		);
 	}
 }
+
+/**
+ * Describes an issue
+ *
+ * @author Chris Conover
+ **/
+class Issue extends CustomPostType {
+	public
+		$name           = 'issue',
+		$plural_name    = 'Issues',
+		$singular_name  = 'Issue',
+		$add_new_item   = 'Add Issue',
+		$edit_item      = 'Edit Issue',
+		$new_item       = 'New Issue',
+		$public         = True,
+		$use_shortcode  = True,
+		$use_metabox    = True,
+		$use_thumbnails = True,
+		$use_order      = False,
+		$taxonomies     = array();
+}
 ?>

@@ -41,7 +41,8 @@ define('CURRENT_ISSUE_TERM_SLUG', '2012-summer');
 Config::$custom_post_types = array(
 	'Page',
 	'AlumniNote',
-	'Story'
+	'Story',
+	'Issue'
 );
 
 Config::$custom_taxonomies = array(
