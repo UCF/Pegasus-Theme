@@ -5,7 +5,7 @@ body,
 #header {height: 50px;color:#FFF;position:relative;}
 #header .title {position:static;}
 #header .toggle_story_nav {display:none;}
-#header .edition {display:none;}
+#header .issue {display:none;}
 #header .description {position:absolute;right:0;}
 #header .row .span12 .row { position:relative; z-index:9999; }
 
@@ -19,6 +19,10 @@ body,
 
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
+	
+	#header+.container {
+		margin-bottom: -20px;
+	}
 	
 	.container, .container.wide {
 		width: 100%;	

@@ -81,7 +81,7 @@
 					<a href="<?=site_url()?>" class="span3 title">
 					PEGASUS
 					</a>
-					<div class="span5 edition">
+					<div class="span5 issue">
 						Summer 2012
 					</div>
 		

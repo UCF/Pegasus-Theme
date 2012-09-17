@@ -450,7 +450,7 @@ class Story extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
-		$taxonomies     = array('editions');
+		$taxonomies     = array('issues');
 
 	public function fields() {
 		$prefix = $this->options('name').'_';

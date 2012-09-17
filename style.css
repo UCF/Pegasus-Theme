@@ -55,7 +55,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 /* Header */
 #header {background-color:#e3c353;height:50px;color:#FFF;position:relative;}
 #header .title,
-#header .edition,
+#header .issue,
 #header .description {}
 #header .title {
 	position:relative;
@@ -66,7 +66,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	background-repeat:no-repeat;
 	background-image: url(static/img/pegasus-logo-fill.png);
 	background-position:center left;}
-#header .edition {padding-top:20px;color:#FFF;font-size:18px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1.5px;}
+#header .issue {padding-top:20px;color:#FFF;font-size:18px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1.5px;}
 
 #header .description, #home_header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
 #header .toggle_story_nav {
@@ -211,7 +211,7 @@ body.subpage,
 .subpage #header {color:#000;}
 .subpage #header .title {position:static;}
 .subpage #header .toggle_story_nav {display:none;}
-.subpage #header .edition {visibility: hidden;}
+.subpage #header .issue {visibility: hidden;}
 .subpage #header .description {font-size:13px;}
 
 .subpage #footer a {color:#000;}
@@ -286,7 +286,7 @@ body.subpage,
 		background-size: 125px 19px;
 		left: 45px;
 	}
-	#header .edition {
+	#header .issue {
 		width: 85px;
 		font-size: 10px;
 		letter-spacing: 1.1px;

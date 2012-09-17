@@ -5,7 +5,7 @@
 **/
 
 /* Site Header/Footer Styles */
-div#header, #header .edition .dropdown-menu {
+div#header, #header .issue .dropdown-menu {
 	background-color: #182a45;
 }
 div#header .span12 {

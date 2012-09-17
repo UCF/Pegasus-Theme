@@ -28,10 +28,10 @@ require_once('shortcodes.php');         # Per theme shortcodes
 require_once('functions-admin.php');    # Admin/login functions
 
 /* 
- * Slug of the current Pegasus Magazein edition term in the 
+ * Slug of the current Pegasus Magazine issue term in the 
  * editions taxonomy
  */ 
-define('CURRENT_EDITION_TERM_SLUG', '2012-summer');
+define('CURRENT_ISSUE_TERM_SLUG', '2012-summer');
 
 /**
  * Set config values including meta tags, registered custom post types, styles,
@@ -45,7 +45,7 @@ Config::$custom_post_types = array(
 );
 
 Config::$custom_taxonomies = array(
-	'Editions'
+	'Issues'
 );
 
 Config::$body_classes = array();
@@ -287,11 +287,11 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 }
 
 /* 
- * Retrieve a list of the current edition stories
+ * Retrieve a list of the current issue's stories
  */
-function get_current_edition_stories($exclude=array(), $limit=-1) {
+function get_current_issue_stories($exclude=array(), $limit=-1) {
 
-	$current_edition_term = get_term_by('slug', CURRENT_EDITION_TERM_SLUG, 'editions');
+	$current_issue_term = get_term_by('slug', CURRENT_ISSUE_TERM_SLUG, 'issues');
 	if($current_edition_term === FALSE) {
 		return array();
 	} else {
@@ -301,9 +301,9 @@ function get_current_edition_stories($exclude=array(), $limit=-1) {
 			'orderby'     => 'rand',
 			'exclude'     => $exclude,
 			'tax_query'   => array(
-				'taxonomy' => 'editions',
+				'taxonomy' => 'issues',
 				'field'    => 'id',
-				'terms'    => $current_edition_term->term_id
+				'terms'    => $current_issue_term->term_id
 			),
 		));
 	}
@@ -326,7 +326,7 @@ function get_navigation_stories() {
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
-	return get_current_edition_stories($exclude, 4);
+	return get_current_issue_stories($exclude, 4);
 }
 
 /*
