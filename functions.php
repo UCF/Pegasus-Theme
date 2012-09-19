@@ -79,6 +79,7 @@ function get_navigation_stories() {
 /*
  * Returns featured image URL of a specified post ID
  */
+ /*
 function get_featured_image_url($id) {
 	$url = '';
 	if(has_post_thumbnail($id)
@@ -87,7 +88,7 @@ function get_featured_image_url($id) {
 		return $image[0];
 	}
 	return $url;
-}
+}*/
 
 /*
  * Returns a theme option value or NULL if it doesn't exist
