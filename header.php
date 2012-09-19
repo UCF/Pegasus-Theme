@@ -102,4 +102,4 @@
 				</div>
 			</div>
 		</div>
-		<div class="container">
+		<div class="container" id="body_content">
