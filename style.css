@@ -210,6 +210,7 @@ body.subpage,
 
 .subpage #header .title,
 .subpage h2#footer_logo {background-image:url(static/img/pegasus-logo-black.png);}
+.subpage #header .title { margin-left: 20px; }
 
 .subpage #header {color:#000;}
 .subpage #header .title {position:static;}

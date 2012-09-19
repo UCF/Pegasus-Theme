@@ -26,17 +26,18 @@
 	
 	/* Content */
 	#body_content { }
-	.container.wide > .row {
-		width: 100%;
-	}
+	.container.wide > .row { width: 100%; }
 	
 	/* Story Nav, Footer */
 	#footer #footer_hr { margin-left: 20px; }
+	
 	#footer, #story_nav { margin-left: -20px; padding-right: 40px; }
 	#footer_stories>div, #footer_navigation>div { margin-left: 20px; }
 	#story_nav>.row>.span12>h3 { padding-left: 20px; }
 	#footer_stories .span3, #story_nav .span3 { display: inline-block; float: none; margin-bottom: 20px; vertical-align: top; width: 128px; }
 	#story_nav .span3 { margin-left: 20px; }
+	
+	#footer_navigation .span3 { margin-bottom: 20px; }
 	
 	
 	/* Shrinkable bootstrap tables for tablets/phones.
