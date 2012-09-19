@@ -1,8 +1,39 @@
 @media (max-width: 979px) {
+	/* Header */
+	#header { }
+	#header>.row { width: 750px; margin: auto; }
+	#header .title { width: 162px; margin-right: 40px; }
+	#header .description { display: none; }
 	
+	/* Content */
+	.container.wide > .row {
+		width: 754px;
+	}
+	
+	/* Footer */
+	#footer_stories>div, #footer_navigation>div { margin-left: 15px; }
+	#footer_stories { padding-top: 10px; }
 }
 
 @media (max-width: 767px) {
+	/* Story Nav */
+	#story_nav { }
+	#story_nav div div { margin: auto; float: none !important; }
+	
+	/* Header */
+	#header { margin-left: -20px; padding-right: 40px; }
+	#header>.row>.span12 { width: 315px; }
+	#header .title { background-size: 125px 19px; width: 125px; position: relative; left: 65px; }
+	#header .issue { font-size: 10px; letter-spacing: 1.1px; width: 85px; position: absolute; top: 0; right: 20px; }
+	#header .toggle_story_nav { top: 0; left: 10px; }
+	
+	/* Content */
+	#body_content { }
+	.container.wide > .row {
+		width: 100%;
+	}
+	
+	
 	/* Shrinkable bootstrap tables for tablets/phones.
 	Responsive table guide via css-tricks.com/responsive-data-tables/ */
 	table.table.table-striped, 
