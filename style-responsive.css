@@ -31,6 +31,7 @@
 	}
 	
 	/* Story Nav, Footer */
+	#footer #footer_hr { margin-left: 20px; }
 	#footer, #story_nav { margin-left: -20px; padding-right: 40px; }
 	#footer_stories>div, #footer_navigation>div { margin-left: 20px; }
 	#story_nav>.row>.span12>h3 { padding-left: 20px; }
