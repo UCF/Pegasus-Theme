@@ -11,14 +11,14 @@ if (typeof jQuery != 'undefined'){
 			}
 		}
 
-		Generic.defaultMenuSeparators = function($) {
+		var defaultMenuSeparators = function($) {
 			// Because IE sucks, we're removing the last stray separator
 			// on default navigation menus for browsers that don't 
 			// support the :last-child CSS property
 			$('.menu.horizontal li:last-child').addClass('last');
 		};
 		
-		Generic.removeExtraGformStyles = function($) {
+		var removeExtraGformStyles = function($) {
 			// Since we're re-registering the Gravity Form stylesheet
 			// manually and we can't dequeue the stylesheet GF adds
 			// by default, we're removing the reference to the script if
@@ -34,8 +34,8 @@ if (typeof jQuery != 'undefined'){
 		Webcom.analytics($);
 		Webcom.handleExternalLinks($);
 		Webcom.loadMoreSearchResults($);
-		Generic.defaultMenuSeparators($);
-		Generic.removeExtraGformStyles($);
+		defaultMenuSeparators($);
+		removeExtraGformStyles($);
 
 
 		// Is this the user's first visit to the site?
