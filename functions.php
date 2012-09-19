@@ -33,6 +33,7 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
     return $input;
 }
 
+
 /* 
  * Retrieve a list of the current issue's stories
  */
@@ -56,6 +57,7 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 	}
 }
 
+
 /*
  * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
@@ -76,19 +78,6 @@ function get_navigation_stories() {
 	return get_current_issue_stories($exclude, 4);
 }
 
-/*
- * Returns featured image URL of a specified post ID
- */
- /*
-function get_featured_image_url($id) {
-	$url = '';
-	if(has_post_thumbnail($id)
-		&& ($thumb_id = get_post_thumbnail_id($id)) !== False
-		&& ($image = wp_get_attachment_image_src($thumb_id, 'single-post-thumbnail')) !== False) {
-		return $image[0];
-	}
-	return $url;
-}*/
 
 /*
  * Returns a theme option value or NULL if it doesn't exist
@@ -97,6 +86,7 @@ function get_theme_option($key) {
 	global $theme_options;
 	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
 }
+
 
 /*
  * Returns an array of choices for the front page features story site setting.
@@ -111,6 +101,7 @@ function get_front_page_story_choices() {
 	return $choices;
 }
 
+
 /*
  * Is the iPad app deployed or not
  */
@@ -118,6 +109,7 @@ function ipad_deployed() {
 	$ipad_app_url = get_theme_option('ipad_app_url');
 	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
 }
+
 
 /*
  *	Returns current issue post type based on CURRENT_ISSUE_TERM_SLUG
@@ -135,6 +127,7 @@ function get_current_issue() {
 	}
 }
 
+
 /*
  * Modify the permalinks for the Issue post type to the following form:
  * http://pegasus.ucf.edu/<issue slug>/
@@ -146,6 +139,7 @@ function modify_issue_permalinks($url, $post) {
 	return $url;
 } 
 add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
+
 
 /*
  * Add a rewrite rule to handle the new Issue post type permalink structure
