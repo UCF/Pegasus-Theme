@@ -139,3 +139,39 @@ function theme_options_page(){
 function theme_options_sanitize($input){
 	return $input;
 }
+
+
+/**
+ * Modifies the default stylesheets associated with the TinyMCE editor.
+ * 
+ * @return string
+ * @author Jared Lang
+ **/
+function editor_styles($css){
+	$css   = array_map('trim', explode(',', $css));
+	$css[] = THEME_CSS_URL.'/formatting.css';
+	$css   = implode(',', $css);
+	return $css;
+}
+add_filter('mce_css', 'editor_styles');
+
+
+/**
+ * Edits second row of buttons in tinyMCE editor. Removing/adding actions
+ *
+ * @return array
+ * @author Jared Lang
+ **/
+function editor_format_options($row){
+	$found = array_search('underline', $row);
+	if (False !== $found){
+		unset($row[$found]);
+	}
+	return $row;
+}
+add_filter('mce_buttons_2', 'editor_format_options');
+
+/**
+ * Remove paragraph tag from excerpts
+ **/
+remove_filter('the_excerpt', 'wpautop');

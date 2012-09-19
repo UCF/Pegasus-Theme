@@ -11,12 +11,33 @@ if (typeof jQuery != 'undefined'){
 			}
 		}
 
+		Generic.defaultMenuSeparators = function($) {
+			// Because IE sucks, we're removing the last stray separator
+			// on default navigation menus for browsers that don't 
+			// support the :last-child CSS property
+			$('.menu.horizontal li:last-child').addClass('last');
+		};
+		
+		Generic.removeExtraGformStyles = function($) {
+			// Since we're re-registering the Gravity Form stylesheet
+			// manually and we can't dequeue the stylesheet GF adds
+			// by default, we're removing the reference to the script if
+			// it exists on the page (if CSS hasn't been turned off in GF settings.)
+			$('link#gforms_css-css').remove();
+		}
+		
+
+		/* Theme Specific Code Here */
+		//Generic.homeDimensions($);
+		//Generic.resizeSearch($);
 		Webcom.slideshow($);
-		Webcom.chartbeat($);
 		Webcom.analytics($);
 		Webcom.handleExternalLinks($);
 		Webcom.loadMoreSearchResults($);
-		
+		Generic.defaultMenuSeparators($);
+		Generic.removeExtraGformStyles($);
+
+
 		// Is this the user's first visit to the site?
 		var initial_visit = $.cookie('initial-visit') == null ? true : false,
 			ipad          = navigator.userAgent.match(/iPad/i) == null ? false : true;
@@ -188,7 +209,6 @@ if (typeof jQuery != 'undefined'){
 				});
 			}
 		})();
-		
 		
 	});
 }else{console.log('jQuery dependancy failed to load');}

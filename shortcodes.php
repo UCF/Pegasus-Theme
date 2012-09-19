@@ -74,6 +74,7 @@ function sc_search_form() {
 }
 add_shortcode('search_form', 'sc_search_form');
 
+
 /*
  * Search for a image by file name and return its URL.
  *
@@ -96,6 +97,7 @@ function sc_image($attr) {
 }
 add_shortcode('image', 'sc_image');
 
+
 /*
  * Link to a static image. Requires extension
  */
@@ -107,4 +109,5 @@ function sc_static_image($attr) {
 	return $url;
 }
 add_shortcode('static-image', 'sc_static_image');
+
 ?>

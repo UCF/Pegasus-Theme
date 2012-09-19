@@ -1,5 +1,10 @@
 <?php
 
+/***************************************************************************
+ * CLASSES
+ * 
+ ***************************************************************************/
+
 /**
  * The Config class provides a set of static properties and methods which store
  * and facilitate configuration of the theme.
@@ -357,6 +362,195 @@ class Timer{
 	}
 }
 
+
+
+
+/***************************************************************************
+ * DEBUGGING FUNCTIONS
+ * 
+ * Functions to assist in theme debugging.
+ * 
+ ***************************************************************************/
+
+/**
+ * Given an arbitrary number of arguments, will return a string with the
+ * arguments dumped recursively, similar to the output of print_r but with pre
+ * tags wrapped around the output.
+ *
+ * @return string
+ * @author Jared Lang
+ **/
+function dump(){
+	$args = func_get_args();
+	$out  = array();
+	foreach($args as $arg){
+		$out[] = print_r($arg, True);
+	}
+	$out = implode("<br />", $out);
+	return "<pre>{$out}</pre>";
+}
+
+
+/**
+ * Will add a debug comment to the output when the debug constant is set true.
+ * Any value, including null, is enough to trigger it.
+ * 
+ * @return void
+ * @author Jared Lang
+ **/
+if (DEBUG){ 
+	function debug($string){ /*
+		print "<!-- DEBUG: {$string} -->\n"; */
+	} 
+}else{
+	function debug($string){return;}
+}
+
+
+/**
+ * Will execute the function $func with the arguments passed via $args if the
+ * debug constant is set true.  Returns whatever value the called function
+ * returns, or void if debug is not set active.
+ *
+ * @return mixed
+ * @author Jared Lang
+ **/
+if (DEBUG){
+	function debug_callfunc($func, $args){
+		return call_user_func_array($func, $args);
+	}
+}else{
+	function debug_callfunc($func, $args){return;}
+}
+
+
+/**
+ * Indent contents of $html passed by $n indentations.
+ *
+ * @return string
+ * @author Jared Lang
+ **/
+function indent($html, $n){
+	$tabs = str_repeat("\t", $n);
+	$html = explode("\n", $html);
+	foreach($html as $key=>$line){
+		$html[$key] = $tabs.trim($line);
+	}
+	$html = implode("\n", $html);
+	return $html;
+}
+
+
+
+/***************************************************************************
+ * GENERAL USE FUNCTIONS
+ * 
+ * Theme-wide general use functions. (Alphabetized)
+ * 
+ ***************************************************************************/
+
+/**
+ * Walker function to add Bootstrap classes to nav menus using wp_nav_menu()
+ * 
+ * based on https://gist.github.com/1597994
+ **/
+function bootstrap_menus() {
+	class Bootstrap_Walker_Nav_Menu extends Walker_Nav_Menu {
+
+			
+			function start_lvl( &$output, $depth ) {
+
+				$indent = str_repeat( "\t", $depth );
+				$output	   .= "\n$indent<ul class=\"dropdown-menu\">\n";
+				
+			}
+
+			function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+				
+				$indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
+
+				$li_attributes = '';
+				$class_names = $value = '';
+
+				$classes = empty( $item->classes ) ? array() : (array) $item->classes;
+				$classes[] = ($args->has_children) ? 'dropdown' : '';
+				$classes[] = ($item->current || $item->current_item_ancestor) ? 'active' : '';
+				$classes[] = 'menu-item-' . $item->ID;
+
+
+				$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args ) );
+				$class_names = ' class="' . esc_attr( $class_names ) . '"';
+
+				$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args );
+				$id = strlen( $id ) ? ' id="' . esc_attr( $id ) . '"' : '';
+
+				$output .= $indent . '<li' . $id . $value . $class_names . $li_attributes . '>';
+
+				$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';
+				$attributes .= ! empty( $item->target )     ? ' target="' . esc_attr( $item->target     ) .'"' : '';
+				$attributes .= ! empty( $item->xfn )        ? ' rel="'    . esc_attr( $item->xfn        ) .'"' : '';
+				$attributes .= ! empty( $item->url )        ? ' href="'   . esc_attr( $item->url        ) .'"' : '';
+				$attributes .= ($args->has_children) 	    ? ' class="dropdown-toggle" data-toggle="dropdown"' : '';
+
+				$item_output = $args->before;
+				$item_output .= '<a'. $attributes .'>';
+				$item_output .= $args->link_before . apply_filters( 'the_title', $item->title, $item->ID ) . $args->link_after;
+				$item_output .= ($args->has_children) ? ' <b class="caret"></b></a>' : '</a>';
+				$item_output .= $args->after;
+
+				$output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args );
+			}
+
+			function display_element( $element, &$children_elements, $max_depth, $depth=0, $args, &$output ) {
+				
+				if ( !$element )
+					return;
+				
+				$id_field = $this->db_fields['id'];
+
+				//display this element
+				if ( is_array( $args[0] ) ) 
+					$args[0]['has_children'] = ! empty( $children_elements[$element->$id_field] );
+				else if ( is_object( $args[0] ) ) 
+					$args[0]->has_children = ! empty( $children_elements[$element->$id_field] ); 
+				$cb_args = array_merge( array(&$output, $element, $depth), $args);
+				call_user_func_array(array(&$this, 'start_el'), $cb_args);
+
+				$id = $element->$id_field;
+
+				// descend only when the depth is right and there are childrens for this element
+				if ( ($max_depth == 0 || $max_depth > $depth+1 ) && isset( $children_elements[$id]) ) {
+
+					foreach( $children_elements[ $id ] as $child ){
+
+						if ( !isset($newlevel) ) {
+							$newlevel = true;
+							//start the child delimiter
+							$cb_args = array_merge( array(&$output, $depth), $args);
+							call_user_func_array(array(&$this, 'start_lvl'), $cb_args);
+						}
+						$this->display_element( $child, $children_elements, $max_depth, $depth + 1, $args, $output );
+					}
+						unset( $children_elements[ $id ] );
+				}
+
+				if ( isset($newlevel) && $newlevel ){
+					//end the child delimiter
+					$cb_args = array_merge( array(&$output, $depth), $args);
+					call_user_func_array(array(&$this, 'end_lvl'), $cb_args);
+				}
+
+				//end this element
+				$cb_args = array_merge( array(&$output, $element, $depth), $args);
+				call_user_func_array(array(&$this, 'end_el'), $cb_args);
+				
+			}
+			
+		}	
+}
+add_action( 'after_setup_theme', 'bootstrap_menus' );
+
+
 /**
  * Strings passed to this function will be modified under the assumption that
  * they were outputted by wordpress' the_output filter.  It checks for a handful
@@ -405,6 +599,118 @@ function cleanup($content){
 	return $content;
 }
 
+
+/**
+ * Creates a string of attributes and their values from the key/value defined by
+ * $attr.  The string is suitable for use in html tags.
+ * 
+ * @return string
+ * @author Jared Lang
+ **/
+function create_attribute_string($attr){
+	$attr_string = '';
+	foreach($attr as $key=>$value){
+		$attr_string .= " {$key}='{$value}'";
+	}
+	return $attr_string;
+}
+
+
+/**
+ * Creates an arbitrary html element.  $tag defines what element will be created
+ * such as a p, h1, or div.  $attr is an array defining attributes and their
+ * associated values for the tag created. $content determines what data the tag
+ * wraps.  And $self_close defines whether or not the tag should close like
+ * <tag></tag> (False) or <tag /> (True).
+ *
+ * @return string
+ * @author Jared Lang
+ **/
+function create_html_element($tag, $attr=array(), $content=null, $self_close=True){
+	$attr_str = create_attribute_string($attr);
+	if ($content){
+		$element = "<{$tag}{$attr_str}>{$content}</{$tag}>";
+	}else{
+		if ($self_close){
+			$element = "<{$tag}{$attr_str}/>";
+		}else{
+			$element = "<{$tag}{$attr_str}></{$tag}>";
+		}
+	}
+	
+	return $element;
+}
+
+
+/**
+ * When called, prevents direct loads of the value of $page.
+ **/
+function disallow_direct_load($page){
+	if ($page == basename($_SERVER['SCRIPT_FILENAME'])){
+		die('No');
+	}
+}
+
+
+/**
+ * Given a name will return the custom post type's class name, or null if not
+ * found
+ * 
+ * @return string
+ * @author Jared Lang
+ **/
+function get_custom_post_type($name){
+	$installed = installed_custom_post_types();
+	foreach($installed as $object){
+		if ($object->options('name') == $name){
+			return get_class($object);
+		}
+	}
+	return null;
+}
+
+
+/**
+* Get featured image for a post
+*
+* @return array
+* @author Chris Conover
+**/
+function get_featured_image_url($post) {
+	if(has_post_thumbnail($post) && ($thumbnail_id = get_post_thumbnail_id($post)) && ($image = wp_get_attachment_image_src($thumbnail_id))) {
+		return $image[0];
+	}
+	return False;
+}
+
+
+/**
+ * Get value of Theme Option Header Menu Styles and return relevant Boostrap 
+ * CSS classes.  Indended for use as wp_nav_menu()'s menu_class argument.
+ * See http://codex.wordpress.org/Function_Reference/wp_nav_menu
+ *
+ * @author Jo Greybill
+ **/
+function get_header_styles() {
+	$options = get_option(THEME_OPTIONS_NAME);
+	$id = $options['bootstrap_menu_styles'];
+	
+	switch ($id) {
+		case 'nav-tabs':
+			$header_menu_class = 'nav nav-tabs';
+			break;	
+		case 'nav-pills':
+			$header_menu_class = 'nav nav-pills';
+			break;
+		default:
+			$header_menu_class = 'horizontal';
+			break;
+	}
+	return $header_menu_class;
+	
+}
+
+
 /**
  * Return an array of choices representing all the images uploaded to the media
  * gallery.
@@ -441,188 +747,45 @@ function get_image_choices(){
 
 
 /**
- * Given a mimetype, will attempt to return a string representing the
- * application it is associated with.  If the mimetype is unknown, the default
- * return is 'document'.
+ * Wraps wordpress' native functions, allowing you to get a menu defined by
+ * its location rather than the name given to the menu.  The argument $classes
+ * lets you define a custom class(es) to place on the list generated, $id does
+ * the same but with an id attribute.
  *
- * @return string
- * @author Jared Lang
- **/
-function mimetype_to_application($mimetype){
-	switch($mimetype){
-		default:
-			$type = 'document';
-			break;
-		case 'text/html':
-			$type = "html";
-			break;
-		case 'application/zip':
-			$type = "zip";
-			break;
-		case 'application/pdf':
-			$type = 'pdf';
-			break;
-		case 'application/msword':
-		case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
-			$type = 'word';
-			break;
-		case 'application/msexcel':
-		case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
-			$type = 'excel';
-			break;
-		case 'application/vnd.ms-powerpoint':
-		case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
-			$type = 'powerpoint';
-			break;
-	}
-	return $type;
-}
-
-
-/**
- * Fetches objects defined by arguments passed, outputs the objects according
- * to the objectsToHTML method located on the object.  Used by the auto
- * generated shortcodes enabled on custom post types. See also:
+ * If you require more customization of the output, a final optional argument
+ * $callback lets you specify a function that will generate the output. Any
+ * callback passed should accept one argument, which will be the items for the
+ * menu in question.
  * 
- *   CustomPostType::objectsToHTML
- *   CustomPostType::toHTML
- *
- * @return string
+ * @return void
  * @author Jared Lang
  **/
-function sc_object_list($attr, $default_content=null){
-	if (!is_array($attr)){return '';}
+function get_menu($name, $classes=null, $id=null, $callback=null){
+	$locations = get_nav_menu_locations();
+	$menu = @$locations[$name];
 	
-	# set defaults and combine with passed arguments
-	$defaults = array(
-		'type'  => null,
-		'limit' => -1,
-		'join'  => 'or',
-		'class' => '',
-	);
-	$options = array_merge($defaults, $attr);
-	
-	# verify options
-	if ($options['type'] == null){
-		return '<p class="error">No type defined for object list.</p>';
-	}
-	if (!is_numeric($options['limit'])){
-		return '<p class="error">Invalid limit argument, must be a number.</p>';
-	}
-	if (!in_array(strtoupper($options['join']), array('AND', 'OR'))){
-		return '<p class="error">Invalid join type, must be one of "and" or "or".</p>';
-	}
-	if (null == ($class = get_custom_post_type($options['type']))){
-		return '<p class="error">Invalid post type.</p>';
+	if (!$menu){
+		return "<div class='error'>No menu location found with name '{$name}'. Set up menus in the <a href='".get_admin_url()."nav-menus.php'>admin's appearance menu.</a></div>";
 	}
 	
-	# get taxonomies and translation
-	$translate  = array(
-		'tags'       => 'post_tag',
-		'categories' => 'category',
-	);
-	$taxonomies = array_diff(array_keys($attr), array_keys($defaults));
+	$items = wp_get_nav_menu_items($menu);
 	
-	# assemble taxonomy query
-	$tax_queries             = array();
-	$tax_queries['relation'] = strtoupper($options['join']);
-	
-	foreach($taxonomies as $tax){
-		$terms = $options[$tax];
-		$terms = trim(preg_replace('/\s+/', ' ', $terms));
-		$terms = explode(' ', $terms);
-		
-		if (array_key_exists($tax, $translate)){
-			$tax = $translate[$tax];
-		}
-		
-		$tax_queries[] = array(
-			'taxonomy' => $tax,
-			'field'    => 'slug',
-			'terms'    => $terms,
-		);
-	}
-	
-	# perform query
-	$query_array = array(
-		'tax_query'      => $tax_queries,
-		'post_status'    => 'publish',
-		'post_type'      => $options['type'],
-		'posts_per_page' => $options['limit'],
-		'orderby'        => 'menu_order title',
-		'order'          => 'ASC',
-	);
-
-	$class = new $class;
-	$objects = $class->get_objects($query_array);
-	
-	if (count($objects)){
-		$html = $class->objectsToHTML($objects, $options['class']);
+	if ($callback === null){
+		ob_start();
+		?>
+		<ul<?php if($classes):?> class="<?=$classes?>"<?php endif;?><?php if($id):?> id="<?=$id?>"<?php endif;?>>
+			<?php foreach($items as $key=>$item): $last = $key == count($items) - 1;?>
+			<li<?php if($last):?> class="last"<?php endif;?>><a href="<?=$item->url?>"><?=$item->title?></a></li>
+			<?php endforeach;?>
+		</ul>
+		<?php
+		$menu = ob_get_clean();
 	}else{
-		$html = $default_content;
-	}
-	return $html;
-}
-
-
-/**
- * Creates an array of shortcodes mapped to a documentation string for that
- * shortcode.  Used to generate the auto shortcode documentation.
- * 
- * @return array
- * @author Jared Lang
- **/
-function shortcodes(){
-	$file = file_get_contents(THEME_DIR.'/shortcodes.php');
-	
-	$documentation = "\/\*\*(?P<documentation>.*?)\*\*\/";
-	$declaration   = "function[\s]+(?P<declaration>[^\(]+)";
-	
-	# Auto generated shortcode documentation.
-	$codes = array();
-	$auto  = array_filter(installed_custom_post_types(), create_function('$c', '
-		return $c->options("use_shortcode");
-	'));
-	foreach($auto as $code){
-		$scode  = $code->options('name').'-list';
-		$plural = $code->options('plural_name');
-		$doc = <<<DOC
- Outputs a list of {$plural} filtered by arbitrary taxonomies, for example a tag
-or category.  A default output for when no objects matching the criteria are
-found.
-
- Example:
- # Output a maximum of 5 items tagged foo or bar, with a default output.
- [{$scode} tags="foo bar" limit="5"]No {$plural} were found.[/{$scode}]
-
- # Output all objects categorized as foo
- [{$scode} categories="foo"]
-
- # Output all objects matching the terms in the custom taxonomy named foo
- [{$scode} foo="term list example"]
-
- # Outputs all objects found categorized as staff and tagged as small.
- [{$scode} limit="5" join="and" categories="staff" tags="small"]
-DOC;
-		$codes[] = array(
-			'documentation' => $doc,
-			'shortcode'     => $scode,
-		);
+		$menu = call_user_func($callback, array($items));
 	}
 	
-	# Defined shortcode documentation
-	$found = preg_match_all("/{$documentation}\s*{$declaration}/is", $file, $matches);
-	if ($found){
-		foreach ($matches['declaration'] as $key=>$match){
-			$codes[$match]['documentation'] = $matches['documentation'][$key];
-			$codes[$match]['shortcode']     = str_replace(
-				array('sc_', '_',),
-				array('', '-',),
-				$matches['declaration'][$key]
-			);
-		}
-	}
-	return $codes;
+	return $menu;
+
 }
 
 
@@ -1052,103 +1215,22 @@ function display_flickr($header='h2'){
 	$feed_url = get_flickr_feed_url();
 	$photos   = FlickrManager::get_photos($feed_url, 0, $count);
 	
-	if(count($photos)):?>
-		<<?=$header?>><a href="<?=get_flickr_stream_url()?>">Flickr Stream</a></<?=$header?>>
-		<ul class="flickr-stream">
-			<?php foreach($photos as $photo):?>
-			<li><a class="ignore-external" href="<?=$photo['page']?>"><img height="75" width="75" src="<?=$photo['square']?>" title="<?=$photo['title']?>" /></a></li>
+	if ($callback === null){
+		ob_start();
+		?>
+		<ul<?php if($classes):?> class="<?=$classes?>"<?php endif;?><?php if($id):?> id="<?=$id?>"<?php endif;?>>
+			<?php foreach($items as $key=>$item): $last = $key == count($items) - 1;?>
+			<li<?php if($last):?> class="last"<?php endif;?>><a href="<?=$item->url?>"><?=$item->title?></a></li>
 			<?php endforeach;?>
 		</ul>
-	<?php else:?>
-		<p>Unable to fetch flickr feed.</p>
-	<?php endif;?>
-<?php
-}
-
-
-function display_events($header='h2'){?>
-	<?php $options = get_option(THEME_OPTIONS_NAME);?>
-	<?php $count   = $options['events_max_items']?>
-	<?php $events  = get_events(0, ($count) ? $count : 3);?>
-	<?php if(count($events)):?>
-		<<?=$header?>><a href="<?=$events[0]->get_feed()->get_link()?>"><?=$events[0]->get_feed()->get_title()?></a></<?=$header?>>
-		<table class="events">
-			<?php foreach($events as $item):?>
-			<tr class="item">
-				<td class="date">
-					<?php
-						$month = $item->get_date("M");
-						$day   = $item->get_date("j");
-					?>
-					<div class="month"><?=$month?></div>
-					<div class="day"><?=$day?></div>
-				</td>
-				<td class="title">
-					<a href="<?=$item->get_link()?>" class="wrap ignore-external"><?=$item->get_title()?></a>
-				</td>
-			</tr>
-			<?php endforeach;?>
-		</table>
-	<?php else:?>
-		<p>Unable to fetch events</p>
-	<?php endif;?>
-<?php
-}
-
-
-function display_news($header='h2'){?>
-	<?php $options = get_option(THEME_OPTIONS_NAME);?>
-	<?php $count   = $options['news_max_items'];?>
-	<?php $news    = get_news(0, ($count) ? $count : 2);?>
-	<?php if(count($news)):?>
-		<<?=$header?>><a href="<?=$news[0]->get_feed()->get_link()?>"><?=$news[0]->get_feed()->get_title()?></a></<?=$header?>>
-		<ul class="news">
-			<?php foreach($news as $key=>$item): $image = get_article_image($item); $first = ($key == 0);?>
-			<li class="item<?php if($first):?> first<?php else:?> not-first<?php endif;?>">
-				<h3 class="title"><a href="<?=$item->get_link()?>" class="ignore-external title"><?=$item->get_title()?></a></h3>
-				<p>
-					<a class="image ignore-external" href="<?=$item->get_link()?>">
-						<?php if($image):?>
-						<img src="<?=$image?>" alt="Feed image for <?=$item->get_title()?>" />
-						<?php endif;?>
-					</a>
-					<a class="description ignore-external"  href="<?=$item->get_link()?>">
-						<?= $item->get_description();?>
-					</a>
-				</p>
-				<div class="end"><!-- --></div>
-			</li>
-			<?php endforeach;?>
-		</ul>
-		<div class="end"><!-- --></div>
-	<?php else:?>
-		<p>Unable to fetch news.</p>
-	<?php endif;?>
-<?php
-}
-
-
-function get_events($start=null, $limit=null){
-	$options = get_option(THEME_OPTIONS_NAME);
-	$qstring = (bool)strpos($options['events_url'], '?');
-	$url     = $options['events_url'];
-	if (!$qstring){
-		$url .= '?';
+		<?php
+		$menu = ob_get_clean();
 	}else{
-		$url .= '&';
+		$menu = call_user_func($callback, $items);
 	}
-	$url    .= 'upcoming=upcoming&format=rss';
-	$events  = array_reverse(FeedManager::get_items($url));
-	$events  = array_slice($events, $start, $limit);
-	return $events;
-}
-
-
-function get_news($start=null, $limit=null){
-	$options = get_option(THEME_OPTIONS_NAME);
-	$url     = $options['news_url'];
-	$news    = FeedManager::get_items($url, $start, $limit);
-	return $news;
+	
+	return $menu;
+	
 }
 
 
@@ -1221,39 +1303,56 @@ function get_search_results(
 
 
 /**
- * Modifies the default stylesheets associated with the TinyMCE editor.
+ * Returns true if the current request is on the login screen.
  * 
+ * @return boolean
+ * @author Jared Lang
+ **/
+function is_login(){
+	return in_array($GLOBALS['pagenow'], array(
+			'wp-login.php',
+			'wp-register.php',
+	));
+}
+
+
+/**
+ * Given a mimetype, will attempt to return a string representing the
+ * application it is associated with.  If the mimetype is unknown, the default
+ * return is 'document'.
+ *
  * @return string
  * @author Jared Lang
  **/
-function editor_styles($css){
-	$css   = array_map('trim', explode(',', $css));
-	$css[] = THEME_CSS_URL.'/formatting.css';
-	$css   = implode(',', $css);
-	return $css;
-}
-add_filter('mce_css', 'editor_styles');
-
-
-/**
- * Edits second row of buttons in tinyMCE editor. Removing/adding actions
- *
- * @return array
- * @author Jared Lang
- **/
-function editor_format_options($row){
-	$found = array_search('underline', $row);
-	if (False !== $found){
-		unset($row[$found]);
+function mimetype_to_application($mimetype){
+	switch($mimetype){
+		default:
+			$type = 'document';
+			break;
+		case 'text/html':
+			$type = "html";
+			break;
+		case 'application/zip':
+			$type = "zip";
+			break;
+		case 'application/pdf':
+			$type = 'pdf';
+			break;
+		case 'application/msword':
+		case 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+			$type = 'word';
+			break;
+		case 'application/msexcel':
+		case 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet':
+			$type = 'excel';
+			break;
+		case 'application/vnd.ms-powerpoint':
+		case 'application/vnd.openxmlformats-officedocument.presentationml.presentation':
+			$type = 'powerpoint';
+			break;
 	}
-	return $row;
+	return $type;
 }
-add_filter('mce_buttons_2', 'editor_format_options');
-
-/**
- * Remove paragraph tag from excerpts
- **/
-remove_filter('the_excerpt', 'wpautop');
 
 
 /**
@@ -1281,6 +1380,182 @@ function post_type($post){
 
 
 /**
+* Fetches objects defined by arguments passed, outputs the objects according
+* to the objectsToHTML method located on the object. Used by the auto
+* generated shortcodes enabled on custom post types. See also:
+*
+* CustomPostType::objectsToHTML
+* CustomPostType::toHTML
+*
+* @return string
+* @author Jared Lang
+**/
+function sc_object_list($attrs, $options = array()){
+	if (!is_array($attrs)){return '';}
+	
+	$default_options = array(
+		'default_content' => null,
+		'sort_func' => null,
+		'objects_only' => False
+	);
+	
+	extract(array_merge($default_options, $options));
+	
+	# set defaults and combine with passed arguments
+	$default_attrs = array(
+		'type'    => null,
+		'limit'   => -1,
+		'join'    => 'or',
+		'class'   => '',
+		'orderby' => 'menu_order title',
+		'order'   => 'ASC',
+		'offset'  => 0
+	);
+	$params = array_merge($default_attrs, $attrs);
+	
+	# verify options
+	if ($params['type'] == null){
+		return '<p class="error">No type defined for object list.</p>';
+	}
+	if (!is_numeric($params['limit'])){
+		return '<p class="error">Invalid limit argument, must be a number.</p>';
+	}
+	if (!in_array(strtoupper($params['join']), array('AND', 'OR'))){
+		return '<p class="error">Invalid join type, must be one of "and" or "or".</p>';
+	}
+	if (null == ($class = get_custom_post_type($params['type']))){
+		return '<p class="error">Invalid post type.</p>';
+	}
+	
+	$class = new $class;
+	
+	# Use post type specified ordering?
+	if(!isset($attrs['orderby']) && !is_null($class->default_orderby)) {
+		$params['orderby'] = $class->orderby;
+	}
+	if(!isset($attrs['order']) && !is_null($class->default_order)) {
+		$params['order'] = $class->default_order;
+	}
+
+	# get taxonomies and translation
+	$translate = array(
+		'tags' => 'post_tag',
+		'categories' => 'category',
+		'org_groups' => 'org_groups'
+	);
+	$taxonomies = array_diff(array_keys($attrs), array_keys($default_attrs));
+	
+	# assemble taxonomy query
+	$tax_queries = array();
+	$tax_queries['relation'] = strtoupper($params['join']);
+	
+	foreach($taxonomies as $tax){
+		$terms = $params[$tax];
+		$terms = trim(preg_replace('/\s+/', ' ', $terms));
+		$terms = explode(' ', $terms);
+		
+		if (array_key_exists($tax, $translate)){
+			$tax = $translate[$tax];
+		}
+		
+		$tax_queries[] = array(
+			'taxonomy' => $tax,
+			'field' => 'slug',
+			'terms' => $terms,
+		);
+	}
+	
+	# perform query
+	$query_array = array(
+		'tax_query'      => $tax_queries,
+		'post_status'    => 'publish',
+		'post_type'      => $params['type'],
+		'posts_per_page' => $params['limit'],
+		'orderby'        => $params['orderby'],
+		'order'          => $params['order'],
+		'offset'         => $params['offset']
+	);
+	
+	$query = new WP_Query($query_array);
+	
+	global $post;
+	$objects = array();
+	while($query->have_posts()){
+		$query->the_post();
+		$objects[] = $post;
+	}
+	
+	# Custom sort if applicable
+	if ($sort_func !== null){
+		usort($objects, $sort_func);
+	}
+	
+	wp_reset_postdata();
+	
+	if($objects_only) {
+		return $objects;
+	}
+	
+	if (count($objects)){
+		$html = $class->objectsToHTML($objects, $params['class']);
+	}else{
+		$html = $default_content;
+	}
+	return $html;
+}
+
+
+/**
+ * Sets the default values for any theme options that are not currently stored.
+ *
+ * @return void
+ * @author Jared Lang
+ **/
+function set_defaults_for_options(){
+	$values  = get_option(THEME_OPTIONS_NAME);
+	if ($values === False or is_string($values)){
+		add_option(THEME_OPTIONS_NAME);
+		$values = array();
+	}
+	
+	$options = array();
+	foreach(Config::$theme_settings as $option){
+		if (is_array($option)){
+			$options = array_merge($option, $options);
+		}else{
+			$options[] = $option;
+		}
+	}
+	
+	foreach ($options as $option){
+		$key = str_replace(
+			array(THEME_OPTIONS_NAME, '[', ']'),
+			array('', '', ''),
+			$option->id
+		);
+		if ($option->default !== null and !isset($values[$key])){
+			$values[$key] = $option->default;
+			update_option(THEME_OPTIONS_NAME, $values);
+		}
+	}
+}
+
+
+/**
+ * Runs as wordpress is shutting down.
+ *
+ * @return void
+ * @author Jared Lang
+ **/
+function __shutdown__(){
+	global $timer;
+	$elapsed = round($timer->elapsed() * 1000);
+	debug("{$elapsed} milliseconds");
+}
+add_action('shutdown', '__shutdown__');
+
+
+/**
  * Will return a string $s normalized to a slug value.  The optional argument, 
  * $spaces, allows you to define what spaces and other undesirable characters
  * will be replaced with.  Useful for content that will appear in urls or
@@ -1296,139 +1571,16 @@ function slug($s, $spaces='-'){
 }
 
 
-/**
- * Given a name will return the custom post type's class name, or null if not
- * found
+
+
+/***************************************************************************
+ * HEADER AND FOOTER FUNCTIONS
  * 
- * @return string
- * @author Jared Lang
- **/
-function get_custom_post_type($name){
-	$installed = installed_custom_post_types();
-	foreach($installed as $object){
-		if ($object->options('name') == $name){
-			return get_class($object);
-		}
-	}
-	return null;
-}
-
-
-/**
- * Wraps wordpress' native functions, allowing you to get a menu defined by
- * its location rather than the name given to the menu.  The argument $classes
- * lets you define a custom class(es) to place on the list generated, $id does
- * the same but with an id attribute.
- *
- * If you require more customization of the output, a final optional argument
- * $callback lets you specify a function that will generate the output. Any
- * callback passed should accept one argument, which will be the items for the
- * menu in question.
+ * Functions that generate output for the header and footer, including
+ * <meta>, <link>, page titles, body classes and Facebook OpenGraph
+ * stuff.
  * 
- * @return void
- * @author Jared Lang
- **/
-function get_menu($name, $classes=null, $id=null, $callback=null){
-	$locations = get_nav_menu_locations();
-	$menu      = @$locations[$name];
-	
-	if (!$menu){
-		return "<div class='error'>No menu location found with name '{$name}'. Set up menus in the <a href='".get_admin_url()."nav-menus.php'>admin's appearance menu.</a></div>";
-	}
-	
-	$items = wp_get_nav_menu_items($menu);
-	
-	if ($callback === null){
-		ob_start();
-		?>
-		<ul<?php if($classes):?> class="<?=$classes?>"<?php endif;?><?php if($id):?> id="<?=$id?>"<?php endif;?>>
-			<?php foreach($items as $key=>$item): $last = $key == count($items) - 1;?>
-			<li<?php if($last):?> class="last"<?php endif;?>><a href="<?=$item->url?>"><?=$item->title?></a></li>
-			<?php endforeach;?>
-		</ul>
-		<?php
-		$menu = ob_get_clean();
-	}else{
-		$menu = call_user_func($callback, array($items));
-	}
-	
-	return $menu;
-	
-}
-
-
-/**
- * Creates an arbitrary html element.  $tag defines what element will be created
- * such as a p, h1, or div.  $attr is an array defining attributes and their
- * associated values for the tag created. $content determines what data the tag
- * wraps.  And $self_close defines whether or not the tag should close like
- * <tag></tag> (False) or <tag /> (True).
- *
- * @return string
- * @author Jared Lang
- **/
-function create_html_element($tag, $attr=array(), $content=null, $self_close=True){
-	$attr_str = create_attribute_string($attr);
-	if ($content){
-		$element = "<{$tag}{$attr_str}>{$content}</{$tag}>";
-	}else{
-		if ($self_close){
-			$element = "<{$tag}{$attr_str}/>";
-		}else{
-			$element = "<{$tag}{$attr_str}></{$tag}>";
-		}
-	}
-	
-	return $element;
-}
-
-
-/**
- * Creates a string of attributes and their values from the key/value defined by
- * $attr.  The string is suitable for use in html tags.
- * 
- * @return string
- * @author Jared Lang
- **/
-function create_attribute_string($attr){
-	$attr_string = '';
-	foreach($attr as $key=>$value){
-		$attr_string .= " {$key}='{$value}'";
-	}
-	return $attr_string;
-}
-
-
-/**
- * Indent contents of $html passed by $n indentations.
- *
- * @return string
- * @author Jared Lang
- **/
-function indent($html, $n){
-	$tabs = str_repeat("\t", $n);
-	$html = explode("\n", $html);
-	foreach($html as $key=>$line){
-		$html[$key] = $tabs.trim($line);
-	}
-	$html = implode("\n", $html);
-	return $html;
-}
-
-
-/**
- * Footer content
- * 
- * @return string
- * @author Jared Lang
- **/
-function footer_($tabs=2){
-	ob_start();
-	wp_footer();
-	$html = ob_get_clean();
-	return indent($html, $tabs);
-}
-
+ ***************************************************************************/
 
 /**
  * Header content
@@ -1452,6 +1604,20 @@ function header_($tabs=2){
 	print header_title()."\n";
 	
 	return indent(ob_get_clean(), $tabs);
+}
+
+
+/**
+ * Footer content
+ * 
+ * @return string
+ * @author Jared Lang
+ **/
+function footer_($tabs=2){
+	ob_start();
+	wp_footer();
+	$html = ob_get_clean();
+	return indent($html, $tabs);
 }
 
 
@@ -1658,15 +1824,14 @@ function body_classes(){
 }
 
 
-/**
- * When called, prevents direct loads of the value of $page.
- **/
-function disallow_direct_load($page){
-	if ($page == basename($_SERVER['SCRIPT_FILENAME'])){
-		include('404.php');
-	}
-}
 
+/***************************************************************************
+ * REGISTRATION AND INSTALLATION FUNCTIONS
+ * 
+ * Functions that register and install custom post types, taxonomies,
+ * and meta boxes.
+ * 
+ ***************************************************************************/
 
 /**
  * Adding custom post types to the installed array defined in this function
@@ -1758,6 +1923,15 @@ function register_meta_boxes(){
 add_action('do_meta_boxes', 'register_meta_boxes');
 
 
+
+
+/***************************************************************************
+ * POST DATA HANDLERS and META BOX FUNCTIONS
+ * 
+ * Functions that display and save custom post types and their meta data.
+ * 
+ ***************************************************************************/
+
 /**
  * Saves the data for a given post type
  *
@@ -1840,7 +2014,7 @@ function save_default($post_id, $field){
 }
 
 /**
- * Handles saving a custom post as well as it's custom fields and metadata.
+ * Handles saving a custom post as well as its custom fields and metadata.
  *
  * @return void
  * @author Jared Lang

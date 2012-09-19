@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Abstract class for defining custom post types.  
+ * 
+ **/
 abstract class CustomPostType{
 	public 
 		$name           = 'custom_post_type',
@@ -18,7 +22,11 @@ abstract class CustomPostType{
 		$use_shortcode  = False, # Auto generate a shortcode for the post type
 		                         # (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array('post_tag'),
-		$built_in       = False;
+		$built_in       = False,
+
+		# Optional default ordering for generic shortcode if not specified by user.
+		$default_orderby = null,
+		$default_order   = null;
 	
 	
 	/**
@@ -472,7 +480,13 @@ class Story extends CustomPostType {
 				'desc' => 'Check this box if this story is a main featured story on the home page.  It will not appear as a duplicate story in the footer on the home page if this box is checked.',
 				'id'   => $prefix.'isfeatured',
 				'type' => 'checkbox',
-			)
+			),
+				array(
+					'name' => 'Stylesheet',
+					'desc' => '',
+					'id' => $prefix.'stylesheet',
+					'type' => 'file',
+				),
 		);
 	}
 }
@@ -508,5 +522,6 @@ class Issue extends CustomPostType {
 			)
 		);
 	}
-}
+} // END class 
+
 ?>

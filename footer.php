@@ -43,6 +43,7 @@
 								<?php if(!function_exists('dynamic_sidebar') or !dynamic_sidebar('Footer - Column four')):?><?php endif;?>
 							</div>
 						</div>
+
 					</div>
 				</div>
 			</div>
