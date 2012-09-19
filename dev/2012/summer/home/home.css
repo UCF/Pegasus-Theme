@@ -100,3 +100,167 @@ and (max-width: 979px) {
 @media only screen and (max-width: 480px) {
 
 }
+
+
+
+
+
+/** RESPONSIVE STYLES **/
+
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
+}
+
+/* Landscape phone to portrait tablet */
+@media only screen and (max-width: 767px) {
+	
+	/* Subpages */
+	body.subpage #header+.container {
+		width: 88%;
+		float: none;
+		margin: auto;	
+	}
+	body.subpage #header .span12 {
+		width: 93%;	
+	}
+	/* About the Magazine */
+	body.subpage #header+.container {
+		width: 88%;
+	}
+	body.subpage #header+.container .row, body.subpage #header+.container .span12, body.subpage #header+.container .span7, body.subpage #header+.container .span4, body.subpage #header+.container .span3 {
+		width: 100%;
+		margin-left: 0;
+	}
+	body.subpage #header+.container .span12 h2 {
+		width: 100%;	
+	}
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 100% !important;
+		margin-left: -20px;
+	}
+	
+	#story_nav .span3, #footer_stories .span3 {
+		width: 128px;	
+		margin-bottom: 20px;
+		display: inline-block;
+		float: none;
+		margin-bottom: 20px;
+		vertical-align: top;
+	}
+	
+	#header .row {
+		width: 100%;	
+	}
+	#header .span12 {
+		width: 315px !important;	
+		margin-left: 0;
+	}
+		body.subpage #header .span12 {
+			margin-left: 20px !important;	
+		}
+	
+	#header .title {
+		width: 125px;
+		background-size: 125px 19px;
+		left: 45px;
+	}
+	#header .issue {
+		width: 85px;
+		font-size: 10px;
+		letter-spacing: 1.1px;
+		padding-top: 20px;
+		margin-left: 55px;
+	}
+	.description {
+		display: none;	
+	}
+	#header .toggle_story_nav {
+		margin-left: 10px;
+		left: 0;	
+	}
+
+	/* Footer */
+	#footer_stories, #footer_navigation {
+		width: 100%;	
+	}
+	#footer_stories .span12, #footer_navigation .span12 {
+		width: 93%;
+	}
+	#footer_navigation .span12 .row {
+		width: 93%;	
+	}
+	#footer_navigation h2.widgettitle {
+		margin-bottom: 5px !important;	
+	}
+	.widget, .textwidget {
+		margin-bottom: 25px !important;	
+	}
+	
+}
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* Subpages */
+	body.subpage #header+.container {
+		width: 730px;	
+		padding-left: 20px;	
+	}
+	body.subpage #header .span12 {
+		width: 710px;	
+	}
+	
+	/* About the Magazine */
+	body.subpage #header+.container .span12, body.subpage #header+.container .span12 h2 {
+		width: 710px !important;	
+	}
+	body.subpage #header+.container .span7 {
+		width: 437px;	
+	}
+	body.subpage #header+.container .span4 {
+		width: 247px;
+		margin-left: 20px;	
+	}
+	body.subpage #header+.container .span3 {
+		width: 167px;
+	}
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 750px !important;
+		margin-left: -20px;	
+	}
+	
+	#header .row {
+		width: 750px !important;	
+	}
+	.description {
+		display: none;	
+	}
+	#story_nav .span3, #footer .span3 {
+		width: 167px;	
+	}
+
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 750px;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 750px;	
+		margin-left: 0;
+	}
+	
+	#footer_stories, #footer_navigation {
+		width: 750px !important;	
+	}
+	
+	#footer_stories .span12 {
+		width: 720px;	
+	}
+		
+}		
