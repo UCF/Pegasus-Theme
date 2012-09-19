@@ -40,7 +40,6 @@ body,
 	
 	#header, #header .row, #header .span12, #header .span12 .row {
 		width: 100%;
-		margin-left: 0;
 	}
 	.row {
 		width: 93%;
