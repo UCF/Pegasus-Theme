@@ -225,4 +225,6 @@ body.subpage,
 .subpage #footer .textwidget a,
 .subpage #footer .widget a {font-weight:normal;}
 .subpage #footer_navigation {padding-top:0;}
-.subpage #footer_navigation > .span12 {padding-top:30px;border-top:1px solid #d7d7d7;}
+.subpage #footer_navigation > .span12 {padding-top:30px}
+
+.subpage #footer #footer_hr { border-top: 1px solid #d7d7d7; }
