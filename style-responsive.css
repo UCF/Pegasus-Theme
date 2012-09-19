@@ -11,6 +11,8 @@
 	}
 	
 	/* Footer */
+	#footer #footer_hr { width: 754px; }
+	
 	#footer_stories>div, #footer_navigation>div { margin-left: 15px; }
 	#footer_stories { padding-top: 10px; }
 }
@@ -29,7 +31,7 @@
 	.container.wide > .row { width: 100%; }
 	
 	/* Story Nav, Footer */
-	#footer #footer_hr { margin-left: 20px; }
+	#footer #footer_hr { margin-left: 20px; width: 100%; }
 	
 	#footer, #story_nav { margin-left: -20px; padding-right: 40px; }
 	#footer_stories>div, #footer_navigation>div { margin-left: 20px; }
