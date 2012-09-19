@@ -46,7 +46,7 @@
 		
 	</head>
 	
-	<body class="<?=body_classes()?> <? if ($post->post_type == 'page') { print 'page'; }?>">
+	<body class="<?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; }?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
 				<h3>Pegasus Magazine is available on the iPad!</h3>
