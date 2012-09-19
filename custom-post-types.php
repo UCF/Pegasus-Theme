@@ -481,12 +481,6 @@ class Story extends CustomPostType {
 				'id'   => $prefix.'isfeatured',
 				'type' => 'checkbox',
 			),
-				array(
-					'name' => 'Stylesheet',
-					'desc' => '',
-					'id' => $prefix.'stylesheet',
-					'type' => 'file',
-				),
 		);
 	}
 }
