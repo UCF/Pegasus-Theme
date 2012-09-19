@@ -26,6 +26,16 @@ if (typeof jQuery != 'undefined'){
 			$('link#gforms_css-css').remove();
 		}
 		
+		var legacySupport = function($) {
+			// To prevent screwy things from happening with bootstrap-responsive.css
+			// and the first issue of Pegasus, we need to un-set bootstrap-responsive
+			// and style-responsive on any story that is from the first edition
+			if (document.title == '58,587' || document.title == 'Nano' || document.title == 'Harris Rosen' || document.title == 'The Big Picture' || document.title == 'Big Screen, Tiny Budget') {
+				$('link#bootstrap-responsive-css').remove();
+				$('link#style-responsive-css').remove();
+			}
+		}
+		
 
 		/* Theme Specific Code Here */
 		//Generic.homeDimensions($);
@@ -36,6 +46,7 @@ if (typeof jQuery != 'undefined'){
 		Webcom.loadMoreSearchResults($);
 		defaultMenuSeparators($);
 		removeExtraGformStyles($);
+		legacySupport($);
 
 
 		// Is this the user's first visit to the site?
