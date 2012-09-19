@@ -22,9 +22,10 @@
 	
 	/* Header */
 	#header { margin-left: -20px; padding-right: 40px; }
+	#header>.row { width: 100%; }
 	#header>.row>.span12 { width: 315px; }
 	#header .title { background-size: 125px 19px; width: 125px; position: relative; left: 65px; }
-	#header .issue { font-size: 10px; letter-spacing: 1.1px; width: 85px; position: absolute; top: 0; right: 20px; }
+	#header .issue { font-size: 10px; letter-spacing: 1.1px; width: 85px; position: absolute; top: 0; right: 25px; }
 	#header .toggle_story_nav { top: 0; left: 10px; }
 	
 	/* Content */
@@ -32,6 +33,11 @@
 	.container.wide > .row {
 		width: 100%;
 	}
+	
+	/* Footer */
+	#footer { margin-left: -20px; padding-right: 40px; }
+	#footer_stories>div, #footer_navigation>div { margin-left: 20px; }
+	#footer_stories .span3 {  display: inline-block; float: none; margin-bottom: 20px; vertical-align: top; width: 128px; }
 	
 	
 	/* Shrinkable bootstrap tables for tablets/phones.
