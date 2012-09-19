@@ -37,7 +37,7 @@
 	/* Footer */
 	#footer { margin-left: -20px; padding-right: 40px; }
 	#footer_stories>div, #footer_navigation>div { margin-left: 20px; }
-	#footer_stories .span3 {  display: inline-block; float: none; margin-bottom: 20px; vertical-align: top; width: 128px; }
+	#footer_stories .span3 { display: inline-block; float: none; margin-bottom: 20px; vertical-align: top; width: 128px; margin-left: 0; }
 	
 	
 	/* Shrinkable bootstrap tables for tablets/phones.

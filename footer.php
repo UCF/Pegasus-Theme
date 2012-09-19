@@ -21,6 +21,8 @@
 					
 				</div>
 				
+				<div class="row" id="footer_hr"><!-- --></div>
+				
 				<div class="row" id="footer_navigation">
 					<div class="span12">
 						<div class="row">

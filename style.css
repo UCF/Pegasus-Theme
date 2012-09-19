@@ -123,6 +123,7 @@ h2#footer_logo {
 	background: url('static/img/pegasus-logo-fill.png') center center no-repeat;	
 	margin: 0;
 }
+#footer #footer_hr { width:100%; margin-left: 20px; height:1px; border-top: 1px solid #fff; }
 #footer .firststory {
 	/*margin-left: 0;	*/
 	clear: both;
@@ -171,7 +172,7 @@ h2#footer_logo {
 		}
 		
 	#footer_navigation {
-		border-top: 1px solid #fff;
+		/*border-top: 1px solid #fff;*/
 		padding: 30px 0 0;
 	}
 		#footer_navigation ul {
