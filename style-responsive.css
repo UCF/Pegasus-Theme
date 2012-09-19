@@ -1,18 +1,8 @@
 @media (max-width: 979px) {
-	#UCFHBSearch_and_links { display: none; }
-	#UCFHBHeader div.UCFHBWrapper { width: 100%; }
+	
 }
 
 @media (max-width: 767px) {
-	#header { margin-left: 0; }
-	
-	#home .description { margin-top: 10px; }
-	
-	#below-the-fold { margin-left: 0; }
-	#below-the-fold .span4 { width: 100%; margin-left: 0; margin-bottom: 20px; }
-	
-	.news .item { margin-bottom: 10px; }
-	
 	/* Shrinkable bootstrap tables for tablets/phones.
 	Responsive table guide via css-tricks.com/responsive-data-tables/ */
 	table.table.table-striped, 
@@ -69,38 +59,5 @@
 }
 
 @media (max-width: 480px) {
-	.navbar .menu {
-		padding: 0;
-	}
-	.navbar ul#header-menu li:after {
-		content: "";
-	}
-	.navbar ul#header-menu li, .navbar ul#header-menu ul.dropdown-menu li {
-		display: block;
-		float: none;
-		margin: 0;
-		line-height: 13px;
-	}
-	.navbar ul#header-menu li a {
-		display: block;
-		color: #999;
-		font-weight: bold;
-		font-size: 13px;
-		padding: 6px 15px;
-		border-radius: 3px 3px 3px 3px;
-	}
-		.navbar ul#header-menu li.active a {
-			color: #fff;
-			background-color: #222;
-		}
-	.navbar ul#header-menu li a:hover {
-		background-color: #222;
-		text-decoration: none;
-		color: #fff;
-	}
-	.navbar ul#header-menu b.caret {
-		border-bottom-color: #fff;
-    	border-top-color: #fff;
-		margin-top: 4px;
-	}
+	
 }
