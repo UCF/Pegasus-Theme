@@ -59,6 +59,20 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 
 
 /*
+* Returns featured image URL of a specified post ID
+*/
+function get_featured_image_url($id) {
+	$url = '';
+	if(has_post_thumbnail($id)
+		&& ($thumb_id = get_post_thumbnail_id($id)) !== False
+		&& ($image = wp_get_attachment_image_src($thumb_id, 'single-post-thumbnail')) !== False) {
+			return $image[0];
+	}
+	return $url;
+}
+
+
+/*
  * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
  */

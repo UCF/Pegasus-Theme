@@ -676,12 +676,13 @@ function get_custom_post_type($name){
 * @return array
 * @author Chris Conover
 **/
+/*
 function get_featured_image_url($post) {
 	if(has_post_thumbnail($post) && ($thumbnail_id = get_post_thumbnail_id($post)) && ($image = wp_get_attachment_image_src($thumbnail_id))) {
 		return $image[0];
 	}
 	return False;
-}
+}*/
 
 
 /**
