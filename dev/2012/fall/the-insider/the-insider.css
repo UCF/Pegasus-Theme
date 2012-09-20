@@ -1,0 +1,18 @@
+#body_content { display: none; }
+
+#insider_body_content { width: 100%; position: relative; top: -50px; }
+#insider_body_content>.row { width: 980px; margin: auto; }
+
+
+/* Responsive Styles */
+
+@media (min-width: 768px) and (max-width: 979px) { 
+	#insider_body_content>.row { width: 748px; margin: auto; }
+}
+
+@media (max-width: 767px) {
+	#insider_body_content>.row { width: 100%; }
+}
+
+
+/* IE Fixes */
