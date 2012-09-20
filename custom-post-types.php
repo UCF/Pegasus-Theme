@@ -470,7 +470,7 @@ class Story extends CustomPostType {
 		$taxonomies     = array('issues');
 
 	static function get_javascript_url($story) {
-		return $this->get_file_url($story, 'story_javascript');
+		return Story::get_file_url($story, 'story_javascript');
 	}
 
 	public function fields() {
@@ -525,7 +525,7 @@ class Issue extends CustomPostType {
 		$taxonomies     = array();
 
 	static function get_javascript_url($issue) {
-		return $this->get_file_url($issue, 'issue_javascript');
+		return Issue::get_file_url($issue, 'issue_javascript');
 	}
 
 	public function fields() {
