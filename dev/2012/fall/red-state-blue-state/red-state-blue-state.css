@@ -1,12 +1,11 @@
 body {
-	background: #c3d0e0; /* Old browsers */
+	background: #fff; /* Old browsers */
 	background: -moz-linear-gradient(left,  #c3d0e0 0%, #e3ebf4 15%, #f4f4f4 25%, #ffffff 50%, #f4f4f4 75%, #e3ebf4 85%, #c3d0e0 100%); /* FF3.6+ */
 	background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c3d0e0), color-stop(15%,#e3ebf4), color-stop(25%,#f4f4f4), color-stop(50%,#ffffff), color-stop(75%,#f4f4f4), color-stop(85%,#e3ebf4), color-stop(100%,#c3d0e0)); /* Chrome,Safari4+ */
 	background: -webkit-linear-gradient(left,  #c3d0e0 0%,#e3ebf4 15%,#f4f4f4 25%,#ffffff 50%,#f4f4f4 75%,#e3ebf4 85%,#c3d0e0 100%); /* Chrome10+,Safari5.1+ */
 	background: -o-linear-gradient(left,  #c3d0e0 0%,#e3ebf4 15%,#f4f4f4 25%,#ffffff 50%,#f4f4f4 75%,#e3ebf4 85%,#c3d0e0 100%); /* Opera 11.10+ */
 	background: -ms-linear-gradient(left,  #c3d0e0 0%,#e3ebf4 15%,#f4f4f4 25%,#ffffff 50%,#f4f4f4 75%,#e3ebf4 85%,#c3d0e0 100%); /* IE10+ */
 	background: linear-gradient(to right,  #c3d0e0 0%,#e3ebf4 15%,#f4f4f4 25%,#ffffff 50%,#f4f4f4 75%,#e3ebf4 85%,#c3d0e0 100%); /* W3C */
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3d0e0', endColorstr='#c3d0e0',GradientType=1 ); /* IE6-9 */
 }
 
 #header, #footer { background-color: rgba(0,0,0,0.85); }
@@ -28,6 +27,8 @@ body {
 .author_name { font-weight: bold; padding-top: 15px; }
 
 
+/* Responsive Styles */
+
 @media (min-width: 768px) and (max-width: 979px) { 
 	#dem_author { padding-top: 85px; }
 	.author_name { padding-top: 5px; }
@@ -38,3 +39,10 @@ body {
 	#rep_author { border-bottom: 1px solid #666; padding-top: 15px; padding-bottom: 50px; }
 	#dem_author { padding-top: 15px; }
 }
+
+
+/* IE Fixes */
+.ie7 #header, .ie7 #footer { background-color: #000; filter: alpha(opacity=85); }
+.ie8 #header, .ie8 #footer { background-color: #000; -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)"; }
+
+.ie7 #dem_author, .ie8 #dem_author { padding-top: 111px; }
