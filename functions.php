@@ -177,8 +177,10 @@ function enqueue_issue_story_scripts() {
 	if($post->post_type == 'issue' && ($javascript_url = Issue::get_javascript_url($post)) !== False) {
 		Config::add_script($javascript_url);
 	} else if($post->post_type == 'story' && ($javascript_url = Story::get_javascript_url($post)) !== False) {
+		if( ($issue = get_story_issue($post)) !== False && ($issue_javascript_url = Issue::get_javascript_url($issue)) !== False ) {
+			Config::add_script($issue_javascript_url);
+		}
 		Config::add_script($javascript_url);
-
 	}
 }
 add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
