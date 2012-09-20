@@ -21,6 +21,8 @@ body {
 #section1 .red { color: #d2232a; }
 #section1 .blue { color: #4d85b6; }
 
+#rep_author { padding-top: 35px; }
+#dem_author { padding-top: 59px; }
 #button_romney, #button_obama { float: left; margin-right: 15px; width: 25%; }
 .author_name, .author_desc { float: left; font-style: italic; font-size: 18px; display: block; width: 70%; }
-.author_name { font-weight: bold; }
+.author_name { font-weight: bold; padding-top: 15px; }
