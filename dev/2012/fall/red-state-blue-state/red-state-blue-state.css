@@ -26,6 +26,7 @@ body {
 .author_name, .author_desc { float: left; font-style: italic; font-size: 18px; display: block; width: 70%; }
 .author_name { font-weight: bold; padding-top: 15px; }
 
+#ie-gradient-bg { display: hidden; }
 
 /* Responsive Styles */
 
