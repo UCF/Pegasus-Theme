@@ -9,6 +9,18 @@ body {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c3d0e0', endColorstr='#c3d0e0',GradientType=1 ); /* IE6-9 */
 }
 
+#header, #footer { background-color: rgba(0,0,0,0.85); }
+
 .intro { }
-.intro h1 { display: block; width: 935px; height: 219px; text-indent: -9999px; }
-.intro h2 { text-indent: -9999px; height: 1px; display: block; }
+.intro #oranges_wrap { text-align: center; padding-top: 80px; }
+.intro h1, .intro h2 { text-indent: -9999px; height: 1px; display: block; }
+
+#section1 { padding-bottom: 120px; }
+#section1 p { font-size: 16px; font-family: "Helvetica Neue",Helvetica,sans-serif; line-height: 26px; color: #181818; }
+#section1 .alt { font-family: "HelveticaNeue-CondensedBold", "Helvetica Neue",Helvetica,sans-serif; font-weight: bold; font-stretch: condensed; font-size: 22px; }
+#section1 .red { color: #d2232a; }
+#section1 .blue { color: #4d85b6; }
+
+#button_romney, #button_obama { float: left; margin-right: 15px; width: 25%; }
+.author_name, .author_desc { float: left; font-style: italic; font-size: 18px; display: block; width: 70%; }
+.author_name { font-weight: bold; }
