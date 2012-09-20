@@ -67,7 +67,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	background-image: url(static/img/pegasus-logo-fill.png);
 	background-position:center left;
 }
-#header .issue {padding-top:20px;color:#FFF;font-size:18px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:1.5px;}
+#header .issue {padding-top:20px;color:#FFF;font-size:16px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:4px;}
 
 #header .description, #home_header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
 #header .toggle_story_nav {
