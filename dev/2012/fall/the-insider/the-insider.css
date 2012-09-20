@@ -1,17 +1,44 @@
+p.caption { font-size: 14px; line-height: 18px; }
+p.alt { font-size: 22px; color: #9b2036; line-height: 28px; font-weight: bold; }
+p.excerpt { font-size: 14px; color: #9b2036; font-style: italic; line-height: 18px; }
+.caption_box { padding: 10px 10px 10px 30px; }
+.caption_box .caption_title { font-size: 12px; line-height: 16px; text-transform: uppercase; font-weight: bold; color: #fff; }
+.caption_box .caption { font-size: 12px; color: #fff; line-height: 16px; margin-top: 5px; margin-bottom: 0; }
+
+
+#header { background-color: transparent; }
+
 #body_content { display: none; }
 
-#insider_body_content { width: 100%; position: relative; top: -50px; }
-#insider_body_content>.row { width: 980px; margin: auto; }
+#insider_body_top { width: 100%; position: relative; top: -50px; }
+#insider_body_top>.row { width: 980px; margin: auto; }
+#insider_body_top h1 { display: block; text-indent: -9999px; width: 1px; height: 1px; }
+#insider_body_top img#title { margin-top: 170px; }
+#insider_body_top h2 { font-family: Georgia, "Times New Roman", Times, serif; font-size: 20px; font-weight: normal; color: #fff; line-height: 24px; }
+
+#insider_body_top .intro { height: 775px; }
+
+#section1 { }
+#section1>.span6:first-child p:first-child:first-letter { font-family: "Arial Black", Arial, Helvetica, sans-serif; font-size: 70px; color: #9b2036; display: block; float:left; padding-top: 4px; padding-right: 6px; }
+
+#section2 { padding: 20px 0; }
+#section2 img { -webkit-box-shadow:  2px 6px 10px 5px rgba(0, 0, 0, 0.2); box-shadow:  2px 6px 10px 5px rgba(0, 0, 0, 0.2); }
+
+#section3 { margin-bottom: 80px; }
+#section3 h3 { font-size: 14px; color: #9b2036; line-height: 18px; }
+#section3>.span5 p.alt { margin-top: 0; }
+
+#footer { background-color: #000; }
 
 
 /* Responsive Styles */
 
 @media (min-width: 768px) and (max-width: 979px) { 
-	#insider_body_content>.row { width: 748px; margin: auto; }
+	#insider_body_top>.row { width: 748px; margin: auto; }
 }
 
 @media (max-width: 767px) {
-	#insider_body_content>.row { width: 100%; }
+	#insider_body_top>.row { width: 100%; }
 }
 
 
