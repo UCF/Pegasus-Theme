@@ -3,6 +3,7 @@ body,
 #footer {background-color:#041124;}
 
 #header {height: 50px;color:#FFF;position:relative;}
+.ie7 #header { position: relative; z-index: 999; background-color: transparent; }
 #header .title {position:static;}
 #header .toggle_story_nav {display:none;}
 #header .issue {display:none;}
