@@ -89,7 +89,7 @@
 						PEGASUS
 						</a>
 						<div class="span5 issue">
-							Summer 2012
+							<?php $current_issue = get_current_issue(); echo $current_issue->post_title; ?>
 						</div>
 			
 						<div class="span4 description">
