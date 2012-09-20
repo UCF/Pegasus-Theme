@@ -173,7 +173,7 @@ add_action('init', 'issue_init');
  */ 
 function enqueue_issue_story_scripts() {
 	global $post;
-	
+
 	if($post->post_type == 'issue' 
 		&& ($javascript_id = get_post_meta($post->ID, 'issue_javascript', True)) !== False
 			&& ($javascript_url = wp_get_attachment_url($javascript_id)) !== False) {
@@ -186,4 +186,25 @@ function enqueue_issue_story_scripts() {
 	}
 }
 add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
+
+/*
+ * Get the issue associated with a story
+ */
+function get_story_issue($story) {
+	$issue_terms = wp_get_object_terms($story->ID, 'issues');
+	$issue_posts = get_posts(array('post_type'=>'issue', 'numberposts'=>-1));
+
+	# The term slug and post slugs are mirrors of each other
+	# So a term slug might be 2012-fall while the post slug is fall-2012
+	foreach($issue_terms as $term) {
+		# reverse the term slug
+		$post_slug = implode('-', array_reverse(explode('-', $term->slug)));
+		foreach($issue_posts as $issue) {
+			if($post_slug == $issue->post_name) {
+				return $issue;
+			}
+		}
+	}
+	return False;
+}
 ?>
