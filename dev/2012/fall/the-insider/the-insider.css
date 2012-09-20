@@ -34,10 +34,14 @@ p.excerpt { font-size: 14px; color: #9b2036; font-style: italic; line-height: 18
 /* Responsive Styles */
 
 @media (min-width: 768px) and (max-width: 979px) { 
+	#insider_body_top { background-size: 825px 500px !important; }
 	#insider_body_top>.row { width: 748px; margin: auto; }
+	
+	#insider_body_top .intro { height: 500px; }
 }
 
 @media (max-width: 767px) {
+	#insider_body_top { background-position: left top !important; top: -75px; }
 	#insider_body_top>.row { width: 100%; }
 }
 
