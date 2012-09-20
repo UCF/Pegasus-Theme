@@ -53,7 +53,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 }
 
 /* Header */
-#header {background-color:#e3c353;height:50px;color:#FFF;position:relative;}
+#header {background-color:#e3c353;height:50px;color:#FFF;position:relative;z-index:999;}
 #header .title,
 #header .issue,
 #header .description {}
