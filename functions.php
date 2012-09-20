@@ -174,13 +174,9 @@ add_action('init', 'issue_init');
 function enqueue_issue_story_scripts() {
 	global $post;
 
-	if($post->post_type == 'issue' 
-		&& ($javascript_id = get_post_meta($post->ID, 'issue_javascript', True)) !== False
-			&& ($javascript_url = wp_get_attachment_url($javascript_id)) !== False) {
+	if($post->post_type == 'issue' && ($javascript_url = Issue::get_javascript_url($post)) !== False) {
 		Config::add_script($javascript_url);
-	} else if($post->post_type == 'story'
-		&& ($javascript_id = get_post_meta($post->ID, 'story_javascript', True)) !== False
-			&& ($javascript_url = wp_get_attachment_url($javascript_id)) !== False) {
+	} else if($post->post_type == 'story' && ($javascript_url = Story::get_javascript_url($post)) !== False) {
 		Config::add_script($javascript_url);
 
 	}
