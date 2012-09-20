@@ -28,6 +28,15 @@ abstract class CustomPostType{
 		$default_orderby = null,
 		$default_order   = null;
 	
+
+	static function get_file_url($object, $field_name) {
+		if( ($file_id = get_post_meta($object->ID, $field_name, True)) !== False 
+				&& ($file_url = wp_get_attachment_url($file_id)) !== False) {
+			return $file_url;
+		} else {
+			return False;
+		}
+	}
 	
 	/**
 	 * Wrapper for get_posts function, that predefines post_type for this
@@ -460,6 +469,10 @@ class Story extends CustomPostType {
 		$use_order      = False,
 		$taxonomies     = array('issues');
 
+	static function get_javascript_url($story) {
+		return $this->get_file_url($story, 'story_javascript');
+	}
+
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -510,6 +523,10 @@ class Issue extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$taxonomies     = array();
+
+	static function get_javascript_url($issue) {
+		return $this->get_file_url($issue, 'issue_javascript');
+	}
 
 	public function fields() {
 		$prefix = $this->options('name').'_';
