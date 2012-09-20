@@ -168,4 +168,22 @@ function issue_init() {
 }
 add_action('init', 'issue_init');
 
+/*
+ * Enqueue Issue or Story post type specific scripts
+ */ 
+function enqueue_issue_story_scripts() {
+	global $post;
+	
+	if($post->post_type == 'issue' 
+		&& ($javascript_id = get_post_meta($post->ID, 'issue_javascript', True)) !== False
+			&& ($javascript_url = wp_get_attachment_url($javascript_id)) !== False) {
+		Config::add_script($javascript_url);
+	} else if($post->post_type == 'story'
+		&& ($javascript_id = get_post_meta($post->ID, 'story_javascript', True)) !== False
+			&& ($javascript_url = wp_get_attachment_url($javascript_id)) !== False) {
+		Config::add_script($javascript_url);
+
+	}
+}
+add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
 ?>
