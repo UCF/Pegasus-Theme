@@ -40,6 +40,7 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
 function get_current_issue_stories($exclude=array(), $limit=-1) {
 
 	$current_issue_term = get_term_by('slug', CURRENT_ISSUE_TERM_SLUG, 'issues');
+	
 	if($current_edition_term === FALSE) {
 		return array();
 	} else {
@@ -49,9 +50,11 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 			'orderby'     => 'rand',
 			'exclude'     => $exclude,
 			'tax_query'   => array(
-				'taxonomy' => 'issues',
-				'field'    => 'id',
-				'terms'    => $current_issue_term->term_id
+				array(
+					'taxonomy' => 'issues',
+					'field'    => 'id',
+					'terms'    => $current_issue_term->term_id
+				)
 			),
 		));
 	}
