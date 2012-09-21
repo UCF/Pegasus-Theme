@@ -32,11 +32,12 @@
 			<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 
-		<? if($post->post_type == 'story' && ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False) { 
-				if( ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_stylesheet_url($story_issue)) !== False ) {
-					?> <link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' /> <?
-				}
-		?>
+		<? if( $post->post_type == 'story' && ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_stylesheet_url($story_issue)) !== False ) { ?>
+				<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
+		<? } ?>
+
+		<? if($post->post_type == 'story' && ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False) { ?>
+				
 			<link rel='stylesheet' href="<?=$story_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 
