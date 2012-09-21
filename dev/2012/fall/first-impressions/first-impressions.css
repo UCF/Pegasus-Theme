@@ -11,3 +11,4 @@ h2 {color:#fc0303;text-transform:uppercase;font-family:"Arial Black",Arial;}
 	font-weight:bold;
 	font-family: "Arial Black",Arial;
 }
+p.caption {border-left: 8px #fc0303 solid;padding-left:10px;font-size:16px;margin-bottom:50px;}
