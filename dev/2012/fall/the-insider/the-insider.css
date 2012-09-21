@@ -19,7 +19,7 @@ p.excerpt { font-size: 14px; color: #9b2036; font-style: italic; line-height: 18
 #insider_body_top .intro { height: 775px; }
 
 #section1 { }
-#section1>.span6:first-child p:first-child:first-letter { font-family: "Arial Black", Arial, Helvetica, sans-serif; font-size: 70px; color: #9b2036; display: block; float:left; padding-top: 4px; padding-right: 6px; font-weight: bold; }
+#section1 .firstletter { color: #9b2036; padding-top: 4px; padding-right: 6px; }
 
 #section2 { padding: 20px 0; }
 #section2 img { -webkit-box-shadow:  2px 6px 10px 5px rgba(0, 0, 0, 0.2); box-shadow:  2px 6px 10px 5px rgba(0, 0, 0, 0.2); }
