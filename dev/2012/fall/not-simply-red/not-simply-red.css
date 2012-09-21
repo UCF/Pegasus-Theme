@@ -1,0 +1,45 @@
+body {background-color:#000;}
+#header, #footer {background-color:#333333;}
+.container.wide {background-repeat: no-repeat;background-position: center top}
+.intro {margin-top:60px;margin-bottom:95px;}
+.intro p {color:#edeff4;font-size:16px;}
+.intro p.lead {font-family:"Helvetica Neue",Helvetica,sans-serif;font-weight:600;font-size:20px;}
+h2 {color:#dedfe0;font-size:65px;line-height:1em;text-transform:uppercase}
+h2 .red {color:#fcceb8;font-weight:200;}
+.content h3 {color:#f9b091;line-height:18px;margin-bottom:5px;font-weight:normal;}
+.content p {color:#FFF;}
+.section p {margin-top:0;}
+#portrait {margin-top:20px;}
+
+p.quote {font-size:23px;margin-top:60px;color:#f9b091;line-height:1.5em;}
+p.caption {font-size:13px;}
+
+.highlight {}
+.highlight .bar {background-color:#e1a285;width:11px;height:100%;display:block;float:left;}
+.highlight .blurb {
+	margin-top:0;
+	padding:12px;
+	margin-left:17px;
+	font-family:"Helvetica Neue",Helvetica,sans-serif;
+	font-size:12px;
+	color:#FFF;
+	background-color:#404041;
+}
+.highlight .blurb h3 {color:#f9b091;line-height:18px;margin-bottom:5px;font-weight:normal;}
+.highlight .blurb p {margin-top:0;}
+
+#miles {margin-bottom:15px;}
+#cues p {margin-right:15px;}
+#cues img {margin-right:20px;}
+#cues #group3 {margin-right:0;}
+
+#planet {padding-top:250px;}
+
+#footer {margin-top:80px;}
+
+@media (max-width: 979px) and (min-width: 768px) {
+	#cues #group3 {margin-left:0;margin-top:15px;}
+}
+@media (max-width: 767px) {
+	#cues img {margin-top:15px;}
+}

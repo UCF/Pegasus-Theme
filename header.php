@@ -27,21 +27,21 @@
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
 		</script>
-		<? if($post->post_type == 'story'
-			&& ($stylesheet_id = get_post_meta($post->ID, 'story_stylesheet', True)) !== False
-			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
-		<? if($post->post_type == 'page'
-			&& ($stylesheet_id = get_post_meta($post->ID, 'page_stylesheet', True)) !== False
-			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
+
+		<? if($post->post_type == 'issue' && ($issue_stylesheet_url = Issue::get_stylesheet_url($post)) !== False) { ?>
+			<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 
-		<? if($post->post_type == 'issue'
-			&& ($stylesheet_id = get_post_meta($post->ID, 'issue_stylesheet', True)) !== False
-			&& ($stylesheet_url = wp_get_attachment_url($stylesheet_id)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$stylesheet_url?>" type='text/css' media='all' />
+		<? if($post->post_type == 'story' && ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False) { 
+				if( ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_stylesheet_url($story_issue)) !== False ) {
+					?> <link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' /> <?
+				}
+		?>
+			<link rel='stylesheet' href="<?=$story_stylesheet_url?>" type='text/css' media='all' />
+		<? } ?>
+
+		<? if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) { ?>
+			<link rel='stylesheet' href="<?=$page_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 		
 	</head>
