@@ -80,11 +80,11 @@ add_shortcode('search_form', 'sc_search_form');
  *
  */
 function sc_image($attr) {
-	global $wpdb;
+	global $wpdb, $post;
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']));
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post->ID);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$post = $rows[0];
