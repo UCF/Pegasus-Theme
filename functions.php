@@ -87,9 +87,7 @@ function get_navigation_stories() {
 	if(is_front_page() || $post->post_type == 'issue') {
 		$current_issue  = (is_front_page()) ? get_current_issue() : $post;
 		$cover_story_id = get_post_meta($current_issue->ID, 'issue_cover_story', True);
-		if($cover_story_id === False || $cover_story_id == '') {
-			die('No cover story selected for '.$current_issue->post_title);
-		} else {
+		if($cover_story_id !== False && $cover_story_id != '') {
 			if( ($cover_story = get_post($cover_story_id)) !== False) {
 				$exclude[] = $cover_story->ID;
 			}
