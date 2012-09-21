@@ -385,6 +385,10 @@ class Page extends CustomPostType {
 		$use_metabox    = True,
 		$built_in       = True;
 
+	static function get_stylesheet_url($issue) {
+		return Issue::get_file_url($issue, 'page_stylesheet');
+	}
+
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -473,6 +477,10 @@ class Story extends CustomPostType {
 		return Story::get_file_url($story, 'story_javascript');
 	}
 
+	static function get_stylesheet_url($issue) {
+		return Issue::get_file_url($issue, 'story_stylesheet');
+	}
+
 	public function fields() {
 		$prefix = $this->options('name').'_';
 		return array(
@@ -526,6 +534,10 @@ class Issue extends CustomPostType {
 
 	static function get_javascript_url($issue) {
 		return Issue::get_file_url($issue, 'issue_javascript');
+	}
+
+	static function get_stylesheet_url($issue) {
+		return Issue::get_file_url($issue, 'issue_stylesheet');
 	}
 
 	public function fields() {
