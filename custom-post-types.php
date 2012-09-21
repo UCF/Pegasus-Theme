@@ -541,7 +541,14 @@ class Issue extends CustomPostType {
 	}
 
 	public function fields() {
+		global $post;
+
 		$prefix = $this->options('name').'_';
+
+		$story_options = array();
+		foreach(get_issue_stories($post) as $story) {
+			$story_options[$story->post_title] = $story->ID;
+		}
 		return array(
 			array(
 				'name' => 'Stylesheet',
@@ -555,6 +562,13 @@ class Issue extends CustomPostType {
 				'id'   => $prefix.'javascript',
 				'type' => 'file',
 			),
+			array(
+				'name'    => 'Cover Story',
+				'desc'    => '',
+				'id'      => $prefix.'cover_story',
+				'type'    => 'select',
+				'options' => $story_options
+			)
 		);
 	}
 } // END class 
