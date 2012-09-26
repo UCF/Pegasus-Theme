@@ -212,16 +212,6 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['search_per_page'],
 		)),
 	),
-	'Site' => array(
-		new SelectField(array(
-			'name'        => 'Featured Front Page Story',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_story]',
-			'description' => 'This story will be excluded from the front page\'s footer navigation.',
-			'value'       => $theme_options['front_page_story'],
-			'default'     => '',
-			'choices'     => get_front_page_story_choices()
-		)),
-	),
 	'Social' => array(
 		new RadioField(array(
 			'name'        => 'Enable OpenGraph',

@@ -84,10 +84,13 @@ function get_navigation_stories() {
 
 	$exclude = array();
 
-	if(is_front_page()) {
-		$story_id = get_theme_option('front_page_story');
-		if( ($story = get_post($story_id)) !== Fales) {
-			$exclude = $story->ID;
+	if(is_front_page() || $post->post_type == 'issue') {
+		$current_issue  = (is_front_page()) ? get_current_issue() : $post;
+		$cover_story_id = get_post_meta($current_issue->ID, 'issue_cover_story', True);
+		if($cover_story_id !== False && $cover_story_id != '') {
+			if( ($cover_story = get_post($cover_story_id)) !== False) {
+				$exclude[] = $cover_story->ID;
+			}
 		}
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
@@ -103,21 +106,6 @@ function get_theme_option($key) {
 	global $theme_options;
 	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
 }
-
-
-/*
- * Returns an array of choices for the front page features story site setting.
- */
-function get_front_page_story_choices() {
-	$choices = array();
-
-	$stories = get_posts(array('post_type'=>'story', 'numberposts'=>-1));
-	foreach($stories as $story) {
-		$choices[$story->post_title] = $story->ID;
-	}
-	return $choices;
-}
-
 
 /*
  * Is the iPad app deployed or not
@@ -207,5 +195,23 @@ function get_story_issue($story) {
 		}
 	}
 	return False;
+}
+
+/*
+ * Get the stories associated with an issue
+ */
+function get_issue_stories($issue) {
+	$issue_term_slug = implode('-', array_reverse(explode('-', $issue->post_name)));
+	return get_posts(array(
+		'post_type'   => 'story',
+		'numberposts' => -1,
+		'tax_query'   => array(
+				array(
+					'taxonomy' => 'issues',
+					'field'    => 'slug',
+					'terms'    => $issue_term_slug
+				)
+			)
+	));
 }
 ?>

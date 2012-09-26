@@ -7,12 +7,4 @@ h1 {color:#f3736c;font-size:35px;text-transform:uppercase;font-family:"Arial Bla
 }
 .intro {margin-top:80px;}
 .content p {color:#FFF;font-family:"Helvetica Neue",Helvetica,sans-serif;}
-.content p:first-child:first-letter {
-	font-size:400%;
-	display:block;
-	float:left;
-	margin-right:7px;
-	line-height:.85em;
-	font-weight:bold;
-	font-family: "Arial Black",Arial;
-}
+.firstletter {font-size:40px !important;padding-right: 7px;line-height:.85em}
