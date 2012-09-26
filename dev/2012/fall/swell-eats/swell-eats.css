@@ -42,6 +42,7 @@ p.lead {color:#FFF;margin-top:5px;margin-bottom:10px;}
 .recipe {margin-bottom:30px;}
 
 .recipe .image {position:relative}
+	.recipe .image p {margin:0;}
 	.recipe .image h3 {
 		font-family:"Titan One","Arial Block",Arial,sans-serif;
 		text-transform:uppercase;
