@@ -1,6 +1,7 @@
 
 
 #header, #footer {background-color:#e44c20;}
+#footer {margin-top:70px;}
 .container.wide {background-position:top center;background-repeat:no-repeat;}
 .bottom-squiggle {
 	background-repeat:repeat-x;
