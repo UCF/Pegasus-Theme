@@ -53,6 +53,10 @@ p.lead {color:#FFF;margin-top:5px;margin-bottom:10px;}
 		color:#FFF;
 		font-weight:100;
 	}
+	.recipe .image.bottom h3 {
+		top:auto;
+		bottom:20px;
+	}
 .recipe .card {
 	border: 2px dashed #aeb0b2;
 }
