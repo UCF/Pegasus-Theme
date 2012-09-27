@@ -95,7 +95,10 @@ function get_navigation_stories() {
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
-	return get_current_issue_stories($exclude, 4);
+	$top_stories     = get_current_issue_stories($exclude, 4);
+	$top_stories_ids = array_map(create_function('$p', 'return $p->ID;'), $top_stories);
+	$bottom_stories  = get_current_issue_stories(array_merge($exclude, $top_stories_ids));
+	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
 }
 
 
