@@ -1,6 +1,7 @@
 
 
 #header, #footer {background-color:#e44c20;}
+#footer {margin-top:70px;}
 .container.wide {background-position:top center;background-repeat:no-repeat;}
 .bottom-squiggle {
 	background-repeat:repeat-x;
@@ -42,6 +43,7 @@ p.lead {color:#FFF;margin-top:5px;margin-bottom:10px;}
 .recipe {margin-bottom:30px;}
 
 .recipe .image {position:relative}
+	.recipe .image p {margin:0;}
 	.recipe .image h3 {
 		font-family:"Titan One","Arial Block",Arial,sans-serif;
 		text-transform:uppercase;
@@ -51,6 +53,10 @@ p.lead {color:#FFF;margin-top:5px;margin-bottom:10px;}
 		font-size:35px;
 		color:#FFF;
 		font-weight:100;
+	}
+	.recipe .image.bottom h3 {
+		top:auto;
+		bottom:20px;
 	}
 .recipe .card {
 	border: 2px dashed #aeb0b2;
