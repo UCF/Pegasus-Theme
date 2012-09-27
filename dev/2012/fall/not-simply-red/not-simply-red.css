@@ -4,8 +4,8 @@ body {background-color:#000;}
 .intro {margin-top:60px;margin-bottom:95px;}
 .intro p {color:#edeff4;font-size:16px;}
 .intro p.lead {font-family:"Helvetica Neue",Helvetica,sans-serif;font-weight:600;font-size:20px;}
-h2 {color:#dedfe0;font-size:65px;line-height:1em;text-transform:uppercase}
-h2 .red {color:#fcceb8;font-weight:200;}
+.intro h2 {color:#dedfe0;font-size:65px;line-height:1em;text-transform:uppercase}
+.intro h2 .red {color:#fcceb8;font-weight:200;}
 .content h3 {color:#f9b091;line-height:18px;margin-bottom:5px;font-weight:normal;}
 .content p {color:#FFF;}
 .section p {margin-top:0;}
@@ -36,6 +36,7 @@ p.caption {font-size:13px;}
 #planet {padding-top:250px;}
 
 #footer {margin-top:80px;}
+#footer h2 {color:#FFF;}
 
 @media (max-width: 979px) and (min-width: 768px) {
 	#cues #group3 {margin-left:0;margin-top:15px;}

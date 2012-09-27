@@ -1,5 +1,6 @@
 #header, #footer {background-color:#f3736c;}
 #footer {margin-top:80px;}
+#footer h2 {color:#FFF;}
 h1 {color:#f3736c;font-size:35px;text-transform:uppercase;font-family:"Arial Black",Arial;}
 #body_content {
 	background-repeat:repeat;
