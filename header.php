@@ -46,7 +46,7 @@
 		<? } ?>
 		
 	</head>
-	
+	<? extract(get_navigation_stories()); ?>
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; }?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
@@ -59,27 +59,41 @@
 			<div class="modal-footer">
 			</div>
 		</div>
-		<div class="container wide" id="story_nav">
+		<div class="container wide header_stories">
 			<div class="row">
 				<div class="span12">
 					<h3>More in this Issue</h3>
 				</div>
 				<div class="span12">
 					<div class="row">
-						<? foreach(get_navigation_stories() as $story) {?>
+						<? foreach($top_stories as $story) {?>
 						<div class="span3">
+							<a href="<?=get_permalink($story->ID)?>">
+								<div class="thumb">
+									<img src="<?=get_featured_image_url($story->ID)?>" />
+								</div>
+								<div class="title">
+									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
+								</div>
+							</a>
+							</div>
+						<? } ?>
+					</div>
+				</div>
+			</div>
+			<div class="row bottom">
+				<? foreach($bottom_stories as $story) {?>
+					<div class="span2">
 						<a href="<?=get_permalink($story->ID)?>">
 							<div class="thumb">
 								<img src="<?=get_featured_image_url($story->ID)?>" />
 							</div>
 							<div class="title">
-								<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
+								<span class="title_text"><?=apply_filters('the_title', $story->post_title)?></span>
 							</div>
 						</a>
-						</div>
-						<? } ?>
 					</div>
-				</div>
+				<? } ?>
 			</div>
 		</div>
 		<div class="container wide" id="header">

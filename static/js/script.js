@@ -54,7 +54,7 @@ if (typeof jQuery != 'undefined'){
 			ipad          = navigator.userAgent.match(/iPad/i) == null ? false : true;
 
 		(function() {
-			$('#story_nav').hide();
+			$('.header_stories').hide();
 			
 			var toggle_nav         = $('.toggle_story_nav a'),
 				toggle_nav_tooltip = null,
@@ -69,7 +69,7 @@ if (typeof jQuery != 'undefined'){
 			toggle_nav
 				.on( (ipad) ? 'touchend' : 'click', function(e) {
 					e.preventDefault();
-					var story_nav = $('#story_nav');
+					var story_nav = $('.header_stories');
 					if(story_nav.is(':visible')) {
 						$(this).html('&#9650;');
 						if(!ipad) {
