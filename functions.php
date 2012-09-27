@@ -38,25 +38,12 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
  * Retrieve a list of the current issue's stories
  */
 function get_current_issue_stories($exclude=array(), $limit=-1) {
+	$current_issue = get_current_issue();
 
-	$current_issue_term = get_term_by('slug', CURRENT_ISSUE_TERM_SLUG, 'issues');
-	
-	if($current_edition_term === FALSE) {
-		return array();
+	if($current_issue === False) {
+		return False;
 	} else {
-		return get_posts(array(
-			'numberposts' => $limit,
-			'post_type'   => 'story',
-			'orderby'     => 'rand',
-			'exclude'     => $exclude,
-			'tax_query'   => array(
-				array(
-					'taxonomy' => 'issues',
-					'field'    => 'id',
-					'terms'    => $current_issue_term->term_id
-				)
-			),
-		));
+		return get_issue_stories($current_issue, array('exclude'=>$exclude, 'limit'=>$limit));
 	}
 }
 
@@ -79,10 +66,14 @@ function get_featured_image_url($id) {
  * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
  */
-function get_navigation_stories() {
+function get_navigation_stories($issue=null) {
 	global $post;
 
 	$exclude = array();
+
+	if(is_null($issue)) {
+		$issue = get_current_issue();
+	}
 
 	if(is_front_page() || $post->post_type == 'issue') {
 		$current_issue  = (is_front_page()) ? get_current_issue() : $post;
@@ -95,9 +86,9 @@ function get_navigation_stories() {
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
-	$top_stories     = get_current_issue_stories($exclude, 4);
-	$top_stories_ids = array_map(create_function('$p', 'return $p->ID;'), $top_stories);
-	$bottom_stories  = get_current_issue_stories(array_merge($exclude, $top_stories_ids));
+	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'limit' => 4));
+	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
+	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids));
 	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
 }
 
@@ -203,11 +194,21 @@ function get_story_issue($story) {
 /*
  * Get the stories associated with an issue
  */
-function get_issue_stories($issue) {
+function get_issue_stories($issue, $options=array()) {
+	$default_options = array(
+		'exclude' => array(),
+		'limit'   => -1,
+		'orderby' => 'rand'
+	);
+	$options = array_merge($default_options, $options);
+
 	$issue_term_slug = implode('-', array_reverse(explode('-', $issue->post_name)));
+	
 	return get_posts(array(
 		'post_type'   => 'story',
-		'numberposts' => -1,
+		'numberposts' => $options['limit'],
+		'exclude'     => $options['exclude'],
+		'orderby'     => $options['orderby'],
 		'tax_query'   => array(
 				array(
 					'taxonomy' => 'issues',

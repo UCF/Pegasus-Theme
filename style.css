@@ -135,16 +135,12 @@ h2#footer_logo {
 	/*margin-left: 0;	*/
 	clear: both;
 }
+#footer h2 {color:#FFF;margin-bottom:0;margin-top: 30px;}
 .footer_stories {
 	padding: 30px 0;
 }
 	.footer_stories.bottom {
 		padding-top:0;
-	}
-
-	.footer_stories h2 {
-		margin-bottom:20px;
-		color:#FFF;
 	}
 	.footer_stories img {
 		border: 0;
@@ -182,6 +178,9 @@ h2#footer_logo {
 			text-transform: uppercase;
 			letter-spacing: 3px;
 		}
+	#footer_navigation h2 {
+		margin-top:0;
+	}
 	#footer_navigation ul {
 		list-style-type: none;
 	}
@@ -200,6 +199,50 @@ h2#footer_logo {
 				font-weight: 200;
 				font-size:17px;
 			}
+#issue-carousel {
+
+}
+	#issue-carousel .carousel-control {
+		top:0;
+		border:0;
+		background:none;
+		width:200px;
+		opacity: .7;
+		margin-top:0;
+		font-size:15px;
+	}
+		#issue-carousel .carousel-control:hover {
+			opacity:.9;
+		}
+		#issue-carousel .carousel-control.right {
+			text-align: right;
+			right:0;
+		}
+		#issue-carousel .carousel-control.left {
+			text-align: left;
+			left:0;
+			display:none;
+		}
+		#issue-carousel .carousel-control .arrow {
+			font-size:30px;
+			display:block;
+			margin-top:-2px;
+		}
+			#issue-carousel .carousel-control.right .arrow {
+				float: right;
+				margin-left:5px;
+			}
+			#issue-carousel .carousel-control.left .arrow {
+				float: left;
+				margin-right:5px;
+			}
+	#issue-carousel .item .issue-title {
+		color:#FFF;
+		text-align: center;
+		font-size:25px;
+		opacity: .7
+	}
+
 #ipad_app {
 	display:block;
 	text-indent:-200em;
