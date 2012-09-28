@@ -394,6 +394,7 @@
 /* International Perspectives scripts */
 
 $(function() {
+	
 		// Delete annoying empty p tags
 		$("p:empty").remove();
 		
@@ -404,6 +405,11 @@ $(function() {
 			) 
 		{
 			$('#error_old_browser').attr('style', 'display: block !important;');
+		}
+		
+		if ($.browser.safari && $(window).width() <= 768) {
+			$('#error_browser_size').attr('style', 'display: none !important;');
+			$('#alert_ipad_map').show();
 		}
 		
 		// Add gray Pegasus logo to header, footer

@@ -294,9 +294,9 @@
 	#body_content .span7 { width: 540px !important; margin-left: 20px !important; }
 	#body_content .span8 { width: 620px !important; margin-left: 20px !important; }
 	
-	#error_browser_size, #error_old_browser { display: none; }
+	#error_browser_size, #error_old_browser, #alert_ipad_map { display: none; margin-top: 5px; }
 	
-	.ie6 #error_old_browser, .ie7 #error_old_browser, .ie8 #error_old_browser { display: block !important; margin-top: 5px; }
+	.ie6 #error_old_browser, .ie7 #error_old_browser, .ie8 #error_old_browser { display: block !important; }
 	
 	@media (min-width: 980px) {
 		html, body { overflow-x: hidden; }
@@ -305,5 +305,5 @@
 	@media (max-width: 979px) {
 		#viewport { width: 100%; overflow-x: scroll; left: auto; }
 		
-		#error_browser_size { display: block !important; margin-top: 5px; }
+		#error_browser_size { display: block !important; }
 	}	
