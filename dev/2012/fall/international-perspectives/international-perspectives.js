@@ -397,6 +397,15 @@ $(function() {
 		// Delete annoying empty p tags
 		$("p:empty").remove();
 		
+		// Display old browser alert for old browsers (note that <=IE8 are taken care of)
+		if( $.browser.webkit && !$.browser.safari && parseFloat($.browser.version) < 14 // Chrome
+			|| $.browser.mozilla && parseFloat($.browser.version) < 5 // Firefox
+			|| $.browser.webkit && $.browser.safari && parseFloat($.browser.version) < 5 // Safari
+			) 
+		{
+			$('#error_old_browser').attr('style', 'display: block !important;');
+		}
+		
 		// Add gray Pegasus logo to header, footer
 		$('#header .title').addClass('gray');
 	

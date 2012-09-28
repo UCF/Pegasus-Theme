@@ -7,11 +7,6 @@
 #header .toggle_story_nav a, #header .issue, #header .description { color: #525254; }
 #footer { background-color: #525254; }
 
-/* .span overrides to prevent bootstrap responsiveness */
-#body_content .span3 { width: 220px !important; }
-#body_content .span7 { width: 540px !important; }
-#body_content .span8 { width: 620px !important; }
-
 
 /* General Styles */	
 	#body_content h1 {
@@ -174,7 +169,7 @@
 	#sidebar_r { 
 		position: absolute;
 		bottom: 70px;
-		right: 40px;
+		left: 740px;
 		padding: 0;
 		z-index: 4;
 	}
@@ -291,3 +286,24 @@
 	#infobox_russia .univ_list { height: 140px; }
 	#infobox_unitedkingdom .univ_list { height: 140px; }
 	#infobox_ukraine .univ_list { height: 140px; }
+	
+	
+	
+/* Responsive/IE style overrides */
+	#body_content .span3 { width: 220px !important; margin-left: 20px !important; }
+	#body_content .span7 { width: 540px !important; margin-left: 20px !important; }
+	#body_content .span8 { width: 620px !important; margin-left: 20px !important; }
+	
+	#error_browser_size, #error_old_browser { display: none; }
+	
+	.ie6 #error_old_browser, .ie7 #error_old_browser, .ie8 #error_old_browser { display: block !important; margin-top: 5px; }
+	
+	@media (min-width: 980px) {
+		html, body { overflow-x: hidden; }
+	}
+	
+	@media (max-width: 979px) {
+		#viewport { width: 100%; overflow-x: scroll; left: auto; }
+		
+		#error_browser_size { display: block !important; margin-top: 5px; }
+	}	
