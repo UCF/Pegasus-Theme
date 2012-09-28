@@ -28,11 +28,15 @@
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
 		</script>
 
-		<? if($post->post_type == 'issue' && ($issue_stylesheet_url = Issue::get_stylesheet_url($post)) !== False) { ?>
+		<? if( is_home() && ( $issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False) { ?>
 			<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
+		
+		<? if ( is_home() && ( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) { ?>
+			<link rel='stylesheet' href="<?=$home_stylesheet_url?>" type='text/css' media='all' />
+		<? } ?>
 
-		<? if( $post->post_type == 'story' && ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_stylesheet_url($story_issue)) !== False ) { ?>
+		<? if( $post->post_type == 'story' && ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) { ?>
 				<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 

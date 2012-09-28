@@ -536,8 +536,12 @@ class Issue extends CustomPostType {
 		return Issue::get_file_url($issue, 'issue_javascript');
 	}
 
-	static function get_stylesheet_url($issue) {
-		return Issue::get_file_url($issue, 'issue_stylesheet');
+	static function get_home_stylesheet_url($issue) {
+		return Issue::get_file_url($issue, 'issue_stylesheet_home');
+	}
+	
+	static function get_issue_stylesheet_url($issue) {
+		return Issue::get_file_url($issue, 'issue_stylesheet_issue');
 	}
 
 	public function fields() {
