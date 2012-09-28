@@ -3,7 +3,9 @@
 	@import url('http://fonts.googleapis.com/css?family=Open+Sans:800');
 
 /* Header/Footer Styles */
-#header, #footer { background-color: #e4e6e4; }
+#header { background-color: #e4e6e4; }
+#header .toggle_story_nav a, #header .issue, #header .description { color: #525254; }
+#footer { background-color: #525254; }
 
 /* .span overrides to prevent bootstrap responsiveness */
 #body_content .span3 { width: 220px !important; }
