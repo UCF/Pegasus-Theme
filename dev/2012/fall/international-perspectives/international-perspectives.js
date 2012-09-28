@@ -394,6 +394,9 @@
 /* International Perspectives scripts */
 
 $(function() {
+		// Delete annoying empty p tags
+		$("p:empty").remove();
+	
 		// Set default map values
 		var map_w 	  = 1024,
 			map_h 	  = 748;

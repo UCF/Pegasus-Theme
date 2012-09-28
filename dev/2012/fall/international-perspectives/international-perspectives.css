@@ -2,6 +2,15 @@
 	@import url('http://fonts.googleapis.com/css?family=Rokkitt');
 	@import url('http://fonts.googleapis.com/css?family=Open+Sans:800');
 
+/* Header/Footer Styles */
+#header, #footer { background-color: #e4e6e4; }
+
+/* .span overrides to prevent bootstrap responsiveness */
+#body_content .span3 { width: 220px !important; }
+#body_content .span7 { width: 540px !important; }
+#body_content .span8 { width: 620px !important; }
+
+
 /* General Styles */	
 	#body_content h1 {
 		font-family: 'Rokkitt', serif; 
@@ -109,7 +118,7 @@
 	
 	
 /* Map wrapper/image styles */
-	#viewport { width: 1024px; height: 748px; background: #fff; overflow: hidden; position: relative; }
+	#viewport { width: 1024px; height: 748px; background: #fff; overflow: hidden; position: relative; left: -40px; }
 	#map_wrap { 
 		width: 100%; 
 		height: 100%; 
@@ -129,20 +138,19 @@
 		width: 190px; 
 		height: 190px; 
 		border-radius: 95px; 
-		float: left;
-		position: relative;
+		position: absolute;
 		top: 65px;
-		left: -52px;
+		left: 575px;
 	}
 	#overlay #sphere_intl_degrees { 
 		background: #4b4b4d center center no-repeat; 
 		background-size: 150px 150px;
 		width: 200px; 
 		height: 200px; 
-		border-radius: 100px; 
-		float: right;
-		position: relative;
-		top: -206px;
+		border-radius: 100px;
+		position: absolute;
+		top: 6px;
+		left: 745px;
 	}
 	
 	
@@ -158,7 +166,7 @@
 	#sidebar_l #locations_list_wrap { overflow: auto; height: 230px; width: 100%; padding: 10px 0; }
 	#sidebar_l #locations_list { margin-left: 15px; }
 	#sidebar_l #locations_list a { display: block; }
-	#sidebar_l p.alt { padding: 10px 15px; margin-bottom: 0; }
+	#sidebar_l p.alt { padding: 10px 15px; margin-bottom: 0; margin-top: 0; }
 	
 	
 	#sidebar_r { 
@@ -211,7 +219,7 @@
 	
 	
 /* General Infobox Styles */	
-	.infobox { display: block; background: rgba(230,230,230,0.75); padding: 30px; z-index: 5; position: relative; width: 200px; }
+	.infobox { display: block; background: rgba(230,230,230,0.75); padding: 30px; z-index: 5; position: absolute; width: 200px; }
 	.infobox .close { margin-top: -10px; }
 	.nub:before {
 		content: '';
@@ -240,7 +248,7 @@
 	
 	.infobox .univ_list { max-height: 200px; overflow: auto; }
 	.infobox .univ_list ul { margin-left: 15px; margin-bottom: 0; }
-	.infobox .univ_list ul li { list-style-type: disc; font-size: 14px; line-height: 16px; padding-bottom: 5px; }
+	.infobox .univ_list ul li { list-style-type: disc !important; font-size: 14px !important; line-height: 16px !important; padding-bottom: 5px !important; }
 	
 /* Single Country Infobox positioning (relative to x2 zoom) */		
 	#infobox_armenia { top: 895px; left: 1605px; }
