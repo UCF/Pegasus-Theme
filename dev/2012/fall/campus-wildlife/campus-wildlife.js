@@ -19,7 +19,7 @@ $(function() {
 	// Initiate Modal window with custom styles for larger window
 	$('#habitat-modal').on('show', function() {
 		$(this).css({
-			width: 'auto',
+			width: '1024px',
 			'margin-left': function () {
 				return -($(this).width() / 2);
 			}
