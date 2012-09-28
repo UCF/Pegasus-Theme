@@ -2,6 +2,7 @@
 
 #header, #footer { background-color: #888f62; }
 
+
 /* Story Styles */
 
 #wildlife_body_top h1 { display: block; text-indent: -9999px; height: 1px; width: 1px; }
@@ -16,4 +17,27 @@
 
 #body_content_bottom { margin-bottom: 100px; }
 #body_content_bottom p.alt { font-size: 25px; line-height: 32px; color: #888f62; }
-#body_content_bottom img {  -webkit-box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); }
+#body_content_bottom #habitat-thumb {  -webkit-box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); }
+
+
+/* Responsive Styles */
+
+@media (min-width: 768px) and (max-width: 979px) {
+	#story_title { padding-bottom: 120px; width: 400px; height: auto; }
+	#wildlife_body_top > .row > .span8 { width: 724px !important; }
+	
+	#wildlife_body_content { margin-top: -65px; }
+}
+
+@media (max-width: 767px) {
+	#wildlife_body_top { margin-left: -20px; padding-right: 40px; }
+	#wildlife_body_top #story_title { padding-top: 35px; padding-bottom: 30px; }
+	#wildlife_body_top #story_title, #wildlife_body_top .subheader_text { margin-left: 20px; }
+	#wildlife_body_top #firstp { color: #eee; }
+	
+	#wildlife_body_content, #body_leftcol { background-image: none !important; }
+	
+	#wildlife_body_content #body_leftcol { padding-bottom: 0; }
+	#wildlife_body_content #body_rightcol { margin-top: 0; }
+	#wildlife_body_content #body_rightcol img { float: right; }
+}
