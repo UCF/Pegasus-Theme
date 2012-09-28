@@ -1,0 +1,19 @@
+/* Header/Footer Styles */
+
+#header, #footer { background-color: #888f62; }
+
+/* Story Styles */
+
+#wildlife_body_top h1 { display: block; text-indent: -9999px; height: 1px; width: 1px; }
+#wildlife_body_top #story_title { padding-top: 135px; padding-bottom: 60px; }
+#wildlife_body_top .subheader_text { font-family: Georgia, serif; font-size: 20px; line-height: 25px; }
+
+#wildlife_body_content { margin-top: -75px; padding-top: 75px; }
+#wildlife_body_content h3 { font-size: 16px; line-height: 18px; color: #888f62; margin-bottom: -12px; }
+#wildlife_body_content p { margin-bottom: 1em; }
+#wildlife_body_content #body_leftcol { padding-bottom: 1350px; }
+#wildlife_body_content #body_rightcol { margin-top: 840px; }
+
+#body_content_bottom { margin-bottom: 100px; }
+#body_content_bottom p.alt { font-size: 25px; line-height: 32px; color: #888f62; }
+#body_content_bottom img {  -webkit-box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); box-shadow: 0px 0px 12px 5px rgba(0, 0, 0, 0.2); }
