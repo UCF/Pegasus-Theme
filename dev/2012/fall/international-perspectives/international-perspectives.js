@@ -396,6 +396,9 @@
 $(function() {
 		// Delete annoying empty p tags
 		$("p:empty").remove();
+		
+		// Add gray Pegasus logo to header, footer
+		$('#header .title, h2#footer_logo').addClass('gray');
 	
 		// Set default map values
 		var map_w 	  = 1024,
