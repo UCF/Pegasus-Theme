@@ -131,6 +131,8 @@ h2#footer_logo {
 	background: url('static/img/pegasus-logo-fill.png') center center no-repeat;	
 	margin: 0;
 }
+h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
+
 #footer #footer_hr { width:960px; height:1px; border-top: 1px solid #fff; }
 #footer .firststory {
 	/*margin-left: 0;	*/
