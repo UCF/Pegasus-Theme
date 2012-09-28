@@ -40,6 +40,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .header_stories h3 {margin-bottom:10px;font-size:16px;margin-top:25px;}
 .header_stories .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:bold;}
 .header_stories a .subtitle_text { font-weight: 200; }
+.header_stories .bottom a .subtitle_text {display:none;}
 .header_stories .thumb img {border-radius:3px;}
 .header_stories a {display:block;border-radius:3px;color:#FFF;}
 .header_stories a:hover {text-decoration: none}
@@ -303,15 +304,26 @@ body.subpage,
 
 
 @media (max-width: 767px) {
+	.header_stories {margin-left:-20px;padding-left:20px;padding-right:40px;}
 	#footer .container {width:auto;}
 	#footer .container.wide > .row {margin-left:20px;}
 	.footer_stories .span3,
-	.footer_stories .span2 {margin-bottom:20px;}
-	.footer_stories .thumb {float:left;}
-	.footer_stories.bottom .title {font-size:19px;}
-	.footer_stories .title {margin-left:250px;padding-top:0;font-size:19px;}
-	.footer_stories a span.subtitle_text {display:block;padding-top:15px;}
-	.footer_stories.bottom a span.subtitle_text {display:block;}
+	.footer_stories .span2,
+	.header_stories .span3,
+	.header_stories .span2 {margin-bottom:20px;}
+	.footer_stories .thumb,
+	.header_stories .thumb {float:left;}
+	.footer_stories.bottom .title,
+	.header_stories.bottom .title {font-size:19px;}
+
+	.footer_stories .title,
+	.header_stories .title,
+	.header_stories .bottom .title {margin-left:250px;padding-top:0;font-size:19px;}
+	
+	.footer_stories a span.subtitle_text,
+	.header_stories a span.subtitle_text {display:block;padding-top:15px;}
+	.footer_stories.bottom a span.subtitle_text,
+	.header_stories .bottom a span.subtitle_text {display:block;}
 	#issue-carousel .span12 {display:none;}
 	#issue-carousel .carousel-control {display:none;}
 	#footer_navigation ul li {float:none;margin-left:0;}
