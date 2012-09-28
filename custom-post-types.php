@@ -551,9 +551,15 @@ class Issue extends CustomPostType {
 		}
 		return array(
 			array(
-				'name' => 'Stylesheet',
-				'desc' => '',
-				'id'   => $prefix.'stylesheet',
+				'name' => 'Home Page Stylesheet',
+				'desc' => 'Stylesheet specifically for the home page.',
+				'id'   => $prefix.'stylesheet_home',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Issue-Wide Stylesheet',
+				'desc' => 'Stylesheet that will affect all stories for this issue.',
+				'id'   => $prefix.'stylesheet_issue',
 				'type' => 'file',
 			),
 			array(
