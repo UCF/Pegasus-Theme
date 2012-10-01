@@ -29,7 +29,7 @@ p.caption {font-size:13px;}
 .highlight .blurb p {margin-top:0;}
 
 #miles {margin-bottom:15px;}
-#cues .blurb { overflow: hidden; }
+#cues .blurb { overflow: hidden; padding-left: 0; }
 #cues p {margin-right:15px;}
 #cues #cues-wrap {  }
 #cues img {margin-right:16px; margin-bottom: 10px; float: left;}
@@ -42,6 +42,7 @@ p.caption {font-size:13px;}
 @media (max-width: 979px) and (min-width: 768px) {
 }
 @media (max-width: 767px) {
+	#cues .blurb { padding-left: 20px; }
 }
 @media (max-width: 420px) {
 	#cues img { display: block; margin: 0 auto 10px auto; float: none; }
