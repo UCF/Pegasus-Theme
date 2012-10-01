@@ -532,8 +532,12 @@ class Issue extends CustomPostType {
 		$use_order      = False,
 		$taxonomies     = array();
 
-	static function get_javascript_url($issue) {
-		return Issue::get_file_url($issue, 'issue_javascript');
+	static function get_home_javascript_url($issue) {
+		return Issue::get_file_url($issue, 'issue_javascript_home');
+	}
+	
+	static function get_issue_javascript_url($issue) {
+		return Issue::get_file_url($issue, 'issue_javascript_issue');
 	}
 
 	static function get_home_stylesheet_url($issue) {

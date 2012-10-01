@@ -158,11 +158,17 @@ add_action('init', 'issue_init');
  */ 
 function enqueue_issue_story_scripts() {
 	global $post;
-
-	if($post->post_type == 'issue' && ($javascript_url = Issue::get_javascript_url($post)) !== False) {
-		Config::add_script($javascript_url);
+	// add home page script(s)
+	if($post->post_type == 'issue') {
+		if (($issue_javascript_url = Issue::get_issue_javascript_url($post)) !== False) {
+			Config::add_script($issue_javascript_url);
+		}
+		if (($home_javascript_url = Issue::get_home_javascript_url($post)) !== False) {
+			Config::add_script($home_javascript_url);
+		}
+	// add story script(s)
 	} else if($post->post_type == 'story' && ($javascript_url = Story::get_javascript_url($post)) !== False) {
-		if( ($issue = get_story_issue($post)) !== False && ($issue_javascript_url = Issue::get_javascript_url($issue)) !== False ) {
+		if( ($issue = get_story_issue($post)) !== False && ($issue_javascript_url = Issue::get_issue_javascript_url($issue)) !== False ) {
 			Config::add_script($issue_javascript_url);
 		}
 		Config::add_script($javascript_url);
