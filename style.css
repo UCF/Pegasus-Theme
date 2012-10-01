@@ -32,11 +32,12 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #ipad {display:none;text-align:center;}
 
 /* Story Nav */
+.title_colon { margin-left: -3px; }
 .header_stories {background-color:#333;color:#FFF;padding-bottom:15px;display:none;}
 .header_stories h3 {margin-bottom:10px;font-size:16px;margin-top:25px;}
 .header_stories .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:bold;}
 .header_stories a .subtitle_text { font-weight: 200; }
-.header_stories .bottom a .subtitle_text {display:none;}
+.header_stories .bottom a .subtitle_text, .header_stories .bottom a .title_colon {display:none;}
 .header_stories .thumbnail { padding: 0; border-radius: 0; border: 0; }
 .header_stories .thumbnail img {border-radius:3px;}
 .header_stories a {display:block;border-radius:3px;color:#FFF;}
@@ -156,7 +157,7 @@ h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.pn
 	.footer_stories a:hover {text-decoration: none;}
 	.footer_stories a span.title_text {font-weight:bold;}
 	.footer_stories a span.subtitle_text {font-weight:200;}
-	.footer_stories.bottom a span.subtitle_text {display:none;}
+	.footer_stories.bottom a span.subtitle_text, .footer_stories.bottom a span.title_colon {display:none;}
 	.footer_stories a img:hover {
 		text-decoration:none;
 		box-shadow:0px 0px 15px #FFF;

@@ -39,7 +39,12 @@
 																		<img src="<?=get_featured_image_url($story->ID)?>" />
 																	</div>
 																	<div class="title">
-																		<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
+																		<span class="title_text">
+																			<?=apply_filters('the_title', $story->post_title)?>
+																			<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
+																				<span class="title_colon">:</span> </span>
+																				<span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
+																			<?php } else { ?></span><?php } ?>
 																	</div>
 																</a>
 															</li>
@@ -59,7 +64,12 @@
 																		<img src="<?=get_featured_image_url($story->ID)?>" />
 																	</div>
 																	<div class="title">
-																		<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
+																		<span class="title_text">
+																			<?=apply_filters('the_title', $story->post_title)?>
+																			<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
+																				<span class="title_colon">:</span> </span>
+																				<span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
+																			<?php } else { ?></span><?php } ?>
 																	</div>
 																</a>
 															</li>
