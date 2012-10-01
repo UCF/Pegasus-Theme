@@ -1,0 +1,15 @@
+/* Home Page Styles */
+body { background-color: #3b333f; }
+#header, #footer { background-color: transparent; }
+
+#featured-story-link { display: block; width: 100%; height: auto; text-align: center; }
+#featured-story-img { margin: 80px auto 200px auto; }
+
+
+/* Responsive Styles */
+@media (max-width: 767px) {
+	#featured-story-img { margin: 50px auto; }
+}
+
+
+/* IE Fixes */
