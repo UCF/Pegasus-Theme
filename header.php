@@ -69,35 +69,39 @@
 					<h3>More in this Issue</h3>
 				</div>
 				<div class="span12">
-					<div class="row">
+					<ul class="thumbnails">
 						<? foreach($top_stories as $story) {?>
-						<div class="span3 clearfix">
+						<li class="span3">
 							<a href="<?=get_permalink($story->ID)?>">
-								<div class="thumb">
+								<div class="thumbnail">
 									<img src="<?=get_featured_image_url($story->ID)?>" />
 								</div>
 								<div class="title">
 									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
 								</div>
 							</a>
-							</div>
+						</li>
 						<? } ?>
-					</div>
+					</ul>
 				</div>
 			</div>
 			<div class="row bottom">
-				<? foreach($bottom_stories as $story) {?>
-					<div class="span2 clearfix">
-						<a href="<?=get_permalink($story->ID)?>">
-							<div class="thumb">
-								<img src="<?=get_featured_image_url($story->ID)?>" />
-							</div>
-							<div class="title">
-								<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
-							</div>
-						</a>
-					</div>
-				<? } ?>
+				<div class="span12">
+					<ul class="thumbnails">
+						<? foreach($bottom_stories as $story) {?>
+						<li class="span2">
+							<a href="<?=get_permalink($story->ID)?>">
+								<div class="thumbnail">
+									<img src="<?=get_featured_image_url($story->ID)?>" />
+								</div>
+								<div class="title">
+									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?><?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>: </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span><?php } else { ?></span><?php } ?>
+								</div>
+							</a>
+						</li>
+						<? } ?>
+					</ul>
+				</div>
 			</div>
 		</div>
 		<div class="container wide" id="header">

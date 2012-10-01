@@ -116,8 +116,7 @@ if (typeof jQuery != 'undefined'){
 				$('#issue-carousel .carousel-control').fadeOut();
 			})
 			.bind('slid', function() {
-				var index = $('#issue-carousel .item.active').index();
-				
+				var index = $('#issue-carousel .item.active').index();				
 				if(index == 0) { // first
 					$('#issue-carousel .carousel-control.right .issue-title').text($('#issue-carousel .item:eq(' + (index + 1) + ') .issue-title').text());
 					$('#issue-carousel .carousel-control.right').fadeIn();
