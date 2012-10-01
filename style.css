@@ -216,7 +216,10 @@ h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.pn
 		opacity: .7;
 		margin-top:0;
 		font-size:15px;
-		z-index: 5
+		z-index: 5;
+		line-height: 25px;
+		height: 25px;
+		overflow: hidden;
 	}
 		#issue-carousel .carousel-control:hover {
 			opacity:.9;
@@ -230,19 +233,7 @@ h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.pn
 			left:0;
 			display:none;
 		}
-		#issue-carousel .carousel-control .arrow {
-			font-size:30px;
-			display:block;
-			margin-top:-2px;
-		}
-			#issue-carousel .carousel-control.right .arrow {
-				float: right;
-				margin-left:5px;
-			}
-			#issue-carousel .carousel-control.left .arrow {
-				float: left;
-				margin-right:5px;
-			}
+		#issue-carousel .carousel-control i { margin-top: 2px; }
 	#issue-carousel .item .issue-title {
 		color:#FFF;
 		text-align: center;

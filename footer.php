@@ -81,8 +81,8 @@
 							<? } ?>
 							</div>
 							<!-- Carousel nav -->
-							<a class="carousel-control left" href="#issue-carousel" data-slide="prev"><span class="arrow">&lsaquo;</span> <span class="issue-title"></span></a>
-							<a class="carousel-control right" href="#issue-carousel" data-slide="next"><span class="issue-title">Summer 2012</span> <span class="arrow">&rsaquo;</span></a>
+							<a class="carousel-control left" href="#issue-carousel" data-slide="prev"><i class="icon-chevron-left icon-white"></i> <span class="issue-title"></span></a>
+							<a class="carousel-control right" href="#issue-carousel" data-slide="next"><span class="issue-title">Summer 2012</span> <i class="icon-chevron-right icon-white"></i></a>
 						</div>
 					</div>
 				</div>
