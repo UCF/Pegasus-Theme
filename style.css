@@ -284,11 +284,12 @@ body.subpage,
 .subpage #header .description {font-size:13px;}
 
 .subpage #footer a {color:#000;}
-.subpage #footer_navigation h2.widgettitle, .subpage #footer_stories h2 {color:#000;}
+.subpage #footer h2, 
+.subpage #footer h3.issue-title, 
+.subpage #footer_navigation h2.widgettitle, 
+.subpage #footer_stories h2 {color:#000;}
 .subpage #footer_stories .title span.title_text {font-weight:bold;}
 .subpage #footer_stories .title span.subtitle_text {font-weight:200;}
-.subpage #footer .textwidget a,
-.subpage #footer .widget a {font-weight:normal;}
 .subpage #footer_navigation {padding-top:0;}
 .subpage #footer_navigation > .span12 {padding-top:30px}
 
