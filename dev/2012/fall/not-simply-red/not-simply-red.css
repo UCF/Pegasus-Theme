@@ -29,9 +29,10 @@ p.caption {font-size:13px;}
 .highlight .blurb p {margin-top:0;}
 
 #miles {margin-bottom:15px;}
+#cues .blurb { overflow: hidden; }
 #cues p {margin-right:15px;}
-#cues img {margin-right:20px;}
-#cues #group3 {margin-right:0;}
+#cues #cues-wrap {  }
+#cues img {margin-right:16px; margin-bottom: 10px; float: left;}
 
 #planet {padding-top:250px;}
 
@@ -39,8 +40,9 @@ p.caption {font-size:13px;}
 #footer h2 {color:#FFF;}
 
 @media (max-width: 979px) and (min-width: 768px) {
-	#cues #group3 {margin-left:0;margin-top:15px;}
 }
 @media (max-width: 767px) {
-	#cues img {margin-top:15px;}
+}
+@media (max-width: 420px) {
+	#cues img { display: block; margin: 0 auto 10px auto; float: none; }
 }
