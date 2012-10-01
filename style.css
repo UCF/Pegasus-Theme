@@ -51,6 +51,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
 	-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
 	-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+	border-radius: 3px;
 }
 .header_stories .thumbnail img {border-radius:3px; float: left;} /* float req'd for inset box-shadow */
 .header_stories a {display:block;border-radius:3px;color:#FFF;}
@@ -173,6 +174,7 @@ h2#footer_logo.outline { background-image: url(static/img/pegasus-logo.png); }
 		box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
 		-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
 		-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+		border-radius: 3px;
 	}
 	.footer_stories .thumbnail img {border-radius:3px; float: left;} /* float req'd for inset box-shadow */
 	.footer_stories a {display:block;border-radius:3px;}
