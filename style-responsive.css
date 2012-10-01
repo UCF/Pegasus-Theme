@@ -18,6 +18,9 @@
 }
 
 @media (max-width: 979px) and (min-width: 768px) {
+	.header_stories .bottom li,
+	.footer_stories.bottom li { height: 170px; }
+	
 	#footer_navigation ul li {margin-left:14px;}
 	#footer_navigation ul li a {font-size:13px;}
 }
