@@ -7,11 +7,11 @@
 	
 	/* Content */
 	.container.wide > .row {
-		width: 754px;
+		width: 768px;
 	}
 	
 	/* Footer */
-	#footer #footer_hr { width: 754px; }
+	#footer #footer_hr { width: 768px; }
 	
 	#footer_stories>div, #footer_navigation>div { margin-left: 15px; }
 	#footer_stories { padding-top: 10px; }
