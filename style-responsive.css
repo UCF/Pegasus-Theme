@@ -37,7 +37,7 @@
 	.footer_stories .span3, 
 	.footer_stories .span2, 
 	.header_stories .span3, 
-	.header_stories .span2 { width: 125px; height: 200px; overflow: hidden; margin-bottom: 5px; }
+	.header_stories .span2 { width: 130px; height: 200px; overflow: hidden; margin-bottom: 5px; }
 	.header_stories .title, .footer_stories .title { margin-left: 0 !important; font-size: 13px !important; line-height: 15px !important; }
 	.footer_stories a span.subtitle_text, .header_stories a span.subtitle_text { padding-top: 5px; }
 	.header_stories .row a .subtitle_text, 
