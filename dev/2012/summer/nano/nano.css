@@ -21,11 +21,13 @@ div#header .row .description {
 	width: 280px;	
 }
 
-#story_nav h3 {
+.header_stories h3 {
 	font-weight: bold;
 	color: #fff;
 	margin-top: 25px;
 }
+#footer h2 { font-size: 24px; }
+#footer h2, h3.issue-title, span.issue-title { font-weight: bold; line-height: auto; }
 
 
 #footer {

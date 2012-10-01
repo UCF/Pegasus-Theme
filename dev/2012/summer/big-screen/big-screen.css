@@ -38,6 +38,8 @@ div#header .row .description {
 #footer_navigation, #footer_stories {
 	border-top: 1px solid #333;
 }
+h3.issue-title { float: none !important; }
+h3.issue-title, .header_stories h3 { text-transform: none !important; }
 
 #header h2, #footer h2 {
 	text-align: left;	
