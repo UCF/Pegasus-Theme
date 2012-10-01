@@ -13,7 +13,7 @@ p.shoutout {color:#0981b3;font-size:25px;font-family:Georgia,serif;}
 
 .firstletter {font-size:40px !important;padding-right: 7px;line-height:.85em;color:#0981b3;}
 
-#more-to-know {background-color:#bccbdc;}
+#more-to-know {background-color:#bccbdc; padding-top: 20px;}
 #more-to-know * {padding-left:30px;padding-right:30px;}
 #more-to-know h3 {margin-bottom:0;color:#ffffff;text-transform: uppercase;padding-top:30px;font-weight:normal;font-size:20px;margin-bottom:17px;}
 #more-to-know h4 {font-size:17px;}
