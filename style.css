@@ -39,18 +39,25 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .header_stories .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:10px;padding-bottom:10px;font-weight:bold;}
 .header_stories a .subtitle_text { font-weight: 200; }
 .header_stories .bottom a .subtitle_text, .header_stories .bottom a .title_colon {display:none;}
-.header_stories .thumbnail { padding: 0; border-radius: 0; border: 0; }
-.header_stories .thumbnail img {border-radius:3px;}
+.header_stories .thumbnail { padding: 0; border-radius: 0; border: 0; position: relative; max-width: 100%; float: left; }
+/* above: position, max-width, and float are req'd for image inset boxshadow */
+.header_stories .thumbnail:hover::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+	-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+	-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+}
+.header_stories .thumbnail img {border-radius:3px; float: left;} /* float req'd for inset box-shadow */
 .header_stories a {display:block;border-radius:3px;color:#FFF;}
 .header_stories a:hover {text-decoration: none}
 
 .header_stories a img:hover {
 	text-decoration:none;
-	box-shadow:0px 0px 15px #FFF;
-	-webkit-transition: 0.2s ease-in-out;  
-	-moz-transition: 0.2s ease-in-out;  
-	-o-transition: 0.2s ease-in-out;  
-	transition: 0.2s ease-in-out;
 }
 .header_stories .bottom {margin-top:20px;}
 .header_stories .bottom .title {font-size:13px;margin-top:5px;padding-left:0;}
@@ -147,14 +154,25 @@ h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.pn
 	}
 	.footer_stories img {
 		border: 0;
-		margin-bottom: 5px;	
 	}
 	
 	.footer_stories .title {margin-top:7px;font-size:14px;padding-left:5px;padding-bottom:5px;font-weight:200;}
 	.footer_stories.bottom li { height: 202px; overflow: hidden; }
 	.footer_stories.bottom .title {font-size:13px;margin-top:0px;padding-left:0;}
-	.footer_stories .thumbnail { padding: 0; border-radius: 0; border: 0; }
-	.footer_stories .thumbnail img {border-radius:3px;}
+	.footer_stories .thumbnail { padding: 0; border-radius: 0; border: 0; position: relative; max-width: 100%; float: left; margin-bottom: 5px; }
+	/* above: position, max-width, and float are req'd for image inset boxshadow */
+	.footer_stories .thumbnail:hover::before {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+		-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+		-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
+	}
+	.footer_stories .thumbnail img {border-radius:3px; float: left;} /* float req'd for inset box-shadow */
 	.footer_stories a {display:block;border-radius:3px;}
 	.footer_stories a:hover {text-decoration: none;}
 	.footer_stories a span.title_text {font-weight:bold;}
@@ -162,11 +180,6 @@ h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.pn
 	.footer_stories.bottom a span.subtitle_text, .footer_stories.bottom a span.title_colon {display:none;}
 	.footer_stories a img:hover {
 		text-decoration:none;
-		box-shadow:0px 0px 15px #FFF;
-		-webkit-transition: 0.2s ease-in-out;  
-		-moz-transition: 0.2s ease-in-out;  
-		-o-transition: 0.2s ease-in-out;  
-		transition: 0.2s ease-in-out;
 	}
 
 #footer_navigation {
