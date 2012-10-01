@@ -7,7 +7,7 @@
 
 #wildlife_body_top h1 { display: block; text-indent: -9999px; height: 1px; width: 1px; }
 #wildlife_body_top #story_title { padding-top: 135px; padding-bottom: 60px; }
-#wildlife_body_top h2 { font-size: 22px; line-height: 24px; color: #888f62;}
+#wildlife_body_top h2 { font-size: 22px; line-height: 24px; color: #888f62; text-shadow: 1px 1px 0 #000; }
 #wildlife_body_top .subheader_text { font-family: Georgia, serif; font-size: 20px; line-height: 25px; }
 
 #wildlife_body_content { margin-top: -75px; padding-top: 75px; }
@@ -31,7 +31,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
-	#wildlife_body_top #story_title { padding-top: 80px; width: 400px; height: auto; }
+	#wildlife_body_top #story_title { padding-top: 60px; padding-bottom: 30px; width: 400px; height: auto; }
 	#wildlife_body_top > .row > .span8 { width: 724px !important; }
 	
 	#wildlife_body_content { margin-top: 0; padding-top: 0; }
@@ -41,8 +41,8 @@
 
 @media (max-width: 767px) {
 	#wildlife_body_top { margin-left: -20px; padding-right: 40px; }
-	#wildlife_body_top #story_title { padding-top: 35px; padding-bottom: 0; }
-	#wildlife_body_top #story_title, #wildlife_body_top .subheader_text { margin-left: 20px; }
+	#wildlife_body_top #story_title { padding-top: 12px; padding-bottom: 0; }
+	#wildlife_body_top #story_title, #wildlife_body_top .subheader_text, #wildlife_body_top h2 { margin-left: 20px; }
 	#wildlife_body_top #firstp { padding-bottom: 20px; }
 	
 	#wildlife_body_content, #body_leftcol { background-image: none !important; }
