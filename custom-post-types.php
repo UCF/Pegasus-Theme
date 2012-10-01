@@ -561,15 +561,21 @@ class Issue extends CustomPostType {
 				'type' => 'file',
 			),
 			array(
+				'name' => 'Home Page JavaScript File',
+				'desc' => 'JavaScript file that runs exclusively on the home page for this issue.',
+				'id'   => $prefix.'javascript_home',
+				'type' => 'file',
+			),
+			array(
 				'name' => 'Issue-Wide Stylesheet',
 				'desc' => 'Stylesheet that will affect all stories for this issue.',
 				'id'   => $prefix.'stylesheet_issue',
 				'type' => 'file',
 			),
 			array(
-				'name' => 'JavaScript File',
-				'desc' => '',
-				'id'   => $prefix.'javascript',
+				'name' => 'Issue-Wide JavaScript File',
+				'desc' => 'JavaScript file that runs on all stories for this issue, including the home page.',
+				'id'   => $prefix.'javascript_issue',
 				'type' => 'file',
 			),
 			array(
