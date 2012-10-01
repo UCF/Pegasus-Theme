@@ -43,6 +43,7 @@
 	#wildlife_body_top { margin-left: -20px; padding-right: 40px; }
 	#wildlife_body_top #story_title { padding-top: 12px; padding-bottom: 0; }
 	#wildlife_body_top #story_title, #wildlife_body_top .subheader_text, #wildlife_body_top h2 { margin-left: 20px; }
+	#wildlife_body_top .subheader_text { font-size: 18px; line-height: 22px; }
 	#wildlife_body_top #firstp { padding-bottom: 20px; }
 	
 	#wildlife_body_content, #body_leftcol { background-image: none !important; }
