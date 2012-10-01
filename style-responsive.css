@@ -33,7 +33,9 @@
 	/* Header/Footer story thumbnails */
 	.header_stories { margin-left: -20px; padding-right: 40px; }
 	.header_stories>.row { margin-left: 20px !important; }
-	.thumbnails { margin-left: -20px; }
+	.header_stories .thumbnails, .footer_stories .thumbnails { margin-left: -20px; }
+	.header_stories .thumbnails { margin-bottom: 0; }
+	.footer_stories { padding: 30px 0 0 0; }
 	.footer_stories .span3, 
 	.footer_stories .span2, 
 	.header_stories .span3, 
