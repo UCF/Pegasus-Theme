@@ -37,7 +37,8 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 	h2#footer_logo {
 		background: url(../../../wp-content/themes/Pegasus-Theme/static/img/pegasus-logo-black.png) center center no-repeat;	
 	}
-#footer, #footer a, #footer h2.widgettitle, #footer h2 {
+#footer, #footer a, #footer h2.widgettitle, #footer h2,
+.footer_stories .title {
 	color: #000;	
 }
 #footer_stories, #footer_navigation {
