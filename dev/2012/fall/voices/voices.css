@@ -23,3 +23,12 @@ p.shoutout {color:#0981b3;font-size:25px;font-family:Georgia,serif;}
 #voices-modal { height: 685px !important; }
 .modal-header { overflow: hidden !important; }
 .modal-body { height: 592px !important; max-height: 592px !important; }
+
+
+/* Responsive Styles */
+
+@media (max-width: 767px) {
+	#top-content { margin-left: -20px; padding-right: 40px; background-size: auto 530px; height: 530px; }
+	#top-content > .row { margin-left: 20px; }
+	#top-content h2 { margin-top: 50px; }
+}
