@@ -156,11 +156,11 @@ h2#footer_logo {
 
 }
 	#issue-carousel .carousel-control {
-		top:10px;
+		top:6px;
 		border:0;
 		background:none;
 		width:200px;
-		opacity: .7;
+		opacity: .8;
 		margin-top:0;
 		font-size:15px;
 		z-index: 5;
@@ -176,11 +176,13 @@ h2#footer_logo {
 			right:0;
 		}
 		#issue-carousel .carousel-control.left {
-			text-align: left;
+			text-align: right;
 			left:auto;
 			right:0;
-
 		}
+			#issue-carousel .carousel-control.left.both {
+				right: 200px;
+			}
 		#issue-carousel .carousel-control i { margin-top: 2px; }
 	#issue-carousel .item .issue-title {
 		color:#FFF;
