@@ -71,7 +71,9 @@ function get_navigation_stories($issue=null) {
 
 	$exclude = array();
 
-	if(is_null($issue)) {
+	if($post->post_type == 'story') {
+		$issue = get_story_issue($post);
+	} else if(is_null($issue)) {
 		$issue = get_current_issue();
 	}
 

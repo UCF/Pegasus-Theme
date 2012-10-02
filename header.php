@@ -118,7 +118,11 @@
 						PEGASUS
 						</a>
 						<div class="span5 issue">
+							<?php if($post->post_type == 'story') { ?>
+							<?php $issue = get_story_issue($post); echo $issue->post_title; ?>
+							<?php } else { ?> 
 							<?php $current_issue = get_current_issue(); echo $current_issue->post_title; ?>
+							<? } ?>
 						</div>
 			
 						<div class="span4 description">
