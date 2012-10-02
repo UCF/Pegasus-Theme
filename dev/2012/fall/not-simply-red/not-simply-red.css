@@ -12,6 +12,7 @@ body {background-color:#000;}
 #portrait {margin-top:20px;}
 
 p.quote {font-size:23px;margin-top:60px;color:#f9b091;line-height:1.5em;}
+span.hangquote { height: 1px; line-height: 70px; padding-right: 5px; }
 p.caption {font-size:13px;}
 
 .highlight {}
