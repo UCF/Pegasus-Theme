@@ -33,7 +33,7 @@ p.lead {color:#FFF;margin-top:5px;margin-bottom:10px;}
 	line-height:1em;
 	font-weight: normal;
 }
-.subintro p {margin-top:0;font-size:17px;color:#FFF;}
+.subintro p {margin-top:0;font-size:17px;color:#333;}
 #learn {text-align:center;}
 
 #recipe-carousel {margin-top:20px;}

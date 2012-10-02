@@ -3,11 +3,6 @@
 			<div class="container wide">
 				<div class="row">
 					<div class="span12">
-						<h2>More Stories</h2>
-					</div>
-				</div>
-				<div class="row">
-					<div class="span12">
 						<div id="issue-carousel" class="carousel slide">
 							<!-- Carousel items -->
 							<div class="carousel-inner">

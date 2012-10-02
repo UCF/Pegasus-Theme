@@ -432,7 +432,6 @@ and (max-width: 979px) {
 
 
 /** RESPONSIVE STYLES **/
-#footer .carousel-control { top: 25px !important; }		
 
 
 @media (max-width: 979px) {

@@ -94,7 +94,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #footer {
 	width: 100%;
 	background-color: #e3c353;
-	padding: 0 0 55px;
+	padding: 30px 0 55px 0;
 	font-size: 16px;
 }
 	#footer a {
@@ -115,7 +115,6 @@ h2#footer_logo {
 	/*margin-left: 0;	*/
 	clear: both;
 }
-#footer h2 {color:#FFF;margin-bottom:0;margin-top: 30px;}
 
 #footer_navigation {
 	/*border-top: 1px solid #fff;*/
@@ -157,11 +156,11 @@ h2#footer_logo {
 
 }
 	#issue-carousel .carousel-control {
-		top:0;
+		top:6px;
 		border:0;
 		background:none;
 		width:200px;
-		opacity: .7;
+		opacity: .8;
 		margin-top:0;
 		font-size:15px;
 		z-index: 5;
@@ -177,15 +176,18 @@ h2#footer_logo {
 			right:0;
 		}
 		#issue-carousel .carousel-control.left {
-			text-align: left;
-			left:0;
+			text-align: right;
+			left:auto;
+			right:0;
 		}
+			#issue-carousel .carousel-control.left.both {
+				right: 200px;
+			}
 		#issue-carousel .carousel-control i { margin-top: 2px; }
 	#issue-carousel .item .issue-title {
 		color:#FFF;
-		text-align: center;
+		text-align: left;
 		font-size:25px;
-		opacity: .7
 	}
 
 #ipad_app {
@@ -300,10 +302,9 @@ body.subpage,
 .subpage #footer a {color:#000;}
 .subpage #footer h2, 
 .subpage #footer h3.issue-title, 
-.subpage #footer_navigation h2.widgettitle, 
-.subpage #footer_stories h2 {color:#000;}
-.subpage #footer_stories .title span.title_text {font-weight:bold;}
-.subpage #footer_stories .title span.subtitle_text {font-weight:200;}
+.subpage .footer_navigation h2.widgettitle, 
+.subpage .footer_stories h2 {color:#000;}
+.subpage .footer_stories .title { color: #000; }
 .subpage #footer_navigation {padding-top:0;}
 .subpage #footer_navigation > .span12 {padding-top:30px}
 

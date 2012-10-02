@@ -4,7 +4,7 @@
 
 /* Header/Footer Styles */
 #header { background-color: #e4e6e4; }
-#header .toggle_story_nav a, #header .issue, #header .description { color: #525254; }
+#header .toggle_story_nav a, #header .issue, #header .description a, #header .description a:hover { color: #525254; }
 #footer { background-color: #525254; }
 
 
