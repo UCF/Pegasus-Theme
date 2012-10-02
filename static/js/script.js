@@ -150,6 +150,7 @@ if (typeof jQuery != 'undefined'){
 			$('.last').removeClass('last');
 		});
 
-		
+		/* Popovers */
+		$('.popover-parent').popover({});
 	});
 }else{console.log('jQuery dependancy failed to load');}
