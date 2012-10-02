@@ -126,7 +126,7 @@
 						</div>
 			
 						<div class="span4 description">
-							The Magazine of the University of Central Florida
+							<a href="<?=site_url()?>/about/">The Magazine of the University of Central Florida</a>
 						</div>
 						<div class="toggle_story_nav">
 							<a>&#9650;</a>

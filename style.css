@@ -50,6 +50,8 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header .issue {padding-top:20px;color:#FFF;font-size:16px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:4px;}
 
 #header .description, #home_header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
+#header .description a, #home_header .description a { color: #fff; }
+#header .description a:hover, #home_header .description a:hover { color: #fff; }
 #header .toggle_story_nav {
 	position:absolute;
 	left:-10px;
@@ -292,6 +294,8 @@ body.subpage,
 .subpage #header .toggle_story_nav {display:none;}
 .subpage #header .issue {visibility: hidden;}
 .subpage #header .description {font-size:13px;}
+.subpage #header .description a,
+.subpage #header .description a:hover { color: #000; }
 
 .subpage #footer a {color:#000;}
 .subpage #footer h2, 
