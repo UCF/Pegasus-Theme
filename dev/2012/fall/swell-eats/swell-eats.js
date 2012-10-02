@@ -9,4 +9,8 @@ WebFontConfig = {
 	wf.async = 'true';
 	var s = document.getElementsByTagName('script')[0];
 	s.parentNode.insertBefore(wf, s);
+	
+	
+	// Delete annoying empty p tags
+	$("p:empty").remove();
 })();
