@@ -34,9 +34,9 @@ p.caption {font-size:13px;}
 #cues #cues-wrap {  }
 #cues img {margin-right:16px; margin-bottom: 10px; float: left;}
 
-#planet {padding-top:250px;}
+#planet {padding-top:250px;padding-bottom:80px;position:relative;}
+#background-caption {position: absolute;bottom:0;right:20px;color:#666;font-size:11px;font-style: italic;}
 
-#footer {margin-top:80px;}
 #footer h2 {color:#FFF;}
 
 @media (max-width: 979px) and (min-width: 768px) {
