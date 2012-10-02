@@ -278,7 +278,7 @@ body.subpage,
 .subpage #footer {background-color:#FFF;}
 
 .subpage #header .title,
-.subpage h2#footer_logo {background-image:url(static/img/pegasus-logo-black.png);}
+.subpage h2#footer_logo {background-image:url(static/img/pegasus-logo-fill-black.png);}
 .subpage #header .title { margin-left: 20px; }
 
 .subpage #header {color:#000;}
