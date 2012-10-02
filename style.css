@@ -270,6 +270,7 @@ h2#footer_logo {
 
 /* Header/Footer logo alternatives */
 #header .title.gray, h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
+#header .title.black, h2#footer_logo.black { background-image: url(static/img/pegasus-logo-fill-black.png); }
 #header .title.peach, h2#footer_logo.peach { background-image: url(static/img/pegasus-logo-fill-peach.png); }
 #header .title.outline, h2#footer_logo.outline { background-image: url(static/img/pegasus-logo.png); }
 
