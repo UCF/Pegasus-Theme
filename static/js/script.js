@@ -85,6 +85,7 @@ if (typeof jQuery != 'undefined'){
 				});
 		})();
 
+
 		/* iPad Model */
 		(function() {
 			var ipad_hide = $.cookie('ipad-hide');
@@ -99,15 +100,8 @@ if (typeof jQuery != 'undefined'){
 
 		$.cookie('initial-visit', true);
 
-		
-		/* Get first story in footer and add class 'firststory' */
-		$('#footer_stories').children('.span3:first').addClass('firststory');
 
-		/* Prevent video sliders from automatically advancing */
-		$('#videoslides').carousel({
-			interval: 0
-		})
-
+		/* Issue slider controls */
 		$('#issue-carousel')
 			.carousel({
 				interval: 0
@@ -129,8 +123,6 @@ if (typeof jQuery != 'undefined'){
 			});
 
 
-
-
 		/* Move Gravity Forms Address sublabels above the fields: */
 		$('.ginput_container label').each(function(i,e){
 			var field_desc = $('<div>').append($(e).clone()).remove().html();
@@ -140,8 +132,12 @@ if (typeof jQuery != 'undefined'){
 		});
 
 
+		/* Prevent video sliders from automatically advancing */
+		$('#videoslides').carousel({
+			interval: 0
+		})
+
 		/* Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time: */
-		
 		$('#videoslides').bind('slide', function() {
 			$('.active').addClass('last');
 			var videoSrc = $('.last').children('iframe').attr('src');
