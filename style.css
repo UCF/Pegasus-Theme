@@ -78,8 +78,6 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	background-image: url(static/img/pegasus-logo-fill.png);
 	background-position:center left;
 }
-#header .title.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
-#header .title.outline { background-image: url(static/img/pegasus-logo.png); }
 #header .issue {padding-top:20px;color:#FFF;font-size:16px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:4px;}
 
 #header .description, #home_header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
@@ -140,8 +138,6 @@ h2#footer_logo {
 	background: url('static/img/pegasus-logo-fill.png') center center no-repeat;	
 	margin: 0;
 }
-h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
-h2#footer_logo.outline { background-image: url(static/img/pegasus-logo.png); }
 
 #footer #footer_hr { width:960px; height:1px; border-top: 1px solid #fff; }
 #footer .firststory {
@@ -302,3 +298,12 @@ body.subpage,
 .subpage #footer_navigation > .span12 {padding-top:30px}
 
 .subpage #footer #footer_hr { border-top: 1px solid #d7d7d7; }
+
+.subpage #footer #issue-carousel .carousel-control i { background-color: #000; border-radius: 7px 7px 7px 7px; }
+
+
+
+/* Header/Footer logo alternatives */
+#header .title.gray, h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
+#header .title.peach, h2#footer_logo.peach { background-image: url(static/img/pegasus-logo-fill-peach.png); }
+#header .title.outline, h2#footer_logo.outline { background-image: url(static/img/pegasus-logo.png); }
