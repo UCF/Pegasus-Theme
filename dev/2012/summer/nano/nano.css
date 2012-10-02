@@ -427,34 +427,76 @@ and (max-width: 979px) {
 
 
 /** RESPONSIVE STYLES **/
+#footer .carousel-control { top: 25px !important; }		
 
-/* Landscape phones and down */
-@media only screen and (max-width: 480px) {
+
+@media (max-width: 979px) {
+	/* Header */
+	#header { }
+	#header>.row { width: 750px; margin: auto; }
+	#header .title { width: 162px; margin-right: 40px; }
+	#header .description { display: none; }
+	
+	#footer > .container.wide > .row, .header_stories > .row { width: 767px !important; }
+	.header_stories .span12, #footer .span12 { width: 724px; }
+	.header_stories .span3, #footer .span3 { width: 166px; }
+	.header_stories .span2, #footer .span2 { width: 104px; }
+	
+	#footer_stories>div, #footer_navigation>div { margin-left: 15px; }
+	#footer_stories { padding-top: 10px; }
 }
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* Header */
+	#story_nav .span12 .row {
+		width: 750px !important;
+		margin-left: -20px;	
+	}
+	
+	#header .row {
+		width: 750px !important;	
+	}
+	.description {
+		display: none;	
+	}
+	#story_nav .span3, #footer .span3 {
+		width: 166px;	
+	}
+
+	/* Footer */
+	#footer_navigation .span12 {
+		width: 750px;
+		margin-left: 0;
+	}
+	#footer_navigation .span12 .row {
+		width: 750px;	
+		margin-left: 0;
+	}
+	
+	#footer_stories, #footer_navigation {
+		width: 750px !important;	
+	}
+	
+	#footer_stories .span12 {
+		width: 720px;	
+	}
+	
+	
+	.header_stories .bottom li,
+	.footer_stories.bottom li { height: 170px; }
+	
+	#footer_navigation ul li {margin-left:14px;}
+	#footer_navigation ul li a {font-size:13px;}
+	
+		
+}		
 
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
-	
-	/* Subpages */
-	body.subpage #header+.container {
-		width: 88%;
-		float: none;
-		margin: auto;	
-	}
-	body.subpage #header .span12 {
-		width: 93%;	
-	}
-	/* About the Magazine */
-	body.subpage #header+.container {
-		width: 88%;
-	}
-	body.subpage #header+.container .row, body.subpage #header+.container .span12, body.subpage #header+.container .span7, body.subpage #header+.container .span4, body.subpage #header+.container .span3 {
-		width: 100%;
-		margin-left: 0;
-	}
-	body.subpage #header+.container .span12 h2 {
-		width: 100%;	
-	}
 	
 	/* Header */
 	#story_nav .span12 .row {
@@ -502,9 +544,33 @@ and (max-width: 979px) {
 		left: 0;	
 	}
 
+
+	/* Header/Footer story thumbnails */
+	.header_stories { margin-left: -20px; padding-right: 20px; }
+	.header_stories>.row { margin-left: 20px !important; }
+	.header_stories .thumbnails, .footer_stories .thumbnails { margin-left: -20px; }
+	.header_stories .thumbnails { margin-bottom: 0; }
+	.footer_stories { padding: 30px 0 0 0; }
+	.footer_stories .span3, 
+	.footer_stories .span2, 
+	.header_stories .span3, 
+	.header_stories .span2 { width: 130px !important; height: 200px !important; overflow: hidden; margin-bottom: 5px; }
+	.header_stories .title, .footer_stories .title { margin-left: 0 !important; font-size: 13px !important; line-height: 15px !important; }
+	.footer_stories a span.subtitle_text, .header_stories a span.subtitle_text { padding-top: 5px; }
+	.header_stories .row a .subtitle_text, 
+	.header_stories .row a .title_colon,
+	.footer_stories a span.subtitle_text, 
+	.footer_stories a span.title_colon { display: none; }
+
+	.header_stories .span12, 
+	#footer .span12 { width: 92% !important; }
+	
+	#footer > .container.wide > .row, 
+	.header_stories > .row { width: 100% !important; }
+
 	/* Footer */
 	#footer_stories, #footer_navigation {
-		width: 100%;	
+		width: 100% !important;	
 	}
 	#footer_stories .span12, #footer_navigation .span12 {
 		width: 93%;
@@ -519,72 +585,22 @@ and (max-width: 979px) {
 		margin-bottom: 25px !important;	
 	}
 	
+	#footer > .container { margin-left: -20px; padding-right: 20px; }
+	#footer > .container > .row { margin-left: 20px; }
+	
+	#issue-carousel .item .issue-title { font-size: 18px; }
+	#issue-carousel .carousel-control { font-size: 12px; }
+	#issue-carousel .carousel-control, 
+	#issue-carousel .carousel-control.left .arrow,
+	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+	
+	#footer_navigation ul { padding-top: 10px; }
+	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
+	
+	#footer_navigation .span9 { width: 92% !important; }
 }
 
-/* Portrait tablet to landscape and desktop */
-@media only screen and
-(min-width: 768px) 
-and (max-width: 979px) {
-	
-	/* Subpages */
-	body.subpage #header+.container {
-		width: 730px;	
-		padding-left: 20px;	
-	}
-	body.subpage #header .span12 {
-		width: 710px;	
-	}
-	
-	/* About the Magazine */
-	body.subpage #header+.container .span12, body.subpage #header+.container .span12 h2 {
-		width: 710px !important;	
-	}
-	body.subpage #header+.container .span7 {
-		width: 437px;	
-	}
-	body.subpage #header+.container .span4 {
-		width: 247px;
-		margin-left: 20px;	
-	}
-	body.subpage #header+.container .span3 {
-		width: 167px;
-	}
-	
-	/* Header */
-	#story_nav .span12 .row {
-		width: 750px !important;
-		margin-left: -20px;	
-	}
-	
-	#header .row {
-		width: 750px !important;	
-	}
-	.description {
-		display: none;	
-	}
-	#story_nav .span3, #footer .span3 {
-		width: 167px;	
-	}
-
-	/* Footer */
-	#footer_navigation .span12 {
-		width: 750px;
-		margin-left: 0;
-	}
-	#footer_navigation .span12 .row {
-		width: 750px;	
-		margin-left: 0;
-	}
-	
-	#footer_stories, #footer_navigation {
-		width: 750px !important;	
-	}
-	
-	#footer_stories .span12 {
-		width: 720px;	
-	}
-		
-}		
 
 
 #footer #footer_hr { display: none; }
+
