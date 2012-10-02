@@ -177,7 +177,6 @@ h2#footer_logo {
 		#issue-carousel .carousel-control.left {
 			text-align: left;
 			left:0;
-			display:none;
 		}
 		#issue-carousel .carousel-control i { margin-top: 2px; }
 	#issue-carousel .item .issue-title {

@@ -11,16 +11,29 @@
 						<div id="issue-carousel" class="carousel slide">
 							<!-- Carousel items -->
 							<div class="carousel-inner">
-								<? 	$first = True;
+								<? 	
+									if($post->post_type == 'story') {
+										$active_issue = get_story_issue($post);
+									} else {
+										$active_issue = get_current_issue();
+									}
+									$prev_issue   = NULL;
+									$next_issue   = NULL;
+									$found_active = False;
 									foreach(get_posts(array('post_type'=>'issue')) as $issue) { ?>
-										<? if($first) { ?>
-										<div class="active item">
-										<? 
-											$first = False;
-											} else { 
-										?>
-										<div class="item">
-										<? } ?>
+										<?php 
+											if($active_issue->ID == $issue->ID) { 
+												$found_active = True; 
+												echo '<div class="active item">';
+											} else {
+												echo '<div class="item">';
+												if($found_active === False) {
+													$prev_issue = $issue;
+												} else if($found_active === True) {
+													$next_issue   = $issue;
+													$found_active = NULL;
+												}
+											} ?>
 											<div class="row">
 												<div class="span12">
 													<h3 class="issue-title"><?php echo $issue->post_title; ?></h3>
@@ -78,11 +91,15 @@
 												</div>	
 											</div>
 										</div>
-							<? } ?>
+								<? } ?>
 							</div>
 							<!-- Carousel nav -->
-							<a class="carousel-control left" href="#issue-carousel" data-slide="prev"><i class="icon-chevron-left icon-white"></i> <span class="issue-title"></span></a>
-							<a class="carousel-control right" href="#issue-carousel" data-slide="next"><span class="issue-title">Summer 2012</span> <i class="icon-chevron-right icon-white"></i></a>
+							<a class="carousel-control left" href="#issue-carousel" data-slide="prev"<?php if(is_null($prev_issue)) echo ' style="display:none;"'; ?>>
+								<i class="icon-chevron-left icon-white"></i> <span class="issue-title"><? if(!is_null($prev_issue)) echo $prev_issue->post_title; ?></span>
+							</a>
+							<a class="carousel-control right" href="#issue-carousel" data-slide="next"<?php if(is_null($next_issue)) echo ' style="display:none;"'; ?>>
+								<span class="issue-title"><?php if(!is_null($next_issue)) echo $next_issue->post_title; ?></span> <i class="icon-chevron-right icon-white"></i>
+							</a>
 						</div>
 					</div>
 				</div>

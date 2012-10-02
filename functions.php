@@ -71,10 +71,12 @@ function get_navigation_stories($issue=null) {
 
 	$exclude = array();
 
-	if($post->post_type == 'story') {
-		$issue = get_story_issue($post);
-	} else if(is_null($issue)) {
-		$issue = get_current_issue();
+	if(is_null($issue)) {
+		if($post->post_type == 'story') {
+			$issue = get_story_issue($post);
+		} else {
+			$issue = get_current_issue();
+		}
 	}
 
 	if(is_front_page() || $post->post_type == 'issue') {
@@ -88,6 +90,7 @@ function get_navigation_stories($issue=null) {
 	} if($post->post_type == 'story') {
 		$exclude[] = $post->ID;
 	}
+	
 	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'limit' => 4));
 	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
 	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'limit' => 6));
