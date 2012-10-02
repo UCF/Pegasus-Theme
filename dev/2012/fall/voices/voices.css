@@ -19,3 +19,7 @@ p.shoutout {color:#0981b3;font-size:25px;font-family:Georgia,serif;}
 #more-to-know h4 {font-size:17px;}
 #more-to-know p {margin-top:5px;font-family:"Helvetica Nueue",Helvetica, sans-serif}
 #more-to-know .caption {padding-bottom:30px;font-size:12px;font-style: italic;}
+
+#voices-modal { height: 685px !important; }
+.modal-header { overflow: hidden !important; }
+.modal-body { height: 592px !important; max-height: 592px !important; }
