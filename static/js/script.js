@@ -146,17 +146,17 @@ if (typeof jQuery != 'undefined'){
 
 
 		/* Prevent video sliders from automatically advancing */
-		$('#videoslides').carousel({
+		$('#videoslides,#recipe-carousel').carousel({
 			interval: 0
 		})
 
 		/* Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time: */
-		$('#videoslides').bind('slide', function() {
+		$('#videoslides,#recipe-carousel').bind('slide', function() {
 			$('.active').addClass('last');
 			var videoSrc = $('.last').children('iframe').attr('src');
 			$('.last').children('iframe').attr('switchsrc', videoSrc);
 		});
-		$('#videoslides').bind('slid', function() {
+		$('#videoslides,#recipe-carousel').bind('slid', function() {
 			$('.last').children('iframe').attr('src', 'none');
 			var videoSwitchSrc = $('.last').children('iframe').attr('switchsrc');
 			$('.last').children('iframe').attr('src', videoSwitchSrc);
