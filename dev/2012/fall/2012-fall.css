@@ -1,2 +1,2 @@
 span.firstletter { font-family: "Arial Black", Arial, Helvetica, sans-serif; font-size: 70px; display: block; float:left; font-weight: bold; }
-span.hangquote { font-size: 70px; line-height: 50px; padding-right: 5px; display: block; float: left; }
+span.hangquote { font-size: 70px; line-height: 70px; height: 1px; padding-right: 5px; display: block; float: left; }

@@ -1,5 +1,6 @@
 p.caption { font-size: 14px; line-height: 18px; }
 p.alt { font-size: 22px; color: #9b2036; line-height: 28px; font-weight: bold; }
+span.hangquote { font-size: 50px; line-height: 50px; }
 p.excerpt { font-size: 14px; color: #9b2036; font-style: italic; line-height: 18px; }
 .caption_box { padding: 10px 10px 10px 30px; }
 .caption_box .caption_title { font-size: 12px; line-height: 16px; text-transform: uppercase; font-weight: bold; color: #fff; }
