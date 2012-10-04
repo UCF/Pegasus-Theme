@@ -198,6 +198,7 @@ h2#footer_logo {
 	background-image:url(static/img/appstore.png);
 	background-repeat:no-repeat;
 	background-position:center center;
+	margin-top:20px;
 }
 
 /* Forms: */
