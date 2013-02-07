@@ -109,12 +109,12 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
  * Slug of the current Pegasus Magazine issue term in the 
  * issues taxonomy
  */ 
-define('CURRENT_ISSUE_TERM_SLUG', '2012-fall');
+define('CURRENT_ISSUE_TERM_SLUG', '2013-spring');
 
 /* 
  * Slug of the current Pegasus Magazine Issue post type
  */ 
-define('CURRENT_ISSUE_SLUG', 'fall-2012');
+define('CURRENT_ISSUE_SLUG', 'spring-2013');
 
 
 /**
