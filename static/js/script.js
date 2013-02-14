@@ -81,7 +81,7 @@ if (typeof jQuery != 'undefined'){
 							toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Close menu</strong>').tooltip('fixTitle').tooltip('show');
 						}
 					}
-					story_nav.slideToggle();
+					story_nav.slideToggle().toggleClass('active');
 				});
 		})();
 

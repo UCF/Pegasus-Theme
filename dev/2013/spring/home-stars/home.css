@@ -1,0 +1,18 @@
+html, body { overflow-x: hidden; width:100%; }
+body { position: relative; background: #040429; overflow-y: scroll; }
+
+body.ie7, body.ie8 { position: static; overflow-y: hidden; }
+
+/* Header/Footer */
+#header, #footer { background-color: transparent; position: relative; z-index: 1; }
+.header_stories { position: relative; z-index: 1; }
+
+/* Home Page content */
+#stars {
+	z-index:0;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+#body_content { z-index: 1; color: #fff; }
