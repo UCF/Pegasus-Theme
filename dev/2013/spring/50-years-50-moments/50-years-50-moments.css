@@ -8,24 +8,50 @@
 #story-title h2 { font-family: Georgia, serif; color: #000; font-size: 14px; line-height: 24px; font-weight: normal; }
 
 #masonry { margin-bottom: 60px; overflow: hidden; margin-left: -20px; }
-#masonry .box { border-top: 2px dotted #000; padding-top: 15px; margin-bottom: 15px; }
+#masonry .box { border-top: 2px dotted #000; padding-top: 15px; margin-bottom: 15px; overflow: hidden; }
 
 
 /* Font styles - by effect */
 .title-vertical { 
+	display: block;
+	width: 90px; /* Width must be equal to font size */
+	font-size: 90px;
+	word-wrap: break-word;
+	line-height: 76px;
+	text-align: center;
+	margin-left: -20px;
 }
+
 .title-circle { 
+	display: block;
+	width: 130px;
+	height: 145px;
+	padding-left: 15px;
+	border-radius: 72px;
+	font-size: 70px;
 }
-.title-circle-white { 
+.title-circle-white { background: #fff; }
+.title-circle-gold { background: #ffd400; color: #fff; }
+.title-circle-blue { background: #679399; color: #fff; }
+.title-circle.title-serif { line-height: 130px; }
+
+.title-blockstack {
+	display: block;
+	width: 85px; 
+	font-size: 65px;
+	word-wrap: break-word;
+	line-height: 53px;
 }
-.title-circle-gold { 
-}
-.title-circle-blue { 
-}
-.title-blockstack { 
-}
-.title-pentagon { /* title-pentagon is always the same color/font style */
+
+.title-pentagon { 
 	background-color: #9b907a;
+	color: #fff;
+	text-align: center;
+	position: relative;
+	display: block;
+	padding: 5px 0 11px 0;
+	font-size: 46px; line-height: 46px;
+	margin-bottom: 15px;
 }
 
 /* Font styles - by color */
@@ -35,12 +61,17 @@
 .title-blue { color: #679399; }
 
 /* Font styles - by font face */
-.title-serif { font-family: Georgia, serif; font-size: 70px; line-height: 70px; }
-.title-slab { font-family: 'Domine', serif; font-size: 70px; line-height: 70px; font-weight: normal; }
-.title-sans { font-family: 'Open Sans', sans-serif; font-size: 60px; line-height: 60px; font-weight: normal; }
+.title-serif { font-family: Georgia, serif; }
+.title-slab { font-family: 'Domine', serif; font-weight: normal; }
+.title-sans { font-family: 'Open Sans', sans-serif; font-weight: normal; }
+
+/* Font styles - by size */
+.title-large { font-size: 110px; line-height: 110px; margin-top: -10px; }
+.title-medium { font-size: 70px; line-height: 70px; }
+.title-small { font-size: 40px; line-height: 40px; }
 
 
-#masonry .box h4 { font-family: Georgia, serif; font-size: 24px; line-height: 28px; font-weight: normal; }
+#masonry .box h4 { font-family: Georgia, serif; font-size: 24px; line-height: 28px; font-weight: normal; margin-bottom: -10px; }
 
 .carat-left { }
 .carat-right { }
@@ -52,6 +83,27 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
 .col:last-child { margin-right: 0; }
+
+
+/* Single box styles */
+#our-first-president { overflow: visible !important; }
+#our-first-president .box-inner { position: relative; width: 100%; overflow: visible; height: auto; background: #ffd400; }
+#our-first-president img { position: relative; z-index: 2; }
+#our-first-president .col-left, #our-first-president .col-right { padding-top: 10px; position: absolute; top: 0; z-index: 1; }
+#our-first-president .col-left { margin-right: 0; width: 40%; left: 0; }
+#our-first-president .col-right { width: 30%; right: 30px; }
+#our-first-president h3 { margin-left: 10px; }
+
+#place-to-call-home { }
+#place-to-call-home .col-left, #place-to-call-home .col-right { margin-bottom: -35px; position: relative; z-index: 2; }
+#place-to-call-home .col-left { width: 24%; }
+#place-to-call-home .col-right { width: 70%; }
+#place-to-call-home .imgwrap { position: relative; z-index: 1; }
+
+#research-first { }
+#research-first .col-left { width: 60%; margin-right: 10px; }
+#research-first .col-right { width: 36%; }
+#research-first h3 { margin-left: -20px; }
 
 @media (max-width: 979px) {
 	#masonry { margin-left: 0; }
@@ -109,7 +161,8 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 
 @media (max-width: 480px) {
 	#masonry { width: 300px; }
+	#masonry .box h3 { display: block; width: 280px; }
 	#masonry [class*="span"] {
-		width: 300px !important;
+		width: 280px !important;
 	}
 }
