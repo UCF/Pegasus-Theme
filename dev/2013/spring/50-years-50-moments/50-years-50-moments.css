@@ -87,7 +87,7 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 .col, .col-left { margin-right: 15px; }
 .col:last-child { margin-right: 0; }
 
-hr.dotted { width: 100%; height: 1px; padding: 0; margin: 8px 0; border-bottom: 2px dotted #000; }
+.hr-dotted { width: 100%; height: 1px; padding: 0; margin: 8px 0; border-bottom: 2px dotted #000; }
 
 
 /* Single box styles */
