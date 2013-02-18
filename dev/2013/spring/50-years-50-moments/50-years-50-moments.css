@@ -77,9 +77,45 @@
 
 #masonry .box h4 { font-family: Georgia, serif; font-size: 24px; line-height: 28px; font-weight: normal; margin-bottom: -10px; }
 
-.carat-left { }
+.carat-left, .carat-right, .carat-up { position: relative; }
+.carat-left { position: relative; }
+.carat-left:before {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-right: 10px solid #ffd400;
+	position: absolute;
+	top: 4px;
+	left: -20px;
+}
 .carat-right { }
+.carat-right:after { 
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid #ffd400;
+	position: absolute;
+	top: 4px;
+	right: -20px;
+}
 .carat-up { }
+.carat-up:before {
+	content: '';
+	display: block;
+	width: 0;
+	height: 0;
+	border-bottom: 10px solid #ffd400;
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
+	position: absolute;
+	top: -20px;
+}
 
 span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; }
 p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-height: 13px; letter-spacing: 0.5px; }
@@ -110,6 +146,15 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 #research-first .col-left { width: 60%; margin-right: 10px; }
 #research-first .col-right { width: 36%; }
 #research-first h3 { margin-left: -20px; }
+
+#day-that-changed-orlando { }
+#day-that-changed-orlando .col-left { width: 68%; margin-right: 35px; }
+#day-that-changed-orlando .col-right { width: 28%; }
+
+#alumni-association { }
+#alumni-association .col-left { width: 54%; margin-right: 30px; }
+#alumni-association .col-right { width: 40%; }
+
 
 @media (max-width: 979px) {
 	#masonry { margin-left: 0; }
