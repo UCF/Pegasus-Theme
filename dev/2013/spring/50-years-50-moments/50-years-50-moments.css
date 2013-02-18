@@ -67,7 +67,7 @@
 /* Font styles - by font face */
 .title-serif { font-family: Georgia, serif; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
-.title-sans { font-family: 'Open Sans', sans-serif; font-weight: normal; }
+.title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
 
 /* Font styles - by size */
 .title-large { font-size: 110px; line-height: 110px; margin-top: -10px; }
@@ -117,7 +117,7 @@
 	top: -20px;
 }
 
-span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; }
+span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; font-weight: bolder; }
 p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-height: 20px; letter-spacing: 0.5px; }
 
 .col, .col-left, .col-right { float: left; }
