@@ -118,7 +118,7 @@
 }
 
 span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; }
-p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-height: 13px; letter-spacing: 0.5px; }
+p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-height: 20px; letter-spacing: 0.5px; }
 
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
@@ -154,6 +154,10 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 #alumni-association { }
 #alumni-association .col-left { width: 54%; margin-right: 30px; }
 #alumni-association .col-right { width: 40%; }
+
+#alma-mater { }
+#alma-mater h3 { float: left; margin-right: 12px; }
+#alma-mater .col { width: 17%; float: left; margin-right: 10px; }
 
 
 @media (max-width: 979px) {
