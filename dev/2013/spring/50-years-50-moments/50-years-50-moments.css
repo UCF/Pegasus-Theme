@@ -44,7 +44,10 @@
 }
 
 .title-pentagon { 
-	background-color: #9b907a;
+	/* background image: title-pentagon.png */
+	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAAA8CAMAAAFzxyzAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBQTFRFrKOPopmD3drS+vn52dXLy8W56+nlwbqsoJZ+6ebi/v7+8vDu4NzVsqqX7evoxL2wtq6cubGf9fTyzsi88O7r9PLwpZyGp56K/f385eLcqaCMyMK1vLWk0czB9/b0npR84uDY+fj2m5F40Mq/xsCy1dDG/Pz7m5F51dHHrqaTnZN7nJJ5+/v6+Pf25uTd5+XfvbemurSiv7io1M7E5OHa087DsKiVmY92nJJ8/f39t6+du7Oi29fOnZN6////mpB3KQlxIwAAAyhJREFUeNpisCcKMAwDZXZAoCaojlOBmA1IBVgZAugKQyW5UcUBAohhZIWbjThuBQI6WMKNTwoiKS2HKg4QQERaSlUfjBqGbJi8lhJ1TFLSkkeLdHCGUZAm6F4pFR4hTJ0AAcQwSINs1KxRs4aMWfLaVDJJG5G5RVg1OcgwgUNTmg2etzGzO5+GoDwhE6w02Cwxywk73EBNlEnGHKVyshHVwaMeIICoWrQO1iJ/1F2j7hp116i7Rt01eN0Fq2pZpK2kGDksBswh6hyM4rz8LCKE61pmThthdisGDho4goNBkJ2VRZ8ZT71tRxKQ49NnEraWUieldyMuKGyjJyJkSZJFJLoLC7CU0BHiERZg1LJV19ZiFGTl4dZRk6DYVIAA7NnLDoIwEAXQVkgxNE0ThAoLg8qjUKoYUnCB/v9v6codiVpfMfMDk7OZxb0XwTsCC1jAAhawgAUsYAELWMD6f1aaKvlbJKluy9mGFBwJPP8eJsVi2WUmmMivO9N7DAn1GUyDa3bIZtH9sdqnSZGPg2jegBFozF0TxlZpvwz3p4wzbInZ4sFbuEnov7yE0JQk/RV4fECDWbdaE+p8pBtxAkoqPj1BydqrDI2cZ6sR63Il1mVb8UGpRqpz3RWt1qVve/QiQLt2u5sgDEYBGAqUggiMr05EEI06WCdsKmbMbPd/V9P/zmSRELaccwXtkzZv0tOhvlRi+EALWgi0oAUtaEELWgi0oAUtaEELWgi0oAUtaEELWsgvtC51XGCcZlqdcFlmLCs3C7BcsnjOGGMyd+vpTK2ouFHcpeGE7KZOW0jxBfG/Ay5KxngcS8XbdKlatifurTlNxaPz00HTk3Zc8IiVf5amZBEvXDep/aU633ovZk+l8FoJ6IScr7FTPzRSxDaDk9kwOW5a3dF81dobtljf11V/dpz3x3RkGxOiHjTndRzLWZ82Mm9c/XyXyL6iQSjMrjfXudZVQSUNA5saZOU7Hw3v5IPRMeNSq2tPpKJ2EHq5afawkV60rgoKoeSpRy3Vd5ImujlGjl/R+cxoO6sapWmuCNELzZC0fp4m4dZa+UtSBWJwa/sGDhwLkdqdEAEAAAAASUVORK5CYII=);
+	background-size: 100% 60px;
+	background-repeat: no-repeat;
 	color: #fff;
 	text-align: center;
 	position: relative;
@@ -83,6 +86,8 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
 .col:last-child { margin-right: 0; }
+
+hr.dotted { width: 100%; height: 1px; padding: 0; margin: 8px 0; border-bottom: 2px dotted #000; }
 
 
 /* Single box styles */
