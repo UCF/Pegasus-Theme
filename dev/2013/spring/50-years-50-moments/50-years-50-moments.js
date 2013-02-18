@@ -17,8 +17,7 @@ var content = $('#masonry');
 content.imagesLoaded( function(){
   content.masonry({
 	itemSelector: '.box',
-    columnWidth: 60,
-	gutterWidth: 20,
+	columnWidth: 20,
 	isAnimated: true,
   });
 });
