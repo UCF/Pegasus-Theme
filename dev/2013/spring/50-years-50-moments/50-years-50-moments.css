@@ -81,7 +81,9 @@
 .title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
 
 /* H3 Font styles - by size */
+.title-xlarge { font-size: 160px; line-height: 110px; }
 .title-large { font-size: 110px; line-height: 110px; margin-top: -10px; }
+.title-medlarge { font-size: 95px; line-height: 65px; }
 .title-medium { font-size: 70px; line-height: 70px; }
 .title-small { font-size: 40px; line-height: 40px; }
 
@@ -100,8 +102,8 @@
 	border-bottom: 10px solid transparent;
 	border-right: 10px solid #ffd400;
 	position: absolute;
-	top: 4px;
 	left: -20px;
+	top: 2px;
 }
 .carat-right { }
 .carat-right:after { 
@@ -113,8 +115,8 @@
 	border-bottom: 10px solid transparent;
 	border-left: 10px solid #ffd400;
 	position: absolute;
-	top: 4px;
 	right: -20px;
+	top: 2px;
 }
 .carat-up { }
 .carat-up:before {
@@ -132,7 +134,16 @@
 /* Inner copy styles */
 .box p { font-size: 12px; line-height: 16px; }
 span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; font-weight: bolder; }
-p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-height: 20px; letter-spacing: 0.5px; }
+p.quote { 
+	font-family: 'Open Sans Condensed', sans-serif; 
+	font-size: 15px; 
+	font-weight: normal; 
+	font-style: italic; 
+	line-height: 22px; 
+	letter-spacing: 0.5px; 
+	margin-top: 0;
+	margin-bottom: 10px; 
+}
 
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
@@ -169,26 +180,73 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 #research-first h3 { margin-left: -20px; }
 
 #day-that-changed-orlando { }
-#day-that-changed-orlando .col-left { width: 72%; margin-right: 35px; }
+#day-that-changed-orlando .col-left { width: 72.5%; margin-right: 30px; }
 #day-that-changed-orlando .col-right { width: 24%; }
 
 #alumni-association { }
 #alumni-association .col-left { width: 54%; margin-right: 30px; }
 #alumni-association .col-right { width: 40%; }
+#alumni-association .col-right h3 { margin-left: -12px; }
 
 #first-commencement { overflow: visible !important; }
 #first-commencement .box-inner img { position: relative; top: -35px; z-index: 1; }
 #first-commencement .box-inner h3 { position: absolute; top: 10px; left: 10px; z-index: 2; }
-#first-commencement .box-inner h4 { margin-top: -40px; }
+#first-commencement .box-inner h4 { margin-top: -30px; }
 
 #alma-mater { }
-#alma-mater h3 { float: left; margin-right: 12px; }
-#alma-mater .col { width: 17%; float: left; margin-right: 10px; }
+#alma-mater .col { width: 23%; float: left; margin-right: 10px; margin-top: 43px; }
+#alma-mater .col h3 { margin-bottom:15px; }
 
 #rita-reutter { }
 #rita-reutter .col-left { width: 37%; }
 #rita-reutter .col-left h4 { margin-top: 10px; }
 #rita-reutter .col-right { width: 60%; }
+
+#our-second-president { overflow: visible !important; }
+#our-second-president .box-inner img { position: relative; top: 85px; z-index: 2; }
+#our-second-president .box-inner h3 { position: absolute; top: 0; z-index: 1; }
+#our-second-president .box-inner .col { width: 40%; z-index: 2; position: absolute; top: 135px; left: 5px; float: none; }
+
+#our-second-name { overflow: visible !important; }
+#our-second-name .box-inner img { position: relative; top: 0; z-index: 1; }
+#our-second-name .box-inner h3 { position: absolute; top: 10px; right: 10px; z-index: 2; }
+#our-second-name .box-inner h4 { margin-top: 10px; }
+
+#first-provost { }
+#first-provost .col-left { width: 40%; margin-right: 30px; }
+#first-provost .col-left h3 { display: block; }
+#first-provost .col-left h3.title-blue, 
+#first-provost .col-left h3.title-medgray { float: right; font-size: 60px; }
+#first-provost .col-left h3.title-medgray + h4 { margin-top: 25px; }
+#first-provost .col-left h3.title-gold { float: left; padding-right: 5px; font-size: 85px; line-height: 80px; }
+#first-provost .col-left p { }
+#first-provost .col-left .hr-dotted { margin: 15px 0; }
+#first-provost .col-right { width: 55%; }
+
+#third-president { }
+#third-president img { margin-top: -20px; }
+#third-president h4 { margin-top: -10px; }
+
+#interim-president { }
+#interim-president img { margin-top: -60px; }
+#interim-president .title-circle-gold + p + h4 { margin-top: -20px; }
+#interim-president h3.title-blue { margin: 20px 0; }
+
+#our-fourth-president { }
+#our-fourth-president .box-inner { position: relative; }
+#our-fourth-president .box-inner h3 { position: absolute; top: 50px; right: 45px; }
+#our-fourth-president .box-inner h4,
+#our-fourth-president .box-inner p { color: #fff; }
+#our-fourth-president .box-inner h4 { position: absolute; top: 145px; right: 60px; }
+#our-fourth-president .box-inner p { display: block; width: 215px; position: absolute; top: 158px; right: 45px; }
+
+#center-of-student-life { }
+#center-of-student-life .col-left { width: 72%; }
+#center-of-student-life .col-right { width: 24%; }
+#center-of-student-life .col-right h3 { margin-bottom: 30px; margin-top: 10px; }
+
+#more-parking { }
+#more-parking img { width: 120px; float: left; margin-top: -5px; }
 
 
 @media (max-width: 767px) {
