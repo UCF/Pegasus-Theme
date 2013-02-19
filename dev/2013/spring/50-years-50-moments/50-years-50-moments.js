@@ -13,11 +13,11 @@
 
 /* Masonry Init */
 var content = $('#masonry');
-
+/*
 content.imagesLoaded( function(){
   content.masonry({
 	itemSelector: '.box',
 	columnWidth: 20,
 	isAnimated: true,
   });
-});
+});*/

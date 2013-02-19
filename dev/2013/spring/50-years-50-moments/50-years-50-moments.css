@@ -7,8 +7,8 @@
 #story-title h1 { text-indent: -9999px; display: block; height: 1px; }
 #story-title h2 { font-family: Georgia, serif; color: #000; font-size: 14px; line-height: 24px; font-weight: normal; }
 
-#masonry { margin-bottom: 60px; overflow: hidden; width: 980px; }
-#masonry .box { border-top: 2px dotted #000; padding-top: 15px; margin-bottom: 15px; overflow: hidden; }
+#boxes { margin-bottom: 60px; overflow: hidden; width: 980px; }
+#boxes .row .box { border-top: 2px dotted #000; padding-top: 15px; margin-bottom: 15px; overflow: hidden; }
 
 
 /* Font styles - by effect */
@@ -75,7 +75,7 @@
 .title-small { font-size: 40px; line-height: 40px; }
 
 
-#masonry .box h4 { font-family: Georgia, serif; font-size: 24px; line-height: 28px; font-weight: normal; margin-bottom: -10px; }
+#boxes .row .box h4 { font-family: Georgia, serif; font-size: 24px; line-height: 28px; font-weight: normal; margin-bottom: -10px; }
 
 .carat-left, .carat-right, .carat-up { position: relative; }
 .carat-left { position: relative; }
@@ -165,64 +165,10 @@ p.quote { font-family: 'Open Sans Condensed', sans-serif; font-size: 14px; line-
 #alma-mater .col { width: 17%; float: left; margin-right: 10px; }
 
 
-@media (max-width: 979px) {
-	#masonry { margin-left: 0; }
-	
-	/* Force .span's to always use their 980px window widths, unless they exceed the current window width */
-	
-	#masonry .span12,
-	#masonry .span11,
-	#masonry .span10 { width: 95%; }
-	
-	#masonry .span9 {
-		width: 700px;
-	}
-	#masonry .span8 {
-		width: 620px;
-	}
-	#masonry .span7 {
-		width: 540px;
-	}
-	#masonry .span6 {
-		width: 460px;
-	}
-	#masonry .span5 {
-		width: 380px;
-	}
-	#masonry .span4 {
-		width: 300px;
-	}
-	#masonry .span3 {
-		width: 220px;
-	}
-	#masonry .span2 {
-		width: 140px;
-	}
-	#masonry .span1 {
-		width: 60px;
-	}
-	#masonry [class*="span"] {
-		margin-left: 0;
-	}
-}
-
 @media (max-width: 767px) {
 	#story-title { margin: 20px 0; }
 	#story-title img { margin: 10px 0; }
-	
-	#masonry { margin-left: -20px; }
-	
-	#masonry .span9,
-	#masonry .span8,
-	#masonry .span7,
-	#masonry .span6,
-	#masonry .span5 { width: 95%; }
 }
 
 @media (max-width: 480px) {
-	#masonry { width: 300px; }
-	#masonry .box h3 { display: block; width: 280px; }
-	#masonry [class*="span"] {
-		width: 280px !important;
-	}
 }
