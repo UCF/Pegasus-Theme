@@ -21,3 +21,7 @@ content.imagesLoaded( function(){
 	isAnimated: true,
   });
 });*/
+
+
+/* Delete annoying empty p tags */
+$("p:empty").remove();
