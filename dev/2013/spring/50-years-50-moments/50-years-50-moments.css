@@ -8,6 +8,7 @@
 #story-title h2 { font-family: Georgia, serif; color: #000; font-size: 14px; line-height: 24px; font-weight: normal; }
 
 #boxes { margin-bottom: 60px; overflow: hidden; width: 980px; }
+#boxes a { font-weight: bold; color: #000; text-decoration: underline; }
 #boxes .row .box { border-top: 2px dotted #000; padding-top: 15px; margin-bottom: 15px; overflow: hidden; }
 
 
@@ -20,6 +21,19 @@
 	line-height: 80px;
 	text-align: center;
 	margin-left: -20px;
+}
+
+.title-rotate-left {
+	display: block;
+	-webkit-transform-origin: 0 0;
+    -moz-transform-origin:    0 0;
+    -ms-transform-origin:     0 0;
+    -o-transform-origin:      0 0;
+	transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
 
 .title-circle-medium { 
@@ -52,6 +66,11 @@
 	line-height: 52px;
 	margin-top: -4px;
 }
+.title-blockstack.title-large {
+	width: 130px;
+	margin-bottom: 10px;
+	line-height: 86px;
+}
 
 .title-pentagon { 
 	/* background image: title-pentagon.png */
@@ -75,8 +94,9 @@
 .title-white { color: #fff; }
 
 /* H3 Font styles - by font face */
-.title-serif { font-family: Georgia, serif; }
-.title-serif.title-large { margin-bottom: 15px; }
+.title-serif { font-family: Georgia, serif; font-weight: normal; }
+.title-serif.title-xlarge { letter-spacing: -10px; }
+.title-serif.title-large { letter-spacing: -8px; margin-bottom: 15px; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
 .title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
 
@@ -128,7 +148,8 @@
 	border-right: 10px solid transparent;
 	border-left: 10px solid transparent;
 	position: absolute;
-	top: -20px;
+	top: 9px;
+	left: -27px;
 }
 
 /* Inner copy styles */
@@ -247,6 +268,45 @@ p.quote {
 
 #more-parking { }
 #more-parking img { width: 120px; float: left; margin-top: -5px; }
+
+#healthy-knights { overflow: visible !important; margin-bottom: -40px !important; }
+#healthy-knights .col-left { width: 60%; }
+#healthy-knights .col-right { }
+#healthy-knights .col-right h3 { position: relative; top: -25px; z-index: 2; }
+#healthy-knights img { position: relative; top: -40px; z-index: 1; }
+
+#miss-america { overflow: visible !important; }
+#miss-america .col-left { width: 50%; margin-right: 0; text-align: center; }
+#miss-america .col-left img { margin-top: -30px; position: relative; z-index: 2; width: 85%; }
+#miss-america .col-right { width: 50%; }
+
+#award-winning-incubator { }
+#award-winning-incubator h3 { margin-bottom: 40px; }
+
+#research-powerhouse { margin-top: -30px; }
+#research-powerhouse .col-left { width: 56%; }
+#research-powerhouse .col-right { width: 41%; }
+
+#college-of-medicine { overflow: visible !important; }
+#college-of-medicine .box-inner { position: relative; z-index: 1; background: #ffd400; text-align: right; }
+#college-of-medicine .box-inner img { margin-top:-30px; }
+#college-of-medicine .box-inner .col { width: 33%; text-align: left; position: absolute; top: 30px; left: 30px; }
+#college-of-medicine .box-inner .col h3 { margin-bottom: 20px; }
+
+#leading-lady { }
+#leading-lady .box-inner img { float: right; position: relative; z-index: 2; width: 250px; }
+#leading-lady .box-inner .col-left { width: 50%; float: none; position: absolute; top: 0; z-index: 1; }
+
+#opening-night { }
+#opening-night .box-inner .col { position: absolute; top: 30px; left: 20px; z-index: 2; width: 30%; }
+#opening-night .box-inner .col h4,
+#opening-night .box-inner .col p { color: #fff; }
+#opening-night .box-inner .col h3 { margin-bottom: 10px; }
+
+#first-class { border-top: 0 !important; }
+#first-class .col-left { position: relative; }
+#first-class .col-left h3 { position: absolute; top: 225px; left: 0; }
+#first-class .col-right { float: right; width: 73%; }
 
 
 @media (max-width: 767px) {
