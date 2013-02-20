@@ -324,8 +324,7 @@ p.quote {
 #first-class .col-left { position: relative; }
 #first-class .col-left h3 { position: absolute; top: 225px; left: 0; }
 .ie8 #first-class .col-left h3,
-.ie7 #first-class .col-left h3 { position: static; }
-.ie7 #first-class .col-left h3 { margin-bottom: 30px; }
+.ie7 #first-class .col-left h3 { position: static; margin-bottom: 30px; }
 #first-class .col-right { float: right; width: 73%; }
 .ie8 #first-class .col-right,
 .ie7 #first-class .col-right { width: 100%; float: left; }
