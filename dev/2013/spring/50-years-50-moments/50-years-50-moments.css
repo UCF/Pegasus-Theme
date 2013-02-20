@@ -21,6 +21,13 @@
     animation-fill-mode: both;
     animation-timing-function: ease;
     backface-visibility: hidden;
+	
+	/* stupid Safari... */
+	-webkit-animation-delay: 0.5s;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    -webkit-animation-timing-function: ease;
+    -webkit-backface-visibility: hidden;
 }
 
 
