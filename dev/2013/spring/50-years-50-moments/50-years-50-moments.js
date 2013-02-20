@@ -63,12 +63,13 @@ if (hasAnimationSupport == true) {
 		'bounceInRight',
 	];
 	
-	$('.box').bind('inview', function (event, visible) {
+	$('.box').css('visibility', 'hidden').bind('inview', function (event, visible) {
 		if (visible == true) {
 			// grab a random animation
 			var randAnimation = animations[Math.floor(Math.random() * animations.length)];
 			// animate the box somehow, then stop listening
 			$(this)
+				.css('visibility', 'visible')
 				.addClass(randAnimation)
 				.unbind('inview');
 		}
