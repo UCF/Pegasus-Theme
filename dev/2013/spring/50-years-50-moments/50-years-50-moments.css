@@ -33,9 +33,7 @@
 	-webkit-transform: rotate(270deg);
 	-moz-transform: rotate(270deg);
 	-ms-transform: rotate(270deg);
-	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
-.ie9 .title-rotate-left { filter: none; }
 
 .title-circle-medium { 
 	display: block;
@@ -318,7 +316,7 @@ p.quote {
 .ie7 #first-class .col-left h3 { position: static; }
 .ie7 #first-class .col-left h3 { margin-bottom: 30px; }
 #first-class .col-right { float: right; width: 73%; }
-.ie8 #first-class .col-right { position: relative !important; top: -60px !important; }
+.ie8 #first-class .col-right,
 .ie7 #first-class .col-right { width: 100%; float: left; }
 
 
