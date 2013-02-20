@@ -35,6 +35,7 @@
 	-ms-transform: rotate(270deg);
 	filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
 }
+.ie9 .title-rotate-left { filter: none; }
 
 .title-circle-medium { 
 	display: block;
@@ -306,7 +307,11 @@ p.quote {
 #first-class { border-top: 0 !important; }
 #first-class .col-left { position: relative; }
 #first-class .col-left h3 { position: absolute; top: 225px; left: 0; }
+.ie8 #first-class .col-left h3,
+.ie7 #first-class .col-left h3 { position: static; }
 #first-class .col-right { float: right; width: 73%; }
+.ie8 #first-class .col-right,
+.ie7 #first-class .col-right { position: relative !important; top: -30px !important; }
 
 
 @media (max-width: 767px) {
