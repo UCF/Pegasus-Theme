@@ -1,3 +1,6 @@
+/* Kill responsive styles for this page */
+$('link#bootstrap-responsive-css').remove();
+
 /* Delete annoying empty p tags */
 $("p:empty").remove();
 

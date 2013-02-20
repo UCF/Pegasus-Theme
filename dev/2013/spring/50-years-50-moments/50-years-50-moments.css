@@ -4,8 +4,8 @@
 
 
 #story-title { margin: 40px 0; }
-#story-title h1 { text-indent: -9999px; display: block; height: 1px; }
-#story-title h2 { font-family: Georgia, serif; color: #000; font-size: 14px; line-height: 24px; font-weight: normal; }
+#story-title h1,
+#story-title h2 { text-indent: -9999px; display: block; height: 1px; }
 
 #boxes { margin-bottom: 60px; overflow: hidden; width: 980px; }
 #boxes a { font-weight: bold; color: #000; text-decoration: underline; }
@@ -318,12 +318,3 @@ p.quote {
 #first-class .col-right { float: right; width: 73%; }
 .ie8 #first-class .col-right,
 .ie7 #first-class .col-right { width: 100%; float: left; }
-
-
-@media (max-width: 767px) {
-	#story-title { margin: 20px 0; }
-	#story-title img { margin: 10px 0; }
-}
-
-@media (max-width: 480px) {
-}
