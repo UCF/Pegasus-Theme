@@ -1,16 +1,5 @@
 if (typeof jQuery != 'undefined'){
 	jQuery(document).ready(function($) {
-		if($.browser.msie) {
-			var version = $.browser.version;
-			if(version >= 7 && version < 8) {
-				$('body').addClass('ie7');
-			} else if(version >= 8 && version < 9) {
-				$('body').addClass('ie8');
-			} else if(version >= 9 && version < 10) {
-				$('body').addClass('ie9');
-			}
-		}
-
 		var defaultMenuSeparators = function($) {
 			// Because IE sucks, we're removing the last stray separator
 			// on default navigation menus for browsers that don't 
