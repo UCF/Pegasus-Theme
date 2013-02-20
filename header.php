@@ -26,7 +26,7 @@
 		
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
-			var csspie_path = <?=THEME_JS_URL.'/PIE.js'?>;
+			var csspie_path = '<?=THEME_JS_URL.'/PIE.js'?>';
 		</script>
 
 		<? if( is_home() && ( $issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False) { ?>
