@@ -76,15 +76,22 @@
 .title-pentagon { 
 	/* background image: title-pentagon.png */
 	background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAS0AAAA8CAMAAAFzxyzAAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAMBQTFRFrKOPopmD3drS+vn52dXLy8W56+nlwbqsoJZ+6ebi/v7+8vDu4NzVsqqX7evoxL2wtq6cubGf9fTyzsi88O7r9PLwpZyGp56K/f385eLcqaCMyMK1vLWk0czB9/b0npR84uDY+fj2m5F40Mq/xsCy1dDG/Pz7m5F51dHHrqaTnZN7nJJ5+/v6+Pf25uTd5+XfvbemurSiv7io1M7E5OHa087DsKiVmY92nJJ8/f39t6+du7Oi29fOnZN6////mpB3KQlxIwAAAyhJREFUeNpisCcKMAwDZXZAoCaojlOBmA1IBVgZAugKQyW5UcUBAohhZIWbjThuBQI6WMKNTwoiKS2HKg4QQERaSlUfjBqGbJi8lhJ1TFLSkkeLdHCGUZAm6F4pFR4hTJ0AAcQwSINs1KxRs4aMWfLaVDJJG5G5RVg1OcgwgUNTmg2etzGzO5+GoDwhE6w02Cwxywk73EBNlEnGHKVyshHVwaMeIICoWrQO1iJ/1F2j7hp116i7Rt01eN0Fq2pZpK2kGDksBswh6hyM4rz8LCKE61pmThthdisGDho4goNBkJ2VRZ8ZT71tRxKQ49NnEraWUieldyMuKGyjJyJkSZJFJLoLC7CU0BHiERZg1LJV19ZiFGTl4dZRk6DYVIAA7NnLDoIwEAXQVkgxNE0ThAoLg8qjUKoYUnCB/v9v6codiVpfMfMDk7OZxb0XwTsCC1jAAhawgAUsYAELWMD6f1aaKvlbJKluy9mGFBwJPP8eJsVi2WUmmMivO9N7DAn1GUyDa3bIZtH9sdqnSZGPg2jegBFozF0TxlZpvwz3p4wzbInZ4sFbuEnov7yE0JQk/RV4fECDWbdaE+p8pBtxAkoqPj1BydqrDI2cZ6sR63Il1mVb8UGpRqpz3RWt1qVve/QiQLt2u5sgDEYBGAqUggiMr05EEI06WCdsKmbMbPd/V9P/zmSRELaccwXtkzZv0tOhvlRi+EALWgi0oAUtaEELWgi0oAUtaEELWgi0oAUtaEELWsgvtC51XGCcZlqdcFlmLCs3C7BcsnjOGGMyd+vpTK2ouFHcpeGE7KZOW0jxBfG/Ay5KxngcS8XbdKlatifurTlNxaPz00HTk3Zc8IiVf5amZBEvXDep/aU633ovZk+l8FoJ6IScr7FTPzRSxDaDk9kwOW5a3dF81dobtljf11V/dpz3x3RkGxOiHjTndRzLWZ82Mm9c/XyXyL6iQSjMrjfXudZVQSUNA5saZOU7Hw3v5IPRMeNSq2tPpKJ2EHq5afawkV60rgoKoeSpRy3Vd5ImujlGjl/R+cxoO6sapWmuCNELzZC0fp4m4dZa+UtSBWJwa/sGDhwLkdqdEAEAAAAASUVORK5CYII=);
-	background-size: 100% 60px;
+	background-size: cover;
 	background-repeat: no-repeat;
 	color: #fff;
 	text-align: center;
 	position: relative;
 	display: block;
+	height: 60px;
 	padding: 5px 0 11px 0;
 	font-size: 46px; line-height: 46px;
 	margin-bottom: 15px;
+}
+.ie8 .title-pentagon,
+.ie7 .title-pentagon {
+	background-image: none;
+	background-color: #9A9077;
+	padding: 5px 0;
 }
 
 /* H3 Font styles - by color */
@@ -226,7 +233,7 @@ p.quote {
 
 #our-second-president { overflow: visible !important; }
 #our-second-president .box-inner img { position: relative; top: 85px; z-index: 2; }
-#our-second-president .box-inner h3 { position: absolute; top: 0; z-index: 1; }
+#our-second-president .box-inner h3 { position: absolute; top: 0; left: 0; z-index: 1; }
 #our-second-president .box-inner .col { width: 40%; z-index: 2; position: absolute; top: 135px; left: 5px; float: none; }
 
 #our-second-name { overflow: visible !important; }
@@ -309,9 +316,10 @@ p.quote {
 #first-class .col-left h3 { position: absolute; top: 225px; left: 0; }
 .ie8 #first-class .col-left h3,
 .ie7 #first-class .col-left h3 { position: static; }
+.ie7 #first-class .col-left h3 { margin-bottom: 30px; }
 #first-class .col-right { float: right; width: 73%; }
-.ie8 #first-class .col-right,
-.ie7 #first-class .col-right { position: relative !important; top: -30px !important; }
+.ie8 #first-class .col-right { position: relative !important; top: -60px !important; }
+.ie7 #first-class .col-right { width: 100%; float: left; }
 
 
 @media (max-width: 767px) {
