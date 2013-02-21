@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:800);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic);
 @import url(http://fonts.googleapis.com/css?family=Domine:700);
 
@@ -7,12 +7,20 @@
 
 #story-title { margin: 40px 0; }
 #story-title h1,
-#story-title h2 { text-indent: -9999px; display: block; height: 1px; }
+#story-title h2,
+#on-campus #on-campus-title h2,
+#on-campus #on-campus-title h3 { text-indent: -9999px; display: block; height: 1px; }
 
-#boxes { margin-bottom: 60px; overflow: hidden; width: 980px; }
-#boxes a { font-weight: bold; color: #000; text-decoration: underline; }
-#boxes .row { margin-left: 0; }
-#boxes .row .box { 
+#boxes, #on-campus { 
+	border-bottom: 10px solid #CECDCB;
+    margin-bottom: 30px;
+    overflow: hidden;
+    padding-bottom: 20px;
+	width: 980px; 
+}
+#boxes a, #on-campus a { font-weight: bold; color: #000; text-decoration: underline; }
+#boxes .row, #on-campus .row { margin-left: 0; }
+#boxes .row .box, #on-campus .row .box { 
 	border-top: 2px dotted #000; 
 	padding-top: 15px; 
 	margin-bottom: 15px; 
@@ -30,6 +38,9 @@
     -webkit-animation-fill-mode: both;
     -webkit-animation-timing-function: ease;
     -webkit-backface-visibility: hidden;
+}
+#on-campus .row .box {
+	border-top: 1px solid #cecdcb;
 }
 
 
@@ -181,6 +192,7 @@
 
 /* Inner copy styles */
 .box p { font-size: 12px; line-height: 16px; }
+#on-campus .box p { font-family: 'Open Sans', sans-serif; font-weight: 400; color: #6e6f71; margin-top: 0; }
 span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; font-weight: bolder; }
 p.quote { 
 	font-family: 'Open Sans Condensed', sans-serif; 
@@ -339,6 +351,60 @@ p.quote {
 .ie8 #first-class .col-right,
 .ie7 #first-class .col-right { width: 100%; float: left; }
 
+
+/* Single On-Campus box styles */
+#judith-ford { border-top: 0 !important; }
+#judith-ford .col-left { width: 10%; }
+#judith-ford .col-left p { text-align: right; }
+#judith-ford .col-right { width: 88%; float: right; }
+
+#abdul-kalam { }
+#abdul-kalam .box-inner h3 { position: absolute; top: 410px; right: 20px; }
+#abdul-kalam .box-inner p { position: absolute; top: 480px; right: 20px; display: block; width: 200px; text-align: right; color: #fff; }
+
+#leonard-nemoy { }
+#leonard-nemoy .col-left { width: 40%; }
+#leonard-nemoy .col-right { width: 55%; }
+#leonard-nemoy .col-right h3 { margin-top: 105px; }
+#leonard-nemoy .col-right p { margin-bottom: 0 !important; }
+
+#tennessee-williams { }
+#tennessee-williams h3 { display: block; float: left; margin-right: 10px; margin-top: 5px; }
+#tennessee-williams p { margin-top: 10px !important; }
+
+#rigoberta-tum { }
+#rigoberta-tum .box-inner h3 { position: absolute; bottom: 15px; right: 20px; }
+#rigoberta-tum p { margin-top: 10px !important; }
+
+#nixon { backface-visibility: inherit !important; -webkit-backface-visibility: inherit !important; } /* TODO: FIX THIS */
+#nixon h3 { display: block; float: left; padding-right: 5px; margin-top: 5px; }
+#nixon p { margin-top: 10px !important }
+
+#biden-mickey { }
+#biden-mickey #biden { overflow: hidden; }
+#biden-mickey #biden .col-left { width: 60%; }
+#biden-mickey #biden .col-left h3 { margin-top: 80px; }
+#biden-mickey #biden .col-left h3 { margin-bottom: 0 !important; }
+#biden-mickey #biden .col-right { width: 36%; }
+#biden-mickey #mickey { margin-top: 15px; padding-top: 15px; border-top: 1px solid #cecdcb; }
+#biden-mickey #mickey h3 { display: block; float: left; padding-right: 5px; } 
+#biden-mickey #mickey p { margin-top: 10px; }
+
+#nicole-stott { }
+#nicole-stott .box-inner h3 { position: absolute; bottom: 15px; right: 20px; }
+#nicole-stott p { margin-top: 10px !important; }
+
+#william-buckley { }
+#william-buckley h3 { display: block; float: left; padding-right: 5px; }
+#william-buckley p { margin-top: 10px !important; }
+
+
+/* More Info section styles */
+#more-info {  }
+#more-info #for-more { margin: 20px 0 !important; }
+#more-info #visit { margin: -20px 0 0 0 !important; font-size: 32px; font-style: italic; }
+#more-info #visit a { color: #222; }
+#more-info #logo-50th { text-align: right; margin-bottom: 80px !important; margin-top: 50px !important; }
 
 
 
