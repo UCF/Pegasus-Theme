@@ -1,7 +1,14 @@
-if (typeof jQuery != 'undefined'){
-	jQuery(document).ready(function($) {
-        window.onload = function ()
-        {
+	window.onload = function() {		
+		
+		$.when(
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.common.effects.js'),
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.common.core.js'),
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.common.tooltips.js'),
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.common.key.js'),
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.common.dynamic.js'),
+			$.getScript(THEME_JS_URL + '/rgraph/RGraph.line.js')
+		).done(function(){
+		
 			/* 15-year enrollment comparison between state universities chart */
 			
 					   /* '96  '97   '98    '99   '00   '01   '02   '03   '04   '05   '06   '07   '08   '09   '10   '11 */
@@ -86,6 +93,7 @@ if (typeof jQuery != 'undefined'){
 				}
 			});
 			
-        }
-	});
-}
+		
+		});
+		
+	}
