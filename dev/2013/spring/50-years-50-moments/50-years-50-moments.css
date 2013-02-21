@@ -3,6 +3,8 @@
 @import url(http://fonts.googleapis.com/css?family=Domine:700);
 
 
+#header, #footer { background-color: #9A9077; }
+
 #story-title { margin: 40px 0; }
 #story-title h1,
 #story-title h2 { text-indent: -9999px; display: block; height: 1px; }
