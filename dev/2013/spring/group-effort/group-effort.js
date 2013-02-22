@@ -12,12 +12,20 @@ var setImgDimensions = function() {
 var setImgColHeight = function() {
 	// Force .stackable-col's to always be the same height as their sibling .text-col:
 	$('.stackable-col').each(function() {
-		var siblingTextCol = $(this).next('.text-col');
-		if (siblingTextCol.height() > $(this).height()) {
-			$(this).css('height', siblingTextCol.height());
+		var stackableCol = $(this),
+			siblingTextCol = stackableCol.next('.text-col');
+			
+		if ( ($(window).height() < siblingTextCol.height()) || ($(window).height() < stackableCol.height()) ) {
+			if (siblingTextCol.height() > stackableCol.height()) {
+				stackableCol.css('height', siblingTextCol.height());
+			}
+			else {
+				siblingTextCol.height(stackableCol.height());
+			}
 		}
 		else {
-			siblingTextCol.height($(this).height());
+			stackableCol.css('height', $(window).height());
+			siblingTextCol.height($(window).height());
 		}
 	});
 }/*

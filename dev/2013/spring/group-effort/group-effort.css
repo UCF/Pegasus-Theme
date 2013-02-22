@@ -2,3 +2,5 @@
 
 .stackable-col { background: #0c1010; }
 .stackable-img { position: relative; z-index: 2; }
+
+.text-col { overflow: visible; }
