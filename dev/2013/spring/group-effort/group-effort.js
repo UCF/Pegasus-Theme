@@ -6,7 +6,8 @@ var setImgDimensions = function() {
 	// Get the current width of the left-hand #stackable-container column
 	// and assign it to every .stackable-img:
 	$('.stackable-img').css({
-		'width' : $('#stackable-container .row-fluid .span6').width()
+		'width' : $('.stackable-col').width(),
+		'height' : $(window).height()
 	});
 }
 var setImgColHeight = function() {
@@ -53,7 +54,10 @@ $(window).load(function() {
 			// when it reaches the top of the page:
 			$('.stackable-img').each(function() {
 				var targetPos = $(this).parents('.row-fluid').position().top;
-				$(this).toggleClass('fixedPos', currentPos >= targetPos).css('margin-top', '');
+				$(this)
+					.toggleClass('fixedPos', currentPos >= targetPos)
+					.css('margin-top', '')
+					.toggleClass('bottomPos', endPos <= currentPos);
 			});	
 			
 			
@@ -61,7 +65,7 @@ $(window).load(function() {
 				// If we've reached the end of the main story container,
 				// unset the current stackable fixed image:
 				if (endPos <= currentPos) {
-					$('.fixedPos').removeClass('fixedPos');
+					$('.fixedPos').removeClass('fixedPos').addClass('bottomPos');
 				}
 				//setFixedVerticalPos();
 			}

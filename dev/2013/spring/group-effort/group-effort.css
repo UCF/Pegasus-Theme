@@ -1,6 +1,25 @@
-.fixedPos { position: fixed !important; top: 0; left: 20px; z-index: 1; }
+#stackable-container { margin-bottom: 200px; }
+#stackable-container h2,
+#stackable-container h3,
+#stackable-container h4 {
+	font-family: Georgia, serif; font-weight: normal;
+}
+#stackable-container h2,
+#stackable-container h3 { font-size: 60px; line-height: 60px; padding-top: 250px; text-transform: uppercase; }
+#stackable-container h3 .alt { font-style: italic; font-size: 40px; line-height: 30px; text-transform: none; width: 100%; float: left; }
+#stackable-container h4 { font-style: italic; font-size: 18px; }
 
-.stackable-col { background: #0c1010; }
-.stackable-img { position: relative; z-index: 2; }
+.fixedPos { position: fixed !important; top: 0; left: 20px; z-index: 1; }
+.bottomPos { position: absolute !important; bottom: 0; z-index: 1; }
+
+.stackable-col { background: #0c1010; position: relative; }
+#millican .stackable-col { background: #38384E; }
+#colbourn .stackable-col { background: #172330; }
+#hitt .stackable-col { background: #B19472; }
+#hitt .text-col .text-col-content { padding-bottom: 0 !important; }
+
+.stackable-img { position: relative; z-index: 2; overflow: hidden; }
+.stackable-img img { position: absolute; top: 0; height: 100%; width: auto; max-width: none; margin: auto; }
 
 .text-col { overflow: visible; }
+.text-col .text-col-content { display: block; width: 80%; margin: auto; padding-bottom: 200px; }
