@@ -13,7 +13,12 @@ var setImgColHeight = function() {
 	// Force .stackable-col's to always be the same height as their sibling .text-col:
 	$('.stackable-col').each(function() {
 		var siblingTextCol = $(this).next('.text-col');
-		$(this).css('height', siblingTextCol.height());
+		if (siblingTextCol.height() > $(this).height()) {
+			$(this).css('height', siblingTextCol.height());
+		}
+		else {
+			siblingTextCol.height($(this).height());
+		}
 	});
 }/*
 var setFixedVerticalPos = function() {
