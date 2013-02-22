@@ -39,6 +39,12 @@
     -webkit-animation-timing-function: ease;
     -webkit-backface-visibility: hidden;
 }
+#boxes .row .box.noanimation, #on-campus .row .box.noanimation {
+	backface-visibility: visible !important; 
+	-webkit-backface-visibility: visible !important; 
+	animation-fill-mode: none !important;
+	-webkit-animation-fill-mode: none !important;
+}
 #on-campus .row .box {
 	border-top: 1px solid #cecdcb;
 }
@@ -376,12 +382,7 @@ p.quote {
 #rigoberta-tum .box-inner h3 { position: absolute; bottom: 15px; right: 20px; }
 #rigoberta-tum p { margin-top: 10px !important; }
 
-#nixon { 
-	backface-visibility: visible !important; 
-	-webkit-backface-visibility: visible !important; 
-	animation-fill-mode: none !important;
-	-webkit-animation-fill-mode: none !important;
-}
+#nixon { }
 #nixon h3 { display: block; float: left; padding-right: 5px; margin-top: 5px; }
 #nixon p { margin-top: 10px !important }
 
