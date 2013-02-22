@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300italic);
 @import url(http://fonts.googleapis.com/css?family=Domine:700);
+@import url(http://fonts.googleapis.com/css?family=Trocchi);
 
 
 #header, #footer { background-color: #9A9077; }
@@ -142,6 +143,7 @@
 .title-serif.title-xlarge { letter-spacing: -10px; }
 .title-serif.title-large { letter-spacing: -8px; margin-bottom: 15px; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
+.title-slab-alt { font-family: 'Trocchi', serif; font-weight: normal; }
 .title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
 
 /* H3 Font styles - by size */
