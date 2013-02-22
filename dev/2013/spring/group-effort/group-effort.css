@@ -1,0 +1,4 @@
+.fixedPos { position: fixed !important; top: 0; left: 20px; z-index: 1; }
+
+.stackable-col { background: #0c1010; }
+.stackable-img { position: relative; z-index: 2; }
