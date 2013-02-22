@@ -376,7 +376,12 @@ p.quote {
 #rigoberta-tum .box-inner h3 { position: absolute; bottom: 15px; right: 20px; }
 #rigoberta-tum p { margin-top: 10px !important; }
 
-#nixon { backface-visibility: inherit !important; -webkit-backface-visibility: inherit !important; } /* TODO: FIX THIS */
+#nixon { 
+	backface-visibility: visible !important; 
+	-webkit-backface-visibility: visible !important; 
+	animation-fill-mode: none !important;
+	-webkit-animation-fill-mode: none !important;
+}
 #nixon h3 { display: block; float: left; padding-right: 5px; margin-top: 5px; }
 #nixon p { margin-top: 10px !important }
 
