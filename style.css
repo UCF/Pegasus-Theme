@@ -156,17 +156,17 @@ h2#footer_logo {
 
 }
 	#issue-carousel .carousel-control {
-		top:6px;
+		top: 30px;
 		border:0;
 		background:none;
-		width:200px;
+		width: auto;
 		opacity: .8;
-		margin-top:0;
+		margin-top: 0;
 		font-size:15px;
 		z-index: 5;
 		line-height: 25px;
 		height: 25px;
-		overflow: hidden;
+		overflow: visible;
 	}
 		#issue-carousel .carousel-control:hover {
 			opacity:.9;
@@ -176,13 +176,9 @@ h2#footer_logo {
 			right:0;
 		}
 		#issue-carousel .carousel-control.left {
-			text-align: right;
-			left:auto;
-			right:0;
+			text-align: left;
+			left: 0;
 		}
-			#issue-carousel .carousel-control.left.both {
-				right: 200px;
-			}
 		#issue-carousel .carousel-control i { margin-top: 2px; }
 	#issue-carousel .item .issue-title {
 		color:#FFF;
