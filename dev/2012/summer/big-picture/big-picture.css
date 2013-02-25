@@ -676,5 +676,4 @@ and (max-width: 979px) {
 
 
 #footer #footer_hr { display: none; }
-
-
+#issue-carousel .carousel-control { top: 52px !important; }

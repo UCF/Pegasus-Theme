@@ -426,8 +426,7 @@ and (max-width: 979px) {
 
 
 
-/** RESPONSIVE STYLES **/
-#footer .carousel-control { top: 25px !important; }		
+/** RESPONSIVE STYLES **/	
 
 
 @media (max-width: 979px) {
@@ -603,4 +602,4 @@ and (max-width: 979px) {
 
 
 #footer #footer_hr { display: none; }
-
+#issue-carousel .carousel-control { top: 52px !important; }
