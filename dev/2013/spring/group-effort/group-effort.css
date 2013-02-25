@@ -1,4 +1,6 @@
-#stackable-container { margin-bottom: 200px; }
+#header, #footer { background-color: #737478; }
+
+#stackable-container { margin-bottom: 200px; padding-left: 0; padding-right: 0; }
 #stackable-container h2,
 #stackable-container h3,
 #stackable-container h4 {
@@ -9,17 +11,40 @@
 #stackable-container h3 .alt { font-style: italic; font-size: 40px; line-height: 30px; text-transform: none; width: 100%; float: left; }
 #stackable-container h4 { font-style: italic; font-size: 18px; }
 
-.fixedPos { position: fixed !important; top: 0; left: 20px; z-index: 1; }
+.fixedPos { position: fixed !important; top: 0; left: 0; z-index: 1; }
 .bottomPos { position: absolute !important; bottom: 0; z-index: 1; }
 
-.stackable-col { background: #0c1010; position: relative; }
-#millican .stackable-col { background: #38384E; }
-#colbourn .stackable-col { background: #172330; }
-#hitt .stackable-col { background: #B19472; }
+.stackable-col { background: #0F1014; position: relative; }
 #hitt .text-col .text-col-content { padding-bottom: 0 !important; }
 
-.stackable-img { position: relative; z-index: 2; overflow: hidden; }
+.stackable-img { position: relative; z-index: 2; overflow: hidden; background: #0F1014; }
 .stackable-img img { position: absolute; top: 0; height: 100%; width: auto; max-width: none; margin: auto; }
 
-.text-col { overflow: visible; }
-.text-col .text-col-content { display: block; width: 80%; margin: auto; padding-bottom: 200px; }
+.text-col { }
+.text-col .text-col-content { display: block; width: 80%; margin: auto; padding-bottom: 200px; overflow: visible; height: auto; }
+
+.hr-dotted { width: 100%; height: 1px; margin: 35px 0; border-bottom: 1px dotted #BBBBBB; }
+p.caption { font-style: italic; font-weight: bold; }
+p.credit { 
+	color: #666; 
+	font-size: 10px; 
+	text-transform: uppercase; 
+	position: relative; 
+	top: 20px; 
+	left: 20px; 
+	font-family: 'Helvetica', sans-serif; 
+}
+
+
+@media (max-width: 767px) {	
+	#stackable-container { margin-bottom: 50px; }
+	#stackable-container h2, #stackable-container h3 { padding-top: 30px; font-size: 52px; }
+	#stackable-container h3 .alt { font-size: 35px; }
+	
+	.stackable-img { position: static; overflow: visible; text-align: center; }
+	.stackable-img img { position: static; width: 100%; }
+	
+	.text-col .text-col-content { padding-bottom: 50px; width: 100%; }
+	
+	p.credit { position: absolute; bottom: 20px; right: 20px; top: auto; left: auto; }
+}
