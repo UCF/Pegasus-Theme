@@ -13,7 +13,7 @@ var setImgDimensions = function() {
 		// resize the image so that it is as wide/tall as its parent
 		// while maintaining its aspect ratio:
 		var stackableImg = $(this),
-			img = stackableImg.find('img'),
+			img = stackableImg.children('img'),
 			oldImgWidth = img.width(),
 			oldImgHeight = img.height(),
 			newImgWidth = stackableImg.width();
@@ -51,7 +51,7 @@ var setColHeights = function() {
 			stackableColHeight 		= stackableCol.height(),
 			siblingTextCol 			= stackableCol.next('.text-col'),
 			siblingTextColHeight 	= siblingTextCol.height(),
-			textColContent 			= siblingTextCol.find('.text-col-content'),
+			textColContent 			= siblingTextCol.children('.text-col-content'),
 			textColContentHeight 	= textColContent.height();
 		
 		// Determine the actual height of siblingTextCol based
