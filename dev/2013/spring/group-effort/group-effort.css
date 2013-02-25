@@ -25,6 +25,16 @@
 
 .hr-dotted { width: 100%; height: 1px; margin: 35px 0; border-bottom: 1px dotted #BBBBBB; }
 p.caption { font-style: italic; font-weight: bold; }
+.stackable-img p.caption { 
+	display: block;
+	width: 230px;
+	position: absolute;
+	bottom: 90px; 
+	right: 20px; 
+	font-family: Georgia, serif; 
+	font-weight: normal;
+	color: #fff; 
+}
 p.credit { 
 	color: #666; 
 	font-size: 10px; 
