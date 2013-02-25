@@ -1,0 +1,30 @@
+#body_content h1, #body_content h2 { display: block; text-indent: -9999px; height: 1px; }
+
+#story-subheader p { font-size: 21px; line-height: 33px; }
+
+#circlegraph { height: 900px; position: relative; }
+.circle { position: absolute; opacity: 0.5; box-shadow: inset 0px 0px 20px 20px rgba(0, 0, 0, 0.05); }
+.circle-yellow { background: #ffeb30; }
+.circle-orange { background: #f5be35; }
+.circle-green { background: #90c58f; }
+.circle-small { width: 40px; height: 40px; border-radius: 40px; }
+.circle-medium { width: 70px; height: 70px; border-radius: 70px; }
+.circle-large { width: 105px; height: 105px; border-radius: 105px; }
+.circle-xlarge { width: 130px; height: 130px; border-radius: 130px; }
+
+#circlegraph #center { 
+	background: #000; 
+	opacity: 0.85; 
+	position: absolute; 
+	top: 340px;
+	left: 230px;
+	z-index: 999; 
+	border: 20px rgba(255,255,255,0.3); 
+	width: 265px;
+	height: 265px;
+	border-radius: 265px;
+}
+#circlegraph #center p {
+	text-align: center;
+	color: #fff;
+}
