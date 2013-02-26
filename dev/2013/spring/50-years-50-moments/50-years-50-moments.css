@@ -3,7 +3,6 @@
 @import url(http://fonts.googleapis.com/css?family=Domine:700);
 @import url(http://fonts.googleapis.com/css?family=Trocchi);
 
-
 #header, #footer { background-color: #9A9077; }
 
 #story-title { margin: 40px 0; }
@@ -139,7 +138,7 @@
 .title-white { color: #fff; }
 
 /* H3 Font styles - by font face */
-.title-serif { font-family: Georgia, serif; font-weight: normal; }
+.title-serif { font-family: 'Theano Modern', Georgia, serif; font-weight: normal; }
 .title-serif.title-xlarge { letter-spacing: -10px; }
 .title-serif.title-large { letter-spacing: -8px; margin-bottom: 15px; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
