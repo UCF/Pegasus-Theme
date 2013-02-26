@@ -1,25 +1,81 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+@import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
+
 #body_content h1, #body_content h2 { display: block; text-indent: -9999px; height: 1px; }
 
 #story-subheader p { font-size: 21px; line-height: 33px; }
 
 #circlegraph { height: 900px; position: relative; }
-.circle { position: absolute; opacity: 0.5; box-shadow: inset 0px 0px 20px 20px rgba(0, 0, 0, 0.05); }
-.circle-yellow { background: #ffeb30; }
-.circle-orange { background: #f5be35; }
-.circle-green { background: #90c58f; }
+.circle { 
+	position: absolute; 
+	opacity: 0.8; 
+}
+.circle-yellow { background-color: #FFEB30; }
+.circle-orange { background-color: #FFAA00; }
+.circle-green { background-color: #98E3AB; }
+.circle-xsmall { width: 35px; height: 35px; border-radius: 35px; }
 .circle-small { width: 40px; height: 40px; border-radius: 40px; }
 .circle-medium { width: 70px; height: 70px; border-radius: 70px; }
 .circle-large { width: 105px; height: 105px; border-radius: 105px; }
 .circle-xlarge { width: 130px; height: 130px; border-radius: 130px; }
 
+.ie8 .line, .ie7 .line { display: none; }
+.line { height: 1px; border-bottom: 1px solid #ccc; position: absolute; z-index: 1; }
+#line-college-of-medicine {
+	transform: rotate(-50deg);
+	-ms-transform: rotate(-50deg);
+	-webkit-transform: rotate(-50deg);
+	-o-transform: rotate(-50deg);
+	-moz-transform: rotate(-50deg);
+	top: 226px;
+	left: 383px;
+	width: 0;
+	-webkit-transition-property: width;
+    -webkit-transition-duration: 1s;
+}
+#line-college-of-medicine.active {
+    width: 415px;
+}
+
+#line-regional-campuses { 
+	transform: rotate(-27deg);
+	-ms-transform: rotate(-27deg);
+	-webkit-transform: rotate(-27deg);
+	-o-transform: rotate(-27deg);
+	-moz-transform: rotate(-27deg);
+	top: 388px;
+	left: 475px;
+	width: 260px;
+}
+#line-rosen { 
+	transform: rotate(18deg);
+	-ms-transform: rotate(18deg);
+	-webkit-transform: rotate(18deg);
+	-o-transform: rotate(18deg);
+	-moz-transform: rotate(18deg);
+	top: 566px;
+	left: 466px;
+	width: 260px;
+}
+#line-ist { 
+	transform: rotate(42deg);
+	-ms-transform: rotate(42deg);
+	-webkit-transform: rotate(42deg);
+	-o-transform: rotate(42deg);
+	-moz-transform: rotate(42deg);
+	top: 704px;
+	left: 373px;
+	width: 400px;
+}
+
+
 #circlegraph #center { 
-	background: #000; 
-	opacity: 0.85; 
+	background-color: #000; 
 	position: absolute; 
 	top: 340px;
 	left: 230px;
 	z-index: 999; 
-	border: 20px rgba(255,255,255,0.3); 
+	border: 20px solid rgba(255,255,255,0.8); 
 	width: 265px;
 	height: 265px;
 	border-radius: 265px;
@@ -27,4 +83,56 @@
 #circlegraph #center p {
 	text-align: center;
 	color: #fff;
+	font-family: 'Yanone Kaffeesatz', sans-serif;
+	font-size: 40px;
+	margin-top: 105px;
+	opacity: 1;
+	text-transform: uppercase;
+	letter-spacing: 3px;
 }
+
+#partnerships { padding: 40px 33px 20px 0; position: relative; }
+#partnerships h3 { 
+	font-family: 'Yanone Kaffeesatz', sans-serif; 
+	font-weight: 700; 
+	text-transform: uppercase; 
+	letter-spacing: 1.5px; 
+	color: #939598;
+	line-height: 22px;
+	display: block;
+	float: left;
+	padding-left: 45px;
+}
+#partnerships h4 { 
+	font-family: 'Open Sans', sans-serif; 
+	font-weight: 800; 
+	text-transform: uppercase; 
+	display: block; 
+	float: left;
+	width: 145px;
+	font-size: 12px;
+	line-height: 17px;
+	margin-bottom: 3px;
+	padding-left: 45px;
+}
+#partnerships p { 
+	font-family: 'Open Sans', sans-serif; 
+	font-weight: 400; 
+	margin-top: 8px; 
+	margin-bottom: 5px;
+	font-size: 11px; 
+	display: block;
+	clear: both;
+}
+#partnerships .circle { position: absolute; }
+#partnerships #college-of-medicine { top: 42px; left: 0; }
+#partnerships #regional-campuses { top: 309px; left: 0; }
+#partnerships #rosen { top: 592px; left: 0; }
+#partnerships #ist { top: 828px; left: 0; }
+.hr-dotted { width: 100%; height: 1px; margin: 5px 0; border-bottom: 1px dotted #939598; }
+
+#story-below-graph { margin-top: 40px; margin-bottom: 90px; }
+#story-below-graph h3 { font-family: 'Open Sans', sans-serif; line-height: 35px; font-weight: 800; }
+#story-below-graph p { text-indent: 10px; margin: 4px 0 12px 0; }
+#story-below-graph h3 + p { text-indent: 0; margin-top: 0; }
+p.quote { font-size: 30px; line-height: 34px; font-style: italic; margin: 30px 0 35px 0; text-indent: 0; }

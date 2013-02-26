@@ -25,10 +25,10 @@ var plaxifyEverything = function() {
         {"xRange":50,"yRange":50},
         {"xRange":200,"yRange":200,"invert":true}
 	];
-	var positionXMin = 0,
+	var positionXMin = 40,
 		positionXMax = 520,
 		positionYMin = 20,
-		positionYMax = 760;
+		positionYMax = 900;
 	var sizeRange = [
 		'circe-small',
 		'circle-medium',
@@ -36,7 +36,7 @@ var plaxifyEverything = function() {
 		'circle-xlarge'
 	];
 	
-	$('.circle').each(function() {
+	$('#circlegraph .circle').each(function() {
 		// grab some random absolute positioning coord's:
 		var randomXCoord = randomFromRange(positionXMin, positionXMax);
 		var randomYCoord = randomFromRange(positionYMin, positionYMax);
@@ -65,6 +65,16 @@ $(document).ready(function() {
 	$.getScript(THEME_JS_URL + '/plax.js', function() {
 		plaxifyEverything();
 		$.plax.enable({ "activityTarget": $('#circlegraph')});
+	});
+	
+	/* Add animations to on-screen elements */
+	$('.line').bind('inview', function (event, visible) {
+		if (visible == true) {
+			// animate the box somehow, then stop listening
+			$(this)
+				.addClass('active')
+				.unbind('inview');
+		}
 	});
 	
 	
