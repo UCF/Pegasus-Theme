@@ -96,6 +96,7 @@ define('THEME_STATIC_URL', THEME_URL.'/static');
 define('THEME_IMG_URL', THEME_STATIC_URL.'/img');
 define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
+define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
 define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
@@ -104,6 +105,18 @@ $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
+
+/**
+ * List of available fonts. Structure array as key = font name, val = path to the font. 
+ * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
+ *
+ * All fonts in this list should have a single reference file, which points to all 
+ * available font file formats.
+ * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
+ **/
+define('THEME_AVAILABLE_FONTS', array(
+	'Theano Modern' => THEME_FONT_URL.'/theano-modern/stylesheet.css',
+)); 
 
 /* 
  * Slug of the current Pegasus Magazine issue term in the 
