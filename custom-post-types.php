@@ -480,6 +480,24 @@ class Story extends CustomPostType {
 	static function get_stylesheet_url($issue) {
 		return Issue::get_file_url($issue, 'story_stylesheet');
 	}
+	
+	static function get_story_font_includes($story) {
+		if (get_post_meta($story->ID, 'story_fonts', TRUE) && get_post_meta($story->ID, 'story_fonts', TRUE) !== '') {
+			$available_fonts = THEME_AVAILABLE_FONTS;
+			$output = array();
+			
+			$fonts = explode(',', $fonts);
+			foreach ($fonts as $font) { 
+				trim($font);
+				if (array_key_exists($font, $available_fonts)) {
+					$output[] = $available_fonts[$font]; 
+				}
+			}
+			
+			return $output;
+		}
+		else { return false; }
+	}
 
 	public function fields() {
 		$prefix = $this->options('name').'_';
@@ -501,6 +519,12 @@ class Story extends CustomPostType {
 				'desc' => '',
 				'id'   => $prefix.'javascript',
 				'type' => 'file',
+			),
+			array(
+				'name' => 'Font Includes',
+				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the THEME_AVAILABLE_FONTS constant (functions/config.php).  Fonts should be referenced by name and be comma-separated.',
+				'id'   => $prefix.'fonts',
+				'type' => 'textarea',
 			),
 			array(
 				'name' => 'Home Page Feature',

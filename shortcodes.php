@@ -115,24 +115,4 @@ function sc_static_image($attr) {
 }
 add_shortcode('static-image', 'sc_static_image');
 
-
-/*
- * Output a style reference to a font within page content.
- * Font names and references should be added to the list of available
- * fonts in THEME_AVAILABLE_FONTS. (see functions/config.php)
- */
-function sc_font_reference($attr) {
-	if (isset($attr['name']) && $attr['name'] !== '') {
-		$fonts = THEME_AVAILABLE_FONTS;
-		if (array_key_exists($attr['name'], $fonts)) {
-			ob_start();
-			?>
-				<style type="text/css">@import url('<?=$fonts[$attr['name']]?>');</style>
-			<?php
-			return ob_get_clean();
-		}
-	}
-}
-add_shortcode('font', 'sc_font_reference');
-
 ?>

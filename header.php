@@ -37,6 +37,16 @@
 			<link rel='stylesheet' href="<?=$home_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 
+		<? if ( $post->post_type == 'story' && Story::get_story_font_includes($post) !== False ) { ?>
+			<style type="text/css">
+			<?
+			$fonts = Story::get_story_font_includes($post);
+			foreach ($fonts as $font) { ?>
+				@import url('<?=$font?>');
+			<? } ?>
+			</style>
+		<? } ?>
+
 		<? if( $post->post_type == 'story' && ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) { ?>
 				<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
