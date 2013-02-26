@@ -75,22 +75,20 @@
 
 .title-circle-medium { 
 	display: block;
-	width: 110px;
+	width: 113px;
 	height: 125px;
-	padding-left: 15px;
+	padding-left: 12px;
 	border-radius: 72px;
-	font-size: 60px;
 }
-.title-circle-medium.title-serif { line-height: 120px; }
+.title-circle-medium.title-serif { font-size: 82px; line-height: 130px; letter-spacing: -9px; }
 .title-circle-large {
 	display: block;
 	width: 195px;
 	height: 215px;
 	padding-left: 20px;
 	border-radius: 122px;
-	font-size: 120px;
 }
-.title-circle-large.title-serif { line-height: 180px; }
+.title-circle-large.title-serif { font-size: 140px; line-height: 225px; letter-spacing: -13px; }
 .title-circle-white { background: #fff; }
 .title-circle-gold { background: #ffd400; color: #fff; }
 .title-circle-blue { background: #679399; color: #fff; }
@@ -139,8 +137,10 @@
 
 /* H3 Font styles - by font face */
 .title-serif { font-family: 'Theano Modern', Georgia, serif; font-weight: normal; }
-.title-serif.title-xlarge { letter-spacing: -10px; }
-.title-serif.title-large { letter-spacing: -8px; margin-bottom: 15px; }
+.title-serif.title-medium { font-size: 82px; letter-spacing: -9px; }
+.title-serif.title-medlarge { font-size: 115px; letter-spacing: -8px; padding-top: 6px; }
+.title-serif.title-large { font-size: 140px; line-height: 125px; letter-spacing: -15px; margin-bottom: 15px; padding-top: 10px; }
+.title-serif.title-xlarge { letter-spacing: -10px; padding-top: 10px; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
 .title-slab-alt { font-family: 'Trocchi', serif; font-weight: normal; }
 .title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
@@ -257,7 +257,7 @@ p.quote {
 
 #first-commencement { overflow: visible !important; }
 #first-commencement .box-inner img { position: relative; top: -35px; z-index: 1; }
-#first-commencement .box-inner h3 { position: absolute; top: 10px; left: 10px; z-index: 2; }
+#first-commencement .box-inner h3 { position: absolute; top: 20px; left: 10px; z-index: 2; }
 #first-commencement .box-inner h4 { margin-top: -30px; }
 
 #alma-mater { }
@@ -276,16 +276,16 @@ p.quote {
 
 #our-second-name { overflow: visible !important; }
 #our-second-name .box-inner img { position: relative; top: 0; z-index: 1; }
-#our-second-name .box-inner h3 { position: absolute; top: 10px; right: 10px; z-index: 2; }
+#our-second-name .box-inner h3 { position: absolute; top: 20px; right: 20px; z-index: 2; }
 #our-second-name .box-inner h4 { margin-top: 10px; }
 
 #first-provost { }
 #first-provost .col-left { width: 40%; margin-right: 30px; }
 #first-provost .col-left h3 { display: block; }
 #first-provost .col-left h3.title-blue, 
-#first-provost .col-left h3.title-medgray { float: right; font-size: 60px; }
+#first-provost .col-left h3.title-medgray { float: right; font-size: 60px; letter-spacing: -6px; }
 #first-provost .col-left h3.title-medgray + h4 { margin-top: 25px; }
-#first-provost .col-left h3.title-gold { float: left; padding-right: 5px; font-size: 85px; line-height: 80px; }
+#first-provost .col-left h3.title-gold { float: left; padding-right: 10px; font-size: 85px; line-height: 80px; }
 #first-provost .col-left p { }
 #first-provost .col-left .hr-dotted { margin: 15px 0; }
 #first-provost .col-right { width: 55%; }
@@ -327,7 +327,7 @@ p.quote {
 #miss-america .col-right { width: 50%; }
 
 #award-winning-incubator { }
-#award-winning-incubator h3 { margin-bottom: 40px; }
+#award-winning-incubator h3 { margin-bottom: 25px; }
 
 #research-powerhouse { margin-top: -30px; }
 #research-powerhouse .col-left { width: 56%; }
@@ -337,7 +337,7 @@ p.quote {
 #college-of-medicine .box-inner { position: relative; z-index: 1; background: #ffd400; text-align: right; }
 #college-of-medicine .box-inner img { margin-top:-30px; }
 #college-of-medicine .box-inner .col { width: 33%; text-align: left; position: absolute; top: 30px; left: 30px; }
-#college-of-medicine .box-inner .col h3 { margin-bottom: 20px; }
+#college-of-medicine .box-inner .col h3 { margin-bottom: 20px; letter-spacing: -10px; }
 
 #leading-lady { }
 #leading-lady .box-inner img { float: right; position: relative; z-index: 2; width: 250px; }
