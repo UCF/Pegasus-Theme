@@ -114,9 +114,9 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
  * available font file formats.
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
-define('THEME_AVAILABLE_FONTS', array(
+define('THEME_AVAILABLE_FONTS', serialize(array(
 	'Theano Modern' => THEME_FONT_URL.'/theano-modern/stylesheet.css',
-)); 
+))); 
 
 /* 
  * Slug of the current Pegasus Magazine issue term in the 

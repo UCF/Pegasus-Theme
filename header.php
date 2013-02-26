@@ -37,13 +37,19 @@
 			<link rel='stylesheet' href="<?=$home_stylesheet_url?>" type='text/css' media='all' />
 		<? } ?>
 
-		<? if ( $post->post_type == 'story' && Story::get_story_font_includes($post) !== False ) { ?>
+		<? if ( $post->post_type == 'story' && get_post_meta($post->ID, 'story_fonts', TRUE) && get_post_meta($post->ID, 'story_fonts', TRUE) !== '' ) { ?>
 			<style type="text/css">
 			<?
-			$fonts = Story::get_story_font_includes($post);
-			foreach ($fonts as $font) { ?>
-				@import url('<?=$font?>');
-			<? } ?>
+			$fonts = explode(',', get_post_meta($post->ID, 'story_fonts', TRUE));
+			$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
+			foreach ($fonts as $font) { 
+				trim($font);
+				if (array_key_exists($font, $available_fonts)) { ?>
+					@import url('<?=$available_fonts[$font]?>');
+				<?	
+				}
+			} 
+			?>
 			</style>
 		<? } ?>
 
