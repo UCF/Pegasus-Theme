@@ -135,4 +135,11 @@
 #story-below-graph h3 { font-family: 'Open Sans', sans-serif; line-height: 35px; font-weight: 800; }
 #story-below-graph p { text-indent: 10px; margin: 4px 0 12px 0; }
 #story-below-graph h3 + p { text-indent: 0; margin-top: 0; }
-p.quote { font-size: 30px; line-height: 34px; font-style: italic; margin: 30px 0 35px 0; text-indent: 0; }
+p.quote { 
+	font-family: 'Theano Modern', Georgia, serif; 
+	font-size: 30px; 
+	line-height: 34px; 
+	font-style: italic; 
+	margin: 30px 0 35px 0; 
+	text-indent: 0 !important; 
+}
