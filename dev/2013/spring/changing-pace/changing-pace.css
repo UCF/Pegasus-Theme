@@ -5,7 +5,7 @@
 
 #story-subheader p { font-size: 21px; line-height: 33px; }
 
-#circlegraph { height: 900px; position: relative; }
+#circlegraph { height: 1040px; position: relative; }
 .circle { 
 	position: absolute; 
 	opacity: 0.8; 

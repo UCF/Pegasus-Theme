@@ -28,7 +28,7 @@ var plaxifyEverything = function() {
 	var positionXMin = 40,
 		positionXMax = 520,
 		positionYMin = 20,
-		positionYMax = 900;
+		positionYMax = 950;
 	var sizeRange = [
 		'circe-small',
 		'circle-medium',
