@@ -32,20 +32,11 @@ var plaxifyEverything = function() {
 		positionXMax = 520,
 		positionYMin = 20,
 		positionYMax = 950;
-	var sizeRange = [
-		'circe-small',
-		'circle-medium',
-		'circle-large',
-		'circle-xlarge'
-	];
 	
 	$('#circlegraph .circle').each(function() {
 		// grab some random absolute positioning coord's:
 		var randomXCoord = randomFromRange(positionXMin, positionXMax);
 		var randomYCoord = randomFromRange(positionYMin, positionYMax);
-		
-		// grab a random size class:
-		var randSize = randomFromArray(sizeRange);
 		
 		// grab a random Plax coord object:
 		var randPlax = randomFromArray(plaxRanges);
@@ -56,7 +47,6 @@ var plaxifyEverything = function() {
 				'top' : randomYCoord,
 				'left' : randomXCoord
 			})
-			.addClass(randSize)
 			.plaxify(randPlax);
 	});
 }
@@ -71,7 +61,9 @@ $(document).ready(function() {
 	
 	/* Grab raphael.js and draw some lines: */
 	$.getScript(THEME_JS_URL + '/raphael.2.1.0.js', function() {
-		// 
+		// All lines are absolutely positioned relative to #circlegraph.
+		// We assign positions/widths/heights here for the sake of
+		// convenience.
 		$('#line-college-of-medicine')
 			.css({
 				'top': 64,
@@ -90,29 +82,35 @@ $(document).ready(function() {
 			.attr('data-linedraw-endpos', 400);
 		$('#line-rosen')
 			.css({
-				'top': 327,
-				'left' : 522,
-				'width' : 199,
-				'height': 105
+				'top': 532,
+				'left' : 530,
+				'width' : 191,
+				'height': 79
 			})
-			.attr('data-linedraw-endpos', 400);
+			.attr('data-linedraw-endpos', 191);
 		$('#line-ist')
 			.css({
-				'top': 327,
-				'left' : 522,
-				'width' : 199,
-				'height': 105
+				'top': 602,
+				'left' : 489,
+				'width' : 232,
+				'height': 248
 			})
-			.attr('data-linedraw-endpos', 400);
+			.attr('data-linedraw-endpos', 241);
 		
 		$('.line').each(function() {
-			var canvasDiv = $(this),
-				canvasID = canvasDiv.attr('id'),
-				canvasEndPos = canvasDiv.attr('data-linedraw-endpos'),
-				canvas = new Raphael(canvasID, canvasDiv.width(), canvasDiv.height()),
-				line = canvas.path('M0 ' + canvasDiv.height().toString());
+			var canvasDiv 		= $(this),
+				canvasID 		= canvasDiv.attr('id'),
+				// .bt lines run from bottom-left to top-right; .tb run top-left to bottom-right:
+				canvasStartPos 	= (canvasDiv.hasClass('line-bt')) ? 'M0 ' + canvasDiv.height().toString() : 'M0 0',
+				canvasEndPos 	= (canvasDiv.hasClass('line-bt')) 
+									? canvasDiv.attr('data-linedraw-endpos') + ' ' + (canvasDiv.height() * -1).toString() 
+									: canvasDiv.attr('data-linedraw-endpos') + ' ' + canvasDiv.height().toString(),
+				canvas 			= new Raphael(canvasID, canvasDiv.width(), canvasDiv.height());
+			
+			var line = canvas.path(canvasStartPos);
 			line.attr({ stroke: '#ccc', 'stroke-width' : 1 });
-			line.animate({ path : 'M0 ' + canvasDiv.height().toString() + ' L ' + canvasEndPos + ' ' + (canvasDiv.height() * -1).toString() }, 1500);
+			
+			line.animate({ path : canvasStartPos + ' L ' + canvasEndPos }, 1500);
 		});				
 				
 	});
