@@ -2,6 +2,9 @@
 $('link#bootstrap-responsive-css').remove();
 $('meta[name="viewport"]').attr('content', 'width=980');
 
+/* Delete annoying empty p tags */
+$("p:empty").remove();
+
 // Return a random value from a range of numbers.
 // Why Javascript doesn't have built-in range calculation
 // is beyond me...
@@ -46,7 +49,6 @@ var plaxifyEverything = function() {
 		
 		// grab a random Plax coord object:
 		var randPlax = randomFromArray(plaxRanges);
-		console.log(randPlax);
 		
 		// assign stuff:
 		$(this)
@@ -67,14 +69,52 @@ $(document).ready(function() {
 		$.plax.enable({ "activityTarget": $('#circlegraph')});
 	});
 	
-	/* Add animations to on-screen elements */
-	$('.line').bind('inview', function (event, visible) {
-		if (visible == true) {
-			// animate the box somehow, then stop listening
-			$(this)
-				.addClass('active')
-				.unbind('inview');
-		}
+	/* Grab raphael.js and draw some lines: */
+	$.getScript(THEME_JS_URL + '/raphael.2.1.0.js', function() {
+		// 
+		$('#line-college-of-medicine')
+			.css({
+				'top': 64,
+				'left' : 480,
+				'width' : 242,
+				'height': 311
+			})
+			.attr('data-linedraw-endpos', 480);
+		$('#line-regional-campuses')
+			.css({
+				'top': 327,
+				'left' : 522,
+				'width' : 199,
+				'height': 105
+			})
+			.attr('data-linedraw-endpos', 400);
+		$('#line-rosen')
+			.css({
+				'top': 327,
+				'left' : 522,
+				'width' : 199,
+				'height': 105
+			})
+			.attr('data-linedraw-endpos', 400);
+		$('#line-ist')
+			.css({
+				'top': 327,
+				'left' : 522,
+				'width' : 199,
+				'height': 105
+			})
+			.attr('data-linedraw-endpos', 400);
+		
+		$('.line').each(function() {
+			var canvasDiv = $(this),
+				canvasID = canvasDiv.attr('id'),
+				canvasEndPos = canvasDiv.attr('data-linedraw-endpos'),
+				canvas = new Raphael(canvasID, canvasDiv.width(), canvasDiv.height()),
+				line = canvas.path('M0 ' + canvasDiv.height().toString());
+			line.attr({ stroke: '#ccc', 'stroke-width' : 1 });
+			line.animate({ path : 'M0 ' + canvasDiv.height().toString() + ' L ' + canvasEndPos + ' ' + (canvasDiv.height() * -1).toString() }, 1500);
+		});				
+				
 	});
 	
 	

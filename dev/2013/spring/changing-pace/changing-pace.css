@@ -1,10 +1,13 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
 
+/* Story title */
+#story-header { margin-bottom: 40px; }
 #body_content h1, #body_content h2 { display: block; text-indent: -9999px; height: 1px; }
+#story-subheader p { font-size: 16px; line-height: 22px; margin-top: 290px; }
 
-#story-subheader p { font-size: 21px; line-height: 33px; }
 
+/* Circle Graph, circles and lines */
 #circlegraph { height: 1040px; position: relative; }
 .circle { 
 	position: absolute; 
@@ -19,8 +22,8 @@
 .circle-large { width: 105px; height: 105px; border-radius: 105px; }
 .circle-xlarge { width: 130px; height: 130px; border-radius: 130px; }
 
-.ie8 .line, .ie7 .line { display: none; }
-.line { height: 1px; border-bottom: 1px solid #ccc; position: absolute; z-index: 1; }
+.line { /*height: 1px; border-bottom: 1px solid #ccc;*/ position: absolute; z-index: 1; }
+/*
 #line-college-of-medicine {
 	transform: rotate(-50deg);
 	-ms-transform: rotate(-50deg);
@@ -29,14 +32,9 @@
 	-moz-transform: rotate(-50deg);
 	top: 226px;
 	left: 383px;
-	width: 0;
-	-webkit-transition-property: width;
-    -webkit-transition-duration: 1s;
+	width: 415px;
+	
 }
-#line-college-of-medicine.active {
-    width: 415px;
-}
-
 #line-regional-campuses { 
 	transform: rotate(-27deg);
 	-ms-transform: rotate(-27deg);
@@ -67,7 +65,7 @@
 	left: 373px;
 	width: 400px;
 }
-
+*/
 
 #circlegraph #center { 
 	background-color: #000; 
@@ -91,6 +89,8 @@
 	letter-spacing: 3px;
 }
 
+
+/* Right-hand column of Circle graph */
 #partnerships { padding: 40px 33px 20px 0; position: relative; }
 #partnerships h3 { 
 	font-family: 'Yanone Kaffeesatz', sans-serif; 
@@ -131,6 +131,8 @@
 #partnerships #ist { top: 828px; left: 0; }
 .hr-dotted { width: 100%; height: 1px; margin: 5px 0; border-bottom: 1px dotted #939598; }
 
+
+/* Article content below Circle Graph */
 #story-below-graph { margin-top: 40px; margin-bottom: 90px; }
 #story-below-graph h3 { font-family: 'Open Sans', sans-serif; line-height: 35px; font-weight: 800; }
 #story-below-graph p { text-indent: 10px; margin: 4px 0 12px 0; }
@@ -143,3 +145,101 @@ p.quote {
 	margin: 30px 0 35px 0; 
 	text-indent: 0 !important; 
 }
+
+
+/* CSS3 Animations */
+.floating-y {
+	animation-name: FloatingY;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: FloatingY;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: FloatingY;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+}
+.floating-x {
+	animation-name: FloatingX;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: FloatingX;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: FloatingX;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+}/*
+.growing {
+	animation-name: Growing;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: Growing;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Growing;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+}*/
+.speed-fast {
+	animation-duration: 5s;
+	-webkit-animation-duration: 5s;
+	-moz-animation-duration: 5s;
+}
+.speed-medium {
+	animation-duration: 7s;
+	-webkit-animation-duration: 7s;
+	-moz-animation-duration: 7s;
+}
+.speed-slow {
+	animation-duration: 9s;
+	-webkit-animation-duration: 9s;
+	-moz-animation-duration: 9s;
+}
+
+@keyframes FloatingY {
+	from {transform: translate(0, 0);}
+    65% {transform: translate(0, 15px);}
+    to {transform: translate(0, 0);}  
+}
+@-webkit-keyframes FloatingY {
+    from {-webkit-transform: translate(0, 0);}
+    65% {-webkit-transform: translate(0, 15px);}
+    to {-webkit-transform: translate(0, 0);}    
+}
+@-moz-keyframes FloatingY {
+    from {-moz-transform: translate(0, 0);}
+    65% {-moz-transform: translate(0, 15px);}
+    to {-moz-transform: translate(0, 0);}    
+}
+@keyframes FloatingX {
+	from {transform: translate(0, 0);}
+    65% {transform: translate(15px, 0);}
+    to {transform: translate(0, 0);}  
+}
+@-webkit-keyframes FloatingX {
+    from {-webkit-transform: translate(0, 0);}
+    65% {-webkit-transform: translate(15px, 0);}
+    to {-webkit-transform: translate(0, 0);}    
+}
+@-moz-keyframes FloatingX {
+    from {-moz-transform: translate(0, 0);}
+    65% {-moz-transform: translate(15px, 0);}
+    to {-moz-transform: translate(0, 0);}    
+}
+/*    
+@keyframes Growing{
+	from {-webkit-transform: scale(0.9);}
+	65% {-webkit-transform: scale(1.0);}
+	to {-webkit-transform: scale(0.9);}    
+}
+@-webkit-keyframes Growing{
+	from {-webkit-transform: scale(0.9);}
+	65% {-webkit-transform: scale(1.0);}
+	to {-webkit-transform: scale(0.9);}    
+}
+@-moz-keyframes Growing{
+	from {-moz-transform: scale(0.9);}
+	65% {-moz-transform: scale(1.0);}
+	to {-moz-transform: scale(0.9);}    
+}*/
