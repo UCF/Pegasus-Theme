@@ -4,7 +4,7 @@
 /* Story title */
 #story-header { margin-bottom: 40px; }
 #body_content h1, #body_content h2 { display: block; text-indent: -9999px; height: 1px; }
-#story-subheader p { font-size: 16px; line-height: 22px; margin-top: 290px; }
+#story-subheader p { font-size: 22px; line-height: 32px; margin-top: 140px; padding-left: 20px }
 
 
 /* Circle Graph, circles and lines */
@@ -22,50 +22,7 @@
 .circle-large { width: 105px; height: 105px; border-radius: 105px; }
 .circle-xlarge { width: 130px; height: 130px; border-radius: 130px; }
 
-.line { /*height: 1px; border-bottom: 1px solid #ccc;*/ position: absolute; z-index: 1; }
-/*
-#line-college-of-medicine {
-	transform: rotate(-50deg);
-	-ms-transform: rotate(-50deg);
-	-webkit-transform: rotate(-50deg);
-	-o-transform: rotate(-50deg);
-	-moz-transform: rotate(-50deg);
-	top: 226px;
-	left: 383px;
-	width: 415px;
-	
-}
-#line-regional-campuses { 
-	transform: rotate(-27deg);
-	-ms-transform: rotate(-27deg);
-	-webkit-transform: rotate(-27deg);
-	-o-transform: rotate(-27deg);
-	-moz-transform: rotate(-27deg);
-	top: 388px;
-	left: 475px;
-	width: 260px;
-}
-#line-rosen { 
-	transform: rotate(18deg);
-	-ms-transform: rotate(18deg);
-	-webkit-transform: rotate(18deg);
-	-o-transform: rotate(18deg);
-	-moz-transform: rotate(18deg);
-	top: 566px;
-	left: 466px;
-	width: 260px;
-}
-#line-ist { 
-	transform: rotate(42deg);
-	-ms-transform: rotate(42deg);
-	-webkit-transform: rotate(42deg);
-	-o-transform: rotate(42deg);
-	-moz-transform: rotate(42deg);
-	top: 704px;
-	left: 373px;
-	width: 400px;
-}
-*/
+.line { position: absolute; z-index: 1; }
 
 #circlegraph #center { 
 	background-color: #000; 
@@ -124,7 +81,7 @@
 	display: block;
 	clear: both;
 }
-#partnerships .circle { position: absolute; }
+#partnerships .circle { position: absolute; z-index: 999; }
 #partnerships #college-of-medicine { top: 42px; left: 0; }
 #partnerships #regional-campuses { top: 309px; left: 0; }
 #partnerships #rosen { top: 592px; left: 0; }
@@ -169,18 +126,7 @@ p.quote {
     -moz-animation-name: FloatingX;
     -moz-animation-iteration-count: infinite;
     -moz-animation-timing-function: ease-in-out;
-}/*
-.growing {
-	animation-name: Growing;
-    animation-iteration-count: infinite;
-    animation-timing-function: ease-in-out;
-    -webkit-animation-name: Growing;
-    -webkit-animation-iteration-count: infinite;
-    -webkit-animation-timing-function: ease-in-out;
-    -moz-animation-name: Growing;
-    -moz-animation-iteration-count: infinite;
-    -moz-animation-timing-function: ease-in-out;
-}*/
+}
 .speed-fast {
 	animation-duration: 5s;
 	-webkit-animation-duration: 5s;
@@ -196,6 +142,22 @@ p.quote {
 	-webkit-animation-duration: 9s;
 	-moz-animation-duration: 9s;
 }
+
+.grow {
+	animation-name: Grow;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: Grow;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: Grow;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease-in-out;
+	animation-duration: 1s;
+	-webkit-animation-duration: 1s;
+	-moz-animation-duration: 1s;
+}
+
 
 @keyframes FloatingY {
 	from {transform: translate(0, 0);}
@@ -227,19 +189,19 @@ p.quote {
     65% {-moz-transform: translate(15px, 0);}
     to {-moz-transform: translate(0, 0);}    
 }
-/*    
-@keyframes Growing{
-	from {-webkit-transform: scale(0.9);}
-	65% {-webkit-transform: scale(1.0);}
-	to {-webkit-transform: scale(0.9);}    
+
+@keyframes Grow{
+	from {-webkit-transform: scale(0.05);}
+	60% {-webkit-transform: scale(1.2);}
+	to {-webkit-transform: scale(1);}    
 }
-@-webkit-keyframes Growing{
-	from {-webkit-transform: scale(0.9);}
-	65% {-webkit-transform: scale(1.0);}
-	to {-webkit-transform: scale(0.9);}    
+@-webkit-keyframes Grow{
+	from {-webkit-transform: scale(0.05);}
+	60% {-webkit-transform: scale(1.2);}
+	to {-webkit-transform: scale(1);}    
 }
-@-moz-keyframes Growing{
-	from {-moz-transform: scale(0.9);}
-	65% {-moz-transform: scale(1.0);}
-	to {-moz-transform: scale(0.9);}    
-}*/
+@-moz-keyframes Grow{
+	from {-moz-transform: scale(0.05);}
+	60% {-moz-transform: scale(1.2);}
+	to {-moz-transform: scale(1);}    
+}

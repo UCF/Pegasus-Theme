@@ -108,11 +108,21 @@ $(document).ready(function() {
 				canvas 			= new Raphael(canvasID, canvasDiv.width(), canvasDiv.height());
 			
 			var line = canvas.path(canvasStartPos);
-			line.attr({ stroke: '#ccc', 'stroke-width' : 1 });
+			line.attr({ stroke: '#999', 'stroke-width' : 1 });
 			
 			line.animate({ path : canvasStartPos + ' L ' + canvasEndPos }, 1500);
 		});				
 				
+	});
+	
+	/* Add the growing animation to the Partnerships circles as they're visible: */
+	$('#partnerships .circle').bind('inview', function (event, visible) {
+		if (visible == true) {
+			// animate the circle, then stop listening
+			$(this)
+				.addClass('grow')
+				.unbind('inview');
+		}
 	});
 	
 	
