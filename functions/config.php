@@ -115,7 +115,8 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
 define('THEME_AVAILABLE_FONTS', serialize(array(
-	'Theano Modern' => THEME_FONT_URL.'/theano-modern/stylesheet.css',
+	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
+	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
 ))); 
 
 /* 
