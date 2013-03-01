@@ -21,28 +21,7 @@ function __init__(){
 		'description'   => 'Sidebar found on two column page templates and search pages',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget'  => '</div>',
-	));/*
-	register_sidebar(array(
-		'name'          => __('Below the Fold - Left'),
-		'id'            => 'bottom-left',
-		'description'   => 'Left column on the bottom of pages, after flickr images if enabled.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
 	));
-	register_sidebar(array(
-		'name'          => __('Below the Fold - Center'),
-		'id'            => 'bottom-center',
-		'description'   => 'Center column on the bottom of pages, after news if enabled.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-	));
-	register_sidebar(array(
-		'name'          => __('Below the Fold - Right'),
-		'id'            => 'bottom-right',
-		'description'   => 'Right column on the bottom of pages, after events if enabled.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-	));*/
 	register_sidebar(array(
 		'name' => __('Footer - Column One'),
 		'id' => 'bottom-one',
