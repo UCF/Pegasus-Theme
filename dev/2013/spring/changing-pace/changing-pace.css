@@ -1,13 +1,25 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
+@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400italic);
+
 
 /* Header/footer */
 #header, #footer { background-color: #322d23; }
 
 /* Story title */
 #story-header { margin-bottom: 40px; }
-#body_content h1, #body_content h2 { display: block; text-indent: -9999px; height: 1px; }
-#story-subheader p { font-size: 22px; line-height: 32px; margin-top: 140px; padding-left: 20px }
+#body_content h1 { display: block; text-indent: -9999px; height: 1px; }
+#body_content h2 { 
+	color: #6e7889; 
+	font-weight: normal; 
+	font-family: 'Crimson Text', Georgia, serif; 
+	font-size: 26px; 
+	line-height: 34px; 
+	margin-top: 35px; 
+	font-style: italic !important; 
+	letter-spacing: 1px; 
+}
+#story-subheader p { font-size: 15px; line-height: 26px; margin-top: 220px; padding-left: 20px; }
 
 
 /* Circle Graph, circles and lines */
@@ -38,6 +50,10 @@
 	height: 265px;
 	border-radius: 265px;
 }
+.ie8 #circlegraph #center,
+.ie7 #circlegraph #center {
+	border: 20px solid #ccc;
+}
 #circlegraph #center p {
 	text-align: center;
 	color: #fff;
@@ -52,6 +68,8 @@
 
 /* Right-hand column of Circle graph */
 #partnerships { padding: 40px 33px 20px 0; position: relative; }
+.ie8 #partnerships,
+.ie7 #partnerships { padding-top: 30px !important; }
 #partnerships h3 { 
 	font-family: 'Yanone Kaffeesatz', sans-serif; 
 	font-weight: 700; 
@@ -66,6 +84,7 @@
 #partnerships h4 { 
 	font-family: 'Open Sans', sans-serif; 
 	font-weight: 800; 
+	font-style: normal;
 	text-transform: uppercase; 
 	display: block; 
 	float: left;
@@ -75,6 +94,10 @@
 	margin-bottom: 3px;
 	padding-left: 45px;
 }
+.ie7 #partnerships h4 {
+	margin-bottom: -7px;
+}
+.ie7 #partnerships h4#partnership-ie7fix { margin-top: -30px; } /* IE7 pushes this down for whatever reason */
 #partnerships p { 
 	font-family: 'Open Sans', sans-serif; 
 	font-weight: 400; 
@@ -84,11 +107,22 @@
 	display: block;
 	clear: both;
 }
-#partnerships .circle { position: absolute; z-index: 999; }
-#partnerships #college-of-medicine { top: 42px; left: 0; }
-#partnerships #regional-campuses { top: 309px; left: 0; }
-#partnerships #rosen { top: 592px; left: 0; }
-#partnerships #ist { top: 828px; left: 0; }
+#partnerships .circle { position: absolute; z-index: 999; left: 0; }
+
+#partnerships #college-of-medicine { top: 42px; }
+.ie7 #partnerships #college-of-medicine { top: -30px; }
+
+#partnerships #regional-campuses { top: 309px; }
+.ie8 #partnerships #regional-campuses { top: 316px; }
+.ie7 #partnerships #regional-campuses { top: 239px; }
+
+#partnerships #rosen { top: 592px; }
+.ie7 #partnerships #rosen { top: 525px; }
+
+#partnerships #ist { top: 828px; }
+.ie8 #partnerships #ist { top: 832px; }
+.ie7 #partnerships #ist { top: 756px; }
+
 .hr-dotted { width: 100%; height: 1px; margin: 5px 0; border-bottom: 1px dotted #939598; }
 
 
@@ -98,12 +132,14 @@
 #story-below-graph p { text-indent: 10px; margin: 4px 0 12px 0; }
 #story-below-graph h3 + p { text-indent: 0; margin-top: 0; }
 p.quote { 
-	font-family: 'Theano Modern', Georgia, serif; 
-	font-size: 30px; 
-	line-height: 34px; 
-	font-style: italic; 
-	margin: 30px 0 35px 0; 
+	font-family: 'Crimson Text', Georgia, serif; 
+	color: #444;
+	font-size: 36px; 
+	line-height: 36px; 
+	margin: 20px 0 !important;
 	text-indent: 0 !important; 
+	font-weight: normal;
+	font-style: italic;
 }
 
 

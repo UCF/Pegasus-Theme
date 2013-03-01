@@ -53,6 +53,17 @@ var plaxifyEverything = function() {
 
 $(document).ready(function() {
 	
+	/* Use PIE.js if this is an old browser */
+	if ($('body').hasClass('ie7') || $('body').hasClass('ie8')) {
+		$.getScript(THEME_JS_URL + '/PIE.js', function() {
+			if (window.PIE) {
+				$('.circle, #center').each(function() {
+					PIE.attach(this);
+				});
+			}
+		});
+	}
+	
 	/* Grab plax.js and do Plax stuff: */
 	$.getScript(THEME_JS_URL + '/plax.js', function() {
 		plaxifyEverything();
