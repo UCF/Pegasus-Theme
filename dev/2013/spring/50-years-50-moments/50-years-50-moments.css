@@ -203,14 +203,15 @@
 span.date { font-family: 'Open Sans', sans-serif; text-transform: uppercase; font-size: 12px; line-height: 14px; padding-right: 5px; font-weight: bolder; }
 p.quote { 
 	font-family: 'Open Sans Condensed', sans-serif; 
-	font-size: 15px; 
+	font-size: 18px; 
 	font-weight: normal; 
 	font-style: italic; 
-	line-height: 22px; 
+	line-height: 29px; 
 	letter-spacing: 0.5px; 
 	margin-top: 0;
 	margin-bottom: 10px; 
 }
+.audio-player { width: 100%; float: left; margin: 10px 0 0 0; text-align: center; }
 
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
@@ -261,7 +262,7 @@ p.quote {
 #first-commencement .box-inner h4 { margin-top: -30px; }
 
 #alma-mater { }
-#alma-mater .col { width: 23%; float: left; margin-right: 10px; margin-top: 43px; }
+#alma-mater .col { width: 31%; float: left; margin-right: 10px; margin-top: 43px; }
 #alma-mater .col h3 { margin-bottom:15px; }
 
 #rita-reutter { }
