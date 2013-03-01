@@ -211,7 +211,8 @@ p.quote {
 	margin-top: 0;
 	margin-bottom: 10px; 
 }
-.audio-player { width: 100%; float: left; margin: 10px 0 0 0; text-align: center; }
+.audio-player { width: 100%; float: left; margin: 20px 0 0 0; text-align: center; }
+.audio-player span { padding-right: 10px; font-family: 'Open Sans', sans-serif; font-weight: 700; }
 
 .col, .col-left, .col-right { float: left; }
 .col, .col-left { margin-right: 15px; }
@@ -256,7 +257,7 @@ p.quote {
 #alumni-association .col-right { width: 40%; }
 #alumni-association .col-right h3 { margin-left: -12px; }
 
-#first-commencement { overflow: visible !important; }
+#first-commencement { overflow: visible !important; margin-top: -95px; }
 #first-commencement .box-inner img { position: relative; top: -35px; z-index: 1; }
 #first-commencement .box-inner h3 { position: absolute; top: 20px; left: 10px; z-index: 2; }
 #first-commencement .box-inner h4 { margin-top: -30px; }
