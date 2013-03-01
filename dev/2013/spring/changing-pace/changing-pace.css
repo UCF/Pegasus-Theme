@@ -14,12 +14,13 @@
 	font-weight: normal; 
 	font-family: 'Crimson Text', Georgia, serif; 
 	font-size: 26px; 
-	line-height: 34px; 
-	margin-top: 35px; 
+	line-height: 30px; 
+	margin-top: 75px; 
+	padding-left: 20px;
 	font-style: italic !important; 
 	letter-spacing: 1px; 
 }
-#story-subheader p { font-size: 15px; line-height: 26px; margin-top: 220px; padding-left: 20px; }
+#story-subheader p { font-size: 14px; line-height: 23px; padding-left: 20px; }
 
 
 /* Circle Graph, circles and lines */
