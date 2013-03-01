@@ -81,6 +81,7 @@
 	border-radius: 72px;
 }
 .title-circle-medium.title-serif { font-size: 82px; line-height: 130px; letter-spacing: -9px; }
+.ie9 .title-circle-medium.title-serif { line-height: 155px; }
 .title-circle-large {
 	display: block;
 	width: 195px;
@@ -89,6 +90,7 @@
 	border-radius: 122px;
 }
 .title-circle-large.title-serif { font-size: 140px; line-height: 225px; letter-spacing: -13px; }
+.ie9 .title-circle-large.title-serif { line-height: 260px; }
 .title-circle-white { background: #fff; }
 .title-circle-gold { background: #ffd400; color: #fff; }
 .title-circle-blue { background: #679399; color: #fff; }
@@ -141,6 +143,7 @@
 .title-serif.title-medlarge { font-size: 115px; letter-spacing: -8px; padding-top: 6px; }
 .title-serif.title-large { font-size: 140px; line-height: 125px; letter-spacing: -15px; margin-bottom: 15px; padding-top: 10px; }
 .title-serif.title-xlarge { letter-spacing: -10px; padding-top: 10px; }
+.ie9 .title-serif.title-xlarge { padding-top: ; }
 .title-slab { font-family: 'Domine', serif; font-weight: normal; }
 .title-slab-alt { font-family: 'Trocchi', serif; font-weight: normal; }
 .title-sans { font-family: 'Open Sans', sans-serif; font-weight: bolder; }
@@ -263,8 +266,9 @@ p.quote {
 #first-commencement .box-inner h4 { margin-top: -30px; }
 
 #alma-mater { }
-#alma-mater .col { width: 31%; float: left; margin-right: 10px; margin-top: 43px; }
+#alma-mater .col { width: 31%; float: left; margin-right: 10px; }
 #alma-mater .col h3 { margin-bottom:15px; }
+#alma-mater .audio-player { width: 62%; margin-top: 15px; }
 
 #rita-reutter { }
 #rita-reutter .col-left { width: 37%; }
