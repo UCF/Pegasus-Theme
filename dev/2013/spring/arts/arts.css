@@ -1,0 +1,57 @@
+#body_content { margin-bottom: 80px; }
+
+#story-title { height: auto; position: relative; }
+#story-title #story-img-wrap { position: relative; overflow: visible; }
+#story-title #story-img-wrap #story-title-bg,
+#story-title #story-img-wrap #story-title-fg { position: absolute; top: 0; left: 0; }
+#story-title #story-img-wrap #story-title-bg { z-index: 1; }
+#story-title #story-img-wrap #story-title-fg { z-index: 3; }
+#story-title h1 { 
+	position: absolute; 
+	top: 11%; 
+	margin: auto; 
+	z-index: 2; 
+	display: block; 
+	width: 100%; 
+	font-family: 'Arial Black', sans-serif;
+	font-size: 60px;
+	line-height: 46px;
+	border-bottom: 2px solid #000;
+	text-indent: 75%;
+}
+
+#body_content h2, #body_content h3 { font-family: Georgia, serif; font-weight: normal;  }
+#body_content h2 { font-size: 60px; line-height: 34px; padding-top: 30px; }
+#body_content h2.h2-inline { display: block; float: left; padding-right: 20px; }
+#body_content h2.alt { font-family: 'Arial Black', sans-serif; font-size: 26px; text-transform: uppercase; line-height: 34px; color: #4e87a4; padding-top: 0; }
+#body_content h3 { font-size: 38px; line-height: 50px; color: #939598; font-style: italic; padding: 15px 0 10px 0; }
+#body_content h2.h2-inline + h3 { padding: 30px 0 10px 0; }
+#body_content h4 { font-family: Georgia, serif; font-size: 18px; line-height: 24px; font-weight: normal; }
+
+#body_content p { text-indent: 10px; }
+#body_content p.noindent { text-indent: 0; }
+#body_content p span.start { text-transform: uppercase; font-weight: bold; }
+#body_content p.watch { text-indent: 0; font-family: 'Arial Black', sans-serif; font-size: 26px; text-transform: uppercase; color: #989392; margin: 120px 0 5px 0; }
+#body_content p.caption { text-indent: 0; line-height: 20px; font-style: italic; margin: 5px 0; }
+
+.hr { height: 1px; width: 100%; border-bottom: 2px solid #7f7f7f; margin: 30px 0; }
+
+#art-1 { max-width: 140px; margin-top: -50px; }
+#art-2 { padding-top: 18px; }
+#art-3 { max-width: 232px; margin-top: 10px; }
+
+
+@media (max-width: 979px) and (min-width: 768px) {
+	#art-3 { max-width: 190px; }
+}
+
+@media (max-width: 767px) {
+	#story-title { margin-bottom: 25px; }
+	#story-title h1 { text-indent: 67%; font-size: 36px; line-height: 26px; }
+	#body_content h2 { font-size: 40px; line-height: 30px; padding-bottom: 10px; padding-top: 30px; }
+	#body_content h2.h2-inline { display: inline; float: none; padding-right: 0; padding-top: 30px; }
+	#body_content h3 { font-size: 28px; line-height: 33px; padding: 0 0 10px 0; }
+	#body_content h2.h2-inline + h3 { padding: 0 0 10px 0; }
+	#body_content p.watch { margin-top: 15px; }
+	#art-1, #art-2, #art-3 { max-width: 280px; margin-top: 0; padding: 20px 0; }
+}
