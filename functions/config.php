@@ -98,17 +98,6 @@ define('THEME_AVAILABLE_FONTS', serialize(array(
 	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
 ))); 
 
-/* 
- * Slug of the current Pegasus Magazine issue term in the 
- * issues taxonomy
- */ 
-define('CURRENT_ISSUE_TERM_SLUG', '2013-spring');
-
-/* 
- * Slug of the current Pegasus Magazine Issue post type
- */ 
-define('CURRENT_ISSUE_SLUG', 'spring-2013');
-
 
 /**
  * Set config values including meta tags, registered custom post types, styles,
@@ -223,49 +212,6 @@ Config::$theme_settings = array(
 			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
 			'default'     => null,
 			'value'       => $theme_options['fb_admins'],
-		)),
-		new TextField(array(
-			'name'        => 'Facebook URL',
-			'id'          => THEME_OPTIONS_NAME.'[facebook_url]',
-			'description' => 'URL to the facebook page you would like to direct visitors to.  Example: <em>https://www.facebook.com/CSBrisketBus</em>',
-			'default'     => null,
-			'value'       => $theme_options['facebook_url'],
-		)),
-		new TextField(array(
-			'name'        => 'Twitter URL',
-			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
-			'description' => 'URL to the twitter user account you would like to direct visitors to.  Example: <em>http://twitter.com/csbrisketbus</em>',
-			'value'       => $theme_options['twitter_url'],
-		)),
-		new RadioField(array(
-			'name'        => 'Enable Flickr',
-			'id'          => THEME_OPTIONS_NAME.'[enable_flickr]',
-			'description' => 'Automatically display flickr images throughout the site',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['enable_flickr'],
-		)),
-		new TextField(array(
-			'name'        => 'Flickr Photostream ID',
-			'id'          => THEME_OPTIONS_NAME.'[flickr_id]',
-			'description' => 'ID of the flickr photostream you would like to show pictures from.  Example: <em>65412398@N05</em>',
-			'default'     => '36226710@N08',
-			'value'       => $theme_options['flickr_id'],
-		)),
-		new SelectField(array(
-			'name'        => 'Flickr Max Images',
-			'id'          => THEME_OPTIONS_NAME.'[flickr_max_items]',
-			'description' => 'Maximum number of flickr images to display',
-			'value'       => $theme_options['flickr_max_items'],
-			'default'     => 12,
-			'choices'     => array(
-				'6'  => 6,
-				'12' => 12,
-				'18' => 18,
-			),
 		)),
 	),
 	'Devices' => array(
