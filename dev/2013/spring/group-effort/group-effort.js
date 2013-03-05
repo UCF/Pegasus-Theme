@@ -74,7 +74,7 @@ var resetColAdjustments = function() {
 	// widths/heights and any additional padding to images:
 	$('.stackable-col, .stackable-img, .stackable-img img, .text-col').css({
 		'height' : '',
-		'width' : '',
+		'width' : ''
 	});
 	$('.stackable-img img').css('padding-top','');
 	$('.fixedPos').removeClass('fixedPos');

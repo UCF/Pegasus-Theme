@@ -1,4 +1,5 @@
 #header, #footer { background-color: #737478; }
+#body_content { height: 0px; }
 
 #stackable-container { margin-bottom: 200px; padding-left: 0; padding-right: 0; }
 #stackable-container h2,
@@ -9,6 +10,7 @@
 #stackable-container h2,
 #stackable-container h3 { font-size: 66px; line-height: 64px; padding-top: 250px; text-transform: uppercase; }
 #stackable-container h3 .alt { font-style: italic; font-size: 40px; line-height: 30px; text-transform: none; width: 100%; float: left; }
+.ie7 #stackable-container h3 { line-height: 0; padding-bottom: 50px; }
 #stackable-container h4 { font-style: italic; font-size: 18px; margin-bottom: 40px; }
 
 .fixedPos { position: fixed !important; top: 0; left: 0; z-index: 1; }
