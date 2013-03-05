@@ -36,6 +36,8 @@
 
 .hr { height: 1px; width: 100%; border-bottom: 2px solid #7f7f7f; margin: 30px 0; }
 
+#family-art-video iframe { }
+
 #art-1 { max-width: 140px; margin-top: -50px; }
 #art-2 { padding-top: 18px; }
 #art-3 { max-width: 232px; margin-top: 10px; }
@@ -49,6 +51,7 @@
 
 
 @media (max-width: 979px) and (min-width: 768px) {
+	#family-art-video iframe { width: 414px; }
 	#art-3 { max-width: 190px; }
 }
 
@@ -60,5 +63,6 @@
 	#body_content h3 { font-size: 28px; line-height: 33px; padding: 0 0 10px 0; }
 	#body_content h2.h2-inline + h3 { padding: 0 0 10px 0; }
 	#body_content p.watch { margin-top: 15px; }
+	#family-art-video iframe { width: 100%; }
 	#art-1, #art-2, #art-3 { max-width: 280px; margin-top: 0; padding: 20px 0; }
 }
