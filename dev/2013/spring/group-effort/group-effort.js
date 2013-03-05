@@ -81,7 +81,7 @@ var resetColAdjustments = function() {
 	$('.bottomPos').removeClass('bottomPos');
 }
 
-$(window).load(function() {	
+$(document).ready(function() {	
 	if ($(window).width() > 767) {
 		var endPos = getEndPos();
 		setImgDimensions();

@@ -59,6 +59,7 @@ p.credit {
 @media (max-width: 767px) {	
 	#stackable-container { margin-bottom: 50px; }
 	#stackable-container h2, #stackable-container h3 { padding-top: 30px; }
+	#stackable-container h3 { font-size: 45px; }
 	#stackable-container h3 .alt { font-size: 35px; }
 	
 	.stackable-img { position: static; overflow: visible; text-align: center; }
