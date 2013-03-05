@@ -1,7 +1,6 @@
-/* Delete annoying empty p tags */
-$("p:empty").remove();
-
-$(document).ready(function() {
+$(window).load(function() {
+	/* Delete annoying empty p tags */
+	$("p:empty").remove();
 	$('#story-img-wrap, #story-title').height($('#story-title-bg').height());
 });
 
