@@ -40,6 +40,13 @@
 #art-2 { padding-top: 18px; }
 #art-3 { max-width: 232px; margin-top: 10px; }
 
+.modal { height: 650px; }
+.modal-header { overflow: hidden !important; }
+.modal-body { height: 580px; max-height: 580px; text-align: center; }
+.modal-body img { width: 430px; }
+.modal#modal-art-3 { height: 450px; }
+.modal#modal-art-3 .modal-body { height: 380px; max-height: 380px; }
+
 
 @media (max-width: 979px) and (min-width: 768px) {
 	#art-3 { max-width: 190px; }
