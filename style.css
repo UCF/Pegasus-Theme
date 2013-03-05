@@ -189,8 +189,8 @@ h2#footer_logo {
 #ipad_app {
 	display:block;
 	text-indent:-200em;
-	height:56px;
-	width:160px;
+	height:40px;
+	width:135px;
 	background-image:url(static/img/appstore.png);
 	background-repeat:no-repeat;
 	background-position:center center;
