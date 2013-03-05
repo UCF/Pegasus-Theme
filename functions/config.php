@@ -117,6 +117,17 @@ Config::$custom_taxonomies = array(
 
 Config::$body_classes = array();
 
+
+/**
+ * Grab array of Issue posts for Config::$theme_settings:
+ **/
+$issue_covers 		= get_posts(array('post_type' => 'issue'));
+$issue_cover_array 	= array();
+foreach ($issue_covers as $cover) {
+	$issue_cover_array[$cover->post_title] = $cover->post_name;
+}
+
+
 /**
  * Configure theme settings, see abstract class Field's descendants for
  * available fields. -- functions/base.php
@@ -235,6 +246,16 @@ Config::$theme_settings = array(
 			),
 			'value'       => $theme_options['bootstrap_enable_responsive'],
 	    )),
+	),
+	'Issues' => array(
+		new SelectField(array(
+			'name'        => 'Current Issue Cover',
+			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
+			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
+			'choices'     => $issue_cover_array,
+			'default'     => $issue_cover_array[0],
+			'value'       => $theme_options['current_issue_cover'],
+		)),
 	),
 );
 

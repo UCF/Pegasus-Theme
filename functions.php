@@ -10,51 +10,6 @@ require_once('shortcodes.php');         		# Per theme shortcodes
 //Add theme-specific functions here.
 
 /**
- * Grab Issue information for use in Config::$theme_settings.
- *
- * We have to hook into init to grab this data because our custom
- * post types and taxonomies aren't registered until init is run.
- **/
-function update_theme_options() { 
-	$issue_terms 		= get_terms('issues');
-	$issue_terms_array 	= array();
-	foreach ($issue_terms as $term) {
-		$issue_terms_array[$term->slug] = $term->slug; // key and val are the same
-	}
-	
-	$issue_covers 		= get_posts(array('post_type' => 'issue'));
-	$issue_cover_array 	= array();
-	foreach ($issue_covers as $cover) {
-		$issue_cover_array[$cover->post_title] = $cover->post_name;
-	}
-	
-	global $theme_options;
-	
-	$issue_theme_options = array(
-		new SelectField(array(
-			'name'        => 'Current Issue Term',
-			'id'          => THEME_OPTIONS_NAME.'[current_issue_term]',
-			'description' => 'Specify the current active issue\'s taxonomy term.  This should match up with the Issue Cover name specified below.',
-			'choices'     => $issue_terms_array,
-			'default'     => $issue_terms_array[0],
-			'value'       => $theme_options['current_issue_term'],
-		)),
-		new SelectField(array(
-			'name'        => 'Current Issue Cover',
-			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
-			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
-			'choices'     => $issue_cover_array,
-			'default'     => $issue_cover_array[0],
-			'value'       => $theme_options['current_issue_cover'],
-		)),
-	);
-	
-	Config::$theme_settings['Issues'] = $issue_theme_options;
-}
-add_action('init', 'update_theme_options');
-
-
-/**
  * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
  * 
  * Note that the new input select name and id values must match the name and id of the empty dropdown within the
@@ -160,7 +115,7 @@ function ipad_deployed() {
 
 
 /*
- *Returns current issue post type based on the Current Issue Cover
+ * Returns current issue post type based on the Current Issue Cover
  * value in Theme Options
  */
 function get_current_issue() {
