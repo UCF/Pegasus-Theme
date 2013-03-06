@@ -12,6 +12,7 @@ p.caption { text-indent: 0; line-height: 20px; font-style: italic; margin: 5px 0
 	width: 100%; 
 	font-family: 'Arial Black', sans-serif;
 	font-size: 60px;
+	font-weight: 700;
 	line-height: 47px;
 	border-bottom: 1px solid #000;
 	text-indent: 75%;
