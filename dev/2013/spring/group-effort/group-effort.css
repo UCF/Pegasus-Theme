@@ -12,6 +12,7 @@
 #stackable-container h3 .alt { font-style: italic; font-size: 40px; line-height: 30px; text-transform: none; width: 100%; float: left; }
 .ie7 #stackable-container h3 { line-height: 0; padding-bottom: 50px; }
 #stackable-container h4 { font-style: italic; font-size: 18px; margin-bottom: 40px; }
+#stackable-container ol { font-family: Georgia, serif; font-size: 14px; }
 
 .fixedPos { position: fixed !important; top: 0; left: 0; z-index: 1; }
 .bottomPos { position: absolute !important; bottom: 0; z-index: 1; }
