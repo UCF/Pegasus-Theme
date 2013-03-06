@@ -1,0 +1,211 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+.wide {
+	width: 100%;
+}
+
+#header, #footer { background-color: #B59967; }
+
+#body_content { margin-bottom: 50px; }
+
+h1 {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 48px;
+	font-weight: 800;
+	line-height: 44px;
+	color: #b59967;
+	margin: 30px 0 20px 0;
+}
+
+#subtitle { margin-bottom: 20px; }
+
+#article-subheader {
+	font-family: Georgia, serif;
+	font-size: 22px;
+	line-height: 35px;
+}
+
+
+.image-caption {
+	position: absolute;
+	color: #FFF;
+	font-size: 12px;
+	font-style: italic;
+}
+
+#uniforms .row {
+	margin-bottom: 0;
+}
+
+#bo-jersey {
+	padding-bottom: 33px;
+}
+
+.jersey {
+	width: 28%;
+	float: left;
+	border-right: dashed #000 1px;
+	padding-right: 2px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.jersey-text {
+	width: 65%;
+	float: left;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.jersey-header {
+	font-size: 14px;
+	font-weight: bold;
+	color: #b59967;
+	text-transform: uppercase;
+}
+
+.jersey-sub-header {
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.jersey-description {
+	font-size: 12px;
+}
+
+#culpepper, #clark, #akers {
+	position: relative;
+}
+#culpepper .image-caption {
+	bottom: 5px;
+	left: 5px;
+}
+#clark .image-caption, #akers .image-caption {
+	top: 5px;
+	left: 5px;
+}
+
+
+.prominent {
+	font-weight: bold;
+}
+
+
+#hof {
+	background-image: -ms-radial-gradient(center bottom, circle farthest-corner, #FFFFFF 0%, #EDCA4B 100%);
+	background-image: -moz-radial-gradient(center bottom, circle farthest-corner, #FFFFFF 0%, #EDCA4B 100%);
+	background-image: -o-radial-gradient(center bottom, circle farthest-corner, #FFFFFF 0%, #EDCA4B 100%);
+	background-image: -webkit-gradient(radial, center bottom, 0, center bottom, 553, color-stop(0, #FFFFFF), color-stop(1, #EDCA4B));
+	background-image: -webkit-radial-gradient(center bottom, circle farthest-corner, #FFFFFF 0%, #EDCA4B 100%);
+	background-image: radial-gradient(circle farthest-corner at center bottom, #FFFFFF 0%, #EDCA4B 100%);
+	background-color: #EDCA4B;
+	padding-top: 30px;
+}
+
+#hof-header {
+	font-size: 48px;
+	font-family: 'Theano Modern', Georgia, serif;
+}
+
+#hof-text, #bgs-text { margin-bottom: 25px; }
+
+.name, .sport {
+	border-left: #000 dashed 1px;
+	padding-left: 7px;
+}
+
+.name {
+	font-weight: bold;
+}
+
+.sport {
+	padding-bottom: 10px;
+}
+
+#bgs-header {
+	font-size: 48px;
+	font-family: 'Theano Modern', Georgia, serif;
+	margin: 30px 0 0 0;
+}
+
+#bgs-years { margin-bottom: 80px; }
+
+#bgs-years .sport {
+	font-size: 14px;
+	padding-bottom: 0;
+	padding-top: 10px;
+	text-transform: uppercase;
+}
+
+.conference, .year {
+	border-left: #000 dashed 1px;
+	padding-left: 7px;
+}
+
+.conference {
+	font-weight: bold;
+}
+
+.year {
+	font-size: 12px;
+}
+
+@media only screen and (max-width: 767px) {
+	#article-subheader { font-size: 17px; line-height: 28px; margin-bottom: 20px; }
+	
+	#hof {
+		margin-left: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		background-image: none;
+	}
+
+	#culpepper {
+		margin-bottom: 15px;
+	}
+
+	.jersey {
+		width: inherit;
+		padding-right: 10px;
+	}
+	.jersey-text { width: 55%; }
+
+	#bo-jersey {
+		padding-bottom: 35px;
+	}
+
+	#torchy-jersey {
+		padding-bottom: 15px;
+	}
+
+	#akers {
+		margin-top: 15px;
+	}
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+	#article-subheader { font-size: 17px; line-height: 28px; }
+	
+	.jersey {
+		padding-bottom: 35px;
+		padding-right: 5px;
+		height: inherit;
+	}
+
+	.jersey-text {
+		padding-left: 5px;
+	}
+
+	#bo-jersey {
+		padding-bottom: 70px;
+	}
+
+	#torchy-jersey {
+		padding-bottom: 50px;
+	}
+}
