@@ -12,8 +12,8 @@ p.caption { text-indent: 0; line-height: 20px; font-style: italic; margin: 5px 0
 	width: 100%; 
 	font-family: 'Arial Black', sans-serif;
 	font-size: 60px;
-	line-height: 46px;
-	border-bottom: 2px solid #000;
+	line-height: 47px;
+	border-bottom: 1px solid #000;
 	text-indent: 75%;
 	margin-top: 30px;
 	margin-bottom: 10px;
@@ -30,7 +30,7 @@ p.caption { text-indent: 0; line-height: 20px; font-style: italic; margin: 5px 0
 
 .hr { height: 1px; width: 100%; border-bottom: 2px solid #7f7f7f; margin: 30px 0; }
 
-#family-art-video-wrap { padding-top: 20px; padding-bottom: 20px; background: #eee; } 
+#family-art-video-wrap { padding-top: 20px; padding-bottom: 20px; background: #eee; margin-bottom: 30px; } 
 #family-art-video iframe { }
 
 #art-1 { max-width: 140px; margin-top: -50px; }
