@@ -1,0 +1,176 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+	font-family: Georgia, serif;
+}
+
+#header { background: transparent; }
+#footer { background: #101010; }
+
+#norm-header-left {
+	position: relative;
+}
+
+#small-h-header {
+	display: none;
+}
+
+#norm-header {
+	min-height: 850px;
+	background-position: top center;
+	background-repeat: no-repeat;
+	margin-bottom: 20px;
+	margin-top: -50px;
+}
+
+.norm-h-header {
+	font-size: 48px;
+	font-style: italic;
+	line-height: 1.1em;
+	color: #FFF;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.norm-h-first {
+	padding-top: 80px;
+}
+
+.norm-h-last {
+	padding-bottom: 20px;
+}
+
+.norm-h-text {
+	font-size: 16px;
+	color: #FFF;
+	font-weight: normal;
+}
+
+#norm-h-closing {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 14px;
+	color: #94b9ed;
+}
+
+#norm-h-caption {
+	padding-top: 750px;
+	color: #FFF;
+}
+
+#hartman {
+	margin-top: 95px;
+}
+
+.norm-title {
+	margin-bottom: 0;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: 800;
+}
+
+.norm-first {
+	margin-top: 0;
+}
+
+.prominent {
+	font-weight: bold;
+}
+
+.norm-caption {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 10px;
+	font-style: italic;
+	font-weight: 800;
+}
+
+#growth-quote {
+	margin-top: 15px;
+	margin-bottom: 20px;
+	font-size: 38px;
+	font-style: italic;
+	color: #425d8a;
+}
+
+#virtual-quote {
+	margin-top: 0;
+	font-size: 26px;
+	font-style: italic;
+	color: #425d8a;
+	text-align: right;
+}
+
+#closing-statement {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 14px;
+	font-weight: bold;
+	color: #425d8a;
+}
+
+@media only screen and (max-width: 979px) and (min-width: 768px) {
+	#hartman {
+		margin-top: 210px;
+	}
+
+	#norm-header {
+		margin-bottom: 0;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#small-h-header {
+		position: absolute;
+		display: inline-block;
+		top: 10%;
+		right: 2%;
+		height: 100px;
+		width: 107px;
+	}
+
+	#hartman {
+		margin-top: 0px;
+	}
+
+	#norm-header {
+		background-size: 677px 450px;
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		min-height: 570px;
+	}
+
+	.norm-h-first {
+		padding-top: 50px;
+	}
+
+	.norm-h-last {
+		padding-bottom: 0;
+	}
+
+	.norm-h-header {
+		font-size: 24px;
+	}
+
+	#large-h-header {
+		display: none;
+	}
+
+	.norm-h-text {
+		text-shadow: 0px 0px 4px #000000;
+	}
+
+	#norm-h-text-wrapper {
+		padding-top: 340px;
+	}
+
+	#norm-h-closing {
+		margin-bottom: 30px;
+	}
+
+	#norm-h-caption {
+		position: absolute;
+		padding-top: 0;
+		margin-top: 330px;
+		text-shadow: 0px 0px 4px #000000;
+	}
+}
