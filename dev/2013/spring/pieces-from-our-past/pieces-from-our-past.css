@@ -1,0 +1,237 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+	margin-top: 0;
+	margin-bottom: 0;
+	font-family: 'Open Sans', sans-serif;
+}
+
+#pieces-wrapper {
+	background-image: -ms-radial-gradient(center, circle closest-corner, #FFFFFF 50%, #E5D8BD 100%);
+	background-image: -moz-radial-gradient(center, circle closest-corner, #FFFFFF 50%, #E5D8BD 100%);
+	background-image: -o-radial-gradient(center, circle closest-corner, #FFFFFF 50%, #E5D8BD 100%);
+	background-image: -webkit-gradient(radial, center center, 0, center center, 497, color-stop(.5, #FFFFFF), color-stop(1, #E5D8BD));
+	background-image: -webkit-radial-gradient(center, circle closest-corner, #FFFFFF 50%, #E5D8BD 100%);
+	background-image: radial-gradient(circle closest-corner at center, #FFFFFF 50%, #E5D8BD 100%);
+	background-color: #E5D8BD 80%;
+}
+
+#pieces-title {
+	margin-left: 10%;
+	font-size: 57px;
+	font-family: 'Theano Modern', Georgia, serif;
+	color: #c6a87c;
+	line-height: 1.2em;
+}
+
+#myCarousel {
+	margin-bottom: 0px;
+}
+
+.item img {
+	height: inherit;
+}
+
+.captions {
+	text-align: left;
+}
+
+p.captions {
+	font-size: 18px;
+}
+
+.prominent {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+}
+
+#shovel {
+	margin-top: 20%;
+	margin-left: 30%;
+}
+
+#shovel-img {
+	text-align: left;
+}
+
+#brick {
+	margin-top: 30%;
+	margin-left: 40%;
+}
+
+#brick-img {
+	text-align: left;
+}
+
+#commencement {
+	margin-top: 20%;
+	margin-right: 45%;
+}
+
+#commencement-img {
+	text-align: right;
+}
+
+#dining {
+	margin-top: 40%;
+	margin-right: 45%;
+}
+
+#dining-img {
+	text-align: right;
+}
+
+#vulture {
+	margin-top: 30%;
+	margin-right: 40%;
+}
+
+#vulture-img {
+	text-align: right;
+}
+
+#emblem {
+	margin-left: auto;
+	margin-right: auto;
+	width: 30%;
+}
+
+#emblem-img {
+	text-align: center;
+}
+
+#handbook {
+	margin-top: 40%;
+	margin-left: 40%;
+}
+
+#handbook-img {
+	text-align: left;
+}
+
+#title {
+	margin-top: 40%;
+	margin-right: 40%;
+}
+
+#title-img {
+	text-align: right;
+}
+
+#portrait {
+	margin-top: 40%;
+	margin-right: 30%;
+}
+
+#portrait-img {
+	text-align: right;
+}
+
+#laurel {
+	margin-top: 35%;
+	margin-left: 40%;
+}
+
+#laurel-img {
+	text-align: left;
+}
+
+#p-controls {
+	line-height: 0;
+}
+
+.p-control {
+	width: 64px;
+	height: 64px;
+	position: absolute;
+	bottom: 20px;
+	border: #c6a87c 1px solid;
+}
+
+.p-control img {
+	height: 64px;
+	width: 64px;
+}
+
+.p-left {
+	left: 20px;
+}
+
+.p-right {
+	right: 20px;
+}
+
+@media only screen and (max-width: 767px) {
+	#shovel {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
+
+	#brick {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
+
+	#commencement {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -5%;
+		width: 50%;
+	}
+
+	#dining {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -10%;
+		width: 50%;
+	}
+
+	#vulture {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -5%;
+		width: 50%;
+	}
+
+	#emblem {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -2%;
+		width: 50%;
+	}
+
+	#handbook {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
+
+	#title {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -5%;
+		width: 50%;
+	}
+
+	#portrait {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: -1%;
+		width: 50%;
+	}
+
+	#laurel {
+		margin-left: auto;
+		margin-right: auto;
+		margin-top: 20px;
+	}
+
+	#pieces-title {
+		max-width: 100%;
+		margin-left: 0;
+		text-align: center;
+		font-size: 32px;
+	}
+}
