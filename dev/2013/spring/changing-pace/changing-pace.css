@@ -1,6 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz:700);
-@import url(http://fonts.googleapis.com/css?family=Crimson+Text:400italic);
 
 
 /* Header/footer */
@@ -12,15 +11,14 @@
 #body_content h2 { 
 	color: #6e7889; 
 	font-weight: normal; 
-	font-family: 'Crimson Text', Georgia, serif; 
-	font-size: 26px; 
-	line-height: 30px; 
-	margin-top: 75px; 
+	font-family: Georgia, serif; 
+	font-size: 22px; 
+	line-height: 28px; 
+	margin-top: 85px; 
 	padding-left: 20px;
-	font-style: italic !important; 
 	letter-spacing: 1px; 
 }
-#story-subheader p { font-size: 14px; line-height: 23px; padding-left: 20px; }
+#story-subheader p { font-size: 14px; line-height: 22px; padding-left: 20px; }
 
 
 /* Circle Graph, circles and lines */
@@ -133,9 +131,9 @@
 #story-below-graph p { text-indent: 10px; margin: 4px 0 12px 0; }
 #story-below-graph h3 + p { text-indent: 0; margin-top: 0; }
 p.quote { 
-	font-family: 'Crimson Text', Georgia, serif; 
+	font-family: Georgia, serif; 
 	color: #444;
-	font-size: 36px; 
+	font-size: 28px; 
 	line-height: 36px; 
 	margin: 20px 0 !important;
 	text-indent: 0 !important; 
