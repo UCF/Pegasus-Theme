@@ -1,0 +1,223 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+	font-family: Georgia, serif;
+	font-size: 16px;
+}
+
+#mm-wrapper {
+	background-color: #fff6dc;
+	padding-top: 30px;
+}
+
+#mascots {
+	position: relative;
+}
+
+.tag {
+	position: absolute;
+}
+
+.tooltip {
+	overflow: hidden;
+}
+
+.tooltip-inner {
+	font-size: 18px;
+}
+
+#puff {
+	width: 150px;
+	height: 140px;
+	top: 125px;
+	left: 50px;
+}
+
+#citronaut {
+	width: 135px;
+	height: 150px;
+	top: 260px;
+	left: 140px;
+}
+
+#knightro1996 {
+	width: 130px;
+	height: 150px;
+	top: 100px;
+	left: 220px;
+}
+
+#glycerin {
+	width: 120px;
+	height: 150px;
+	top: 220px;
+	left: 310px;
+}
+
+#wins-a-lot {
+	width: 120px;
+	height: 120px;
+	top: 110px;
+	left: 380px;
+}
+
+#mack {
+	width: 125px;
+	height: 130px;
+	top: 225px;
+	left: 470px;
+}
+
+#knightro {
+	width: 125px;
+	height: 150px;
+	top: 100px;
+	left: 610px;
+}
+
+#vulture {
+	width: 170px;
+	height: 140px;
+	top: 265px;
+	left: 655px;
+}
+
+#mm-title {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 48px;
+	font-weight: 800;
+	color: #5796B8;
+}
+
+#mm-intro {
+	font-size: 22px;
+}
+
+.mascot-title {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 800;
+	font-size: 18px;
+}
+
+@media only screen and (max-width: 979px) and (min-width:768px) {
+	#puff {
+		width: 120px;
+		height: 100px;
+		top: 100px;
+		left: 40px;
+	}
+
+	#citronaut {
+		width: 100px;
+		height: 110px;
+		top: 205px;
+		left: 110px;
+	}
+
+	#knightro1996 {
+		width: 100px;
+		height: 120px;
+		top: 75px;
+		left: 170px;
+	}
+
+	#glycerin {
+		width: 95px;
+		height: 110px;
+		top: 170px;
+		left: 240px;
+	}
+
+	#wins-a-lot {
+		width: 80px;
+		height: 105px;
+		top: 75px;
+		left: 295px;
+	}
+
+	#mack {
+		width: 95px;
+		height: 100px;
+		top: 175px;
+		left: 360px;
+	}
+
+	#knightro {
+		width: 95px;
+		height: 105px;
+		top: 85px;
+		left: 475px;
+	}
+
+	#vulture {
+		width: 130px;
+		height: 100px;
+		top: 205px;
+		left: 505px;
+	}
+}
+
+@media only screen and (max-width:768px) {
+	#mm-wrapper {
+		margin-left: -20px;
+		margin-right: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	#puff {
+		width: 17%;
+		height: 18%;
+		top: 18%;
+		left: 5%;
+	}
+
+	#citronaut {
+		width: 14%;
+		height: 19%;
+		top: 37%;
+		left: 15%;
+	}
+
+	#knightro1996 {
+		width: 14%;
+		height: 19%;
+		top: 14%;
+		left: 23%;
+	}
+
+	#glycerin {
+		width: 13%;
+		height: 19%;
+		top: 30%;
+		left: 33%;
+	}
+
+	#wins-a-lot {
+		width: 11%;
+		height: 17%;
+		top: 14%;
+		left: 41%;
+	}
+
+	#mack {
+		width: 13%;
+		height: 19%;
+		top: 30%;
+		left: 50%;
+	}
+
+	#knightro {
+		width: 14%;
+		height: 19%;
+		top: 15%;
+		left: 65%;
+	}
+
+	#vulture {
+		width: 19%;
+		height: 18%;
+		top: 36%;
+		left: 69%;
+	}
+}
