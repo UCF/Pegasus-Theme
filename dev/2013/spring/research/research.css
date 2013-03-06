@@ -1,0 +1,209 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+	font-family: Georgia, serif;
+	margin-top: 0;
+	margin-bottom: 8px;
+}
+
+#res-caption {
+	position: absolute;
+	margin-bottom: 0;
+	bottom: 10px;
+	margin-left: 20px;
+	font-size: 12px;
+	font-style: italic;
+	color: #FFF;
+}
+
+.header-img {
+	position: absolute;
+}
+
+#soileau-wrapper {
+	position: relative;
+	min-height: 1175px;
+}
+
+#res-small-header {
+	display: none;
+}
+
+.res-header1 {
+	padding-top: 85px;
+	margin-bottom: 0;
+	line-height: 1em;
+	font-size: 51px;
+}
+
+.res-header2 {
+	margin-top: 0;
+	margin-bottom: 0;
+	line-height: 1em;
+	font-family: 'League Gothic';
+	font-size: 56px;
+	color: #6f7988;
+}
+
+#pre-small-wrapper {
+	display: none;
+}
+
+#res-pre {
+	margin-top: 10px;
+	margin-bottom: 8px;
+	font-size: 18px;
+}
+
+.res-pre-text {
+	font-size: 15px;
+}
+
+#res-his-words {
+	margin-top: 30px;
+	margin-bottom: 25px;
+	font-size: 32px;
+}
+
+.prominent {
+	margin-bottom: 0;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-weight: bold;
+}
+
+.res-quote {
+	font-size: 24px;
+	color: #6f7988;
+}
+
+#res-closing {
+	margin-top: 20px;
+	font-size: 32px;
+}
+
+@media only screen and (max-width: 979px) and (min-width: 768px) {
+	#graph1 {
+		display: none;
+	}
+
+	#res-funding {
+		height: 153px;
+		background: url('research-graph-comp.jpg') center center no-repeat !important;
+		background-size: 724px 153px !important;
+	}
+
+	#soileau-wrapper {
+		min-height: 550px;
+	}
+
+	.header-img {
+		max-width: 476px;
+		max-height: 550px;
+		clip: rect(0, 476px, 550px, 0);
+	}
+
+	.header-img img {
+		margin-top: -40px;
+	}
+
+	.res-header1 {
+		padding-top: 65px;
+		font-size: 35px;
+	}
+
+	.res-header2 {
+		font-size: 40px;
+	}
+
+	#pre-small-wrapper {
+		margin-top: 20px;
+		display: block;
+	}
+
+	#pre-big-wrapper {
+		display: none;
+	}
+
+	#res-closing {
+		font-size: 24px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+
+	#res-small-header {
+		display: block;
+	}
+
+	#res-big-header {
+		display: none;
+	}
+
+	.res-header1 {
+		margin-top: 20px;
+		padding-top: 0;
+		font-size: 36px;
+	}
+
+	.res-header2 {
+		font-size: 40px;
+	}
+
+	#pre-small-wrapper {
+		display: none;
+	}
+
+	#res-his-words {
+		margin-top: 10px;
+		margin-bottom: 10px;
+		font-size: 22px;
+	}
+
+	#graph1 {
+		display: none;
+	}
+
+	#res-funding {
+		height: 59px;
+		background: url('research-graph-comp.jpg') center left no-repeat !important;
+		background-size: 280px 59px !important;
+	}
+
+	#soileau-wrapper {
+		min-height: 280px;
+	}
+
+	.header-img {
+		max-width: 280px;
+		max-height: 280px;
+		clip: rect(0, 280px, 280px, 0);
+	}
+
+	.header-img img {
+		margin-top: -20px;
+	}
+
+	#res-caption {
+		max-width: 280px;
+	}
+
+	#header-img-2 img {
+		margin-top: -20px;
+	}
+
+	#header-img-3 img {
+		margin-top: -60px;
+	}
+
+	#header-img-4 img {
+		margin-top: -40px;
+	}
+
+	.res-quote {
+		font-size: 20px;
+	}
+
+	#res-closing {
+		font-size: 18px;
+	}
+}
