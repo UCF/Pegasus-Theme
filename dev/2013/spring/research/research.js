@@ -8,20 +8,20 @@ if (typeof jQuery != 'undefined'){
 			setInterval(function() {
 				if (current_index == total) {
 					current_index = 0;
+					$('.header-img:not("#header-img-'+ total +', #header-img-0")').hide(); // hide every visible img between the last and 1st one
+					$('#header-img-' + total).fadeOut(1000); // fade out the last one for a smooth transition to the 1st
+					
 				} else {
 					current_index++;
 				}
 
 				$.each(header_images, function(index, value) {
 					var image = $(value);
-					if (image.attr('id') == 'header-img-' + current_index) {
-						image.delay(1000).fadeIn(1000);
-					} else if (image.attr('id') !== undefined) {
-						image.fadeOut(1000);
+					if (image.attr('id') == 'header-img-' + current_index && current_index !== 0) {
+						image.fadeIn(1000);
 					}
-
 				});
-			}, 10000);
+			}, 5000);
 
 			if ($(window).width() > 979) {
 

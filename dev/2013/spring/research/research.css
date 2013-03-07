@@ -6,6 +6,8 @@ body p {
 	margin-bottom: 8px;
 }
 
+#header, #footer { background-color: #6F7988; }
+
 #res-caption {
 	position: absolute;
 	margin-bottom: 0;
@@ -74,11 +76,16 @@ body p {
 .res-quote {
 	font-size: 24px;
 	color: #6f7988;
+	font-style: italic;
 }
+
+#res-funding { margin-top: 30px; }
 
 #res-closing {
 	margin-top: 20px;
 	font-size: 32px;
+	margin-bottom: 80px;
+	text-align: center;
 }
 
 @media only screen and (max-width: 979px) and (min-width: 768px) {
@@ -88,7 +95,7 @@ body p {
 
 	#res-funding {
 		height: 153px;
-		background: url('research-graph-comp.jpg') center center no-repeat !important;
+		background: url('../02/research-graph-comp.jpg') center center no-repeat !important;
 		background-size: 724px 153px !important;
 	}
 
@@ -165,7 +172,7 @@ body p {
 
 	#res-funding {
 		height: 59px;
-		background: url('research-graph-comp.jpg') center left no-repeat !important;
+		background: url('../02/research-graph-comp.jpg') center left no-repeat !important;
 		background-size: 280px 59px !important;
 	}
 
@@ -205,5 +212,6 @@ body p {
 
 	#res-closing {
 		font-size: 18px;
+		margin-bottom: 40px;
 	}
 }
