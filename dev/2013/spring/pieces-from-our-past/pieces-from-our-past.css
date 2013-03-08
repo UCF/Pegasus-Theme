@@ -176,6 +176,9 @@ li.flex-active-slide .flex-caption { display: block; }
 
 
 @media (max-width: 767px) {
+	
+	#slider .flex-direction-nav { display: block !important; }
+	
 	#pieces-wrapper {
 		margin-left: -20px;
 		padding: 20px;

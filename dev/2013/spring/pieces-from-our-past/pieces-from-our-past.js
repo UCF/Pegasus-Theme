@@ -8,8 +8,8 @@ var updateMobileSlider = function() {
 			img.attr('src', li.attr('data-mobile-img'));
 			// Adjust captions. Right floating captions need special handling
 			if (caption.hasClass('right-float-wrap')) {
-				if ($(body).hasClass('ie')) {
-					caption.css('width', '100%');
+				if ($('body').hasClass('ie')) {
+					caption.css('width', '100%'); // IE handles the total width of a slide differently
 				}
 				else {
 					caption.css('width', '5%');
@@ -22,15 +22,15 @@ var updateMobileSlider = function() {
 	}
 	// Set the img's back to their normal src if the window has been upsized
 	else {
-		var firstLi = $('#slider .slides li:first-child');
-		// Just check the first li initially
-		if (firstLi.attr('data-mobile-img') == firstLi.children('img').attr('src')) {
-			$('#slider .slides li').each(function() {
-				var li = $(this),
-					img = li.children('img');					
+		
+		$('#slider .slides li').each(function() {
+			var li = $(this),
+				img = li.children('img');					
+			if (li.attr('data-mobile-img') == li.children('img').attr('src')) {	
 				img.attr('src', li.attr('data-normal-img'));
-			});
-		}
+			}
+		});
+		
 		
 		// Update caption widths on every resize above 767px.
 		// Caption widths can't be specified in percents so we have to calculate it:
