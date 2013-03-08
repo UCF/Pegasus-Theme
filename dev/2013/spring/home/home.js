@@ -1,3 +1,3 @@
 $(document).ready(function() {
-	/*$('body').css('background-image', 'url(' + $('#jsedits').attr('data-body-bg') + ')');*/
+	/*$('#cover_wrap').css('background-image', 'url(' + $('#js-helper').attr('data-body-bg') + ')');*/
 });
