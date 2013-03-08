@@ -1,5 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
+#header, #footer { background-color: #538967; } 
+
 #header-wrapper{
 	position: fixed;
 	z-index: 99;

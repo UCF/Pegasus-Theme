@@ -5,6 +5,8 @@ body p {
 	font-size: 16px;
 }
 
+#header, #footer { background-color: #5696B8; }
+
 #mm-wrapper {
 	background-color: #fff6dc;
 	padding-top: 30px;
