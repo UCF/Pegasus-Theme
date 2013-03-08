@@ -54,8 +54,6 @@ html[xmlns] .slides {display: block;}
 .loading .flex-viewport {max-height: 300px;}
 .flexslider .slides {zoom: 1;}
 
-.carousel li {margin-right: 5px}
-
 
 /* Direction Nav */
 .flex-direction-nav {*height: 0;}
@@ -100,6 +98,8 @@ html[xmlns] .slides {display: block;}
 
 /* Page Styles */
 
+#header, #footer { background-color: #C6A87C; }
+
 .flexslider { background: transparent !important; border-radius: 0 !important; box-shadow: 0 0 0 transparent !important; border: 0 !important; }
 #slider-nav .flex-viewport { padding-top: 10px; }
 #slider-nav .slides > li { margin: 0 15px; }
@@ -113,6 +113,7 @@ html[xmlns] .slides {display: block;}
 }
 .flex-direction-nav .flex-prev { left: 0 !important; }
 .flex-direction-nav .flex-next { right: 0 !important; }
+#slider .flex-direction-nav { display: none !important; }
 .flex-caption { position: absolute; display: none; z-index: 999; }
 li.flex-active-slide .flex-caption { display: block; }
 
@@ -148,6 +149,7 @@ li.flex-active-slide .flex-caption { display: block; }
 }
 
 .right-float-wrap { width: 5%; } /* 10 slides / 2, I guess */
+.ie .right-float-wrap { width: 100%; } /* oddly ie is doing something right for a change */
 .right-float { float: right; display: block; }
 #slide-caption-1 { top: 80px; padding-left: 40px; }
 #slide-caption-2 { top: 25%; padding-left: 80px; }
@@ -155,15 +157,14 @@ li.flex-active-slide .flex-caption { display: block; }
 #slide-caption-3 .right-float { padding-right: 80px; }
 #slide-caption-4 { top: 35%; }
 #slide-caption-4 .right-float { padding-right: 70px; }
-#slide-caption-5 { top: 20%; }
-#slide-caption-5 .right-float { padding-right: 80px; }
-#slide-caption-6 { padding-left: 1.76%; bottom: 30px; }
-@media (min-width: 768px) and (max-width: 850px) {
-	#slide-caption-6 { bottom: 0; }
-}
-#slide-caption-6 span { background: rgba(255,255,255,0.75); display: block; }
+#slide-caption-5 { top: 17%; }
+#slide-caption-5 .right-float { padding-right: 60px; }
+#slide-caption-6 { top: 40%; padding-left: 80px; }
 #slide-caption-7 { top: 30%; padding-left: 90px; }
 #slide-caption-8 { top: 22%; }
+@media (min-width: 768px) and (max-width: 800px) {
+	#slide-caption-8 { top: 10%; }
+}
 #slide-caption-8 .right-float { padding-right: 60px; }
 #slide-caption-9 { top: 30%; }
 #slide-caption-9 .right-float { padding-right: 60px; }

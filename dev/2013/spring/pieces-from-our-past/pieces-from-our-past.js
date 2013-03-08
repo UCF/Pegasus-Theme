@@ -8,7 +8,12 @@ var updateMobileSlider = function() {
 			img.attr('src', li.attr('data-mobile-img'));
 			// Adjust captions. Right floating captions need special handling
 			if (caption.hasClass('right-float-wrap')) {
-				caption.css('width', '5%');
+				if ($(body).hasClass('ie')) {
+					caption.css('width', '100%');
+				}
+				else {
+					caption.css('width', '5%');
+				}
 			}
 			else {
 				caption.css('width', 'auto');
@@ -69,7 +74,7 @@ $(window).load(function() {
 			touch: true,
 			keyboard: true,
 			sync: '#slider-nav',
-			useCSS: true,
+			useCSS: true
 		});	
 	});
 	
