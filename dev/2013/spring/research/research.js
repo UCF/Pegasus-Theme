@@ -21,7 +21,7 @@ if (typeof jQuery != 'undefined'){
 						image.fadeIn(1000);
 					}
 				});
-			}, 5000);
+			}, 4000);
 
 			if ($(window).width() > 979) {
 
