@@ -483,7 +483,7 @@ class Story extends CustomPostType {
 
 	public function fields() {
 		$prefix = $this->options('name').'_';
-		return array(
+		$fields = array(
 			array(
 				'name' => 'Story Subtitle',
 				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
@@ -515,6 +515,15 @@ class Story extends CustomPostType {
 				'type' => 'checkbox',
 			),
 		);
+		if (DEV_MODE == true) {
+			array_unshift($fields, array(
+				'name' => 'Developer Mode: Directory URL',
+				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.  Note that if there is any content in the WYSIWYG editor, or if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
+				'id'   => $prefix.'dev_directory',
+				'type' => 'text',
+			));
+		}
+		return $fields;
 	}
 }
 
@@ -563,7 +572,7 @@ class Issue extends CustomPostType {
 		foreach(get_issue_stories($post) as $story) {
 			$story_options[$story->post_title] = $story->ID;
 		}
-		return array(
+		$fields = array(
 			array(
 				'name' => 'Home Page Stylesheet',
 				'desc' => 'Stylesheet specifically for the home page.',
@@ -596,6 +605,22 @@ class Issue extends CustomPostType {
 				'options' => $story_options
 			)
 		);
+		if (DEV_MODE == true) {
+			array_unshift($fields, array(
+				'name' => 'Developer Mode: Issue\'s Home Page Asset Directory',
+				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.  Note that if there is any content in the WYSIWYG editor, or if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
+				'id'   => $prefix.'dev_home_asset_directory',
+				'type' => 'text',
+			),
+			array(
+				'name' => 'Developer Mode: Issue-Wide Asset Directory',
+				'desc' => 'Directory to this issue\'s issue-wide assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (period-year.css/js) in this directory will be automatically referenced for the issue\'s home page and stories if they are available.  Note that if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
+				'id'   => $prefix.'dev_issue_asset_directory',
+				'type' => 'text',
+			)
+			);
+		}
+		return $fields;
 	}
 } // END class 
 

@@ -29,42 +29,7 @@
 			var THEME_JS_URL = '<?=THEME_JS_URL?>';
 		</script>
 
-		<? if( is_home() && ( $issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
-		
-		<? if ( is_home() && ( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$home_stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
-
-		<? if ( $post->post_type == 'story' && get_post_meta($post->ID, 'story_fonts', TRUE) && get_post_meta($post->ID, 'story_fonts', TRUE) !== '' ) { ?>
-			<style type="text/css">
-			<?
-			$fonts = explode(',', get_post_meta($post->ID, 'story_fonts', TRUE));
-			$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
-			foreach ($fonts as $font) { 
-				trim($font);
-				if (array_key_exists($font, $available_fonts)) { ?>
-					@import url('<?=$available_fonts[$font]?>');
-				<?	
-				}
-			} 
-			?>
-			</style>
-		<? } ?>
-
-		<? if( $post->post_type == 'story' && ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) { ?>
-				<link rel='stylesheet' href="<?=$issue_stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
-
-		<? if($post->post_type == 'story' && ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False) { ?>
-				
-			<link rel='stylesheet' href="<?=$story_stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
-
-		<? if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) { ?>
-			<link rel='stylesheet' href="<?=$page_stylesheet_url?>" type='text/css' media='all' />
-		<? } ?>
+		<?=output_header_markup($post);?>
 		
 	</head>
 	<? extract(get_navigation_stories()); ?>

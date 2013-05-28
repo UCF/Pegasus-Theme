@@ -165,18 +165,55 @@ function enqueue_issue_story_scripts() {
 	global $post;
 	// add home page script(s)
 	if($post->post_type == 'issue') {
+		// issue-wide
 		if (($issue_javascript_url = Issue::get_issue_javascript_url($post)) !== False) {
 			Config::add_script($issue_javascript_url);
 		}
+		elseif (DEV_MODE == true && ($dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE)) !== NULL) {
+			$dev_issue_javascript_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.js';
+			if (curl_exists($dev_issue_javascript_url)) {
+				Config::add_script($dev_issue_javascript_url);
+			}
+		}
+		// home page specific
 		if (($home_javascript_url = Issue::get_home_javascript_url($post)) !== False) {
 			Config::add_script($home_javascript_url);
 		}
+		elseif (DEV_MODE == true && ($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== NULL) {
+			$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.js';
+			if (curl_exists($dev_home_javascript_url)) {
+				Config::add_script($dev_home_javascript_url);
+			}
+		}
 	// add story script(s)
-	} else if($post->post_type == 'story' && ($javascript_url = Story::get_javascript_url($post)) !== False) {
-		if( ($issue = get_story_issue($post)) !== False && ($issue_javascript_url = Issue::get_issue_javascript_url($issue)) !== False ) {
+	} else if($post->post_type == 'story') {
+		// issue-wide
+		if( ($story_issue = get_story_issue($post)) !== False && ($issue_javascript_url = Issue::get_issue_javascript_url($story_issue)) !== False ) {
 			Config::add_script($issue_javascript_url);
 		}
-		Config::add_script($javascript_url);
+		elseif (
+			($story_issue = get_story_issue($post)) !== False && 
+			DEV_MODE == true && 
+			($dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE)) !== NULL)
+			{
+				$dev_issue_javascript_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.js';
+				if (curl_exists($dev_issue_javascript_url)) {
+					Config::add_script($dev_issue_javascript_url);
+				}
+		}
+		// story specific
+		if ( ($javascript_url = Story::get_javascript_url($post)) !== False) {
+			Config::add_script($javascript_url);
+		}
+		elseif (
+			DEV_MODE == true && 
+			($dev_story_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE)) !== NULL) 
+			{
+				$dev_story_javascript_url = THEME_DEV_URL.'/'.$dev_story_directory.$post->post_name.'.js';
+				if (curl_exists($dev_story_javascript_url)) {
+					Config::add_script($dev_story_javascript_url);
+				}
+		}
 	}
 }
 add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
@@ -228,5 +265,106 @@ function get_issue_stories($issue, $options=array()) {
 				)
 			)
 	));
+}
+
+/*
+ * Check to see if some arbitary file exists (does not return a 404/500)
+ * http://stackoverflow.com/questions/14699941/php-curl-check-for-file-existence-before-downloading
+ *
+ * @return bool
+ */
+function curl_exists($url) {
+	$file_headers = @get_headers($url);
+	if($file_headers[0] == 'HTTP/1.1 404 Not Found' || $file_headers[0] == 'HTTP/1.1 500 Internal Server Error') {
+    	return false;
+	}
+	return true;
+}
+
+/*
+ * Get home page/story stylesheet and script markup for the header
+ *
+ * @return string
+ * @author Jo Greybill
+ */
+function output_header_markup($post) {
+	$output = '';
+	// Issue-wide stylesheet (on home page)
+	if( is_home() ) {		
+		if ( ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False ) {
+			$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
+		}
+		elseif ( DEV_MODE == true && ($dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE)) !== NULL ) {
+			$dev_issue_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+			if (curl_exists($dev_issue_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$dev_issue_stylesheet_url.'" type="text/css" media="all" />';
+			}
+		}
+	}
+	// Home stylesheet
+	if ( is_home() ) {
+		if (( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) {
+			$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
+		}
+		elseif ( DEV_MODE == true && ($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== NULL ) {
+			$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+			if (curl_exists($dev_home_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
+			}
+		}
+	}
+	// Story fonts
+	if ( 
+		$post->post_type == 'story' && 
+		get_post_meta($post->ID, 'story_fonts', TRUE) && 
+		get_post_meta($post->ID, 'story_fonts', TRUE) !== '' ) 
+		{
+		$output .= '<style type="text/css">';
+			
+		$fonts = explode(',', get_post_meta($post->ID, 'story_fonts', TRUE));
+		$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
+		foreach ($fonts as $font) { 
+			trim($font);
+			if (array_key_exists($font, $available_fonts)) {
+				$output .= '@import url("'.$available_fonts[$font].'")';
+			}
+		} 
+			
+		$output .= '</style>';
+	}
+	// Issue-wide stylesheet (on story)
+	if( $post->post_type == 'story' ) {
+		if ( ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) {
+			$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
+		}
+		elseif ( 
+			($story_issue = get_story_issue($post)) !== False && 
+			DEV_MODE == true && 
+			($dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE)) !== False)
+			{
+				$dev_issue_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.css';
+				if (curl_exists($dev_issue_home_stylesheet_url)) {
+					$output .= '<link rel="stylesheet" href="'.$dev_issue_home_stylesheet_url.'" type="text/css" media="all" />';
+				}
+		}
+	}
+	// Story stylesheet
+	if( $post->post_type == 'story' ) {
+		if ( ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False ) {
+			$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
+		}
+		elseif ( (DEV_MODE == true) && ($dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE)) !== NULL ) {
+			$dev_story_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+			if (curl_exists($dev_story_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$dev_story_stylesheet_url.'" type="text/css" media="all" />';
+			}
+		}
+	}
+	// Page stylesheet
+	if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) {
+		$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
+	}
+	
+	return $output;
 }
 ?>

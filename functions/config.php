@@ -76,6 +76,7 @@ define('THEME_IMG_URL', THEME_STATIC_URL.'/img');
 define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
+define('THEME_DEV_URL', THEME_URL.'/dev');
 define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
@@ -84,6 +85,8 @@ $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
+
+define('DEV_MODE', true); # Never leave this activated in a production environment!
 
 /**
  * List of available fonts. Structure array as key = font name, val = path to the font. 
