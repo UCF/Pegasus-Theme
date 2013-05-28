@@ -164,7 +164,7 @@ add_action('init', 'issue_init');
 function enqueue_issue_story_scripts() {
 	global $post;
 	// add home page script(s)
-	if($post->post_type == 'issue') {
+	if($post->post_type == 'issue' || is_home()) {
 		// issue-wide
 		if (($issue_javascript_url = Issue::get_issue_javascript_url($post)) !== False) {
 			Config::add_script($issue_javascript_url);
@@ -290,7 +290,7 @@ function curl_exists($url) {
 function output_header_markup($post) {
 	$output = '';
 	// Issue-wide stylesheet (on home page)
-	if( is_home() ) {		
+	if( is_home() || $post->post_type == 'issue' ) {		
 		if ( ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False ) {
 			$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
 		}
@@ -302,7 +302,7 @@ function output_header_markup($post) {
 		}
 	}
 	// Home stylesheet
-	if ( is_home() ) {
+	if ( is_home() || $post->post_type == 'issue' ) {
 		if (( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) {
 			$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 		}
