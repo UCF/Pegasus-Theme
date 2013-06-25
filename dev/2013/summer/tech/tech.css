@@ -54,20 +54,21 @@ body { overflow-x: hidden; }
     width: 100%;
 }
 
-#on-two-feet-img > .span12 { position: relative; }
-#on-two-feet-img p.caption { top: 15px; left: 15px; width: 35%; }
-
-#tech-writers-wrap h2 { margin-top: 0; padding-top: 0; }
-
 #mind-over-matter-title > .span8 {
     padding-top: 80px;
 }
 #mind-over-matter-hand { position: relative; }
-#mind-over-matter-hand img { position: absolute; top: -20px; right: 0; }
+#mind-over-matter-hand img { position: absolute; top: -10px; right: 0; }
 #mind-over-matter-hand .caption { top: 20px; right: 295px; width: 280px; text-align: right; }
-#mind-over-matter-truck { position: relative; padding-bottom: 40px; }
+#mind-over-matter-truck { position: relative; }
 #mind-over-matter-truck img { position: relative; right: -70px; }
 #mind-over-matter-truck .caption { width: 150px; top: 30px; left: -40px; }
+
+#on-two-feet-img > .span12 { position: relative; }
+#on-two-feet-img p.caption { top: 15px; left: 15px; width: 35%; }
+
+#tech-writers-wrap { padding-bottom: 40px; }
+#tech-writers-wrap h2 { margin-top: 0; padding-top: 0; }
 
 
 /* Story - responsive */
@@ -89,12 +90,12 @@ body { overflow-x: hidden; }
         text-align: left;
     }
 
-    #tech-writers-wrap h2 { padding-top: 20px; }
-
     #mind-over-matter-title > .span8 { padding-top: 0; }
     #mind-over-matter-title h2.inline { padding-top: 5px; }
     #mind-over-matter-hand img { position: static; top: 0; }
     #mind-over-matter-truck img { right: 0; }
+
+    #tech-writers-wrap h2 { padding-top: 20px; }
 }
 
 @media (max-width: 480px) {
