@@ -1,0 +1,43 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+
+#intro {
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+#heading h2 {
+    margin-top: 70px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 60px;
+    color: #0088B7;
+    text-align: center;
+}
+
+#sub-heading h3 {
+    text-align: center;
+    font-size: 22px;
+    line-height: 22px;
+    font-style: italic;
+    margin-bottom: 800px;
+    font-weight: normal;
+}
+
+#false-content {
+    background-color: rgba(255, 255, 255, 0.90);
+    margin-top: -550px;
+}
+
+#in-2013 {
+    display: block;
+    width: 113px;
+    height: 125px;
+    padding-left: 12px;
+    border-radius: 72px;
+    background-color: #0088B7;
+    text-align: left;
+    color: #fff;
+    font-size: 40px;
+}

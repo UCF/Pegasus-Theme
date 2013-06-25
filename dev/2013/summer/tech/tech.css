@@ -1,0 +1,102 @@
+/* Header/Footer */
+#header, #footer { background-color: #126674; }
+
+/* Universal */
+body { overflow-x: hidden; }
+#body_content p { margin: 10px 0; text-indent: 10px; }
+#body_content p.noindent { text-indent: 0; }
+#body_content p.nomargin-top { margin-top: 0; }
+.hr { height: 1px; border-bottom: 1px solid #000; margin-top: 20px; margin-bottom: 20px; }
+#body_content h2 { 
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: normal;
+    line-height: 34px;
+    padding-top: 20px;
+}
+#body_content h2.inline { display: block; float: left; padding-right: 20px; }
+#body_content h2.title-alt { 
+    text-transform: uppercase; 
+    font-size: 24px; 
+    line-height: 24px;
+    font-family: Helvetica, sans-serif; 
+    font-weight: bold;
+}
+#body_content p.subtitle {
+    padding: 20px 0 10px;
+    color: #939598;
+    font-size: 30px;
+    font-style: italic;
+    line-height: 40px;
+    margin: 0;
+    text-indent: 0;
+}
+#body_content p.caption { 
+    position: absolute; 
+    display: block; 
+    margin: 0;
+    font-style: italic;
+    text-indent: 0;
+}
+
+
+/* Story - full-size */
+#story-title h1 {
+    border-bottom: 1px solid #000000;
+    display: block;
+    font-family: 'Arial Black',sans-serif;
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 47px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    text-indent: 80%;
+    width: 100%;
+}
+
+#on-two-feet-img > .span12 { position: relative; }
+#on-two-feet-img p.caption { top: 15px; left: 15px; width: 35%; }
+
+#tech-writers-wrap h2 { margin-top: 0; padding-top: 0; }
+
+#mind-over-matter-title > .span8 {
+    padding-top: 80px;
+}
+#mind-over-matter-hand { position: relative; }
+#mind-over-matter-hand img { position: absolute; top: -20px; right: 0; }
+#mind-over-matter-hand .caption { top: 20px; right: 295px; width: 280px; text-align: right; }
+#mind-over-matter-truck { position: relative; padding-bottom: 40px; }
+#mind-over-matter-truck img { position: relative; right: -70px; }
+#mind-over-matter-truck .caption { width: 150px; top: 30px; left: -40px; }
+
+
+/* Story - responsive */
+@media (max-width: 979px) and (min-width: 768px) {
+    #story-title h1 { text-indent: 75%; }
+}
+
+@media (max-width: 767px) {
+    #story-title h1 { text-indent: 62%; }
+    #body_content p.subtitle { line-height: 30px; padding-top: 10px; }
+    #body_content h2.inline { float: none; padding-right: 0; padding-top: 20px; }
+    #body_content p.caption {
+        position: relative; 
+        width: 100%; 
+        top: 0; 
+        left: 0; 
+        right: 0; 
+        margin: 10px 0 0 0;
+        text-align: left;
+    }
+
+    #tech-writers-wrap h2 { padding-top: 20px; }
+
+    #mind-over-matter-title > .span8 { padding-top: 0; }
+    #mind-over-matter-title h2.inline { padding-top: 5px; }
+    #mind-over-matter-hand img { position: static; top: 0; }
+    #mind-over-matter-truck img { right: 0; }
+}
+
+@media (max-width: 480px) {
+    #story-title h1 { text-indent: 58%; font-size: 36px; line-height: 26px; }
+}

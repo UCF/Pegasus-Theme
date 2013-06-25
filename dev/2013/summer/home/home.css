@@ -1,0 +1,7 @@
+body { background: #F1DFCB; }
+
+#header { background-color: transparent; }
+#footer { background-color: #D7BB8C; }
+
+#cover { overflow: auto; margin-top: -64px; }
+#cover p { width: 100%; text-align: center; margin-bottom: 0; }
