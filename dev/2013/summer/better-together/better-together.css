@@ -1,0 +1,143 @@
+/* Header/Footer */
+#header { background-color: transparent; }
+#footer { background-color: #070908; }
+
+/* Universal */
+body { background-color: #0F1012; }
+.container-wide { 
+	background: top center no-repeat; 
+	width: 100%;
+}
+.body-content { color: #fff; }
+.body-content p { margin: 10px 0; }
+.body-content h3 { 
+	font-family: 'AleoLightItalic', serif; 
+	font-size: 26px; 
+	font-weight: normal; 
+	line-height: 30px;
+	letter-spacing: 1px;
+}
+.body-content h4 { text-transform: uppercase; padding-top: 10px; color: #eb212e; }
+.story-bg { background-position: bottom center; background-repeat: no-repeat; }
+.story-intro p { line-height: 25px; font-size: 16px; }
+.story-intro p .first-letter { 
+	font-family: 'AleoLight', serif;
+	font-weight: normal;
+	font-size: 53px;
+	line-height: 50px;
+	padding-right: 5px;
+	display: block;
+	float: left;
+	letter-spacing: 1px;
+}
+blockquote { padding-left: 0; border-left: 0; }
+blockquote p {
+	font-family: 'AleoLightItalic', serif;
+	font-size: 26px;
+	line-height: 38px;
+	letter-spacing: 1px;
+}
+blockquote small { font-size: 18px; }
+blockquote small:before { content: ""; }
+p.person-label { margin: 20px 0; }
+p.person-label span { 
+	padding: 10px; 
+	background-color: #4FB5E7; 
+	font-family: Helvetica, sans-serif;
+	text-transform: uppercase;
+	font-weight: bold;
+	font-size: 12px;
+}
+.hr { width: 100%; padding: 0; margin-top: 10px; margin-bottom: 10px; }
+.hr.dotted { border-bottom: 1px dotted #eb212e; }
+p.supplemental { font-family: Helvetica, sans-serif; font-size: 12px; font-style: italic; }
+p.supplemental .reference { font-style: normal; }
+
+/* Story - Full Size */
+#story-title h1 { text-indent: -9999px; display: block; height: 0; width: 0; }
+#story-title { text-align: center; }
+#story-title .subtitle { 
+	font-family: 'AleoLightItalic', serif;
+	font-weight: normal;
+	color: #fff;
+	font-size: 22px;
+	letter-spacing: 1px;
+}
+
+#intro-costas-frye-wrap { min-height: 715px; }
+#intro-costas-frye .first-letter { color: #eb212e; }
+#costas-frye {  }
+
+#intro-berman-ratner-wrap { min-height: 607px; background-color: #FCF9F4; }
+#intro-berman-ratner-wrap blockquote { color: #00b6af; padding-top: 30px; }
+#intro-berman-ratner { color: #000; padding-top: 30px; }
+#intro-berman-ratner p { padding-right: 30px; }
+#intro-berman-ratner .first-letter { color: #00b6af; }
+#berman-ratner { background-color: #FCF9F4; }
+#berman-ratner p { color: #000; }
+#berman-ratner p.person-label span { background-color: #ffc907; color: #fff; }
+#berman-ratner h3, 
+#berman-ratner p.supplemental { color: #000; }
+#berman-ratner h4 { color: #00b6af; }
+#berman-ratner .hr.dotted { border-bottom: 1px dotted #00b6af; }
+
+#intro-murdock-self-wrap { min-height: 720px; background-color: #070908; }
+#intro-murdock-self-wrap blockquote { padding-top: 30px; }
+#intro-murdock-self-wrap blockquote p { color: #4FB5E7; }
+#intro-murdock-self { padding-top: 20px; }
+#intro-murdock-self .first-letter,
+#murdock-self h4 { color: #4FB5E7; }
+#murdock-self { background-color: #070908; padding-bottom: 40px; }
+#murdock-self .hr.dotted { border-bottom: 1px dotted #4FB5E7; }
+
+/* Story - Responsive */
+@media (max-width: 979px) and (min-width: 768px) {
+    #intro-berman-ratner-wrap { background-position: 72% bottom; }
+    #intro-berman-ratner { padding-top: 10px; }
+    #intro-murdock-self-wrap { 
+    	background-position: 35% bottom; 
+    	background-size: 1125px auto;
+    	min-height: 620px;
+    }
+    #intro-murdock-self { padding-top: 0; }
+}
+
+@media (max-width: 767px) {
+	.container-wide {
+		margin-left: -20px;
+	    padding-left: 20px;
+	    padding-right: 20px;
+	}
+	p.supplemental { margin-bottom: 30px; }
+
+	#intro-costas-frye-wrap { background-size: 100% auto; min-height: 0; padding-bottom: 62%; }
+
+    #intro-berman-ratner-wrap {
+    	background-position: 84% bottom;
+    	background-size: 1000px auto;
+    	height: auto;
+    	min-height: 0;
+    	padding-top: 10px;
+    }
+    #intro-berman-ratner-wrap blockquote { padding-top: 0; }
+    #intro-berman-ratner {
+    	padding-bottom: 460px;
+    	padding-top: 0;
+    }
+    #intro-berman-ratner p { padding-right: 0; }
+
+    #intro-murdock-self-wrap {
+    	background-position: left bottom;
+    	background-size: 160% auto;
+    	height: auto;
+    	min-height: 0; 
+    	padding-top: 10px; 
+    }
+    #intro-murdock-self-wrap blockquote { padding-top: 0; }
+    #intro-murdock-self { padding-top: 0; padding-bottom: 68%; }
+}
+
+@media (max-width: 480px) {
+	#intro-berman-ratner-wrap { background-size: 700px auto; }
+	#intro-berman-ratner { padding-bottom: 314px; }
+}

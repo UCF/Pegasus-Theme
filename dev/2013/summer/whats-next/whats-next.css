@@ -1,0 +1,268 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans);
+
+p {
+    margin: 0;
+}
+
+p.indent {
+    text-indent: 10px;
+    margin-top: 7px;
+}
+
+.align-right {
+    text-align: right;
+}
+
+#next-title {
+    margin-top: 30px;
+    margin-bottom: 40px;
+    font-family: 'Theano Modern', Georgia, serif;
+    font-size: 60px;
+}
+
+#next-subtitle {
+    font-family: Georgia, serif;
+    font-size: 22px;
+    line-height: 30px;
+    color: #999;
+    margin-bottom: 20px;
+}
+
+#bubble-menu {
+    position: fixed;
+    width: 100%;
+    height: 75px;
+    background-color: #ffdf6e;
+    bottom: -200px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+#bubble-menu.slidein {
+    bottom: 0;
+}
+
+#top-bubble-menu {
+    margin: 12px auto;
+    height: 47px;
+    width: 525px;
+}
+
+#top-bubble-menu ul {
+    list-style: none;
+    margin: 0;
+}
+
+#top-bubble-menu ul li {
+    float: left;
+    margin-left: 17px;
+}
+
+#top-bubble-menu ul li a {
+    display: block;
+    height: 47px;
+    width: 47px;
+    border-radius: 47px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+}
+
+#top-bubble-menu ul li.next-change a {
+    background-position: 0 0;
+}
+
+#top-bubble-menu ul li.next-robots a {
+    background-position: 0 -47px;
+}
+
+#top-bubble-menu ul li.next-news a {
+    background-position: 0 -94px;
+}
+
+#top-bubble-menu ul li.next-historian a {
+    background-position: 0 -141px;
+}
+
+#top-bubble-menu ul li.next-coach a {
+    background-position: 0 -188px;
+}
+
+#top-bubble-menu ul li.next-solar a {
+    background-position: 0 -235px;
+}
+
+#top-bubble-menu ul li.next-graduate a {
+    background-position: 0 -282px;
+}
+
+#top-bubble-menu ul li.next-virtual a {
+    background-position: 0 -329px;
+}
+
+#top-bubble-menu ul li.next-change a:hover {
+    background-position: -47px 0px;
+}
+
+#top-bubble-menu ul li.next-robots a:hover {
+    background-position: -47px -47px;
+}
+
+#top-bubble-menu ul li.next-news a:hover {
+    background-position: -47px -94px;
+}
+
+#top-bubble-menu ul li.next-historian a:hover {
+    background-position: -47px -141px;
+}
+
+#top-bubble-menu ul li.next-coach a:hover {
+    background-position: -47px -188px;
+}
+
+#top-bubble-menu ul li.next-solar a:hover {
+    background-position: -47px -235px;
+}
+
+#top-bubble-menu ul li.next-graduate a:hover {
+    background-position: -47px -282px;
+}
+
+#top-bubble-menu ul li.next-virtual a:hover {
+    background-position: -47px -329px;
+}
+
+#next-arrow {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.divider-start {
+    margin-top: 30px;
+}
+
+.divider-white {
+    background-color: #faf9f7;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.divider-offwhite {
+    background-color: #fff;
+    background-position: 50% 100%;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    padding-bottom: 60px;
+}
+
+.divider-end {
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.offwhite {
+    background-color: #faf9f7;
+}
+
+.white {
+    background-color: #fff;
+}
+
+#main-content p {
+    font-size: 18px;
+    line-height: 22px;
+    font-family: 'Theano Modern', Georgia, serif;
+}
+
+#main-content h3 {
+    font-family: 'Open Sans', sans-serif;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 26px;
+    margin-top: 35px;
+    margin-bottom: 0;
+}
+
+#main-content .person {
+    color: #988d7d;
+    font-weight: bold;
+}
+
+.person .college {
+    font-style: italic;
+    font-weight: normal;
+}
+
+.next-story-title {
+    margin-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .align-right {
+        text-align: left;
+    }
+
+    .substory-img, .align-right .substory-img {
+        text-align: center;
+    }
+
+    #top-bubble-menu {
+        height: 100px;
+        width: 275px;
+    }
+
+    #top-bubble-menu ul li {
+        margin-top: 15px;
+    }
+
+    #bubble-menu {
+        display: none;
+    }
+
+    #next-title {
+        margin-bottom: 20px;
+        font-size: 36px;
+        line-height: 38px;
+    }
+    
+    #next-subtitle {
+        margin-bottom: 10px;
+        font-size: 18px;
+        line-height: 20px;
+    }
+
+    #next-arrow {
+        margin-bottom: 0px;
+    }
+
+    #main-content p {
+        font-size: 16px;
+        line-height: 20px;
+        font-family: 'Theano Modern', Georgia, serif;
+    }
+
+    #main-content h3 {
+        font-family: 'Open Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 20px;
+        line-height: 24px;
+        margin-top: 35px;
+        margin-bottom: 0;
+    }
+
+    .container {
+        margin-left: -20px;
+        margin-right: -20px;
+
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #header {
+        padding-right: 20px;
+    }
+}

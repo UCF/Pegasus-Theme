@@ -1,0 +1,205 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+body p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#num-reviewed [class*="fy-"] {
+    padding-left: 15px;
+    margin-bottom: 5px;
+    height: 50px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 50px;
+    font-family: 'Open Sans', sans-serif;
+    font-style: italic;
+    vertical-align: middle;
+}
+
+#num-reviewed [class*="fy-"] .count {
+    margin-left: 10px;
+    font-family: 'Theano Modern', Georgia, serif;
+    font-size: 24px;
+    font-style: none;
+}
+
+#num-reviewed .fy-2010 {
+    background-color: #60cdf6;
+}
+
+#num-reviewed .fy-2011 {
+    background-color: #00AEEF;
+}
+
+#num-reviewed .fy-2012 {
+    background-color: #006BB6;
+}
+
+.donut-wrapper {
+    position: relative;
+    width: 250px;
+    height: 250px;
+}
+
+.donut-num {
+    position: absolute;
+    left: 85px;
+    top: 90px;
+    width: 80px;
+    text-align: center;
+}
+
+.donut-sub {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 13px;
+    line-height: 15px;
+    font-weight: 800;
+}
+
+.donut-sub-num {
+    font-family: 'Theano Modern', Georgia, serif;
+    font-size: 26px;
+    line-height: 28px;
+}
+
+.donut-sub-sub {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+    line-height: 10px;
+    font-style: italic;
+}
+
+.donut {
+    position: relative;
+}
+
+#royalty-distribution .donut-num {
+    margin-top: 10px;
+}
+
+#journey-start {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    border: solid 1px #5388c6;
+    background-color: #00aeef;
+}
+
+#process-pipe-wrapper {
+    position: relative;
+}
+
+#pipe-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.pipe-color {
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+
+.pipe-color.pipe-off {
+    background: #ececec !important;
+}
+
+.pipe-blue {
+    top: 0;
+    height: 200px;
+    background: #006cb7;
+    background: -moz-linear-gradient(top,  #006cb7 0%, #44c8f5 100%);
+    background: -o-linear-gradient(top,  #006cb7 0%,#44c8f5 100%);
+    background: -ms-linear-gradient(top,  #006cb7 0%,#44c8f5 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006cb7', endColorstr='#44c8f5',GradientType=0 );
+}
+
+.pipe-green {
+    top: 200px;
+    height: 175px;
+    background: #00a85b;
+    background: -moz-linear-gradient(top,  #00a85b 0%, #acd038 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#00a85b), color-stop(100%,#acd038));
+    background: -webkit-linear-gradient(top,  #00a85b 0%,#acd038 100%);
+    background: -o-linear-gradient(top,  #00a85b 0%,#acd038 100%);
+    background: -ms-linear-gradient(top,  #00a85b 0%,#acd038 100%);
+    background: linear-gradient(to bottom,  #00a85b 0%,#acd038 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a85b', endColorstr='#acd038',GradientType=0 );
+}
+
+.pipe-orange {
+    top: 375px;
+    height: 175px;
+    background: #f7931d;
+    background: -moz-linear-gradient(top,  #f7931d 0%, #ffc907 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7931d), color-stop(100%,#ffc907));
+    background: -webkit-linear-gradient(top,  #f7931d 0%,#ffc907 100%);
+    background: -o-linear-gradient(top,  #f7931d 0%,#ffc907 100%);
+    background: -ms-linear-gradient(top,  #f7931d 0%,#ffc907 100%);
+    background: linear-gradient(to bottom,  #f7931d 0%,#ffc907 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931d', endColorstr='#ffc907',GradientType=0 );
+
+}
+
+.pipe-red {
+    top: 550px;
+    height: 200px;
+    background: #d2252a;
+    background: -moz-linear-gradient(top,  #d2252a 0%, #f26c5e 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d2252a), color-stop(100%,#f26c5e));
+    background: -webkit-linear-gradient(top,  #d2252a 0%,#f26c5e 100%);
+    background: -o-linear-gradient(top,  #d2252a 0%,#f26c5e 100%);
+    background: -ms-linear-gradient(top,  #d2252a 0%,#f26c5e 100%);
+    background: linear-gradient(to bottom,  #d2252a 0%,#f26c5e 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2252a', endColorstr='#f26c5e',GradientType=0 );
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    .donut {
+        display: none;
+    }
+
+    .donut-wrapper {
+        width: 200px;
+        height: 200px;
+        background-size: 200px 200px !important;
+    }
+
+    #patents-granted {
+        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
+    }
+
+    #license-spinout {
+        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .donut {
+        display: none;
+    }
+
+    .donut-wrapper {
+        width: 150px;
+        height: 150px;
+        background-size: 150px 150px !important;
+    }
+
+    #patents-granted {
+        width: 150px;
+        height: 150px;
+        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
+        background-size: 150px 150px !important;
+    }
+
+    #license-spinout {
+        width: 150px;
+        height: 150px;
+        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
+        background-size: 150px 150px !important;
+    }
+}

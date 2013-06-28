@@ -1,43 +1,192 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,800);
+@import url(http://fonts.googleapis.com/css?family=Antic+Slab);
+@import url(http://fonts.googleapis.com/css?family=Trocchi);
+
+body {
+    background-color: #fff;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: 'Theano Modern', Georgia, serif;
+}
 
 #intro {
-    background-position: top center;
+    height: 510px;
     background-repeat: no-repeat;
 }
 
 #heading h2 {
-    margin-top: 70px;
+    margin-top: 75px;
     font-family: 'Open Sans', sans-serif;
     font-style: italic;
-    font-size: 70px;
+    font-size: 60px;
     font-weight: 700;
-    line-height: 60px;
+    line-height: 55px;
     color: #0088B7;
     text-align: center;
 }
 
+#sub-heading {
+    margin-top: 15px;
+    font-family: 'Theano Modern', Georgia, serif;
+}
+
 #sub-heading h3 {
     text-align: center;
-    font-size: 22px;
-    line-height: 22px;
+    font-size: 20px;
+    line-height: 20px;
     font-style: italic;
-    margin-bottom: 800px;
     font-weight: normal;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 #false-content {
-    background-color: rgba(255, 255, 255, 0.90);
-    margin-top: -550px;
+    padding-top: 25px;
+    margin-bottom: 25px;
 }
 
-#in-2013 {
+.in-2013 {
     display: block;
     width: 113px;
     height: 125px;
-    padding-left: 12px;
-    border-radius: 72px;
+    padding-left: 30px;
+    padding-top: 20px;
+    border-radius: 80px;
     background-color: #0088B7;
     text-align: left;
     color: #fff;
     font-size: 40px;
+    line-height: 45px;
+    font-weight: 800;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.note-black, .note-blue {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-family: 'Trocchi', serif;
+}
+
+.note-blue {
+    color: #0088B7;
+}
+
+.note-heading {
+    color: #FFD503;
+    font-weight: bolder;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.note-emphasize {
+    font-size: 25px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
+}
+
+.note-source {
+    font-family: 'Trocchi', serif;
+    font-style: italic;
+    font-size: 11px;
+}
+
+.first-letter {
+    color: #0088B7;
+    font-family: 'Antic Slab', serif;
+    font-size: 56px;
+}
+
+.false-content-heading {
+    color: #0088B7;
+    margin-bottom: 0;
+    margin-top: 15px;
+    font-size: 18px;
+    font-weight: bolder;
+}
+
+#false-content p {
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+#false-content .bold {
+    font-weight: bold;
+}
+
+#false-content .cite {
+    font-style: italic;
+}
+
+#false-content p.indent {
+    text-indent : 10px;
+}
+
+#cancer-small {
+    display: none;
+}
+
+.cancer-quote {
+    font-size: 32px;
+    color: #AAA;
+    line-height: 38px;
+    font-family: Georgia, serif;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #intro {
+        height: 400px;
+        background-size: auto 400px;
+    }
+}
+
+@media (max-width: 767px) {
+    #heading h2 {
+        margin-top: 10px
+    }
+
+    #sub-heading {
+    }
+
+    #cancer-small {
+        display: block;
+    }
+
+    #cancer-large {
+        display: none;
+    }
+    
+    .in-2013 {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 20px;
+    }
+    
+    .note-heading {
+        text-align: center;
+    }
+    
+    #intro {
+        height: 125px;
+        background-size: auto 300px;
+        padding-top: 280px;
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    
+    .cancer-quote {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        font-size: 24px;
+        line-height: 26px;
+    }
+    
+    #heading h2 {
+        font-size: 40px;
+        line-height: 40px;
+    }
 }

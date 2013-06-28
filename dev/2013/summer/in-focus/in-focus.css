@@ -1,0 +1,441 @@
+/* Animations (borrowed from http://daneden.me/animate/) */
+.animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:0.5s;-moz-animation-duration:0.5s;-ms-animation-duration:0.5s;-o-animation-duration:0.5s;animation-duration:0.5s;}
+.animated.slow{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}
+@-webkit-keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateY(60px);
+	}	100% {
+		opacity: 1;
+		-webkit-transform: translateY(0);
+	}
+}
+@-moz-keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		-moz-transform: translateY(60px);
+	}
+	100% {
+		opacity: 1;
+		-moz-transform: translateY(0);
+	}
+}
+@keyframes fadeInUp {
+	0% {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@-webkit-keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(60px);
+	}	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+}
+@-moz-keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		-moz-transform: translateX(60px);
+	}
+	100% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+}
+@keyframes fadeInRight {
+	0% {
+		opacity: 0;
+		transform: translateX(60px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		-webkit-transform: translateX(-60px);
+	}	100% {
+		opacity: 1;
+		-webkit-transform: translateX(0);
+	}
+}
+@-moz-keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		-moz-transform: translateX(-60px);
+	}
+	100% {
+		opacity: 1;
+		-moz-transform: translateX(0);
+	}
+}
+@keyframes fadeInLeft {
+	0% {
+		opacity: 0;
+		transform: translateX(-60px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
+}
+
+@-webkit-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}	100% {
+		opacity: 1;
+	}
+}
+@-moz-keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+
+/* Header/Footer */
+.ie8 #header,
+.ie7 #header { background-color: #333; }
+#header { background-color: rgba(0,0,0,0.75); }
+#footer { background-color: #333; }
+
+
+/* Universal */
+.container-wide { width: 100%; overflow: auto; }
+
+
+/* Story-Specific */
+.ie7 #body_content,
+.ie8 #body_content { z-index: 999; }
+#body_content { width: 100%; position: relative; }
+.ie7 #story-title,
+.ie8 #story-title {
+	line-height: 48px;
+	position: absolute;
+}
+#story-title { 
+	color: #fff; 
+	font-size: 60px;
+	text-align: center;
+	width: 100%;
+	position: absolute;
+	top: 60px;
+	-webkit-animation-name: fadeInUp;
+	-moz-animation-name: fadeInUp;
+	animation-name: fadeInUp;
+	text-shadow: 0px 5px 5px rgba(0,0,0,0.4);
+	z-index: 999;
+}
+#video-wrap { 
+	position: relative;
+	top: -50px;
+	margin-bottom: -50px;
+	overflow-y: hidden; 
+	background-color: #000;
+}
+
+
+.ie7 .video-panel,
+.ie8 .video-panel {
+	width: 33.3%; /* wat. */
+}
+.video-panel {
+	width: 33.3333%;
+	height: 750px;
+	float: left;
+	background-position: center center;
+	background-repeat: no-repeat;
+	/*background-size: cover;*/ /* too chuggy :( */
+	position: relative;
+	-webkit-transition: width 0.35s ease-in;
+	-moz-transition: width 0.35s ease-in;
+	transition: width 0.35s ease-in; /* On full-screen close */
+	z-index: 1;
+}
+.video-panel .panel-expand-link { 
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-indent: -9999px;
+	background-color: rgba(0,0,0,0.2);
+	-webkit-transition: background-color 1s;
+	-moz-transition: background-color 1s;
+	transition: background-color 1s; /* On panel hover */
+	position: relative;
+	z-index: 3; /* Force bgcolor transition when .panel-hover is hovered over */
+}
+.video-panel .panel-expand-link:hover { background-color: transparent; }
+.ie7 .video-panel .panel-hover,
+.ie8 .video-panel .panel-hover {
+	background-color: #fff;
+}
+.video-panel .panel-hover {
+	background-color: rgba(255,255,255,0.8);
+	position: absolute;
+	z-index: 2;
+	bottom: 0;
+	width: 100%;
+}
+.video-panel .panel-hover,
+.video-panel .video-desc { display: none; }
+.video-panel .video-desc {
+	background: #fff;
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	z-index: 5;
+	height: 750px; /* Height: height of panel, minus height of Peg header */
+}
+.video-panel .video-desc .video-desc-inner { 
+	padding: 30px 20px 60px 20px;
+	position: absolute;
+	bottom: 0;
+}
+.video-panel:hover .panel-hover { /* Apply animation on hover */
+	-webkit-animation-name: fadeInUp;
+	-moz-animation-name: fadeInUp;
+	animation-name: fadeInUp; 
+	display: block;
+}
+.video-panel .panel-hover .panel-hover-inner { padding: 10px 20px 40px 20px; }
+
+
+.video-panel.active {
+	width: 100%;
+	-webkit-transition: width 0.75s ease-in;
+	-moz-transition: width 0.75s ease-in;
+	transition: width 0.75s ease-in;
+	overflow: hidden;
+}
+.video-panel.inactive { 
+	width: 0;
+	-webkit-transition: width 0.75s ease-in;
+	-moz-transition: width 0.75s ease-in;
+	transition: width 0.75s ease-in;
+}
+.video-panel.active .panel-expand-link,
+.video-panel.active:hover .panel-hover,
+.video-panel.disabled:hover .panel-hover,
+.video-panel.active.disabled .video-desc { display: none; } /* Disable interactive stuff on hover/transition */
+
+
+.video-panel.active .video-desc { 
+	/* Show video description for the active panel */
+	display: block;
+	-webkit-animation-delay: 0s; /* Timing btwn Webkit and Firefox is different! */
+	-moz-animation-delay: 0s;
+	animation-delay: 0.75s; /* Should match or be close to single active panel transition time */
+}
+#panel-left .video-desc { width: 260px; } 
+#panel-left .video-desc .video-desc-inner { padding-right: 40px; }
+#panel-left.active .video-desc {
+	-webkit-animation-name: fadeInRight;
+	-moz-animation-name: fadeInRight;
+	animation-name: fadeInRight;
+}
+#panel-middle .video-desc,
+#panel-right .video-desc {
+	width: 260px;
+	left: 0;
+	right: auto;
+}
+#panel-middle.active .video-desc,
+#panel-right.active .video-desc { 
+	-webkit-animation-name: fadeInLeft;
+	-moz-animation-name: fadeInLeft;
+	animation-name: fadeInLeft; 
+}
+#panel-middle .video-desc .video-desc-inner,
+#panel-right .video-desc .video-desc-inner { padding-left: 40px; }
+
+
+#closeactive {
+	position: absolute;
+	top: 80px;
+ 	right: 20px;
+ 	z-index: 4;
+ 	display: none;
+ 	margin: 0;
+}
+#closeactive a {
+	color: #000;
+	font-size: 22px;
+	font-weight: bold;
+	padding: 5px 10px;
+	border-radius: 30px;
+	background-color: #fff;
+}
+.ie7 #closeactive a:hover,
+.ie8 #closeactive a:hover {
+	background-color: #333;
+}
+#closeactive a:hover {
+	text-decoration: none;
+	color: #fff;
+	background-color: rgba(0,0,0,0.8);
+}
+.video-panel.active + #closeactive,
+.video-panel.inactive + #closeactive { display: block; } /* Show Close btn when not in default view */
+.video-panel.active#panel-left ~ #closeactive { right: 280px; }
+
+
+p.date { 
+	font-family: Helvetica, sans-serif;
+	font-style: italic; 
+	font-weight: bold; 
+	font-size: 12px; 
+}
+p.caption { font-style: italic; font-size: 12px; }
+.video-desc-inner h2 { font-size: 12px; text-transform: uppercase; line-height: 14px; }
+.video-desc-inner blockquote { 
+	border-left: 0; 
+	padding-left: 0;
+	font-size: 32px;
+	line-height: 40px;
+	font-style: italic;
+}
+.video-desc-inner blockquote small { font-size: 14px; line-height: 20px; }
+.video-desc-inner p.caption { font-family: Georgia, serif; font-style: normal; }
+
+
+.video { display: none; }
+.video iframe { width: 100%; height: 750px; }
+.video-panel.active .video {
+	display: block;
+	-webkit-animation-name: fadeIn;
+	-moz-animation-name: fadeIn;
+	animation-name: fadeIn;
+	-webkit-animation-delay: 1.25s;
+	-moz-animation-delay: 1.25s;
+	animation-delay: 01.25s; /* Should match or be close to single active panel transition time */
+}
+
+#panel-left .video { padding-right: 260px; }
+#panel-middle .video,
+#panel-right .video { padding-left: 260px; }
+
+
+/* Responsive */
+@media (max-width: 979px) and (min-width: 768px) {
+	#story-title { font-size: 50px; }
+
+	.video-panel.active .video-desc { 
+		width: 100%; 
+		height: 240px; 
+		bottom: 0; 
+		top: auto; 
+	}
+	.video-panel:hover .panel-hover { display: none; } /* Kill panel hover for tablets */
+
+	#closeactive,
+	.video-panel.active#panel-left ~ #closeactive { right: 20px; }
+
+	.video iframe { height: 510px; }
+}
+
+@media (max-width: 979px) {
+	#panel-left .video-desc,
+	#panel-middle .video-desc,
+	#panel-right .video-desc { width: 100%; }
+	#panel-left.active .video-desc,
+	#panel-middle.active .video-desc,
+	#panel-right.active .video-desc {
+		-webkit-animation-name: fadeInUp;
+		-moz-animation-name: fadeInUp;
+		animation-name: fadeInUp;
+	}
+	.video-panel .video-desc .video-desc-inner,
+	#panel-middle .video-desc .video-desc-inner {
+		padding: 20px;
+	}
+	#panel-right .video-desc .video-desc-inner {
+		padding: 20px 20px 0 20px;
+	}
+
+	#panel-left .video,
+	#panel-middle .video,
+	#panel-right .video { padding-left: 0; padding-right: 0; }
+} 
+
+@media (max-width: 767px) {
+	#footer { margin-top: 40px; }
+
+	#story-title { 
+		font-size: 50px; 
+		position: static; 
+		top: auto;
+		color: #000;
+		text-shadow: 0 0 0 #fff;
+		-webkit-animation-name: fadeIn;
+		-moz-animation-name: fadeIn;
+		animation-name: fadeIn;
+		padding: 20px 0 30px 0;
+	}
+
+	#video-wrap { margin-bottom: 0; top: auto; background-color: #fff; }
+
+	.video-panel,
+	.video-panel.active,
+	.video-panel.inactive { 
+		width: 100%; 
+		height: auto; 
+		background-size: auto 300px; 
+		background-position: top center;
+		float: none;
+	}
+	.video-panel:hover .panel-hover { display: none; } /* Kill panel hover */
+
+	.video-panel .panel-expand-link, 
+	#closeactive a { display: none; }
+
+	.video-panel.inactive,
+	.video-panel .video-desc,
+	.video-panel .video { display: block; }
+
+	.video-panel .video-desc { 
+		width: 100%; 
+		height: auto;
+		bottom: 0; 
+		top: auto; 
+		position: static;
+	}
+	.video-panel .video-desc .video-desc-inner,
+	#panel-left .video-desc .video-desc-inner,
+	#panel-middle .video-desc .video-desc-inner,
+	#panel-right .video-desc .video-desc-inner {
+		padding: 20px 0; 
+		position: static;
+		bottom: auto;
+	}
+
+	.video-panel .video { position: relative; top: 0; width: 100%; }
+	.video-panel .video iframe { height: 300px; }
+}
+
+@media (max-width: 480px) {
+	.video-panel { background-size: auto 180px; }
+	.video-panel .video iframe { height: 200px; }
+}

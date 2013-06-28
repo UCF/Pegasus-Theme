@@ -99,6 +99,7 @@ define('DEV_MODE', true); # Never leave this activated in a production environme
 define('THEME_AVAILABLE_FONTS', serialize(array(
 	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
 	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
+	'Aleo'			=> THEME_FONT_URL . '/aleo/stylesheet.css',
 ))); 
 
 
