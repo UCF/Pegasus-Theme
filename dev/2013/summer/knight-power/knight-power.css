@@ -1,0 +1,442 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+
+#header, #footer {
+    background-color: #A9C0AC;
+}
+
+body p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#error_browser_size, #error_old_browser, #alert_ipad_map {
+    display: none;
+    margin-top: 5px;
+}
+
+.gold-color {
+    color: #ffca07;
+}
+
+h2 {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 60px;
+    line-height: 95px;
+    font-weight: 700;
+}
+
+h2 span.power-h-offset {
+    padding-top: 60px;
+}
+
+#power-header {
+    margin-top: 20px;
+}
+
+#power-header img {
+    margin-left: 15px;
+    margin-top: 20px;
+    height: 50px;
+}
+
+#power-subheader {
+    font-size: 21px;
+    line-height: 24px;
+    color: #5293AF;
+    font-weight: bold;
+}
+
+#power-container {
+    background-color: #dbe4db;
+}
+
+#power-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1024px;
+}
+
+#viewport {
+    height: 580px;
+    width: 1024px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+#power-map {
+    height: 580px;
+    width: 1024px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.power-tooltip-wrapper {
+    display: none;
+}
+
+.power-tooltip {
+    background-color: #161315;
+    min-height: 60px;
+    position: relative;
+}
+
+.power-tooltip .icon {
+    background-repeat: no-repeat;
+    margin: 5px;
+    height: 50px;
+    width: 50px;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.power-tooltip .description {
+    color: #fff;
+    padding: 5px;
+    line-height: 16px;
+}
+
+.emphasize {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#power-gasexhaust {
+    position: absolute;
+    top: 120px;
+    left: 270px;
+}
+
+#power-gasexhaust .power-tooltip {
+    width: 600px;
+}
+
+#power-gasexhaust .icon {
+    background-color: #ef4023;
+    background-position: -50px -50px;
+}
+
+#power-gasexhaust .power-arrow img {
+    width: 400px;
+    height: 300px;
+}
+
+#power-breathe {
+    position: absolute;
+    top: 25px;
+    left: 325px;
+}
+
+#power-breathe .power-tooltip {
+    width: 600px;
+}
+
+#power-breathe .icon {
+    background-color: #a6ce39;
+    background-position: 0px 0px;
+}
+
+#power-breathe .power-arrow img {
+    width: 400px;
+    height: 200px;
+    margin-left: 50px;
+}
+
+#power-engine {
+    position: absolute;
+    top: 50px;
+    left: 275px;
+}
+
+#power-engine .power-tooltip {
+    width: 600px;
+}
+
+#power-engine .icon {
+    background-color: #1091d0;
+    background-position: -50px 0px;
+}
+
+#power-engine .power-arrow img {
+    width: 300px;
+    height: 220px;
+    margin-left: 125px;
+}
+
+#power-watts {
+    position: absolute;
+    top: 75px;
+    left: 100px;
+}
+
+#power-watts .power-tooltip {
+    width: 600px;
+}
+
+#power-watts .icon {
+    background-color: #ffe000;
+    background-position: 0px -50px;
+}
+
+#power-watts .power-arrow img {
+    width: 180px;
+    height: 185px;
+    margin-left: 125px;
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: FlipH;
+    -ms-filter: "FlipH";
+}
+
+.ie7 #power-links, .ie8 #power-links {
+    background-color: #0098c5;
+}
+
+#power-links {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    background-color: rgba(0, 152, 197, 0.7);
+    height: 190px;
+    width: 170px;
+    padding: 20px;
+}
+
+#power-links .heading {
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 22px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    color: #fff;
+    border-bottom: dotted 2px #dfdfdf;
+    padding-bottom: 5px;
+}
+
+#power-links ul {
+    list-style: none;
+}
+
+#power-links .link {
+    width: 100%;
+    height: 25px;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+}
+
+#power-links a .text {
+    color: #fff;
+    font-size: 16px;
+    line-height: 30px;
+    margin-left: 35px;
+}
+
+#power-links a:hover {
+    color: #fff;
+}
+
+#power-links .icon {
+    height: 25px;
+    width: 25px;
+    border: solid 1px #fff;
+    -webkit-border-top-right-radius: 5px;
+    -webkit-border-bottom-left-radius: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+#power-links .gasexhaust {
+    background-color: #ef4023;
+    background-position: -25px -25px;
+}
+
+#power-links .breathe {
+    background-color: #a6ce39;
+    background-position: 0px 0px;
+}
+
+#power-links .engine {
+    background-color: #1091d0;
+    background-position: -25px 0px;
+}
+
+#power-links .watts {
+    background-color: #ffe000;
+    background-position: 0px -25px;
+}
+
+.pin {
+    width: 31px;
+    height: 50px;
+    text-align: center;
+    position: relative;
+}
+
+.pin .img {
+    width: 15px;
+    height: 25px;
+    margin-top: 25px;
+}
+
+.pin .img:hover {
+    margin-top: 0;
+    width: 31px;
+    height: 50px;
+}
+
+#power-gasexhaust-pin {
+    position: absolute;
+    top: 170px;
+    left: 188px;
+}
+
+#power-breathe-pin {
+    position: absolute;
+    top: 90px;
+    left: 570px;
+}
+
+#power-engine-pin {
+    position: absolute;
+    top: 195px;
+    left: 600px;
+}
+
+#power-watts-pin {
+    position: absolute;
+    top: 250px;
+    left: 690px;
+}
+
+.ie7 .pin, .ie8 .pin {
+    display: none;
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+    #power-wrapper {
+        margin-left: auto;
+        margin-right: auto;
+        width: 768px;
+    }
+
+    #viewport {
+        height: 435px;
+        width: 768px;
+        position: relative;
+        overflow: hidden;
+        margin-top: 20px;
+    }
+
+    #power-map {
+        height: 435px;
+        width: 768px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        position: relative;
+    }
+
+    #power-links {
+        position: absolute;
+        margin-bottom: 10px;
+        margin-right: 10px;
+        padding: 10px;
+    }
+
+    #power-gasexhaust {
+        position: absolute;
+        top: 55px;
+        left: 130px;
+    }
+
+    #power-gasexhaust .power-arrow img {
+        margin-left: 110px;
+        width: 285px;
+        height: 225px;
+    }
+
+    #power-breathe {
+        position: absolute;
+        top: 25px;
+        left: 150px;
+    }
+
+    #power-breathe .power-arrow img {
+        width: 220px;
+        height: 160px;
+        margin-left: 175px;
+    }
+
+    #power-engine {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+
+    #power-engine .power-arrow img {
+        width: 160px;
+        height: 120px;
+        margin-left: 125px;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+
+    #power-watts {
+        position: absolute;
+        top: 50px;
+        left: 50px;
+    }
+
+    #power-watts .power-arrow img {
+        width: 180px;
+        height: 185px;
+        margin-left: 125px;
+        -moz-transform: scaleX(-1);
+        -o-transform: scaleX(-1);
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+        filter: FlipH;
+        -ms-filter: "FlipH";
+    }
+
+    #power-gasexhaust-pin {
+        position: absolute;
+        top: 115px;
+        left: 136px;
+    }
+
+    #power-breathe-pin {
+        position: absolute;
+        top: 70px;
+        left: 420px;
+    }
+
+    #power-engine-pin {
+        position: absolute;
+        top: 130px;
+        left: 445px;
+    }
+
+    #power-watts-pin {
+        position: absolute;
+        top: 178px;
+        left: 500px;
+    }
+}
