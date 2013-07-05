@@ -29,11 +29,13 @@ setInterval(function(){
 // Adjust heights of .bluebox's within a .boxrow to be the same
 var forceEqualHeights = function() {
 	if ($(window).width() > 767) {
+		var marginBottom = 5;
+		if ($('body').hasClass('ie7') || $('body').hasClass('ie8') ) { marginBottom = 10; }
 		$('.boxrow.matchheight').each(function() {
 			var row = $(this);			
 			// clear any existing height adjustment
 			row.children('.bluebox').css('height', '');
-			rowHeight = row.height() - 5; // account for margin-bottom
+			rowHeight = row.height() - marginBottom; // account for margin-bottom
 			row.children('.bluebox').css('height', rowHeight);
 		});
 	}
