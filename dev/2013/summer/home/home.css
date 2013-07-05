@@ -45,5 +45,11 @@ body { background: #E2E5DC; }
 	#cover #logo img { width: 320px; }
 }
 @media (max-width: 480px) {
-	#cover #story-desc { width: 100%; padding-right: 0; text-align: left; margin-top: -5px; font-size: 14px; line-height: 20px; }
+	#cover #story-desc { 
+		width: 100%; 
+		padding-right: 0;
+		margin-top: -5px; 
+		font-size: 14px; 
+		line-height: 20px; 
+	}
 }
