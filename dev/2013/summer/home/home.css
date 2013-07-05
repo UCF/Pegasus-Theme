@@ -8,10 +8,10 @@ body { background: #E2E5DC; }
 
 #cover { 
 	overflow: auto;
-	background-position: center 70%;
+	background-position: center 64%;
 	background-repeat: no-repeat;
 	background-size: cover;
-	min-height: 700px;
+	min-height: 750px;
 }
 #cover h1 {
 	display: block; 
@@ -22,6 +22,17 @@ body { background: #E2E5DC; }
 }
 #cover #logo { text-align: right; padding: 0 5% 10px 0; margin-bottom: 10px; }
 #cover #logo img { width: 375px; height: auto; }
+#cover #story-desc {
+	font-family: Georgia, serif;
+	font-size: 17px;
+	line-height: 26px;
+	font-style: italic;
+	width: 30%;
+	display: block;
+	float: right;
+	padding-right: 5%;
+	text-align: right;
+}
 
 @media (max-width: 767px) {
 	.container-wide {
@@ -32,4 +43,7 @@ body { background: #E2E5DC; }
 	#cover { min-height: 550px; }
 	#cover #logo { padding-right: 0; }
 	#cover #logo img { width: 320px; }
+}
+@media (max-width: 480px) {
+	#cover #story-desc { width: 100%; padding-right: 0; text-align: left; margin-top: -5px; font-size: 14px; line-height: 20px; }
 }
