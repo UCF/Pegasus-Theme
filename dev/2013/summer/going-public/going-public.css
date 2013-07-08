@@ -1,10 +1,12 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 
 body p {
     margin-top: 0;
     margin-bottom: 0;
 }
+
+.table { font-family: 'Montserrat', sans-serif; font-size: 12px; }
 
 .affix {
     position: fixed;
@@ -30,13 +32,13 @@ body p {
 #public-content p {
     font-family: 'Theano Modern', Georgia, serif;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 20px;
 }
 
 #public-header {
     font-family: 'Theano Modern', Georgia, serif;
-    font-size: 143px;
-    line-height: 123px;
+    font-size: 88px;
+    line-height: 78px;
     border-bottom: dotted 2px #aaa;
     margin-top: 40px;
 }
@@ -45,7 +47,7 @@ body p {
     font-family: 'Theano Modern', Georgia, serif;
     font-size: 24px;
     line-height: 26px;
-    margin-top: 26px;
+    margin-top: 18px;
     color: #777;
 }
 
@@ -56,28 +58,40 @@ body p {
 }
 
 .public-subheading {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 800;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
     font-size: 14px;
     line-height: 16px;
     margin-bottom: 5px;
 }
 
 .public-section-heading {
-    font-family: helvetica, sa;
+    font-family: 'Montserrat', sans-serif;
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 700;
     line-height: 19px;
-    letter-spacing: 2px;
     margin-top: 25px;
     padding-top: 6px;
     padding-bottom: 6px;
     padding-left: 10px;
     color: #fff;
+    text-transform: uppercase;
+    position: relative;
+}
+.public-section-heading:after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 0;
+    border: 16px solid;
+    border-color: #fff transparent;
+    position: absolute;
+    top: 0;
+    right: -16px;
 }
 
 .cite {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 11px;
     line-height: 13px;
     font-style: italic;
@@ -89,29 +103,45 @@ body p {
 
 #research-heading {
     background-color: #006cb7;
+    background: -moz-linear-gradient(left,  #006cb7 0%, #60cdf6 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left,  #006cb7 0%,#60cdf6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #006cb7 0%,#60cdf6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #006cb7 0%,#60cdf6 100%); /* IE10+ */
+    background: linear-gradient(to right,  #006cb7 0%,#60cdf6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006cb7', endColorstr='#60cdf6',GradientType=1 ); /* IE6-9 */
 }
 
 #public-welcome-img {
     text-align: center;
 }
 
-#num-reviewed [class*="fy-"] {
+#num-reviewed .year {
     padding-left: 15px;
     margin-bottom: 5px;
     height: 30px;
     color: #fff;
     font-size: 12px;
     line-height: 28px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-style: italic;
     vertical-align: middle;
+    position: relative;
 }
 
-#num-reviewed [class*="fy-"] .count {
+#num-reviewed .year .year-text {
+    position: absolute;
+    top: 5px;
+    left: 12px;
+}
+
+#num-reviewed .year .count {
     margin-left: 10px;
     font-family: 'Theano Modern', Georgia, serif;
     font-size: 24px;
     font-style: none;
+    position: absolute;
+    top: 0;
+    right: 12px;
 }
 
 #num-reviewed .fy-2010 {
@@ -128,6 +158,12 @@ body p {
 
 #protect-heading {
     background-color: #00a85b;
+    background: -moz-linear-gradient(left,  #00a85b 0%, #abd037 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left,  #00a85b 0%,#abd037 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #00a85b 0%,#abd037 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #00a85b 0%,#abd037 100%); /* IE10+ */
+    background: linear-gradient(to right,  #00a85b 0%,#abd037 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00a85b', endColorstr='#abd037',GradientType=1 ); /* IE6-9 */
 }
 
 #public-top-funding {
@@ -135,8 +171,17 @@ body p {
 }
 
 #promote-heading {
-    background-color: #f7931d;
+    background: #f7931d;
+    background: -moz-linear-gradient(left,  #f7931d 0%, #ffc90a 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left,  #f7931d 0%,#ffc90a 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #f7931d 0%,#ffc90a 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #f7931d 0%,#ffc90a 100%); /* IE10+ */
+    background: linear-gradient(to right,  #f7931d 0%,#ffc90a 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931d', endColorstr='#ffc90a',GradientType=1 ); /* IE6-9 */
+
 }
+
+#patents-granted + .cite { width: 250px; }
 
 #public-know-wrapper {
     height: 275px;
@@ -144,7 +189,7 @@ body p {
 
 #public-know {
     width: 200px;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     background-color: #fff1d1;
     position: relative;
 }
@@ -172,23 +217,27 @@ body p {
 }
 
 #public-tag {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     text-align: center;
-    margin-top: -20px;
+    margin-top: -23px;
     margin-left: 18px;
 }
 
 #public-tag-img {
     background-repeat: no-repeat;
     background-position-x: center;
+    width: 173px;
 }
 
+#public-tag-img .public-subheading { display: block; }
+
 #public-tag .num {
-    font-size: 80px;
-    font-weight: 800;
+    font-size: 70px;
+    font-weight: 700;
     line-height: 100px;
     padding-top: 100px;
     color: #fff;
+    display: block;
 }
 
 #public-tag .cite {
@@ -197,7 +246,13 @@ body p {
 }
 
 #commercialize-heading {
-    background-color: #d2252a;
+    background: #d2252a;
+    background: -moz-linear-gradient(left,  #d2252a 0%, #f79c89 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left,  #d2252a 0%,#f79c89 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left,  #d2252a 0%,#f79c89 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(left,  #d2252a 0%,#f79c89 100%); /* IE10+ */
+    background: linear-gradient(to right,  #d2252a 0%,#f79c89 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2252a', endColorstr='#f79c89',GradientType=1 ); /* IE6-9 */
 }
 
 #public-top5 .table {
@@ -219,10 +274,10 @@ body p {
 }
 
 .donut-sub {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 13px;
     line-height: 15px;
-    font-weight: 800;
+    font-weight: 700;
 }
 
 .donut-sub-num {
@@ -232,7 +287,7 @@ body p {
 }
 
 .donut-sub-sub {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     font-size: 10px;
     line-height: 10px;
     font-style: italic;
@@ -244,7 +299,7 @@ body p {
 
 #public-license-ex {
     position: relative;
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #public-license-ex .num {
@@ -284,9 +339,9 @@ body p {
 }
 
 #public-success .public-heading.sub {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: normal;
-    line-height: 32px;
+    line-height: 30px;
     margin-bottom: 20px;
 }
 
@@ -296,6 +351,18 @@ body p {
 }
 
 @media (min-width: 768px) and (max-width: 979px) {
+
+    #patents-granted .donut-num { left: 60px; top: 65px; }
+    #patents-granted + .cite { margin-top: 10px; width: 200px; }
+
+    #public-know-wrapper { height: auto; }
+    #public-know { width: 146px; font-size: 11px; line-height: 14px; }
+
+    #public-license-ex { margin-top: 48px; }
+    #public-license-ex .public-subheading { left: 84px; }
+
+    #license-spinout { margin-top: 56px; }
+    #license-spinout .donut-num { left: 60px; top: 65px; }
 
     .donut {
         display: none;

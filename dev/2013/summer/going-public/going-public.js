@@ -194,7 +194,7 @@ $(document).ready(function($) {
                     refreshInterval: 50
                 });
             });
-        }, { offset: '70%', triggerOnce: true });
+        }, { offset: '90%', triggerOnce: true });
 
         $.when(
             $.getScript(THEME_JS_URL + '/rgraph/RGraph.common.effects.js'),
@@ -227,7 +227,7 @@ $(document).ready(function($) {
                     speed: 1000,
                     refreshInterval: 50
                 });
-            }, {offset: '50%', triggerOnce: 'true'});
+            }, {offset: '90%', triggerOnce: 'true'});
 
             // % of Licenses Executed to Spinout
             $("#license-spinout").waypoint(function() {
@@ -252,7 +252,7 @@ $(document).ready(function($) {
                     speed: 1000,
                     refreshInterval: 50
                 });
-            }, {offset: '50%', triggerOnce: 'true'});
+            }, {offset: '90%', triggerOnce: 'true'});
 
             // Royalty Distribution
             $("#royalty-distribution").waypoint(function() {
@@ -270,43 +270,7 @@ $(document).ready(function($) {
 
                 RGraph.Effects.Pie.RoundRobin(pie, {'radius': false,'frames':60});
 
-            }, {offset: '70%', triggerOnce: 'true'});
+            }, {offset: '90%', triggerOnce: 'true'});
         });
-
-        // pipe light up
-        $("#public-header").waypoint(function() {
-            $('#process-pipe-wrapper .pipe-blue').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-green').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-orange').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-red').removeClass('pipe-off');
-        });
-
-        $("#public-research").waypoint(function() {
-            $('#process-pipe-wrapper .pipe-blue').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-green').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-orange').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-red').addClass('pipe-off');
-        }, {offset: '30%'});
-
-        $("#public-protect").waypoint(function() {
-            $('#process-pipe-wrapper .pipe-blue').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-green').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-orange').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-red').addClass('pipe-off');
-        }, {offset: '40%'});
-
-        $("#public-promote").waypoint(function() {
-            $('#process-pipe-wrapper .pipe-blue').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-green').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-orange').removeClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-red').addClass('pipe-off');
-        }, {offset: '50%'});
-
-        $("#public-commercialize").waypoint(function() {
-            $('#process-pipe-wrapper .pipe-blue').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-green').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-orange').addClass('pipe-off');
-            $('#process-pipe-wrapper .pipe-red').removeClass('pipe-off');
-        }, {offset: '50%'});
     });
 });
