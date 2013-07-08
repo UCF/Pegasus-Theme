@@ -41,7 +41,7 @@
         refreshInterval: 100,  // how often the element should be updated
         decimals: 0,  // the number of decimal places to show
         onUpdate: null,  // callback method for every time the element is updated,
-        onComplete: null,  // callback method for when the element finishes updating
+        onComplete: null  // callback method for when the element finishes updating
     };
 })(jQuery);
 
@@ -162,32 +162,34 @@
 
 }(window.jQuery);
 
+
 $(document).ready(function($) {
-    $('#journey-wrapper').affix({
-        offset: {
-            top: 200,
-            bottom: 2000,
-        }
-    });
+
+    // Add gray Pegasus logo to header, footer
+    $('#header .title, h2#footer_logo').addClass('black');
 
     $.getScript(THEME_JS_URL + '/waypoints.min.js').done(function(script, textStatus) {
-
-        // Invention Disclosures Reviewed by OTT
-        $("#num-reviewed .year").each(function(){
-            var width = $(this).width();
-            $(this).data("width", width);
-            $(this).width("0");
-        });
-
-        // Enable the waypoint & animation
         $("#num-reviewed").waypoint(function() {
             $(this).find(".year").each(function(){
-                $(this).animate({
-                    width: $(this).data('width')
-                }, 1000);
+                var year = $(this);
+                if ($('body').hasClass('ie')) {
+                    // fixed width bar animations for IE
+                    year.removeClass('unanimated');
+                    var width = year.width();
+                    year
+                        .width('0')
+                        .animate({
+                            width: width
+                        }, 1000);
+                }
+                else {
+                    // everybody else gets CSS percentage-based widths for better responsiveness
+                    year.removeClass('unanimated').addClass('animated');
+                }
+                // Animate w/CSS to maintain percentage-based widths
 
                 var countTo = $(this).attr('year-data');
-                $(this).find('.count').countTo({
+                year.find('.count').countTo({
                     from: 0,
                     to: countTo,
                     speed: 1000,
@@ -269,6 +271,19 @@ $(document).ready(function($) {
                 pie.Set('chart.colors', ['#f26c5e', '#f79c89', '#fac1b2', '#fcded4']);
 
                 RGraph.Effects.Pie.RoundRobin(pie, {'radius': false,'frames':60});
+
+                // Loop through each value in the data array and assign to each .count
+                var counts = [];
+                var i = 0;
+                $(this).find('.count').each(function() {
+                    $(this).countTo({
+                        from: 0,
+                        to: data[i],
+                        speed: 1000,
+                        refreshInterval: 50
+                    });
+                    i++;
+                });
 
             }, {offset: '90%', triggerOnce: 'true'});
         });

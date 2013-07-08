@@ -1,6 +1,24 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:700);
 
+/* Header/Footer styles */
+#header { background-color: #eeedec; }
+#header .toggle_story_nav a, 
+#header .issue, 
+#header .description a, 
+#header .description a:hover,
+#issue-carousel .item .issue-title,
+.footer_stories .title,
+#footer_logo,
+#footer a,
+#footer_navigation ul li a { color: #000; }
+#footer { background-color: #eeedec; margin-top: 50px; }
+#footer .icon-white {
+    background-color: #000000;
+    border-radius: 7px 7px 7px 7px;
+}
+
+
 body p {
     margin-top: 0;
     margin-bottom: 0;
@@ -29,16 +47,35 @@ body p {
     border-right: dotted 2px #aaa;
 }
 
-#public-content p {
+#public-content p, {
     font-family: 'Theano Modern', Georgia, serif;
     font-size: 14px;
     line-height: 20px;
 }
 
+#public-content ol,
+#public-content ul {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 13px;
+    line-height: 17px;
+}
+#public-content ul {
+    list-style-type: none;
+    margin-left: 0;
+}
+#public-content ol li,
+#public-content ul li {
+    padding: 4px;
+}
+#public-content ol li:nth-child(2n+1), 
+#public-content ul li:nth-child(2n+1) {
+    background-color: #F9F9F9;
+}
+
 #public-header {
     font-family: 'Theano Modern', Georgia, serif;
-    font-size: 88px;
-    line-height: 78px;
+    font-size: 70px;
+    line-height: 63px;
     border-bottom: dotted 2px #aaa;
     margin-top: 40px;
 }
@@ -64,6 +101,7 @@ body p {
     line-height: 16px;
     margin-bottom: 5px;
 }
+.public-heading + .public-subheading { margin-top: 4px; }
 
 .public-section-heading {
     font-family: 'Montserrat', sans-serif;
@@ -95,11 +133,14 @@ body p {
     font-size: 11px;
     line-height: 13px;
     font-style: italic;
+    margin-top: 10px;
 }
 
 #types-table td {
     width: 50%;
+    border-top: 0;
 }
+#types-table tr td + td { border-left: 3px solid #fff; }
 
 #research-heading {
     background-color: #006cb7;
@@ -116,7 +157,6 @@ body p {
 }
 
 #num-reviewed .year {
-    padding-left: 15px;
     margin-bottom: 5px;
     height: 30px;
     color: #fff;
@@ -126,6 +166,14 @@ body p {
     font-style: italic;
     vertical-align: middle;
     position: relative;
+}
+
+#num-reviewed .year.unanimated {
+    width: 0 !important;
+}
+#num-reviewed .year.animated {
+    transition: width 1s;
+    -webkit-transition: width 1s;
 }
 
 #num-reviewed .year .year-text {
@@ -146,14 +194,17 @@ body p {
 
 #num-reviewed .fy-2010 {
     background-color: #60cdf6;
+    width: 75%;
 }
 
 #num-reviewed .fy-2011 {
     background-color: #00AEEF;
+    width: 85%;
 }
 
 #num-reviewed .fy-2012 {
     background-color: #006BB6;
+    width: 100%;
 }
 
 #protect-heading {
@@ -180,8 +231,6 @@ body p {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7931d', endColorstr='#ffc90a',GradientType=1 ); /* IE6-9 */
 
 }
-
-#patents-granted + .cite { width: 250px; }
 
 #public-know-wrapper {
     height: 275px;
@@ -255,20 +304,21 @@ body p {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d2252a', endColorstr='#f79c89',GradientType=1 ); /* IE6-9 */
 }
 
-#public-top5 .table {
-    margin-bottom: 5px;
+#license-executed-table td {
+    border-top: 0;
 }
 
 .donut-wrapper {
     position: relative;
-    width: 250px;
-    height: 250px;
+    width: 200px;
+    height: 200px;
+    margin: auto;
 }
 
 .donut-num {
     position: absolute;
-    left: 85px;
-    top: 90px;
+    left: 60px;
+    top: 65px;
     width: 80px;
     text-align: center;
 }
@@ -294,7 +344,9 @@ body p {
 }
 
 .donut {
-    position: relative;
+    position: absolute;
+    top: -25px;
+    left: -25px;
 }
 
 #public-license-ex {
@@ -321,6 +373,26 @@ body p {
 #royalty-distribution .donut-num {
     margin-top: 10px;
 }
+#royalty-distribution-1,
+#royalty-distribution-2,
+#royalty-distribution-3,
+#royalty-distribution-4 { position: absolute; z-index: 2; width: 100px; text-align: center; }
+#royalty-distribution-1 {
+    top: 38px;
+    right: -20px;
+}
+#royalty-distribution-2 {
+    top: 144px;
+    right: 11px;
+}
+#royalty-distribution-3 {
+    top: 89px;
+    left: -30px;
+}
+#royalty-distribution-4 {
+    top: -6px;
+    left: 11px;
+}
 
 #license-executed-table {
     margin-bottom: 5px;
@@ -330,6 +402,7 @@ body p {
     background-color: #fac1b1;
     padding: 20px;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 
 #public-success .public-heading {
@@ -352,9 +425,6 @@ body p {
 
 @media (min-width: 768px) and (max-width: 979px) {
 
-    #patents-granted .donut-num { left: 60px; top: 65px; }
-    #patents-granted + .cite { margin-top: 10px; width: 200px; }
-
     #public-know-wrapper { height: auto; }
     #public-know { width: 146px; font-size: 11px; line-height: 14px; }
 
@@ -364,48 +434,69 @@ body p {
     #license-spinout { margin-top: 56px; }
     #license-spinout .donut-num { left: 60px; top: 65px; }
 
-    .donut {
-        display: none;
-    }
-
-    .donut-wrapper {
-        width: 200px;
-        height: 200px;
-        background-size: 200px 200px !important;
-    }
-
-    #patents-granted {
-        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
-    }
-
-    #license-spinout {
-        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
-    }
 }
 
 @media (max-width: 767px) {
+    .public-sections { margin-top: 20px; }
+    .public-heading { margin-top: 20px; }
+    .span12.h-divider { display: none; }
 
-    .donut {
-        display: none;
-    }
+    #public-header { font-size: 50px; line-height: 46px; }
 
-    .donut-wrapper {
-        width: 150px;
-        height: 150px;
-        background-size: 150px 150px !important;
-    }
+    #tri-tech,
+    #public-top-funding { margin: 20px 0; } /* add space around images that need them */
 
-    #patents-granted {
-        width: 150px;
-        height: 150px;
-        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
-        background-size: 150px 150px !important;
+    #types-table tr,
+    #license-executed-table tr {
+        margin-top: 0;
+        border-bottom: 0;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
     }
+    #types-table tr td { float: left; width: 46.5%; border: 0; }
 
-    #license-spinout {
-        width: 150px;
-        height: 150px;
-        background: url('http://webcom.dev.smca.ucf.edu/wp3/pegasus/wp-content/themes/pegasus/dev/2013/summer/going-public/img/patents-granted.png') center center no-repeat !important;
-        background-size: 150px 150px !important;
+    #license-executed-table { overflow: hidden; }
+    #license-executed-table tr td { width: 86.5%; float: left; }
+    #license-executed-table tr td:first-child { width: 8%; }
+
+    #num-reviewed .public-subheading { margin-top: 10px; }
+
+    #num-reviewed,
+    #protect-heading,
+    #promote-heading { margin-bottom: -20px; } /* Pull up sections under these */
+
+    #public-top5,
+    #public-know-wrapper,
+    #license-spinout,
+    #royalty-distribution { margin-top: 20px; }
+
+    #public-know-wrapper { border-right: 0; }
+    #public-know { margin: auto; }
+
+    #public-tag { margin-top: 10px; margin-left: auto; margin-right: auto; }
+    #public-tag-img { margin: auto; }
+
+    #public-license-ex .public-subheading { width: 100%; left: auto; }
+
+    #public-success .public-heading { margin-top: 10px; }
+}
+
+@media (max-width: 420px) {
+    #public-header { font-size: 36px; line-height: 34px; }
+    #journey-start { font-size: 20px; line-height: 24px; }
+
+    #types-table { overflow: hidden; }
+    #types-table tbody tr:nth-child(2n+1) td, 
+    #types-table tbody tr:nth-child(2n+1) th {
+        background-color: #fff; /* Reset */
     }
+    #types-table tr td { width: 100%; }
+    #types-table tr td + td { border-left: 0; background-color: #f9f9f9 !important; }
+
+    #license-executed-table tr td { width: 84%; float: left; display: table-cell; }
+    #license-executed-table tr td:first-child { width: 8%; }
+
+    #public-success .public-heading { font-size: 32px; line-height: 38px; }
+    #public-success .public-heading.sub { font-size: 20px; line-height: 28px; }
 }
