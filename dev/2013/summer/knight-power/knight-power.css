@@ -29,14 +29,10 @@ h2 span.power-h-offset {
     padding-top: 60px;
 }
 
-#power-header {
-    margin-top: 20px;
-}
+#power-header h2 { display: block; width: 0; height: 0; text-indent: -9999px; }
 
 #power-header img {
-    margin-left: 15px;
     margin-top: 20px;
-    height: 50px;
 }
 
 #power-subheader {

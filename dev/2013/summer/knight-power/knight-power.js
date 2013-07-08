@@ -19,8 +19,10 @@ $(document).ready(function($) {
     // Set default map values
     var map_w = 1024,
     map_h = 580;
-
-    if ($.browser.safari && $(window).width() <= 768) {
+    if ($(window).width() < 768) {
+        $('meta[name="viewport"]').attr('content', 'width=1024px');
+    }
+    if ($.browser.safari && $(window).width() == 768) {
         $('#error_browser_size').attr('style', 'display: none !important;');
         $('#alert_ipad_map').show();
     }
@@ -65,7 +67,7 @@ $(document).ready(function($) {
     }
 
     // Close buttons for infoboxes onclick
-    $('#power-map, .power-tooltip-wrapper').click(function() {
+    $('#power-map, .power-arrow').click(function() {
         // Reset map and tooltips
         if ($('.power-tooltip-wrapper.active').length > 0) {
             $('.power-tooltip-wrapper.active').fadeOut().removeClass('active');
@@ -76,4 +78,7 @@ $(document).ready(function($) {
             $('#power-map').animate({ height: map_h, width: map_w, top: 0, left: 0 });
         }
     });
+
+    // Kill the volume a bit for the generator audio
+    $('#audio-generator')[0].volume = 0.2;
 });

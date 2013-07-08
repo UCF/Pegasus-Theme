@@ -4,12 +4,18 @@
     <div class="alert alert-info" id="alert_ipad_map"><button class="close" data-dismiss="alert" type="button">×</button><strong>Heads up: </strong> You can view this map at full-size by downloading our <a href="http://itunes.apple.com/us/app/pegasus-magazine/id530154231?mt=8" target="_blank" class="external">iPad App</a>!</div>
     <div class="alert alert-error" id="error_browser_size"><button class="close" data-dismiss="alert" type="button">×</button><strong>Heads up: </strong> It looks like your browser might be too small to view this page optimally.  Consider loading this page on a larger device, preferrably at least 1024px wide.</div>
     <div id="power-wrapper">
-        <div id="power-header" class="clearfix">
-            <h2 class="gold-color power-h-offset pull-left">Knight </h2>
-            <img class="pull-left" src="[image filename='power']" />
-        </div>
-        <div id="power-subheader">
-            Providing one-third of the university’s energy needs, this newly constructed on-campus natural gas power plant cuts UCF’s power bill by more than $2 million per year.
+        <div class="container">
+            <div class="row">
+                <div class="span12">
+                    <div id="power-header" class="clearfix">
+                        <h2>Knight Power</h2>
+                        <img class="pull-left" src="[image filename='title']" />
+                    </div>
+                    <div id="power-subheader">
+                        Providing one-third of the university’s energy needs, this newly constructed on-campus natural gas power plant cuts UCF’s power bill by more than $2 million per year.
+                    </div>
+                </div>
+            </div>
         </div>
         <div id="viewport">
             <div id="power-map" style="background-image: url([image filename='knight-power-plant'])">
@@ -31,7 +37,9 @@
             <div id="power-engine" class="power-tooltip-wrapper" data-top="-100px" data-left="-650px" data-top-small="-70px" data-left-small="-340px">
                 <div class="power-tooltip">
                     <div class="icon pull-left" style="background-image: url([image filename='power-icons'])"></div>
-                    <div class="description"><span class="emphasize">Vroom, vroom!</span> The power plant’s 18-cylinder, 30-by-10 foot engine operates 24 hours a day. Burning natural gas is a reliable, cost-effective and environmentally conscious method for energy generation.</div>
+                    <div class="description"><span class="emphasize">Vroom, vroom!</span> The power plant’s 18-cylinder, 30-by-10 foot engine operates 24 hours a day. Burning natural gas is a reliable, cost-effective and environmentally conscious method for energy generation.
+                    <audio id="audio-generator" controls><source src="[media filename='generator-mp3']" type='audio/mpeg; codecs="mp3"' /><source src="[media filename='generator-ogg']" type='audio/ogg; codecs="vorbis"' /><source src="[media filename='generator-wav']" type='audio/wav; codecs="1"' /></audio>
+                    </div>
                 </div>
                 <div class="power-arrow"><img src="[image filename='arrow-right']" /></div>
             </div>
