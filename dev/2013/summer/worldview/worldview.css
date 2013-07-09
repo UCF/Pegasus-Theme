@@ -82,6 +82,7 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 	background-color: rgba(0,0,0,0.4);
 	text-align: center;
 	z-index: 3;
+	top: 0;
 }
 .playlink > div { 
 	color: #fff;
