@@ -3,7 +3,7 @@ $('#header .title, h2#footer_logo').addClass('black');
 
 // Remove .fade class from video modal for IE10 users
 // https://github.com/twitter/bootstrap/issues/3672
-if ($.browser.version > 9) {
+if ($.browser.msie && $.browser.version > 9) {
     $('.modal').removeClass('fade');
 }
 
