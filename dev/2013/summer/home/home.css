@@ -12,6 +12,7 @@ body { background: #E2E5DC; }
 	background-repeat: no-repeat;
 	background-size: cover;
 	min-height: 750px;
+	position: relative;
 }
 #cover h1 {
 	display: block; 
@@ -20,7 +21,7 @@ body { background: #E2E5DC; }
 	height: 0;
 	line-height: 0;
 }
-#cover #logo { text-align: right; padding: 0 5% 10px 0; margin-bottom: 10px; }
+#cover #logo { text-align: right; padding: 25px 8% 10px 0; margin-bottom: 10px; }
 #cover #logo img { width: 375px; height: auto; }
 #cover #story-desc {
 	font-family: Georgia, serif;
@@ -30,8 +31,38 @@ body { background: #E2E5DC; }
 	width: 30%;
 	display: block;
 	float: right;
-	padding-right: 5%;
+	padding-right: 8%;
 	text-align: right;
+}
+#cover #read-more {
+	display: block;
+	padding: 2px 4px;
+	color: #fff;
+	font-family: Georgia, serif;
+	font-size: 14px;
+	text-decoration: none;
+	background-color: #4FB5E7;
+	width: 100px;
+	text-align: center;
+	float: right;
+	margin-top: 10px;
+}
+
+#cover #fullsize-link {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 999;
+	display: block;
+	text-indent: -9999px;
+	margin: 0;
+}
+#cover #fullsize-link a {
+	width: 100%;
+	height: 100%;
+	display: block;
 }
 
 @media (max-width: 767px) {
