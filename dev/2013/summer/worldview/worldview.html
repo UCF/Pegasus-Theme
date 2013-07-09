@@ -140,7 +140,7 @@
 </div>
 <div class="row video-wrap">
 	<div class="span9">
-		<img src="[image filename='urban-movement']" alt="Using computer vision to track people's movements assists with urban planning." title="Using computer vision to track people's movements assists with urban planning." />
+		<iframe id="urban-movement-vid" type="text/html" src="http://www.youtube.com/embed/PrzjLg4voEM?autoplay=1&controls=0&loop=1&playlist=PrzjLg4voEM&modestbranding=1&rel=0&showinfo=0&wmode=transparent" frameborder="0" allowfullscreen></iframe>
 	</div>
 	<div class="span3">
 		<p class="caption">
@@ -240,8 +240,8 @@
 <div class="boxrow matchheight">
 	<div class="box1 boxstack">
 		<div class="box1 imgbox fixedheight">
-			<a href="#videomodal" data-toggle="modal"><img src="[image filename='video-surveillance-1']" alt="Video Surveillance" title="Video Surveillance" /></a></div><div class="box1 imgbox fixedheight">
-			<img src="[image filename='video-surveillance-2']" alt="Video Surveillance" title="Video Surveillance" /></div><div class="box1 graybox fixedheight visible-tablet"></div>
+			<a href="#video-modal" data-toggle="modal"><img src="[image filename='video-surveillance-1']" alt="Video Surveillance" title="Video Surveillance" /><div class="playlink"><div><i class="icon-white icon-play"></i> Play Video</div></div></a></div>
+		<div class="box1 imgbox fixedheight"><img src="[image filename='video-surveillance-2']" alt="Video Surveillance" title="Video Surveillance" /></div><div class="box1 graybox fixedheight visible-tablet"></div>
 	</div>
 	<div class="box2 bluebox">
 		<div class="boxwrap">
@@ -270,9 +270,7 @@
 </div>
 <div class="boxrow matchheight">
 	<div class="box1 boxstack">
-		<div class="box1 imgbox fixedheight">
-			<img src="[image filename='video-analysis']" alt="Video Analysis" title="Video Analysis" />
-		</div><div class="box1 graybox fixedheight hidden-phone"></div>
+		<div class="box1 imgbox fixedheight"><img src="[image filename='video-analysis']" alt="Video Analysis" title="Video Analysis" /></div><div class="box1 graybox fixedheight hidden-phone"></div>
 	</div>
 	<div class="box3 bluebox">
 		<div class="boxwrap">
@@ -298,9 +296,12 @@
 	</div>
 </div>
 
-<div class="modal hide fade" id="videomodal">
+<div class="modal hide fade" id="video-modal">
 	<div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-		<h3>Video</h3></div>
+		<h3>Video: <em>Video Surveillance</em></h3></div>
 	<div class="modal-body">
-		<video><source src="http://vision.eecs.ucf.edu/projects/Knight/meetandwait.mpg" controls><a href="http://vision.eecs.ucf.edu/projects/Knight/meetandwait.mpg">Click here to view video.</a></video></div>
+		<video controls><source src="[media filename='meetandwait-mp4']" /><source src="[media filename='meetandwait-ogv']" /><a href="http://vision.eecs.ucf.edu/projects/Knight/meetandwait.mpg">Click here to view video.</a></video></div>
+	<div class="modal-footer">	
+		<p>“In a joint project with UCF criminal justice professor Raymond Surette, we built and installed the KNIGHT surveillance system. Developed to help the Orlando Police Department with electronic patrol, KNIGHT detects significant changes, events and activities. It uses computer vision, flags significant events and presents a summary of activities to a monitoring officer for final analysis and response decision.”</p>
+	</div>
 </div>

@@ -1,6 +1,19 @@
 // Add gray Pegasus logo to header, footer
 $('#header .title, h2#footer_logo').addClass('black');
 
+// Remove .fade class from video modal for IE10 users
+// https://github.com/twitter/bootstrap/issues/3672
+if ($.browser.version > 9) {
+    $('.modal').removeClass('fade');
+}
+
+// IE9 SHOULD play mp4s...but doesn't. And won't fall back gracefully.
+if ($('body').hasClass('ie9')) {
+	var link = $('video a');
+	$('video').remove();
+	$('#video-modal .modal-body').append(link);
+}
+
 // Apply .flash class at random intervals to .box1 img's w/ .animated class
 var minInterval = 2000,
 	maxInterval = 200,

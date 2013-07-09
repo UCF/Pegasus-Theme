@@ -75,6 +75,20 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 	margin-right: -10px;
 	margin-left: 10px;
 }
+.playlink {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0,0,0,0.4);
+	text-align: center;
+	z-index: 3;
+}
+.playlink > div { 
+	color: #fff;
+	font-weight: bold;
+	font-family: 'Montserrat', sans-serif;
+	padding-top: 35px;
+}
 
 /* Custom grid system. What could go wrong? */
 /* Total row/span sizes should match up with Bootstrap's, just with different margins. */
@@ -150,12 +164,15 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 #shah-sidebar blockquote { padding-top: 30px; }
 
 .video-wrap { padding: 20px 0; }
+#urban-movement-vid { width: 100%; height: 394px; }
 
 #reaper-drone .caption { padding-top: 180px; }
 #reaper-drone img { float: right; position: relative; top: -75px; }
 
 #on-display { overflow: hidden; }
 #on-display h2 { padding: 100px 0 0 15px; }
+
+#video-modal video { width: 100%; min-height: 200px; max-height: 300px; }
 
 
 /* Responsive Styling */
@@ -181,6 +198,8 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
     #body_content h1 { font-size: 80px; line-height: 52px; }
     #body_content #story-desc { font-size: 24px; line-height: 34px; padding-bottom: 0; }
     #body_content #story-intro { font-size: 14px; line-height: 22px; }
+
+    #urban-movement-vid { height: 302px; }
 }
 
 @media (max-width: 767px) {
@@ -215,6 +234,8 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 
     #shah-content p { padding-right: 0; }
 
+    #urban-movement-vid { height: 302px; }
+
     #reaper-drone .caption { padding-top: 0; }
     #reaper-drone img { position: static; top:0; margin-bottom: 30px; }
 }
@@ -226,6 +247,8 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
     .headerboxes-mobile [class*='box'] { height: 40px; }
 
     #on-display h2 { font-size: 40px; line-height: 30px; padding: 0 0 0 15px; }
+
+    #urban-movement-vid { height: 200px; }
 
     .carat-left:before { margin-top: -3px; }
     .carat-right:before { margin-top: 3px; }
