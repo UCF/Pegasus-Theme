@@ -1,3 +1,6 @@
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 /* Animations (borrowed from http://daneden.me/animate/) */
 .animated{-webkit-animation-fill-mode:both;-moz-animation-fill-mode:both;-ms-animation-fill-mode:both;-o-animation-fill-mode:both;animation-fill-mode:both;-webkit-animation-duration:0.5s;-moz-animation-duration:0.5s;-ms-animation-duration:0.5s;-o-animation-duration:0.5s;animation-duration:0.5s;}
 .animated.slow{-webkit-animation-duration:2s;-moz-animation-duration:2s;-ms-animation-duration:2s;-o-animation-duration:2s;animation-duration:2s;}
@@ -138,7 +141,7 @@
 }
 #story-title { 
 	color: #fff; 
-	font-family: 'Arial Black', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 	font-size: 60px;
 	text-align: center;
 	width: 100%;
@@ -150,7 +153,7 @@
 	text-shadow: 0px 5px 5px rgba(0,0,0,0.4);
 	z-index: 999;
 }
-#story-title .alt { font-family: Arial, sans-serif; font-weight: 300; }
+#story-title .alt { font-family: Helvetica, sans-serif; font-weight: 200; }
 #video-wrap { 
 	position: relative;
 	top: -50px;
