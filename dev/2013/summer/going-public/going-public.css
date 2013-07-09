@@ -47,6 +47,13 @@ body p {
     border-right: dotted 2px #aaa;
 }
 
+.colpad-left {
+    padding-left: 15px;
+}
+.colpad-right {
+    padding-right: 15px;
+}
+
 #public-content p, {
     font-family: 'Theano Modern', Georgia, serif;
     font-size: 14px;
@@ -406,16 +413,16 @@ body p {
 }
 
 #public-success .public-heading {
-    font-size: 40px;
+    font-size: 34px;
     font-weight: bold;
     line-height: 46px;
 }
 
 #public-success .public-heading.sub {
-    font-size: 24px;
+    font-size: 21px;
     font-weight: normal;
     line-height: 30px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
 #public-success .public-subheading {
@@ -437,6 +444,8 @@ body p {
 }
 
 @media (max-width: 767px) {
+    .colpad-right,
+    .colpad-left { padding-left: 10px; padding-right: 10px; }
     .public-sections { margin-top: 20px; }
     .public-heading { margin-top: 20px; }
     .span12.h-divider { display: none; }

@@ -288,9 +288,10 @@ h2 span.power-h-offset {
 }
 
 .pin .img:hover {
-    margin-top: 0;
-    width: 31px;
-    height: 50px;
+    /* Always enlarge on hover, regardless of styles set w/js */
+    margin-top: 0 !important;
+    width: 31px !important;
+    height: 50px !important;
 }
 
 #power-gasexhaust-pin {

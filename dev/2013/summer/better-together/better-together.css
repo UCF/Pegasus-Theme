@@ -52,6 +52,8 @@ p.person-label span {
 .hr.dotted { border-bottom: 1px dotted #eb212e; }
 p.supplemental { font-family: Helvetica, sans-serif; font-size: 12px; font-style: italic; }
 p.supplemental .reference { font-style: normal; }
+.colspacing-leftcol { padding-right: 10px; }
+.colspacing-rightcol { padding-left: 10px; }
 
 /* Story - Full Size */
 #story-title h1 { text-indent: -9999px; display: block; height: 0; width: 0; }
@@ -68,12 +70,12 @@ p.supplemental .reference { font-style: normal; }
 #intro-costas-frye .first-letter { color: #eb212e; }
 #costas-frye {  }
 
-#intro-berman-ratner-wrap { min-height: 607px; background-color: #FCF9F4; }
+#intro-berman-ratner-wrap { min-height: 607px; background-color: #FCF9F4; margin-top: 30px; }
 #intro-berman-ratner-wrap blockquote { color: #00b6af; padding-top: 30px; }
 #intro-berman-ratner { color: #000; padding-top: 30px; }
 #intro-berman-ratner p { padding-right: 30px; }
 #intro-berman-ratner .first-letter { color: #00b6af; }
-#berman-ratner { background-color: #FCF9F4; }
+#berman-ratner { background-color: #FCF9F4; padding-bottom: 30px; }
 #berman-ratner p { color: #000; }
 #berman-ratner p.person-label span { background-color: #ffc907; color: #fff; }
 #berman-ratner h3, 
@@ -109,6 +111,8 @@ p.supplemental .reference { font-style: normal; }
 	    padding-right: 20px;
 	}
 	p.supplemental { margin-bottom: 30px; }
+	.colspacing-leftcol { padding-right: 0; }
+	.colspacing-rightcol { padding-left: 0; }
 
 	#intro-costas-frye-wrap { background-size: 100% auto; min-height: 0; padding-bottom: 62%; }
 

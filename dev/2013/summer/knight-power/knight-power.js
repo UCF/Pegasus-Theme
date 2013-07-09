@@ -13,8 +13,8 @@ $(document).ready(function($) {
     // Intial annimation of pins
     var pinHeight = $('.pin .img').css('height');
     var pinWidth = $('.pin .img').css('width');
-    $('.pin .img').delay(1000).animate({ height: 50, width: 31, 'margin-top': 0 }, 300).delay(300).animate({ height: pinHeight, width: pinWidth, 'margin-top': 25 }, 300)
-    window.setTimeout(function() { $('.pin .img').removeAttr('style') }, 2000);
+    $('.pin .img').delay(1000).animate({ height: 50, width: 31, 'margin-top': 0 }, 300).delay(800).animate({ height: pinHeight, width: pinWidth, 'margin-top': 25 }, 300)
+    window.setTimeout(function() { $('.pin .img').removeAttr('style') }, 2400);
 
     // Set default map values
     var map_w = 1024,
