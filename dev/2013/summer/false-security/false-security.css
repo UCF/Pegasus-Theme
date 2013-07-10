@@ -162,10 +162,10 @@
     #sub-heading { margin-top: 10px; }
     #sub-heading h3 { 
         font-size: 16px;
-        font-weight: bold;
         line-height: 20px; 
-        color: #fff; 
-        text-shadow: 0 0 7px #000;
+        
+        text-shadow: 0 0 7px #fff, 0 0 15px #fff, 0 0 15px #fff, 0 1px 0 #fff;
+    
         padding-bottom: 68%; /* push .container to contain bg img */ 
     }
 
@@ -183,12 +183,12 @@
         line-height: 40px;
         margin-top: 45px;
     }
-    #sub-heading h3 { padding-bottom: 60%; /* push .container to contain bg img */ }
+    #sub-heading h3 { padding-bottom: 64%; /* push .container to contain bg img */ }
 }
 @media (max-width: 400px) {
     #heading h2 {
         font-size: 36px;
         margin-top: 30px;
     }
-    #sub-heading h3 { padding-bottom: 46%; /* push .container to contain bg img */ }
+    #sub-heading h3 { padding-bottom: 52%; /* push .container to contain bg img */ }
 }

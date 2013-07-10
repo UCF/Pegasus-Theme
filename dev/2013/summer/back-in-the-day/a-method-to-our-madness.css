@@ -1,6 +1,9 @@
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 #header, #footer {background-color:#C0C0C0;}
 #footer {margin-top:80px;}
 .intro {margin-top:40px;}
-.intro h2 {font-family:"Arial Black",Arial,sans-serif;font-size:70px;line-height:1em}
+.intro h2 {font-family:"Monstserrat", "Arial Black",Arial,sans-serif;font-size:52px;line-height:1em}
 p.byline {color:#FFC907;font-weight:bold;font-family:"Helvetica Neue",Helvetica,sans-serif;}
 p.caption {color:#6d7c4c;font-family:Georgia,serif;padding-top:20px;}
