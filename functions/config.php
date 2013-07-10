@@ -86,7 +86,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', true); # Never leave this activated in a production environment!
+define('DEV_MODE', false); # Never leave this activated in a production environment!
 
 /**
  * List of available fonts. Structure array as key = font name, val = path to the font. 
