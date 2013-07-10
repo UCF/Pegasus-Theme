@@ -1,3 +1,6 @@
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
+
 /* Header/Footer */
 #header, #footer { background-color: #126674; }
 
@@ -45,12 +48,12 @@ body { overflow-x: hidden; }
     border-bottom: 1px solid #000000;
     display: block;
     font-family: 'Montserrat',sans-serif;
-    font-size: 69px;
+    font-size: 80px;
     font-weight: 700;
-    line-height: 45px;
+    line-height: 55px;
     margin-bottom: 10px;
     margin-top: 30px;
-    text-indent: 80%;
+    text-indent: 78%;
     width: 100%;
 }
 
@@ -73,11 +76,11 @@ body { overflow-x: hidden; }
 
 /* Story - responsive */
 @media (max-width: 979px) and (min-width: 768px) {
-    #story-title h1 { text-indent: 75%; }
+    #story-title h1 { text-indent: 72%; }
 }
 
 @media (max-width: 767px) {
-    #story-title h1 { text-indent: 62%; }
+    #story-title h1 { text-indent: 0; }
     #body_content p.subtitle { line-height: 30px; padding-top: 10px; }
     #body_content h2.inline { float: none; padding-right: 0; padding-top: 20px; }
     #body_content p.caption {
@@ -99,5 +102,5 @@ body { overflow-x: hidden; }
 }
 
 @media (max-width: 480px) {
-    #story-title h1 { text-indent: 58%; font-size: 36px; line-height: 26px; }
+    #story-title h1 { font-size: 48px; line-height: 32px; }
 }

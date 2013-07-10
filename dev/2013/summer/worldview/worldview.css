@@ -167,7 +167,7 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 .video-wrap { padding: 20px 0; }
 #urban-movement-vid { width: 100%; height: 394px; }
 
-#reaper-drone .caption { padding-top: 180px; }
+#reaper-drone .caption { padding-top: 45px; padding-bottom: 85px; }
 #reaper-drone img { float: right; position: relative; top: -75px; }
 
 #on-display { overflow: hidden; }
@@ -237,7 +237,7 @@ p.caption { font-style: italic; font-family: 'Montserrat', sans-serif; font-weig
 
     #urban-movement-vid { height: 302px; }
 
-    #reaper-drone .caption { padding-top: 0; }
+    #reaper-drone .caption { padding-top: 0; padding-bottom: 0; }
     #reaper-drone img { position: static; top:0; margin-bottom: 30px; }
 }
 
