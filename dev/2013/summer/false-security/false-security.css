@@ -5,6 +5,8 @@
 #header, #footer { background-color: #0088B7; }
 #footer { margin-top: 100px; }
 
+#body_content { height: 0; }
+
 #intro { width: 100%; }
 #intro .container { background-repeat: no-repeat; background-position: 45% top; min-height: 560px; }
 
