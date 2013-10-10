@@ -1,0 +1,109 @@
+/* Font imports */
+@import "http://fonts.googleapis.com/css?family=Montserrat:700";
+
+
+/* Header/Footer */
+#header,
+#footer {
+	background-color: transparent;
+}
+
+
+/* Universal */
+body { background-color: #131315; }
+#body_content { width: 0; height: 0; margin: 0; }
+.container-wide { 
+	background: top center no-repeat; 
+	width: 100%;
+}
+
+#story-title { height: 700px; position: relative; z-index: 2; top: -50px; margin-bottom: -30px; }
+#story-title h1 {
+	color: #00bdf2;
+	font-family: 'Montserrat', sans-serif;
+	font-size: 55px;
+	line-height: 55px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding-top: 385px;
+	overflow: hidden;
+}
+#story-title span {
+	display: block;
+	float: left;
+	clear: both;
+}
+#story-title h1 .alt {
+	font-size: 26px;
+	line-height: 34px;
+	letter-spacing: 16px;
+}
+#story-title .subtitle {
+	color: #fff;
+	font-family: Helvetica, sans-serif;
+	font-size: 22px;
+	line-height: 28px;
+	width: 365px;
+	margin-bottom: 0;
+}
+#story-title h1,
+#story-title .subtitle {
+	padding-left: 40px;
+}
+
+#body-content { color: #fff; margin-bottom: 80px; }
+#body-content blockquote { border-left: 0; padding-left: 0; }
+#body-content blockquote p {
+	color: #00bdf2;
+	font-style: italic;
+	font-size: 26px;
+	line-height: 36px;
+	margin-top: 10px;
+	text-align: right;
+}
+
+
+
+/* Responsive */
+@media (max-width: 979px) {
+	#story-title h1 {
+		font-size: 48px;
+		line-height: 48px;
+		padding-top: 395px;
+	}
+	#story-title h1,
+	#story-title .subtitle {
+		padding-left: 0;
+	}
+	#body-content blockquote p {
+		font-size: 22px;
+		line-height: 30px;
+	}
+}
+@media (max-width: 767px) {
+	.container-wide {
+		margin-left: -20px;
+	    padding-left: 20px;
+	    padding-right: 20px;
+	}
+	#story-title {
+		background-position: 100% top;
+		background-size: 160% auto;
+		height: auto;
+	}
+	#story-title h1,
+	#story-title .subtitle {
+		width: 100%;
+	}
+	#story-title h1 {
+		padding-top: 56%;
+	}
+	#body-content blockquote p { text-align: left; margin-bottom: 30px; }
+}
+@media (max-width: 480px) {
+	#story-title { margin-bottom: -60px; }
+	#story-title h1 { padding-top: 100%; font-size: 35px; line-height: 35px; }
+	#story-title h1 .alt { font-size: 22px; line-height: 26px; margin-top: 10px; letter-spacing: 10px; }
+	#story-title .subtitle { font-size: 18px; line-height: 24px; }
+	#body-content { border-top: 1px solid #444; margin-bottom: 40px; }
+}
