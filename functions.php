@@ -319,18 +319,16 @@ function output_header_markup($post) {
 		get_post_meta($post->ID, 'story_fonts', TRUE) && 
 		get_post_meta($post->ID, 'story_fonts', TRUE) !== '' ) 
 		{
-		$output .= '<style type="text/css">';
-			
+
 		$fonts = explode(',', get_post_meta($post->ID, 'story_fonts', TRUE));
 		$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
 		foreach ($fonts as $font) { 
 			trim($font);
 			if (array_key_exists($font, $available_fonts)) {
-				$output .= '@import url("'.$available_fonts[$font].'")';
+				$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
 			}
 		} 
-			
-		$output .= '</style>';
+
 	}
 	// Issue-wide stylesheet (on story)
 	if( $post->post_type == 'story' ) {
