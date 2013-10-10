@@ -1,0 +1,133 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
+
+#header, #footer { background-color: #f5c00d; }
+
+#story-content p { margin-bottom: 0; }
+
+#article-header {
+	margin-bottom: 50px;
+	background-color: #f5c00d;
+	position: relative;
+}
+
+p#article-header-title {
+	display: block;
+	width: 100%;
+	font-family: 'Arial Black', 'Helvetica Neue', sans-serif;
+	font-size: 60px;
+	font-weight: 900;
+	line-height: 47px;
+	border-bottom: 1px solid #000;
+	margin-top: 30px;
+	margin-bottom: 20px;
+	position: relative;
+	z-index: 999;
+}
+
+#story-header {
+	font-family: Georgia, serif;
+	font-size: 54px;
+	line-height: 60px;
+	margin-top: 10px;
+	margin-bottom: 20px;
+	font-weight: normal;
+}
+
+#cap {
+	position: absolute;
+	float: right;
+	margin-top: 60px;
+	margin-right: 20px;
+}
+
+#author p {
+	color: #9B907A;
+	font-family: 'Open Sans', sans-serif;
+}
+
+p.author-name {
+	font-weight: 800;
+}
+
+p.author-title {
+	margin-top: 0;
+	font-style: italic;
+	font-weight: 400;
+}
+
+#story-content {
+	margin-bottom: 30px;
+	position: relative;
+	z-index: 1;
+}
+
+@media only screen and (max-width: 979px) {
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+
+	#cap {
+		margin-top: 15px
+	}
+
+	#story-header {
+		font-size: 34px;
+		line-height: 36px;
+	}
+
+	#article-header {
+		margin-bottom: 60px;
+	}
+
+	#story-content {
+		margin-bottom: 30px;
+	}
+
+	#story-header {
+		font-size: 28px;
+	}
+
+	#story-sub-header {
+		font-size: 18px;
+		line-height: 22px;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+
+	#cap {
+		margin-top: 0;
+		margin-left: auto;
+		margin-right: auto;
+		text-align: center;
+		float: none;
+	}
+
+	#article-header {
+		margin-bottom: 60px;
+		margin-left: -20px;
+		padding-left: 20px;
+		padding-right: 20px;
+		padding-bottom: 175px;
+	}
+
+	p#article-header-title {
+		font-size: 36px;
+		line-height: 26px;
+		margin-bottom: 20px;
+	}
+
+	#story-header {
+		font-size: 26px;
+		line-height: 30px;
+	}
+
+	#story-sub-header {
+		font-size: 18px;
+		line-height: 22px;
+	}
+
+	p.author-name {
+		margin-top: 20px;
+	}
+}

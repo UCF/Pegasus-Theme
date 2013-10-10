@@ -1,0 +1,157 @@
+/* Header/Footer */
+#header { background-color: transparent; }
+#footer { background-color: #626456; }
+
+
+/* Universal */
+#body_content { width: 0; height: 0; margin: 0; }
+.container-wide { 
+	background: top center no-repeat; 
+	width: 100%;
+}
+#story-title,
+h1 {
+	background-position: top center;
+	background-repeat: no-repeat;
+}
+#story-title { height: 710px; position: relative; z-index: 2; top: -50px; }
+#story-title h1 {
+	text-indent: -9999px;
+	height: 165px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+.ie7 #story-title h1 { margin-left: -32px; }
+
+#story-subtitle-text { padding-top: 215px; }
+#story-subtitle-text span {
+	font-family: 'AleoLightItalic', serif;
+	font-weight: normal;
+	color: #000;
+	font-size: 26px;
+	line-height: 36px;
+	letter-spacing: 0.7px;
+}
+
+#body-content {
+	position: relative;
+	z-index: 1;
+	top: -95px;
+}
+#body-content p { margin-bottom: 15px; }
+#body-content blockquote {
+	border-left: 0;
+	border-top: 8px solid #fbdd52;
+	border-bottom: 8px solid #fbdd52;
+	margin-top: 10px;
+	padding-left: 0;
+}
+#body-content blockquote p {
+	font-family: 'AleoLightItalic', serif;
+	font-size: 35px;
+	line-height: 40px;
+	color: #969696;
+	text-align: center;
+	margin: 15px 0;
+}
+span.first-letter {
+	display: block;
+	float: left;
+	font-family: 'AleoRegular', serif;
+	font-weight: normal;
+	font-size: 40px;
+	line-height: 30px;
+	color: #fbdd52;
+	padding: 4px 5px 5px 0;
+}
+#body-content .hr { height: 0; border-bottom: 8px solid #fbdd52; margin-top: 20px; margin-bottom: 20px; }
+#body-content .carousel-control {
+	color: #9c9c9c;
+	border: 4px solid #9c9c9c;
+	background: #fff;
+	opacity: 1;
+	font-size: 40px;
+	line-height: 25px;
+	width: 30px;
+	height: 30px;
+}
+#body-content .carousel-control:hover { opacity: 0.6; }
+#body-content .carousel-control.left { left: -60px; }
+#body-content .carousel-control.right { right: -60px; }
+#body-content #slideshow-desc {
+	font-family: Helvetica, sans-serif;
+	font-size: 18px;
+	text-align: center;
+	margin-top: -25px;
+}
+#body-content #slideshow-desc strong { text-transform: uppercase; }
+
+#body-end-border { height: 145px; background: #fbdd52; position: relative; top: -245px; margin-bottom: -150px; }
+
+
+
+/* Responsive */
+@media (max-width: 979px) {
+	#body-end-border { top: -270px; height: 165px; }
+}
+@media (max-width: 767px) {
+	.container-wide {
+		margin-left: -20px;
+	    padding-left: 20px;
+	    padding-right: 20px;
+	}
+	#story-title {
+		background-size: 160% auto;
+		height: auto;
+		overflow: hidden;
+	}
+	#story-title h1 {
+		position: relative;
+		text-indent: 0;
+		background-image: none !important;
+		background-color: #fbdd52;
+		width: 102%;
+		height: auto;
+		margin-top: 69%;
+		margin-left: -23px;
+		padding: 10px 20px;
+		text-align: center;
+		color: #000;
+		font-family: 'AleoRegular', serif;
+		font-weight: normal;
+		font-size: 36px;
+		line-height: 44px;
+		font-weight: normal;
+		text-transform: uppercase;
+		transform: rotate(-3deg);
+		-webkit-transform: rotate(-3deg);
+	}
+	#story-subtitle-text { position: absolute; top: 5px; left: 20px; width: 45%; }
+	#story-subtitle-text span { font-size: 20px; line-height: 32px; }
+
+	#img-lauren-brown { display: block; margin: -10px auto 0 auto; }
+
+	#body-content .carousel .item > img { width: 100%; }
+	#body-content .carousel-control {
+		color: #fff;
+		border: 4px solid #fff;
+		background-color: transparent;
+	}
+	#body-content .carousel-control:hover { opacity: 0.6; }
+	#body-content .carousel-control.left { left: 20px; }
+	#body-content .carousel-control.right { right: 20px; }
+
+	#body-end-border { margin-bottom: -190px; }
+}
+@media (max-width: 579px) {
+	#story-subtitle-text { top: -40px; }
+	#story-subtitle-text span { font-size: 14px; line-height: 20px; }
+	#body-end-border { top: -295px; height: 200px; }
+}
+@media (max-width: 480px) {
+	#story-title h1 { font-size: 24px; line-height: 35px; }
+	#story-subtitle-text { top: -160px; width: 40%; }
+	#story-subtitle-text span { text-shadow: 1px 1px 0px #ffffff; }
+	#body-end-border { top: -330px; height: 240px; margin-bottom: -240px; }
+}
