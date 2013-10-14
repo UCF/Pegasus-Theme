@@ -18,7 +18,7 @@
 	background-repeat: repeat;
 }
 #story-title > .container > .row {
-	background-position: -20px bottom;
+	background-position: -9px bottom;
 	background-repeat: no-repeat;
 }
 #story-title h1 {
@@ -31,7 +31,7 @@
 	position: relative;
 	top: 0;
 	float: right;
-	margin-right: 115px;
+	margin-right: 140px;
 	margin-bottom: 50px;
 	z-index: 5;
 }
@@ -40,7 +40,7 @@
 	font-style: italic;
 	font-size: 18px;
 	line-height: 24px;
-	margin: 20px 0;
+	margin: 30px 0 20px 0;
 }
 span.first-letter {
 	font-family: 'AleoLight', serif;
@@ -52,7 +52,7 @@ span.first-letter {
 	margin: 0;
 }
 #story-intro p { position: relative; z-index: 4; color: #fff; margin-top: 0; margin-bottom: 20px; }
-#story-intro .indentfix { padding-left: 80px; }
+#story-intro .indentfix { padding-left: 90px; }
 
 #story-intro-small { display: none; }
 
