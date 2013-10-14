@@ -31,7 +31,6 @@ body { background-color: #30333b; }
 	line-height: 33px;
 	color: #fff;
 	text-align: center;
-	padding: 0 110px;
 	font-weight: 300;
 	margin-top: 30px;
 	margin-bottom: 40px;
@@ -53,7 +52,6 @@ body { background-color: #30333b; }
 /* Responsive */
 @media (max-width: 979px) {
 	#body-content h1 { font-size: 48px; line-height: 48px; }
-	#body-content .subtitle { padding: 0 50px; }
 }
 @media (max-width: 767px) {
 	#body-content {
@@ -69,7 +67,7 @@ body { background-color: #30333b; }
 }
 @media (max-width: 480px) {
 	#body-content h1 { font-size: 30px; line-height: 30px; }
-	#body-content .subtitle { font-size: 16px; line-height: 28px; padding: 0; }
+	#body-content .subtitle { font-size: 16px; line-height: 28px; }
 	#body-content .letter { padding-bottom: 5px; }
 	#body-content .letter p { padding: 0 20px; }
 }
