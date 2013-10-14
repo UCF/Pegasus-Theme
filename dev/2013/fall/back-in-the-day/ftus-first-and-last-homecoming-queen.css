@@ -1,0 +1,44 @@
+/* Fonts */
+@import url(http://fonts.googleapis.com/css?family=Montserrat:700);
+
+#header, #footer { background-color: #7DB0C6; }
+#footer { margin-top:80px; }
+.intro { margin-top:40px; }
+.intro h1 {
+	font-family:"Montserrat", "Arial Black",Arial,sans-serif;
+	font-size:52px;
+	line-height: 46px;
+	font-weight:700;
+}
+.intro h1 .alt {
+	color: #89CCEA;
+	font-size: 34px;
+	font-style: italic;
+}
+p.byline {
+	color: #89CCEA;
+	font-weight:bold;
+	font-family:"Helvetica Neue",Helvetica,sans-serif;
+	text-transform: uppercase;
+}
+
+#first-p { margin-top: 0; }
+#img-patty { width: 200px; height: 200px; display: block; float: left; padding-right: 15px; padding-bottom: 5px; }
+
+p.caption {
+	font-family:Helvetica, sans-serif;
+	font-style: italic;
+	padding-top:20px;
+}
+
+@media (max-width: 480px) {
+	.intro h1 {
+		font-size: 32px;
+		line-height: 30px;
+	}
+	p.lead { font-size: 18px; }
+	.intro h1 .alt {
+		font-size: 24px;
+	}
+	#img-patty { width: 120px; height: 120px; }
+}
