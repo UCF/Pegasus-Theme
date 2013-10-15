@@ -43,6 +43,7 @@ body { background-color: #30333b; }
 	box-shadow: 0px 0px 50px 20px rgba(0, 0, 0, 0.5);
 	overflow: hidden;
 	height: auto;
+	padding-bottom: 30px;
 }
 #body-content .letter .letterhead { text-align: center; padding: 30px 60px; }
 #body-content .letter p { margin: 0 0 15px 0; }
@@ -61,7 +62,6 @@ body { background-color: #30333b; }
 	    padding-right: 20px;
 	}
 	#body-content h1 { margin-top: 40px; }
-	#body-content .letter { padding-bottom: 30px; }
 	#body-content .letter .letterhead { padding: 30px; }
 	#body-content .letter p { padding: 0 40px; }
 }

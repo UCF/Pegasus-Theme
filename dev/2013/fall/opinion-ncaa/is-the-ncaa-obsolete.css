@@ -1,7 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,800);
 
-#header, #footer { background-color: #4da9d8; }
-
 #story-content p { margin-bottom: 0; }
 
 p#article-header-title {
@@ -19,21 +17,21 @@ p#article-header-title {
 	z-index: 999;
 }
 
-#author p {
+.author p {
 	color: #9B907A;
 	font-family: 'Open Sans', sans-serif;
 }
 
 p.caption {
-	margin-top: 70px;
+	margin-top: 10px;
 	font-family: Georgia, "Times New Roman", Times, serif !important;
 	color: black !important;
 	font-style: italic;
-	font-size: 24px;
+	font-size: 22px;
 }
 
 p.author-name {
-	margin-top: 65px;
+	margin-top: 10px;
 	font-weight: 800;
 }
 
@@ -65,11 +63,34 @@ p.author-title {
 	margin-bottom: 18px;
 }
 
+.mobile {
+	display: none;
+}
+
+.marc_daniels {
+	margin-top: 20px;
+}
+
+.caption_push {
+	margin-bottom: 120px !important;
+}
+
 @media only screen and (max-width: 979px) {
+    .marc_daniels {
+        margin-top: 25px;
+    }
+
+    p.caption {
+		font-size: 20px;
+    }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 979px) {
 	p#article-header-title { text-indent: 64%; }
+
+	.caption_push {
+		margin-bottom: 140px !important;
+	}
 
 	#story-content {
 		margin-bottom: 30px;
@@ -86,6 +107,19 @@ p.author-title {
 }
 
 @media only screen and (max-width: 767px) {
+
+	.desktop {
+		display: none;
+	}
+
+	.mobile {
+		display: block;
+	}
+
+	.marc_daniels {
+		margin-top: 20px;
+	}
+
 	p#article-header-title {
 		font-size: 36px;
 		line-height: 26px;
@@ -105,5 +139,9 @@ p.author-title {
 
 	p.author-name {
 		margin-top: 20px;
+	}
+
+	p.author-title {
+		margin-bottom: 0 !important;
 	}
 }

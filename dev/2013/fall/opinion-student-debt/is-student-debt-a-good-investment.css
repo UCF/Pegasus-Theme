@@ -67,7 +67,8 @@ p.author-title {
 @media only screen and (min-width: 768px) and (max-width: 979px) {
 
 	#cap {
-		margin-top: 15px
+		margin-top: 40px;
+		width: 300px;
 	}
 
 	#story-header {
@@ -101,6 +102,7 @@ p.author-title {
 		margin-right: auto;
 		text-align: center;
 		float: none;
+		width: 75%;
 	}
 
 	#article-header {
@@ -108,7 +110,7 @@ p.author-title {
 		margin-left: -20px;
 		padding-left: 20px;
 		padding-right: 20px;
-		padding-bottom: 175px;
+		padding-bottom: 120px;
 	}
 
 	p#article-header-title {
