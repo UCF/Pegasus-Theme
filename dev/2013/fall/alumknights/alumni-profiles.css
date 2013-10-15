@@ -1,0 +1,393 @@
+@import "http://fonts.googleapis.com/css?family=Montserrat:700";
+
+#header { background-color: transparent; }
+#header .issue,
+#header .description a { color: #000; }
+#header .toggle_story_nav a { color: rgba(0,0,0,0.7); }
+#footer { background-color: #3C4436; }
+
+#body_content { width: 0; height: 0; margin: 0; }
+.container-wide { width: 100%; }
+
+#header-wrapper {
+	background-position: top center;
+	background-repeat: no-repeat;
+    position: relative;
+    top: -50px;
+    z-index: 1;
+}
+
+.story-content p {
+	margin-bottom: 0;
+}
+.caption {
+    color: #bf1630;
+    font-size: 13px !important;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.quote {
+    color: #c05938;
+    font-size: 24px;
+    text-align: right;
+}
+.speaking {
+    font-family:"Helvetica Neue",Helvetica,sans-serif;
+    color: #c05938;
+    font-weight: bold;
+}
+
+
+#article-header {
+	margin-bottom: 500px;
+}
+
+#article-header h1 {
+    margin-top: 72px;
+    font-family: 'Montserrat', sans-serif;
+	color: #838372;
+	font-size: 95px;
+	line-height: 95px;
+}
+
+#article-header h1 span {
+	color: #20221d;
+}
+
+.story-content {
+	margin-top: 0px;
+}
+
+p.first {
+	margin-top: 0px;
+}
+
+p.last {
+    margin-bottom: 0px;
+}
+
+#ammo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    top: -65px;
+    left: 30px;
+    z-index: 2;
+}
+
+#fishing-prep {
+    display: block;
+    position: relative;
+    top: -70px;
+}
+#fishing-prep .caption { margin-top: 15px; }
+
+#fishing-subheader { margin-bottom: 40px; }
+
+#fishing-subheader h2 {
+    font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; 
+    font-weight: 900;
+    font-stretch: condensed;
+    font-size: 60px;
+    line-height: 60px;
+    color: #bf1630;
+    margin-top: -30px;
+}
+
+#fishing-subheader h3 {
+    margin-top: 15px;
+    font-family:"Helvetica Neue",Helvetica,sans-serif;
+    font-size: 26px;
+    line-height: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: #000;
+}
+
+#swimming-with-sharks .first-letter {
+    font-size: 48px;
+    line-height: 48px;
+    display: block;
+    float: left;
+    padding-right: 10px;
+    color: #BF1530;
+}
+
+#holding-ammo {
+    margin-top: 20px;
+    background-position: center top;
+    background-repeat: no-repeat;
+    height: 595px;
+}
+#holding-ammo img { display: none; }
+
+#fishing-interview .caption { margin-bottom: 30px; }
+
+#fishing-quote p {
+    margin-top: 0;
+    margin-bottom: 25px;
+    padding: 25px 0;
+    color: #bf1630;
+    font-style: italic;
+    font-size: 28px;
+    border-style: solid;
+    border-width: 2px 0;
+    border-color: #bf1630;
+}
+
+#entrepreneurial-energy {
+    padding-top: 30px;
+    background-color: #c7e2c5;
+    padding-bottom: 30px;
+}
+
+#energy-img {
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+#energy-img img { display: none; }
+
+#energy-header {
+    margin-top: 90px;
+    margin-bottom: 316px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 64px;
+    line-height: 64px;
+    font-weight: normal;
+    color: #fff;
+}
+
+#energy-subheader h3 {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 28px;
+    font-weight: normal;
+    font-style: italic;
+    line-height: 28px;
+    color: #25721b;
+    margin: 20px 0 15px 0;
+}
+
+#energy-quote {
+    margin-top: 50px;
+    color: #000;
+    font-size: 24px;
+    line-height: 32px;
+    font-style: italic;
+}
+#entrepreneurial-energy .first-letter {
+    font-size: 48px;
+    line-height: 48px;
+    display: block;
+    float: left;
+    padding-right: 10px;
+    color: #24721A;
+}
+
+#long-may-you-run { padding: 60px 0; }
+#run-title { display: block; margin: 0 auto 20px auto; }
+#run-header { width: 0; height: 0; margin: 0; text-indent: -9999px; }
+#run-quote {
+    font-size: 21px;
+    line-height: 32px;
+    color: #666;
+    font-style: italic;
+    padding-left: 66px;
+    padding-bottom: 20px;
+}
+#long-may-you-run .first-letter {
+    font-family: Helvetica, sans-serif;
+    font-size: 68px;
+    line-height: 68px;
+    color: #36bca7;
+    font-style: italic;
+    font-weight: 600;
+    display: block;
+    float: left;
+    padding: 0 10px 0 0;
+}
+#long-may-you-run .caption {
+    color: #452637;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 14px !important;
+    line-height: 21px;
+}
+#long-may-you-run .caption .caption-title {
+    font-family: 'AleoRegular', serif;
+    font-style: normal;
+}
+#long-may-you-run .caption img {
+    display: block;
+    float: right;
+    margin-right: -20px;
+    margin-top: 15px;
+    padding-left: 20px;
+}
+
+#living-with-the-past {
+    background-position: bottom center;
+    background-repeat: repeat-x;
+    background-color: #1067B4;
+    color: #fff;
+}
+#past-title-img { margin: 40px auto 30px auto; display: block; }
+#past-title { width: 0; height: 0; margin: 0; text-indent: -9999px; }
+
+#img-zuvich { display: block; float: left; padding-right: 10px; }
+#past-subtitle {
+    display: block;
+    font-family: Georgia, serif;
+    font-style: italic;
+    font-size: 24px;
+    line-height: 30px;
+    font-weight: normal;
+    margin-top: 10px;
+}
+#living-with-the-past .first-letter {
+    display: block;
+    float: left;
+    padding-right: 10px;
+    font-size: 48px;
+    line-height: 48px;
+    color: #F5D99A;
+}
+#palace img {
+    width: 100%;
+    height: auto;
+}
+
+
+@media only screen and (max-width: 979px) {
+    #article-header h1 { font-size: 75px; }
+    #fishing-subheader h2 { font-size: 48px; line-height: 54px; }
+    #fishing-subheader h3 { font-size: 24px; line-height: 36px; }
+
+    #energy-header { font-size: 52px; line-height: 52px; margin-bottom: 340px; }
+
+    #run-title { margin-left: 15px; margin-bottom: 30px; }
+    #run-quote { padding-left: 0; font-size: 18px; line-height: 30px; }
+    #long-may-you-run .span6 { width: 414px; } /* span7 */
+    
+    #past-title-img { width: 400px; height: 333px; }
+    #past-subtitle { font-size: 22px; line-height: 27px; }
+}
+
+@media only screen and (max-width: 767px) {
+    body { overflow-x: hidden; }
+    .container-wide {
+        margin-left: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    #header-wrapper {
+        background-position: 61% -75px;
+    }
+    #article-header { margin-bottom: 300px; }
+    #article-header h1 { font-size: 47px; line-height: 47px; margin-top: 60px; }
+
+    #fishing-subheader { margin-bottom: 20px; }
+    #fishing-subheader h2 { font-size: 40px; line-height: 50px; }
+    #fishing-subheader h3 { font-size: 21px; line-height: 30px; }
+    #fishing-prep { position: static; top: 0; margin: auto; }
+    #fishing-prep + p.caption { margin-bottom: 25px; }
+
+    #holding-ammo { background-image: none !important; height: auto; }
+    #holding-ammo img { display: block; }
+
+    #fishing-quote p { font-size: 24px; }
+
+    #energy-img { background-image: none !important; }
+    #energy-img img { display: block; }
+    #energy-header { margin: 20px 0 0 0; color: #000; font-size: 40px; line-height: 40px; }
+
+    #energy-quote { margin: 30px 0; }
+
+    #run-title { margin-left: 0; margin-bottom: 20px; }
+    #img-bishop { display: block; height: 400px; margin: 0 auto 25px auto; }
+    #long-may-you-run .span6 { width: 100%; }
+
+    #palace { padding: 0; width: 114%; }
+    /*
+
+    #article-header h1 {
+        font-size: 36px;
+        line-height: 40px;
+        margin-top: 0;
+    }
+
+    #fishing-subheader h2 {
+        font-size: 24px;
+        line-height: 24px;
+    }
+
+    #fishing-subheader h3 {
+        margin-top: 0;
+        font-size: 16px;
+        line-height: 38px;
+    }
+
+    #article-header {
+        margin-bottom: 180px;
+        margin-left: 20px;
+    }
+
+    #fishing-prep {
+        margin-top: 20px;
+    }
+
+    #fishing-quote p {
+        font-size: 18px;
+    }
+
+    #energy-img {
+        background-position: -425px -25px;
+    }
+
+    #energy-header {
+        margin-left: 20px;
+        margin-top: 20px;
+        margin-bottom: 160px;
+        font-size: 36px;
+    }
+
+    #energy-subheader h3 {
+        margin-top: 20px;
+        font-size: 22px;
+    }
+
+    #energy-quote {
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-size: 18px;
+    }
+    */
+}
+
+@media only screen and (max-width: 480px) {
+    #header-wrapper {
+        background-position: 60% -5px;
+        background-size: 160% auto;
+    }
+    #article-header { margin-bottom: 0; }
+    #article-header h1 {
+        margin-top: 103%;
+        margin-bottom: 27px;
+        display: block;
+        width: 100%;
+        text-align: center;
+        font-size: 43px;
+    }
+    #article-header h1 span { color: #efefef; }
+    #fishing-subheader h2 { font-size: 32px; line-height: 40px; }
+    #fishing-subheader h3 { font-size: 18px; line-height: 30px; margin-top: 10px; }
+
+    #energy-header { font-size: 32px; line-height: 36px; margin-top: 15px; }
+    #energy-subheader h3 { font-size: 18px; line-height: 24px; margin-top: 10px; margin-bottom: 0; }
+
+    #long-may-you-run .caption img { float: none; margin-left: auto; margin-right: auto; padding-left: 15px; }
+
+    #past-title-img { width: 280px; height: auto; margin-bottom: 15px; }
+    #img-zuvich { float: none; margin-left: auto; margin-right: auto; margin-bottom: 15px; padding-right: 0; padding-left: 10px; }
+    #palace { width: 114.6%; }
+}
