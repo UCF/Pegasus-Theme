@@ -1,5 +1,9 @@
-#header, #footer {
-	background-color: transparent;
+#header {
+    background-color: transparent;
+}
+
+#footer {
+    background-color: #140D47;
 }
 
 #header .row {
