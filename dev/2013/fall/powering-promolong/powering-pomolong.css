@@ -1,0 +1,190 @@
+#header, #footer {
+	background-color: transparent;
+}
+
+#header .row {
+    position: relative;
+    z-index: 999;
+}
+
+#header-wrapper {
+	background-color: #30333b;
+	margin-bottom: 20px;
+}
+
+#header-img {
+    margin-top: -50px;
+    background-position: center 38%;
+    background-repeat: no-repeat;
+    position: relative;
+    z-index: 998;
+    background-size: 100% auto;
+}
+
+.story-content p {
+	margin-bottom: 0;
+}
+
+#article-header {
+	margin-top: 135px;
+    margin-right: 20px;
+    margin-bottom: 400px;
+    text-align: center;
+}
+
+#article-header h1 {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	color: #ffcc00;
+    font-weight: normal;
+	font-style: italic;
+	font-size: 65px;
+	line-height: 70px;
+	-webkit-text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.75);
+	-moz-text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.75);
+	text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.75);
+}
+
+#article-header h2 {
+	font-family: Helvetica, sans-serif;
+	top: 50px;
+	left: 260px;
+	color: #fff;
+    line-height: 50px;
+    font-size: 18px;
+}
+
+.story-content {
+	margin-top: 30px;
+}
+
+.section-header {
+	margin-bottom: 0;
+	color: #c05938;
+	font-weight: bold;
+}
+
+p.first {
+	margin-top: 0px;
+}
+
+#slideshow {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	background-color: #c05938;
+}
+
+#slideshow img {
+	margin-bottom: 20px;
+}
+
+#slideshow p {
+	font-size: 26px;
+	line-height: 30px;
+	font-style: italic;
+	color: #fff;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+#cheetahs {
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin-top: 20px;
+	background-color: #c05938;
+	color: #fff;
+	padding-top: 40px;
+}
+
+.cheetah-title {
+	font-family: Helvetica, sans-serif;
+	font-weight: bold;
+	margin-bottom: 0;
+}
+
+.quote {
+	color: #c05938;
+	font-size: 24px;
+    text-align: right;
+}
+
+.carousel-control {
+    font-style: normal;
+}
+
+#slideshow .carousel-control.left {
+    left: -60px;
+}
+
+#slideshow .carousel-control.right {
+    right: -60px;
+}
+
+@media only screen and (max-width: 979px) {
+    #article-header {
+        margin-top: 135px;
+        margin-bottom: 300px;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 979px) {
+}
+
+@media only screen and (max-width: 767px) {
+    #article-header h1 {
+        font-size: 30px;
+        line-height: 32px;
+    }
+
+    #article-header h2 {
+        margin-top: 5px;
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    #article-header {
+        margin-bottom: 30px;
+        margin-left: 20px;
+        margin-top: 40px;
+    }
+
+    #header-img {
+        margin-left: -20px;
+        padding-right: 40px;
+    }
+
+    #windmill {
+        height: 250px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+        background-position: 50% -50px;
+        background-repeat: no-repeat;
+    }
+
+    .quote {
+        text-align: left;
+        font-size: 18px;
+        margin-bottom: 30px !important;
+    }
+
+    #slideshow, #cheetahs, #header-wrapper {
+    	margin-left: -20px;
+    	margin-right: -20px;
+    	padding-left: 20px;
+    	padding-right: 20px;
+    }
+
+    #cheetahs img {
+        display: block;
+        margin-bottom: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #slideshow .carousel-control.left {
+        left: 20px;
+    }
+
+    #slideshow .carousel-control.right {
+        right: 20px;
+    }
+}
