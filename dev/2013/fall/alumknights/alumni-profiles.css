@@ -16,6 +16,7 @@
     top: -50px;
     z-index: 1;
 }
+.ie7 #header-wrapper { top: -55px; }
 
 .story-content p {
 	margin-bottom: 0;
@@ -41,7 +42,6 @@
 #article-header {
 	margin-bottom: 500px;
 }
-
 #article-header h1 {
     margin-top: 72px;
     font-family: 'Montserrat', sans-serif;
@@ -49,7 +49,6 @@
 	font-size: 95px;
 	line-height: 95px;
 }
-
 #article-header h1 span {
 	color: #20221d;
 }
@@ -84,6 +83,7 @@ p.last {
 #fishing-prep .caption { margin-top: 15px; }
 
 #fishing-subheader { margin-bottom: 40px; }
+.ie7 #fishing-subheader { position: relative; z-index: 2; }
 
 #fishing-subheader h2 {
     font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; 
@@ -252,10 +252,74 @@ p.last {
     line-height: 48px;
     color: #F5D99A;
 }
+.ie7 #palace { position: relative; top: -2px; }
 #palace img {
     width: 100%;
     height: auto;
 }
+
+#bubble-menu {
+    position: fixed;
+    width: 100%;
+    height: 125px;
+    background-color: #426D65;
+    bottom: -200px;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+    z-index: 3;
+}
+#bubble-menu.slidein {
+    bottom: 0;
+}
+#bubble-menu span {
+    display: block;
+    float: left;
+    width: 400px;
+    clear: right;
+    text-align: center;
+    font-size: 13px;
+    color: #fff;
+    padding: 10px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 40px;
+}
+#bubble-menu p {
+    font-family: Helvetica, sans-serif;
+    font-size: 14px;
+    color: #fff;
+    font-weight: bold;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+#bubble-menu p a { color: #fff; text-decoration: underline; }
+#bubble-menu ul {
+    list-style-type: none;
+    width: 400px;
+    display: block;
+    float: left;
+    clear: both;
+    margin-left: 0;
+    margin-right: 40px;
+}
+#bubble-menu ul li {
+    display: block;
+    float: left;
+    width: 75px;
+    height: 75px;
+    margin-left: 30px;
+}
+#bubble-menu ul li:first-child { margin-left: 0; }
+#bubble-menu ul li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-indent: -9999px;
+}
+
 
 
 @media only screen and (max-width: 979px) {
@@ -271,6 +335,13 @@ p.last {
     
     #past-title-img { width: 400px; height: 333px; }
     #past-subtitle { font-size: 22px; line-height: 27px; }
+
+    #bubble-menu p { font-size: 12px; font-weight: normal; }
+    #bubble-menu ul,
+    #bubble-menu span { width: 360px; }
+    #bubble-menu ul li {
+        margin-left: 20px;
+    }
 }
 
 @media only screen and (max-width: 767px) {
@@ -308,60 +379,8 @@ p.last {
     #long-may-you-run .span6 { width: 100%; }
 
     #palace { padding: 0; width: 114%; }
-    /*
 
-    #article-header h1 {
-        font-size: 36px;
-        line-height: 40px;
-        margin-top: 0;
-    }
-
-    #fishing-subheader h2 {
-        font-size: 24px;
-        line-height: 24px;
-    }
-
-    #fishing-subheader h3 {
-        margin-top: 0;
-        font-size: 16px;
-        line-height: 38px;
-    }
-
-    #article-header {
-        margin-bottom: 180px;
-        margin-left: 20px;
-    }
-
-    #fishing-prep {
-        margin-top: 20px;
-    }
-
-    #fishing-quote p {
-        font-size: 18px;
-    }
-
-    #energy-img {
-        background-position: -425px -25px;
-    }
-
-    #energy-header {
-        margin-left: 20px;
-        margin-top: 20px;
-        margin-bottom: 160px;
-        font-size: 36px;
-    }
-
-    #energy-subheader h3 {
-        margin-top: 20px;
-        font-size: 22px;
-    }
-
-    #energy-quote {
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-size: 18px;
-    }
-    */
+    #bubble-menu { display: none; }
 }
 
 @media only screen and (max-width: 480px) {
