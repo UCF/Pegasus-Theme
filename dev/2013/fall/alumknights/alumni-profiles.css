@@ -289,11 +289,11 @@ p.last {
 }
 #bubble-menu p {
     font-family: Helvetica, sans-serif;
-    font-size: 14px;
+    font-size: 13px;
     color: #fff;
     font-weight: bold;
     margin-bottom: 10px;
-    margin-top: 10px;
+    margin-top: 25px;
 }
 #bubble-menu p a { color: #fff; text-decoration: underline; }
 #bubble-menu ul {
@@ -336,7 +336,7 @@ p.last {
     #past-title-img { width: 400px; height: 333px; }
     #past-subtitle { font-size: 22px; line-height: 27px; }
 
-    #bubble-menu p { font-size: 12px; font-weight: normal; }
+    #bubble-menu p { font-size: 12px; font-weight: normal; margin-top: 10px; }
     #bubble-menu ul,
     #bubble-menu span { width: 360px; }
     #bubble-menu ul li {
