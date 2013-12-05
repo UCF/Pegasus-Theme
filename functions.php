@@ -373,8 +373,8 @@ function output_header_markup($post) {
 function protocol_relative_attachment_url($url, $id) {
 	if (is_ssl()) {
 		$url = str_replace('http://', 'https://', $url);
-		return $url;
 	}
+	return $url;
 }
 add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 ?>
