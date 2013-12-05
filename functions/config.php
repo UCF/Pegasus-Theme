@@ -67,7 +67,7 @@ add_action('after_setup_theme', '__init__');
 #define('DEBUG', True);                  # Always on
 #define('DEBUG', False);                 # Always off
 define('DEBUG', isset($_GET['debug'])); # Enable via get parameter
-define('THEME_URL', get_bloginfo('stylesheet_directory'));
+define('THEME_URL', get_stylesheet_directory_uri());
 define('THEME_ADMIN_URL', get_admin_url());
 define('THEME_DIR', get_stylesheet_directory());
 define('THEME_INCLUDES_DIR', THEME_DIR.'/includes');
@@ -86,7 +86,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', false); # Never leave this activated in a production environment!
+define('DEV_MODE', true); # Never leave this activated in a production environment!
 
 /**
  * List of available fonts. Structure array as key = font name, val = path to the font. 
@@ -272,7 +272,6 @@ Config::$links = array(
 
 Config::$styles = array(
 	array('admin' => True, 'src' => THEME_CSS_URL.'/admin.css',),
-	//'http://universityheader.ucf.edu/bar/css/bar.css',
 	THEME_STATIC_URL.'/bootstrap/css/bootstrap.css',
 );
 
@@ -284,7 +283,6 @@ if ($theme_options['bootstrap_enable_responsive'] == 1) {
 
 array_push(Config::$styles,	
 	plugins_url( 'gravityforms/css/forms.css' ),
-	//THEME_CSS_URL.'/webcom-base.css', 
 	get_bloginfo('stylesheet_url')
 );
 
@@ -317,7 +315,7 @@ if ($theme_options['gw_verify']){
 
 function jquery_in_header() {
     wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', 'http://code.jquery.com/jquery-1.7.1.min.js');
+    wp_register_script( 'jquery', '//code.jquery.com/jquery-1.7.1.min.js');
     wp_enqueue_script( 'jquery' );
 }    
  
