@@ -622,6 +622,49 @@ class Issue extends CustomPostType {
 		}
 		return $fields;
 	}
+
+
+	/**
+	 * Handles output for a list of objects, can be overridden for descendants.
+	 * If you want to override how a list of objects are outputted, override
+	 * this, if you just want to override how a single object is outputted, see
+	 * the toHTML method.
+	 **/
+	public function objectsToHTML($objects, $css_classes){
+		$args = array(
+			'orderby' => 'post_date',
+			'order' => 'DESC',
+			'post_type' => 'issue',
+			'numberposts' => -1
+		);
+		$objects = get_posts($args);
+		$class = new Issue;
+		
+		ob_start();
+		?>
+		<ul class="<?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
+			<?php foreach($objects as $o):?>
+			<li>
+				<?=$class->toHTML($o)?>
+			</li>
+			<?php endforeach;?>
+		</ul>
+		<?php
+		$html = ob_get_clean();
+		return $html;
+	}
+
+
+	/**
+	 * Outputs this item in HTML.  Can be overridden for descendants.
+	 **/
+	public function toHTML($object){
+		$html = '<a href="'.get_permalink($object->ID).'">';
+			$html .= get_the_post_thumbnail($object->ID, 'issue-thumbnail');
+			$html .= $object->post_title;
+		$html .= '</a>';
+		return $html;
+	}
 } // END class 
 
 ?>

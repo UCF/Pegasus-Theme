@@ -36,11 +36,14 @@
 		<?=output_header_markup($post);?>
 		
 	</head>
+
 	<? extract(get_navigation_stories()); ?>
+
 	<!--[if IE 7 ]>     <body class="ie ie7 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
 	<!--[if IE 8 ]>     <body class="ie ie8 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
 	<!--[if IE 9 ]>     <body class="ie ie9 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
 	<!--[if (gt IE 9)|!(IE)]><!--> <body class="<?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <!--<![endif]-->
+
 		<div id="ipad" class="modal">
 			<div class="modal-header">
 				<h3>Pegasus Magazine is available on the iPad!</h3>
@@ -52,76 +55,37 @@
 			<div class="modal-footer">
 			</div>
 		</div>
-		<div class="container wide header_stories">
-			<div class="row">
-				<div class="span12">
-					<h3>More in this Issue</h3>
-				</div>
-				<div class="span12">
-					<ul class="thumbnails">
-						<? foreach($top_stories as $story) {?>
-						<li class="span3">
-							<a href="<?=get_permalink($story->ID)?>">
-								<div class="thumbnail">
-									<img src="<?=get_featured_image_url($story->ID)?>" />
-								</div>
-								<div class="title">
-									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?>
-									<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-										<span class="title_colon">:</span> </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-									<?php } else { ?></span><?php } ?>
-								</div>
-							</a>
-						</li>
-						<? } ?>
-					</ul>
-				</div>
-			</div>
-			<div class="row bottom">
-				<div class="span12">
-					<ul class="thumbnails">
-						<? foreach($bottom_stories as $story) {?>
-						<li class="span2">
-							<a href="<?=get_permalink($story->ID)?>">
-								<div class="thumbnail">
-									<img src="<?=get_featured_image_url($story->ID)?>" />
-								</div>
-								<div class="title">
-									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?>
-									<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-										<span class="title_colon">:</span> </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-									<?php } else { ?></span><?php } ?>
-								</div>
-							</a>
-						</li>
-						<? } ?>
-					</ul>
+
+		<div class="container-wide" id="header-navigation">
+			<div class="container">
+				<div class="row">
+					<header>
+						<?php if ($post->post_type == 'issue') { ?>
+						<h1 class="sprite header-logo">
+							<a href="<?=get_site_url()?>">Pegasus</a>
+						</h1>
+						<?php } else { ?>
+						<span class="sprite header-logo">
+							<a href="<?=get_site_url()?>">Pegasus</a>
+						</span>
+						<?php } ?>
+
+						<nav class="span12" role="navigation">
+							<ul class="navigation">
+								<li id="nav-about">
+									<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
+								</li>
+								<li id="nav-issue">
+									<a href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>
+								</li>
+								<li id="nav-archives">
+									<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+								</li>
+							</ul>
+						</nav>
+					</header>
 				</div>
 			</div>
 		</div>
-		<div class="container wide" id="header">
-			<div class="row">
-				<div class="span12">
-					<div class="row" style="position:relative;">
-						<a href="<?=site_url()?>" class="span3 title">
-						PEGASUS
-						</a>
-						<div class="span5 issue">
-							<?php if($post->post_type == 'story') { ?>
-							<?php $issue = get_story_issue($post); echo $issue->post_title; ?>
-							<?php } else { ?> 
-							<?php $current_issue = get_current_issue(); echo $current_issue->post_title; ?>
-							<? } ?>
-						</div>
-			
-						<div class="span4 description">
-							<a href="<?=site_url()?>/about/">The Magazine of the University of Central Florida</a>
-						</div>
-						<div class="toggle_story_nav">
-							<a>&#9650;</a>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+
 		<div class="container" id="body_content">

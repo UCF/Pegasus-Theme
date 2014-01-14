@@ -13,43 +13,9 @@ function __init__(){
 	add_theme_support('post-thumbnails');
 	add_image_size('homepage', 620);
 	add_image_size('single-post-thumbnail', 220, 230, true);
-	register_nav_menu('header-menu', __('Header Menu'));
+	add_image_size('issue-thumbnail', 190, 248);
 	register_nav_menu('footer-menu', __('Footer Menu'));
-	register_sidebar(array(
-		'name'          => __('Sidebar'),
-		'id'            => 'sidebar',
-		'description'   => 'Sidebar found on two column page templates and search pages',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column One'),
-		'id' => 'bottom-one',
-		'description' => 'Far left column in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Two'),
-		'id' => 'bottom-two',
-		'description' => 'Second column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Three'),
-		'id' => 'bottom-three',
-		'description' => 'Third column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Four'),
-		'id' => 'bottom-four',
-		'description' => 'Far right in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
+
 	foreach(Config::$styles as $style){Config::add_css($style);}
 	foreach(Config::$scripts as $script){Config::add_script($script);}
 	
@@ -86,7 +52,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', false); # Never leave this activated in a production environment!
+define('DEV_MODE', true); # Never leave this activated in a production environment!
 
 /**
  * List of available fonts. Structure array as key = font name, val = path to the font. 
@@ -239,19 +205,6 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['ipad_app_url'],
 		))
 	),
-	'Styles' => array(
-		new RadioField(array(
-			'name'        => 'Enable Responsiveness',
-			'id'          => THEME_OPTIONS_NAME.'[bootstrap_enable_responsive]',
-			'description' => 'Turn on responsive styles provided by the Twitter Bootstrap framework.  This setting should be decided upon before building out subpages, etc. to ensure content is designed to shrink down appropriately.  Turning this off will enable the single 940px-wide Bootstrap layout.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['bootstrap_enable_responsive'],
-	    )),
-	),
 	'Issues' => array(
 		new SelectField(array(
 			'name'        => 'Current Issue Cover',
@@ -271,26 +224,16 @@ Config::$links = array(
 
 
 Config::$styles = array(
-	array('admin' => True, 'src' => THEME_CSS_URL.'/admin.css',),
-	THEME_STATIC_URL.'/bootstrap/css/bootstrap.css',
+	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
+	array('name' => 'font-montserrat', 'src' => 'http://fonts.googleapis.com/css?family=Montserrat:400,700'),
+	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
+	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
+	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
+	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
+	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
+	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
 
-if ($theme_options['bootstrap_enable_responsive'] == 1) {
-	array_push(Config::$styles, 
-		THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'
-	);		
-}
-
-array_push(Config::$styles,	
-	plugins_url( 'gravityforms/css/forms.css' ),
-	get_bloginfo('stylesheet_url')
-);
-
-if ($theme_options['bootstrap_enable_responsive'] == 1) {
-	array_push(Config::$styles, 
-		THEME_URL.'/style-responsive.css'
-	);	
-}
 
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),

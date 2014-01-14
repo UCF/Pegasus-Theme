@@ -5,6 +5,11 @@ Github Theme URI: https://github.com/UCF/Pegasus-Theme
 Version: v2.0.8
 */
 
+/**************************
+ * DEPRECATED - DO NOT USE
+ **************************/
+
+ /* Overhanging columns */
 .overhang {width:1000px;position:relative;left:-30px;}
 .right-column {margin-top:200px;}
 @media (min-width: 1200px) {
@@ -19,292 +24,199 @@ Version: v2.0.8
 	.right-column {margin-top:0}
 }
 
+/* Full-width container.  Use .container-wide > .container > .row instead */
+.container.wide {width:100%;}
+.container.wide > .row {width:980px;margin-left:auto;margin-right:auto;}
+
+
+/**************************
+ * Utility
+ **************************/
+
+.container-wide {width:100%;}
+
+.navigation { list-style-type: none; margin: 0; }
+
+.sprite {
+	display: block;
+	background: url('static/img/spritesheet.png');
+	background-repeat: no-repeat;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 147px 83px; }
+}
+
+
+/**************************
+ * General
+ **************************/
+
+html, body { height: 100%; }
+
 p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
 p.excerpt {font-size:23px;font-style:italic;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
-.container.wide {width:100%;}
-.container.wide > .row {width:980px;margin-left:auto;margin-right:auto;}
-
 .tooltip-inner {border:1px solid #666;}
 
-/* iPad Modal */
-#ipad {display:none;text-align:center;}
-
-
-/* Header */
-#header {background-color:#e3c353;height:50px;color:#FFF;position:relative;z-index:999;}
-#header .title,
-#header .issue,
-#header .description {}
-#header .title {
-	position:relative;
-	left:25px;
-	height:25px;
-	margin-top:12px;
-	text-indent:-500em;
-	background-repeat:no-repeat;
-	background-image: url(static/img/pegasus-logo-fill.png);
-	background-position:center left;
-}
-#header .issue {padding-top:20px;color:#FFF;font-size:16px;font-family:"Helvetica Neue",Helvetica,sans-serif;text-transform:uppercase;letter-spacing:4px;}
-
-#header .description, #home_header .description {font-size:12px;padding-top:22px;text-align:left;font-family:Georgia;font-style:italic;}
-#header .description a, #home_header .description a { color: #fff; }
-#header .description a:hover, #home_header .description a:hover { color: #fff; }
-#header .toggle_story_nav {
-	position:absolute;
-	left:-10px;
-	border-right:1px solid rgba(255,255,255,.3);
-	height:50px;
-}
-.ie7 #header .toggle_story_nav,
-.ie8 #header .toggle_story_nav {border-right:1px solid #e7e7e7;}
-#header .toggle_story_nav a {
-	display:block;
-	color:rgba(255,255,255,.7);
-	font-size:20px;
-	padding:5px;
-	margin-top:10px;
-	margin-right:10px;
-}
-.ie7 #header .toggle_story_nav a,
-.ie8 #header .toggle_story_nav a {
-	color:#e7e7e7;
-}
-
-#header .toggle_story_nav a:hover {
-	cursor:pointer;
-	text-decoration:none;
-	border:1px solid rgba(255,255,255,.2);
-	border-radius:5px;
-	margin-right:8px;
-	background-color:rgba(255,255,255,.2);
-}
-.ie7 #header .toggle_story_nav a:hover,
-.ie8 #header .toggle_story_nav a:hover {
-	-ms-filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
-	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#33FFFFFF,endColorstr=#33FFFFFF);
-	margin-right:10px;
-	zoom:1;
-}
-
-
-/* Footer */
-#footer {
-	width: 100%;
-	background-color: #e3c353;
-	padding: 30px 0 55px 0;
-	font-size: 16px;
-}
-	#footer a {
-		color: #fff;
-		font-weight: bold;
-	}
-h2#footer_logo {
-	display: block;
-	width: 162px;
-	height: 25px;
-	text-indent: -9999px;
-	background: url('static/img/pegasus-logo-fill.png') center center no-repeat;	
-	margin: 0;
-}
-
-#footer #footer_hr { width:960px; height:1px; border-top: 1px solid #fff; }
-#footer .firststory {
-	/*margin-left: 0;	*/
-	clear: both;
-}
-
-#footer_navigation {
-	/*border-top: 1px solid #fff;*/
-	padding: 20px 0 0;
-}
-	#footer_navigation h2.widgettitle, #footer_stories h2 {
-		font-size: 16px;
-		line-height: 34px;
-		font-weight: bold;
-		color: #fff;
-		margin-bottom: 15px;
-	}
-		#footer_navigation h2.widgettitle {
-			text-transform: uppercase;
-			letter-spacing: 3px;
-		}
-	#footer_navigation h2 {
-		margin-top:0;
-	}
-	#footer_navigation ul {
-		list-style-type: none;
-	}
-		#footer_navigation ul#menu-footer_navigation {
-			margin:6px 0 0 0;
-		}	
-		#footer_navigation ul li {
-			padding-bottom: 8px;
-			float:left;
-			margin-left:25px;
-		}
-			#footer_navigation ul li:first-child {
-				margin-left:0;
-			}
-			#footer_navigation ul li a {
-				font-weight: 200;
-				font-size:16px;
-			}
-#issue-carousel {
-
-}
-	#issue-carousel .carousel-control {
-		top: 30px;
-		border:0;
-		background:none;
-		width: auto;
-		opacity: .8;
-		margin-top: 0;
-		font-size:15px;
-		z-index: 5;
-		line-height: 25px;
-		height: 25px;
-		overflow: visible;
-	}
-		#issue-carousel .carousel-control:hover {
-			opacity:.9;
-		}
-		#issue-carousel .carousel-control.right {
-			text-align: right;
-			right:0;
-		}
-		#issue-carousel .carousel-control.left {
-			text-align: left;
-			left: 0;
-		}
-		#issue-carousel .carousel-control i { margin-top: 2px; }
-	#issue-carousel .item .issue-title {
-		color:#FFF;
-		text-align: left;
-		font-size:25px;
-	}
-
-#ipad_app {
-	display:block;
-	text-indent:-200em;
-	height:40px;
-	width:135px;
-	background-image:url(static/img/appstore.png);
-	background-repeat:no-repeat;
-	background-position:center center;
-	margin-top:20px;
-}
-
-/* Forms: */
+/* Forms */
 .gform_wrapper .gfield_description {
     margin: -10px 0 10px 0;
 }
 
-
-/* Header/Footer Story Nav styles */
-
-.header_stories {background-color:#333;color:#FFF;padding-bottom:15px;display:none;}
-.header_stories h3 {margin-bottom:10px;font-size:16px;margin-top:25px;}
-
-.footer_stories { padding: 30px 0; }
-.footer_stories.bottom { padding-top: 0; }
-
-
-.title_colon { margin-left: -3px; }
-
-.header_stories .bottom,
-.footer_stories.bottom {margin-top:20px;}
-
-.header_stories a,
-.footer_stories a {display:block;border-radius:3px;}
-
-.header_stories a:hover,
-.footer_stories a:hover {text-decoration: none}
-
-.header_stories .thumbnail,
-.footer_stories .thumbnail { 
-	padding: 0; 
-	border-radius: 0; 
-	border: 0; 
-	position: relative; 
-	max-width: 100%; 
-	float: left; 
-	margin-bottom: 5px; 
+/* Pegasus logos (use .sprite class) */
+.logo-large-white {
+	background-position: 0 -40px;
+	width: 193px;
+	height: 31px;
 }
-/* above: position, max-width, and float are req'd for image inset boxshadow */
-.header_stories .thumbnail:hover::before,
-.footer_stories .thumbnail:hover::before {
-	content: "";
-	position: absolute;
+
+/* iPad App button (use .sprite class) */
+.ipad-app-btn {
+	height: 40px;
+	width: 135px;
+	background-position: 0 -72px;
+}
+
+
+/**************************
+ * iPad Modal
+ **************************/
+
+#ipad {display:none;text-align:center;}
+
+
+/**************************
+ * Header
+ **************************/
+
+/* General - nav, nav ul */
+#header-navigation {
+	background-color: #fff;
+	height: 40px;
+	overflow: hidden;
+	position: relative;
+	z-index: 999;
+}
+#header-navigation header { height: 40px; }
+#header-navigation nav {
+	position: relative;
 	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
-	-moz-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
-	-webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
-	border-radius: 3px;
+	z-index: 1;
+	height: 100%;
 }
-.header_stories .thumbnail img,
-.footer_stories .thumbnail img {border-radius:3px; float: left;} /* float req'd for inset box-shadow */
+#header-navigation ul { height: 100%; }
 
-.header_stories .title,
-.footer_stories .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:2px;padding-bottom:10px;font-weight:bold;}
+/* General - nav list items */
+#header-navigation li { display: block; line-height: 40px; }
+#header-navigation li a:hover,
+#header-navigation li a:active,
+#header-navigation li a:focus {
+	color: #d7a900;
+}
 
-.header_stories a .subtitle_text,
-.footer_stories a .subtitle_text { font-weight: 200; }
+/* Pegasus title logo (use .sprite class) */
+#header-navigation .header-logo {
+	position: absolute;
+	z-index: 2;
+	top: 12.5px;
+	left: 50%;
+	margin-left: -48.5px;
+	width: 97px;
+	height: 15px;
+	background-position: 0 0;
+}
+#header-navigation .header-logo a { display: block; width: 100%; height: 100%; }
 
-.header_stories .bottom .title,
-.footer_stories.bottom .title {font-size:13px;margin-top:0px;padding-left:0;}
+/* Issue, Archives links */
+li#nav-issue,
+li#nav-archives {
+	float: left;
+}
+li#nav-issue { margin-right: 20px; }
+li#nav-issue a,
+li#nav-archives a {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 14px;
+	line-height: 14px;
+	font-weight: 700;
+	color: #444;
+	text-decoration: none;
+}
+li#nav-issue a:before,
+li#nav-archives a:before {
+	font-family: 'icomoon';
+	font-weight: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	margin-right: 5px;
+	position: relative;
+	top: 1px;
+}
+li#nav-issue a:before { content: "\e600"; }
+li#nav-archives a:before { content: "\e601"; }
 
-.header_stories .bottom a .subtitle_text, 
-.header_stories .bottom a .title_colon,
-.footer_stories.bottom a .subtitle_text,
-.footer_stories.bottom a .title_colon {display:none;}
-
-.header_stories.bottom li,
-.footer_stories.bottom li { height: 202px; overflow: hidden; }
-
-
-
-/* Header/Footer logo alternatives */
-#header .title.gray, h2#footer_logo.gray { background-image: url(static/img/pegasus-logo-fill-gray.png); }
-#header .title.black, h2#footer_logo.black { background-image: url(static/img/pegasus-logo-fill-black.png); }
-#header .title.peach, h2#footer_logo.peach { background-image: url(static/img/pegasus-logo-fill-peach.png); }
-#header .title.outline, h2#footer_logo.outline { background-image: url(static/img/pegasus-logo.png); }
+/* About Pegasus Magazine link */
+li#nav-about { float: right; }
+li#nav-about a {
+	font-family: Georgia, serif;
+	font-size: 12px;
+	color: #444;
+	font-style: italic;
+}
 
 
+/**************************
+ * Footer
+ **************************/
 
-/* Subpages */
-.subpage {}
+/* General */
+#footer-navigation { background-color: #222; }
+#footer-navigation,
+#footer-navigation p,
+#footer-navigation a {
+	font-family: 'Montserrat', serif;
+	font-size: 14px;
+	color: #fff;
+}
+#footer-navigation a { font-weight: 700; font-size: 18px; }
+#footer-navigation footer { padding: 60px 0; }
 
-body.subpage,
-.subpage #header,
-.subpage #footer {background-color:#FFF;}
+/* Footer logo/iPad btn positioning */
+#footer-navigation .footer-logo {
+	width: 100%;
+	display: block;
+	padding-bottom: 60px;
+	margin-top: 5px;
+}
+#footer-navigation .footer-logo a { margin: auto; }
+#footer-navigation .footer-logo.pull-left,
+#footer-navigation .footer-ipad-app {
+	display: block;
+	width: 48%;
+	padding-bottom: 60px;
+}
 
-.subpage #header .title,
-.subpage h2#footer_logo {background-image:url(static/img/pegasus-logo-fill-black.png);}
-.subpage #header .title { margin-left: 20px; }
+/* Footer navigation */
+#footer-navigation ul { clear: both; text-align: center; }
+#footer-navigation li { display: inline-block; }
+#footer-navigation li:before {
+	content: "|";
+	color: #5c5c5c;
+	padding: 0 8px 0 4px;
+	font-size: 18px;
+}
+#footer-navigation li:first-child:before { content: ""; }
 
-.subpage #header {color:#000;}
-.subpage #header .title {position:static;}
-.subpage #header .toggle_story_nav {display:none;}
-.subpage #header .issue {visibility: hidden;}
-.subpage #header .description {font-size:13px;}
-.subpage #header .description a,
-.subpage #header .description a:hover { color: #000; }
+/* Footer copyright line */
+#footer-navigation .copyright { text-align: center; padding-top: 40px; }
 
-.subpage #footer a {color:#000;}
-.subpage #footer h2, 
-.subpage #footer h3.issue-title, 
-.subpage .footer_navigation h2.widgettitle, 
-.subpage .footer_stories h2 {color:#000;}
-.subpage .footer_stories .title { color: #000; }
-.subpage #footer_navigation {padding-top:0;}
-.subpage #footer_navigation > .span12 {padding-top:30px}
 
-.subpage #footer #footer_hr { border-top: 1px solid #d7d7d7; }
+/**************************
+ * Subpages
+ **************************/
 
-.subpage #footer #issue-carousel .carousel-control i { background-color: #000; border-radius: 7px 7px 7px 7px; }
+.subpage #body_content { margin-top: 20px; margin-bottom: 40px; }

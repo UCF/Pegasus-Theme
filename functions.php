@@ -62,6 +62,24 @@ function get_featured_image_url($id) {
 
 
 /*
+ * Returns a relevant issue object depending on the page being viewed.
+ * i.e., if the $post obj passed is the front page or subpage, get the current issue;
+ * otherwise, get the current story issue
+ */
+function get_relevant_issue($post) {
+	if($post && $post->post_type == 'story') {
+		$issue = get_story_issue($post);
+	} else if ($post && $post->post_type == 'issue') {
+		$issue = $post;
+	} else {
+		$issue = get_current_issue();
+	}
+
+	return $issue;
+}
+
+
+/*
  * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
  */
@@ -71,11 +89,7 @@ function get_navigation_stories($issue=null) {
 	$exclude = array();
 
 	if(is_null($issue)) {
-		if($post->post_type == 'story') {
-			$issue = get_story_issue($post);
-		} else {
-			$issue = get_current_issue();
-		}
+		$issue = get_relevant_issue($post);
 	}
 
 	if(is_front_page() || $post->post_type == 'issue') {
