@@ -58,6 +58,13 @@
 	 **************************/
 
 	.container.wide > .row { width: 100%; }	
+
+
+	/**************************
+	 * Utility
+	 **************************/
+
+	.container-wide { margin-left: -20px; padding-left: 20px; padding-right: 20px; }
 	
 
 	/**************************
