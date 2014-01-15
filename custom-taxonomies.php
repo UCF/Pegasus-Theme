@@ -135,6 +135,7 @@ class Issues extends CustomTaxonomy
 		$add_new_item       = 'Add New Issue',
 		$new_item_name      = 'New Tag Issue',
 		
-		$hierarchical = True;
+		$hierarchical 		= True,
+		$query_var 			= 'issues';
 } // END class 
 ?>

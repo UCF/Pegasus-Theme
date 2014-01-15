@@ -9,6 +9,7 @@ require_once('shortcodes.php');         		# Per theme shortcodes
 
 //Add theme-specific functions here.
 
+
 /**
  * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
  * 
@@ -18,7 +19,6 @@ require_once('shortcodes.php');         		# Per theme shortcodes
  * @author Jo Greybill
  *  
 **/
-
 add_action("gform_field_input", "class_year_input", 10, 5);	
 function class_year_input($input, $field, $value, $lead_id, $form_id){
     if($field["cssClass"] == "alumninotes_class_year"){
@@ -62,7 +62,7 @@ function get_featured_image_url($id) {
 
 
 /*
- * Returns a relevant issue object depending on the page being viewed.
+ * Returns a relevant issue post object depending on the page being viewed.
  * i.e., if the $post obj passed is the front page or subpage, get the current issue;
  * otherwise, get the current story issue
  */
@@ -119,6 +119,7 @@ function get_theme_option($key) {
 	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
 }
 
+
 /*
  * Is the iPad app deployed or not
  */
@@ -129,7 +130,7 @@ function ipad_deployed() {
 
 
 /*
- * Returns current issue post type based on the Current Issue Cover
+ * Returns current issue post based on the Current Issue Cover
  * value in Theme Options
  */
 function get_current_issue() {
@@ -171,6 +172,40 @@ function issue_init() {
 	flush_rewrite_rules(false);
 }
 add_action('init', 'issue_init');
+
+
+/*
+ * Add featured images to RSS feeds as an <enclosure> node.
+ */
+function add_post_thumbnail_node() {
+	global $post;
+
+	if(has_post_thumbnail($post->ID)) {
+		$thumbnail = get_featured_image_url($post->ID);
+		echo('<enclosure url="'.$thumbnail.'" />');
+	}
+}
+add_action('rss2_item', 'add_post_thumbnail_node');
+
+
+/*
+ * Remove <content:encoded> node if it is enabled,
+ * Update limit on the number of posts displayed at once in a feed,
+ * and replace <description> node with the story's story_subtitle
+ * meta field content.
+ */
+update_option('rss_use_excerpt', 1);
+update_option('posts_per_rss', 50);
+
+function story_excerpt() {
+	global $post;
+	if ($post->post_type == 'story') {
+		return get_post_meta($post->ID, 'story_subtitle', TRUE);
+	}
+	else { return the_excerpt(); }
+}
+add_filter('the_excerpt_rss', 'story_excerpt');
+
 
 /*
  * Enqueue Issue or Story post type specific scripts
@@ -232,18 +267,20 @@ function enqueue_issue_story_scripts() {
 }
 add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
 
+
 /*
- * Get the issue associated with a story
+ * Get the issue post associated with a story
  */
 function get_story_issue($story) {
 	$issue_terms = wp_get_object_terms($story->ID, 'issues');
 	$issue_posts = get_posts(array('post_type'=>'issue', 'numberposts'=>-1));
 
-	# The term slug and post slugs are mirrors of each other
-	# So a term slug might be 2012-fall while the post slug is fall-2012
+	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
+	# to MATCH issue POST slugs!
 	foreach($issue_terms as $term) {
 		# reverse the term slug
-		$post_slug = implode('-', array_reverse(explode('-', $term->slug)));
+		#$post_slug = implode('-', array_reverse(explode('-', $term->slug)));
+		$post_slug = $term->slug;
 		foreach($issue_posts as $issue) {
 			if($post_slug == $issue->post_name) {
 				return $issue;
@@ -252,6 +289,7 @@ function get_story_issue($story) {
 	}
 	return False;
 }
+
 
 /*
  * Get the stories associated with an issue
@@ -281,6 +319,7 @@ function get_issue_stories($issue, $options=array()) {
 	));
 }
 
+
 /*
  * Check to see if some arbitary file exists (does not return a 404/500)
  * http://stackoverflow.com/questions/14699941/php-curl-check-for-file-existence-before-downloading
@@ -294,6 +333,7 @@ function curl_exists($url) {
 	}
 	return true;
 }
+
 
 /*
  * Get home page/story stylesheet and script markup for the header
