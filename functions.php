@@ -181,8 +181,10 @@ function add_post_thumbnail_node() {
 	global $post;
 
 	if(has_post_thumbnail($post->ID)) {
-		$thumbnail = get_featured_image_url($post->ID);
-		echo('<enclosure url="'.$thumbnail.'" />');
+		$thumbnail_id = get_post_thumbnail_id($post->ID);
+		$url = get_featured_image_url($post->ID);
+
+		echo('<enclosure url="'.$url.'" length="'.filesize(get_attached_file($thumbnail_id)).'" type="'.get_post_mime_type($thumbnail_id).'" />');
 	}
 }
 add_action('rss2_item', 'add_post_thumbnail_node');
@@ -205,6 +207,29 @@ function story_excerpt() {
 	else { return the_excerpt(); }
 }
 add_filter('the_excerpt_rss', 'story_excerpt');
+
+
+/**
+ * Get the URL of the feed for an issue.
+ * Accepts either an issue post object or an issue taxonomy term object.
+ **/
+function get_issue_feed_url($object) {
+	$slug = null;
+	$url = null;
+
+	if ($object->post_type == 'issue') {
+		$slug = $object->post_name;
+	}
+	else if ($object->taxonomy == 'issues') {
+		$slug = $object->slug;
+	}
+	
+	if ($slug !== null) {
+		$url = home_url('/issues/'.$slug.'/feed/?post_type=story');
+	}
+	return $url;
+
+}
 
 
 /*
