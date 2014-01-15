@@ -327,8 +327,12 @@ function get_issue_stories($issue, $options=array()) {
 	);
 	$options = array_merge($default_options, $options);
 
-	$issue_term_slug = implode('-', array_reverse(explode('-', $issue->post_name)));
+	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
+	# to MATCH issue POST slugs!
 	
+	#$issue_term_slug = implode('-', array_reverse(explode('-', $issue->post_name)));
+	$issue_term_slug = $issue->post_name;
+
 	return get_posts(array(
 		'post_type'   => 'story',
 		'numberposts' => $options['limit'],

@@ -1,12 +1,5 @@
 @media (max-width: 979px) {
 	/**************************
-	 * DEPRECATED - DO NOT USE
-	 **************************/
-
-	.container.wide > .row { width: 768px; }
-
-
-	/**************************
 	 * General
 	 **************************/
 
@@ -39,6 +32,19 @@
 	#footer-navigation li:before { font-size: 16px; }
 
 	#footer-navigation .copyright { font-size: 13px; padding-top: 30px; }
+
+
+	/**************************
+	 * DEPRECATED - DO NOT USE
+	 **************************/
+
+	.container.wide > .row { width: 768px; }
+
+	/* Footer */
+    #footer #footer_hr { width: 768px; }
+    
+    #footer_stories>div, #footer_navigation>div { margin-left: 15px; }
+    #footer_stories { padding-top: 10px; }
 }
 
 
@@ -49,17 +55,19 @@
 
 	/* About Pegasus Magazine link */
 	li#nav-about a { font-size: 11px; } 
-}
 
 
-@media (max-width: 767px) {	
 	/**************************
 	 * DEPRECATED - DO NOT USE
 	 **************************/
 
-	.container.wide > .row { width: 100%; }	
+	.footer_stories.bottom li { height: 170px; }
+    #footer_navigation ul li {margin-left:14px;}
+    #footer_navigation ul li a {font-size:13px;}
+}
 
 
+@media (max-width: 767px) {	
 	/**************************
 	 * Utility
 	 **************************/
@@ -121,6 +129,38 @@
 	.table.table-bordered tbody tr td {
 		border-left: 0;
 	}
+
+
+	/**************************
+	 * DEPRECATED - DO NOT USE
+	 **************************/
+
+	.container.wide > .row { width: 100%; }	
+
+	/* Footer story thumbnails */
+    .footer_stories { padding: 30px 0 0 0; }
+    .footer_stories .thumbnails { margin-left: -20px; }
+    .footer_stories .span3,
+    .footer_stories .span2,
+    .header_stories .span3 { width: 130px; height: 200px; overflow: hidden; margin-bottom: 5px; }
+    .footer_stories .title { margin-left: 0 !important; font-size: 13px !important; line-height: 15px !important; }
+    .footer_stories a span.subtitle_text { padding-top: 5px; }
+    .footer_stories a span.subtitle_text,
+    .footer_stories a span.title_colon { display: none; }
+    
+    /* Footer */
+    #footer #footer_hr { margin-left: 20px; width: 100%; }
+    #footer { margin-left: -20px; padding-right: 40px; }
+    #footer > .container > .row { margin-left: 20px; }
+    
+    #issue-carousel .item .issue-title { font-size: 18px; }
+    #issue-carousel .carousel-control { font-size: 12px; }
+    #issue-carousel .carousel-control,
+    #issue-carousel .carousel-control.left .arrow,
+    #issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+    
+    #footer_navigation ul { padding-top: 10px; }
+    #footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
 
 }
 
