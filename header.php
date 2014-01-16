@@ -55,15 +55,17 @@
 			</div>
 		</div>
 
-		<div class="container-wide pulldown-container pulldown-stories">
-			<span class="pulldown-title">In This Issue:</span>
-			<div class="items"></div>
-			<span class="error hidden">Stories could not be found at this time. Please try again later.</span>
-		</div>
-		<div class="container-wide pulldown-container pulldown-archives">
-			<span class="pulldown-title">Archives:</span>
-			<div class="items"></div>
-			<span class="error hidden">Previous issues could not be found at this time. Please try again later.</span>
+		<div id="pulldown">
+			<div class="container-wide pulldown-container pulldown-stories">
+				<span class="pulldown-title">In This Issue:</span>
+				<div class="items"></div>
+				<span class="error hidden">Stories could not be found at this time. Please try again later.</span>
+			</div>
+			<div class="container-wide pulldown-container pulldown-archives">
+				<span class="pulldown-title">Archives:</span>
+				<div class="items"></div>
+				<span class="error hidden">Previous issues could not be found at this time. Please try again later.</span>
+			</div>
 		</div>
 
 		<div class="container-wide" id="header-navigation">
@@ -84,6 +86,9 @@
 							<ul class="navigation">
 								<li id="nav-about">
 									<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
+								</li>
+								<li id="nav-mobile">
+									<a href="<?=get_issue_feed_url(get_relevant_issue($post))?>"></a>
 								</li>
 								<li id="nav-issue">
 									<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" data-pulldown-src="<?=get_issue_feed_url(get_relevant_issue($post))?>" data-type="xml" href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>

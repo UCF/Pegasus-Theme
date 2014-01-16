@@ -36,16 +36,43 @@ if (typeof jQuery != 'undefined'){
 						dataType = toggle.attr('data-type'); // Type of content to expect from contentSrc (see dataType values: http://api.jquery.com/jQuery.ajax/#data-types)
 					
 					// If another pulldown is active while a different pulldown is activated,
-					// deactivate any existing active pulldowns.
-					if ($('.pulldown-container.active').length > 0 && (!$(pulldownContainer).hasClass('active'))) {
+					// deactivate any existing active pulldowns and activate the new toggle
+					// and pulldown.
+					if ($('#pulldown.active').length > 0 && !$(pulldownContainer).hasClass('active')) {
 						$('.pulldown-container.active').removeClass('active');
 						$(pulldownContainer).addClass('active');
+						toggle.addClass('active');
 					}
-					// If the activated pulldown is not active, activate it.
+					// If the activated pulldown is not active, activate it and its toggle.
 					// Else, deactivate it.
-					else { $(pulldownContainer).toggleClass('active'); }
-				})
-			} 
+					// When mobile navigation is active, disable this functionality.
+					else if (!$('#nav-mobile a').hasClass('active')) {
+						$('#pulldown').toggleClass('active');
+						$(pulldownContainer).toggleClass('active');
+						toggle.toggleClass('active');
+					}
+				});
+			}
+
+			var mobileNavToggle = function() {
+				$('#nav-mobile a').on('click', function(e) {
+					e.preventDefault();
+
+					// Toggle the menu/close btn icons
+					$(this).toggleClass('active');
+
+					// Show Issue, Archive nav links; hide Pegasus logo
+					$('li#nav-issue, li#nav-archives, #header-navigation .header-logo')
+						.toggleClass('mobile-nav-visible');
+
+					// Activate first nav toggle if nothing's active
+					if ($('.pulldown-container.active').length < 1) {
+						$('.pulldown-container:first-child').addClass('active');
+					}
+
+					$('#pulldown').toggleClass('active');
+				});
+			}
 
 
 			/* Theme Specific Code Here */
@@ -59,6 +86,7 @@ if (typeof jQuery != 'undefined'){
 			removeExtraGformStyles();
 			legacySupport();
 			togglePulldown();
+			mobileNavToggle();
 
 
 			// Is this the user's first visit to the site?

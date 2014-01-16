@@ -6,7 +6,7 @@
 	.logo-large-white {
 		background-position: 0 -16px;
 		width: 147px;
-		height: 22px;
+		height: 23px;
 	}
 
 
@@ -73,7 +73,58 @@
 	 **************************/
 
 	.container-wide { margin-left: -20px; padding-left: 20px; padding-right: 20px; }
+
+
+	/**************************
+	 * Header
+	 **************************/
+
+	/* General - nav, nav ul */
+	#header-navigation ul { text-align: center; }
+
+	/* General - nav list items */
+	#header-navigation li { display: inline-block; }
+
+	/* Peg logo, Mobile nav, Issue, Archives list items */
+	li#nav-about,
+	li#nav-issue,
+	li#nav-archives,
+	#header-navigation .header-logo.mobile-nav-visible {
+		display: none;
+	}
+	li#nav-issue.mobile-nav-visible,
+	li#nav-archives.mobile-nav-visible {
+		display: inline-block;
+		float: none;
+	}
+	li#nav-issue.mobile-nav-visible { margin-left: -30px; }
+
+
+	/**************************
+	 * Footer
+	 **************************/
 	
+	#footer-navigation footer { padding: 40px 0 25px 0; }
+	#footer-navigation .footer-logo,
+	#footer-navigation .footer-logo.pull-left,
+	#footer-navigation .footer-logo a,
+	#footer-navigation .footer-ipad-app,
+	#footer-navigation .footer-ipad-app.pull-right {
+		float: left;
+		clear: both;
+	}
+	#footer-navigation .footer-logo,
+	#footer-navigation .footer-logo.pull-left {
+		padding-bottom: 20px;
+		width: 100%;
+	}
+
+	#footer-navigation ul { text-align: left; }
+	#footer-navigation li { width: 100%; line-height: 32px; }
+	#footer-navigation li:before { content: ""; padding: 0; }
+
+	#footer-navigation .copyright { text-align: left; }
+
 
 	/**************************
 	 * Shrinkable bootstrap tables for tablets/phones.

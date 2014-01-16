@@ -23,7 +23,7 @@ Version: v2.0.8
 	overflow: hidden;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 147px 83px; }
+	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 193px 111px; }
 }
 
 
@@ -53,7 +53,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
 /* iPad App button (use .sprite class) */
 .ipad-app-btn {
-	height: 40px;
+	height: 39px;
 	width: 135px;
 	background-position: 0 -72px;
 }
@@ -71,8 +71,15 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
  **************************/
 
 /* General */
-.pulldown-container { background-color: #f0f0f0; display: none; }
-.pulldown-container.active { display: block; }
+#pulldown,
+.pulldown-container {
+	display: none;
+}
+.pulldown-container { background-color: #f0f0f0; }
+#pulldown.active,
+.pulldown-container.active {
+	display: block;
+}
 
 
 
@@ -88,7 +95,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	position: relative;
 	z-index: 999;
 }
-#header-navigation header { height: 40px; }
+#header-navigation header { height: 40px; position: relative; }
 #header-navigation nav {
 	position: relative;
 	top: 0;
@@ -110,20 +117,31 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	position: absolute;
 	z-index: 2;
 	top: 12.5px;
-	left: 50%;
-	margin-left: -48.5px;
+	left: 0;
+	right: 0;
+	margin: auto;
 	width: 97px;
 	height: 15px;
 	background-position: 0 0;
 }
 #header-navigation .header-logo a { display: block; width: 100%; height: 100%; }
 
-/* Issue, Archives links */
+/* General - Mobile nav, Issue, Archives list items */
+li#nav-mobile,
 li#nav-issue,
 li#nav-archives {
 	float: left;
 }
 li#nav-issue { margin-right: 20px; }
+li#nav-mobile {
+	display: none;
+	width: 40px;
+	height: 40px;
+	text-align: left;
+}
+
+/* Mobile nav, Issue, Archives links */
+li#nav-mobile a,
 li#nav-issue a,
 li#nav-archives a {
 	font-family: 'Montserrat', sans-serif;
@@ -133,18 +151,42 @@ li#nav-archives a {
 	color: #444;
 	text-decoration: none;
 }
+li#nav-mobile a {
+	font-size: 18px;
+	line-height: 40px;
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+/* Mobile nav, Issue, Archives icons */
+li#nav-mobile a:before,
 li#nav-issue a:before,
 li#nav-archives a:before {
 	font-family: 'icomoon';
 	font-weight: normal;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+li#nav-issue a:before,
+li#nav-archives a:before {
 	margin-right: 5px;
 	position: relative;
 	top: 1px;
 }
+li#nav-mobile a:before { content: "\e602"; display: block; }
 li#nav-issue a:before { content: "\e600"; }
 li#nav-archives a:before { content: "\e601"; }
+
+/* Mobile nav (active) icon */
+li#nav-mobile a.active:before {
+	content: "×";
+	font-size: 24px;
+	font-weight: bold;
+	position: relative;
+	top: -2px;
+	font-family: Helvetica, sans-serif;
+}
 
 /* About Pegasus Magazine link */
 li#nav-about { float: right; }

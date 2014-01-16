@@ -10,7 +10,8 @@
 }
 
 .icon-magazine,
-.icon-drawer {
+.icon-drawer,
+.icon-reorder {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -29,4 +30,7 @@
 }
 .icon-drawer:before {
 	content: "\e601";
+}
+.icon-reorder:before {
+	content: "\e602";
 }
