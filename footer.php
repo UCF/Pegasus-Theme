@@ -44,33 +44,33 @@
 						                    </ul>
 						                </div>
 						            </div>
+			            	        <div class="row footer_stories bottom">
+			                            <div class="span12">
+			                                <ul class="thumbnails">
+			                                <?
+			                                foreach($bottom_stories as $story) {
+			                                ?>
+			                                    <li class="span2">
+			                                        <a href="<?=get_permalink($story->ID)?>">
+			                                            <div class="thumbnail">
+			                                                <img src="<?=get_featured_image_url($story->ID)?>" />
+			                                            </div>
+			                                            <div class="title">
+			                                                <span class="title_text">
+			                                                    <?=apply_filters('the_title', $story->post_title)?>
+			                                                    <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
+			                                                        <span class="title_colon">:</span> </span>
+			                                                        <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
+			                                                    <?php } else { ?></span><?php } ?>
+			                                            </div>
+			                                        </a>
+			                                    </li>
+			                                <? } ?>
+			                                </ul>
+			                            </div>        
+			            	        </div>
 						        </div>
 			                </div>
-		                </div>        
-			        </div>
-			        <div class="row footer_stories bottom">
-		                <div class="span12">
-		                    <ul class="thumbnails">
-		                    <?
-		                    foreach($bottom_stories as $story) {
-		                    ?>
-		                        <li class="span2">
-		                            <a href="<?=get_permalink($story->ID)?>">
-		                                <div class="thumbnail">
-		                                    <img src="<?=get_featured_image_url($story->ID)?>" />
-		                                </div>
-		                                <div class="title">
-		                                    <span class="title_text">
-		                                        <?=apply_filters('the_title', $story->post_title)?>
-		                                        <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-		                                            <span class="title_colon">:</span> </span>
-		                                            <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-		                                        <?php } else { ?></span><?php } ?>
-		                                </div>
-		                            </a>
-		                        </li>
-		                    <? } ?>
-		                    </ul>
 		                </div>        
 			        </div>
 			    </div>

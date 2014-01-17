@@ -77,7 +77,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	position: relative;
 }
 #pulldown { z-index: 4; margin-bottom: -10px; }
-.pulldown-container { background-color: #f0f0f0; z-index: 5; padding: 30px 0; }
+.pulldown-container { background-color: #f0f0f0 !important; z-index: 5; padding: 30px 0; }
 #pulldown.active,
 .pulldown-container.active {
 	display: block;
@@ -93,7 +93,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .pulldown-container ul li {
 	display: inline-block;
 	width: 200px;
-	margin-right: 20px;
+	margin-left: 20px;
 }
 
 
@@ -120,7 +120,8 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header-navigation li { display: block; line-height: 40px; position: relative; }
 #header-navigation li a:hover,
 #header-navigation li a:active,
-#header-navigation li a:focus {
+#header-navigation li a:focus,
+#header-navigation li a.active {
 	color: #d7a900;
 }
 

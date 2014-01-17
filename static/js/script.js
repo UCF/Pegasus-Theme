@@ -88,7 +88,7 @@ if (typeof jQuery != 'undefined'){
 
 					// Activate first nav toggle if nothing's active
 					if ($('.pulldown-container.active').length < 1) {
-						$('.pulldown-container:first-child').addClass('active');
+						$('.pulldown-container.pulldown-stories, li#nav-issue a').addClass('active');
 					}
 
 					$('#pulldown').toggleClass('active');
