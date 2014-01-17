@@ -85,6 +85,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
 .pulldown-container ul {
 	list-style-type: none;
+	width: 100%;
 	margin-left: 0;
 	display: block;
 	overflow-x: scroll;
@@ -95,6 +96,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	width: 200px;
 	margin-left: 20px;
 }
+.pulldown-container ul li:last-child { margin-right: 20px; }
 
 
 /**************************

@@ -242,16 +242,18 @@ if (typeof jQuery != 'undefined'){
 						// If this is an HTML document, assume data contains [post_type-list] output.
 						// Otherwise, assume it contains WordPress RSS feed content.
 						if (dataType == 'html') {
-							html = $(data);
-							items = html.find('ul[class*="-list"]');
+							var html = $(data);
+							var items = html.find('ul[class*="-list"]');
 
 							pulldownContainer
 								.find('.items')
-									.append(items);
+									.append(items)
+									.find('ul')
+										.kinetic({'cursor': 'pointer'});
 						}
 						else {
-							xml = $(data);
-							items = $(data).find('item');
+							var xml = $(data);
+							var items = $(data).find('item');
 
 							var html = '<ul>';
 
@@ -273,7 +275,9 @@ if (typeof jQuery != 'undefined'){
 
 							pulldownContainer
 								.find('.items')
-									.append(html);
+									.append(html)
+									.find('ul')
+										.kinetic({'cursor': 'pointer'});
 						}
 					}, dataType)
 						// If something goes wrong, display an error message
