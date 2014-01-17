@@ -1,6 +1,6 @@
 <?php disallow_direct_load('page.php');?>
 <?php get_header(); the_post();?>
-<div class="container">
+<section class="container">
 	<?php the_content(); ?>
-</div>
+</section>
 <?php get_footer();?>

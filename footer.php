@@ -4,12 +4,12 @@
 
 	if (is_before_fall_2013($post)) {
 	?>
-	
+
 		</div><!-- close #body_content or last .container -->
 
 		<?php $issue = get_relevant_issue($post); ?>
-		<div id="footer" class="container-wide">
-			<div class="container">
+		<div id="footer">
+			<div class="container wide">
 				<div class="row">
 	                <div class="span12">
 	                	<div id="issue-carousel" class="carousel">
@@ -46,35 +46,35 @@
 						            </div>
 						        </div>
 			                </div>
-			            </div>
-	                </div>        
-		        </div>
-		        <div class="row footer_stories bottom">
-	                <div class="span12">
-	                    <ul class="thumbnails">
-	                    <?
-	                    foreach($bottom_stories as $story) {
-	                    ?>
-	                        <li class="span2">
-	                            <a href="<?=get_permalink($story->ID)?>">
-	                                <div class="thumbnail">
-	                                    <img src="<?=get_featured_image_url($story->ID)?>" />
-	                                </div>
-	                                <div class="title">
-	                                    <span class="title_text">
-	                                        <?=apply_filters('the_title', $story->post_title)?>
-	                                        <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-	                                            <span class="title_colon">:</span> </span>
-	                                            <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-	                                        <?php } else { ?></span><?php } ?>
-	                                </div>
-	                            </a>
-	                        </li>
-	                    <? } ?>
-	                    </ul>
-	                </div>        
-		        </div>
-		    </div>
+		                </div>        
+			        </div>
+			        <div class="row footer_stories bottom">
+		                <div class="span12">
+		                    <ul class="thumbnails">
+		                    <?
+		                    foreach($bottom_stories as $story) {
+		                    ?>
+		                        <li class="span2">
+		                            <a href="<?=get_permalink($story->ID)?>">
+		                                <div class="thumbnail">
+		                                    <img src="<?=get_featured_image_url($story->ID)?>" />
+		                                </div>
+		                                <div class="title">
+		                                    <span class="title_text">
+		                                        <?=apply_filters('the_title', $story->post_title)?>
+		                                        <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
+		                                            <span class="title_colon">:</span> </span>
+		                                            <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
+		                                        <?php } else { ?></span><?php } ?>
+		                                </div>
+		                            </a>
+		                        </li>
+		                    <? } ?>
+		                    </ul>
+		                </div>        
+			        </div>
+			    </div>
+			</div>
 		</div>
 
 	<?php } else { ?>

@@ -201,17 +201,17 @@
     
     /* Footer */
     #footer #footer_hr { margin-left: 20px; width: 100%; }
-    #footer { margin-left: -20px; padding-right: 40px; }
-    #footer > .container > .row { margin-left: 20px; }
-    
-    #issue-carousel .item .issue-title { font-size: 18px; }
-    #issue-carousel .carousel-control { font-size: 12px; }
-    #issue-carousel .carousel-control,
-    #issue-carousel .carousel-control.left .arrow,
-    #issue-carousel .carousel-control.right .arrow { line-height: 30px; }
-    
-    #footer_navigation ul { padding-top: 10px; }
-    #footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
+	#footer { margin-left: -20px; padding-right: 40px; }
+	#footer > .container > .row { margin-left: 20px; }
+	
+	#issue-carousel .item .issue-title { font-size: 18px; }
+	#issue-carousel .carousel-control { font-size: 12px; }
+	#issue-carousel .carousel-control, 
+	#issue-carousel .carousel-control.left .arrow,
+	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+	
+	#footer_navigation ul { padding-top: 10px; }
+	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
 
 }
 
