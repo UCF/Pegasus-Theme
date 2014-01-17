@@ -25,22 +25,23 @@ if (typeof jQuery != 'undefined'){
 					$('link#style-responsive-css').remove();
 				}
 			}
-			
+
 			var togglePulldown = function() {
 				$('.pulldown-toggle').on('click', function(e) {
 					e.preventDefault();
 
 					var toggle = $(this),
-						pulldownContainer = toggle.attr('data-pulldown-container'), // The pulldown container to put content in
+						pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
 						contentSrc = toggle.attr('data-pulldown-src') || toggle.attr('href'), // Where to grab new pulldown contents from
 						dataType = toggle.attr('data-type'); // Type of content to expect from contentSrc (see dataType values: http://api.jquery.com/jQuery.ajax/#data-types)
 					
 					// If another pulldown is active while a different pulldown is activated,
 					// deactivate any existing active pulldowns and activate the new toggle
 					// and pulldown.
-					if ($('#pulldown.active').length > 0 && !$(pulldownContainer).hasClass('active')) {
-						$('.pulldown-container.active').removeClass('active');
-						$(pulldownContainer).addClass('active');
+					if ($('#pulldown.active').length > 0 && !pulldownContainer.hasClass('active')) {
+						$('.pulldown-container.active, .pulldown-toggle.active')
+							.removeClass('active');
+						pulldownContainer.addClass('active');
 						toggle.addClass('active');
 					}
 					// If the activated pulldown is not active, activate it and its toggle.
@@ -48,13 +49,33 @@ if (typeof jQuery != 'undefined'){
 					// When mobile navigation is active, disable this functionality.
 					else if (!$('#nav-mobile a').hasClass('active')) {
 						$('#pulldown').toggleClass('active');
-						$(pulldownContainer).toggleClass('active');
+						pulldownContainer.toggleClass('active');
 						toggle.toggleClass('active');
 					}
 				});
 			}
 
 			var mobileNavToggle = function() {
+				// Handle window resizing with mobile navigation active
+				$(window).on('resize', function() {
+					if (
+						(
+							$(this).width() > 767 && 
+							$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
+						) ||
+						(
+							$(this).width() < 768 &&
+							!$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
+						)
+					) {
+						$('#header-navigation ul, #header-navigation .header-logo')
+							.removeClass('mobile-nav-visible');
+						$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active, #nav-mobile a')
+							.removeClass('active');
+					}
+				});
+
+				// Handle link click
 				$('#nav-mobile a').on('click', function(e) {
 					e.preventDefault();
 
@@ -62,7 +83,7 @@ if (typeof jQuery != 'undefined'){
 					$(this).toggleClass('active');
 
 					// Show Issue, Archive nav links; hide Pegasus logo
-					$('li#nav-issue, li#nav-archives, #header-navigation .header-logo')
+					$('#header-navigation ul, #header-navigation .header-logo')
 						.toggleClass('mobile-nav-visible');
 
 					// Activate first nav toggle if nothing's active

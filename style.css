@@ -74,13 +74,27 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #pulldown,
 .pulldown-container {
 	display: none;
+	position: relative;
 }
-.pulldown-container { background-color: #f0f0f0; }
+#pulldown { z-index: 4; margin-bottom: -10px; }
+.pulldown-container { background-color: #f0f0f0; z-index: 5; padding: 30px 0; }
 #pulldown.active,
 .pulldown-container.active {
 	display: block;
 }
 
+.pulldown-container ul {
+	list-style-type: none;
+	margin-left: 0;
+	display: block;
+	overflow-x: scroll;
+	white-space: nowrap;
+}
+.pulldown-container ul li {
+	display: inline-block;
+	width: 200px;
+	margin-right: 20px;
+}
 
 
 /**************************
@@ -91,21 +105,19 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 #header-navigation {
 	background-color: #fff;
 	height: 40px;
-	overflow: hidden;
 	position: relative;
 	z-index: 999;
 }
-#header-navigation header { height: 40px; position: relative; }
 #header-navigation nav {
 	position: relative;
 	top: 0;
 	z-index: 1;
-	height: 100%;
+	height: 40px;
 }
 #header-navigation ul { height: 100%; }
 
 /* General - nav list items */
-#header-navigation li { display: block; line-height: 40px; }
+#header-navigation li { display: block; line-height: 40px; position: relative; }
 #header-navigation li a:hover,
 #header-navigation li a:active,
 #header-navigation li a:focus {
@@ -178,6 +190,22 @@ li#nav-mobile a:before { content: "\e602"; display: block; }
 li#nav-issue a:before { content: "\e600"; }
 li#nav-archives a:before { content: "\e601"; }
 
+/* Issue, Archives active styling */
+.pulldown-toggle.active:after {
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-bottom: 15px solid #fff;
+	position: absolute;
+	top: -15px;
+	z-index: 6;
+	content: "";
+}
+li#nav-issue a.active:after { left: 27px; }
+li#nav-archives a.active:after { left: 11px; }
+
 /* Mobile nav (active) icon */
 li#nav-mobile a.active:before {
 	content: "×";
@@ -203,7 +231,7 @@ li#nav-about a {
  **************************/
 
 /* General */
-#footer-navigation { background-color: #222; }
+#footer-navigation { background-color: #222; padding-top: 60px; padding-bottom: 60px; }
 #footer-navigation,
 #footer-navigation p,
 #footer-navigation a {
@@ -212,7 +240,6 @@ li#nav-about a {
 	color: #fff;
 }
 #footer-navigation a { font-weight: 700; font-size: 18px; }
-#footer-navigation footer { padding: 60px 0; }
 
 /* Footer logo/iPad btn positioning */
 #footer-navigation .footer-logo {
@@ -248,7 +275,7 @@ li#nav-about a {
  * Subpages
  **************************/
 
-.subpage #body_content { margin-top: 20px; margin-bottom: 40px; }
+.subpage main { margin-top: 20px; margin-bottom: 40px; }
 
 
 /**************************

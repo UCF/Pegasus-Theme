@@ -1,11 +1,12 @@
-		</div><!-- close #body_content or last body div -->
-		
-		<!--
-			If this is an issue cover or story from before Spring 2014,
-			use get_navigation_stories().
+	<?php
+	// Determine if this post requires pre-Spring 2014 footer markup
+	// and apply it if necessary.
 
-			Otherwise, use new [read-on] section output.
-		-->
+	if (is_before_fall_2013($post)) {
+	?>
+	
+		</div><!-- close #body_content or last .container -->
+
 		<?php $issue = get_relevant_issue($post); ?>
 		<div id="footer" class="container-wide">
 			<div class="container">
@@ -76,11 +77,20 @@
 		    </div>
 		</div>
 
+	<?php } else { ?>
 
-		<div class="container-wide" id="footer-navigation">
+		</main>
+
+		<aside>
+			List of more stories here...
+		</aside>
+
+	<?php } ?>
+
+		<footer class="container-wide" id="footer-navigation">
 			<div class="container">
 				<div class="row">
-					<footer class="span12">
+					<div class="span12">
 						<span class="footer-logo <?php if(ipad_deployed()) { ?>pull-left<?php } ?>">
 							<a class="sprite logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?=get_site_url()?>">
 								Pegasus Magazine
@@ -107,10 +117,10 @@
 						<p class="copyright">
 							&copy; <?=date('Y')?> University of Central Florida.
 						</p>
-					</footer>
+					</div>
 				</div>
 			</div>
-		</div>
+		</footer>
 	</body>
 	<?="\n".footer_()."\n"?>
 </html>

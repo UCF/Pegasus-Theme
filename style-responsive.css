@@ -92,19 +92,19 @@
 	#header-navigation .header-logo.mobile-nav-visible {
 		display: none;
 	}
-	li#nav-issue.mobile-nav-visible,
-	li#nav-archives.mobile-nav-visible {
+	#header-navigation ul.mobile-nav-visible li#nav-issue,
+	#header-navigation ul.mobile-nav-visible li#nav-archives {
 		display: inline-block;
 		float: none;
 	}
-	li#nav-issue.mobile-nav-visible { margin-left: -30px; }
+	#header-navigation ul li#nav-issue { margin-left: -30px; }
 
 
 	/**************************
 	 * Footer
 	 **************************/
 	
-	#footer-navigation footer { padding: 40px 0 25px 0; }
+	#footer-navigation { padding-top: 40px; padding-bottom: 25px; }
 	#footer-navigation .footer-logo,
 	#footer-navigation .footer-logo.pull-left,
 	#footer-navigation .footer-logo a,

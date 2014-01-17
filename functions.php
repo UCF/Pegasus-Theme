@@ -460,4 +460,28 @@ function protocol_relative_attachment_url($url) {
 	return $url;
 }
 add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
+
+
+/*
+ * Whether or not the current story or issue is from 
+ * Fall 2013 or earlier (whether it requires deprecated markup
+ * for backwards compatibility.)
+ */
+function is_before_fall_2013($post) {
+	$old_issues = array('fall-2013', 'summer-2013', 'spring-2013', 'fall-2012', 'summer-2012');
+	$slug = null;
+
+	if ($post->post_type == 'issue') {
+		$slug = $post->post_name;
+	}
+	else if ($post->post_type == 'story') {
+		$slug = get_story_issue($post)->post_name;
+	}
+
+	if ($slug !== null && in_array($slug, $old_issues)) {
+		return true;
+	}
+	return false;
+}
+
 ?>

@@ -55,7 +55,7 @@
 			</div>
 		</div>
 
-		<div id="pulldown">
+		<aside id="pulldown">
 			<div class="container-wide pulldown-container pulldown-stories">
 				<span class="pulldown-title">In This Issue:</span>
 				<div class="items"></div>
@@ -66,12 +66,12 @@
 				<div class="items"></div>
 				<span class="error hidden">Previous issues could not be found at this time. Please try again later.</span>
 			</div>
-		</div>
+		</aside>
 
-		<div class="container-wide" id="header-navigation">
+		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
-					<header>
+					<nav class="span12" role="navigation">
 						<?php if ($post->post_type == 'issue') { ?>
 						<h1 class="sprite header-logo">
 							<a href="<?=get_site_url()?>">Pegasus</a>
@@ -82,25 +82,27 @@
 						</span>
 						<?php } ?>
 
-						<nav class="span12" role="navigation">
-							<ul class="navigation">
-								<li id="nav-about">
-									<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
-								</li>
-								<li id="nav-mobile">
-									<a href="<?=get_issue_feed_url(get_relevant_issue($post))?>"></a>
-								</li>
-								<li id="nav-issue">
-									<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" data-pulldown-src="<?=get_issue_feed_url(get_relevant_issue($post))?>" data-type="xml" href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>
-								</li>
-								<li id="nav-archives">
-									<a class="pulldown-toggle" data-pulldown-container=".pulldown-archives" data-type="html" href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
-								</li>
-							</ul>
-						</nav>
-					</header>
+						<ul class="navigation">
+							<li id="nav-about">
+								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
+							</li>
+							<li id="nav-mobile">
+								<a href="<?=get_issue_feed_url(get_relevant_issue($post))?>"></a>
+							</li>
+							<li id="nav-issue">
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" data-pulldown-src="<?=get_issue_feed_url(get_relevant_issue($post))?>" data-type="xml" href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>
+							</li>
+							<li id="nav-archives">
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-archives" data-type="html" href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+							</li>
+						</ul>
+					</nav>
 				</div>
 			</div>
-		</div>
+		</header>
 
+		<?php if (is_before_fall_2013($post)) { ?>
 		<div class="container" id="body_content">
+		<?php } else { ?>
+		<main>
+		<?php } ?>
