@@ -60,11 +60,21 @@
 				<span class="pulldown-title">In This Issue:</span>
 				<div class="items"></div>
 				<span class="error hidden">Stories could not be found at this time. Please try again later.</span>
+				<div class="controls">
+					<a class="close" href="#">×</a>
+					<a class="backward" href="#"> &laquo; </a>
+					<a class="forward" href="#"> &raquo; </a>
+				</div>
 			</div>
 			<div class="container-wide pulldown-container pulldown-archives">
 				<span class="pulldown-title">Archives:</span>
 				<div class="items"></div>
 				<span class="error hidden">Previous issues could not be found at this time. Please try again later.</span>
+				<div class="controls">
+					<a class="close" href="#">×</a>
+					<a class="backward" href="#"> &laquo; </a>
+					<a class="forward" href="#"> &raquo; </a>
+				</div>
 			</div>
 		</aside>
 

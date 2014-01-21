@@ -115,7 +115,7 @@
 						wp_nav_menu( $defaults );
 						?>
 						<p class="copyright">
-							&copy; <?=date('Y')?> University of Central Florida.
+							&copy; <?=date('Y')?> University of Central Florida
 						</p>
 					</div>
 				</div>
