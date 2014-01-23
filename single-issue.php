@@ -13,7 +13,15 @@
 		}
 	}
 	else {
-		the_content();
+		switch (get_post_meta($post->ID, 'issue_template', TRUE)) {
+			case 'default':
+				require_once('templates/issue/default.php');
+				break;
+			case 'custom':
+			default:
+				the_content();
+				break;
+		}
 	}
 ?>
 <?php get_footer();?>

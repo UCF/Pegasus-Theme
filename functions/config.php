@@ -55,19 +55,30 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
 define('DEV_MODE', true); # Never leave this activated in a production environment!
 
 /**
- * List of available fonts. Structure array as key = font name, val = path to the font. 
+ * Lists of available fonts. Structure array as key = font name, val = path to the font. 
  * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
  *
- * All fonts in this list should have a single reference file, which points to all 
+ * $theme_available_fonts_array contains all fonts available to a custom story or issue.
+ * $admin_available_fonts_array contains fonts available to the WP admin area; generally,
+ * this should consist of font families available to default story/issue templates.
+ *
+ * All fonts in these lists should have a single reference file, which points to all 
  * available font file formats.
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
-define('THEME_AVAILABLE_FONTS', serialize(array(
+$theme_available_fonts_array = array(
 	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
 	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
 	'Aleo'			=> THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Visitor'		=> THEME_FONT_URL . '/visitor/stylesheet.css',
-))); 
+	'Montserrat'	=> THEME_FONT_URL . '/montserrat/stylesheet.css',
+);
+$admin_available_fonts_array = array(
+	'Aleo'					=> THEME_FONT_URL . '/aleo/stylesheet.css',
+	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
+	'Open Sans Condensed'	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+);
+define('THEME_AVAILABLE_FONTS', serialize($theme_available_fonts_array)); 
 
 
 /**
@@ -224,15 +235,19 @@ Config::$links = array(
 
 
 Config::$styles = array(
-	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
-	array('name' => 'font-montserrat', 'src' => 'http://fonts.googleapis.com/css?family=Montserrat:400,700'),
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
+	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
+	array('name' => 'font-montserrat', 'src' => $theme_available_fonts_array['Montserrat']),
 	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
 	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
 	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
 	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
 	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
+foreach ($admin_available_fonts_array as $key => $val) {
+	$name = 'admin-font-'.sanitize_title($key);
+	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));    
+}
 
 
 Config::$scripts = array(

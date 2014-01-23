@@ -60,3 +60,18 @@ body.login #login h1 a .hide{display: block;}
 #theme-help table {border-collapse:collapse;}
 #theme-help table th, #theme-help table td {border:1px solid #333;padding:5px;}
 #theme-help table th {background-color:#f1f1f1;}
+
+
+select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; }
+select[id*="_default_font"] option[value="aleo-light"] { font-family: "AleoLight", serif; }
+select[id*="_default_font"] option[value="aleo-regular"] { font-family: "AleoRegular", serif; }
+select[id*="_default_font"] option[value="aleo-bold"] { font-family: "AleoBold", serif; }
+select[id*="_default_font"] option[value="georgia-regular"] { font-family: "Georgia", serif; }
+select[id*="_default_font"] option[value="montserrat-regular"] { font-family: "MontserratRegular", sans-serif; }
+select[id*="_default_font"] option[value="montserrat-bold"] { font-family: "MontserratBold", sans-serif; }
+select[id*="_default_font"] option[value="arial-black"] { font-family: "Arial Black", sans-serif; }
+select[id*="_default_font"] option[value="open-sans-condensed-bold"] { font-family: "OpenSansCondensedBold", sans-serif; }
+select[id*="_default_font"] option[value="helvetica-neue-bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
+
+
+

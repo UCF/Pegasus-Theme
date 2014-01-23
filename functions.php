@@ -365,7 +365,7 @@ function curl_exists($url) {
 
 
 /*
- * Get home page/story stylesheet and script markup for the header
+ * Get home page/story stylesheet markup for the header
  *
  * @return string
  * @author Jo Greybill
@@ -431,7 +431,7 @@ function output_header_markup($post) {
 	}
 
 	// Issue font declarations (custom templates)
-	if ($post->post_type == 'issue' && uses_custom_template($post)) {
+	if ($post->post_type == 'issue' && !uses_custom_template($post)) {
 		$font = get_template_title_styles($post);
 
 		if ($font['url']) {
@@ -584,8 +584,8 @@ function uses_custom_template($post) {
 
 
 /**
- * Get a non-custom story's title font styling specs, based on 
- * the story's selected title font family and color.
+ * Get a non-custom story or issue's title font styling specs, based on 
+ * the story/issue's selected title font family and color.
  *
  * @return array
  **/

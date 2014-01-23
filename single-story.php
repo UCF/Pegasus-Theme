@@ -19,7 +19,18 @@
 		}
 	}
 	else {
-		the_content();
+		switch (get_post_meta($post->ID, 'story_template', TRUE)) {
+			case 'default':
+				require_once('templates/story/default.php');
+				break;
+			case 'gallery':
+				require_once('templates/story/gallery.php');
+				break;
+			case 'custom':
+			default:
+				the_content();
+				break;
+		}
 	}
 ?>
 <?php get_footer();?>
