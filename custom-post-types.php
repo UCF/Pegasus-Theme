@@ -485,40 +485,79 @@ class Story extends CustomPostType {
 		$prefix = $this->options('name').'_';
 		$fields = array(
 			array(
+				'name' => 'Story Template',
+				'desc' => 'The type of template to use for this story.  Stories <em>not</em> set to "Custom" use a premade template and can be created/edited 
+							via the WYSIWYG editor above.',
+				'id'   => $prefix.'template',
+				'type'    => 'select',
+				'options' => array(
+					'Default (generic story)' => 'default',
+					'Photo gallery' => 'gallery',
+					'Custom story (requires custom CSS/JS)' => 'custom',
+				)
+			),
+			array(
 				'name' => 'Story Subtitle',
 				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
 				'id'   => $prefix.'subtitle',
 				'type' => 'text',
 			),
 			array(
-				'name' => 'Stylesheet',
+				'name' => '<strong>Default Template:</strong> Header Font Family',
+				'desc' => 'The font family to use for title lines in this story.  Font sizes/line heights are determined automatically based on the font selected.',
+				'id'   => $prefix.'default_font',
+				'type'    => 'select',
+				'options' => array(
+					'Archer Light (web font alternative)' => 'aleo-light',
+					'Archer Regular (web font alternative)' => 'aleo-regular',
+					'Archer Bold (web font alternative)' => 'aleo-bold',
+					'Georgia Regular' => 'georgia-regular',
+					'Gotham Regular (web font alternative)' => 'montserrat-regular',
+					'Gotham Bold (web font alternative)' => 'montserrat-bold',
+					'Gotham Black (web font alternative)' => 'arial-black',
+					'Gotham Condensed Bold (web font alternative)' => 'open-sans-condensed-bold',
+					'Helvetica Neue Bold' => 'helvetica-neue-bold',
+				),
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Color',
+				'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
+				'id'   => $prefix.'default_color',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Custom Story Template:</strong> Stylesheet',
 				'desc' => '',
 				'id'   => $prefix.'stylesheet',
 				'type' => 'file',
 			),
 			array(
-				'name' => 'JavaScript File',
+				'name' => '<strong>Custom Story Template:</strong> JavaScript File',
 				'desc' => '',
 				'id'   => $prefix.'javascript',
 				'type' => 'file',
 			),
 			array(
-				'name' => 'Font Includes',
-				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the THEME_AVAILABLE_FONTS constant (functions/config.php).  Fonts should be referenced by name and be comma-separated.',
+				'name' => '<strong>Custom Story Template:</strong> Font Includes',
+				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the THEME_AVAILABLE_FONTS constant 
+							(functions/config.php).  Fonts should be referenced by name and be comma-separated.',
 				'id'   => $prefix.'fonts',
 				'type' => 'textarea',
-			),
-			array(
-				'name' => 'Home Page Feature',
-				'desc' => 'Check this box if this story is a main featured story on the home page.  It will not appear as a duplicate story in the footer on the home page if this box is checked.',
-				'id'   => $prefix.'isfeatured',
-				'type' => 'checkbox',
 			),
 		);
 		if (DEV_MODE == true) {
 			array_unshift($fields, array(
-				'name' => 'Developer Mode: Directory URL',
-				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.  Note that if there is any content in the WYSIWYG editor, or if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
+				'name' => '<strong>Developer Mode:</strong> Directory URL',
+				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash, relative to <code>/dev/</code>).  Properly named html, css and javascript files 
+							(story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.<br/><br/>
+							<strong>NOTE:</strong>
+							<ul style="list-style: disc !important;">
+							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
+							<li>Any files uploaded to the stylesheet/javascript fields below take priority over the dev directory\'s contents.</li>
+							<li>The Story Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.  
+								<strong>Story templates still take effect in Developer Mode.</strong></li>
+							</ul>
+							<code>'.THEME_DEV_URL.'/...</code>',
 				'id'   => $prefix.'dev_directory',
 				'type' => 'text',
 			));
@@ -574,50 +613,124 @@ class Issue extends CustomPostType {
 		}
 		$fields = array(
 			array(
-				'name' => 'Home Page Stylesheet',
-				'desc' => 'Stylesheet specifically for the home page.',
-				'id'   => $prefix.'stylesheet_home',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'Home Page JavaScript File',
-				'desc' => 'JavaScript file that runs exclusively on the home page for this issue.',
-				'id'   => $prefix.'javascript_home',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'Issue-Wide Stylesheet',
-				'desc' => 'Stylesheet that will affect all stories for this issue.',
-				'id'   => $prefix.'stylesheet_issue',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'Issue-Wide JavaScript File',
-				'desc' => 'JavaScript file that runs on all stories for this issue, including the home page.',
-				'id'   => $prefix.'javascript_issue',
-				'type' => 'file',
-			),
-			array(
 				'name'    => 'Cover Story',
 				'desc'    => '',
 				'id'      => $prefix.'cover_story',
 				'type'    => 'select',
 				'options' => $story_options
-			)
-		);
-		if (DEV_MODE == true) {
-			array_unshift($fields, array(
-				'name' => 'Developer Mode: Issue\'s Home Page Asset Directory',
-				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.  Note that if there is any content in the WYSIWYG editor, or if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
-				'id'   => $prefix.'dev_home_asset_directory',
+			),
+			array(
+				'name' => 'Issue Template',
+				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified 
+							via the "Default" options below.',
+				'id'   => $prefix.'template',
+				'type'    => 'select',
+				'options' => array(
+					'Default' => 'default',
+					'Custom (requires custom CSS/JS)' => 'custom',
+				)
+			),
+
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Family',
+				'desc' => 'The font family to use for primary title lines in this issue cover.',
+				'id'   => $prefix.'default_font',
+				'type' => 'select',
+				'options' => array(
+					'Archer Light (web font alternative)' => 'aleo-light',
+					'Archer Regular (web font alternative)' => 'aleo-regular',
+					'Archer Bold (web font alternative)' => 'aleo-bold',
+					'Georgia Regular' => 'georgia-regular',
+					'Gotham Regular (web font alternative)' => 'montserrat-regular',
+					'Gotham Bold (web font alternative)' => 'montserrat-bold',
+					'Gotham Black (web font alternative)' => 'arial-black',
+					'Gotham Condensed Bold (web font alternative)' => 'open-sans-condensed-bold',
+					'Helvetica Neue Bold' => 'helvetica-neue-bold',
+				),
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Color',
+				'desc' => 'Color for h1 title.  Hex values preferred.',
+				'id'   => $prefix.'default_color',
 				'type' => 'text',
 			),
 			array(
-				'name' => 'Developer Mode: Issue-Wide Asset Directory',
-				'desc' => 'Directory to this issue\'s issue-wide assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files (period-year.css/js) in this directory will be automatically referenced for the issue\'s home page and stories if they are available.  Note that if there are files uploaded to the stylesheet/javascript file fields below, those files/content will be used instead of the dev directory\'s contents.<br/><code>'.THEME_DEV_URL.'/...</code>',
-				'id'   => $prefix.'dev_issue_asset_directory',
+				'name' => '<strong>Default Template:</strong> Header Font Size (Desktop)',
+				'desc' => 'Font size for h1 title at desktop sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
+				'id'   => $prefix.'default_fontsize_d',
 				'type' => 'text',
-			)
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Size (Tablet)',
+				'desc' => 'Font size for h1 title at tablet sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
+				'id'   => $prefix.'default_fontsize_t',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Size (Mobile)',
+				'desc' => 'Font size for h1 title at mobile sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
+				'id'   => $prefix.'default_fontsize_m',
+				'type' => 'text',
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Header Font Text Align',
+				'desc' => 'Alignment of the h1 title within its container.',
+				'id'   => $prefix.'default_textalign',
+				'type' => 'select',
+				'options' => array(
+					'Left' => 'left',
+					'Center' => 'center',
+					'Right' => 'right',
+				),
+			),
+
+			array(
+				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
+				'desc' => 'Stylesheet specifically for the issue cover/home page.',
+				'id'   => $prefix.'stylesheet_home',
+				'type' => 'file',
+			),
+			array(
+				'name' => '<strong>Custom Issue Template:</strong> Home Page JavaScript File',
+				'desc' => 'JavaScript file that runs exclusively on the issue cover/home page for this issue.',
+				'id'   => $prefix.'javascript_home',
+				'type' => 'file',
+			),
+
+			array(
+				'name' => '<strong>DEPRECATED:</strong> Issue-Wide Stylesheet',
+				'desc' => '<strong><em>This feature is deprecated as of Spring 2014 and is left in place for backward compatibility.
+							This field will have no effect on issues or stories from Spring 2014 onward.</em></strong><br/>
+							Stylesheet that will affect all stories for this issue.',
+				'id'   => $prefix.'stylesheet_issue',
+				'type' => 'file',
+			),
+			array(
+				'name' => '<strong>DEPRECATED:</strong> Issue-Wide JavaScript File',
+				'desc' => '<strong><em>This feature is deprecated as of Spring 2014 and is left in place for backward compatibility.
+							This field will have no effect on issues or stories from Spring 2014 onward.</em></strong><br/>
+							JavaScript file that runs on all stories for this issue, including the home page.',
+				'id'   => $prefix.'javascript_issue',
+				'type' => 'file',
+			),
+		);
+
+		if (DEV_MODE == true) {
+			array_unshift($fields, array(
+				'name' => '<strong>Developer Mode:</strong> Issue\'s Home Page Asset Directory',
+				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files 
+							(home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
+							<strong>NOTE:</strong>
+							<ul style="list-style: disc !important;">
+							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
+							<li>Any files uploaded to the stylesheet/javascript fields below take priority over the dev directory\'s contents.</li>
+							<li>The Issue Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.  
+								<strong>Issue templates still take effect in Developer Mode.</strong></li>
+							</ul>
+							<code>'.THEME_DEV_URL.'/...</code>',
+				'id'   => $prefix.'dev_home_asset_directory',
+				'type' => 'text',
+				)
 			);
 		}
 		return $fields;

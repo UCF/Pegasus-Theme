@@ -372,8 +372,103 @@ function curl_exists($url) {
  */
 function output_header_markup($post) {
 	$output = '';
-	// Issue-wide stylesheet (on home page)
-	if( is_home() || $post->post_type == 'issue' ) {		
+
+	// Page stylesheet
+	if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) {
+		$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
+	}
+
+	// Story font declarations (default and custom templates)
+	if ($post->post_type == 'story') {
+		// Custom stories
+		if (uses_custom_template($post)) {
+			$story_fonts = get_post_meta($post->ID, 'story_fonts', TRUE);
+			if (!empty($story_fonts)) {
+				$fonts = explode(',', $story_fonts);
+				$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
+				foreach ($fonts as $font) { 
+					trim($font);
+					if (array_key_exists($font, $available_fonts)) {
+						$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
+					}
+				} 
+			}
+		// Default template stories
+		} else {
+			$font = get_template_title_styles($post);
+
+			if ($font['url']) {
+				$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
+			}
+
+			$output .= '<style type="text/css">';
+			$output .= '
+				main h1,
+				main h2,
+				main h3,
+				main h4,
+				main h5,
+				main h6 {
+					font-family: '.$font['family'].';
+					font-size: '.$font['size-desktop'].';
+					line-height: '.$font['size-desktop'].';
+					font-weight: '.$font['weight'].';
+				}
+				main h1,
+				main h2,
+				main h3,
+				main h4,
+				main h5,
+				main h6,
+				main blockquote,
+				main .lead::first-letter,
+				main .lead:first-letter {
+					color: '.$font['color'].';
+				}
+			';
+			$output .= '</style>';
+		}
+	}
+
+	// Issue font declarations (custom templates)
+	if ($post->post_type == 'issue' && uses_custom_template($post)) {
+		$font = get_template_title_styles($post);
+
+		if ($font['url']) {
+			$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
+		}
+
+		$output .= '<style type="text/css">';
+		$output .= '
+			main h1 {
+				color: '.$font['color'].';
+				font-size: '.$font['size-desktop'].';
+				line-height: '.$font['size-desktop'].';
+				text-align: '.$font['textalign'].';
+			}
+			main h1,
+			main h2 {
+				font-family: '.$font['family'].';
+				font-weight: '.$font['weight'].';
+			}
+			@media (max-width: 979px) {
+				main h1 {
+					font-size: '.$font['size-tablet'].';
+					line-height: '.$font['size-tablet'].';
+				}
+			}
+			@media (max-width: 767px) {	
+				main h1 {
+					font-size: '.$font['size-mobile'].';
+					line-height: '.$font['size-mobile'].';
+				}
+			}
+		';
+		$output .= '</style>';
+	}
+
+	// DEPRECATED:  Issue-wide stylesheet (on home/issue cover page)
+	if( (is_home() || $post->post_type == 'issue') && (is_before_fall_2013($post)) ) {		
 		if ( ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False ) {
 			$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
 		}
@@ -384,37 +479,8 @@ function output_header_markup($post) {
 			}
 		}
 	}
-	// Home stylesheet
-	if ( is_home() || $post->post_type == 'issue' ) {
-		if (( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) {
-			$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
-		}
-		elseif ( DEV_MODE == true && ($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== NULL ) {
-			$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
-			if (curl_exists($dev_home_stylesheet_url)) {
-				$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
-			}
-		}
-	}
-	// Story fonts
-	if ( 
-		$post->post_type == 'story' && 
-		get_post_meta($post->ID, 'story_fonts', TRUE) && 
-		get_post_meta($post->ID, 'story_fonts', TRUE) !== '' ) 
-		{
-
-		$fonts = explode(',', get_post_meta($post->ID, 'story_fonts', TRUE));
-		$available_fonts = unserialize(THEME_AVAILABLE_FONTS);
-		foreach ($fonts as $font) { 
-			trim($font);
-			if (array_key_exists($font, $available_fonts)) {
-				$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
-			}
-		} 
-
-	}
-	// Issue-wide stylesheet (on story)
-	if( $post->post_type == 'story' ) {
+	// DEPRECATED:  Issue-wide stylesheet (on story)
+	if( $post->post_type == 'story' && is_before_fall_2013($post) ) {
 		if ( ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) {
 			$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
 		}
@@ -429,8 +495,22 @@ function output_header_markup($post) {
 				}
 		}
 	}
-	// Story stylesheet
-	if( $post->post_type == 'story' ) {
+
+	// Custom issue page-specific stylesheet
+	if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
+		if (( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) {
+			$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
+		}
+		elseif ( DEV_MODE == true && ($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== NULL ) {
+			$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+			if (curl_exists($dev_home_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
+			}
+		}
+	}
+	
+	// Custom story stylesheet
+	if( $post->post_type == 'story' && uses_custom_template($post) ) {
 		if ( ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False ) {
 			$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
 		}
@@ -441,10 +521,9 @@ function output_header_markup($post) {
 			}
 		}
 	}
-	// Page stylesheet
-	if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) {
-		$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
-	}
+
+	// Default template styling
+
 	
 	return $output;
 }
@@ -482,6 +561,112 @@ function is_before_fall_2013($post) {
 		return true;
 	}
 	return false;
+}
+
+
+/**
+ * Whether or not the current story or issue requires
+ * a custom template (is from Fall 2013 or before, or 
+ * has specifically designated a custom template)
+ **/
+function uses_custom_template($post) {
+	$meta_field = $post->post_type.'_template';
+	$template = get_post_meta($post->ID, $meta_field, TRUE);
+
+	if (
+		($template && !empty($template) && $template == 'custom') ||
+		($template && empty($template) && is_before_fall_2013($post))
+	) {
+		return true;
+	}
+	return false;
+}
+
+
+/**
+ * Get a non-custom story's title font styling specs, based on 
+ * the story's selected title font family and color.
+ *
+ * @return array
+ **/
+function get_template_title_styles($post) {
+	$theme_available_fonts = unserialize(THEME_AVAILABLE_FONTS);
+
+	// Capture any available inputted values
+	$post_meta = array(
+		'family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
+		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE),
+	);
+	if ($post->post_type == 'issue') {
+		$post_meta['size-desktop'] = get_post_meta($post->ID, 'issue_default_fontsize_d', TRUE);
+		$post_meta['size-tablet'] = get_post_meta($post->ID, 'issue_default_fontsize_t', TRUE);
+		$post_meta['size-mobile'] = get_post_meta($post->ID, 'issue_default_fontsize_m', TRUE);
+		$post_meta['textalign'] = get_post_meta($post->ID, 'issue_default_textalign', TRUE);
+	}
+
+	// Set defaults for when set values are unavailable.
+	// Override with inputted values when they are set.
+	$styles = array(
+		'url' => null, // Ref to single font stylesheet in THEME_AVAILABLE_FONTS
+		'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
+		'color' => '#222',
+		'weight' => 'normal',
+		'size-desktop' => '36px',
+		'size-tablet' => '30px',
+		'size-mobile' => '24px',
+		'textalign' => 'left',
+	);
+
+	foreach ($post_meta as $key => $val) {
+		if (!empty($val)) {
+			$styles[$key] = $val;
+		}
+	}
+	switch ($post_meta['family']) {
+		case 'aleo-light':
+			$styles['url'] = $theme_available_fonts['Aleo'];
+			$styles['family'] = '"AleoLight", serif';
+			// Font sizes for special fonts must be handled here...
+			/*
+			if ($post->post_type == 'story') {
+				$styles['size-desktop'] = '';
+				...
+			}
+			*/
+			break;
+		case 'aleo-regular':
+			$styles['url'] = $theme_available_fonts['Aleo'];
+			$styles['family'] = '"AleoRegular", serif';
+			break;
+		case 'aleo-bold':
+			$styles['url'] = $theme_available_fonts['Aleo'];
+			$styles['family'] = '"AleoBold", serif';
+			break;
+		case 'georgia-regular':
+			$styles['family'] = 'Georgia, serif';
+			break;
+		case 'montserrat-regular':
+			$styles['url'] = $theme_available_fonts['Montserrat'];
+			$styles['family'] = '"MontserratRegular", sans-serif';
+			break;
+		case 'montserrat-bold':
+			$styles['url'] = $theme_available_fonts['Montserrat'];
+			$styles['family'] = '"MontserratBold", sans-serif';
+			break;
+		case 'arial-black':
+			$styles['family'] = '"Arial Black", sans-serif';
+			break;
+		case 'open-sans-condensed-bold':
+			$styles['url'] = $theme_available_fonts['Open Sans Condensed'];
+			$styles['family'] = '"OpenSansCondensedBold", sans-serif';
+			break;
+		case 'helvetica-neue-bold':
+			$styles['weight'] = 'bold';
+		default:
+			break;
+	}
+
+	return $styles;
 }
 
 ?>
