@@ -54,31 +54,110 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
 
 define('DEV_MODE', true); # Never leave this activated in a production environment!
 
+
 /**
- * Lists of available fonts. Structure array as key = font name, val = path to the font. 
+ * List of issue slugs that are from Fall 2013 or prior.
+ **/
+define('FALL_2013_OR_OLDER', serialize(array(
+	'fall-2013',
+	'summer-2013',
+	'spring-2013',
+	'fall-2012',
+	'summer-2012'
+)));
+
+
+/**
+ * Lists of available fonts for custom stories.
+ * Structure array as key = font name, val = path to the font. 
  * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
- *
- * $theme_available_fonts_array contains all fonts available to a custom story or issue.
- * $admin_available_fonts_array contains fonts available to the WP admin area; generally,
- * this should consist of font families available to default story/issue templates.
  *
  * All fonts in these lists should have a single reference file, which points to all 
  * available font file formats.
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
-$theme_available_fonts_array = array(
+$custom_available_fonts_array = array(
 	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
 	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
 	'Aleo'			=> THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Visitor'		=> THEME_FONT_URL . '/visitor/stylesheet.css',
 	'Montserrat'	=> THEME_FONT_URL . '/montserrat/stylesheet.css',
 );
-$admin_available_fonts_array = array(
-	'Aleo'					=> THEME_FONT_URL . '/aleo/stylesheet.css',
-	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
-	'Open Sans Condensed'	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
+
+
+/**
+ * A base fallback set of font styles for default template titles.
+ *
+ * These options will be overridden per-font, as defined in
+ * $template_font_styles_array, then by per-post meta values, if available.
+ **/
+$template_font_styles_base_array = array(
+	'url' => null,
+	'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
+	'color' => '#222',
+	'weight' => 'normal',
+	'size-desktop' => '36px',
+	'size-tablet' => '30px',
+	'size-mobile' => '24px',
+	'textalign' => 'left',
+	'texttransform' => 'none',
 );
-define('THEME_AVAILABLE_FONTS', serialize($theme_available_fonts_array)); 
+define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
+
+
+/**
+ * Lists of available fonts for default templates and their styles.
+ * $template_fonts_array should be structured the same as $custom_available_fonts_array.
+ * Structure $template_font_styles_array as as key = font name, val = array of options.
+ *
+ * Font reference files listed in $template_fonts_array are registered with WordPress
+ * as admin stylesheets.
+ *
+ * If a font in $template_font_styles_array is web-safe and has no reference file, 
+ * leave the 'url' option as null.
+ **/
+$template_fonts_array = array(
+	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
+	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
+	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+);
+$template_font_styles_array = array(
+	'Aleo Light' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoLight", serif',
+	),
+	'Aleo Regular' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoRegular", serif',
+	),
+	'Aleo Bold' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoBold", serif',
+	),
+	'Georgia Regular' => array(
+		'url' => null,
+		'family' => 'Georgia, serif',
+	),
+	'Montserrat Regular' => array(
+		'url' => $template_fonts_array['Montserrat'],
+		'family' => '"MontserratRegular", serif',
+	),
+	'Montserrat Bold' => array(
+		'url' => $template_fonts_array['Montserrat'],
+		'family' => '"MontserratBold", serif',
+	),
+	'Arial Black' => array(
+		'url' => null,
+		'family' => '"Arial Black", serif',
+	),
+	'Open Sans Condensed Bold' => array(
+		'url' => $template_fonts_array['Open Sans Condensed'],
+		'family' => '"OpenSansCondensedBold", serif',
+		'texttransform' => 'uppercase',
+	),
+);
+define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
 
 
 /**
@@ -237,14 +316,14 @@ Config::$links = array(
 Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
-	array('name' => 'font-montserrat', 'src' => $theme_available_fonts_array['Montserrat']),
+	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
 	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
 	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
 	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
 	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
-foreach ($admin_available_fonts_array as $key => $val) {
+foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
 	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));    
 }

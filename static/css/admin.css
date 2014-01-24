@@ -63,15 +63,15 @@ body.login #login h1 a .hide{display: block;}
 
 
 select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-select[id*="_default_font"] option[value="aleo-light"] { font-family: "AleoLight", serif; }
-select[id*="_default_font"] option[value="aleo-regular"] { font-family: "AleoRegular", serif; }
-select[id*="_default_font"] option[value="aleo-bold"] { font-family: "AleoBold", serif; }
-select[id*="_default_font"] option[value="georgia-regular"] { font-family: "Georgia", serif; }
-select[id*="_default_font"] option[value="montserrat-regular"] { font-family: "MontserratRegular", sans-serif; }
-select[id*="_default_font"] option[value="montserrat-bold"] { font-family: "MontserratBold", sans-serif; }
-select[id*="_default_font"] option[value="arial-black"] { font-family: "Arial Black", sans-serif; }
-select[id*="_default_font"] option[value="open-sans-condensed-bold"] { font-family: "OpenSansCondensedBold", sans-serif; }
-select[id*="_default_font"] option[value="helvetica-neue-bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
+select[id*="_default_font"] option[value="Aleo Light"] { font-family: "AleoLight", serif; }
+select[id*="_default_font"] option[value="Aleo Regular"] { font-family: "AleoRegular", serif; }
+select[id*="_default_font"] option[value="Aleo Bold"] { font-family: "AleoBold", serif; }
+select[id*="_default_font"] option[value="Georgia Regular"] { font-family: "Georgia", serif; }
+select[id*="_default_font"] option[value="Montserrat Regular"] { font-family: "MontserratRegular", sans-serif; }
+select[id*="_default_font"] option[value="Montserrat Bold"] { font-family: "MontserratBold", sans-serif; }
+select[id*="_default_font"] option[value="Arial Black"] { font-family: "Arial Black", sans-serif; }
+select[id*="_default_font"] option[value="Open Sans Condensed Bold"] { font-family: "OpenSansCondensedBold", sans-serif; text-transform: uppercase; }
+select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
 
 
 

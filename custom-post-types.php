@@ -482,6 +482,11 @@ class Story extends CustomPostType {
 	}
 
 	public function fields() {
+		$font_options = array();
+		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
+			$font_options[$key] = $key;
+		}
+
 		$prefix = $this->options('name').'_';
 		$fields = array(
 			array(
@@ -507,17 +512,7 @@ class Story extends CustomPostType {
 				'desc' => 'The font family to use for title lines in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',
 				'type'    => 'select',
-				'options' => array(
-					'Archer Light (web font alternative)' => 'aleo-light',
-					'Archer Regular (web font alternative)' => 'aleo-regular',
-					'Archer Bold (web font alternative)' => 'aleo-bold',
-					'Georgia Regular' => 'georgia-regular',
-					'Gotham Regular (web font alternative)' => 'montserrat-regular',
-					'Gotham Bold (web font alternative)' => 'montserrat-bold',
-					'Gotham Black (web font alternative)' => 'arial-black',
-					'Gotham Condensed Bold (web font alternative)' => 'open-sans-condensed-bold',
-					'Helvetica Neue Bold' => 'helvetica-neue-bold',
-				),
+				'options' => $font_options,
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Color',
@@ -545,7 +540,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Custom Story Template:</strong> Font Includes',
-				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the THEME_AVAILABLE_FONTS constant 
+				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant 
 							(functions/config.php).  Fonts should be referenced by name and be comma-separated.',
 				'id'   => $prefix.'fonts',
 				'type' => 'textarea',
@@ -617,6 +612,11 @@ class Issue extends CustomPostType {
 		foreach(get_issue_stories($post) as $story) {
 			$story_options[$story->post_title] = $story->ID;
 		}
+		$font_options = array();
+		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
+			$font_options[$key] = $key;
+		}
+
 		$fields = array(
 			array(
 				'name'    => 'Cover Story',
@@ -642,17 +642,7 @@ class Issue extends CustomPostType {
 				'desc' => 'The font family to use for primary title lines in this issue cover.',
 				'id'   => $prefix.'default_font',
 				'type' => 'select',
-				'options' => array(
-					'Archer Light (web font alternative)' => 'aleo-light',
-					'Archer Regular (web font alternative)' => 'aleo-regular',
-					'Archer Bold (web font alternative)' => 'aleo-bold',
-					'Georgia Regular' => 'georgia-regular',
-					'Gotham Regular (web font alternative)' => 'montserrat-regular',
-					'Gotham Bold (web font alternative)' => 'montserrat-bold',
-					'Gotham Black (web font alternative)' => 'arial-black',
-					'Gotham Condensed Bold (web font alternative)' => 'open-sans-condensed-bold',
-					'Helvetica Neue Bold' => 'helvetica-neue-bold',
-				),
+				'options' => $font_options,
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Color',

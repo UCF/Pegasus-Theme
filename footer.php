@@ -2,7 +2,7 @@
 	// Determine if this post requires pre-Spring 2014 footer markup
 	// and apply it if necessary.
 
-	if (is_before_fall_2013($post)) {
+	if (is_fall_2013_or_older($post)) {
 	?>
 
 		</div><!-- close #body_content or last .container -->
