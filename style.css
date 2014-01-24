@@ -26,6 +26,11 @@ Version: v2.0.8
 	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 193px 111px; }
 }
 
+.clip-hide {
+	position: absolute;
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
 
 /**************************
  * General
@@ -250,6 +255,47 @@ li#nav-about a {
 	color: #222;
 	font-style: italic;
 }
+
+
+/**************************
+ * Stories - General
+ **************************/
+article.story,
+article.story p,
+article.story ol,
+article.story ul {
+	font-family: Georgia, serif;
+	font-size: 16px;
+	line-height: 26px;
+	color: #000;
+}
+article.story .story-header-image {
+	height: 600px;
+	max-width: 1200px;
+	margin: auto;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+article.story h1,
+article.story h2,
+article.story h3,
+article.story h4,
+article.story h5,
+article.story h6 {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+article.story .lead {
+	font-size: 18px;
+	line-height: 28px;
+}
+
+
+/**************************
+ * Story - Default Template
+ **************************/
+
 
 
 /**************************

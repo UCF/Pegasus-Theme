@@ -62,7 +62,7 @@ body.login #login h1 a .hide{display: block;}
 #theme-help table th {background-color:#f1f1f1;}
 
 
-select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; }
+select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 select[id*="_default_font"] option[value="aleo-light"] { font-family: "AleoLight", serif; }
 select[id*="_default_font"] option[value="aleo-regular"] { font-family: "AleoRegular", serif; }
 select[id*="_default_font"] option[value="aleo-bold"] { font-family: "AleoBold", serif; }
