@@ -20,6 +20,23 @@
 
 
 	/**************************
+	 * Stories - General
+	 **************************/
+	article.story .story-header-image { height: 490px; max-width: 980px; margin-bottom: 60px; }
+
+
+	/**************************
+	 * Story - Default Template
+	 **************************/
+	article.story-default .description,
+	article.story-default .social-wrap {
+		width: 100%;
+	}
+	article.story-default .description { padding-right: 0; margin-bottom: 20px; }
+	article.story-default .social { float: left; }
+
+
+	/**************************
 	 * Footer
 	 **************************/
 
@@ -110,6 +127,28 @@
 		float: none;
 	}
 	#header-navigation ul li#nav-issue { margin-left: -30px; }
+
+
+	/**************************
+	 * Stories - General
+	 **************************/
+	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 110%; }
+	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; }
+	article.story .description-wrap { margin-bottom: 35px; }
+
+	article.story h2 { font-size: 34px; line-height: 34px; margin-bottom: 10px; }
+	article.story p { margin-bottom: 20px; }
+
+	article.story .description { font-size: 18px; line-height: 24px; margin-bottom: 25px; }
+	article.story .lead { font-size: 17px; line-height: 27px; margin-bottom: 30px; }
+	article.story .lead::first-letter,
+	article.story .lead:first-letter { font-size: 30px; font-weight: bold; }
+
+
+	/**************************
+	 * Story - Default Template
+	 **************************/
+	article.story-default .title-wrap { margin-bottom: 15px; }
 
 
 	/**************************

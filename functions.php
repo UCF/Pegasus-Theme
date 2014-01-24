@@ -403,28 +403,42 @@ function output_header_markup($post) {
 
 			$output .= '<style type="text/css">';
 			$output .= '
-				main h1,
-				main h2,
-				main h3,
-				main h4,
-				main h5,
-				main h6 {
+				main article h1,
+				main article h2,
+				main article h3,
+				main article h4,
+				main article h5,
+				main article h6 {
 					font-family: '.$font['family'].';
-					font-size: '.$font['size-desktop'].';
-					line-height: '.$font['size-desktop'].';
 					font-weight: '.$font['weight'].';
 					text-transform: '.$font['texttransform'].';
 				}
-				main h1,
-				main h2,
-				main h3,
-				main h4,
-				main h5,
-				main h6,
-				main blockquote,
-				main .lead::first-letter,
-				main .lead:first-letter {
+				main article h1,
+				main article h2,
+				main article h3,
+				main article h4,
+				main article h5,
+				main article h6,
+				main article blockquote,
+				main article .lead::first-letter,
+				main article .lead:first-letter {
 					color: '.$font['color'].';
+				}
+				main article h1 {
+					font-size: '.$font['size-desktop'].';
+					line-height: '.$font['size-desktop'].';
+				}
+				@media (max-width: 979px) {
+					main article h1 {
+						font-size: '.$font['size-tablet'].';
+						line-height: '.$font['size-tablet'].';
+					}
+				}
+				@media (max-width: 767px) {	
+					main article h1 {
+						font-size: '.$font['size-mobile'].';
+						line-height: '.$font['size-mobile'].';
+					}
 				}
 			';
 			$output .= '</style>';
@@ -574,7 +588,7 @@ function uses_custom_template($post) {
 
 	if (
 		($template && !empty($template) && $template == 'custom') ||
-		($template && empty($template) && is_fall_2013_or_older($post))
+		(empty($template) && is_fall_2013_or_older($post))
 	) {
 		return true;
 	}
@@ -609,7 +623,7 @@ function get_template_title_styles($post) {
 	// Set base font styles.
 	$styles = $template_fonts_base;
 	// Override base styles with per-font defaults.
-	if (!empty($post_meta['family'])) {
+	if (!empty($post_meta['family']) && isset($template_fonts[$post_meta['family']])) {
 		foreach ($template_fonts[$post_meta['family']] as $key => $val) {
 			$styles[$key] = $val;
 		}
@@ -625,6 +639,62 @@ function get_template_title_styles($post) {
 	}
 
 	return $styles;
+}
+
+
+/**
+* Displays social buttons (Facebook, Twitter, G+) for a post.
+* Accepts a post URL and title as arguments.
+*
+* @return string
+* @author Jo Dickson
+**/
+function display_social($url, $title) {
+    $tweet_title = urlencode('Pegasus Magazine: '.$title);
+    ob_start(); ?>
+    <div class="social">
+        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
+            Like "<?=$title?>" on Facebook
+        </a>
+        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
+            Tweet "<?=$title?>" on Twitter
+        </a>
+        <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
+            Share "<?=$title?>" on Google+
+        </a>
+    </div>
+    <?php
+    return ob_get_clean();
+}
+
+
+/**
+ * Displays an issue cover.
+ **/
+function display_issue($post) {
+	if (
+		$post->post_content == '' &&
+		DEV_MODE == true && 
+		($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== False &&
+		uses_custom_template($post)
+	) {
+		$dev_issue_html_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.html';
+		if (curl_exists($dev_issue_html_url)) {
+			$content = file_get_contents($dev_issue_html_url);
+			print apply_filters('the_content', $content);
+		}
+	}
+	else {
+		switch (get_post_meta($post->ID, 'issue_template', TRUE)) {
+			case 'default':
+				require_once('templates/issue/default.php');
+				break;
+			case 'custom':
+			default:
+				the_content();
+				break;
+		}
+	}
 }
 
 ?>

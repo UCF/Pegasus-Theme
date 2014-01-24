@@ -508,6 +508,13 @@ class Story extends CustomPostType {
 				'type' => 'text',
 			),
 			array(
+				'name' => 'Story Description',
+				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
+							default issue templates.',
+				'id'   => $prefix.'description',
+				'type' => 'text',
+			),
+			array(
 				'name' => '<strong>Default Template:</strong> Header Font Family',
 				'desc' => 'The font family to use for title lines in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',

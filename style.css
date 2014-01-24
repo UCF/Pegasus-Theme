@@ -26,11 +26,6 @@ Version: v2.0.8
 	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 193px 111px; }
 }
 
-.clip-hide {
-	position: absolute;
-	clip: rect(1px, 1px, 1px, 1px);
-}
-
 
 /**************************
  * General
@@ -62,6 +57,29 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	width: 135px;
 	background-position: 0 -72px;
 }
+
+/* Social buttons */
+.social .share-twitter,
+.social .share-facebook,
+.social .share-googleplus {
+    background-image: url('static/img/social-share.png');
+    background-repeat: no-repeat;
+    text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+    display: block;
+    float: left;
+    height: 20px;
+    margin-right: 4px;
+    width: 70px;
+    height: 31px;
+}
+.social .share-twitter { background-position: -71px 0; }
+.social .share-twitter:hover { background-position: -71px -31px; }
+.social .share-facebook { background-position: 0 0; }
+.social .share-facebook:hover { background-position: 0 -31px; }
+.social .share-googleplus { background-position: -142px 0; margin-right: 0; }
+.social .share-googleplus:hover { background-position: -142px -31px; }
 
 
 /**************************
@@ -268,34 +286,48 @@ article.story ul {
 	font-size: 16px;
 	line-height: 26px;
 	color: #000;
+	margin-top: 0;
 }
 article.story .story-header-image {
 	height: 600px;
 	max-width: 1200px;
-	margin: auto;
+	margin: 0 auto 75px auto;
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
 }
+article.story .story-header-image img { position: absolute;	clip: rect(1px, 1px, 1px, 1px); }
 article.story h1,
 article.story h2,
 article.story h3,
 article.story h4,
 article.story h5,
-article.story h6 {
+article.story h6,
+article.story .description {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-article.story .lead {
-	font-size: 18px;
-	line-height: 28px;
-}
+article.story h2 { font-size: 36px; line-height: 36px; margin-bottom: 15px; }
+article.story h3 { font-size: 26px; line-height: 26px; margin-bottom: 6px; }
+article.story h4 { font-size: 21px; line-height: 21px; }
+article.story h5 { font-size: 18px; line-height: 18px; }
+article.story h6 { font-size: 16px; line-height: 16px; }
+article.story .description { font-size: 22px; line-height: 32px; font-style: italic; }
+article.story .lead { font-size: 18px; line-height: 28px; margin-bottom: 45px;}
+article.story .lead::first-letter,
+article.story .lead:first-letter { font-size: 36px; font-weight: bold; }
 
 
 /**************************
  * Story - Default Template
  **************************/
-
+article.story-default .title-wrap { margin-bottom: 20px; }
+article.story-default .description-wrap { margin-bottom: 50px; }
+article.story-default .description,
+article.story-default .social-wrap { display: inline-block; }
+article.story-default .description { width: 62%; padding-right: 4%; }
+article.story-default .social-wrap { width: 33%; }
+article.story-default .social { float: right; }
 
 
 /**************************

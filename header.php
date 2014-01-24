@@ -103,7 +103,7 @@
 								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" data-pulldown-src="<?=get_issue_feed_url(get_relevant_issue($post))?>" data-type="xml" href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>
 							</li>
 							<li id="nav-archives">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-archives" data-type="html" href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
 							</li>
 						</ul>
 					</nav>

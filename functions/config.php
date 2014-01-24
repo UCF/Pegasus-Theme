@@ -93,13 +93,13 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * $template_font_styles_array, then by per-post meta values, if available.
  **/
 $template_font_styles_base_array = array(
-	'url' => null,
+	'url' => null, // Reference to @font-face import css file for the font family
 	'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
 	'color' => '#222',
-	'weight' => 'normal',
-	'size-desktop' => '36px',
-	'size-tablet' => '30px',
-	'size-mobile' => '24px',
+	'weight' => 'bold',
+	'size-desktop' => '65px', // Size of h1 @ 980px+
+	'size-tablet' => '65px', // Size of h1 @ 979-768px
+	'size-mobile' => '48px', // Size of h1 @ <768px
 	'textalign' => 'left',
 	'texttransform' => 'none',
 );
@@ -126,34 +126,58 @@ $template_font_styles_array = array(
 	'Aleo Light' => array(
 		'url' => $template_fonts_array['Aleo'],
 		'family' => '"AleoLight", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
 	),
 	'Aleo Regular' => array(
 		'url' => $template_fonts_array['Aleo'],
 		'family' => '"AleoRegular", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
 	),
 	'Aleo Bold' => array(
 		'url' => $template_fonts_array['Aleo'],
 		'family' => '"AleoBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
 	),
 	'Georgia Regular' => array(
 		'url' => null,
 		'family' => 'Georgia, serif',
+		'weight' => 'normal',
+		'size-desktop' => '70px',
+		'size-tablet' => '70px',
 	),
 	'Montserrat Regular' => array(
 		'url' => $template_fonts_array['Montserrat'],
 		'family' => '"MontserratRegular", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
 	),
 	'Montserrat Bold' => array(
 		'url' => $template_fonts_array['Montserrat'],
 		'family' => '"MontserratBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
 	),
 	'Arial Black' => array(
 		'url' => null,
 		'family' => '"Arial Black", serif',
+		'weight' => 'normal',
+		'size-desktop' => '70px',
+		'size-tablet' => '70px',
 	),
 	'Open Sans Condensed Bold' => array(
 		'url' => $template_fonts_array['Open Sans Condensed'],
 		'family' => '"OpenSansCondensedBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '75px',
+		'size-tablet' => '75px',
 		'texttransform' => 'uppercase',
 	),
 );

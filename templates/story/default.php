@@ -5,23 +5,28 @@
 ?>
 
 <article class="story story-default">
-	<div class="story-header-image" style="background-image: url('<?=$header_img?>'); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?=$header_img?>',sizingMethod='scale')">
-		<img class="clip-hide" src="<?=$header_img?>" alt="<?=$post->post_title?>" title="<?=$post->post_title?>" />
+	<div class="container-wide story-header-image" style="background-image: url('<?=$header_img?>'); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?=$header_img?>',sizingMethod='scale')">
+		<img src="<?=$header_img?>" alt="<?=$post->post_title?>" title="<?=$post->post_title?>" />
 	</div>
 
 	<div class="container">
-		<div class="row">
+		<div class="row title-wrap">
 			<div class="span10 offset1">
 				<h1><?=$post->post_title?></h1>
 			</div>
-			<div class="span6 offset1">
-				<span class="subtitle">
-					<?=get_post_meta($post->ID, 'story_subtitle', TRUE);?>
+		</div>
+		<div class="row description-wrap">
+			<div class="span10 offset1">
+				<span class="description">
+					<?=get_post_meta($post->ID, 'story_description', TRUE);?>
 				</span>
+				<div class="social-wrap">
+					<?=display_social(get_permalink($post->ID), $post->post_title)?>
+				</div>
 			</div>
-			<div class="span3">
-				social
-			</div>
+		</div>
+
+		<div class="row content-wrap">
 			<div class="span10 offset1">
 				<?=the_content()?>
 			</div>
