@@ -265,9 +265,13 @@ if (typeof jQuery != 'undefined'){
 									permalink = item.find('link').text();
 
 								html += '<li><a href="'+ permalink +'">';
-								html += '<img src="'+ thumb +'" alt="'+ title +'" title="'+ title +'" />';
+								if (thumb) {
+									html += '<img src="'+ thumb +'" alt="'+ title +'" title="'+ title +'" />';
+								}
 								html += '<span class="story-title">'+ title +'</span>';
-								html += '<span class="subtitle">'+ subtitle +'</span>';
+								if (subtitle) {
+									html += '<span class="subtitle">'+ subtitle +'</span>';
+								}
 								html += '</a></li>';
 							})
 
