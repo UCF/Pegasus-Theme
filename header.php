@@ -31,6 +31,18 @@
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
 			var THEME_JS_URL = '<?=THEME_JS_URL?>';
+
+			var PostTypeSearchDataManager = {
+                'searches' : [],
+                'register' : function(search) {
+                    this.searches.push(search);
+                }
+            }
+            var PostTypeSearchData = function(column_count, column_width, data) {
+                this.column_count = column_count;
+                this.column_width = column_width;
+                this.data = data;
+            }
 		</script>
 
 		<?=output_header_markup($post);?>

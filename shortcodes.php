@@ -96,8 +96,9 @@ function sc_post_type_search($params=array(), $content='') {
 		'column_count'           => '3',
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
-		'show_sorting'           => true,
+		'show_sorting'           => True,
 		'default_sorting'        => 'term',
+		'show_sorting'           => True
 	);
 
 	$params = ($params === '') ? $defaults : array_merge($defaults, $params);
@@ -173,7 +174,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'numberposts' => -1,
 		'post_type'   => $params['post_type_name'],
 		'orderby'     => 'title',
-		'order'       => 'ASC'
+		'order'       => 'alpha'
 	));
 	foreach($by_alpha_posts as $post) {
 		if(preg_match('/([a-zA-Z])/', $post->post_title, $matches) == 1) {
@@ -182,6 +183,7 @@ function sc_post_type_search($params=array(), $content='') {
 			$by_alpha[$params['non_alpha_section_name']][] = $post;
 		}
 	}
+	ksort($by_alpha);
 
 	if($params['show_empty_sections']) {
 		foreach(range('a', 'z') as $letter) {
@@ -190,7 +192,6 @@ function sc_post_type_search($params=array(), $content='') {
 			}
 		}
 	}
-	ksort($by_alpha);
 
 	$sections = array(
 		'post-type-search-term'  => $by_term,
@@ -263,5 +264,156 @@ function sc_post_type_search($params=array(), $content='') {
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
+
+
+/**
+ * Modified version of Generic post type search.
+ * Generates searchable lists of stories, grouped by their respective issue.
+ *
+ * Note that unlike the generic post type search, this shortcode accepts
+ * minimal customizable parameters (columns, post querying args, etc are not
+ * accepted.)
+ *
+ * @return string
+ * @author Jo Dickson
+ **/
+function sc_archive_search($params=array(), $content='') {
+	// Set default params, override-able by user
+	$defaults = array(
+		'post_type_name'         => array('story'),
+		'non_alpha_section_name' => 'Other',
+		'default_search_text'	 => 'Search all stories',
+	);
+
+    // Add user-set params
+	$params = ($params === '') ? $defaults : array_merge($defaults, $params);
+
+	// Set rest of non-user-editable params
+	$params = array_merge($params, array(
+	    'taxonomy' => 'issues',
+	    'column_width' => 'span10 offset1',
+	    'column_count' => '1',
+	    'order_by' => 'title',
+	    'order' => 'ASC',
+	));
+
+	// Register if the search data with the JS PostTypeSearchDataManager
+	// Format is array(post->ID=>terms) where terms include the post title
+	// as well as all associated tag names
+	$search_data = array();
+	foreach(get_posts(array('numberposts' => -1, 'post_type' => $params['post_type_name'])) as $post) {
+		$search_data[$post->ID] = array($post->post_title);
+		foreach(wp_get_object_terms($post->ID, 'post_tag') as $term) {
+			$search_data[$post->ID][] = $term->name;
+		}
+	}
+	?>
+	<script type="text/javascript">
+		if(typeof PostTypeSearchDataManager != 'undefined') {
+			PostTypeSearchDataManager.register(new PostTypeSearchData(
+				<?=json_encode($params['column_count'])?>,
+				<?=json_encode($params['column_width'])?>,
+				<?=json_encode($search_data)?>
+			));
+		}
+	</script>
+	<?
+
+	// Get posts, split them up by issue
+	global $theme_options;
+
+	$issues_sorted = array();
+	$current_issue = get_posts(array(
+		'name' => $theme_options['current_issue_cover'],
+		'post_type' => 'issue',
+		'numberposts' => 1,
+		'post_status' => 'publish'
+	));
+
+	$issues_all = get_posts(array(
+		'post_type' => 'issue',
+		'numberposts' => -1,
+		'orderby' => 'post_date',
+		'order' => 'desc',
+		'post_status' => 'publish',
+		'exclude' => array($current_issue[0]->ID),
+	));
+
+	foreach ($issues_all as $issue) {
+		$featured_article = get_post_meta($issue->ID, 'issue_cover_story', TRUE);
+
+		$issues_sorted[$issue->post_title] = get_posts(array(
+			'numberposts' => -1,
+			'post_type'   => $params['post_type_name'],
+			'tax_query'   => array(
+				array(
+					'taxonomy' => $params['taxonomy'],
+					'field'    => 'slug',
+					'terms'    => $issue->post_name
+				)
+			),
+			'orderby'	=> $params['order_by'],
+			'order'     => $params['order'],
+			'exclude' 	=> array(intval($featured_article)),
+		));
+	}
+
+	ob_start();
+	?>
+	<div class="row post-type-search">
+		<div class="span10 offset1 post-type-search-header">
+			<form class="post-type-search-form" action="." method="get">
+				<label style="display:none;">Search</label>
+				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
+			</form>
+		</div>
+		<div class="span12 post-type-search-results"></div>
+		<div class="span10 offset1 post-type-search-term">
+		<?
+		foreach($issues_sorted as $key => $posts) {
+			$issue = get_page_by_title($key, 'OBJECT', 'issue');
+			$featured_article_id = intval(get_post_meta($issue->ID, 'issue_cover_story', TRUE));
+			$featured_article = get_post($featured_article_id);
+
+			if ($posts) {
+		?>
+			<div class="row <?=$issue->post_name?>">
+				<div class="span4">
+					<h2><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
+					
+					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
+						<a href="<?=get_permalink($issue->ID)?>">
+							<?=$thumbnail?>
+						</a>
+					<?php } ?>
+
+					<?php if ($featured_article_id) { ?>
+						<h3>Featured Story</h3>
+						<a href="<?=get_permalink($featured_article->ID)?>">
+							<span><?=$featured_article->post_title?></span>
+							<span><?=get_post_meta($featured_article->ID, 'story_subtitle', TRUE)?></span>
+						</a>
+					<?php } ?>
+				</div>
+				<div class="span6">
+					<h3>More in This Issue</h3>
+				<? foreach($posts as $post) { ?>
+					<? $post_type = new $post->post_type; ?>
+					<ul>
+						<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
+					</ul>
+				<? } ?>
+				</div>
+			</div>
+			<?
+			}
+		}
+		?>
+		</div>
+	</div>
+	<?
+	return ob_get_clean();
+}
+add_shortcode('archive-search', 'sc_archive_search');
 
 ?>
