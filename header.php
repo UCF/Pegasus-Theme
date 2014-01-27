@@ -39,10 +39,7 @@
 
 	<? extract(get_navigation_stories()); ?>
 
-	<!--[if IE 7 ]>     <body class="ie ie7 <?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if IE 8 ]>     <body class="ie ie8 <?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if IE 9 ]>     <body class="ie ie9 <?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if (gt IE 9)|!(IE)]><!--> <body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>"> <!--<![endif]-->
+	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
 				<h3>Pegasus Magazine is available on the iPad!</h3>
