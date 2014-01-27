@@ -362,9 +362,10 @@ function sc_archive_search($params=array(), $content='') {
 	?>
 	<div class="row post-type-search">
 		<div class="span10 offset1 post-type-search-header">
-			<form class="post-type-search-form" action="." method="get">
+			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
 				<label style="display:none;">Search</label>
-				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
+
+				<input type="text" name="s" class="span3 search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="span12 post-type-search-results"></div>

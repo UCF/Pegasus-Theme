@@ -51,7 +51,7 @@
 
 	<? extract(get_navigation_stories()); ?>
 
-	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>">
+	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
 				<strong>Pegasus Magazine is available on the iPad!</strong>
