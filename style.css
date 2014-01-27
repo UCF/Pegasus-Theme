@@ -81,6 +81,15 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .social .share-googleplus { background-position: -142px 0; margin-right: 0; }
 .social .share-googleplus:hover { background-position: -142px -31px; }
 
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	.social .share-twitter,
+	.social .share-facebook,
+	.social .share-googleplus {
+		background-image: url('static/img/social-share-r.png');
+		background-size: 212px 62px;
+	}
+}
+
 
 /**************************
  * iPad Modal
