@@ -211,10 +211,9 @@ li#nav-mobile {
 li#nav-mobile a,
 li#nav-issue a,
 li#nav-archives a {
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'MontserratBold', sans-serif;
 	font-size: 14px;
 	line-height: 14px;
-	font-weight: 700;
 	color: #222;
 	text-decoration: none;
 	-webkit-font-smoothing: antialiased;
@@ -348,13 +347,13 @@ article.story-default .social { float: right; }
 #footer-navigation,
 #footer-navigation p,
 #footer-navigation a {
-	font-family: 'Montserrat', serif;
+	font-family: 'MontserratBold', serif;
 	font-size: 14px;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-#footer-navigation a { font-weight: 700; font-size: 18px; }
+#footer-navigation a { font-size: 18px; }
 
 /* Footer logo/iPad btn positioning */
 #footer-navigation .footer-logo {
