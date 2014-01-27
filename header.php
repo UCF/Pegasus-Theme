@@ -54,7 +54,7 @@
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404()) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
-				<h3>Pegasus Magazine is available on the iPad!</h3>
+				<strong>Pegasus Magazine is available on the iPad!</strong>
 				</div>
 			<div class="modal-body">
 				<a href="<?=get_theme_option('ipad_app_url')?>" class="btn btn-primary">Go to iTunes</a>
@@ -69,16 +69,6 @@
 				<span class="pulldown-title">In This Issue:</span>
 				<div class="items"></div>
 				<span class="error hidden">Stories could not be found at this time. Please try again later.</span>
-				<div class="controls">
-					<a class="close" href="#">×</a>
-					<a class="backward" href="#"> &laquo; </a>
-					<a class="forward" href="#"> &raquo; </a>
-				</div>
-			</div>
-			<div class="container-wide pulldown-container pulldown-archives">
-				<span class="pulldown-title">Archives:</span>
-				<div class="items"></div>
-				<span class="error hidden">Previous issues could not be found at this time. Please try again later.</span>
 				<div class="controls">
 					<a class="close" href="#">×</a>
 					<a class="backward" href="#"> &laquo; </a>
