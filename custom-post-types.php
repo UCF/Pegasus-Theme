@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Abstract class for defining custom post types.  
- * 
+ * Abstract class for defining custom post types.
+ *
  **/
 abstract class CustomPostType{
-	public 
+	public
 		$name           = 'custom_post_type',
 		$plural_name    = 'Custom Posts',
 		$singular_name  = 'Custom Post',
@@ -27,17 +27,17 @@ abstract class CustomPostType{
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
 		$default_order   = null;
-	
+
 
 	static function get_file_url($object, $field_name) {
-		if( ($file_id = get_post_meta($object->ID, $field_name, True)) !== False 
+		if( ($file_id = get_post_meta($object->ID, $field_name, True)) !== False
 				&& ($file_url = wp_get_attachment_url($file_id)) !== False) {
 			return $file_url;
 		} else {
 			return False;
 		}
 	}
-	
+
 	/**
 	 * Wrapper for get_posts function, that predefines post_type for this
 	 * custom post type.  Any options valid in get_posts can be passed as an
@@ -55,8 +55,8 @@ abstract class CustomPostType{
 		$objects = get_posts($options);
 		return $objects;
 	}
-	
-	
+
+
 	/**
 	 * Similar to get_objects, but returns array of key values mapping post
 	 * title to id if available, otherwise it defaults to id=>id.
@@ -76,8 +76,8 @@ abstract class CustomPostType{
 		}
 		return $opt;
 	}
-	
-	
+
+
 	/**
 	 * Return the instances values defined by $key.
 	 **/
@@ -85,8 +85,8 @@ abstract class CustomPostType{
 		$vars = get_object_vars($this);
 		return $vars[$key];
 	}
-	
-	
+
+
 	/**
 	 * Additional fields on a custom post type may be defined by overriding this
 	 * method on an descendant object.
@@ -94,8 +94,8 @@ abstract class CustomPostType{
 	public function fields(){
 		return array();
 	}
-	
-	
+
+
 	/**
 	 * Using instance variables defined, returns an array defining what this
 	 * custom post type supports.
@@ -120,8 +120,8 @@ abstract class CustomPostType{
 		}
 		return $supports;
 	}
-	
-	
+
+
 	/**
 	 * Creates labels array, defining names for admin panel.
 	 **/
@@ -134,8 +134,8 @@ abstract class CustomPostType{
 			'new_item'      => __($this->options('new_item')),
 		);
 	}
-	
-	
+
+
 	/**
 	 * Creates metabox array for custom post type. Override method in
 	 * descendants to add or modify metaboxes.
@@ -153,8 +153,8 @@ abstract class CustomPostType{
 		}
 		return null;
 	}
-	
-	
+
+
 	/**
 	 * Registers metaboxes defined for custom post type.
 	 **/
@@ -171,8 +171,8 @@ abstract class CustomPostType{
 			);
 		}
 	}
-	
-	
+
+
 	/**
 	 * Registers the custom post type and any other ancillary actions that are
 	 * required for the post to function properly.
@@ -185,19 +185,19 @@ abstract class CustomPostType{
 			'taxonomies' => $this->options('taxonomies'),
 			'_builtin'   => $this->options('built_in')
 		);
-		
+
 		if ($this->options('use_order')){
 			$registration = array_merge($registration, array('hierarchical' => True,));
 		}
-		
+
 		register_post_type($this->options('name'), $registration);
-		
+
 		if ($this->options('use_shortcode')){
 			add_shortcode($this->options('name').'-list', array($this, 'shortcode'));
 		}
 	}
-	
-	
+
+
 	/**
 	 * Shortcode for this custom post type.  Can be overridden for descendants.
 	 * Defaults to just outputting a list of objects outputted as defined by
@@ -214,8 +214,8 @@ abstract class CustomPostType{
 		}
 		return sc_object_list($attr);
 	}
-	
-	
+
+
 	/**
 	 * Handles output for a list of objects, can be overridden for descendants.
 	 * If you want to override how a list of objects are outputted, override
@@ -224,10 +224,10 @@ abstract class CustomPostType{
 	 **/
 	public function objectsToHTML($objects, $css_classes){
 		if (count($objects) < 1){ return '';}
-		
+
 		$class = get_custom_post_type($objects[0]->post_type);
 		$class = new $class;
-		
+
 		ob_start();
 		?>
 		<ul class="<?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
@@ -241,8 +241,8 @@ abstract class CustomPostType{
 		$html = ob_get_clean();
 		return $html;
 	}
-	
-	
+
+
 	/**
 	 * Outputs this item in HTML.  Can be overridden for descendants.
 	 **/
@@ -265,7 +265,7 @@ class Document extends CustomPostType{
 		$use_editor     = False,
 		$use_shortcode  = True,
 		$use_metabox    = True;
-	
+
 	public function fields(){
 		$fields   = parent::fields();
 		$fields[] = array(
@@ -282,55 +282,55 @@ class Document extends CustomPostType{
 		);
 		return $fields;
 	}
-	
-	
+
+
 	static function get_document_application($form){
 		return mimetype_to_application(self::get_mimetype($form));
 	}
-	
-	
+
+
 	static function get_mimetype($form){
 		if (is_numeric($form)){
 			$form = get_post($form);
 		}
-		
+
 		$prefix   = post_type($form);
 		$document = get_post(get_post_meta($form->ID, $prefix.'_file', True));
-		
+
 		$is_url = get_post_meta($form->ID, $prefix.'_url', True);
-		
+
 		return ($is_url) ? "text/html" : $document->post_mime_type;
 	}
-	
-	
+
+
 	static function get_title($form){
 		if (is_numeric($form)){
 			$form = get_post($form);
 		}
-		
+
 		$prefix = post_type($form);
-		
+
 		return $form->post_title;
 	}
-	
+
 	static function get_url($form){
 		if (is_numeric($form)){
 			$form = get_post($form);
 		}
-		
+
 		$prefix = post_type($form);
-		
+
 		$x = get_post_meta($form->ID, $prefix.'_url', True);
 		$y = wp_get_attachment_url(get_post_meta($form->ID, $prefix.'_file', True));
-		
+
 		if (!$x and !$y){
 			return '#';
 		}
-		
+
 		return ($x) ? $x : $y;
 	}
-	
-	
+
+
 	/**
 	 * Handles output for a list of objects, can be overridden for descendants.
 	 * If you want to override how a list of objects are outputted, override
@@ -339,10 +339,10 @@ class Document extends CustomPostType{
 	 **/
 	public function objectsToHTML($objects, $css_classes){
 		if (count($objects) < 1){ return '';}
-		
+
 		$class_name = get_custom_post_type($objects[0]->post_type);
 		$class      = new $class_name;
-		
+
 		ob_start();
 		?>
 		<ul class="nobullet <?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
@@ -356,8 +356,8 @@ class Document extends CustomPostType{
 		$html = ob_get_clean();
 		return $html;
 	}
-	
-	
+
+
 	/**
 	 * Outputs this item in HTML.  Can be overridden for descendants.
 	 **/
@@ -404,13 +404,13 @@ class Page extends CustomPostType {
 
 
 /**
- * Describes an Alumni Note 
- * 
+ * Describes an Alumni Note
+ *
  * @author Jo Greybill
  *
 **/
 class AlumniNote extends CustomPostType{
-	public 
+	public
 		$name           = 'alumninote',
 		$plural_name    = 'Alumni Notes',
 		$singular_name  = 'Alumni Note',
@@ -423,11 +423,11 @@ class AlumniNote extends CustomPostType{
 		$use_order      = True,
 		$use_title      = True,
 		$use_metabox    = True;
-	
+
 	public function toHTML($alumninote){
 		return sc_alumninote(array('alumninote' => $alumninote));
 	}
-	
+
 	public function fields(){
 		$prefix = $this->options('name').'_';
 		return array(
@@ -491,7 +491,7 @@ class Story extends CustomPostType {
 		$fields = array(
 			array(
 				'name' => 'Story Template',
-				'desc' => 'The type of template to use for this story.  Stories <em>not</em> set to "Custom" use a premade template and can be created/edited 
+				'desc' => 'The type of template to use for this story.  Stories <em>not</em> set to "Custom" use a premade template and can be created/edited
 							via the WYSIWYG editor above.',
 				'id'   => $prefix.'template',
 				'type'    => 'select',
@@ -547,7 +547,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Custom Story Template:</strong> Font Includes',
-				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant 
+				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant
 							(functions/config.php).  Fonts should be referenced by name and be comma-separated.',
 				'id'   => $prefix.'fonts',
 				'type' => 'textarea',
@@ -556,13 +556,13 @@ class Story extends CustomPostType {
 		if (DEV_MODE == true) {
 			array_unshift($fields, array(
 				'name' => '<strong>Developer Mode:</strong> Directory URL',
-				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash, relative to <code>/dev/</code>).  Properly named html, css and javascript files 
+				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash, relative to <code>/dev/</code>).  Properly named html, css and javascript files
 							(story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.<br/><br/>
 							<strong>NOTE:</strong>
 							<ul style="list-style: disc !important;">
 							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
 							<li>Any files uploaded to the stylesheet/javascript fields below take priority over the dev directory\'s contents.</li>
-							<li>The Story Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.  
+							<li>The Story Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.
 								<strong>Story templates still take effect in Developer Mode.</strong></li>
 							</ul>
 							<code>'.THEME_DEV_URL.'/...</code>',
@@ -597,7 +597,7 @@ class Issue extends CustomPostType {
 	static function get_home_javascript_url($issue) {
 		return Issue::get_file_url($issue, 'issue_javascript_home');
 	}
-	
+
 	static function get_issue_javascript_url($issue) {
 		return Issue::get_file_url($issue, 'issue_javascript_issue');
 	}
@@ -605,7 +605,7 @@ class Issue extends CustomPostType {
 	static function get_home_stylesheet_url($issue) {
 		return Issue::get_file_url($issue, 'issue_stylesheet_home');
 	}
-	
+
 	static function get_issue_stylesheet_url($issue) {
 		return Issue::get_file_url($issue, 'issue_stylesheet_issue');
 	}
@@ -634,7 +634,7 @@ class Issue extends CustomPostType {
 			),
 			array(
 				'name' => 'Issue Template',
-				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified 
+				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified
 							via the "Default" options below.',
 				'id'   => $prefix.'template',
 				'type'    => 'select',
@@ -721,13 +721,13 @@ class Issue extends CustomPostType {
 		if (DEV_MODE == true) {
 			array_unshift($fields, array(
 				'name' => '<strong>Developer Mode:</strong> Issue\'s Home Page Asset Directory',
-				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files 
+				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
 							(home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
 							<strong>NOTE:</strong>
 							<ul style="list-style: disc !important;">
 							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
 							<li>Any files uploaded to the stylesheet/javascript fields below take priority over the dev directory\'s contents.</li>
-							<li>The Issue Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.  
+							<li>The Issue Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.
 								<strong>Issue templates still take effect in Developer Mode.</strong></li>
 							</ul>
 							<code>'.THEME_DEV_URL.'/...</code>',
@@ -755,7 +755,7 @@ class Issue extends CustomPostType {
 		);
 		$objects = get_posts($args);
 		$class = new Issue;
-		
+
 		ob_start();
 		?>
 		<ul class="<?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
@@ -781,18 +781,18 @@ class Issue extends CustomPostType {
 		$html .= '</a>';
 		return $html;
 	}
-} // END class 
+} // END class
 
 
 /**
- * Describes a set of centerpiece slides
+ * Describes a Photo Essay
  *
  * @author Jo Greybill
  * pieces borrowed from SmartStart theme
  **/
 
 class PhotoEssay extends CustomPostType {
-	public 
+	public
 		$name           = 'photo_essay',
 		$plural_name    = 'Photo Essays',
 		$singular_name  = 'Photo Essay',
@@ -806,18 +806,18 @@ class PhotoEssay extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_revisions	= False,
-		$taxonomies     = array('');
-	
+		$taxonomies     = array('issues');
+
 	public function fields(){
 	//
 	}
-	
+
 	public function metabox(){
-		if ($this->options('use_metabox')){	
+		if ($this->options('use_metabox')){
 			$prefix = 'ss_';
-					
-			$all_slides = 
-				// Container for individual slides:	
+
+			$all_slides =
+				// Container for individual slides:
 				array(
 					'id'       => 'slider-slides',
 					'title'    => 'All Slides',
@@ -825,7 +825,7 @@ class PhotoEssay extends CustomPostType {
 					'context'  => 'normal',
 					'priority' => 'default',
 				);
-			$single_slide_count = 	
+			$single_slide_count =
 				// Single Slide Count (and order):
 				array(
 					'id'       => 'slider-slides-settings-count',
@@ -851,20 +851,20 @@ class PhotoEssay extends CustomPostType {
 				);
 			$all_metaboxes = array(
 				'slider-all-slides' => $all_slides,
-				'slider-slides-settings-count' => $single_slide_count, 
+				'slider-slides-settings-count' => $single_slide_count,
 			);
 			return $all_metaboxes;
 		}
 		return null;
-	}	
-	
+	}
+
 	/** Function used for defining single slide meta values; primarily
 	  * for use in saving meta data (_save_meta_data(), functions/base.php).
 	  * The 'type' val is just for determining which fields are file fields;
 	  * 'default' is an arbitrary name for 'anything else' which gets saved
 	  * via the save_default() function in functions/base.php. File fields
 	  * need a type of 'file' to be saved properly.
-	  **/ 
+	  **/
 	public static function get_single_slide_meta() {
 		$single_slide_meta = array(
 				array(
@@ -880,24 +880,24 @@ class PhotoEssay extends CustomPostType {
 			);
 		return $single_slide_meta;
 	}
-	
-	
+
+
 	/**
 	  * Show meta box fields for Slider post type (generic field loop-through)
 	  * Copied from _show_meta_boxes (functions/base.php)
 	 **/
-	public static function display_meta_fields($post, $field) { 
-	$current_value = get_post_meta($post->ID, $field['id'], true);
+	public static function display_meta_fields($post, $field) {
+		$current_value = get_post_meta($post->ID, $field['id'], true);
 	?>
 		<tr>
 			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
 				<td>
-				<?php switch ($field['type']): 
+				<?php switch ($field['type']):
 					case 'text':?>
 				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
 				<?php break; case 'textarea':?>
 					<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
-				
+
 				<?php break; case 'file':?>
 					<?php
 						$document_id = get_post_meta($post->ID, $field['id'], True);
@@ -912,45 +912,45 @@ class PhotoEssay extends CustomPostType {
 					<a href="<?=$url?>"><?=$document->post_title?></a><br /><br />
 					<?php endif;?>
 					<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
-				
+
 				<?php break; default:?>
 					<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
 				<?php break; endswitch;?>
 				<td>
 			</tr>
-	<?php			
+	<?php
 	}
-	
-	
+
+
 	/**
 	 * Show fields for single slides:
 	 **/
-	public static function display_slide_meta_fields($post) { 
-		
+	public static function display_slide_meta_fields($post) {
+
 		// Get any already-existing values for these fields:
 		$slide_caption		= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
 		$slide_image		= get_post_meta($post->ID, 'ss_slide_image', TRUE);
-		
+		$slide_order 		= get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
 		?>
 		<div id="ss_slides_wrapper">
 			<ul id="ss_slides_all">
 				<?php
-					
+
 					// Loop through slides_array for existing slides. Else, display
 					// a single empty slide 'widget'.
 					if ($slide_order) {
 						$slide_array = explode(",", $slide_order);
-						
+
 						foreach ($slide_array as $s) {
-							if ($s !== '') {		
+							if ($s !== '') {
 					?>
 							<li class="custom_repeatable postbox">
-							
+
 								<div class="handlediv" title="Click to toggle"> </div>
 									<h3 class="hndle">
 									<span>Slide</span>
 								</h3>
-							
+
 								<table class="form-table">
 								<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
 									<tr>
@@ -974,23 +974,23 @@ class PhotoEssay extends CustomPostType {
 											?>
 											<?php if($image):?>
 											<a href="<?=$url?>"><?=$image->post_title?></a><br /><br />
-											<?php endif;?>									
-											<input type="file" id="file_img_<?=$post->ID?>" name="ss_slide_image[<?=$s?>]"><br />
+											<?php endif;?>
+											<input type="file" <?php if($image){ ?>class="has-value"<?php } ?> id="file_img_<?=$post->ID?>" name="ss_slide_image[<?=$s?>]"><br />
 										</td>
-									</tr>									
+									</tr>
 								</table>
 								<a class="repeatable-remove button" href="#">Remove Slide</a>
-							</li>	
-						
-					<?php	
+							</li>
+
+					<?php
 							}
 						}
-					
+
 					} else {
 						$i = 0;
 						?>
 						<li class="custom_repeatable postbox">
-						
+
 							<div class="handlediv" title="Click to toggle"> </div>
 								<h3 class="hndle">
 								<span>Slide</span>
@@ -1015,22 +1015,22 @@ class PhotoEssay extends CustomPostType {
 							<a class="repeatable-remove button" href="#">Remove Slide</a>
 						</li>
 						<?php
-						
+
 					}
 				?>
 						<a class="repeatable-add button-primary" href="#">Add New Slide</a><br/>
 			</ul>
-			
+
 		</div>
 		<?php
 	}
- 
+
  	// Individual slide container:
 	public function show_meta_box_slide_all($post) {
 		$this->display_slide_meta_fields($post);
 	}
-	
-	// Slide Count: 
+
+	// Slide Count:
 	public function show_meta_box_slide_count($post) {
 		if ($this->options('use_metabox')) {
 			$meta_box = $this->metabox();
@@ -1046,16 +1046,16 @@ class PhotoEssay extends CustomPostType {
 			endforeach;
 		print "</table>";
 	}
-	
-	
+
+
 	public function register_metaboxes(){
 		if ($this->options('use_metabox')){
 			$metabox = $this->metabox();
 			foreach ($metabox as $key => $single_metabox) {
-				switch ($key) {						
+				switch ($key) {
 					case 'slider-all-slides':
 						$metabox_view_function = 'show_meta_box_slide_all';
-						break;	
+						break;
 					case 'slider-slides-settings-count':
 						$metabox_view_function = 'show_meta_box_slide_count';
 						break;
@@ -1070,10 +1070,10 @@ class PhotoEssay extends CustomPostType {
 					$single_metabox['context'],
 					$single_metabox['priority']
 				);
-			}			
+			}
 		}
 	}
-	
-	
+
+
 }
 ?>

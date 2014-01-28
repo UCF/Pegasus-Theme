@@ -1602,7 +1602,7 @@ function _save_meta_data($post_id, $meta_box){
 	 **/
 	if (post_type_exists('photo_essay') && post_type($post_id) == 'photo_essay') {
 		
-		// All other standard meta box data for Sliders:		
+		// All other standard meta box data for PhotoEssays:		
 		foreach ($meta_box as $single_meta_box) {
 			foreach ($single_meta_box['fields'] as $field) {				
 				switch ($field['type']){
@@ -1617,93 +1617,90 @@ function _save_meta_data($post_id, $meta_box){
 		}
 		
 		// Single slide meta data:
-		if ($_POST['ss_slide_image']) { // If a slide has an image declared, save its content:
-		
-			$single_slide_meta = Slider::get_single_slide_meta();
-		
-			foreach ($single_slide_meta as $field) {
-								
-				// File upload handling (for slide images):				
-				if ($field['type'] == 'file') {
-					
-					$files = $_FILES[$field['id']];
-					$file_uploaded = @!empty($files);
-					
-					$update_metadata_list = array();
-					
-					$new_slide_list = array();
-					$unchanged_slide_list = array();
-					
-					// Get the slide numbers for each uploaded file:
-					foreach($files['name'] as $key => $val) {
-						if ($val !== '') {
-							$new_slide_list[] .= $key;
-						}
+		$single_slide_meta = PhotoEssay::get_single_slide_meta();
+	
+		foreach ($single_slide_meta as $field) {
+							
+			// File upload handling (for slide images):				
+			if ($field['type'] == 'file') {
+				
+				$files = $_FILES[$field['id']];
+				$file_uploaded = @!empty($files);
+				
+				$update_metadata_list = array();
+				
+				$new_slide_list = array();
+				$unchanged_slide_list = array();
+				
+				// Get the slide numbers for each uploaded file:
+				foreach($files['name'] as $key => $val) {
+					if ($val !== '') {
+						$new_slide_list[] .= $key;
 					}
-					// Get any file numbers that are already set and compare them to the numbers
-					// in $new_slide_list[].  If the keys in $old_attachments aren't in
-					// $new_slide_list[], add them to $unchanged_slide_list[]:
-					$old_attachments = get_post_meta($post_id, $field['id'], TRUE);
-					foreach ($old_attachments as $key => $val) {
-						if (!(in_array($key, $new_slide_list))) {
-							$unchanged_slide_list[] .= $key;
-						}
+				}
+				// Get any file numbers that are already set and compare them to the numbers
+				// in $new_slide_list[].  If the keys in $old_attachments aren't in
+				// $new_slide_list[], add them to $unchanged_slide_list[]:
+				$old_attachments = get_post_meta($post_id, $field['id'], TRUE);
+				foreach ($old_attachments as $key => $val) {
+					if (!(in_array($key, $new_slide_list))) {
+						$unchanged_slide_list[] .= $key;
 					}
+				}
+				
+				// Handle newly uploaded files:
+				if ($file_uploaded){
+					require_once(ABSPATH.'wp-admin/includes/file.php');
+					$override = array(
+									'action' => 'editpost',
+									'test_form' => false,
+								);
 					
-					// Handle newly uploaded files:
-					if ($file_uploaded){
-						require_once(ABSPATH.'wp-admin/includes/file.php');
-						$override = array(
-										'action' => 'editpost',
-										'test_form' => false,
-									);
+					// Finally, process each image and its data:
+					foreach ($new_slide_list as $i) {
+						$file = array(
+							'name' 		=> $files['name'][$i],
+							'type'		=> $files['type'][$i],
+							'tmp_name' 	=> $files['tmp_name'][$i],
+							'error' 	=> $files['error'][$i],
+							'size' 		=> $files['size'][$i]
+						);
 						
-						// Finally, process each image and its data:
-						foreach ($new_slide_list as $i) {
-							$file = array(
-								'name' 		=> $files['name'][$i],
-								'type'		=> $files['type'][$i],
-								'tmp_name' 	=> $files['tmp_name'][$i],
-								'error' 	=> $files['error'][$i],
-								'size' 		=> $files['size'][$i]
+						if ($file['name'] !== NULL /*&& get_post_type($post_id) !== 'revision'*/) {
+						
+							$uploaded_file 	= wp_handle_upload($file, $override);
+							
+							$attachment = array(
+								'post_title'     => $file['name'],
+								'post_content'   => '',
+								'post_type'      => 'attachment',
+								'post_parent'    => $post_id,
+								'post_mime_type' => $uploaded_file['type'],
+								'guid'           => $uploaded_file['url'],
 							);
 							
-							if ($file['name'] !== NULL /*&& get_post_type($post_id) !== 'revision'*/) {
+							$id = wp_insert_attachment($attachment, $uploaded_file['file'], $post_id);
 							
-								$uploaded_file 	= wp_handle_upload($file, $override);
-								
-								$attachment = array(
-									'post_title'     => $file['name'],
-									'post_content'   => '',
-									'post_type'      => 'attachment',
-									'post_parent'    => $post_id,
-									'post_mime_type' => $uploaded_file['type'],
-									'guid'           => $uploaded_file['url'],
-								);
-								
-								$id = wp_insert_attachment($attachment, $uploaded_file['file'], $post_id);
-								
-								wp_update_attachment_metadata(
-									$id,
-									wp_generate_attachment_metadata($id, $uploaded_file['file'])
-								);
+							wp_update_attachment_metadata(
+								$id,
+								wp_generate_attachment_metadata($id, $uploaded_file['file'])
+							);
 
-								$update_metadata_list[$i] = $id;
-							}
-						}
-						
-						foreach ($unchanged_slide_list as $i) {
-							$update_metadata_list[$i] = $old_attachments[$i];
+							$update_metadata_list[$i] = $id;
 						}
 					}
 					
-					update_post_meta($post_id, $field['id'], $update_metadata_list);
+					foreach ($unchanged_slide_list as $i) {
+						$update_metadata_list[$i] = $old_attachments[$i];
+					}
+				}
+				
+				update_post_meta($post_id, $field['id'], $update_metadata_list);
 
-				}
-				// All other single slide fields:
-				else {
-					save_default($post_id, $field);
-				}
+			}
+			// All other single slide fields:
+			else {
+				save_default($post_id, $field);
 			}
 		}
 	}
