@@ -162,6 +162,154 @@ WebcomAdmin.themeOptions = function($){
 	if (cls.parent.length > 0){
 		cls.__init__();
 	}
+
+
+	// Slider Meta Box Updates:
+    // (only run this code if we're on a screen with #slider-slides-settings-basic;
+    // i.e. if we're on a slider edit screen:
+    if ($('#poststuff #slider-slides-settings-basic').length > 0) {
+        
+        var slide_count_widget          = $('#slider-slides-settings-count');    
+
+        // Hide Preview Changes button
+        // this is a temporary fix for an issue where previewing changes on a centerpiece deletes its uploaded media
+        $('#minor-publishing-actions').hide();    
+        
+        // Function that updates Slide Count value based on if a Slide's Content Type is selected:
+        var checkSlideCount = function() {
+                if (slide_count_widget.is('hidden')) {
+                        slide_count_widget.show();
+                }
+                
+                var slideCount = $('input[name^="ss_slide_image["]:not(:empty)').length;
+                
+                //alert('slideCount is: '+ slideCount + '; input value is: ' + $('input#ss_slider_slidecount').attr('value'));
+                
+                $("input#ss_slider_slidecount").attr('value', slideCount);
+                
+                if (slide_count_widget.is('visible')) {
+                        slide_count_widget.hide();
+                }
+        }
+        
+        
+        // Update the Slide Sort Order:
+        var updateSliderSortOrder = function() {
+                var sortOrder = [];
+                
+                $('input[name^="ss_slide_image["]:not(:empty)').each(function() {
+                        // get number by trimming the input ID
+                        var inputID = ($(this).attr('name').split('ss_slide_image[')[1])
+                        var inputID = inputID.substr(0, inputID.length - 1);
+                        
+                        sortOrder[sortOrder.length] = inputID;
+                });
+                
+                if (slide_count_widget.is('hidden')) {
+                        slide_count_widget.show();
+                }
+                
+                var orderString = '';
+                $.each(sortOrder, function(index, value) {
+                        // make sure we only have number values (i.e. only slider widgets):
+                        if (!isNaN(value)) {
+                                orderString += value + ",";
+                        }
+                });
+                // add each value to Slide Order field value:
+                $('#ss_slider_slideorder').attr('value', orderString);
+                
+                if (slide_count_widget.is('visible')) {
+                        slide_count_widget.hide();
+                }
+        }
+        
+        
+        // If only one slide is available on the page, hide the 'Remove slide' button for that slide:
+        var hideOnlyRemoveBtn = function() {
+                if ($('#ss_slides_all li.custom_repeatable').length < 2) {
+                        $('#ss_slides_all li.custom_repeatable:first-child a.repeatable-remove').hide();
+                }
+                else {
+                        $('#ss_slides_all li.custom_repeatable a.repeatable-remove').show();
+                }
+        }
+        
+        
+        // Sortable slides
+        $('#ss_slides_all').sortable({
+                handle : 'h3.hndle',
+                placeholder : 'sortable-placeholder',
+                sort : function( event, ui ) {
+                        $('.sortable-placeholder').height( $(this).find('.ui-sortable-helper').height() );
+                },
+                update                : function( event, ui ) {
+                        updateSliderSortOrder();
+                },
+                tolerance :'pointer'
+        });
+
+
+        // Toggle slide with header click
+        $('#slider_slides').delegate('.custom_repeatable .hndle', 'click', function() {
+                $(this).siblings('.inside').toggle().end().parent().toggleClass('closed');
+        });
+        
+        
+        // Admin onload:
+        slide_count_widget.hide();
+        checkSlideCount();
+        updateSliderSortOrder();
+        hideOnlyRemoveBtn();
+                        
+        
+        // Add/remove Slide button functionality:
+        $('.repeatable-add').click(function() {
+                field = $(this).prev('li').clone(true);
+                fieldLocation = $(this).prev('li');
+                
+                // Get the highest ID 'widget' number to prevent duplicate IDs after sorting:
+                var widget_numbers = new Array();
+                $('input[name^="ss_slide_image["]').each(function() {
+                        // get number by trimming the input ID
+                        var inputID = ($(this).attr('name').split('ss_slide_image[')[1])
+                        var inputID = inputID.substr(0, inputID.length - 1);
+                        widget_numbers[widget_numbers.length] = inputID;
+                });
+                var highest_num = Math.max.apply(Math, widget_numbers);
+                
+                // Update 'name' attributes
+                $('textarea, input[type="text"], input[type="select"], input[type="file"]', field).val('').attr('name', function(index, name) {
+                        return name.replace(/(\d+)/, highest_num + 1);
+                });
+                $('input[type="checkbox"], input[type="radio"]', field).attr('name', function(index, name) {
+                        return name.replace(/(\d+)/, highest_num + 1);
+                });
+                // Update 'for' attributes (in <label>)
+                $('label', field).val('').attr('for', function(index, forval) {
+                        return forval.replace(/(\d+)/, highest_num + 1);
+                });
+                // Update 'id' attributes
+                $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"]', field).attr('id', function(index, idval) {
+                        return idval.replace(/(\d+)/, highest_num + 1);
+                });
+                // Remove other existing data from previous slide:
+                $('input[type="radio"]', field).removeAttr('checked');
+                $('label[for^="ss_slide_image["]', field).parent('th').next('td').children('a, br:nth-child(2)').remove();
+                
+                field.fadeIn().insertAfter(fieldLocation, $(this).prev('li'));
+                
+                hideOnlyRemoveBtn();
+                return false;
+        });
+        $('.repeatable-remove').click(function(){
+                $(this).parent().remove();
+                hideOnlyRemoveBtn();
+                checkSlideCount();
+                updateSliderSortOrder();
+                return false;
+        });
+    }
 };
 
 

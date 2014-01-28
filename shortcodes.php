@@ -417,4 +417,77 @@ function sc_archive_search($params=array(), $content='') {
 }
 add_shortcode('archive-search', 'sc_archive_search');
 
+/**
+ * Photo Essay Slider
+ **/
+
+function sc_photo_essay_slider( $atts, $content = null ) {
+	// TODO: specify essay by slug/id/whatever
+	$id 		= @$atts['id'];
+	$recent 	= get_posts(array(
+		'numberposts' => 1,
+		'post_type' => 'photo_essay',
+		'post_status' => 'publish',
+	));
+	
+	$mostrecent = $recent[0];
+	
+	if (is_numeric($id)) {
+		$essay = get_post($id);
+	}
+	else {
+		$essay = $mostrecent;
+	}
+
+	if( have_posts() ) while ( have_posts() ) : the_post();
+	
+		$slide_order 			= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order			= explode(",", $slide_order);
+		$slide_caption 			= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
+		$slide_image			= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
+		
+		// #photo_essay_slider must contain an image placeholder set to the max
+		// slide width in order to trigger responsive styles properly--
+		// http://www.bluebit.co.uk/blog/Using_jQuery_Cycle_in_a_Responsive_Layout
+		$output .= '<div id="photo_essay_slider">
+					  <ul>';
+		
+		foreach ($slide_order as $s) {
+			if ($s !== '') {
+				
+				$slide_image_url = wp_get_attachment_image_src($slide_image[$s], 'photo_essay-image');
+				
+				// Start <li>
+				$output .= '<li class="photo_essay_single" id="photo_essay_single_'.$s.'">';
+				
+				$output .= '<a href="#" target="_blank>';
+				
+				// Image output:
+
+				$output .= '<img src="'.$slide_image_url[0].'" alt="" title="" />';
+
+				// If caption, display it:
+
+				$output .= '<p>'.$slide_caption[$s].'</p>';
+							
+				$output .= '</a>';			
+				
+				// End <li>
+				$output .= '</li>';
+			}
+		}
+					  
+					  
+		$output .= '</ul></div>';
+
+	endwhile;
+
+	wp_reset_query();
+
+	return $output;
+
+}
+add_shortcode('slideshow', 'sc_photo_essay_slider');
+
+
 ?>

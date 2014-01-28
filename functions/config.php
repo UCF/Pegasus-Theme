@@ -193,7 +193,8 @@ Config::$custom_post_types = array(
 	'Page',
 	'AlumniNote',
 	'Story',
-	'Issue'
+	'Issue',
+	'PhotoEssay'
 );
 
 Config::$custom_taxonomies = array(

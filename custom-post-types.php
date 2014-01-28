@@ -471,7 +471,7 @@ class Story extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
-		$taxonomies     = array('issues');
+		$taxonomies     = array('issues', 'post_tag');
 
 	static function get_javascript_url($story) {
 		return Story::get_file_url($story, 'story_javascript');
@@ -783,4 +783,297 @@ class Issue extends CustomPostType {
 	}
 } // END class 
 
+
+/**
+ * Describes a set of centerpiece slides
+ *
+ * @author Jo Greybill
+ * pieces borrowed from SmartStart theme
+ **/
+
+class PhotoEssay extends CustomPostType {
+	public 
+		$name           = 'photo_essay',
+		$plural_name    = 'Photo Essays',
+		$singular_name  = 'Photo Essay',
+		$add_new_item   = 'Add New Photo Essay',
+		$edit_item      = 'Edit Photo Essay',
+		$new_item       = 'New Photo Essay',
+		$public         = True,
+		$use_editor     = False,
+		$use_thumbnails = False,
+		$use_order      = False,
+		$use_title      = True,
+		$use_metabox    = True,
+		$use_revisions	= False,
+		$taxonomies     = array('');
+	
+	public function fields(){
+	//
+	}
+	
+	public function metabox(){
+		if ($this->options('use_metabox')){	
+			$prefix = 'ss_';
+					
+			$all_slides = 
+				// Container for individual slides:	
+				array(
+					'id'       => 'slider-slides',
+					'title'    => 'All Slides',
+					'page'     => 'photo_essay',
+					'context'  => 'normal',
+					'priority' => 'default',
+				);
+			$single_slide_count = 	
+				// Single Slide Count (and order):
+				array(
+					'id'       => 'slider-slides-settings-count',
+					'title'    => 'Slides Count',
+					'page'     => 'photo_essay',
+					'context'  => 'normal',
+					'priority' => 'default',
+					'fields'   => array(
+						array(
+							'name' => __('Total Slide Count'),
+							'id'   => $prefix . 'slider_slidecount',
+							'type' => 'text',
+							'std'  => '0',
+							'desc' => ''
+						),
+						array(
+							'name' => __('Slide Order'),
+							'id'   => $prefix . 'slider_slideorder',
+							'type' => 'text',
+							'desc' => ''
+						)
+					), // fields
+				);
+			$all_metaboxes = array(
+				'slider-all-slides' => $all_slides,
+				'slider-slides-settings-count' => $single_slide_count, 
+			);
+			return $all_metaboxes;
+		}
+		return null;
+	}	
+	
+	/** Function used for defining single slide meta values; primarily
+	  * for use in saving meta data (_save_meta_data(), functions/base.php).
+	  * The 'type' val is just for determining which fields are file fields;
+	  * 'default' is an arbitrary name for 'anything else' which gets saved
+	  * via the save_default() function in functions/base.php. File fields
+	  * need a type of 'file' to be saved properly.
+	  **/ 
+	public static function get_single_slide_meta() {
+		$single_slide_meta = array(
+				array(
+					'id'	=> 'ss_slide_caption',
+					'type'	=> 'default',
+					'val'	=> $_POST['ss_slide_caption'],
+				),
+				array(
+					'id'	=> 'ss_slide_image',
+					'type'	=> 'file',
+					'val' 	=> $_POST['ss_slide_image'],
+				),
+			);
+		return $single_slide_meta;
+	}
+	
+	
+	/**
+	  * Show meta box fields for Slider post type (generic field loop-through)
+	  * Copied from _show_meta_boxes (functions/base.php)
+	 **/
+	public static function display_meta_fields($post, $field) { 
+	$current_value = get_post_meta($post->ID, $field['id'], true);
+	?>
+		<tr>
+			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
+				<td>
+				<?php switch ($field['type']): 
+					case 'text':?>
+				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
+				<?php break; case 'textarea':?>
+					<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
+				
+				<?php break; case 'file':?>
+					<?php
+						$document_id = get_post_meta($post->ID, $field['id'], True);
+						if ($document_id){
+							$document = get_post($document_id);
+							$url      = wp_get_attachment_url($document->ID);
+						}else{
+							$document = null;
+						}
+					?>
+					<?php if($document):?>
+					<a href="<?=$url?>"><?=$document->post_title?></a><br /><br />
+					<?php endif;?>
+					<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
+				
+				<?php break; default:?>
+					<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
+				<?php break; endswitch;?>
+				<td>
+			</tr>
+	<?php			
+	}
+	
+	
+	/**
+	 * Show fields for single slides:
+	 **/
+	public static function display_slide_meta_fields($post) { 
+		
+		// Get any already-existing values for these fields:
+		$slide_caption		= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
+		$slide_image		= get_post_meta($post->ID, 'ss_slide_image', TRUE);
+		
+		?>
+		<div id="ss_slides_wrapper">
+			<ul id="ss_slides_all">
+				<?php
+					
+					// Loop through slides_array for existing slides. Else, display
+					// a single empty slide 'widget'.
+					if ($slide_order) {
+						$slide_array = explode(",", $slide_order);
+						
+						foreach ($slide_array as $s) {
+							if ($s !== '') {		
+					?>
+							<li class="custom_repeatable postbox">
+							
+								<div class="handlediv" title="Click to toggle"> </div>
+									<h3 class="hndle">
+									<span>Slide</span>
+								</h3>
+							
+								<table class="form-table">
+								<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+									<tr>
+										<th><label for="ss_slide_caption[<?=$s?>]">Caption</label></th>
+										<td>
+											<span class="description">Caption for this slide.</span><br/>
+											<textarea name="ss_slide_caption[<?=$s?>]" id="ss_slide_caption[<?=$s?>]" cols="60" rows="4"><?php ($slide_caption[$s] !== '') ? print $slide_caption[$s] : ''; ?></textarea>
+										</td>
+									</tr>
+									<tr>
+										<th><label for="ss_slide_image[<?=$s?>]">Slide Image</label></th>
+										<td>
+											<span class="description">Description here.</span><br/>
+											<?php
+												if ($slide_image[$s]){
+													$image = get_post($slide_image[$s]);
+													$url   = wp_get_attachment_url($image->ID);
+												}else{
+													$image= null;
+												}
+											?>
+											<?php if($image):?>
+											<a href="<?=$url?>"><?=$image->post_title?></a><br /><br />
+											<?php endif;?>									
+											<input type="file" id="file_img_<?=$post->ID?>" name="ss_slide_image[<?=$s?>]"><br />
+										</td>
+									</tr>									
+								</table>
+								<a class="repeatable-remove button" href="#">Remove Slide</a>
+							</li>	
+						
+					<?php	
+							}
+						}
+					
+					} else {
+						$i = 0;
+						?>
+						<li class="custom_repeatable postbox">
+						
+							<div class="handlediv" title="Click to toggle"> </div>
+								<h3 class="hndle">
+								<span>Slide</span>
+							</h3>
+							<table class="form-table">
+							<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+								<tr>
+									<th><label for="ss_slide_caption[<?=$i?>]">Slide Caption</label></th>
+									<td>
+										<span class="description">Caption for this slide.</span><br/>
+										<textarea name="ss_slide_caption[<?=$i?>]" id="ss_slide_caption[<?=$i?>]" cols="60" rows="4"></textarea>
+									</td>
+								</tr>
+								<tr>
+									<th><label for="ss_slide_image[<?=$i?>]">Slide Image</label></th>
+									<td>
+										<span class="description">Description here.</span><br/>
+										<input type="file" id="file_<?=$post->ID?>" name="ss_slide_image[<?=$i?>]"><br />
+									</td>
+								</tr>
+							</table>
+							<a class="repeatable-remove button" href="#">Remove Slide</a>
+						</li>
+						<?php
+						
+					}
+				?>
+						<a class="repeatable-add button-primary" href="#">Add New Slide</a><br/>
+			</ul>
+			
+		</div>
+		<?php
+	}
+ 
+ 	// Individual slide container:
+	public function show_meta_box_slide_all($post) {
+		$this->display_slide_meta_fields($post);
+	}
+	
+	// Slide Count: 
+	public function show_meta_box_slide_count($post) {
+		if ($this->options('use_metabox')) {
+			$meta_box = $this->metabox();
+		}
+		$meta_box = $meta_box['slider-slides-settings-count'];
+		// Use one nonce for Slider post:
+		?>
+		<table class="form-table">
+		<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+		<?php
+			foreach($meta_box['fields'] as $field):
+				$this->display_meta_fields($post, $field);
+			endforeach;
+		print "</table>";
+	}
+	
+	
+	public function register_metaboxes(){
+		if ($this->options('use_metabox')){
+			$metabox = $this->metabox();
+			foreach ($metabox as $key => $single_metabox) {
+				switch ($key) {						
+					case 'slider-all-slides':
+						$metabox_view_function = 'show_meta_box_slide_all';
+						break;	
+					case 'slider-slides-settings-count':
+						$metabox_view_function = 'show_meta_box_slide_count';
+						break;
+					default:
+						break;
+				}
+				add_meta_box(
+					$single_metabox['id'],
+					$single_metabox['title'],
+					array( &$this, $metabox_view_function ),
+					$single_metabox['page'],
+					$single_metabox['context'],
+					$single_metabox['priority']
+				);
+			}			
+		}
+	}
+	
+	
+}
 ?>
