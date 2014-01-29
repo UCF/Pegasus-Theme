@@ -867,17 +867,17 @@ class PhotoEssay extends CustomPostType {
 	  **/
 	public static function get_single_slide_meta() {
 		$single_slide_meta = array(
-				array(
-					'id'	=> 'ss_slide_caption',
-					'type'	=> 'default',
-					'val'	=> $_POST['ss_slide_caption'],
-				),
-				array(
-					'id'	=> 'ss_slide_image',
-					'type'	=> 'file',
-					'val' 	=> $_POST['ss_slide_image'],
-				),
-			);
+			array(
+				'id'	=> 'ss_slide_caption',
+				'type'	=> 'default',
+				'val'	=> $_POST['ss_slide_caption'],
+			),
+			array(
+				'id'	=> 'ss_slide_image',
+				'type'	=> 'file',
+				'val' 	=> $_POST['ss_slide_image'],
+			),
+		);
 		return $single_slide_meta;
 	}
 
@@ -916,7 +916,7 @@ class PhotoEssay extends CustomPostType {
 				<?php break; default:?>
 					<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
 				<?php break; endswitch;?>
-				<td>
+				</td>
 			</tr>
 	<?php
 	}
