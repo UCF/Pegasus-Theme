@@ -7,7 +7,7 @@
 	// If developer mode is on and this is a custom story,
 	// try to use dev directory contents:
 	if (
-		DEV_MODE == true && 
+		DEV_MODE == true &&
 		$post->post_content == '' &&
 		$dev_story_directory !== False &&
 		uses_custom_template($post)
@@ -23,11 +23,17 @@
 			case 'default':
 				require_once('templates/story/default.php');
 				break;
-			case 'gallery':
-				require_once('templates/story/gallery.php');
+			case 'photo_essay':
+				require_once('templates/story/photo_essay.php');
 				break;
 			case 'custom':
 			default:
+				if (!is_fall_2013_or_older($post)) {
+					// Kill automatic <p> tag insertion if this isn't an old story.
+					// Don't want to accidentally screw up an old story that worked
+					// around the <p> tag issue.
+					remove_filter('the_content', 'wpautop');
+				}
 				the_content();
 				break;
 		}

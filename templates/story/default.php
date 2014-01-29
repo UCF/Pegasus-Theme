@@ -1,4 +1,5 @@
 <?php disallow_direct_load('default.php');?>
+<?php remove_filter('the_content', 'wpautop'); ?>
 <?php
 	$header_img_id = get_post_meta($post->ID, 'story_default_header_img', TRUE);
 	$header_img = get_post($header_img_id)->guid;
