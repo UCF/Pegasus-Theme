@@ -700,6 +700,12 @@ function display_issue($post) {
 				break;
 			case 'custom':
 			default:
+				if (!is_fall_2013_or_older($post)) {
+					// Kill automatic <p> tag insertion if this isn't an old story.
+					// Don't want to accidentally screw up an old story that worked
+					// around the <p> tag issue.
+					add_filter('the_content', 'kill_empty_p_tags', 999);
+				}
 				the_content();
 				break;
 		}
