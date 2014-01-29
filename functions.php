@@ -223,8 +223,9 @@ function get_issue_feed_url($object) {
  */ 
 function enqueue_issue_story_scripts() {
 	global $post;
-	// add home page script(s)
+	
 	if (!is_404() && !is_search()) {
+		// add home page script(s)
 		if($post->post_type == 'issue' || is_home()) {
 			// issue-wide
 			if (($issue_javascript_url = Issue::get_issue_javascript_url($post)) !== False) {
@@ -381,7 +382,7 @@ function output_header_markup($post) {
 						if (array_key_exists($font, $available_fonts)) {
 							$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
 						}
-					} 
+					}
 				}
 			// Default template stories
 			} else {

@@ -69,7 +69,7 @@ define('FALL_2013_OR_OLDER', serialize(array(
 
 /**
  * Lists of available fonts for custom stories.
- * Structure array as key = font name, val = path to the font. 
+ * Structure array as key = font name, val = path to the font.
  * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
  *
  * All fonts in these lists should have a single reference file, which points to all 
@@ -91,15 +91,36 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  *
  * These options will be overridden per-font, as defined in
  * $template_font_styles_array, then by per-post meta values, if available.
+ *
+ * See output_header_markup() in functions.php for usage.
+ *
+ * Options:
+ * - url:			Reference to @font-face import css file for the font family.
+ * - family:		'font-family' property for default Story template h1-h6 tags and default Issue
+ *					cover's h1-h2 tags.
+ * - color:			'color' property for default Story template h1-h6, blockquote, and dropcaps, and
+ *					default Issue cover's h1 tag.
+ * - weight:		'font-weight' property for default Story template h1-h6 tags and default Issue
+ *					cover's h1-h2 tags.
+ * - size-desktop:	'font-size' property of default Story template and default Issue cover h1 at 
+ *					980px+ screen width.
+ * - size-tablet:	'font-size' property of default Story template and default Issue cover h1 at 
+ *					979-768px screen width.
+ * - size-mobile:	'font-size' property of default Story template and default Issue cover h1 at 
+ *					<768px screen width.
+ * - textalign:		'text-align' property of Issue cover h1.
+ * - texttransform:	'text-transform' property of default Story template h1-h6 tags and default Issue
+ *					cover's h1-h2 tags.
+ *
  **/
 $template_font_styles_base_array = array(
-	'url' => null, // Reference to @font-face import css file for the font family
+	'url' => null,
 	'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
 	'color' => '#222',
 	'weight' => 'bold',
-	'size-desktop' => '65px', // Size of h1 @ 980px+
-	'size-tablet' => '65px', // Size of h1 @ 979-768px
-	'size-mobile' => '48px', // Size of h1 @ <768px
+	'size-desktop' => '65px',
+	'size-tablet' => '65px',
+	'size-mobile' => '48px',
 	'textalign' => 'left',
 	'texttransform' => 'none',
 );
