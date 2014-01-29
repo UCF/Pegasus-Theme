@@ -706,4 +706,13 @@ function display_issue($post) {
 	}
 }
 
+
+/**
+ * Destroy empty <p> tags because wpautop is dumb.
+ **/
+function kill_empty_p_tags($content) {
+	$killme = array('<p></p>', '<p>&nbsp;</p>');
+	return str_replace($killme, '', $content);
+}
+
 ?>

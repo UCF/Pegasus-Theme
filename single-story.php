@@ -32,7 +32,7 @@
 					// Kill automatic <p> tag insertion if this isn't an old story.
 					// Don't want to accidentally screw up an old story that worked
 					// around the <p> tag issue.
-					remove_filter('the_content', 'wpautop');
+					add_filter('the_content', 'kill_empty_p_tags', 999);
 				}
 				the_content();
 				break;
