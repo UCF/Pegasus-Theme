@@ -671,20 +671,6 @@ function get_custom_post_type($name){
 
 
 /**
-* Get featured image for a post
-*
-* @return array
-* @author Chris Conover
-**/
-function get_featured_image_url($post) {
-	if(has_post_thumbnail($post) && ($thumbnail_id = get_post_thumbnail_id($post)) && ($image = wp_get_attachment_image_src($thumbnail_id))) {
-		return $image[0];
-	}
-	return False;
-}
-
-
-/**
  * Get value of Theme Option Header Menu Styles and return relevant Boostrap 
  * CSS classes.  Indended for use as wp_nav_menu()'s menu_class argument.
  * See http://codex.wordpress.org/Function_Reference/wp_nav_menu
