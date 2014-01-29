@@ -65,7 +65,7 @@
 			</div>
 		</div>
 
-		<aside id="pulldown">
+		<div id="pulldown">
 			<div class="container-wide pulldown-container pulldown-stories">
 				<span class="pulldown-title">In This Issue:</span>
 				<div class="items"></div>
@@ -76,22 +76,22 @@
 					<a class="forward" href="#"> &raquo; </a>
 				</div>
 			</div>
-		</aside>
+		</div>
 
 		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
+					<?php if ($post->post_type == 'issue') { ?>
+					<h1 class="sprite header-logo">
+						<a href="<?=get_site_url()?>">Pegasus</a>
+					</h1>
+					<?php } else { ?>
+					<span class="sprite header-logo">
+						<a href="<?=get_site_url()?>">Pegasus</a>
+					</span>
+					<?php } ?>
+					
 					<nav class="span12" role="navigation">
-						<?php if ($post->post_type == 'issue') { ?>
-						<h1 class="sprite header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
-						</h1>
-						<?php } else { ?>
-						<span class="sprite header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
-						</span>
-						<?php } ?>
-
 						<ul class="navigation">
 							<li id="nav-about">
 								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>

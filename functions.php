@@ -460,26 +460,26 @@ function output_header_markup($post) {
 
 			$output .= '<style type="text/css">';
 			$output .= '
-				main h1 {
+				main h2 {
 					color: '.$font['color'].';
 					font-size: '.$font['size-desktop'].';
 					line-height: '.$font['size-desktop'].';
 					text-align: '.$font['textalign'].';
 				}
-				main h1,
-				main h2 {
+				main h2,
+				main h3 {
 					font-family: '.$font['family'].';
 					font-weight: '.$font['weight'].';
 					text-transform: '.$font['texttransform'].';
 				}
 				@media (max-width: 979px) {
-					main h1 {
+					main h2 {
 						font-size: '.$font['size-tablet'].';
 						line-height: '.$font['size-tablet'].';
 					}
 				}
 				@media (max-width: 767px) {	
-					main h1 {
+					main h2 {
 						font-size: '.$font['size-mobile'].';
 						line-height: '.$font['size-mobile'].';
 					}
@@ -660,7 +660,7 @@ function get_template_title_styles($post) {
 function display_social($url, $title) {
     $tweet_title = urlencode('Pegasus Magazine: '.$title);
     ob_start(); ?>
-    <div class="social">
+    <aside class="social">
         <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
             Like "<?=$title?>" on Facebook
         </a>
@@ -670,7 +670,7 @@ function display_social($url, $title) {
         <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
             Share "<?=$title?>" on Google+
         </a>
-    </div>
+    </aside>
     <?php
     return ob_get_clean();
 }

@@ -97,20 +97,20 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * Options:
  * - url:			Reference to @font-face import css file for the font family.
  * - family:		'font-family' property for default Story template h1-h6 tags and default Issue
- *					cover's h1-h2 tags.
+ *					cover's h2-h3 tags.
  * - color:			'color' property for default Story template h1-h6, blockquote, and dropcaps, and
- *					default Issue cover's h1 tag.
+ *					default Issue cover's h2 tag.
  * - weight:		'font-weight' property for default Story template h1-h6 tags and default Issue
- *					cover's h1-h2 tags.
- * - size-desktop:	'font-size' property of default Story template and default Issue cover h1 at 
+ *					cover's h2-h3 tags.
+ * - size-desktop:	'font-size' property of default Story template and default Issue cover h2 at 
  *					980px+ screen width.
- * - size-tablet:	'font-size' property of default Story template and default Issue cover h1 at 
+ * - size-tablet:	'font-size' property of default Story template and default Issue cover h2 at 
  *					979-768px screen width.
- * - size-mobile:	'font-size' property of default Story template and default Issue cover h1 at 
+ * - size-mobile:	'font-size' property of default Story template and default Issue cover h2 at 
  *					<768px screen width.
- * - textalign:		'text-align' property of Issue cover h1.
+ * - textalign:		'text-align' property of Issue cover h2.
  * - texttransform:	'text-transform' property of default Story template h1-h6 tags and default Issue
- *					cover's h1-h2 tags.
+ *					cover's h2-h3 tags.
  *
  **/
 $template_font_styles_base_array = array(
