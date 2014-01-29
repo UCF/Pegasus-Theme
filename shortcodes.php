@@ -52,7 +52,7 @@ function sc_static_image($attr) {
 add_shortcode('static-image', 'sc_static_image');
 
 
-/* 
+/*
  * Search for some arbitrary media in the media library.
  */
 function sc_get_media($attr) {
@@ -427,7 +427,7 @@ function sc_archive_search($params=array(), $content='') {
 			<div class="row <?=$issue->post_name?>">
 				<div class="span4">
 					<h2><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
-					
+
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
 						<a href="<?=get_permalink($issue->ID)?>">
 							<?=$thumbnail?>
@@ -475,62 +475,89 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 		'post_type' => 'photo_essay',
 		'post_status' => 'publish',
 	));
-	
+
 	$mostrecent = $recent[0];
-	
+
 	if (is_numeric($id)) {
 		$essay = get_post($id);
-	}
-	else {
+	} else {
 		$essay = $mostrecent;
 	}
 
-	if( have_posts() ) while ( have_posts() ) : the_post();
-	
-		$slide_order 			= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
-		$slide_order			= explode(",", $slide_order);
-		$slide_caption 			= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
-		$slide_image			= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
-		
+	ob_start();
+
+	if( $essay ) {
+
+		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order	= explode(",", $slide_order);
+		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
+		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
+
 		// #photo_essay_slider must contain an image placeholder set to the max
 		// slide width in order to trigger responsive styles properly--
 		// http://www.bluebit.co.uk/blog/Using_jQuery_Cycle_in_a_Responsive_Layout
-		$output .= '<div id="photo_essay_slider">
-					  <ul>';
-		
-		foreach ($slide_order as $s) {
-			if ($s !== '') {
-				
-				$slide_image_url = wp_get_attachment_image_src($slide_image[$s], 'photo_essay-image');
-				
-				// Start <li>
-				$output .= '<li class="photo_essay_single" id="photo_essay_single_'.$s.'">';
-				
-				$output .= '<a href="#" target="_blank>';
-				
-				// Image output:
 
-				$output .= '<img src="'.$slide_image_url[0].'" alt="" title="" />';
+		?>
 
-				// If caption, display it:
+		<section class='ss-content'>
+			<div class='ss-nav-wrapper' style="height: 80%;">
+	        <div class='ss-arrow-wrapper ss-arrow-wrapper-left'>
+	            <a class='ss-arrow ss-arrow-prev'>&lsaquo;</a>
+	        </div>
+	        <div class='ss-arrow-wrapper ss-arrow-wrapper-right'>
+	            <a class='ss-arrow ss-arrow-next' href='#2'>&rsaquo;</a>
+	        </div>
+	        <div class='ss-slides-wrapper'>
 
-				$output .= '<p>'.$slide_caption[$s].'</p>';
-							
-				$output .= '</a>';			
-				
-				// End <li>
-				$output .= '</li>';
-			}
-		}
-					  
-					  
-		$output .= '</ul></div>';
+	    <?php
 
-	endwhile;
+	    $data_id = 0;
+	    foreach ($slide_order as $s) {
+	        if ($s !== '') {
+	            $data_id++;
+	            $image = wp_get_attachment_image_src($slide_image[$s], 'full');
 
-	wp_reset_query();
+	    ?>
 
-	return $output;
+	            <div class='ss-slide-wrapper'>
+	                <div class='ss-slide<?= $data_id == 1 ? ' ss-first-slide ss-current' : '' ?><?= $data_id == count($slide_order) - 1 ? ' ss-last-slide' : '' ?>' data-id='<?=$data_id; ?>' data-width='<?=$image[1]; ?>' data-height='<?=$image[2]; ?>'>
+	                    <img src='<?=$image[0]; ?>' />
+	                </div>
+	            </div>
+
+	    <?php
+	        }
+	    }
+
+	    ?>
+
+	    </div>
+	    <div class='ss-captions-wrapper' style="height: 20%;">
+
+	    <?php
+
+	    $data_id = 0;
+	    foreach ($slide_order as $s) {
+	        if ($s !== '') {
+	            $data_id++;
+
+	    ?>
+
+	            <div class='ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?=$data_id; ?>'>
+	                <p><?=$slide_caption[$s]; ?></p>
+	            </div>
+
+	    <?php
+	        }
+	    }
+	    ?>
+
+	    </section>
+
+		<?php
+	}
+
+	return ob_get_clean();
 
 }
 add_shortcode('slideshow', 'sc_photo_essay_slider');

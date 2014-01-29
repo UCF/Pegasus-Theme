@@ -497,7 +497,7 @@ class Story extends CustomPostType {
 				'type'    => 'select',
 				'options' => array(
 					'Default (generic story)' => 'default',
-					'Photo gallery' => 'gallery',
+					'Photo essay' => 'photo_essay',
 					'Custom story (requires custom CSS/JS)' => 'custom',
 				)
 			),

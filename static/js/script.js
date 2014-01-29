@@ -25,7 +25,7 @@ Generic.PostTypeSearch = function($) {
 				typing_timer = null,
 				typing_delay = 300, // milliseconds
 
-				prev_post_id_sum = null, // Sum of result post IDs. Used to cache results 
+				prev_post_id_sum = null, // Sum of result post IDs. Used to cache results
 
 				MINIMUM_SEARCH_MATCH_LENGTH = 2;
 
@@ -123,7 +123,7 @@ Generic.PostTypeSearch = function($) {
 						if(post_id_sum != prev_post_id_sum) {
 							results.empty();
 							prev_post_id_sum = post_id_sum;
-							
+
 
 							// Slice the elements into their respective columns
 							elements_per_column = Math.ceil(elements.length / column_count);
@@ -156,7 +156,7 @@ Generic.PostTypeSearch = function($) {
 
 var defaultMenuSeparators = function($) {
 	// Because IE sucks, we're removing the last stray separator
-	// on default navigation menus for browsers that don't 
+	// on default navigation menus for browsers that don't
 	// support the :last-child CSS property
 	$('.menu.horizontal li:last-child').addClass('last');
 };
@@ -208,7 +208,7 @@ addBodyClasses = function($) {
     else if (navigator.userAgent.match(/iPod/i))   { bodyClass = 'ipod'; }
     // Android:
     else if (navigator.userAgent.match(/Android/i)) { bodyClass = 'android'; }
-    
+
     $('body').addClass(bodyClass);
 }
 
@@ -220,7 +220,7 @@ var togglePulldown = function($) {
 			pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
 			contentSrc = toggle.attr('data-pulldown-src') || toggle.attr('href'), // Where to grab new pulldown contents from
 			dataType = toggle.attr('data-type'); // Type of content to expect from contentSrc (see dataType values: http://api.jquery.com/jQuery.ajax/#data-types)
-		
+
 		// If another pulldown is active while a different pulldown is activated,
 		// deactivate any existing active pulldowns and activate the new toggle
 		// and pulldown.
@@ -246,7 +246,7 @@ var mobileNavToggle = function($) {
 	$(window).on('resize', function() {
 		if (
 			(
-				$(this).width() > 767 && 
+				$(this).width() > 767 &&
 				$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
 			) ||
 			(
@@ -287,7 +287,7 @@ var handleIpad = function($) {
 		ipad          = navigator.userAgent.match(/iPad/i) == null ? false : true;
 
 	$('.header_stories').hide();
-	
+
 	var toggle_nav         = $('.toggle_story_nav a'),
 		toggle_nav_tooltip = null,
 		tooltip_options    = {
@@ -363,6 +363,146 @@ var videoCarousels = function($) {
 var popovers = function($) {
 	$('.popover-parent').popover({});
 }
+
+var SlideShow = (function() {
+    var $win = $(window),
+        $slidesContents = $('.ss-content');
+
+    function _init() {
+        $slidesContents.each(function() {
+            // Make main tag 100% height width
+            if ($('article.ss-photo-essay').length > 0) {
+                $('main, section.ss-content').addClass('ss-photo-essay');
+            } else {
+                $('section.ss-content').addClass('ss-embed');
+            }
+
+            var slidesContent = $(this);
+            _resizeSlidesWrapper(slidesContent);
+            $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
+            slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
+            slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
+                _prevSlide);
+        });
+    }
+
+    function _min(a, b) {
+        return a < b ? a : b;
+    }
+
+    function _getCurrentSlide(slidesContent) {
+        return slidesContent.find('.ss-slide.ss-current');
+    }
+
+    function _getCurrentCaption(slidesContent) {
+        return slidesContent.find('.ss-caption.ss-current');
+    }
+
+    function _resizeSlidesContent(e) {
+        var slidesContent = e.data.slidesContent;
+        _resizeSlidesWrapper(slidesContent);
+    }
+
+    function _resizeSlidesWrapper(slidesContent) {
+        _resizeSlides(slidesContent);
+
+        var currentSlide = _getCurrentSlide(slidesContent);
+        var left = (slidesContent.width() - currentSlide.outerWidth()) / 2;
+
+        left -= currentSlide.parent().position().left;
+        slidesContent.find('.ss-slides-wrapper').css({
+            left: left
+        });
+    }
+
+    function _resizeSlides(slidesContent) {
+        slidesContent.find('.ss-slide').each(function() {
+            var slide = $(this),
+                data = slide.data(),
+                ratio = _getRatio(data.width, data.height);
+
+            var height = _min(slidesContent.find('.ss-slides-wrapper').height(), data.height);
+            var width = Math.round(height * ratio);
+
+            if (width > slidesContent.width() - 100) {
+                width = slidesContent.width() - 100;
+                height = Math.round(width / ratio);
+            }
+
+            slide.parent().css({
+                width: width
+            });
+            slide.css({
+                height: height
+            });
+        });
+    }
+
+    function _getRatio(width, height) {
+        return width/height;
+    }
+
+    function _nextSlide(e) {
+        e.preventDefault();
+
+        var slidesContent = e.data.slidesContent,
+            nextDataId = slidesContent.find('.ss-arrow-next').attr('href').replace('#', '');
+
+        _transitionSlide(slidesContent, nextDataId);
+    }
+
+    function _prevSlide(e) {
+        e.preventDefault();
+
+        var slidesContent = e.data.slidesContent,
+            prevDataId = slidesContent.find('.ss-arrow-prev').attr('href').replace('#', '');
+
+        _transitionSlide(slidesContent, prevDataId);
+    }
+
+    function _transitionSlide(slidesContent, nextDataId) {
+        var button = $(this),
+            href = button.attr('href'),
+            currentSlide = _getCurrentSlide(slidesContent),
+            nextSlide = slidesContent.find('div[data-id="' + nextDataId + '"].ss-slide'),
+            nextCaption = slidesContent.find('div[data-id="' + nextDataId + '"].ss-caption');
+
+        if (nextSlide.length) {
+            nextSlide.addClass('ss-current');
+            currentSlide.removeClass('ss-current');
+            _resizeSlidesWrapper(slidesContent);
+            _updateButtons(nextSlide, slidesContent);
+        }
+
+        if (nextCaption.length) {
+            slidesContent.find('.ss-caption').removeClass('ss-current');
+            nextCaption.addClass('ss-current');
+        }
+    }
+
+    function _updateButtons(currentSlide, slidesContent) {
+        var prevButton = slidesContent.find('.ss-arrow-prev'),
+            nextButton = slidesContent.find('.ss-arrow-next'),
+            prevSlide = currentSlide.parent().prev().find('.ss-slide'),
+            nextSlide = currentSlide.parent().next().find('.ss-slide');
+
+        if (prevSlide.length) {
+            prevButton.attr('href', '#' + prevSlide.data('id'));
+        } else {
+            prevButton.removeAttr('href')
+        }
+
+        if (nextSlide.length) {
+            nextButton.attr('href', '#' + nextSlide.data('id'));
+        } else {
+            nextButton.removeAttr('href')
+        }
+    }
+
+    return {
+        init: _init
+    }
+});
 
 
 /**************************
@@ -455,6 +595,8 @@ if (typeof jQuery != 'undefined'){
 			gformSublabels($);
 			videoCarousels($);
 			popovers($);
+		    slideshow = new SlideShow();
+		    slideshow.init();
 		});
 
 		$(window).load(function() {
@@ -464,4 +606,4 @@ if (typeof jQuery != 'undefined'){
 }
 else {
 	console.log('jQuery dependency failed to load');
-}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
+}
