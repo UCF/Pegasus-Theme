@@ -425,6 +425,7 @@ function output_header_markup($post) {
 					main article h5,
 					main article h6,
 					main article blockquote,
+					main article blockquote p,
 					main article .lead::first-letter,
 					main article .lead:first-letter {
 						color: '.$font['color'].';

@@ -79,6 +79,52 @@ function sc_get_media($attr) {
 add_shortcode('media', 'sc_get_media');
 
 
+/**
+ * Return a <hr /> element
+ **/
+function sc_divider($attr) {
+	return '<hr/>';
+}
+add_shortcode('divider', 'sc_divider');
+
+
+/**
+ * Wrap arbitrary text in .lead paragraph
+ **/
+function sc_lead($attr, $content='') {
+	return '<p class="lead">'.$content.'</p>';
+}
+add_shortcode('lead', 'sc_lead');
+
+
+/**
+ * Wrap arbitrary text in <blockquote>
+ **/
+function sc_blockquote($attr, $content='') {
+	$source = $attr['source'] ? $attr['source'] : null;
+	$cite = $attr['cite'] ? $attr['cite'] : null;
+
+	$html = '<blockquote';
+	if ($source) {
+		$html .= ' class="quote"';
+	}
+	$html .='><p>'.$content.'</p>';
+	if ($source || $cite) {
+		$html .= '<small>';
+		if ($source) {
+			$html .= $source;
+		}
+		if ($cite) {
+			$html .= '<cite title="'.$cite.'">'.$cite.'</cite>';
+		}
+		$html .= '</small>';
+	}
+	$html .= '</blockquote>';
+
+	return $html;
+}
+add_shortcode('blockquote', 'sc_blockquote');
+
 
 /**
  * Post search

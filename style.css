@@ -12,6 +12,8 @@ Version: v2.0.8
 
 .container-wide {width:100%;}
 
+.container-tall {height: 100%;}
+
 .navigation { list-style-type: none; margin: 0; }
 
 .sprite {
@@ -289,6 +291,7 @@ li#nav-about a {
 /**************************
  * Stories - General
  **************************/
+article.story { color: #000; }
 article.story,
 article.story p,
 article.story ol,
@@ -296,7 +299,6 @@ article.story ul {
 	font-family: Georgia, serif;
 	font-size: 16px;
 	line-height: 26px;
-	color: #000;
 	margin-top: 0;
 }
 article.story .story-header-image {
@@ -314,7 +316,9 @@ article.story h3,
 article.story h4,
 article.story h5,
 article.story h6,
-article.story .description {
+article.story .description,
+article.story blockquote,
+article.story blockquote p {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -327,6 +331,34 @@ article.story .description { font-size: 22px; line-height: 32px; font-style: ita
 article.story .lead { font-size: 18px; line-height: 28px; margin-bottom: 45px;}
 article.story .lead::first-letter,
 article.story .lead:first-letter { font-size: 36px; font-weight: bold; }
+article.story blockquote { padding-left: 0; border-left: 0; margin-bottom: 25px; }
+article.story blockquote,
+article.story blockquote p {
+	font-size: 33px;
+	line-height: 43px;
+	font-style: italic;
+}
+article.story blockquote small {
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+	font-size: 18px;
+	line-height: 24px;
+	color: #444;
+	margin-top: 18px;
+	font-style: normal;
+}
+article.story blockquote.quote { padding-left: 60px; position: relative; }
+article.story blockquote.quote:before {
+	content: "“";
+	font-size: 128px;
+	line-height: 102px;
+	font-style: none;
+	position: absolute;
+	top: 0;
+	left: -10px;
+}
+article.story blockquote.quote p:after {
+	content: "”";
+}
 
 
 /**************************
@@ -550,13 +582,22 @@ h2#footer_logo {
 .footer_stories.bottom li { height: 202px; overflow: hidden; }
 
 /* Slideshow styles */
+.ss-photo-essay {
+    height: 100%;
+    width: 100%;
+}
+
 .ss-content {
     position: relative;
     top: 0;
     left: 0;
     height: 100%;
     overflow: hidden;
-    background-color: #F0F0F0;
+    background-color: #212121;
+}
+
+.ss-content.ss-embed {
+    height: 300px;
 }
 
 .ss-slides-wrapper {
@@ -569,6 +610,7 @@ h2#footer_logo {
     -moz-transition:all 1.0s ease-in-out;
     transition:all 1.0s ease-in-out;
 }
+
 .ss-slide-wrapper {
     position: relative;
     height: 100%;
@@ -622,36 +664,53 @@ h2#footer_logo {
 
 .ss-arrow-wrapper {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     top: 40%;
     z-index: 10;
-    text-indent: -9999em;
+    /*text-indent: -9999em;*/
 }
 
 .ss-arrow-wrapper-left {
+    margin-left: 10px;
     left: 0;
 }
 
 .ss-arrow-wrapper-right {
+    margin-right: 10px;
     right: 0;
 }
 
 .ss-arrow {
     position: absolute;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
+    background-color: #000;
     background-size: 50px;
     background-repeat: no-repeat;
+    border: 3px solid #BEBEBE;
+    -webkit-border-radius: 23px;
+    -moz-border-radius: 23px;
+    border-radius: 23px;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-size: 60px;
+    color: #BEBEBE;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.ss-arrow:hover {
+    text-decoration: none;
+    color: #fff;
+    border-color: #fff;
 }
 
 .ss-arrow-prev {
-    background-image: url('../images/arrow_left.png');
     left: 0;
 }
 
 .ss-arrow-next {
-    background-image: url('../images/arrow_right.png');
     right: 0;
 }
 
@@ -674,6 +733,7 @@ h2#footer_logo {
     transition: opacity 0.3s ease-in-out;
     -moz-transition: opacity 0.3s ease-in-out;
     -webkit-transition: opacity 0.3s ease-in-out;
+    color: #fff;
 }
 
 .ss-caption.ss-current > p {

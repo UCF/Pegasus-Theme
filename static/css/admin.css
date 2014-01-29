@@ -83,5 +83,6 @@ select[id*="_default_font"] option[value="Arial Black"] { font-family: "Arial Bl
 select[id*="_default_font"] option[value="Open Sans Condensed Bold"] { font-family: "OpenSansCondensedBold", sans-serif; text-transform: uppercase; }
 select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
 
-
+/* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
+#content_blockquote { display: none; }
 
