@@ -446,18 +446,22 @@ var SlideShow = (function() {
         e.preventDefault();
 
         var slidesContent = e.data.slidesContent,
-            nextDataId = slidesContent.find('.ss-arrow-next').attr('href').replace('#', '');
+            nextDataId = slidesContent.find('.ss-arrow-next').attr('href');
 
-        _transitionSlide(slidesContent, nextDataId);
+        if (nextDataId) {
+            _transitionSlide(slidesContent, nextDataId.replace('#', ''));
+        }
     }
 
     function _prevSlide(e) {
         e.preventDefault();
 
         var slidesContent = e.data.slidesContent,
-            prevDataId = slidesContent.find('.ss-arrow-prev').attr('href').replace('#', '');
+            prevDataId = slidesContent.find('.ss-arrow-prev').attr('href');
 
-        _transitionSlide(slidesContent, prevDataId);
+        if (prevDataId) {
+            _transitionSlide(slidesContent, prevDataId.replace('#', ''));
+        }
     }
 
     function _transitionSlide(slidesContent, nextDataId) {
