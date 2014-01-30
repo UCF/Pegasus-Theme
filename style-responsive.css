@@ -35,6 +35,14 @@
 	article.story-default .description { padding-right: 0; margin-bottom: 20px; }
 	article.story-default .social { float: left; }
 
+	/**************************
+	 * Story - Slideshow
+	 **************************/
+	main.ss-photo-essay{ height: 500px; }
+	article.ss-photo-essay { padding-top: 5%;}
+	.ss-photo-essay .ss-slides-wrapper { height: 65%; }
+	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 30%; }
 
 	/**************************
 	 * Footer
@@ -59,7 +67,7 @@
 
 	/* Footer */
     #footer #footer_hr { width: 768px; }
-    
+
     #footer_stories>div, #footer_navigation>div { margin-left: 15px; }
     #footer_stories { padding-top: 10px; }
 }
@@ -152,9 +160,20 @@
 
 
 	/**************************
+	 * Story - Slideshow
+	 **************************/
+	.ss-embed .ss-slides-wrapper { height: 280px; }
+	.ss-embed .ss-arrow-wrapper { top: 140px; }
+
+	.ss-photo-essay .ss-slides-wrapper { height: 50%; }
+	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
+
+
+	/**************************
 	 * Footer
 	 **************************/
-	
+
 	#footer-navigation { padding-top: 40px; padding-bottom: 25px; }
 	#footer-navigation .footer-logo,
 	#footer-navigation .footer-logo.pull-left,

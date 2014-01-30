@@ -500,7 +500,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 		?>
 
 		<section class='ss-content'>
-			<div class='ss-nav-wrapper' style="height: 80%;">
+			<div class='ss-nav-wrapper'>
 	        <div class='ss-arrow-wrapper ss-arrow-wrapper-left'>
 	            <a class='ss-arrow ss-arrow-prev ss-last'>&lsaquo;</a>
 	        </div>
@@ -532,7 +532,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	    ?>
 
 	    </div>
-	    <div class='ss-captions-wrapper' style="height: 20%;">
+	    <div class='ss-captions-wrapper'>
 
 	    <?php
 
@@ -544,7 +544,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	    ?>
 
 	            <div class='ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?=$data_id; ?>'>
-	                <p><?=$slide_caption[$s]; ?></p>
+	                <p class="caption"><?=$slide_caption[$s]; ?></p>
 	            </div>
 
 	    <?php

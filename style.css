@@ -597,26 +597,23 @@ article.ss-photo-essay {
     overflow: hidden;
 }
 
-.ss-content.ss-embed {
-    height: 300px;
-}
-
 .ss-slides-wrapper {
     position: relative;
     top: 0;
-    height: 100%;
-    width: 1000%;
+    white-space: nowrap;
 
     -webkit-transition:all 1.0s ease-in-out;
     -moz-transition:all 1.0s ease-in-out;
     transition:all 1.0s ease-in-out;
 }
+.ss-embed .ss-slides-wrapper { height: 360px; }
+.ss-photo-essay .ss-slides-wrapper { height: 80%; }
 
 .ss-slide-wrapper {
     position: relative;
     height: 100%;
-    float: left;
     margin: 0;
+    display: inline-block;
 }
 
 .ss-slide {
@@ -669,8 +666,8 @@ article.ss-photo-essay {
     height: 40px;
     top: 40%;
     z-index: 10;
-    /*text-indent: -9999em;*/
 }
+.ss-embed .ss-arrow-wrapper { top: 180px; }
 
 .ss-arrow-wrapper-left {
     margin-left: 10px;
@@ -714,9 +711,11 @@ article.ss-photo-essay {
 .ss-captions-wrapper {
     position: relative;
     padding-top: 20px;
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 22%;
+    margin-right: 22%;
 }
+.ss-embed .ss-captions-wrapper { height: 300px; }
+.ss-photo-essay .ss-captions-wrapper { height: 20%; }
 
 .ss-caption {
     position: absolute;

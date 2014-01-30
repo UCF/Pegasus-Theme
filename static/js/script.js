@@ -405,6 +405,7 @@ var SlideShow = (function() {
 
     function _resizeSlidesWrapper(slidesContent) {
         _resizeSlides(slidesContent);
+        _resizeCaptions(slidesContent);
 
         var currentSlide = _getCurrentSlide(slidesContent);
         var left = (slidesContent.width() - currentSlide.outerWidth()) / 2;
@@ -440,6 +441,26 @@ var SlideShow = (function() {
 
     function _getRatio(width, height) {
         return width/height;
+    }
+
+    function _resizeCaptions(slidesContent) {
+        var captionWrapper = slidesContent.find('.ss-captions-wrapper'),
+            captions = slidesContent.find('.ss-caption'),
+            captionHeight = 50;
+
+        if (!$('.ss-photo-essay').length) {
+            captions.each(function ()  {
+                var caption = $(this);
+
+                if (captionHeight < caption.height()) {
+                    captionHeight = caption.height();
+                }
+            });
+
+            captionWrapper.css({
+                height: captionHeight
+            });
+        }
     }
 
     function _nextSlide(e) {
