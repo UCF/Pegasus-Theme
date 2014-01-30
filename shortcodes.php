@@ -502,7 +502,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 		<section class='ss-content'>
 			<div class='ss-nav-wrapper' style="height: 80%;">
 	        <div class='ss-arrow-wrapper ss-arrow-wrapper-left'>
-	            <a class='ss-arrow ss-arrow-prev'>&lsaquo;</a>
+	            <a class='ss-arrow ss-arrow-prev ss-last'>&lsaquo;</a>
 	        </div>
 	        <div class='ss-arrow-wrapper ss-arrow-wrapper-right'>
 	            <a class='ss-arrow ss-arrow-next' href='#2'>&rsaquo;</a>
