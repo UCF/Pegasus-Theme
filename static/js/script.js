@@ -488,14 +488,18 @@ var SlideShow = (function() {
 
         if (prevSlide.length) {
             prevButton.attr('href', '#' + prevSlide.data('id'));
+            prevButton.removeClass('ss-last');
         } else {
-            prevButton.removeAttr('href')
+            prevButton.removeAttr('href');
+            prevButton.addClass('ss-last');
         }
 
         if (nextSlide.length) {
             nextButton.attr('href', '#' + nextSlide.data('id'));
+            nextButton.removeClass('ss-last');
         } else {
-            nextButton.removeAttr('href')
+            nextButton.removeAttr('href');
+            nextButton.addClass('ss-last');
         }
     }
 

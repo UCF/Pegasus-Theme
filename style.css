@@ -684,15 +684,8 @@ h2#footer_logo {
     position: absolute;
     width: 40px;
     height: 40px;
-    background-color: #000;
-    background-size: 50px;
-    background-repeat: no-repeat;
-    border: 3px solid #BEBEBE;
-    -webkit-border-radius: 23px;
-    -moz-border-radius: 23px;
-    border-radius: 23px;
-    font-family: Georgia, "Times New Roman", Times, serif;
-    font-size: 60px;
+    font-family: "Times New Roman", Times, serif;
+    font-size: 80px;
     color: #BEBEBE;
     line-height: 30px;
     text-align: center;
@@ -702,7 +695,10 @@ h2#footer_logo {
 .ss-arrow:hover {
     text-decoration: none;
     color: #fff;
-    border-color: #fff;
+}
+
+.ss-arrow.ss-last:hover {
+    color: #BEBEBE;
 }
 
 .ss-arrow-prev {
