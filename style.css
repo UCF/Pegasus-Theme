@@ -586,6 +586,9 @@ h2#footer_logo {
     height: 100%;
     width: 100%;
 }
+article.ss-photo-essay {
+	background-color: #212121;
+}
 
 .ss-content {
     position: relative;
