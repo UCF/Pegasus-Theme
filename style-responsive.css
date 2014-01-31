@@ -46,6 +46,7 @@
 	article.story-default .description { padding-right: 0; margin-bottom: 20px; }
 	article.story-default .social { float: left; }
 
+
 	/**************************
 	 * Story - Slideshow
 	 **************************/
@@ -54,6 +55,7 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 65%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 30%; }
+
 
 	/**************************
 	 * Footer
@@ -326,6 +328,16 @@
 
 
 @media (max-width: 480px) {
+	/**************************
+	 * Stories - General
+	 **************************/
+	article.story .callout-inner > div:not([class]),
+	article.story .callout-inner .wp-video-shortcode,
+	article.story .callout-inner .mejs-overlay,
+	article.story .callout-inner .mejs-poster,
+	article.story iframe {
+		height: 220px !important;
+	}
 
 }
 
