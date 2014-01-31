@@ -552,7 +552,7 @@ add_shortcode('archive-search', 'sc_archive_search');
 
 function sc_photo_essay_slider( $atts, $content = null ) {
 	// TODO: specify essay by slug/id/whatever
-	$id 		= @$atts['id'];
+	$slug 		= @$atts['slug'];
 	$recent 	= get_posts(array(
 		'numberposts' => 1,
 		'post_type' => 'photo_essay',
@@ -561,8 +561,16 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	$mostrecent = $recent[0];
 
-	if (is_numeric($id)) {
-		$essay = get_post($id);
+	if (is_string($slug)) {
+		$essays = get_posts(array(
+			'name' => $slug,
+			'post_type' => 'photo_essay',
+			'post_status' => 'publish',
+			'posts_per_page' => 1
+		));
+		if ($essays) {
+			$essay = $essays[0];
+		}
 	} else {
 		$essay = $mostrecent;
 	}
