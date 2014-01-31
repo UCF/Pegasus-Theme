@@ -80,6 +80,42 @@ add_shortcode('media', 'sc_get_media');
 
 
 /**
+ * Uses sc_image to get an image URL and display it
+ * in an <img> tag with optional styling parameters.
+ **/
+function sc_photo($attr, $content) {
+	$content = $content ? $content : '';
+	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
+	
+	$alt = $attr['alt'] ? $attr['alt'] : $content;
+	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
+	$width = $attr['width'] ? $attr['width'] : '100%';
+
+	$html = '';
+
+	if ($filename) {
+		$url = sc_image(array('filename' => $filename));
+		var_dump($url);
+		if ($url) {
+			if ($content) {
+				$html .= '<figure class="'.$position.'" style="width: '.$width.'; height: auto;">';
+				$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
+				$html .= '<p class="caption">'.$content.'</p>';
+				$html .= '</figure>';
+			}
+			else {
+				$html .= '<img class="'.$position.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
+			}
+			
+		}
+	}
+	
+	return $html;
+}
+add_shortcode('photo', 'sc_photo');
+
+
+/**
  * Return a <hr /> element
  **/
 function sc_divider($attr) {
@@ -124,6 +160,53 @@ function sc_blockquote($attr, $content='') {
 	return $html;
 }
 add_shortcode('blockquote', 'sc_blockquote');
+
+
+/**
+ * Create a full-width callout box.
+ **/
+function sc_callout($attr, $content) {
+	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+	$content = do_shortcode($content);
+
+	// Close out our existing .span, .row and .container
+	$html = '</div></div></div>';
+	$html .= '<div class="container-wide callout" style="background-color: '.$bgcolor.';">';
+	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1 callout-inner">';
+	$html .= $content;
+	$html .= '</div></div></div></div>';
+	// Reopen standard .container, .row and .span
+	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1">';
+
+	return $html;
+}
+add_shortcode('callout', 'sc_callout');
+
+
+/**
+ * Wrap arbitrary text in .caption paragraph.
+ **/
+function sc_caption($attr, $content) {
+	return '<p class="caption">'.$content.'</p>';
+}
+add_shortcode('caption', 'sc_caption');
+
+
+/**
+ * Create a floating sidebar.
+ **/
+function sc_sidebar($attr, $content) {
+	$pull = ($attr['position'] == ('left' || 'right')) ? 'pull-'.$attr['position'] : 'pull-right';
+	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+	$content = do_shortcode($content);
+
+	$html = '<div class="span4 '.$pull.' sidebar">';
+	$html .= '<section class="sidebar-inner" style="background-color: '.$bgcolor.';">'.$content.'</section>';
+	$html .= '</div>';
+
+	return $html;
+}
+add_shortcode('sidebar', 'sc_sidebar');
 
 
 /**

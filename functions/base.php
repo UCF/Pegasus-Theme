@@ -858,6 +858,15 @@ function is_login(){
 
 
 /**
+ * Destroy empty <p> tags because wpautop is dumb.
+ **/
+function kill_empty_p_tags($content) {
+	$killme = array('<p></p>', '<p>&nbsp;</p>', '<p>  </p>');
+	return str_replace($killme, '', $content);
+}
+
+
+/**
  * Given a mimetype, will attempt to return a string representing the
  * application it is associated with.  If the mimetype is unknown, the default
  * return is 'document'.

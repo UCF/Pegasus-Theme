@@ -24,6 +24,17 @@
 	 **************************/
 	article.story .story-header-image { height: 490px; max-width: 980px; margin-bottom: 60px; }
 
+	article.story blockquote.quote { padding-left: 42px; }
+	article.story blockquote.quote:before {	font-size: 95px; line-height: 92px;	}
+
+	article.story .callout-inner > div:not([class]),
+	article.story .callout-inner .wp-video-shortcode,
+	article.story .callout-inner .mejs-overlay,
+	article.story .callout-inner .mejs-poster,
+	article.story iframe {
+		height: 280px !important;
+	}
+
 
 	/**************************
 	 * Story - Default Template
@@ -79,7 +90,7 @@
 	 **************************/
 
 	/* About Pegasus Magazine link */
-	li#nav-about a { font-size: 11px; } 
+	li#nav-about a { font-size: 11px; }
 
 
 	/**************************
@@ -92,12 +103,20 @@
 }
 
 
-@media (max-width: 767px) {	
+@media (max-width: 767px) {
 	/**************************
 	 * Utility
 	 **************************/
 
 	.container-wide { margin-left: -20px; padding-left: 20px; padding-right: 20px; }
+
+
+	/**************************
+	 * General
+	 **************************/
+	html, body {
+	    width: auto;
+	}
 
 
 	/**************************
@@ -140,7 +159,7 @@
 	/**************************
 	 * Stories - General
 	 **************************/
-	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 110%; }
+	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 118%; }
 	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; }
 	article.story .description-wrap { margin-bottom: 35px; }
 
@@ -151,6 +170,26 @@
 	article.story .lead { font-size: 17px; line-height: 27px; margin-bottom: 30px; }
 	article.story .lead::first-letter,
 	article.story .lead:first-letter { font-size: 30px; font-weight: bold; }
+	article.story blockquote,
+	article.story blockquote p {
+		font-size: 28px;
+		line-height: 34px;
+	}
+	article.story blockquote small { font-size: 16px; line-height: 20px; }
+	article.story blockquote.quote { padding-left: 36px; }
+	article.story blockquote.quote:before {
+		font-size: 76px;
+		line-height: 74px;
+		left: -7px;
+	}
+
+	article.story .sidebar.pull-right,
+	article.story .sidebar.pull-left {
+		float: left;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
 
 
 	/**************************
@@ -200,11 +239,11 @@
 	 * Shrinkable bootstrap tables for tablets/phones.
 	 * Responsive table guide via css-tricks.com/responsive-data-tables/
 	 **************************/
-	table.table.table-striped, 
-	.table.table-striped thead, 
-	.table.table-striped tbody, 
-	.table.table-striped th, 
-	.table.table-striped td, 
+	table.table.table-striped,
+	.table.table-striped thead,
+	.table.table-striped tbody,
+	.table.table-striped th,
+	.table.table-striped td,
 	.table.table-striped tr {
 		display: block;
 	}
@@ -225,10 +264,10 @@
 	.table.table-striped tbody tr td:empty {
 		display: none;
 	}
-	.table.table-striped td, 
-	.table.table-striped td.name, 
-	.table.table-striped td.email, 
-	.table.table-striped td.job_title, 
+	.table.table-striped td,
+	.table.table-striped td.name,
+	.table.table-striped td.email,
+	.table.table-striped td.job_title,
 	.table.table-striped td.phones {
 		width: auto;
 	}
@@ -239,7 +278,7 @@
 		border-top: 0;
 	}
 	.table.table-striped tbody tr td ul {
-		margin-bottom: 0;	
+		margin-bottom: 0;
 	}
 	.table.table-striped td.phones ul li {
 		line-height: 16px;
@@ -256,7 +295,7 @@
 	 * DEPRECATED - DO NOT USE
 	 **************************/
 
-	.container.wide > .row { width: 100%; }	
+	.container.wide > .row { width: 100%; }
 
 	/* Footer story thumbnails */
     .footer_stories { padding: 30px 0 0 0; }
@@ -268,18 +307,18 @@
     .footer_stories a span.subtitle_text { padding-top: 5px; }
     .footer_stories a span.subtitle_text,
     .footer_stories a span.title_colon { display: none; }
-    
+
     /* Footer */
     #footer #footer_hr { margin-left: 20px; width: 100%; }
 	#footer { margin-left: -20px; padding-right: 40px; }
 	#footer > .container > .row { margin-left: 20px; }
-	
+
 	#issue-carousel .item .issue-title { font-size: 18px; }
 	#issue-carousel .carousel-control { font-size: 12px; }
-	#issue-carousel .carousel-control, 
+	#issue-carousel .carousel-control,
 	#issue-carousel .carousel-control.left .arrow,
 	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
-	
+
 	#footer_navigation ul { padding-top: 10px; }
 	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
 
@@ -287,10 +326,19 @@
 
 
 @media (max-width: 480px) {
-	
+
 }
 
 
 @media (max-width: 320px) {
+	/**************************
+	 * Story - Slideshow
+	 **************************/
+	.ss-embed .ss-slides-wrapper { height: 140px; }
+	.ss-embed .ss-arrow-wrapper { top: 50px; }
 
+	main.ss-photo-essay{ height: 400px; }
+	.ss-photo-essay .ss-slides-wrapper { height: 40%; }
+	.ss-photo-essay .ss-arrow-wrapper { top: 15%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 60%; }
 }

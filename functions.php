@@ -425,11 +425,11 @@ function output_header_markup($post) {
 					main article h5,
 					main article h6,
 					main article blockquote,
-					main article blockquote p,
-					main article .lead::first-letter,
-					main article .lead:first-letter {
+					main article blockquote p {
 						color: '.$font['color'].';
 					}
+					main article .lead::first-letter { color: '.$font['color'].'; }
+					main article .lead:first-letter { color: '.$font['color'].'; }
 					main article h1 {
 						font-size: '.$font['size-desktop'].';
 						line-height: '.$font['size-desktop'].';
@@ -710,15 +710,6 @@ function display_issue($post) {
 				break;
 		}
 	}
-}
-
-
-/**
- * Destroy empty <p> tags because wpautop is dumb.
- **/
-function kill_empty_p_tags($content) {
-	$killme = array('<p></p>', '<p>&nbsp;</p>');
-	return str_replace($killme, '', $content);
 }
 
 ?>
