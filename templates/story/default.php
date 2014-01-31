@@ -6,10 +6,12 @@
 ?>
 
 <article class="story story-default">
+	<?php if ($header_img) { ?>
 	<div class="container-wide story-header-image" style="background-image: url('<?=$header_img?>'); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?=$header_img?>',sizingMethod='scale')">
 		<img src="<?=$header_img?>" alt="<?=$post->post_title?>" title="<?=$post->post_title?>" />
 	</div>
-
+	<?php } ?>
+	
 	<div class="container">
 		<div class="row title-wrap">
 			<div class="span10 offset1">
