@@ -82,34 +82,41 @@ add_shortcode('media', 'sc_get_media');
 /**
  * Uses sc_image to get an image URL and display it
  * in an <img> tag with optional styling parameters.
+ * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
 	$content = $content ? $content : '';
 	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
-	
+	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
+
 	$alt = $attr['alt'] ? $attr['alt'] : $content;
 	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
 	$width = $attr['width'] ? $attr['width'] : '100%';
 
+	$url = null;
 	$html = '';
 
-	if ($filename) {
-		$url = sc_image(array('filename' => $filename));
-		var_dump($url);
-		if ($url) {
-			if ($content) {
-				$html .= '<figure class="'.$position.'" style="width: '.$width.'; height: auto;">';
-				$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
-				$html .= '<p class="caption">'.$content.'</p>';
-				$html .= '</figure>';
-			}
-			else {
-				$html .= '<img class="'.$position.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
-			}
-			
-		}
+	// Attempt to get url by attachment ID first.
+	if ($attachment_id) {
+		$url = wp_get_attachment_image_src($attachment_id, 'full');
+		$url = $url[0];
 	}
-	
+	else if ($filename) {
+		$url = sc_image(array('filename' => $filename));
+	}
+	if ($url) {
+		if ($content) {
+			$html .= '<figure class="'.$position.'" style="max-width: '.$width.'; height: auto;">';
+			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="max-width: '.$width.'; height: auto;" />';
+			$html .= '<p class="caption">'.$content.'</p>';
+			$html .= '</figure>';
+		}
+		else {
+			$html .= '<img class="'.$position.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
+		}
+
+	}
+
 	return $html;
 }
 add_shortcode('photo', 'sc_photo');
@@ -185,7 +192,11 @@ add_shortcode('callout', 'sc_callout');
 
 /**
  * Wrap arbitrary text in .caption paragraph.
+ * Destroy WordPress' existing caption shortcode.
  **/
+remove_shortcode('wp_caption', 'img_caption_shortcode');
+remove_shortcode('caption', 'img_caption_shortcode');
+
 function sc_caption($attr, $content) {
 	return '<p class="caption">'.$content.'</p>';
 }

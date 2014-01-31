@@ -16,7 +16,7 @@ Version: v2.0.8
 .navigation { list-style-type: none; margin: 0; }
 
 /* Attempt to center block-level elements */
-.pull-center { margin-left: auto; margin-right: auto; }
+.pull-center { margin-left: auto; margin-right: auto; display: block; }
 
 .sprite {
 	display: block;
