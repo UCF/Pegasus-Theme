@@ -529,7 +529,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Image',
-				'desc' => 'Large feature image to go at the very top of the story.  Recommended dimensions: 1200x600px',
+				'desc' => 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px',
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
 			),
