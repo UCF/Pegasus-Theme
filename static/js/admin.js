@@ -36,7 +36,7 @@ WebcomAdmin.shortcodeTool = function($){
 	})();
 	
 	cls.shortcodeAction = function(shortcode){
-		var text = "[" + shortcode + "]"
+		var text = "[" + shortcode + "][/" + shortcode + "]"
 		send_to_editor(text);
 	};
 	
