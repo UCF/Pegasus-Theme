@@ -1773,7 +1773,10 @@ function _show_meta_boxes($post, $meta_box){
 					}
 				?>
 				<?php if($document):?>
-				<a href="<?=$url?>"><?=$document->post_title?></a><br /><br />
+					<a target="_blank" href="<?=$url?>">
+						<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
+						<?=$document->post_title?>
+					</a><br /><br />
 				<?php endif;?>
 				<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
 			

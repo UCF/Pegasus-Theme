@@ -496,10 +496,10 @@ class Story extends CustomPostType {
 				'id'   => $prefix.'template',
 				'type'    => 'select',
 				'options' => array(
-					'Default (generic story)' => 'default',
 					'Photo essay' => 'photo_essay',
 					'Custom story (requires custom CSS/JS)' => 'custom',
-				)
+				),
+				'default' => 'Default'
 			),
 			array(
 				'name' => 'Story Subtitle',
@@ -909,7 +909,10 @@ class PhotoEssay extends CustomPostType {
 						}
 					?>
 					<?php if($document):?>
-					<a href="<?=$url?>"><?=$document->post_title?></a><br /><br />
+						<a target="_blank" href="<?=$url?>">
+							<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
+							<?=$document->post_title?>
+						</a><br /><br />
 					<?php endif;?>
 					<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
 
@@ -956,14 +959,12 @@ class PhotoEssay extends CustomPostType {
 									<tr>
 										<th><label for="ss_slide_caption[<?=$s?>]">Caption</label></th>
 										<td>
-											<span class="description">Caption for this slide.</span><br/>
 											<textarea name="ss_slide_caption[<?=$s?>]" id="ss_slide_caption[<?=$s?>]" cols="60" rows="4"><?php ($slide_caption[$s] !== '') ? print $slide_caption[$s] : ''; ?></textarea>
 										</td>
 									</tr>
 									<tr>
 										<th><label for="ss_slide_image[<?=$s?>]">Slide Image</label></th>
 										<td>
-											<span class="description">Description here.</span><br/>
 											<?php
 												if ($slide_image[$s]){
 													$image = get_post($slide_image[$s]);
@@ -973,7 +974,10 @@ class PhotoEssay extends CustomPostType {
 												}
 											?>
 											<?php if($image):?>
-											<a href="<?=$url?>"><?=$image->post_title?></a><br /><br />
+											<a target="_blank" href="<?=$url?>">
+												<img src="<?=$url?>" style="max-width: 400px; height: auto;" /><br/>
+												<?=$image->post_title?>
+											</a><br /><br />
 											<?php endif;?>
 											<input type="file" <?php if($image){ ?>class="has-value"<?php } ?> id="file_img_<?=$post->ID?>" name="ss_slide_image[<?=$s?>]"><br />
 										</td>
@@ -1000,14 +1004,12 @@ class PhotoEssay extends CustomPostType {
 								<tr>
 									<th><label for="ss_slide_caption[<?=$i?>]">Slide Caption</label></th>
 									<td>
-										<span class="description">Caption for this slide.</span><br/>
 										<textarea name="ss_slide_caption[<?=$i?>]" id="ss_slide_caption[<?=$i?>]" cols="60" rows="4"></textarea>
 									</td>
 								</tr>
 								<tr>
 									<th><label for="ss_slide_image[<?=$i?>]">Slide Image</label></th>
 									<td>
-										<span class="description">Description here.</span><br/>
 										<input type="file" id="file_<?=$post->ID?>" name="ss_slide_image[<?=$i?>]"><br />
 									</td>
 								</tr>

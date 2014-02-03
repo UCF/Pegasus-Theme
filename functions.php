@@ -774,4 +774,25 @@ function editor_default_photo_values() {
 }
 add_action('after_setup_theme', 'editor_default_photo_values');
 
+
+/**
+ * Set a 'story_template' meta field value for stories with an issue 
+ * slug in the FALL_2013_OR_OLDER constant so that they are 'custom'
+ * if they have no value.
+ *
+ * Runs only as necessary (when a given post is selected to be edited
+ * in the WP admin.)
+ *
+ * This function exists primarily to help toggle necessary meta fields.
+ * single-story.php will still handle old stories that do not have a set
+ * 'story_template' value appropriately.
+ **/
+function set_template_for_fall_2013_or_earlier($post) {
+	if ($post->post_type == 'story' && is_fall_2013_or_older($post)) {
+		if (get_post_meta($post->ID, 'story_template', TRUE) == '') {
+			update_post_meta($post->ID, 'story_template', 'custom');
+		}
+	}
+}
+add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 ?>

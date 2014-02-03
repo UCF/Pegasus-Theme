@@ -27,7 +27,6 @@
 				require_once('templates/story/photo_essay.php');
 				break;
 			case 'custom':
-			default:
 				if (!is_fall_2013_or_older($post)) {
 					// Kill automatic <p> tag insertion if this isn't an old story.
 					// Don't want to accidentally screw up an old story that worked
@@ -36,6 +35,15 @@
 				}
 				the_content();
 				break;
+			default: // field value is empty
+				if (!is_fall_2013_or_older($post)) {
+					require_once('templates/story/default.php');
+				}
+				else {
+					the_content();
+				}
+				break;
+
 		}
 	}
 ?>

@@ -162,17 +162,19 @@ WebcomAdmin.themeOptions = function($){
 	if (cls.parent.length > 0){
 		cls.__init__();
 	}
+};
 
 
-	// Slider Meta Box Updates:
+WebcomAdmin.sliderMetaBoxes = function($) {
+    // Slider Meta Box Updates:
     // (only run this code if we're on a screen with #slider-slides-settings-basic;
     // i.e. if we're on a slider edit screen:
     if ($('#ss_slides_wrapper').length > 0) {
         
         var slideCountWidget = $('#slider-slides-settings-count'),
-        	slideCountField = $('input#ss_slider_slidecount'),
-        	slideOrderField = $('input#ss_slider_slideorder'),
-        	keyField = 'input[name^="ss_slide_image["]'; // Related to some arbitrary unique field in each slide, from which an ID can be grabbed
+            slideCountField = $('input#ss_slider_slidecount'),
+            slideOrderField = $('input#ss_slider_slideorder'),
+            keyField = 'input[name^="ss_slide_image["]'; // Related to some arbitrary unique field in each slide, from which an ID can be grabbed
 
         // Hide Preview Changes button
         // this is a temporary fix for an issue where previewing changes on this post type deletes its uploaded media
@@ -182,44 +184,44 @@ WebcomAdmin.themeOptions = function($){
         // Necessary for determining slide count + order.
         // This should be customized per site.
         var getAllSlides = function() {
-        	return $('li.custom_repeatable.postbox');
+            return $('li.custom_repeatable.postbox');
         }
 
         // Return all slides that have enough content to be deemed not empty
         var getValidSlides = function() {
-        	var slides = [];
-        	var allSlides = getAllSlides();
+            var slides = [];
+            var allSlides = getAllSlides();
 
-        	$.each(allSlides, function() {
-        		var slide = $(this),
-        			inputID = getInputID(slide.find(keyField).attr('name')),
-        			inputs = slide.find('input[name*="['+inputID+']"]'),
-        			textareas = slide.find('textarea[name*="['+inputID+']"]'),
-        			fields = [inputs, textareas];
+            $.each(allSlides, function() {
+                var slide = $(this),
+                    inputID = getInputID(slide.find(keyField).attr('name')),
+                    inputs = slide.find('input[name*="['+inputID+']"]'),
+                    textareas = slide.find('textarea[name*="['+inputID+']"]'),
+                    fields = [inputs, textareas];
 
-        		$.each(fields, function() {
-        			if (($(this).val() && typeof $(this).val() != 'undefined' && $(this).val !== '') || $(this).hasClass('has-value')) {
-        				slides.push(slide);
-        				return false;
-        			}
-        		});
-        	});
-        	return slides;
+                $.each(fields, function() {
+                    if (($(this).val() && typeof $(this).val() != 'undefined' && $(this).val !== '') || $(this).hasClass('has-value')) {
+                        slides.push(slide);
+                        return false;
+                    }
+                });
+            });
+            return slides;
         }
 
         // Parses a string value to extract an input ID.
         // Assumes passed value is an input name/id, structured as "fieldname[id]".
         // Returns an input ID.
         var getInputID = function(string) {
-        	var inputID = string.split('[')[1];
-        	inputID = inputID.substr(0, inputID.length - 1);
+            var inputID = string.split('[')[1];
+            inputID = inputID.substr(0, inputID.length - 1);
 
-        	return inputID;
+            return inputID;
         }
         
         // Function that updates Slide Count value:
         var updateSlideCount = function() {
-        	var validSlides = getValidSlides();
+            var validSlides = getValidSlides();
 
             if (slideCountWidget.is('hidden')) {
                 slideCountWidget.show();
@@ -242,8 +244,8 @@ WebcomAdmin.themeOptions = function($){
             var validSlides = getValidSlides();
             
             $.each(validSlides, function() {
-            	var fieldName = $(this).find('input[name*="["], textarea[name*="["]')[0].getAttribute('name');
-            	var inputID = getInputID(fieldName);
+                var fieldName = $(this).find('input[name*="["], textarea[name*="["]')[0].getAttribute('name');
+                var inputID = getInputID(fieldName);
                 sortOrder[sortOrder.length] = inputID;
             });
             
@@ -287,10 +289,10 @@ WebcomAdmin.themeOptions = function($){
 
         // Update slide count when a slide's content changes:
         $(getAllSlides())
-        	.find('input, textarea')
-        		.on('change', function() {
-		        	updateSlideCount();
-		        	updateSliderSortOrder();
+            .find('input, textarea')
+                .on('change', function() {
+                    updateSlideCount();
+                    updateSliderSortOrder();
         });
 
 
@@ -366,8 +368,59 @@ WebcomAdmin.themeOptions = function($){
 };
 
 
+WebcomAdmin.storyFieldToggle = function($) {
+    var templateField = $('#story_template');
+
+    var toggleFields = function(val) {
+        if (val == '') {
+            val = 'default';
+        }
+        var fields = {
+            "defaultFields" : ["story_default_font", "story_default_color", "story_default_header_img"],
+            "photo_essayFields": [],
+            "customFields" : ["story_stylesheet", "story_javascript", "story_fonts"],
+        };
+        var fieldsOnKey = val + 'Fields';
+        var fieldsOn = fields[fieldsOnKey];
+
+        delete fields[fieldsOnKey];
+        fieldsOff = fields;
+
+        if (fieldsOn) {
+            $.each(fieldsOn, function(key, field) {
+                if ($.isArray(field)) {
+                    $.each(val, function(k, f) {
+                        $('label[for="' + f + '"]').parents('tr').fadeIn();
+                    });
+                }
+                else {
+                    $('label[for="' + field + '"]').parents('tr').fadeIn();
+                }
+            });
+        }
+        if (fieldsOff) {
+            $.each(fieldsOff, function(key, array) {
+                $.each(array, function(k, f) {
+                    $('label[for="' + f + '"]').parents('tr').hide();
+                });
+            });
+        }
+    }
+
+    // Toggle on load
+    toggleFields(templateField.val());
+
+    // Toggle fields on Story Template field change
+    templateField.on('change', function() {
+        toggleFields($(this).val());
+    });
+};
+
+
 (function($){
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
 	WebcomAdmin.shortcodeTool($);
+    WebcomAdmin.sliderMetaBoxes($);
+    WebcomAdmin.storyFieldToggle($);
 })(jQuery);
