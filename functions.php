@@ -202,7 +202,12 @@ update_option('posts_per_rss', 50);
 function story_excerpt() {
 	global $post;
 	if ($post->post_type == 'story') {
-		return get_post_meta($post->ID, 'story_subtitle', TRUE);
+		if (get_post_meta($post->ID, 'story_description', TRUE)) {
+			return get_post_meta($post->ID, 'story_description', TRUE);
+		}
+		else {
+			return get_post_meta($post->ID, 'story_subtitle', TRUE);
+		}
 	}
 	else { return the_excerpt(); }
 }
