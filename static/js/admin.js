@@ -11,6 +11,12 @@ WebcomAdmin.__init__ = function($){
 	// Allows forms with input fields of type file to upload files
 	$('input[type="file"]').parents('form').attr('enctype','multipart/form-data');
 	$('input[type="file"]').parents('form').attr('encoding','multipart/form-data');
+
+    // Initialize all the color selectors
+    var colorInput = $('.callout-color');
+    if (colorInput.length) {
+        colorInput.iris();
+    }
 };
 
 
@@ -118,33 +124,45 @@ WebcomAdmin.shortcodeTool = function($){
 
 WebcomAdmin.shortCodeSlideShowTool = function($){
     cls         = this;
-    cls.metabox = $('#slideshow-metabox');
-    if (cls.metabox.length < 1){console.log('no meta'); return;}
+    cls.slideshowMetabox = $('#slideshow-metabox');
+    if (cls.slideshowMetabox.length < 1){console.log('no meta'); return;}
 
-    cls.form     = cls.metabox.find('form');
-    cls.button   = cls.metabox.find('button');
-    cls.select   = cls.metabox.find('#photo-essay-select');
+    cls.slidshowButton   = cls.slideshowMetabox.find('button');
+    cls.slidshowSelect   = cls.slideshowMetabox.find('#photo-essay-select');
 
-    cls.shortcodeAction = function(photoEssaySlug) {
+    cls.slideshowShortcodeAction = function(photoEssaySlug) {
         var text = "[slideshow slug=\"" + photoEssaySlug + "\"][/slideshow]"
         send_to_editor(text);
     };
 
-    cls.buttonAction = function() {
-        var selected = cls.select.find(':selected');
-        cls.shortcodeAction(selected.val());
-    };
-
-    cls.selectAction = function(){
-        var selected = $(this).find(".shortcode:selected");
-        if (selected.length < 1){return;}
-
-        var value = selected.val();
-        cls.shortcodeAction(value);
+    cls.slideshowButtonAction = function() {
+        var selected = cls.slidshowSelect.find(':selected');
+        cls.slideshowShortcodeAction(selected.val());
     };
 
     // Search button click action, cause search
-    cls.button.click(cls.buttonAction);
+    cls.slidshowButton.click(cls.slideshowButtonAction);
+};
+
+WebcomAdmin.shortCodeCalloutTool = function($){
+    cls         = this;
+    cls.calloutMetabox = $('#callout-metabox');
+    if (cls.calloutMetabox.length < 1){console.log('no meta'); return;}
+
+    cls.calloutButton = cls.calloutMetabox.find('button');
+    cls.calloutColor  = cls.calloutMetabox.find('.callout-color');
+
+    cls.calloutShortcodeAction = function(color) {
+        var text = "[callout background=\"" + color + "\"][/callout]"
+        send_to_editor(text);
+    };
+
+    cls.calloutButtonAction = function() {
+        cls.calloutShortcodeAction(cls.calloutColor.val());
+    };
+
+    // Search button click action, cause search
+    cls.calloutButton.click(cls.calloutButtonAction);
 };
 
 
@@ -453,6 +471,7 @@ WebcomAdmin.storyFieldToggle = function($) {
 	WebcomAdmin.themeOptions($);
 	WebcomAdmin.shortcodeTool($);
     WebcomAdmin.shortCodeSlideShowTool($);
+    WebcomAdmin.shortCodeCalloutTool($);
     WebcomAdmin.sliderMetaBoxes($);
     WebcomAdmin.storyFieldToggle($);
 })(jQuery);

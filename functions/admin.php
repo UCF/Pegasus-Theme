@@ -14,10 +14,25 @@ function shortcode_interface_html(){
 	global $shortcode_tags;
 	$shortcodes = $shortcode_tags;
 	$ignore     = array(
-		"wp_caption" => null,
-		"caption"    => null,
-		"gallery"    => null,
-		"embed"      => null,
+		'wp_caption'       => null,
+		'caption'          => null,
+		'gallery'          => null,
+		'embed'            => null,
+		'archive-search'   => null,
+		'donotprint'       => null,
+		'gravityform'      => null,
+		'gravityforms'     => null,
+		'image'            => null,
+		'issue-list'       => null,
+		'media'            => null,
+		'photo'            => null,
+		'post-type-search' => null,
+		'print_link'       => null,
+		'search_form'      => null,
+		'static-image'     => null,
+		'story-list'       => null,
+		'slideshow'        => null,
+		'callout'          => null
 	);
 	$shortcodes = array_diff_key($shortcodes, $ignore);
 	ksort($shortcodes);
@@ -34,35 +49,80 @@ function shortcode_interface_html(){
 	<select name="shortcode-select" id="shortcode-select">
 		<option value="">--Choose Shortcode--</option>
 		<?php
-
-		// The users do not need to see all the shortcodes. Only show the shortcodes they will be using.
-		$shortcodeBlackList = array(
-			'archive-search' => 'archive-search',
-			'donotprint' => 'donotprint',
-			'gravityform' => 'gravityform',
-			'gravityforms' => 'gravityforms',
-			'image' => 'image',
-			'issue-list' => 'issue-list',
-			'media' => 'media',
-			'photo' => 'photo',
-			'post-type-search' => 'post-type-search',
-			'print_link' => 'print_link',
-			'search_form' => 'search_form',
-			'static-image' => 'static-image',
-			'story-list' => 'story-list'
-		);
 		foreach($shortcodes as $name=>$callback):
-			if (!in_array($name, $shortcodeBlackList)):
 		?>
 			<option class="shortcode" value="<?=$name?>"><?=$name?></option>
 		<?php
-			endif;
 		endforeach;
 		?>
 	</select>
 
 	<p>For more information about available shortcodes, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
 	<?php
+}
+
+
+function shortcode_slideshow_html(){
+	global $shortcode_tags;
+	$shortcodes = $shortcode_tags;
+	if (array_key_exists('slideshow', $shortcodes)):
+	?>
+
+		<p>Select a Photo Essay:</p>
+		<select name="photo-essay-select" id="photo-essay-select">
+			<option value="">--Choose Photo Essay--</option>
+
+			<?php
+			$photo_essays = get_posts(array(
+				'posts_per_page' => -1,
+				'post_type' => 'photo_essay',
+			));
+			foreach($photo_essays as $photo_essay):
+			?>
+
+			<option class="shortcode" value="<?=$photo_essay->post_name?>"><?=$photo_essay->post_title?></option>
+
+			<?php
+			endforeach;
+			?>
+
+		</select>
+
+		<button type="button">Insert</button>
+
+		<p>For more information about the slideshow shortcode, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
+	<?php
+	endif;
+}
+
+
+// Used to import the color picker for the shortcode_callout_html
+add_action( 'admin_enqueue_scripts', 'callout_enqueue_color_picker' );
+function callout_enqueue_color_picker( $hook_suffix ) {
+    // first check that $hook_suffix is appropriate for your admin page
+    wp_enqueue_style( 'wp-color-picker' );
+    wp_enqueue_script(
+        'iris',
+        admin_url( 'js/iris.min.js' ),
+        array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
+        false,
+        1
+    );
+}
+
+function shortcode_callout_html(){
+	global $shortcode_tags;
+	$shortcodes = $shortcode_tags;
+	if (array_key_exists('callout', $shortcodes)):
+	?>
+
+		<p>Select or set a color:</p>
+		<input type="text" name="callout-color" class="callout-color" value="#eeeeee" data-default-color="#ffffff">
+		<button type="button">Insert</button>
+
+		<p>For more information about the callout shortcode, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
+	<?php
+	endif;
 }
 
 
@@ -73,6 +133,8 @@ function shortcode_interface(){
 		$instance = new $type;
 		if ($instance->options('use_editor')){
 			add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', $instance->options('name'), 'side', 'core');
+			add_meta_box('slideshow-metabox', __('Slideshow'), 'shortcode_slideshow_html', $instance->options('name'), 'side', 'core');
+			add_meta_box('callout-metabox', __('Callout'), 'shortcode_callout_html', $instance->options('name'), 'side', 'core');
 		}
 	}
 }
