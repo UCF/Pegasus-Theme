@@ -132,9 +132,9 @@ function shortcode_interface(){
 	foreach(Config::$custom_post_types as $type){
 		$instance = new $type;
 		if ($instance->options('use_editor')){
-			add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', $instance->options('name'), 'side', 'core');
-			add_meta_box('slideshow-metabox', __('Slideshow'), 'shortcode_slideshow_html', $instance->options('name'), 'side', 'core');
 			add_meta_box('callout-metabox', __('Callout'), 'shortcode_callout_html', $instance->options('name'), 'side', 'core');
+			add_meta_box('slideshow-metabox', __('Slideshow'), 'shortcode_slideshow_html', $instance->options('name'), 'side', 'core');
+			add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', $instance->options('name'), 'side', 'core');
 		}
 	}
 }
