@@ -18,7 +18,7 @@ WebcomAdmin.shortcodeTool = function($){
 	cls         = this;
 	cls.metabox = $('#shortcodes-metabox');
 	if (cls.metabox.length < 1){console.log('no meta'); return;}
-	
+
 	cls.form     = cls.metabox.find('form');
 	cls.search   = cls.metabox.find('#shortcode-search');
 	cls.button   = cls.metabox.find('button');
@@ -26,7 +26,7 @@ WebcomAdmin.shortcodeTool = function($){
 	cls.select   = cls.metabox.find('#shortcode-select');
 	cls.form_url = cls.metabox.find("#shortcode-form").val();
 	cls.text_url = cls.metabox.find("#shortcode-text").val();
-	
+
 	cls.shortcodes = (function(){
 		var shortcodes = new Array();
 		cls.select.children('.shortcode').each(function(){
@@ -34,29 +34,29 @@ WebcomAdmin.shortcodeTool = function($){
 		});
 		return shortcodes;
 	})();
-	
+
 	cls.shortcodeAction = function(shortcode){
 		var text = "[" + shortcode + "][/" + shortcode + "]"
 		send_to_editor(text);
 	};
-	
+
 	cls.searchAction = function(){
 		cls.results.children().remove();
-		
+
 		var value = cls.search.val();
-		
+
 		if (value.length < 1){
 			return;
 		}
-		
+
 		var found = cls.shortcodes.filter(function(e, i, a){
 			return e.match(value);
 		});
-		
+
 		if (found.length > 1){
 			cls.results.removeClass('empty');
 		}
-		
+
 		$(found).each(function(){
 			var item      = $("<li />");
 			var link      = $("<a />");
@@ -66,54 +66,85 @@ WebcomAdmin.shortcodeTool = function($){
 			item.append(link);
 			cls.results.append(item);
 		});
-		
-		
+
+
 		if (found.length > 1){
 			cls.results.removeClass('empty');
 		}else{
 			cls.results.addClass('empty');
 		}
-		
+
 	};
-	
+
 	cls.buttonAction = function(){
 		cls.searchAction();
 	};
-	
+
 	cls.itemAction = function(){
 		var shortcode = $(this).text();
 		cls.shortcodeAction(shortcode);
 		return false;
 	};
-	
+
 	cls.selectAction = function(){
 		var selected = $(this).find(".shortcode:selected");
 		if (selected.length < 1){return;}
-		
+
 		var value = selected.val();
 		cls.shortcodeAction(value);
 	};
-	
+
 	//Resize results list to match size of input
 	cls.results.width(cls.search.outerWidth());
-	
+
 	// Disable enter key causing form submit on shortcode search field
 	cls.search.keyup(function(e){
 		cls.searchAction();
-		
+
 		if (e.keyCode == 13){
 			return false;
 		}
 	});
-	
+
 	// Search button click action, cause search
 	cls.button.click(cls.buttonAction);
-	
+
 	// Option change for select, cause action
 	cls.select.change(cls.selectAction);
-	
+
 	// Results click actions
 	cls.results.find('li a.shortcode').live('click', cls.itemAction);
+};
+
+WebcomAdmin.shortCodeSlideShowTool = function($){
+    cls         = this;
+    cls.metabox = $('#slideshow-metabox');
+    if (cls.metabox.length < 1){console.log('no meta'); return;}
+
+    cls.form     = cls.metabox.find('form');
+    cls.button   = cls.metabox.find('button');
+    cls.select   = cls.metabox.find('#photo-essay-select');
+
+    cls.shortcodeAction = function(photoEssaySlug) {
+        var text = "[slideshow slug=\"" + photoEssaySlug + "\"][/slideshow]"
+        send_to_editor(text);
+    };
+
+    cls.buttonAction = function() {
+        var selected = cls.select.find(':selected');
+        cls.shortcodeAction(selected.val());
+    };
+
+    cls.selectAction = function(){
+        var selected = $(this).find(".shortcode:selected");
+        if (selected.length < 1){return;}
+
+        var value = selected.val();
+        cls.shortcodeAction(value);
+    };
+
+    // Search button click action, cause search
+    cls.button.click(cls.buttonAction);
 };
 
 
@@ -123,42 +154,42 @@ WebcomAdmin.themeOptions = function($){
 	cls.parent   = $('.i-am-a-fancy-admin');
 	cls.sections = $('.i-am-a-fancy-admin .fields .section');
 	cls.buttons  = $('.i-am-a-fancy-admin .sections .section a');
-	
+
 	this.showSection = function(e){
 		var button  = $(this);
 		var href    = button.attr('href');
 		var section = $(href);
-		
+
 		// Switch active styles
 		cls.buttons.removeClass('active');
 		button.addClass('active');
-		
+
 		cls.active.hide();
 		cls.active = section;
 		cls.active.show();
-		
+
 		history.pushState({}, "", button.attr('href'));
 		var http_referrer = cls.parent.find('input[name="_wp_http_referer"]');
 		http_referrer.val(window.location);
 		return false;
 	}
-	
+
 	this.__init__ = function(){
 		cls.active = cls.sections.first();
 		cls.sections.not(cls.active).hide();
 		cls.buttons.first().addClass('active');
 		cls.buttons.click(this.showSection);
-		
+
 		if (window.location.hash){
 			cls.buttons.filter('[href="' + window.location.hash + '"]').click();
 		}
-		
+
 		var fadeTimer = setInterval(function(){
 			$('.updated').fadeOut(1000);
 			clearInterval(fadeTimer);
 		}, 2000);
 	};
-	
+
 	if (cls.parent.length > 0){
 		cls.__init__();
 	}
@@ -170,7 +201,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     // (only run this code if we're on a screen with #slider-slides-settings-basic;
     // i.e. if we're on a slider edit screen:
     if ($('#ss_slides_wrapper').length > 0) {
-        
+
         var slideCountWidget = $('#slider-slides-settings-count'),
             slideCountField = $('input#ss_slider_slidecount'),
             slideOrderField = $('input#ss_slider_slideorder'),
@@ -218,7 +249,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
             return inputID;
         }
-        
+
         // Function that updates Slide Count value:
         var updateSlideCount = function() {
             var validSlides = getValidSlides();
@@ -230,29 +261,29 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             var slideCount = validSlides.length;
             //alert('slideCount is: '+ slideCount + '; input value is: ' + SlideCountField.attr('value'));
             slideCountField.attr('value', slideCount);
-            
+
             if (slideCountWidget.is('visible')) {
                 slideCountWidget.hide();
             }
         }
-        
-        
+
+
         // Update the Slide Sort Order:
         var updateSliderSortOrder = function() {
             var sortOrder = [];
             var orderString = '';
             var validSlides = getValidSlides();
-            
+
             $.each(validSlides, function() {
                 var fieldName = $(this).find('input[name*="["], textarea[name*="["]')[0].getAttribute('name');
                 var inputID = getInputID(fieldName);
                 sortOrder[sortOrder.length] = inputID;
             });
-            
+
             if (slideCountWidget.is('hidden')) {
                 slideCountWidget.show();
             }
-            
+
             $.each(sortOrder, function(index, value) {
                 // make sure we only have number values (i.e. only slider widgets):
                 if (!isNaN(value)) {
@@ -261,13 +292,13 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             });
             // add each value to Slide Order field value:
             slideOrderField.attr('value', orderString);
-            
+
             if (slideCountWidget.is('visible')) {
                 slideCountWidget.hide();
             }
         }
-        
-        
+
+
         // If only one slide is available on the page, hide the 'Remove slide' button for that slide:
         var hideOnlyRemoveBtn = function() {
             if ($('#ss_slides_all li.custom_repeatable').length < 2) {
@@ -277,15 +308,15 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 $('#ss_slides_all li.custom_repeatable a.repeatable-remove').show();
             }
         }
-        
-        
-        
+
+
+
         // Admin onload:
         slideCountWidget.hide();
         updateSlideCount();
         updateSliderSortOrder();
         hideOnlyRemoveBtn();
-        
+
 
         // Update slide count when a slide's content changes:
         $(getAllSlides())
@@ -315,14 +346,14 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             $(this).siblings('.inside').toggle().end().parent().toggleClass('closed');
         });
 
-        
+
         // Add/remove Slide button functionality:
         $('.repeatable-add').on('click', function() {
             var field = $(this).prev('li').clone(true);
             var fieldLocation = $(this).prev('li');
             var widgetNumbers = [];
             var highestNum = 0;
-            
+
             // Get the highest ID 'widget' number to prevent duplicate IDs after sorting:
             $(keyField).each(function() {
                 // get number by trimming the input ID
@@ -330,7 +361,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 widgetNumbers[widgetNumbers.length] = inputID;
             });
             highestNum = Math.max.apply(Math, widgetNumbers);
-            
+
             // Update 'name' attributes
             $('textarea, input[type="text"], input[type="select"], input[type="file"]', field).val('').attr('name', function(index, name) {
                 return name.replace(/(\d+)/, highestNum + 1);
@@ -350,9 +381,9 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             $('.has-value', field).removeClass('has-value');
             $('input[type="radio"]', field).removeAttr('checked');
             $('label[for^="ss_slide_image["]', field).parent('th').next('td').children('a, br:nth-child(2)').remove();
-            
+
             field.fadeIn().insertAfter(fieldLocation, $(this).prev('li'));
-            
+
             hideOnlyRemoveBtn();
             return false;
         });
@@ -421,6 +452,7 @@ WebcomAdmin.storyFieldToggle = function($) {
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
 	WebcomAdmin.shortcodeTool($);
+    WebcomAdmin.shortCodeSlideShowTool($);
     WebcomAdmin.sliderMetaBoxes($);
     WebcomAdmin.storyFieldToggle($);
 })(jQuery);

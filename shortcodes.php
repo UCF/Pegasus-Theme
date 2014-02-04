@@ -562,7 +562,6 @@ add_shortcode('archive-search', 'sc_archive_search');
  **/
 
 function sc_photo_essay_slider( $atts, $content = null ) {
-	// TODO: specify essay by slug/id/whatever
 	$slug 		= @$atts['slug'];
 	$recent 	= get_posts(array(
 		'numberposts' => 1,
