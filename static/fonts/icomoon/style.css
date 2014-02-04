@@ -11,7 +11,9 @@
 
 .icon-magazine,
 .icon-drawer,
-.icon-reorder {
+.icon-reorder,
+.icon-caret-left,
+.icon-caret-right {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -33,4 +35,10 @@
 }
 .icon-reorder:before {
 	content: "\e602";
+}
+.icon-caret-left:before {
+	content: "\e603";
+}
+.icon-caret-right:before {
+	content: "\e604";
 }

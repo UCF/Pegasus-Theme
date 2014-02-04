@@ -217,9 +217,12 @@ var togglePulldown = function($) {
 		e.preventDefault();
 
 		var toggle = $(this),
-			pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
-			contentSrc = toggle.attr('data-pulldown-src') || toggle.attr('href'), // Where to grab new pulldown contents from
-			dataType = toggle.attr('data-type'); // Type of content to expect from contentSrc (see dataType values: http://api.jquery.com/jQuery.ajax/#data-types)
+			pulldownContainer = $(toggle.attr('data-pulldown-container')); // The pulldown container to put content in
+
+		// Trigger lazyload if it hasn't been triggered
+		pulldownContainer
+			.find('img.lazy')
+				.trigger('triggerLazy');
 
 		// If another pulldown is active while a different pulldown is activated,
 		// deactivate any existing active pulldowns and activate the new toggle
@@ -237,6 +240,67 @@ var togglePulldown = function($) {
 			$('#pulldown').toggleClass('active');
 			pulldownContainer.toggleClass('active');
 			toggle.toggleClass('active');
+		}
+	});
+}
+
+var loadPulldownMenus = function($) {
+	$('.pulldown-toggle').each(function() {
+		var toggle = $(this),
+			pulldownContainer = $(toggle.attr('data-pulldown-container'));
+
+		// Activate kinetic scrolling for touch devices,
+		// lazy load in images (triggered on .pulldown-toggle click)
+		pulldownContainer
+			.find('.items ul')
+				.kinetic({'cursor': 'pointer'})
+				.end()
+			.find('img.lazy')
+				.lazyload({
+					effect: 'fadeIn',
+					container: $('ul.kinetic-active'),
+					event: 'triggerLazy'
+				});
+	});
+}
+
+var pulldownMenuScroll = function($) {
+	// Handle left/right nav arrow btn click in pulldown
+	$('.pulldown-container .controls a').on('click', function(e) {
+		e.preventDefault();
+
+		var controlBtn = $(this),
+			pulldownContainer = controlBtn.parents('.pulldown-container'),
+			itemList = pulldownContainer.find('.items ul'),
+			controlWrap = pulldownContainer.find('.controls');
+
+		// x-overflowing div width only calculates apparent window width.
+		// Need to calculate the combined widths of all child items
+		// to get the value that we need.
+		var itemListWidth = controlWrap.outerWidth();
+		itemList.children('li').each(function() {
+			itemListWidth += $(this).outerWidth();
+			itemListWidth += parseInt($(this).css('margin-left'));
+		}); 
+
+		var newScrollVal = 0;
+		var curScrollVal = itemList.scrollLeft();
+
+		// Get the number of pixels to scroll the itemList
+		if (controlBtn.hasClass('forward')) {
+			newScrollVal = curScrollVal + pulldownContainer.width();
+			newScrollVal = (newScrollVal > itemListWidth - pulldownContainer.width()) ? controlWrap.outerWidth() + itemListWidth - pulldownContainer.width() : newScrollVal;
+		}
+		else if (controlBtn.hasClass('backward')) {
+			newScrollVal = curScrollVal - pulldownContainer.width();
+			newScrollVal = (newScrollVal < 0) ? 0 : newScrollVal;
+		}
+
+		// Animate scrolling
+		if (curScrollVal != newScrollVal) {
+			itemList.animate({
+				scrollLeft: newScrollVal
+			}, 400);
 		}
 	});
 }
@@ -276,6 +340,11 @@ var mobileNavToggle = function($) {
 		if ($('.pulldown-container.active').length < 1) {
 			$('.pulldown-container.pulldown-stories, li#nav-issue a').addClass('active');
 		}
+
+		// Trigger lazyload if it hasn't been triggered
+		$('.pulldown-container.active')
+			.find('img.lazy')
+				.trigger('triggerLazy');
 
 		$('#pulldown').toggleClass('active');
 	});
@@ -534,72 +603,6 @@ var SlideShow = (function() {
 });
 
 
-/**************************
- * window.load
- **************************/
-var loadPulldownMenus = function($) {
-	$('.pulldown-toggle').each(function() {
-
-		var toggle = $(this),
-			pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
-			contentSrc = toggle.attr('data-pulldown-src') || toggle.attr('href'), // Where to grab new pulldown contents from
-			dataType = toggle.attr('data-type'); // Type of content to expect from contentSrc (see dataType values: http://api.jquery.com/jQuery.ajax/#data-types)
-
-		$.get(contentSrc, function(data) {
-			// If this is an HTML document, assume data contains [post_type-list] output.
-			// Otherwise, assume it contains WordPress RSS feed content.
-			if (dataType == 'html') {
-				var html = $(data);
-				var items = html.find('ul[class*="-list"]');
-
-				pulldownContainer
-					.find('.items')
-						.append(items)
-						.find('ul')
-							.kinetic({'cursor': 'pointer'});
-			}
-			else {
-				var xml = $(data);
-				var items = $(data).find('item');
-
-				var html = '<ul>';
-
-				$.each(items, function(key, val) {
-					var item = $(this),
-						title = item.find('title').text(),
-						subtitle = item.find('description').text(),
-						thumb = item.find('enclosure').attr('url'),
-						permalink = item.find('link').text();
-
-					html += '<li><a href="'+ permalink +'">';
-					if (thumb) {
-						html += '<img src="'+ thumb +'" alt="'+ title +'" title="'+ title +'" />';
-					}
-					html += '<span class="story-title">'+ title +'</span>';
-					if (subtitle) {
-						html += '<span class="subtitle">'+ subtitle +'</span>';
-					}
-					html += '</a></li>';
-				})
-
-				html += '</ul>';
-
-				pulldownContainer
-					.find('.items')
-						.append(html)
-						.find('ul')
-							.kinetic({'cursor': 'pointer'});
-			}
-		}, dataType)
-			// If something goes wrong, display an error message
-			 .fail(function() {
-				pulldownContainer.find('.error').removeClass('hidden');
-			});
-
-	});
-}
-
-
 
 if (typeof jQuery != 'undefined'){
 	(function(){
@@ -619,6 +622,8 @@ if (typeof jQuery != 'undefined'){
 			addBodyClasses($);
 
 			togglePulldown($);
+			loadPulldownMenus($);
+			pulldownMenuScroll($);
 			mobileNavToggle($);
 			handleIpad($);
 			gformSublabels($);
@@ -627,10 +632,10 @@ if (typeof jQuery != 'undefined'){
 		    slideshow = new SlideShow();
 		    slideshow.init();
 		});
-
+		/*
 		$(window).load(function() {
-			loadPulldownMenus($);
 		});
+		*/
 	})(jQuery);
 }
 else {

@@ -50,6 +50,7 @@
 		
 	</head>
 
+	<?php $relevant_issue = get_relevant_issue($post); ?>
 	<? extract(get_navigation_stories()); ?>
 
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
@@ -67,13 +68,44 @@
 
 		<div id="pulldown">
 			<div class="container-wide pulldown-container pulldown-stories">
-				<span class="pulldown-title">In This Issue:</span>
-				<div class="items"></div>
-				<span class="error hidden">Stories could not be found at this time. Please try again later.</span>
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<span class="pulldown-title">In This Issue:</span>
+						</div>
+					</div>
+				</div>
+				<div class="items">
+					<?php
+						$relevant_issue_stories = get_issue_stories($relevant_issue);
+						if ($relevant_issue_stories) {
+					?>
+					<ul>
+						<?php
+							foreach ($relevant_issue_stories as $story) {
+								$title = $story->post_title;
+								$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
+								$thumb = get_featured_image_url($story->ID);
+						?>
+						<li>
+							<a href="<?=get_permalink($story)?>">
+								<?php if ($thumb) { ?>
+								<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+								<?php } ?>
+								<span class="story-title"><?=$title?></span>
+								<span class="subtitle"><?=$subtitle?></span>
+							</a>
+						</li>
+						<?php } ?>
+					</ul>
+					<?php } else { ?>
+					<p>No stories found.</p>
+					<?php } ?>
+				</div>
 				<div class="controls">
-					<a class="close" href="#">×</a>
-					<a class="backward" href="#"> &laquo; </a>
-					<a class="forward" href="#"> &raquo; </a>
+					<a class="close pulldown-toggle" href="#">×</a>
+					<a class="backward icon-caret-left" href="#" alt="Backward"></a>
+					<a class="forward icon-caret-right" href="#" alt="Forward"></a>
 				</div>
 			</div>
 		</div>
@@ -97,10 +129,10 @@
 								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
 							</li>
 							<li id="nav-mobile">
-								<a href="<?=get_issue_feed_url(get_relevant_issue($post))?>"></a>
+								<a href="<?=get_issue_feed_url($relevant_issue)?>"></a>
 							</li>
 							<li id="nav-issue">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" data-pulldown-src="<?=get_issue_feed_url(get_relevant_issue($post))?>" data-type="xml" href="<?=get_permalink(get_relevant_issue($post))?>"><?=get_relevant_issue($post)->post_title?></a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink(get_relevant_issue($post))?>"><?=$relevant_issue->post_title?></a>
 							</li>
 							<li id="nav-archives">
 								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>

@@ -363,6 +363,7 @@ Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
+	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
 	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
 	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
 	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
@@ -383,6 +384,7 @@ Config::$scripts = array(
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
 	array('name' => 'kinetic', 'src' => THEME_JS_URL.'/jquery.kinetic.min.js',),
+	array('name' => 'lazyload', 'src' => THEME_JS_URL.'/jquery.lazyload.min.js',),
 );
 
 Config::$metas = array(

@@ -115,20 +115,29 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	display: none;
 	position: relative;
 }
-#pulldown {
-	z-index: 4;
-	margin-bottom: -20px;
-}
-.pulldown-container { background-color: #f0f0f0 !important; z-index: 5; padding: 30px 0; }
+#pulldown { z-index: 4; }
+.pulldown-container { background-color: #f0f0f0 !important; z-index: 5; padding: 0 0 30px 0; }
 #pulldown.active,
 .pulldown-container.active {
 	display: block;
+}
+
+.pulldown-container .pulldown-title {
+	font-family: Georgia, serif;
+	font-size: 32px;
+	line-height: 90px;
+	font-style: italic;
+	color: #222;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .pulldown-container ul {
 	list-style-type: none;
 	width: 100%;
 	margin-left: 0;
+	margin-bottom: 0;
+	padding-bottom: 10px;
 	display: block;
 	overflow-x: scroll;
 	white-space: nowrap;
@@ -143,9 +152,26 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	float: left;
 	clear: both;
 }
-
+.pulldown-container ul li .story-title {
+	font-family: "AleoBold", serif;
+	font-size: 17px;
+	line-height: 18px;
+	color: #d7a900;
+	padding-top: 15px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.pulldown-container ul li .subtitle {
+	font-family: Georgia, serif;
+	font-size: 13px;
+	line-height: 18px;
+	font-style: italic;
+	padding-top: 4px;
+	color: #222;
+}
 
 /* Pulldown controls */
+.kinetic-active:focus { outline: none; }
 .pulldown-container .controls {
 	display: block;
 	height: 100%;
@@ -155,6 +181,24 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	right: 0;
 	z-index: 6;
 	background: #fff;
+	text-align: center;
+}
+.pulldown-container .controls a {
+	display: block;
+	position: absolute;
+	left: 0;
+	right: 0;
+	color: #696969;
+	font-size: 28px;
+	width: auto;
+}
+.pulldown-container .controls a.close { top: 10%; opacity: 1; font-size: 36px; }
+.pulldown-container .controls a.backward { top: 38%; right: 2px; }
+.pulldown-container .controls a.forward { top: 60%; left: 4px; }
+.pulldown-container .controls a:hover,
+.pulldown-container .controls a:active {
+	color: #ffc904;
+	text-decoration: none;
 }
 
 
