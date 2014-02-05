@@ -591,6 +591,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
 		$slide_order	= explode(",", $slide_order);
+		$slide_title 	= get_post_meta($essay->ID, 'ss_slide_title', TRUE);
 		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
 		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
 
@@ -622,7 +623,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	            <div class='ss-slide-wrapper'>
 	                <div class='ss-slide<?= $data_id == 1 ? ' ss-first-slide ss-current' : '' ?><?= $data_id == count($slide_order) - 1 ? ' ss-last-slide' : '' ?>' data-id='<?=$data_id; ?>' data-width='<?=$image[1]; ?>' data-height='<?=$image[2]; ?>'>
-	                    <img src='<?=$image[0]; ?>' />
+	                    <img src='<?=$image[0]; ?>' alt='<?=$slide_title[$s]; ?>' />
 	                </div>
 	            </div>
 

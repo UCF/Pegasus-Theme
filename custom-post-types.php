@@ -751,6 +751,11 @@ class PhotoEssay extends CustomPostType {
 	public static function get_single_slide_meta() {
 		$single_slide_meta = array(
 			array(
+				'id'	=> 'ss_slide_title',
+				'type'	=> 'default',
+				'val'	=> $_POST['ss_slide_title'],
+			),
+			array(
 				'id'	=> 'ss_slide_caption',
 				'type'	=> 'default',
 				'val'	=> $_POST['ss_slide_caption'],
@@ -777,7 +782,7 @@ class PhotoEssay extends CustomPostType {
 				<td>
 				<?php switch ($field['type']):
 					case 'text':?>
-				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
+					<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
 				<?php break; case 'textarea':?>
 					<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
 
@@ -814,6 +819,7 @@ class PhotoEssay extends CustomPostType {
 	public static function display_slide_meta_fields($post) {
 
 		// Get any already-existing values for these fields:
+		$slide_title		= get_post_meta($post->ID, 'ss_slide_title', TRUE);
 		$slide_caption		= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
 		$slide_image		= get_post_meta($post->ID, 'ss_slide_image', TRUE);
 		$slide_order 		= get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
@@ -839,6 +845,12 @@ class PhotoEssay extends CustomPostType {
 
 								<table class="form-table">
 								<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+									<tr>
+										<th><label for="ss_slide_title[<?=$s?>]">Title</label></th>
+										<td>
+											<input type="text" name="ss_slide_title[<?=$s?>]" id="ss_slide_title[<?=$s?>]" cols="60" rows="4" value="<?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?>">
+										</td>
+									</tr>
 									<tr>
 										<th><label for="ss_slide_caption[<?=$s?>]">Caption</label></th>
 										<td>
@@ -884,6 +896,12 @@ class PhotoEssay extends CustomPostType {
 							</h3>
 							<table class="form-table">
 							<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+								<tr>
+									<th><label for="ss_slide_title[<?=$s?>]">Title</label></th>
+									<td>
+										<input type="text" name="ss_slide_title[<?=$s?>]" id="ss_slide_title[<?=$s?>]" cols="60" rows="4" value="<?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?>" />
+									</td>
+								</tr>
 								<tr>
 									<th><label for="ss_slide_caption[<?=$i?>]">Slide Caption</label></th>
 									<td>
