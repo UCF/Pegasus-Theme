@@ -66,8 +66,8 @@
 			</div>
 		</div>
 
-		<div id="pulldown">
-			<div class="container-wide pulldown-container pulldown-stories">
+		<div class="container-wide" id="pulldown">
+			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
 						<div class="span12">
@@ -103,7 +103,7 @@
 					<?php } ?>
 				</div>
 				<div class="controls">
-					<a class="close pulldown-toggle" href="#">×</a>
+					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">×</a>
 					<a class="backward icon-caret-left" href="#" alt="Backward"></a>
 					<a class="forward icon-caret-right" href="#" alt="Forward"></a>
 				</div>

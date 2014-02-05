@@ -217,7 +217,8 @@ var togglePulldown = function($) {
 		e.preventDefault();
 
 		var toggle = $(this),
-			pulldownContainer = $(toggle.attr('data-pulldown-container')); // The pulldown container to put content in
+			pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
+			pulldownWrap = $('#pulldown');
 
 		// Trigger lazyload if it hasn't been triggered
 		pulldownContainer
@@ -240,6 +241,24 @@ var togglePulldown = function($) {
 			$('#pulldown').toggleClass('active');
 			pulldownContainer.toggleClass('active');
 			toggle.toggleClass('active');
+		}
+
+		// If toggle is a close button, always remove .active classes.
+		if (toggle.hasClass('close')) {
+			$('.pulldown-container.active, .pulldown-toggle.active')
+				.andSelf()
+				.removeClass('active');
+		}
+
+		// Check newly-assigned .active classes on #pulldown.
+		// Set a fixed height for #pulldown so that transitions work properly
+		// if #pulldown has been assigned an active class
+		if (pulldownWrap.hasClass('active')) {
+			pulldownWrap.css('height', pulldownContainer.height());
+			pulldownContainer.find('.controls').css('height', pulldownContainer.height());
+		}
+		else {
+			pulldownWrap.css('height', 0);
 		}
 	});
 }
@@ -322,6 +341,7 @@ var mobileNavToggle = function($) {
 				.removeClass('mobile-nav-visible');
 			$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active, #nav-mobile a')
 				.removeClass('active');
+			$('#pulldown').css('height', 0);
 		}
 	});
 
@@ -347,6 +367,19 @@ var mobileNavToggle = function($) {
 				.trigger('triggerLazy');
 
 		$('#pulldown').toggleClass('active');
+
+		// Set fixed #pulldown height for css transitions
+		if ($('#pulldown').hasClass('active')) {
+			$('#pulldown')
+				.css('height', $('.pulldown-container.active').height());
+			$('.pulldown-container.active')
+				.find('.controls')
+					.css('height', $('.pulldown-container.active').height());
+		}
+		else {
+			$('#pulldown')
+				.css('height', 0);
+		}
 	});
 }
 
