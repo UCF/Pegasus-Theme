@@ -380,6 +380,7 @@ Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
 	THEME_STATIC_URL.'/js/jquery.cookie.js',
+	array('name' => 'placeholders', 'src' => THEME_JS_URL.'/placeholders.js',),
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
