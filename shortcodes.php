@@ -422,7 +422,7 @@ function sc_archive_search($params=array(), $content='') {
 	$defaults = array(
 		'post_type_name'         => array('story'),
 		'non_alpha_section_name' => 'Other',
-		'default_search_text'	 => 'Search all stories',
+		'default_search_text'	 => 'Search all stories...',
 	);
 
     // Add user-set params
@@ -459,9 +459,10 @@ function sc_archive_search($params=array(), $content='') {
 	</script>
 	<?
 
-	// Get posts, split them up by issue
+	// Get posts, split them up by issue:
 	global $theme_options;
 
+	// Get all issues, excluding the current issue
 	$issues_sorted = array();
 	$current_issue = get_posts(array(
 		'name' => $theme_options['current_issue_cover'],
@@ -480,7 +481,7 @@ function sc_archive_search($params=array(), $content='') {
 	));
 
 	foreach ($issues_all as $issue) {
-		$featured_article = get_post_meta($issue->ID, 'issue_cover_story', TRUE);
+		//$featured_article = get_post_meta($issue->ID, 'issue_cover_story', TRUE);
 
 		$issues_sorted[$issue->post_title] = get_posts(array(
 			'numberposts' => -1,
@@ -494,18 +495,17 @@ function sc_archive_search($params=array(), $content='') {
 			),
 			'orderby'	=> $params['order_by'],
 			'order'     => $params['order'],
-			'exclude' 	=> array(intval($featured_article)),
+			//'exclude' 	=> array(intval($featured_article)),
 		));
 	}
 
 	ob_start();
 	?>
-	<div class="row post-type-search">
-		<div class="span10 offset1 post-type-search-header">
+	<div class="row post-type-search" id="archives">
+		<div class="span8 offset2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
 				<label style="display:none;">Search</label>
-
-				<input type="text" name="s" class="span3 search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="span12 post-type-search-results"></div>
@@ -518,7 +518,7 @@ function sc_archive_search($params=array(), $content='') {
 
 			if ($posts) {
 		?>
-			<div class="row <?=$issue->post_name?>">
+			<div class="row issue <?=$issue->post_name?>">
 				<div class="span4">
 					<h2><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
 
@@ -530,21 +530,35 @@ function sc_archive_search($params=array(), $content='') {
 
 					<?php if ($featured_article_id) { ?>
 						<h3>Featured Story</h3>
-						<a href="<?=get_permalink($featured_article->ID)?>">
-							<span><?=$featured_article->post_title?></span>
-							<span><?=get_post_meta($featured_article->ID, 'story_subtitle', TRUE)?></span>
+						<a class="featured-story" href="<?=get_permalink($featured_article->ID)?>">
+							<h4><?=$featured_article->post_title?></h4>
+							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
+								<span class="description"><?=$f_desc?></span>
+							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
+								<span class="description"><?=$f_subtitle?></span>
+							<?php } ?>
 						</a>
 					<?php } ?>
 				</div>
 				<div class="span6">
 					<h3>More in This Issue</h3>
-				<? foreach($posts as $post) { ?>
-					<? $post_type = new $post->post_type; ?>
 					<ul>
-						<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
+					<? foreach($posts as $post) { ?>
+						<li data-post-id="<?=$post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
+							<a href="<?=get_permalink($post->ID)?>">
+								<h4><?=$post->post_title?></h4>
+								<span class="results-story-issue"><?=$issue->post_title?></span>
+								<?php if ($desc = get_post_meta($post->ID, 'story_description', TRUE)) { ?>
+									<span class="description"><?=$desc?></span>
+								<?php } else if ($subtitle = get_post_meta($post->ID, 'story_subtitle', TRUE)) { ?>
+									<span class="description"><?=$subtitle?></span>
+								<?php } ?>
+							</a>
+						</li>
+					<? } ?>
 					</ul>
-				<? } ?>
 				</div>
+				<hr class="span10" />
 			</div>
 			<?
 			}

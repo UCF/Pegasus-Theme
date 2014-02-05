@@ -13,7 +13,8 @@
 .icon-drawer,
 .icon-reorder,
 .icon-caret-left,
-.icon-caret-right {
+.icon-caret-right,
+.icon-search {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -41,4 +42,7 @@
 }
 .icon-caret-right:before {
 	content: "\e604";
+}
+.icon-search:before {
+	content: "\e605";
 }

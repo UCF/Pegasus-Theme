@@ -193,6 +193,29 @@
 
 
 	/**************************
+	 * Archives
+	 **************************/
+	#archives .issue { margin-bottom: 0; }
+
+	#archives .post-type-search-results > div:before,
+	#archives .post-type-search-results > p:before {
+		right: 0;
+	}
+	#archives .post-type-search-results ul li {
+		width: auto;
+		margin-left: 20px;
+		margin-bottom: 20px;
+		clear: both;
+	}
+	#archives .post-type-search-results ul li.featured-story { display: block; }
+	#archives .post-type-search-results ul li:nth-child(2n) { float: left; clear: both; }
+	#archives .post-type-search-results ul li a {
+		display: block;
+		padding-right: 20px;
+	}
+
+
+	/**************************
 	 * Story - Slideshow
 	 **************************/
 	.ss-embed .ss-slides-wrapper { height: 280px; }
