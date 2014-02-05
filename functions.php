@@ -387,6 +387,23 @@ function output_header_markup($post) {
 	}
 
 	if (!is_search() && !is_404()) {
+		// Set necessary html, body element width+height for stories,
+		// issues if they are not from fall 2013 or earlier
+		if (!is_fall_2013_or_older($post)) {
+			$output .= '<style type="text/css">';
+			$output .= '
+				html, body {
+				    height: 100%;
+				    width: 100%;
+				}
+				@media (max-width: 767px) {
+					html, body {
+					    width: auto;
+					}
+				}
+			';
+			$output .= '</style>';
+		}
 
 		// Story font declarations (default and custom templates)
 		if ($post->post_type == 'story') {
