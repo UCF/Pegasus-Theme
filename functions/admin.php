@@ -9,93 +9,6 @@ if (is_admin()){
 	add_action('admin_init', 'init_theme_options');
 }
 
-
-function shortcode_interface_html(){
-	global $shortcode_tags;
-	$shortcodes = $shortcode_tags;
-	$ignore     = array(
-		'wp_caption'       => null,
-		'caption'          => null,
-		'gallery'          => null,
-		'embed'            => null,
-		'archive-search'   => null,
-		'donotprint'       => null,
-		'gravityform'      => null,
-		'gravityforms'     => null,
-		'image'            => null,
-		'issue-list'       => null,
-		'media'            => null,
-		'photo'            => null,
-		'post-type-search' => null,
-		'print_link'       => null,
-		'search_form'      => null,
-		'static-image'     => null,
-		'story-list'       => null,
-		'slideshow'        => null,
-		'callout'          => null
-	);
-	$shortcodes = array_diff_key($shortcodes, $ignore);
-	ksort($shortcodes);
-	?>
-	<input type="hidden" name="shortcode-form" id="shortcode-form" value="<?=THEME_URL."/includes/shortcode-form.php"?>" />
-	<input type="hidden" name="shortcode-text" id="shortcode-text" value="<?=THEME_URL."/includes/shortcode-text.php"?>" />
-	<input type="text" name="shortcode-search" id="shortcode-search" placeholder="Find shortcodes..."/>
-	<button type="button">Search</button>
-
-	<ul id="shortcode-results" class="empty">
-	</ul>
-
-	<p>Or select:</p>
-	<select name="shortcode-select" id="shortcode-select">
-		<option value="">--Choose Shortcode--</option>
-		<?php
-		foreach($shortcodes as $name=>$callback):
-		?>
-			<option class="shortcode" value="<?=$name?>"><?=$name?></option>
-		<?php
-		endforeach;
-		?>
-	</select>
-
-	<p>For more information about available shortcodes, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
-	<?php
-}
-
-
-function shortcode_slideshow_html(){
-	global $shortcode_tags;
-	$shortcodes = $shortcode_tags;
-	if (array_key_exists('slideshow', $shortcodes)):
-	?>
-
-		<p>Select a Photo Essay:</p>
-		<select name="photo-essay-select" id="photo-essay-select">
-			<option value="">--Choose Photo Essay--</option>
-
-			<?php
-			$photo_essays = get_posts(array(
-				'posts_per_page' => -1,
-				'post_type' => 'photo_essay',
-			));
-			foreach($photo_essays as $photo_essay):
-			?>
-
-			<option class="shortcode" value="<?=$photo_essay->post_name?>"><?=$photo_essay->post_title?></option>
-
-			<?php
-			endforeach;
-			?>
-
-		</select>
-
-		<button type="button">Insert</button>
-
-		<p>For more information about the slideshow shortcode, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
-	<?php
-	endif;
-}
-
-
 // Used to import the color picker for the shortcode_callout_html
 add_action( 'admin_enqueue_scripts', 'callout_enqueue_color_picker' );
 function callout_enqueue_color_picker( $hook_suffix ) {
@@ -110,35 +23,105 @@ function callout_enqueue_color_picker( $hook_suffix ) {
     );
 }
 
-function shortcode_callout_html(){
-	global $shortcode_tags;
-	$shortcodes = $shortcode_tags;
-	if (array_key_exists('callout', $shortcodes)):
-	?>
-
-		<p>Select or set a color:</p>
-		<input type="text" name="callout-color" class="callout-color" value="#eeeeee" data-default-color="#ffffff">
-		<button type="button">Insert</button>
-
-		<p>For more information about the callout shortcode, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
-	<?php
-	endif;
-}
-
-
-function shortcode_interface(){
-	add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', 'page', 'side', 'core');
-	add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', 'post', 'side', 'core');
-	foreach(Config::$custom_post_types as $type){
-		$instance = new $type;
-		if ($instance->options('use_editor')){
-			add_meta_box('callout-metabox', __('Callout'), 'shortcode_callout_html', $instance->options('name'), 'side', 'core');
-			add_meta_box('slideshow-metabox', __('Slideshow'), 'shortcode_slideshow_html', $instance->options('name'), 'side', 'core');
-			add_meta_box('shortcodes-metabox', __('Shortcodes'), 'shortcode_interface_html', $instance->options('name'), 'side', 'core');
+function add_shortcode_interface() {
+	$text = '<style>
+		.shortcode-media-icon{
+			background:url("' . THEME_IMG_URL . '/shortcode-media-icon.png") no-repeat top left;
+			display: inline-block;
+			height: 16px;
+			margin: 0 2px 0 0;
+			vertical-align: text-top;
+			width: 16px;
 		}
+		#add-shortcode {
+			padding-left: .4em;
+		}
+	</style>
+	<a href="#TB_inline?width=480&inlineId=select-shortcode-form" class="thickbox button" id="add-shortcode" title="Add Shortcode"><span class="shortcode-media-icon"></span>Add Shortcode</a>';
+	echo $text;
+}
+add_action('media_buttons', 'add_shortcode_interface', 11);
+
+function add_shortcode_interface_modal() {
+	$page = basename($_SERVER['PHP_SELF']);
+	if (in_array($page, array('post.php', 'page.php', 'page-new.php', 'post-new.php'))) {
+		global $shortcode_tags;
+		$shortcodes = $shortcode_tags;
+		$ignore     = array(
+			'wp_caption'       => null,
+			'caption'          => null,
+			'gallery'          => null,
+			'embed'            => null,
+			'archive-search'   => null,
+			'donotprint'       => null,
+			'gravityform'      => null,
+			'gravityforms'     => null,
+			'image'            => null,
+			'issue-list'       => null,
+			'media'            => null,
+			'photo'            => null,
+			'post-type-search' => null,
+			'print_link'       => null,
+			'search_form'      => null,
+			'static-image'     => null,
+			'story-list'       => null
+		);
+
+		$shortcodes = array_diff_key($shortcodes, $ignore);
+		ksort($shortcodes);
+	?>
+		<div id="select-shortcode-form" style="display:none;">
+			<select name="shortcode-select" id="shortcode-select">
+				<option value="">--Choose Shortcode--</option>
+				<?php
+				foreach($shortcodes as $name=>$callback):
+				?>
+					<option class="shortcode" value="<?=$name?>"><?=$name?></option>
+				<?php
+				endforeach;
+				?>
+			</select>
+
+			<ul id="shortcode-editors">
+				<li id="shortcode-callout" class="shortcode-section">
+					<p>Select a background color:</p>
+					<input type="text" name="callout-color" class="shortcode-color" value="#eeeeee" data-default-color="#ffffff" data-parameter="background">
+				</li>
+				<li id="shortcode-slideshow" class="shortcode-section">
+					<p>Select a Photo Essay:</p>
+					<select name="photo-essay-select" id="photo-essay-select" data-parameter="slug">
+						<option value="">--Choose Photo Essay--</option>
+
+						<?php
+						$photo_essays = get_posts(array(
+							'posts_per_page' => -1,
+							'post_type' => 'photo_essay',
+						));
+						foreach($photo_essays as $photo_essay):
+						?>
+
+						<option class="shortcode" value="<?=$photo_essay->post_name?>"><?=$photo_essay->post_title?></option>
+
+						<?php
+						endforeach;
+						?>
+
+					</select>
+				</li>
+				<li id="shortcode-sidebar" class="shortcode-section">
+					<p>Select a background color:</p>
+					<input type="text" name="callout-color" class="shortcode-color" value="#eeeeee" data-default-color="#ffffff" data-parameter="background">
+				</li>
+			</ul>
+
+			<button>Insert</button>
+
+			<p>For more information about available shortcodes, please see the <a href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help documentation for shortcodes</a>.</p>
+		</div>
+	<?php
 	}
 }
-add_action('add_meta_boxes', 'shortcode_interface');
+add_action('admin_footer', 'add_shortcode_interface_modal');
 
 
 /**

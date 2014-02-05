@@ -1,28 +1,84 @@
 <div id="theme-help" class="i-am-a-fancy-admin">
 	<div class="container">
 		<h2>Help</h2>
-		
+
 		<?php if ($updated):?>
 		<div class="updated fade"><p><strong><?=__( 'Options saved' ); ?></strong></p></div>
 		<?php endif; ?>
-		
+
 		<div class="sections">
 			<ul>
-				<li class="section"><a href="#posting">Posting</a></li>
+				<li class="section"><a href="#intro">Intro</a></li>
+				<li class="section"><a href="#stories">Stories</a></li>
+				<li class="section"><a href="#issues">Issues</a></li>
+				<li class="section"><a href="#photo-essays">Photo Essays</a></li>
 				<li class="section"><a href="#shortcodes">Shortcodes</a></li>
 			</ul>
 		</div>
 		<div class="fields">
 			<ul>
-				
-				<li class="section" id="posting">
-					<h3>Posting</h3>
+				<li class="section" id="intro">
+					<h3>Intro</h3>
+					<p>
+						The goal of the help section is to familiarize yourself with the Pegasus website and the
+						different types of content that can be created. This should also help you understand flow
+						of content creation for Pegasus.
+					</p>
+					<p>
+						The main types of content that can be created are Issues, Stories, Photoessays and
+						Shortcodes. Issues are a means of categorizing a group of Stories much like the
+						physical magazine. Stories are where the meat of the content will reside. Stories from
+						the physical magazine are hand selected to live on website. The Photo Essay is used to
+						display a series of images in a Story using a slideshow format. Shortcodes are a series of
+						tools that can be used to create dividers, video containers, side bars, etc.
+					</p>
+				</li>
+
+				<li class="section" id="issues">
+					<h3>Issues</h3>
+
+					<p>
+						<strong>Issues</strong> are used to categorize Stories just like the physical magazine.
+						They consist of a cover story and a listing of the other Stories related to this issue.
+					</p>
+					<p>
+						The titles follow a year and semester format (ex. Fall 2013, Summer 2014, etc). Below the
+						content area of Issue post type you will be able to set values for various pieces of the
+						page (descriptions below).
+					</p>
+					<p>
+						<ul>
+							<li><strong>Cover Story:</strong> This will be the headline story for the Issue.</li>
+							<li><strong>Issue Template:</strong> Give the ability to set a custom template to use (rarely used for consistancy purposes).</li>
+							<li><strong>Header Font Family:</strong> This will set the Font for all the headers on the Issue page.</li>
+							<li><strong>Header Font Color:</strong> Sets a color to all the headers on the Issue page.</li>
+							<li><strong>Header Font Size (Desktop, Tablet, and Mobile):</strong> This sets the font size to use for the headers based on the device the user is on.</li>
+							<li><strong>Header Font Text Align:</strong> Sets the alignment of the Issue header to left, center or right.</li>
+							<li><strong>Home Page Stylesheet:</strong> Only used when developing a custom Issue page.</li>
+							<li><strong>Home Page JavaScript File:</strong> Only used when developing a custom Issue page.</li>
+						</ul>
+					</p>
+				</li>
+
+				<li class="section" id="stories">
+					<h3>Stories</h3>
+
+					<p>
+						<strong>Stories</strong> are a type of post. They are similar to standard posts, except
+						they are customized to display story specific widgets/code.
+					</p>
 					<p>Posting is fun, do it.</p>
 				</li>
-				
+
+				<li class="section" id="photo-essays">
+					<h3>Photo Essays</h3>
+
+					<p>Posting is fun, do it.</p>
+				</li>
+
 				<li class="section" id="shortcodes">
 					<h3>Shortcodes</h3>
-					
+
 					<h4>slideshow</h4>
 					<p>Create a javascript slideshow of each top level element in the shortcode.  All attributes are optional, but may default to less than ideal values.  Available attributes:</p>
 					<table>
@@ -63,14 +119,14 @@
 &lt;div class="robots"&gt;Robots are coming!&lt;/div&gt;
 &lt;p&gt;I'm a slide!&lt;/p&gt;
 [/slideshow]</code></pre>
-					
-					
-					
+
+
+
 					<h4>(post type)-list</h4>
-					<p>Outputs a list of a given post type filtered by arbitrary taxonomies, for 
-					example a tag or category.  A default output can be added for when no objects 
+					<p>Outputs a list of a given post type filtered by arbitrary taxonomies, for
+					example a tag or category.  A default output can be added for when no objects
 					matching the criteria are found.  Available attributes:</p>
-					
+
 					<table>
 					<tr>
 						<th scope="col">Post Type</th>
@@ -78,19 +134,19 @@
 						<th scope="col">Available Taxonomy Filters</th>
 						<th scope="col">Additional Filters</th>
 					</tr>
-					
-						<?php 
+
+						<?php
 							$custom_post_types = installed_custom_post_types();
-							
+
 							foreach ($custom_post_types as $custom_post_type) {
 						?>
 					<tr>
 						<td><?=$custom_post_type->singular_name?></td>
 						<td><?=$custom_post_type->name?>-list</td>
-								
+
 						<td>
 							<ul>
-							<?php foreach ($custom_post_type->taxonomies as $tax) { 
+							<?php foreach ($custom_post_type->taxonomies as $tax) {
 								switch ($tax) {
 									case 'post_tag':
 										$tax = 'tags';
@@ -99,7 +155,7 @@
 										$tax = 'categories';
 										break;
 								}
-								
+
 							?>
 								<li style="list-style: disc; margin-left: 15px;"><?=$tax?></li>
 							</ul>
@@ -110,7 +166,7 @@
 							<?php
 								// if more than 1 taxonomy is assigned to the post type, show 'join'
 								// as being an available filter:
-								if (count($custom_post_type->taxonomies) > 1) { 
+								if (count($custom_post_type->taxonomies) > 1) {
 								?>
 									<li style="list-style: disc; margin-left: 15px;">join ('and', 'or')</li>
 								<?php
@@ -121,10 +177,10 @@
 						</td>
 					</tr>
 						<?php }	?>
-					
-						
+
+
 				</table>
-					
+
 					<p>Examples:</p>
 <pre><code># Output a maximum of 5 Documents tagged 'foo' or 'bar', with a default output.
 [document-list tags="foo bar" limit=5]No Documents were found.[/document-list]
@@ -137,15 +193,15 @@
 
 # Outputs all People found categorized as 'staff' and in the org_group 'small'.
 [person-list limit=5 join="and" categories="staff" org_groups="small"]</code></pre>
-				
-				
-				<?php 
+
+
+				<?php
 				// As long as the Person post type is active, let's show info for person-picture-list:
 				if (post_type_exists('person')) { ?>
-				
+
 				<h4>person-picture-list</h4>
 				<p>Outputs a list of People with thumbnails, person names, and job titles.  If a person's description is available, a link to the person's profile will be outputted.  If a thumbnail for the person does not exist, a default 'No Photo Available' thumbnail will display.  An optional <strong>row_size</strong> parameter is available to customize the number of rows that will display, in addition to the other filter parameters available to the <strong>person-list</strong> shortcode.</p>
-				
+
 				<p>Example:</p>
 <pre><code># Output all People (default to 5 columns.)
 [person-picture-list]
@@ -159,7 +215,7 @@
 
 				<?php } ?>
 				</li>
-				
+
 			</ul>
 		</div>
 	</div>

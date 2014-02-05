@@ -86,3 +86,7 @@ select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "
 /* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
 #content_blockquote { display: none; }
 
+/* Shortcode modal */
+.shortcode-section {
+    display: none;
+}

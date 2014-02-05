@@ -198,7 +198,9 @@ addBodyClasses = function($) {
     // Old IE:
     if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
             var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
-            if (ieversion >= 9)      { bodyClass = 'ie ie9'; }
+
+            if (ieversion >= 10)     { bodyClass = 'ie'; }
+            else if (ieversion >= 9) { bodyClass = 'ie ie9'; }
             else if (ieversion >= 8) { bodyClass = 'ie ie8'; }
             else if (ieversion >= 7) { bodyClass = 'ie ie7'; }
     }
@@ -254,8 +256,9 @@ var togglePulldown = function($) {
 		// Set a fixed height for #pulldown so that transitions work properly
 		// if #pulldown has been assigned an active class
 		if (pulldownWrap.hasClass('active')) {
-			pulldownWrap.css('height', pulldownContainer.height());
-			pulldownContainer.find('.controls').css('height', pulldownContainer.height());
+			var newHeight = pulldownContainer.height() - 20; // subtract 20 to hide scrollbars
+			pulldownWrap.css('height', newHeight);
+			pulldownContainer.find('.controls').css('height', newHeight);
 		}
 		else {
 			pulldownWrap.css('height', 0);

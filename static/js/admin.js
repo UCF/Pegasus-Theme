@@ -13,157 +13,73 @@ WebcomAdmin.__init__ = function($){
 	$('input[type="file"]').parents('form').attr('encoding','multipart/form-data');
 
     // Initialize all the color selectors
-    var colorInput = $('.callout-color');
+    var colorInput = $('.shortcode-color,#issue_default_color,#story_default_color');
     if (colorInput.length) {
         colorInput.iris();
     }
 };
 
 
-WebcomAdmin.shortcodeTool = function($){
-	cls         = this;
-	cls.metabox = $('#shortcodes-metabox');
-	if (cls.metabox.length < 1){console.log('no meta'); return;}
+WebcomAdmin.shortcodeInterfaceTool = function($) {
+    cls = this;
+    cls.shortcodeForm = $('#select-shortcode-form');
+    cls.shortcodeButton = cls.shortcodeForm.find('button');
+    cls.shortcodeSelect = cls.shortcodeForm.find('#shortcode-select');
+    cls.shortcodeEditors = cls.shortcodeForm.find('#shortcode-editors');
 
-	cls.form     = cls.metabox.find('form');
-	cls.search   = cls.metabox.find('#shortcode-search');
-	cls.button   = cls.metabox.find('button');
-	cls.results  = cls.metabox.find('#shortcode-results');
-	cls.select   = cls.metabox.find('#shortcode-select');
-	cls.form_url = cls.metabox.find("#shortcode-form").val();
-	cls.text_url = cls.metabox.find("#shortcode-text").val();
+    cls.shortcodeInsert = function(shortcode, parameters) {
+        var text = '[' + shortcode;
 
-	cls.shortcodes = (function(){
-		var shortcodes = new Array();
-		cls.select.children('.shortcode').each(function(){
-			shortcodes.push($(this).val());
-		});
-		return shortcodes;
-	})();
+        if (parameters) {
+            for (key in parameters) {
+                text += " " + key + "=\"" + parameters[key] + "\"";
+            }
+        }
 
-	cls.shortcodeAction = function(shortcode){
-		var text = "[" + shortcode + "][/" + shortcode + "]"
-		send_to_editor(text);
-	};
+        text +=  "][/" + shortcode + "]";
 
-	cls.searchAction = function(){
-		cls.results.children().remove();
-
-		var value = cls.search.val();
-
-		if (value.length < 1){
-			return;
-		}
-
-		var found = cls.shortcodes.filter(function(e, i, a){
-			return e.match(value);
-		});
-
-		if (found.length > 1){
-			cls.results.removeClass('empty');
-		}
-
-		$(found).each(function(){
-			var item      = $("<li />");
-			var link      = $("<a />");
-			link.attr('href', '#');
-			link.addClass('shortcode');
-			link.text(this.valueOf());
-			item.append(link);
-			cls.results.append(item);
-		});
-
-
-		if (found.length > 1){
-			cls.results.removeClass('empty');
-		}else{
-			cls.results.addClass('empty');
-		}
-
-	};
-
-	cls.buttonAction = function(){
-		cls.searchAction();
-	};
-
-	cls.itemAction = function(){
-		var shortcode = $(this).text();
-		cls.shortcodeAction(shortcode);
-		return false;
-	};
-
-	cls.selectAction = function(){
-		var selected = $(this).find(".shortcode:selected");
-		if (selected.length < 1){return;}
-
-		var value = selected.val();
-		cls.shortcodeAction(value);
-	};
-
-	//Resize results list to match size of input
-	cls.results.width(cls.search.outerWidth());
-
-	// Disable enter key causing form submit on shortcode search field
-	cls.search.keyup(function(e){
-		cls.searchAction();
-
-		if (e.keyCode == 13){
-			return false;
-		}
-	});
-
-	// Search button click action, cause search
-	cls.button.click(cls.buttonAction);
-
-	// Option change for select, cause action
-	cls.select.change(cls.selectAction);
-
-	// Results click actions
-	cls.results.find('li a.shortcode').live('click', cls.itemAction);
-};
-
-WebcomAdmin.shortCodeSlideShowTool = function($){
-    cls         = this;
-    cls.slideshowMetabox = $('#slideshow-metabox');
-    if (cls.slideshowMetabox.length < 1){console.log('no meta'); return;}
-
-    cls.slidshowButton   = cls.slideshowMetabox.find('button');
-    cls.slidshowSelect   = cls.slideshowMetabox.find('#photo-essay-select');
-
-    cls.slideshowShortcodeAction = function(photoEssaySlug) {
-        var text = "[slideshow slug=\"" + photoEssaySlug + "\"][/slideshow]"
         send_to_editor(text);
-    };
+    }
 
-    cls.slideshowButtonAction = function() {
-        var selected = cls.slidshowSelect.find(':selected');
-        cls.slideshowShortcodeAction(selected.val());
-    };
+    cls.shortcodeAction = function() {
+        var selected = cls.shortcodeSelect.find(':selected');
+        if (selected.length < 1 || selected.val() == ''){return;}
 
-    // Search button click action, cause search
-    cls.slidshowButton.click(cls.slideshowButtonAction);
-};
+        var editor = cls.shortcodeEditors.find('li#shortcode-' + cls.shortcodeSelected);
 
-WebcomAdmin.shortCodeCalloutTool = function($){
-    cls         = this;
-    cls.calloutMetabox = $('#callout-metabox');
-    if (cls.calloutMetabox.length < 1){console.log('no meta'); return;}
+        var parameters = {};
+        if (editor.length == 1) {
+            editor.children().each(function() {
+                var formElement = $(this);
+                switch(formElement.prop('tagName')) {
+                    case 'INPUT':
+                    case 'TEXTAREA':
+                    case 'SELECT':
+                        parameters[formElement.attr('data-parameter')] = formElement.val();
+                        break;
+                }
+            });
+        }
 
-    cls.calloutButton = cls.calloutMetabox.find('button');
-    cls.calloutColor  = cls.calloutMetabox.find('.callout-color');
+        cls.shortcodeInsert(selected.val(), parameters);
+    }
 
-    cls.calloutShortcodeAction = function(color) {
-        var text = "[callout background=\"" + color + "\"][/callout]"
-        send_to_editor(text);
-    };
+    cls.shortcodeSelectAction = function() {
+        var selected = $(this).find(".shortcode:selected");
+        if (selected.length < 1){return;}
 
-    cls.calloutButtonAction = function() {
-        cls.calloutShortcodeAction(cls.calloutColor.val());
-    };
+        cls.shortcodeSelected = selected.val();
 
-    // Search button click action, cause search
-    cls.calloutButton.click(cls.calloutButtonAction);
-};
+        cls.shortcodeEditors.find('li').hide();
+        cls.shortcodeEditors.find('#shortcode-' + cls.shortcodeSelected).show();
+    }
+
+    // Option change for select, cause action
+    cls.shortcodeSelect.change(cls.shortcodeSelectAction);
+
+    // Button to insert shortcode
+    cls.shortcodeButton.click(cls.shortcodeAction);
+}
 
 
 WebcomAdmin.themeOptions = function($){
@@ -469,9 +385,7 @@ WebcomAdmin.storyFieldToggle = function($) {
 (function($){
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
-	WebcomAdmin.shortcodeTool($);
-    WebcomAdmin.shortCodeSlideShowTool($);
-    WebcomAdmin.shortCodeCalloutTool($);
+	WebcomAdmin.shortcodeInterfaceTool($);
     WebcomAdmin.sliderMetaBoxes($);
     WebcomAdmin.storyFieldToggle($);
 })(jQuery);
