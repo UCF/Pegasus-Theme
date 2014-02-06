@@ -518,9 +518,9 @@ function sc_archive_search($params=array(), $content='') {
 
 			if ($posts) {
 		?>
-			<div class="row issue <?=$issue->post_name?>">
+			<div class="row issue">
 				<div class="span4">
-					<h2><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
+					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
 
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
 						<a href="<?=get_permalink($issue->ID)?>">
