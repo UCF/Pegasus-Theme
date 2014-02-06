@@ -118,7 +118,7 @@
 	 **************************/
 
 	/* General */
-	.pulldown-container ul { margin-left: -20px; padding-right: 40px; padding-bottom: 0; }
+	.pulldown-container ul { margin-left: -20px; padding-right: 40px; }
 	.pulldown-container ul li:last-child { margin-right: -20px; }
 
 	/* Pulldown controls */

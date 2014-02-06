@@ -247,7 +247,7 @@ var togglePulldown = function($) {
 
 		// If toggle is a close button, always remove .active classes.
 		if (toggle.hasClass('close')) {
-			$('.pulldown-container.active, .pulldown-toggle.active')
+			$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
 				.andSelf()
 				.removeClass('active');
 		}
@@ -331,7 +331,8 @@ var pulldownMenuScroll = function($) {
 }
 
 var mobileNavToggle = function($) {
-	// Handle window resizing with mobile navigation active
+	// Handle window resizing with mobile navigation active.
+	// Unset any active pulldown containers, toggles and logo/nav mods.
 	$(window).on('resize', function() {
 		if (
 			(
@@ -345,8 +346,10 @@ var mobileNavToggle = function($) {
 		) {
 			$('#header-navigation ul, #header-navigation .header-logo')
 				.removeClass('mobile-nav-visible');
-			$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active, #nav-mobile a')
+			$('#pulldown, .pulldown-container, .pulldown-toggle')
 				.removeClass('active');
+			$('.pulldown-toggle.close')
+				.removeClass('close');
 			$('#pulldown')
 				.css('height', 0);
 		}
@@ -357,8 +360,20 @@ var mobileNavToggle = function($) {
 	$('#nav-mobile a').on('click', function(e) {
 		e.preventDefault();
 
-		// Toggle the menu/close btn icons
-		$(this).toggleClass('active');
+		var toggle = $(this),
+			navList = toggle.parents('ul'),
+			activeContainerToggle = navList.find('li a[data-pulldown-container="'+ toggle.attr('data-pulldown-container') +'"]');
+
+		// Toggle the menu/close btn icons and the
+		// primary pulldown toggle link's .active class
+		if (toggle.hasClass('active')) {
+			toggle.addClass('close');
+			activeContainerToggle.addClass('active');
+		}
+		else {
+			toggle.removeClass('close');
+			activeContainerToggle.removeClass('active');
+		}		
 
 		// Show Issue, Archive nav links; hide Pegasus logo
 		$('#header-navigation ul, #header-navigation .header-logo')
