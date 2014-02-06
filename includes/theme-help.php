@@ -145,6 +145,18 @@
 							<th scope="col">Default Value</th>
 						</tr>
 						<tr>
+							<td>Source</td>
+							<td>source</td>
+							<td>Who said the quote. (optional)</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Cite</td>
+							<td>cite</td>
+							<td>Citing of where the quote came from. (optional)</td>
+							<td></td>
+						</tr>
+						<tr>
 							<td>Content</td>
 							<td>NA</td>
 							<td>What will be displayed as a blockquote. The text is placed between the opening and closing tags.</td>
