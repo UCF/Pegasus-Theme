@@ -538,12 +538,12 @@ article.story-default .social { float: right; }
 
 
 /**************************
- * Archives
+ * Search Results
  **************************/
 
 /* Search form, field */
-#archives .search-form { position: relative; }
-#archives .search-form:before {
+main .search-form { position: relative; }
+main .search-form:before {
 	/* Search field icon */
 	content: "\e605";
 	display: block;
@@ -559,7 +559,8 @@ article.story-default .social { float: right; }
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-#archives .search-field {
+main .search-form label { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
+main .search-field {
 	width: 100%;
 	height: 50px;
 	font-size: 24px;
@@ -568,7 +569,30 @@ article.story-default .social { float: right; }
 	padding: 0;
 	position: relative;
 	z-index: 2;
+	margin-bottom: 0;
 }
+main .search-submit {
+	position: absolute;
+	top: 0;
+	right: -2px;
+	z-index: 4;
+	height: 100%;
+	display: block;
+	width: 100px;
+	font-size: 20px;
+	border-top-left-radius: 0;
+	border-bottom-left-radius: 0;
+}
+
+/* Search results */
+#search-results ul.result-list { list-style-type: none; margin-left: 0; }
+#search-results ul.result-list li { margin-bottom: 20px; }
+#search-results ul.result-list li a { word-wrap: break-word; }
+
+
+/**************************
+ * Archives
+ **************************/
 
 /* Grouped issue lists */
 #archives .post-type-search-term { margin-top: 50px; }
