@@ -26,8 +26,9 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
     cls.shortcodeButton = cls.shortcodeForm.find('button');
     cls.shortcodeSelect = cls.shortcodeForm.find('#shortcode-select');
     cls.shortcodeEditors = cls.shortcodeForm.find('#shortcode-editors');
+    cls.shortcodeDescriptions = cls.shortcodeForm.find('#shortcode-descriptions');
 
-    cls.shortcodeInsert = function(shortcode, parameters) {
+    cls.shortcodeInsert = function(shortcode, parameters, enclosingText) {
         var text = '[' + shortcode;
 
         if (parameters) {
@@ -36,7 +37,11 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
             }
         }
 
-        text +=  "][/" + shortcode + "]";
+        text +=  "]";
+        if (enclosingText) {
+            text += enclosingText;
+        }
+        text += "[/" + shortcode + "]";
 
         send_to_editor(text);
     }
@@ -45,7 +50,8 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
         var selected = cls.shortcodeSelect.find(':selected');
         if (selected.length < 1 || selected.val() == ''){return;}
 
-        var editor = cls.shortcodeEditors.find('li#shortcode-' + cls.shortcodeSelected);
+        var editor = cls.shortcodeEditors.find('li.shortcode-' + cls.shortcodeSelected);
+        var enclosingText = selected.attr('data-enclosing') || null;
 
         var parameters = {};
         if (editor.length == 1) {
@@ -61,18 +67,19 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
             });
         }
 
-        cls.shortcodeInsert(selected.val(), parameters);
+        cls.shortcodeInsert(selected.val(), parameters, enclosingText);
     }
 
     cls.shortcodeSelectAction = function() {
-        var selected = $(this).find(".shortcode:selected");
-        if (selected.length < 1){return;}
-
-        cls.shortcodeSelected = selected.val();
+        cls.shortcodeSelected = cls.shortcodeSelect.val();
 
         cls.shortcodeEditors.find('li').hide();
-        cls.shortcodeEditors.find('#shortcode-' + cls.shortcodeSelected).show();
+        cls.shortcodeDescriptions.find('li').hide();
+        cls.shortcodeEditors.find('.shortcode-' + cls.shortcodeSelected).show();
+        cls.shortcodeDescriptions.find('.shortcode-' + cls.shortcodeSelected).show();
     }
+
+    cls.shortcodeSelectAction();
 
     // Option change for select, cause action
     cls.shortcodeSelect.change(cls.shortcodeSelectAction);

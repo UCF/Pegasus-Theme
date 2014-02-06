@@ -90,3 +90,16 @@ select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "
 .shortcode-section {
     display: none;
 }
+#select-shortcode-form-inner {}
+#select-shortcode-form-inner p { padding: 0 !important; }
+#select-shortcode-form-inner button.button-primary { margin-top: 15px; }
+#select-shortcode-form-inner .cols { overflow: hidden; clear: both; border-bottom: 1px solid #f0f0f0; padding: 15px 0; }
+#select-shortcode-form-inner .cols .col-left { width: 30%; float: left; }
+#select-shortcode-form-inner .cols .col-right { width: 65%; float: right; }
+
+#select-shortcode-form-inner #shortcode-descriptions { margin-top: 0; }
+#select-shortcode-form-inner #shortcode-descriptions li { margin-top: 5px; }
+
+#select-shortcode-form-inner #shortcode-editors { margin: 25px 0; }
+#select-shortcode-form-inner #shortcode-editors li { border-bottom: 1px solid #f0f0f0; padding: 0 0 25px 0; }
+
