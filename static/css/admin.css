@@ -27,6 +27,7 @@
 .i-am-a-fancy-admin .sections a.active,
 .i-am-a-fancy-admin .sections a:hover{background-color: #fff; border: 1px solid #f0f0f0; color: #21759B;}
 .i-am-a-fancy-admin code{display: block; background-color: #fafafa; padding: 10px; border: 1px solid #ddd;}
+.i-am-a-fancy-admin .fields { max-width: 800px;}
 
 #shortcodes-metabox{}
 #shortcodes-metabox form{}
