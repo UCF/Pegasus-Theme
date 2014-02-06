@@ -138,11 +138,11 @@ function add_shortcode_interface_modal() {
 					<li class="shortcode-blockquote">
 						<h2>Blockquote Options</h2>
 
-						<h3>Specify a quote source:</h3>
+						<h3>Source:</h3>
 						<p class="help">(Optional) Who said this quote?</p>
 						<input type="text" name="blockquote-source" value="" data-default-value="" data-parameter="source">
 
-						<h3>Specify a source to cite:</h3>
+						<h3>Cite:</h3>
 						<p class="help">(Optional) If this quote originated from some publication, specify it here.</p>
 						<input type="text" name="blockquote-cite" value="" data-default-value="" data-parameter="cite">
 					</li>
