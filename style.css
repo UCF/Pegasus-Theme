@@ -453,6 +453,7 @@ body:not(.ie8) article.story .wp-video-shortcode,
 body:not(.ie8) article.story .mejs-shim,
 body:not(.ie8) article.story .mejs-overlay,
 body:not(.ie8) article.story .mejs-poster,
+article.story .me-plugin,
 article.story iframe {
  	/* Make videos behave */
  	width: 100% !important;
