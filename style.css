@@ -122,8 +122,11 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	padding: 0 0 30px 0;
 	opacity: 0;
 	height: 0;
-	-webkit-transition: opacity 0.5s ease-in-out;
-	transition: opacity 0.5s ease-in-out;
+	-webkit-transition: opacity 0.4s ease-in-out;
+	transition: opacity 0.4s ease-in-out;
+	/* Prevent list item jump in Firefox */
+	transition-delay: 0.35s;
+	-webkit-transition-delay: 0.35s;
 }
 .pulldown-container.active {
 	opacity: 1;
@@ -151,7 +154,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	white-space: nowrap;
 }
 .pulldown-container ul li { display: inline-block; width: 140px; margin-left: 20px; white-space: normal; margin-bottom: 25px; }
-.pulldown-container ul li:last-child { margin-right: 80px; }
+.pulldown-container ul li.last-child { margin-right: 80px; } /* Assign class via jquery; :last-child doesn't work in ie8; */
 .pulldown-container ul li img { width: 100%; height: auto; }
 .pulldown-container ul li .story-title,
 .pulldown-container ul li .subtitle {
@@ -204,7 +207,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	font-size: 28px;
 	width: auto;
 }
-.pulldown-container .controls a.close { top: 10%; opacity: 1; font-size: 36px; }
+.pulldown-container .controls a.close { top: 10%; opacity: 1; filter: alpha(opacity=100); font-size: 36px; }
 .pulldown-container .controls a.backward { top: 38%; right: 2px; }
 .pulldown-container .controls a.forward { top: 60%; left: 4px; }
 .pulldown-container .controls a:hover,

@@ -129,7 +129,7 @@
 								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
 							</li>
 							<li id="nav-mobile">
-								<a href="<?=get_issue_feed_url($relevant_issue)?>"></a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_issue_feed_url($relevant_issue)?>"></a>
 							</li>
 							<li id="nav-issue">
 								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink(get_relevant_issue($post))?>"><?=$relevant_issue->post_title?></a>

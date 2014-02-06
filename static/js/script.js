@@ -282,7 +282,10 @@ var loadPulldownMenus = function($) {
 					effect: 'fadeIn',
 					container: $('ul.kinetic-active'),
 					event: 'triggerLazy'
-				});
+				})
+				.end()
+			.find('.items ul li:last-child')
+				.addClass('last-child');
 	});
 }
 
@@ -344,11 +347,13 @@ var mobileNavToggle = function($) {
 				.removeClass('mobile-nav-visible');
 			$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active, #nav-mobile a')
 				.removeClass('active');
-			$('#pulldown').css('height', 0);
+			$('#pulldown')
+				.css('height', 0);
 		}
 	});
 
-	// Handle link click
+	// Handle link click (this assumes the mobile toggle link has 
+	// a default data-pulldown-container attribute value set)
 	$('#nav-mobile a').on('click', function(e) {
 		e.preventDefault();
 
@@ -358,31 +363,6 @@ var mobileNavToggle = function($) {
 		// Show Issue, Archive nav links; hide Pegasus logo
 		$('#header-navigation ul, #header-navigation .header-logo')
 			.toggleClass('mobile-nav-visible');
-
-		// Activate first nav toggle if nothing's active
-		if ($('.pulldown-container.active').length < 1) {
-			$('.pulldown-container.pulldown-stories, li#nav-issue a').addClass('active');
-		}
-
-		// Trigger lazyload if it hasn't been triggered
-		$('.pulldown-container.active')
-			.find('img.lazy')
-				.trigger('triggerLazy');
-
-		$('#pulldown').toggleClass('active');
-
-		// Set fixed #pulldown height for css transitions
-		if ($('#pulldown').hasClass('active')) {
-			$('#pulldown')
-				.css('height', $('.pulldown-container.active').height());
-			$('.pulldown-container.active')
-				.find('.controls')
-					.css('height', $('.pulldown-container.active').height());
-		}
-		else {
-			$('#pulldown')
-				.css('height', 0);
-		}
 	});
 }
 
