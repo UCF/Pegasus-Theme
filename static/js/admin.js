@@ -260,6 +260,11 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                     updateSliderSortOrder();
         });
 
+        $(getAllSlides()).each(function() {
+            var slideContent = $(this);
+            WebcomAdmin.sliderHeaderTitleAction($, slideContent);
+        });
+
 
         // Sortable slides
         $('#ss_slides_all').sortable({
@@ -318,6 +323,9 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
             field.fadeIn().insertAfter(fieldLocation, $(this).prev('li'));
 
+            $('.slide-handle-header', field).text('');
+            WebcomAdmin.sliderHeaderTitleAction($, field);
+
             hideOnlyRemoveBtn();
             return false;
         });
@@ -331,6 +339,15 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         });
     }
 };
+
+
+WebcomAdmin.sliderHeaderTitleAction = function($, field) {
+    $('input[type="text"][id^="ss_slide_title"]', field).unbind().keyup({'slideDiv': field}, function(e) {
+        var titleFieldValue = $(this).val()
+        var slideHeader = $('.slide-handle-header', e.data.slideDiv);
+        slideHeader.text(titleFieldValue);
+    });
+}
 
 
 WebcomAdmin.storyFieldToggle = function($) {

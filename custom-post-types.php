@@ -840,7 +840,7 @@ class PhotoEssay extends CustomPostType {
 
 								<div class="handlediv" title="Click to toggle"> </div>
 									<h3 class="hndle">
-									<span>Slide</span>
+									<span>Slide - </span><span class="slide-handle-header"><?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?></span>
 								</h3>
 
 								<table class="form-table">
