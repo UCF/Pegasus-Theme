@@ -39,6 +39,7 @@ define('THEME_DIR', get_stylesheet_directory());
 define('THEME_INCLUDES_DIR', THEME_DIR.'/includes');
 define('THEME_STATIC_URL', THEME_URL.'/static');
 define('THEME_IMG_URL', THEME_STATIC_URL.'/img');
+define('THEME_HELP_IMG_URL', THEME_IMG_URL.'/theme-help');
 define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');

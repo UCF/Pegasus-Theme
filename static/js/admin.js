@@ -95,24 +95,28 @@ WebcomAdmin.themeOptions = function($){
 	cls.parent   = $('.i-am-a-fancy-admin');
 	cls.sections = $('.i-am-a-fancy-admin .fields .section');
 	cls.buttons  = $('.i-am-a-fancy-admin .sections .section a');
+    cls.buttonWrap = $('.i-am-a-fancy-admin .sections');
+    cls.sectionLinks = $('.i-am-a-fancy-admin .fields .section a[href^="#"]');
 
 	this.showSection = function(e){
 		var button  = $(this);
 		var href    = button.attr('href');
 		var section = $(href);
 
-		// Switch active styles
-		cls.buttons.removeClass('active');
-		button.addClass('active');
+        if (cls.buttonWrap.find('.section a[href="'+href+'"]') && section.is(cls.sections)) {
+            // Switch active styles
+            cls.buttons.removeClass('active');
+            button.addClass('active');
 
-		cls.active.hide();
-		cls.active = section;
-		cls.active.show();
+            cls.active.hide();
+            cls.active = section;
+            cls.active.show();
 
-		history.pushState({}, "", button.attr('href'));
-		var http_referrer = cls.parent.find('input[name="_wp_http_referer"]');
-		http_referrer.val(window.location);
-		return false;
+            history.pushState({}, "", button.attr('href'));
+            var http_referrer = cls.parent.find('input[name="_wp_http_referer"]');
+            http_referrer.val(window.location);
+            return false;
+        }
 	}
 
 	this.__init__ = function(){
@@ -120,6 +124,7 @@ WebcomAdmin.themeOptions = function($){
 		cls.sections.not(cls.active).hide();
 		cls.buttons.first().addClass('active');
 		cls.buttons.click(this.showSection);
+        cls.sectionLinks.click(this.showSection);
 
 		if (window.location.hash){
 			cls.buttons.filter('[href="' + window.location.hash + '"]').click();
