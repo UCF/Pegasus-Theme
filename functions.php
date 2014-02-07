@@ -67,7 +67,9 @@ function get_featured_image_url($id) {
  * otherwise, get the current story issue
  */
 function get_relevant_issue($post) {
-	if($post && $post->post_type == 'story' && !is_404() && !is_search()) {
+	if (is_preview()) {
+		$issue = get_current_issue();
+	} else if($post && $post->post_type == 'story' && !is_404() && !is_search()) {
 		$issue = get_story_issue($post);
 	} else if ($post && $post->post_type == 'issue' && !is_404() && !is_search()) {
 		$issue = $post;
@@ -817,4 +819,25 @@ function set_template_for_fall_2013_or_earlier($post) {
 	}
 }
 add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
+
+
+/**
+ * Force the WYSIWYG editor's kitchen sink to always be open.
+ **/
+function unhide_kitchensink( $args ) {
+	$args['wordpress_adv_hidden'] = false;
+	return $args;
+}
+add_filter('tiny_mce_before_init', 'unhide_kitchensink');
+
+
+/**
+ * Remove Tools admin menu item for everybody but admins.
+ **/
+function remove_menus(){
+	if (!current_user_can('manage_sites')) {
+		remove_menu_page('tools.php');
+	}
+}
+add_action('admin_menu', 'remove_menus');
 ?>

@@ -6,7 +6,7 @@
 ?>
 
 <article class="story story-default">
-	<?php if ($header_img) { ?>
+	<?php if ($header_img_id) { ?>
 	<div class="container-wide story-header-image" style="background-image: url('<?=$header_img?>'); filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='<?=$header_img?>',sizingMethod='scale')">
 		<img src="<?=$header_img?>" alt="<?=$post->post_title?>" title="<?=$post->post_title?>" />
 	</div>
