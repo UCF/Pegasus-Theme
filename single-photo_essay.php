@@ -1,6 +1,6 @@
 <?php disallow_direct_load('page.php');?>
 <?php get_header(); the_post();?>
-<section class="container<?= true ? ' ss-photo-essay' : '' ?>">
+<article class="container-wide<?= true ? ' ss-photo-essay' : '' ?>">
     <section class='ss-content'>
     <?php
 
@@ -8,10 +8,9 @@
     $slide_order = explode(',', $slide_order);
     $captions = get_post_meta($post->ID, 'ss_slide_caption', TRUE);
     $images = get_post_meta($post->ID, 'ss_slide_image', TRUE);
-
     ?>
 
-    <div class='ss-nav-wrapper' style="height: 80%;">
+    <div class='ss-nav-wrapper' style="height: <?php if (array_filter($captions)) { ?>80%<?php } else { ?>100%<?php } ?>;">
         <div class='ss-arrow-wrapper ss-arrow-wrapper-left'>
             <a class='ss-arrow ss-arrow-prev'>&lsaquo;</a>
         </div>
@@ -39,29 +38,30 @@
             <?php
         }
     }
-
     ?>
-
     </div>
-    <div class='ss-captions-wrapper' style="height: 20%;">
 
     <?php
+    // Make sure at least one caption exists before adding caption wrapper. 
+    if (array_filter($captions)) { ?>
+    <div class='ss-captions-wrapper' style="height: 20%;">
+    <?php
+        $data_id = 0;
+        foreach ($slide_order as $s) {
+            if ($s !== '') {
+                $data_id++;
 
-    $data_id = 0;
-    foreach ($slide_order as $s) {
-        if ($s !== '') {
-            $data_id++;
+                ?>
 
-            ?>
+                <div class='ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?=$data_id; ?>'>
+                    <p class="caption"><?=$captions[$s]; ?></p>
+                </div>
 
-            <div class='ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?=$data_id; ?>'>
-                <p><?=$captions[$s]; ?></p>
-            </div>
-
-            <?php
+                <?php
+            }
         }
     }
     ?>
     </section>
-</section>
+</article>
 <?php get_footer();?>

@@ -110,7 +110,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	position: relative;
 }
 #pulldown {
-	z-index: 4;
+	z-index: 999;
 	height: 0;
 	-webkit-transition: height 0.5s ease-in-out;
 	transition: height 0.5s ease-in-out;
@@ -902,7 +902,7 @@ article.ss-photo-essay {
     transition:all 1.0s ease-in-out;
 }
 .ss-embed .ss-slides-wrapper { height: 360px; }
-.ss-photo-essay .ss-slides-wrapper { height: 80%; }
+.ss-photo-essay .ss-slides-wrapper { height: inherit; }
 
 .ss-slide-wrapper {
     position: relative;
