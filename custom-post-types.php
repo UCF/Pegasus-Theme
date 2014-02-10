@@ -832,7 +832,6 @@ class PhotoEssay extends CustomPostType {
 					// a single empty slide 'widget'.
 					if ($slide_order) {
 						$slide_array = explode(",", $slide_order);
-
 						foreach ($slide_array as $s) {
 							if ($s !== '') {
 					?>
@@ -897,9 +896,9 @@ class PhotoEssay extends CustomPostType {
 							<table class="form-table">
 							<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
 								<tr>
-									<th><label for="ss_slide_title[<?=$s?>]">Title</label></th>
+									<th><label for="ss_slide_title[<?=$i?>]">Title</label></th>
 									<td>
-										<input type="text" name="ss_slide_title[<?=$s?>]" id="ss_slide_title[<?=$s?>]" cols="60" rows="4" value="<?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?>" />
+										<input type="text" name="ss_slide_title[<?=$i?>]" id="ss_slide_title[<?=$i?>]" cols="60" rows="4" value="<?php ($slide_title[$i] !== '') ? print $slide_title[$i] : ''; ?>" />
 									</td>
 								</tr>
 								<tr>

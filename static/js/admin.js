@@ -153,9 +153,13 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             slideOrderField = $('input#ss_slider_slideorder'),
             keyField = 'input[name^="ss_slide_image["]'; // Related to some arbitrary unique field in each slide, from which an ID can be grabbed
 
-        // Hide Preview Changes button
-        // this is a temporary fix for an issue where previewing changes on this post type deletes its uploaded media
-        $('#minor-publishing-actions').hide();
+        // Admin panel adjustments for Photo Essay previews
+        // Autosaving Photo Essays kills serialized data (which we use for slide images/
+        // video thumbnails), so autosaving is disabled for this post type.
+        // This adds a helpful message for users to avoid confusion.
+        if ($('#post-status-display').text().indexOf('Published') < 1) {
+            $('#save-action').prepend('<p style="text-align:left;"><strong>NOTE:</strong> To preview an unpublished Photo Essay before publishing it, make sure to save any changes as a Draft, <em>then</em> click "Preview".</p>');
+        }
 
         // Returns all jquery objects that correspond to a single duplicate-able slide.
         // Necessary for determining slide count + order.
