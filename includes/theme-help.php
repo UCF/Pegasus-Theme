@@ -229,8 +229,8 @@
 					<p>
 						Media (images, videos, and audio) can be uploaded to WordPress’s media library so that they are self-hosted.  
 						Generally, this is necessary for photos and video or audio that cannot be uploaded to an external service like 
-						Youtube.  <strong>Note:</strong> if you need to add a Youtube, Vimeo, or other hosted video player, you do not 
-						need to upload any files; simply paste the URL of the video into the editor content on its own line, and WordPress 
+						Youtube.  <strong>Note: if you need to add a Youtube, Vimeo, or other hosted video player, you do not 
+						need to upload any files;</strong> simply paste the URL of the video into the editor content on its own line, and WordPress 
 						will figure out the rest for you.
 					</p>
 					<p>
@@ -398,45 +398,187 @@
 
 				<li class="section" id="photo-essays">
 					<h2>Photo Essays</h2>
+					<p>
+						A <strong>Photo Essay</strong> is an ordered set of photos and captions.  They exist for creating embedded or full-screen
+						<strong>slideshows</strong> with the [slideshow] shortcode.
+					</p>
 
+					<p><strong>Navigation:</strong></p>
+					<ul class="section-nav">
+						<li>
+							<a href="#photo-essays-creating">Creating Photo Essays</a>
+							<ul>
+								<li><a href="#photo-essays-add-title">Add a Title</a></li>
+								<li><a href="#photo-essays-issue">Assign an Issue</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#photo-essays-creating-slides">Creating Slides</a>
+							<ul>
+								<li><a href="#photo-essays-requirements">Requirements</a></li>
+								<li><a href="#photo-essays-slide-content">Title, Caption and Image</a></li>
+								<li><a href="#photo-essays-order-slides">Ordering Slides</a></li>
+								<li><a href="#photo-essays-delete-slide">Delete a Slide</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#photo-essays-save">Saving a Photo Essay</a>
+						</li>
+						<li>
+							<a href="#photo-essays-modifying">Modifying a Photo Essay</a>
+						</li>
+					</ul>
+
+
+					<h3 id="photo-essays-creating">Creating Photo Essays</h3>
 					<p>
-						<strong>Photo Essays</strong> are similar to Centerpieces on http://www.ucf.edu. Photo Essays are a means of capturing a set if images
-						and captions to be displayed in a Story. Each slide requires a title and image. The caption is optional but
-						it is recommended to have one in order to give a frame of reference for the image being displayed. Images added
-						to the Photo Essay need to have a consistant height. Also please be aware of the images file size as it will
-						increase load time for the user.
+						To create a photo essay, hover over the “Photo Essays” link in the left-hand WordPress admin menu, and click “Add New”.
+					</p>
+
+					<h4 id="photo-essays-add-title">Add a Title</h4>
+					<p>
+						Enter the title of the entire photo essay in the title field at the top of the screen.  Note that individual slides 
+						also have their own titles.
+					</p>
+
+					<h4 id="photo-essays-issue">Assign an Issue</h4>
+					<p>
+						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
+						Fall/Spring/Summer, rather than the year).  Setting an Issue here makes it appear in the Photo Essay dropdown in the 
+						"Insert Shortcode" popup window when creating stories/issues.
+					</p>
+
+
+					<h3 id="photo-essays-creating-slides">Creating Slides</h3>
+					<p>
+						When creating a new photo essay, a single Slide metabox is available to add an image and caption to.  To add more slides,
+						click the "Add New Slide" button under the Slide metabox.  A new Slide metabox will appear underneath the last one.
+					</p>
+
+					<h4 id="photo-essays-requirements">Requirements</h4>
+					<ul>
+						<li>
+							<strong>Each photo essay slide requires a title and image.</strong>  If both of these are not set for any slide, that 
+							slide will not be saved when the photo essay is saved/published.
+						</li>
+						<li>
+							All images uploaded to photo essay slides should be <strong>web-optimized</strong>!  Please see the Media Specs/Guidelines 
+							section of the <a href="#stories">Story documentation</a> for basic image optimization requirements.
+						</li>
+						<li>
+							<strong>All images uploaded to a single photo essay must be the same height</strong>.  Widths can vary, but the height 
+							must be consistent throughout all images.
+						</li>
+					</ul>
+
+					<h4 id="photo-essays-slide-content">Title, Caption and Image</h4>
+					<p>
+						Add a title, image, and caption (optional) for each slide.  Captions can use plain text values (no shortcodes.)
+					</p>
+
+					<h4 id="photo-essays-order-slides">Ordering Slides</h4>
+					<p>
+						To re-order a slide, click and drag the top bar of the slide's metabox up or down to re-order it.
+					</p>
+
+					<h4 id="photo-essays-delete-slide">Delete a Slide</h4>
+					<p>
+						To delete a single slide, click the "Remove Slide" button on the bottom-left of any single slide metabox.  Note that this
+						button will not appear if only one slide is left on the screen.
+					</p>
+
+
+					<h3 id="photo-essays-save">Saving a Photo Essay</h3>
+					<p>
+						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish
+						metabox.
 					</p>
 					<p>
-						You can add more slides by clicking on the Add New Slide button which is located under the last slide. Slides are
-						displayed in the order they are displayed in the editor (top to bottom). If you need to change the order
-						of the slides you can click and drag the Slide header bar up and down then release when you have it in the desired position.
+						<strong>Note: auto-saving has been disabled for Photo Essays.  To use the "Preview" button, you MUST save your post as a
+						draft first!</strong>
 					</p>
 					<p>
-						The Photo Essays can be displayed using the slideshow Shortcode within the
-						Story content. By default the Photo Essays are placed between copy in a given story. If you would like to
-						create a Story that is only a Photo Essay then place a single slideshow Shortcode with in the Story content and
-						select the Photo Essay Story Template form the Story Fields. This will display the slideshow in fullscreen.
+						If your story is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by
+						clicking the blue "Publish" button in the Publish metabox.
 					</p>
 				</li>
 
+
 				<li class="section" id="shortcodes">
 					<h2>Shortcodes</h2>
-
 					<p>
-						These are widgets or types of code that can be placed within the content of a post, specifically a Story post type. You can access
-						these Shortcodes by clicking on the Add Shortcode button underneath title of the Story post. This will
-						bring up a screen that will let you select available shortcodes and modify any parameters/settings
-						associated with the shortcode (ex. background color). After you are done making your selections you can click
-						on insert and the Shortcode will be inserted where your cursor was last placed in the content area. Below is
-						a more detailed description of each Shortcode that can be used.
+						<strong>Shortcodes</strong>, in a nutshell, are <em>shortcuts</em> for displaying or doing various things.  They look like small snippets of code, 
+						wrapped in square brackets [], but using them requires no knowledge of HTML, CSS, or other code languages.
 					</p>
 
-					<h3>blockquote</h3>
-					<p>Creates a block quote style widget for one off quotes from the story. The quote needs to be placed between the opening and closing shortcode tags.</p>
+					<p><strong>Navigation:</strong></p>
+					<ul class="section-nav">
+						<li>
+							<a href="#shortcodes-basics">Shortcode Basics</a>
+						</li>
+						<li>
+							<a href="#shortcodes-blockquote">Blockquote</a>
+						</li>
+						<li>
+							<a href="#shortcodes-callout">Callout</a>
+						</li>
+						<li>
+							<a href="#shortcodes-divider">Divider</a>
+						</li>
+						<li>
+							<a href="#shortcodes-lead">Lead</a>
+						</li>
+						<li>
+							<a href="#shortcodes-sidebar">Sidebar</a>
+						</li>
+						<li>
+							<a href="#shortcodes-slideshow">Slideshow</a>
+						</li>
+					</ul>
+
+					<h3 id="shortcodes-basics">Shortcode Basics</h3>
+
+					<p>
+						When a shortcode is added to post content, it will be displayed in the editor as a code snippet, but when you view the post as a preview or live post, 
+						you will see the output of what the shortcode is programmed to do, with the <strong>content</strong> and <strong>attributes</strong> you provide.
+					</p>
+					<p>
+						The shortcodes listed below have a <strong>starting tag</strong> ([my-shortcode]) and an <strong>ending tag</strong> ([/my-shortcode]).  Depending on 
+						the shortcode used, such as the [lead] and [blockquote] shortcodes, <strong>content</strong> between the starting and ending tags is used.  Other
+						shortcodes, like the [slideshow] shortcode, do not use any content between the starting and ending tags.
+					</p>
+					<p>
+						Some shortcodes use <strong>attributes</strong> to define extra options for whatever the given shortcode does.  For example, the [callout] and [sidebar]
+						shortcodes have a "background" attribute, which lets you set a custom background color for the callout box or sidebar.
+					</p>
+
+					<p>
+						The custom available shortcodes for this site, as well as their available attributes and examples, are listed below.  For information about adding 
+						shortcodes to post content, please visit the Adding Content via Shortcodes section of the <a href="#stories">Story documentation</a>.
+					</p>
+
+					<hr/>
+
+					<h3 id="shortcodes-blockquote">blockquote</h3>
+					<p>
+						Creates a stylized blockquote.  Text in the blockquote is large Georgia italic.
+					</p>
+					<p>
+						If a <strong>source</strong> attribute is provided, the blockquote will be styled with oversized starting and ending quotation marks.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						Only a <strong>single line of text</strong> (no line breaks or new paragraphs) is permitted between the shortcode tags.<br/>
+						When used in a story, the Default Template Header Font Color is used for the color of the main quote.
+					</p>
+
+					<h4>Attributes</h4>
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Code</th>
+							<th scrop="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
@@ -444,30 +586,38 @@
 							<td>Source</td>
 							<td>source</td>
 							<td>Who said the quote. (optional)</td>
-							<td></td>
+							<td>n/a</td>
 						</tr>
 						<tr>
 							<td>Cite</td>
 							<td>cite</td>
 							<td>Citing of where the quote came from. (optional)</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Content</td>
-							<td>NA</td>
-							<td>What will be displayed as a blockquote. The text is placed between the opening and closing tags.</td>
-							<td></td>
+							<td>n/a</td>
 						</tr>
 					</table>
-					<p>Example:
-					<pre><code>[blockquote]Powerful quote of the day.[/blockquote]</code></pre>
 
-					<h3>callout</h3>
-					<p>This will create a 100% wide box with the given background color. Text, images and shortcodes can be placed as content between the shortcode tags.</p>
+					<h4>Examples</h4>
+					<pre><code>[blockquote]Powerful quote of the day.[/blockquote]</code></pre>
+					<pre><code>[blockquote source="Jane Doe" cite="Some Cool Book"]Powerful quote of the day.[/blockquote]</code></pre>
+
+					<hr/>
+
+					<h3 id="shortcodes-callout">callout</h3>
+					<p>
+						Creates a full-width box that breaks out of the primary content column to help text or other content stand out.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						<strong>Any text, media or other shortcodes</strong> are permitted between the shortcode tags.
+					</p>
+
+					<h4>Attributes</h4>
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Code</th>
+							<th scrop="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
@@ -477,88 +627,122 @@
 							<td>The color to be used for the background of the callout box.</td>
 							<td>#f0f0f0</td>
 						</tr>
-						<tr>
-							<td>Content</td>
-							<td>NA</td>
-							<td>What will be displayed within the callout. This can be text, video, audio, slideshow, etc. The content is placed between the opening and closing tags.</td>
-							<td></td>
-						</tr>
 					</table>
-					<p>Example:
+
+					<h4>Examples</h4>
 					<pre><code>[callout background="#e1e1e1"][blockquote]Very very powerful quote![/blockquote][/callout]</code></pre>
 
-					<h3>divider</h3>
-					<p>Displays a grey divider to breakup the content.</p>
-					<p>Example:
+					<hr/>
+
+					<h3 id="shortcodes-divider">divider</h3>
+					<p>
+						Displays a grey divider to break up sections of content.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>uses no content</strong> between its starting and ending tags.
+					</p>
+
+					<h4>Attributes</h4>
+					<p>
+						This shortcode has no available attributes.
+					</p>
+
+					<h4>Examples</h4>
 					<pre><code>[divider][/divider]</code></pre>
 
-					<h3>lead</h3>
-					<p>Displays a paragraph with a large colored starting character and the remaining text is slightly larger than default content text. Generally used for starting paragraphs within a Story.</p>
-					<table>
-						<tr>
-							<th scope="col">Name</th>
-							<th scrop="col">Code</th>
-							<th scope="col">Description</th>
-							<th scope="col">Default Value</th>
-						</tr>
-						<tr>
-							<td>Content</td>
-							<td>NA</td>
-							<td>Content to be displayed as a lead paragraph. This text will be placed between the opening and closing tags.</td>
-							<td></td>
-						</tr>
-					</table>
-					<p>Example:
+					<hr/>
+
+					<h3 id="shortcodes-lead">lead</h3>
+					<p>
+						Creates a slightly-enlarged paragraph with a stylized dropcap.  Intended for use at the beginning of a story or a section of a story.
+					</p>
+					
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						Only a <strong>single line of text</strong> (no line breaks or new paragraphs) is permitted between the shortcode tags.<br/>
+						When used in a story, the Default Template Header Font Color is used for the color of the dropcap.
+					</p>
+
+					<h4>Attributes</h4>
+					<p>
+						This shortcode has no available attributes.
+					</p>
+
+					<h4>Examples</h4>
 					<pre><code>[lead]This a powerful starting paragraph that needs some attention.[/lead]</code></pre>
 
-					<h3>sidebar</h3>
-					<p>Creates a stand alone element with the given background color. Used for items (ex. text or images) relate to a group of text but does not fit within the normal paragraph form of the content. The main content will wrap around the sidebar.</p>
+					<hr/>
+
+					<h3 id="shortcodes-sidebar">sidebar</h3>
+					<p>
+						Creates a floating block that other content wraps around.  Used for text or media that is related to a group of text, but doesn't fit within 
+						the normal paragraph form of the content.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						<strong>Any text, media or other shortcodes</strong> are permitted between the shortcode tags.
+					</p>
+
+					<h4>Atttributes</h4>
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Code</th>
+							<th scrop="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
 						<tr>
 							<td>Background Color</td>
 							<td>background</td>
-							<td>The background color to be used within the </td>
+							<td>The background color of the sidebar element.</td>
 							<td>#f0f0f0</td>
 						</tr>
 						<tr>
 							<td>Position</td>
 							<td>position</td>
-							<td>Horizontal position the box will be displayed (left or right).</td>
+							<td>Horizontal position of the box (left or right).</td>
 							<td>right</td>
 						</tr>
-						<tr>
-							<td>Content</td>
-							<td>NA</td>
-							<td>Content to be placed within the sidebar. This will be placed between the opening and closing tags.</td>
-							<td></td>
-						</tr>
 					</table>
-					<p>Example:
+
+					<h4>Examples</h4>
 					<pre><code>[sidebar background="#e1e1e1" position="left"]This is related content but does not fit inside the main paragraph.[/sidebar]</code></pre>
 
-					<h3>slideshow</h3>
-					<p>Create a javascript slideshow of a selected Photo Essay. The Photo Essay will need to be created before you place the slideshow shortcode. Refer to the Photo Essay Help section for more information on how you can use the slideshow shortcode.</p>
+					<hr/>
+
+					<h3 id="shortcodes-slideshow">slideshow</h3>
+					<p>
+						Creates a javascript slideshow of a selected Photo Essay.  The Photo Essay will need to be created before placing the slideshow shortcode.  
+						Refer to the <a href="#photo-essays">Photo Essay Help section</a> for more information.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>uses no content</strong> between its starting and ending tags.
+					</p>
+
+					<h4>Attributes</h4>
 					<table>
 						<tr>
 							<th scope="col">Name</th>
-							<th scrop="col">Code</th>
+							<th scrop="col">Attribute</th>
 							<th scope="col">Description</th>
 							<th scope="col">Default Value</th>
 						</tr>
 						<tr>
 							<td>Photo Essay</td>
 							<td>slug</td>
-							<td>The Photo Essay that you would like to use in the slideshow.</td>
-							<td>NA</td>
+							<td>The slug of the Photo Essay to be used in the slideshow.</td>
+							<td>n/a</td>
 						</tr>
 					</table>
-					<p>Example:
+
+					<h4>Examples</h4>
 					<pre><code>[slideshow slug="awesome-photo-essay"][/slideshow]</code></pre>
 				</li>
 
