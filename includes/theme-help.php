@@ -131,7 +131,7 @@
 					<h4 id="stories-issue-tags">Assign an Issue, Tags</h4>
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
-						Fall/Spring/Summer, rather than the year) and add any appropriate tags in the Tags metabox.  When picking 
+						Fall/Spring/Summer, and the year) and add any appropriate tags in the Tags metabox.  When picking 
 						tags, think about words or phrases that you would use if you were to search for this story on Google.
 					</p>
 
@@ -444,7 +444,7 @@
 					<h4 id="photo-essays-issue">Assign an Issue</h4>
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
-						Fall/Spring/Summer, rather than the year).  Setting an Issue here makes it appear in the Photo Essay dropdown in the 
+						Fall/Spring/Summer, and the year).  Setting an Issue here makes it appear in the Photo Essay dropdown in the 
 						"Insert Shortcode" popup window when creating stories/issues.
 					</p>
 
