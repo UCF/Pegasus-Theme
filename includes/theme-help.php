@@ -495,7 +495,7 @@
 					</p>
 					<p>
 						<strong>Note: auto-saving has been disabled for Photo Essays.  To use the "Preview" button, you MUST save your post as a
-						draft first!</strong>
+						draft first!  This must be done with any set of revisions--even if the post has been published already.</strong>
 					</p>
 					<p>
 						If your story is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by
