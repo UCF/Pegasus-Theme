@@ -151,7 +151,7 @@ function get_current_issue() {
 
 /*
  * Modify the permalinks for the Issue post type to the following form:
- * http://pegasus.ucf.edu/<issue slug>/
+ * http://ucf.edu/pegasus/<issue slug>/
  */
 function modify_issue_permalinks($url, $post) {
 	if($post->post_type == 'issue') {
@@ -163,17 +163,36 @@ add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
 
 
 /*
+ * Modify the permalinks for the Story post type to the following form:
+ * http://ucf.edu/pegasus/<story slug>/
+ */
+function modify_story_permalinks($url, $post) {
+	if($post->post_type == 'story') {
+		return get_bloginfo('url').'/'.$post->post_name.'/';
+	}
+	return $url;
+} 
+add_filter('post_type_link', 'modify_story_permalinks', 10, 2);
+
+
+/*
  * Add a rewrite rule to handle the new Issue post type permalink structure
  */
-function issue_init() {
+function cpt_slug_init() {
 	$issue_slugs  = array_map(
 		create_function('$i', 'return preg_quote($i->post_name);'),
-		get_posts(array('post_type' => 'issue')
+		get_posts(array('post_type' => 'issue', 'numberposts' => -1)
 	));
+	$story_slugs  = array_map(
+		create_function('$i', 'return preg_quote($i->post_name);'),
+		get_posts(array('post_type' => 'story', 'numberposts' => -1)
+	));
+
 	add_rewrite_rule('^('.implode('|', $issue_slugs).')$', 'index.php?issue=$matches[1]', 'top');
+	add_rewrite_rule('^('.implode('|', $story_slugs).')$', 'index.php?story=$matches[1]', 'top');
 	flush_rewrite_rules(false);
 }
-add_action('init', 'issue_init');
+add_action('init', 'cpt_slug_init');
 
 
 /*
