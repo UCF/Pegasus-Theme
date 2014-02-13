@@ -38,7 +38,8 @@ abstract class CustomTaxonomy {
 		$update_count_callback = '',
 		$rewrite               = True,
 		$query_var             = NULL,
-		$capabilities          = Array();
+		$capabilities          = Array(),
+		$show_admin_column     = False;
 	
 	function __construct() {
 		if(is_null($this->show_in_name_menus)) $this->show_in_name_menus = $this->public;
@@ -83,7 +84,8 @@ abstract class CustomTaxonomy {
 				'update_count_callback' => $this->options('update_count_callback'),
 				'rewrite'               => $this->options('rewrite'),
 				'query_var'             => $this->options('query_var'),
-				'capabilities'          => $this->options('capabilities')
+				'capabilities'          => $this->options('capabilities'),
+				'show_admin_column' 	=> $this->options('show_admin_column')
 			);
 		register_taxonomy($this->options('name'), $this->options('object_type'), $args);
 	}
@@ -136,6 +138,8 @@ class Issues extends CustomTaxonomy
 		$new_item_name      = 'New Tag Issue',
 		
 		$hierarchical 		= True,
-		$query_var 			= 'issues';
+		$query_var 			= 'issues',
+
+		$show_admin_column  = True;
 } // END class 
 ?>
