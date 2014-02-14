@@ -155,7 +155,7 @@ function get_current_issue() {
  */
 function modify_issue_permalinks($url, $post) {
 	if($post->post_type == 'issue') {
-		if ($post->post_name) {
+		if ($post->post_status == 'publish') {
 			return get_bloginfo('url').'/'.$post->post_name.'/';
 		}
 		else {
@@ -174,7 +174,7 @@ add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
  */
 function modify_story_permalinks($url, $post) {
 	if($post->post_type == 'story') {
-		if ($post->post_name) {
+		if ($post->post_status == 'publish') {
 			return get_bloginfo('url').'/'.$post->post_name.'/';
 		}
 		else {
