@@ -155,7 +155,13 @@ function get_current_issue() {
  */
 function modify_issue_permalinks($url, $post) {
 	if($post->post_type == 'issue') {
-		return get_bloginfo('url').'/'.$post->post_name.'/';
+		if ($post->post_name) {
+			return get_bloginfo('url').'/'.$post->post_name.'/';
+		}
+		else {
+			// Handle drafts/previews appropriately
+			return get_bloginfo('url').'/?p='.$post->ID.'&post_type=issue';
+		}
 	}
 	return $url;
 } 
@@ -168,7 +174,13 @@ add_filter('post_type_link', 'modify_issue_permalinks', 10, 2);
  */
 function modify_story_permalinks($url, $post) {
 	if($post->post_type == 'story') {
-		return get_bloginfo('url').'/'.$post->post_name.'/';
+		if ($post->post_name) {
+			return get_bloginfo('url').'/'.$post->post_name.'/';
+		}
+		else {
+			// Handle drafts/previews appropriately
+			return get_bloginfo('url').'/?p='.$post->ID.'&post_type=story';
+		}
 	}
 	return $url;
 } 
@@ -859,4 +871,15 @@ function remove_menus(){
 	}
 }
 add_action('admin_menu', 'remove_menus');
+
+
+/**
+ * Remove ability for editors to immediately publish posts (forces 
+ * 'Submit for Review')
+ **/
+/*
+$role = get_role( 'editor' );
+$role->remove_cap( 'publish_posts' );
+*/
+
 ?>
