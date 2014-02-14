@@ -388,14 +388,14 @@ class Story extends CustomPostType {
 				'name' => 'Story Subtitle',
 				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
 				'id'   => $prefix.'subtitle',
-				'type' => 'text',
+				'type' => 'textarea',
 			),
 			array(
 				'name' => 'Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
 							default issue templates.',
 				'id'   => $prefix.'description',
-				'type' => 'text',
+				'type' => 'textarea',
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Family',
