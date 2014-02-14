@@ -88,13 +88,15 @@
 								$thumb = get_featured_image_url($story->ID);
 						?>
 						<li>
-							<a href="<?=get_permalink($story)?>">
-								<?php if ($thumb) { ?>
-								<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
-								<?php } ?>
-								<span class="story-title"><?=$title?></span>
-								<span class="subtitle"><?=$subtitle?></span>
-							</a>
+							<article>
+								<a href="<?=get_permalink($story)?>">
+									<?php if ($thumb) { ?>
+									<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+									<?php } ?>
+									<span class="story-title"><?=$title?></span>
+									<span class="subtitle"><?=$subtitle?></span>
+								</a>
+							</article>
 						</li>
 						<?php } ?>
 					</ul>
