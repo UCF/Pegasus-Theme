@@ -153,14 +153,25 @@
 	/**************************
 	 * Stories - General
 	 **************************/
+	 article.story,
+	 article.story p,
+	 article.story ol,
+	 article.story ul {
+	 	font-size: 15px;
+	 	line-height: 24px;
+	 }
 	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 118%; }
 	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; }
 	article.story .description-wrap { margin-bottom: 35px; }
 
-	article.story h2 { font-size: 34px; line-height: 34px; margin-bottom: 10px; }
+	article.story h1,
+	article.story h2 {
+		overflow: hidden;
+	}
+	article.story h2 { font-size: 30px; line-height: 30px; margin-bottom: 10px; }
 	article.story p { margin-bottom: 20px; }
 
-	article.story .description { font-size: 18px; line-height: 24px; margin-bottom: 25px; }
+	article.story .description { font-size: 18px; line-height: 28px; margin-bottom: 25px; }
 	article.story .lead { font-size: 17px; line-height: 27px; margin-bottom: 30px; }
 	article.story .lead::first-letter,
 	article.story .lead:first-letter { font-size: 30px; font-weight: bold; }

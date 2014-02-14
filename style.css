@@ -374,6 +374,8 @@ article.story .story-header-image {
 	background-repeat: no-repeat;
 }
 article.story .story-header-image img { position: absolute;	clip: rect(1px, 1px, 1px, 1px); }
+article.story .title-wrap { padding-top: 30px; }
+article.story .story-header-image + .container .title-wrap { padding-top: 0; }
 article.story h1,
 article.story h2,
 article.story h3,
@@ -387,8 +389,8 @@ article.story blockquote p {
 	-moz-osx-font-smoothing: grayscale;
 }
 article.story h2 { font-size: 36px; line-height: 36px; margin-bottom: 15px; }
-article.story h3 { font-size: 28px; line-height: 28px; margin-bottom: 6px; }
-article.story h4 { font-size: 21px; line-height: 21px; }
+article.story h3 { font-size: 26px; line-height: 26px; margin-bottom: 6px; }
+article.story h4 { font-size: 20px; line-height: 20px; margin-bottom: 6px; }
 article.story h5 { font-size: 18px; line-height: 18px; }
 article.story h6 { font-size: 16px; line-height: 16px; }
 

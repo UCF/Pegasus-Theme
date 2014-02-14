@@ -121,7 +121,7 @@ $template_font_styles_base_array = array(
 	'weight' => 'bold',
 	'size-desktop' => '65px',
 	'size-tablet' => '65px',
-	'size-mobile' => '48px',
+	'size-mobile' => '40px',
 	'textalign' => 'left',
 	'texttransform' => 'none',
 );
@@ -179,6 +179,7 @@ $template_font_styles_array = array(
 		'weight' => 'normal',
 		'size-desktop' => '72px',
 		'size-tablet' => '72px',
+		'size-mobile' => '36px',
 	),
 	'Montserrat Bold' => array(
 		'url' => $template_fonts_array['Montserrat'],
@@ -186,6 +187,7 @@ $template_font_styles_array = array(
 		'weight' => 'normal',
 		'size-desktop' => '72px',
 		'size-tablet' => '72px',
+		'size-mobile' => '36px',
 	),
 	'Arial Black' => array(
 		'url' => null,
@@ -193,6 +195,7 @@ $template_font_styles_array = array(
 		'weight' => 'normal',
 		'size-desktop' => '70px',
 		'size-tablet' => '70px',
+		'size-mobile' => '34px',
 	),
 	'Open Sans Condensed Bold' => array(
 		'url' => $template_fonts_array['Open Sans Condensed'],
