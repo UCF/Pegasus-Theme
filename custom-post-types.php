@@ -391,7 +391,7 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 			array(
-				'name' => 'Story Description',
+				'name' => '<strong>Default Template:</strong> Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
 							default issue templates.',
 				'id'   => $prefix.'description',
@@ -399,7 +399,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Family',
-				'desc' => 'The font family to use for title lines in this story.  Font sizes/line heights are determined automatically based on the font selected.',
+				'desc' => 'The font family to use for headings in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',
 				'type'    => 'select',
 				'options' => $font_options,
