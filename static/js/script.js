@@ -346,9 +346,9 @@ var mobileNavToggle = function($) {
 		) {
 			$('#header-navigation ul, #header-navigation .header-logo')
 				.removeClass('mobile-nav-visible');
-			$('#pulldown, .pulldown-container, .pulldown-toggle')
+			$('#pulldown.active, #pulldown .active, #nav-mobile .active')
 				.removeClass('active');
-			$('.pulldown-toggle.close')
+			$('#nav-mobile .close')
 				.removeClass('close');
 			$('#pulldown')
 				.css('height', 0);
