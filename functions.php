@@ -861,23 +861,4 @@ function unhide_kitchensink( $args ) {
 }
 add_filter('tiny_mce_before_init', 'unhide_kitchensink');
 
-
-/**
- * Remove Tools admin menu item for everybody but admins.
- **/
-function remove_menus(){
-	if (!current_user_can('manage_sites')) {
-		remove_menu_page('tools.php');
-	}
-}
-add_action('admin_menu', 'remove_menus');
-
-
-/**
- * Remove ability for editors to immediately publish posts (forces 
- * 'Submit for Review')
- **/
-$role = get_role( 'editor' );
-$role->remove_cap( 'publish_posts' );
-
 ?>

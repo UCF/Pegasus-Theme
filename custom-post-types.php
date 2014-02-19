@@ -179,11 +179,13 @@ abstract class CustomPostType{
 	 **/
 	public function register(){
 		$registration = array(
-			'labels'     => $this->labels(),
-			'supports'   => $this->supports(),
-			'public'     => $this->options('public'),
-			'taxonomies' => $this->options('taxonomies'),
-			'_builtin'   => $this->options('built_in')
+			'labels'          => $this->labels(),
+			'supports'        => $this->supports(),
+			'public'          => $this->options('public'),
+			'taxonomies'      => $this->options('taxonomies'),
+			'map_meta_cap'    => true,
+			'capability_type' => $this->options('name'),
+			'_builtin'        => $this->options('built_in')
 		);
 
 		if ($this->options('use_order')){
