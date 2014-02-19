@@ -877,9 +877,7 @@ add_action('admin_menu', 'remove_menus');
  * Remove ability for editors to immediately publish posts (forces 
  * 'Submit for Review')
  **/
-/*
 $role = get_role( 'editor' );
 $role->remove_cap( 'publish_posts' );
-*/
 
 ?>
