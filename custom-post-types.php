@@ -183,8 +183,13 @@ abstract class CustomPostType{
 			'supports'        => $this->supports(),
 			'public'          => $this->options('public'),
 			'taxonomies'      => $this->options('taxonomies'),
-			'_builtin'        => $this->options('built_in')
+			'_builtin'        => $this->options('built_in'),
 		);
+
+		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
+			$registration['capability_type'] = $this->options('name');
+			$registration['map_meta_cap'] = true;
+		}
 
 		if ($this->options('use_order')){
 			$registration = array_merge($registration, array('hierarchical' => True,));

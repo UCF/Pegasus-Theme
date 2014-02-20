@@ -15,7 +15,8 @@ Wordpress theme for Pegasus Magazine.  Built off of UCF's Generic Theme.
 
 ## Notes
 This theme uses the Map Cap plugin to set user capabilities for custom post types.  See recommended schema below.
-Not setting a schema forces custom post types to inherit a default set of capabilities from the generic 'post' post type.
+**For custom post types in this theme to be usable for users that are not super admins, this step MUST be performed
+upon theme activation.**
 
 Schema assumes that site administrators will be approving stories before they go live in a production environment.
 
