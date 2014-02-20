@@ -1464,6 +1464,16 @@ function register_meta_boxes(){
 }
 add_action('do_meta_boxes', 'register_meta_boxes');
 
+/**
+ * Sets or unsets capabilities for installed custom post types
+ **/
+function set_custom_post_type_capabilities() {
+	foreach(installed_custom_post_types() as $custom_post_type){
+		$custom_post_type->set_capabilities();
+	}
+}
+add_action('admin_init', 'set_custom_post_type_capabilities');
+
 
 
 

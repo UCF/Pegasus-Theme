@@ -24,6 +24,8 @@ abstract class CustomPostType{
 		$taxonomies     = array('post_tag'),
 		$built_in       = False,
 
+		$map_meta_cap    = true,
+
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
 		$default_order   = null;
@@ -174,6 +176,91 @@ abstract class CustomPostType{
 
 
 	/**
+	 * Assign capability names for the custom post type.
+	 **/
+	public function capabilities() {
+		return array(
+			'publish_posts'       => 'publish_'.$this->options('name').'s',
+            'edit_posts'          => 'edit_'.$this->options('name').'s',
+            'edit_others_posts'   => 'edit_others_'.$this->options('name').'s',
+            'delete_posts'        => 'delete_'.$this->options('name').'s',
+            'delete_others_posts' => 'delete_others_'.$this->options('name').'s',
+            'read_private_posts'  => 'read_private_'.$this->options('name').'s',
+	        'edit_post'           => 'edit_'.$this->options('name'),
+	        'delete_post'         => 'delete_'.$this->options('name'),
+	        'read_post'           => 'read_'.$this->options('name'),
+		);
+	}
+
+
+	/**
+	 * Assigns a default set of capabilities for the custom post type.
+	 **/
+	public function assign_capabilities() {
+		$capabilities = $this->capabilities();
+
+		return array(
+			'administrator' => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['publish_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'editor'        => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['publish_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'author'        => array(
+        		$capabilities['edit_posts'],
+        		$capabilities['publish_posts'],
+                $capabilities['delete_posts'],
+                $capabilities['delete_published_posts'],
+                $capabilities['edit_published_posts']
+			),
+			'contributor'   => array(
+				$capabilities['edit_posts'],
+				$capabilities['publish_posts'],
+			),
+			'subscriber'    => array(),
+		);
+	}
+
+
+	/**
+	 * Assigns capabilities for the custom post type to WP's built-in roles.
+	 * Setting $unset arg to 'true' will un-set any previously set capabilities.
+	 **/
+	public function set_capabilities($unset=false) {
+		$capabilities = $this->assign_capabilities();
+		foreach ($capabilities as $role=>$cap) {
+			$role_obj = get_role($role);
+			foreach ($cap as $c) {
+				if ($unset == false) {
+					$role_obj->add_cap($c);
+				}
+				else {
+					$role_obj->remove_cap($c);
+				}
+			}
+		}
+	}
+
+
+	/**
 	 * Registers the custom post type and any other ancillary actions that are
 	 * required for the post to function properly.
 	 **/
@@ -183,8 +270,8 @@ abstract class CustomPostType{
 			'supports'        => $this->supports(),
 			'public'          => $this->options('public'),
 			'taxonomies'      => $this->options('taxonomies'),
-			'map_meta_cap'    => true,
-			'capability_type' => $this->options('name'),
+			'capability_name' => $this->options('name'),
+			'capabilities'    => $this->capabilities(),
 			'_builtin'        => $this->options('built_in')
 		);
 
@@ -457,6 +544,49 @@ class Story extends CustomPostType {
 		}
 		return $fields;
 	}
+
+	/**
+	 * Assigns a default set of capabilities for the custom post type.
+	 **/
+	public function assign_capabilities() {
+		$capabilities = $this->capabilities();
+
+		return array(
+			'administrator' => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['publish_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'editor'        => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'author'        => array(
+        		$capabilities['edit_posts'],
+                $capabilities['delete_posts'],
+                $capabilities['delete_published_posts'],
+                $capabilities['edit_published_posts']
+			),
+			'contributor'   => array(
+				$capabilities['edit_posts'],
+			),
+			'subscriber'    => array(),
+		);
+	}
 }
 
 /**
@@ -622,6 +752,50 @@ class Issue extends CustomPostType {
 			);
 		}
 		return $fields;
+	}
+
+
+	/**
+	 * Assigns a default set of capabilities for the custom post type.
+	 **/
+	public function assign_capabilities() {
+		$capabilities = $this->capabilities();
+
+		return array(
+			'administrator' => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['publish_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'editor'        => array(
+				$capabilities['edit_posts'],
+				$capabilities['edit_others_posts'],
+				$capabilities['read_private_posts'],
+		        $capabilities['delete_posts'],
+		        $capabilities['delete_private_posts'],
+		        $capabilities['delete_published_posts'],
+		        $capabilities['delete_others_posts'],
+		        $capabilities['edit_private_posts'],
+		        $capabilities['edit_published_posts']
+			),
+			'author'        => array(
+        		$capabilities['edit_posts'],
+                $capabilities['delete_posts'],
+                $capabilities['delete_published_posts'],
+                $capabilities['edit_published_posts']
+			),
+			'contributor'   => array(
+				$capabilities['edit_posts'],
+			),
+			'subscriber'    => array(),
+		);
 	}
 
 
