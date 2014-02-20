@@ -519,7 +519,7 @@ class Issue extends CustomPostType {
 				'id'      => $prefix.'cover_story',
 				'type'    => 'select',
 				'options' => $story_options
-			),
+			),/*
 			array(
 				'name' => 'Issue Template',
 				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified
@@ -574,7 +574,7 @@ class Issue extends CustomPostType {
 					'Right' => 'right',
 				),
 			),
-
+*/
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
 				'desc' => 'Stylesheet specifically for the issue cover/home page.',
