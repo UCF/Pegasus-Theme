@@ -519,23 +519,26 @@ var SlideShow = (function() {
     function _resizeSlides(slidesContent) {
         slidesContent.find('.ss-slide').each(function() {
             var slide = $(this),
-                data = slide.data(),
-                ratio = _getRatio(data.width, data.height);
+                data = slide.data();
 
-            var height = _min(slidesContent.find('.ss-slides-wrapper').height(), data.height);
-            var width = Math.round(height * ratio);
+            if (data) {
+                var ratio = _getRatio(data.width, data.height);
 
-            if (width > slidesContent.width() - 100) {
-                width = slidesContent.width() - 100;
-                height = Math.round(width / ratio);
+                var height = _min(slidesContent.find('.ss-slides-wrapper').height(), data.height);
+                var width = Math.round(height * ratio);
+
+                if (width > slidesContent.width() - 100) {
+                    width = slidesContent.width() - 100;
+                    height = Math.round(width / ratio);
+                }
+
+                slide.parent().css({
+                    width: width
+                });
+                slide.css({
+                    height: height
+                });
             }
-
-            slide.parent().css({
-                width: width
-            });
-            slide.css({
-                height: height
-            });
         });
     }
 

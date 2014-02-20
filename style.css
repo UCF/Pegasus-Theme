@@ -483,6 +483,17 @@ article.story-default .social { float: right; }
 
 
 /**************************
+ * Story - Photo Essay Template
+ **************************/
+article.ss-photo-essay h1 { color: #fff; padding-bottom: 30px; }
+article.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 50%; }
+
+article.ss-photo-essay .description { color: #fff; }
+
+article.ss-photo-essay .ss-slide-wrapper { width: 85%; }
+
+
+/**************************
  * Footer
  **************************/
 
@@ -1013,9 +1024,10 @@ article.ss-photo-essay {
     padding-top: 20px;
     margin-left: 22%;
     margin-right: 22%;
+    width: 56%;
 }
 .ss-embed .ss-captions-wrapper { height: 300px; }
-.ss-photo-essay .ss-captions-wrapper { height: 20%; }
+.ss-photo-essay .ss-captions-wrapper { position: absolute; height: 20%; bottom: 0; }
 
 .ss-caption {
     position: absolute;

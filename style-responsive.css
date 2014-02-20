@@ -202,6 +202,20 @@
 
 
 	/**************************
+	 * Story - Photo Essay Template
+	 **************************/
+	article.ss-photo-essay h1,
+	article.ss-photo-essay .description {
+		white-space: pre-wrap;
+	}
+	article.ss-photo-essay h1 { padding-bottom: 10px; }
+	article.ss-photo-essay .social { padding-top: 10px; }
+	article.ss-photo-essay .ss-essay-intro { height: 100%; }
+
+	article.ss-photo-essay .ss-slide-wrapper { width: 100%; }
+
+
+	/**************************
 	 * Archives
 	 **************************/
 	#archives .issue { margin-bottom: 0; }
