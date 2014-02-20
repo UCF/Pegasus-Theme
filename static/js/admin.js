@@ -375,7 +375,7 @@ WebcomAdmin.storyFieldToggle = function($) {
         }
         var fields = {
             "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img"],
-            "photo_essayFields": [],
+            "photo_essayFields": ["story_description", "story_default_font"],
             "customFields" : ["story_stylesheet", "story_javascript", "story_fonts"],
         };
         var fieldsOnKey = val + 'Fields';
@@ -384,6 +384,13 @@ WebcomAdmin.storyFieldToggle = function($) {
         delete fields[fieldsOnKey];
         fieldsOff = fields;
 
+        if (fieldsOff) {
+            $.each(fieldsOff, function(key, array) {
+                $.each(array, function(k, f) {
+                    $('label[for="' + f + '"]').parents('tr').hide();
+                });
+            });
+        }
         if (fieldsOn) {
             $.each(fieldsOn, function(key, field) {
                 if ($.isArray(field)) {
@@ -394,13 +401,6 @@ WebcomAdmin.storyFieldToggle = function($) {
                 else {
                     $('label[for="' + field + '"]').parents('tr').fadeIn();
                 }
-            });
-        }
-        if (fieldsOff) {
-            $.each(fieldsOff, function(key, array) {
-                $.each(array, function(k, f) {
-                    $('label[for="' + f + '"]').parents('tr').hide();
-                });
             });
         }
     }

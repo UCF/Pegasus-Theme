@@ -396,27 +396,27 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Story Description',
+				'name' => '<strong>Default Templates:</strong> Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
 							default issue templates.',
 				'id'   => $prefix.'description',
 				'type' => 'textarea',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Font Family',
+				'name' => '<strong>Default Templates:</strong> Header Font Family',
 				'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',
 				'type'    => 'select',
 				'options' => $font_options,
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Font Color',
+				'name' => '<strong>Default Templates:</strong> Header Font Color',
 				'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
 				'id'   => $prefix.'default_color',
 				'type' => 'text',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Image',
+				'name' => '<strong>Default Templates:</strong> Header Image',
 				'desc' => 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px',
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
