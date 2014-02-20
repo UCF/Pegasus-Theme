@@ -221,6 +221,21 @@ add_shortcode('sidebar', 'sc_sidebar');
 
 
 /**
+ * Display social buttons for the current page/post.
+ **/
+function sc_social_buttons($attr) {
+	global $post;
+
+	$title = $attr['title'] ? $attr['title'] : $post->post_title;
+	$url = $attr['url'] ? $attr['url'] : get_permalink($post->ID);
+
+	$html = display_social($url, $title);
+	return $html;
+}
+add_shortcode('social_buttons', 'sc_social_buttons');
+
+
+/**
  * Post search
  *
  * @return string
