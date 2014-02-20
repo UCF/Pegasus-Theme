@@ -404,7 +404,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Family',
-				'desc' => 'The font family to use for headings in this story.  Font sizes/line heights are determined automatically based on the font selected.',
+				'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',
 				'type'    => 'select',
 				'options' => $font_options,

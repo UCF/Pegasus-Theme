@@ -473,6 +473,16 @@ function output_header_markup($post) {
 						font-weight: '.$font['weight'].';
 						text-transform: '.$font['texttransform'].';
 					}
+					main article .lead::first-letter {
+						font-family: '.$font['family'].';
+						font-weight: '.$font['weight'].';
+						text-transform: '.$font['texttransform'].';
+					}
+					main article .lead:first-letter {
+						font-family: '.$font['family'].';
+						font-weight: '.$font['weight'].';
+						text-transform: '.$font['texttransform'].';
+					}
 					main article h1,
 					main article h2,
 					main article h3,

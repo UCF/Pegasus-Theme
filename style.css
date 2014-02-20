@@ -396,8 +396,8 @@ article.story h6 { font-size: 16px; line-height: 16px; }
 
 article.story .description { font-size: 22px; line-height: 32px; font-style: italic; }
 article.story .lead { font-size: 18px; line-height: 28px; margin-bottom: 45px;}
-article.story .lead::first-letter { font-size: 36px; font-weight: bold; }
-article.story .lead:first-letter { font-size: 36px; font-weight: bold; }
+article.story .lead::first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
+article.story .lead:first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
 
 article.story .caption {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
