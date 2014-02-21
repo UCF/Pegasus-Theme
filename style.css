@@ -39,6 +39,16 @@ p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
 p.excerpt {font-size:23px;font-style:italic;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
+.section-title {
+	font-family: Georgia, serif;
+	font-size: 32px;
+	line-height: 90px;
+	font-style: italic;
+	color: #222;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
 .tooltip-inner {border:1px solid #666;}
 
 /* Forms */
@@ -133,16 +143,6 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	height: auto;
 }
 
-.pulldown-container .pulldown-title {
-	font-family: Georgia, serif;
-	font-size: 32px;
-	line-height: 90px;
-	font-style: italic;
-	color: #222;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}
-
 /* Story lists (also used for subfooter nav) */
 .story-list {
 	list-style-type: none;
@@ -154,7 +154,14 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	overflow-x: scroll;
 	white-space: nowrap;
 }
-.story-list article { display: inline-block; width: 140px; margin-left: 20px; white-space: normal; margin-bottom: 25px; }
+.story-list article {
+	display: inline-block;
+	vertical-align: top;
+	width: 140px;
+	margin-left: 20px;
+	white-space: normal;
+	margin-bottom: 25px;
+}
 .story-list article.last-child { margin-right: 80px; } /* Assign class via jquery; :last-child doesn't work in ie8; */
 .story-list article img,
 .story-list-grid article img {
@@ -196,7 +203,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
 /* Pulldown controls */
 .kinetic-active:focus { outline: none; }
-.pulldown-container .controls {
+.story-list + .controls {
 	display: block;
 	height: 100%;
 	width: 60px;
@@ -207,7 +214,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	background: #fff;
 	text-align: center;
 }
-.pulldown-container .controls a {
+.story-list + .controls a {
 	display: block;
 	position: absolute;
 	left: 0;
@@ -216,11 +223,11 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	font-size: 28px;
 	width: auto;
 }
-.pulldown-container .controls a.close { top: 10%; opacity: 1; filter: alpha(opacity=100); font-size: 36px; }
-.pulldown-container .controls a.backward { top: 38%; right: 2px; }
-.pulldown-container .controls a.forward { top: 60%; left: 4px; }
-.pulldown-container .controls a:hover,
-.pulldown-container .controls a:active {
+.story-list + .controls a.close { top: 10%; opacity: 1; filter: alpha(opacity=100); font-size: 36px; }
+.story-list + .controls a.backward { top: 38%; right: 2px; }
+.story-list + .controls a.forward { top: 60%; left: 4px; }
+.story-list + .controls a:hover,
+.story-list + .controls a:active {
 	color: #ffc904;
 	text-decoration: none;
 }
@@ -505,7 +512,7 @@ article.ss-photo-essay .ss-slide-wrapper { width: 85%; }
 /**************************
  * Subfooter - More Stories
  **************************/
-#more-stories { margin-top: 50px; margin-bottom: 80px; }
+#more-stories { margin-top: 50px; margin-bottom: 80px; position: relative; }
 #more-stories article a { display: block; overflow: hidden; }
 #more-stories article .story-title,
 #more-stories article .subtitle {

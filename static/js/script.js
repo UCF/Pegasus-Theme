@@ -267,16 +267,12 @@ var togglePulldown = function($) {
 }
 
 var loadPulldownMenus = function($) {
+	$('.story-list').kinetic({'cursor': 'pointer'});
+
 	$('.pulldown-toggle').each(function() {
 		var toggle = $(this),
 			pulldownContainer = $(toggle.attr('data-pulldown-container')),
 			storyList = pulldownContainer.find('.story-list');
-
-		// Activate kinetic scrolling for touch devices,
-		// lazy load in images (triggered on .pulldown-toggle click)
-		storyList
-			.find('.story-list')
-				.kinetic({'cursor': 'pointer'});
 
 		pulldownContainer
 			.find('img.lazy')

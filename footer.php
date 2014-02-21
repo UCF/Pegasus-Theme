@@ -85,6 +85,15 @@
 
 		</main>
 		<aside class="container-wide" id="more-stories">
+			<div class="container">
+				<div class="row">
+					<div class="span12">
+						<span class="section-title">
+							More UCF Stories
+						</span>
+					</div>
+				</div>
+			</div>
 			<div class="container story-list-grid hidden-tablet hidden-phone">
 				<div class="row">
 				<?php
@@ -116,6 +125,10 @@
 				</div>
 			</div>
 			<?=display_story_list($issue, 'hidden-desktop')?>
+			<div class="controls hidden-desktop">
+				<a class="backward icon-caret-left" href="#" alt="Backward"></a>
+				<a class="forward icon-caret-right" href="#" alt="Forward"></a>
+			</div>
 		</aside>
 
 	<?php } ?>

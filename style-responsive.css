@@ -114,6 +114,12 @@
 
 
 	/**************************
+	 * General
+	 **************************/
+	.section-title { font-size: 30px; }
+
+
+	/**************************
 	 * Header Pulldown Menu
 	 **************************/
 
@@ -122,7 +128,7 @@
 	.story-list article.last-child { margin-right: 20px; }
 
 	/* Pulldown controls */
-	.pulldown-container .controls { display: none; }
+	.story-list + .controls { display: none !important; }
 
 
 	/**************************
