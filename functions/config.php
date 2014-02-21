@@ -13,43 +13,9 @@ function __init__(){
 	add_theme_support('post-thumbnails');
 	add_image_size('homepage', 620);
 	add_image_size('single-post-thumbnail', 220, 230, true);
-	register_nav_menu('header-menu', __('Header Menu'));
+	add_image_size('issue-thumbnail', 190, 248);
 	register_nav_menu('footer-menu', __('Footer Menu'));
-	register_sidebar(array(
-		'name'          => __('Sidebar'),
-		'id'            => 'sidebar',
-		'description'   => 'Sidebar found on two column page templates and search pages',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget'  => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column One'),
-		'id' => 'bottom-one',
-		'description' => 'Far left column in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Two'),
-		'id' => 'bottom-two',
-		'description' => 'Second column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Three'),
-		'id' => 'bottom-three',
-		'description' => 'Third column from the left in footer, on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
-	register_sidebar(array(
-		'name' => __('Footer - Column Four'),
-		'id' => 'bottom-four',
-		'description' => 'Far right in footer on the bottom of pages.',
-		'before_widget' => '<div id="%1$s" class="widget %2$s">',
-		'after_widget' => '</div>',
-	));
+
 	foreach(Config::$styles as $style){Config::add_css($style);}
 	foreach(Config::$scripts as $script){Config::add_script($script);}
 	
@@ -73,6 +39,7 @@ define('THEME_DIR', get_stylesheet_directory());
 define('THEME_INCLUDES_DIR', THEME_DIR.'/includes');
 define('THEME_STATIC_URL', THEME_URL.'/static');
 define('THEME_IMG_URL', THEME_STATIC_URL.'/img');
+define('THEME_HELP_IMG_URL', THEME_IMG_URL.'/theme-help');
 define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
@@ -86,22 +53,160 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', false); # Never leave this activated in a production environment!
+define('DEV_MODE', true); # Never leave this activated in a production environment!
+
 
 /**
- * List of available fonts. Structure array as key = font name, val = path to the font. 
+ * List of issue slugs that are from Fall 2013 or prior.
+ **/
+define('FALL_2013_OR_OLDER', serialize(array(
+	'fall-2013',
+	'summer-2013',
+	'spring-2013',
+	'fall-2012',
+	'summer-2012'
+)));
+
+
+/**
+ * Lists of available fonts for custom stories.
+ * Structure array as key = font name, val = path to the font.
  * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
  *
- * All fonts in this list should have a single reference file, which points to all 
+ * All fonts in these lists should have a single reference file, which points to all 
  * available font file formats.
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
-define('THEME_AVAILABLE_FONTS', serialize(array(
+$custom_available_fonts_array = array(
 	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
 	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
 	'Aleo'			=> THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Visitor'		=> THEME_FONT_URL . '/visitor/stylesheet.css',
-))); 
+	'Montserrat'	=> THEME_FONT_URL . '/montserrat/stylesheet.css',
+);
+define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
+
+
+/**
+ * A base fallback set of font styles for default template titles.
+ *
+ * These options will be overridden per-font, as defined in
+ * $template_font_styles_array, then by per-post meta values, if available.
+ *
+ * See output_header_markup() in functions.php for usage.
+ *
+ * Options:
+ * - url:			Reference to @font-face import css file for the font family.
+ * - family:		'font-family' property for default Story template h1-h6 tags and default Issue
+ *					cover's h2-h3 tags.
+ * - color:			'color' property for default Story template h1-h6, blockquote, and dropcaps, and
+ *					default Issue cover's h2 tag.
+ * - weight:		'font-weight' property for default Story template h1-h6 tags and default Issue
+ *					cover's h2-h3 tags.
+ * - size-desktop:	'font-size' property of default Story template and default Issue cover h2 at 
+ *					980px+ screen width.
+ * - size-tablet:	'font-size' property of default Story template and default Issue cover h2 at 
+ *					979-768px screen width.
+ * - size-mobile:	'font-size' property of default Story template and default Issue cover h2 at 
+ *					<768px screen width.
+ * - textalign:		'text-align' property of Issue cover h2.
+ * - texttransform:	'text-transform' property of default Story template h1-h6 tags and default Issue
+ *					cover's h2-h3 tags.
+ *
+ **/
+$template_font_styles_base_array = array(
+	'url' => null,
+	'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
+	'color' => '#222',
+	'weight' => 'bold',
+	'size-desktop' => '65px',
+	'size-tablet' => '65px',
+	'size-mobile' => '40px',
+	'textalign' => 'left',
+	'texttransform' => 'none',
+);
+define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
+
+
+/**
+ * Lists of available fonts for default templates and their styles.
+ * $template_fonts_array should be structured the same as $custom_available_fonts_array.
+ * Structure $template_font_styles_array as as key = font name, val = array of options.
+ *
+ * Font reference files listed in $template_fonts_array are registered with WordPress
+ * as admin stylesheets.
+ *
+ * If a font in $template_font_styles_array is web-safe and has no reference file, 
+ * leave the 'url' option as null.
+ **/
+$template_fonts_array = array(
+	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
+	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
+	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+);
+$template_font_styles_array = array(
+	'Aleo Light' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoLight", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
+	),
+	'Aleo Regular' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoRegular", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
+	),
+	'Aleo Bold' => array(
+		'url' => $template_fonts_array['Aleo'],
+		'family' => '"AleoBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
+	),
+	'Georgia Regular' => array(
+		'url' => null,
+		'family' => 'Georgia, serif',
+		'weight' => 'normal',
+		'size-desktop' => '70px',
+		'size-tablet' => '70px',
+	),
+	'Montserrat Regular' => array(
+		'url' => $template_fonts_array['Montserrat'],
+		'family' => '"MontserratRegular", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
+		'size-mobile' => '36px',
+	),
+	'Montserrat Bold' => array(
+		'url' => $template_fonts_array['Montserrat'],
+		'family' => '"MontserratBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '72px',
+		'size-tablet' => '72px',
+		'size-mobile' => '36px',
+	),
+	'Arial Black' => array(
+		'url' => null,
+		'family' => '"Arial Black", serif',
+		'weight' => 'normal',
+		'size-desktop' => '70px',
+		'size-tablet' => '70px',
+		'size-mobile' => '34px',
+	),
+	'Open Sans Condensed Bold' => array(
+		'url' => $template_fonts_array['Open Sans Condensed'],
+		'family' => '"OpenSansCondensedBold", serif',
+		'weight' => 'normal',
+		'size-desktop' => '75px',
+		'size-tablet' => '75px',
+		'texttransform' => 'uppercase',
+	),
+);
+define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
 
 
 /**
@@ -113,7 +218,8 @@ Config::$custom_post_types = array(
 	'Page',
 	'AlumniNote',
 	'Story',
-	'Issue'
+	'Issue',
+	'PhotoEssay'
 );
 
 Config::$custom_taxonomies = array(
@@ -239,19 +345,6 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['ipad_app_url'],
 		))
 	),
-	'Styles' => array(
-		new RadioField(array(
-			'name'        => 'Enable Responsiveness',
-			'id'          => THEME_OPTIONS_NAME.'[bootstrap_enable_responsive]',
-			'description' => 'Turn on responsive styles provided by the Twitter Bootstrap framework.  This setting should be decided upon before building out subpages, etc. to ensure content is designed to shrink down appropriately.  Turning this off will enable the single 940px-wide Bootstrap layout.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => $theme_options['bootstrap_enable_responsive'],
-	    )),
-	),
 	'Issues' => array(
 		new SelectField(array(
 			'name'        => 'Current Issue Cover',
@@ -271,34 +364,32 @@ Config::$links = array(
 
 
 Config::$styles = array(
-	array('admin' => True, 'src' => THEME_CSS_URL.'/admin.css',),
-	THEME_STATIC_URL.'/bootstrap/css/bootstrap.css',
+	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
+	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
+	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
+	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
+	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
+	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
+	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
+	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
+	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
-
-if ($theme_options['bootstrap_enable_responsive'] == 1) {
-	array_push(Config::$styles, 
-		THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'
-	);		
+foreach ($template_fonts_array as $key => $val) {
+	$name = 'admin-font-'.sanitize_title($key);
+	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));    
 }
 
-array_push(Config::$styles,	
-	plugins_url( 'gravityforms/css/forms.css' ),
-	get_bloginfo('stylesheet_url')
-);
-
-if ($theme_options['bootstrap_enable_responsive'] == 1) {
-	array_push(Config::$styles, 
-		THEME_URL.'/style-responsive.css'
-	);	
-}
 
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
 	THEME_STATIC_URL.'/js/jquery.cookie.js',
+	array('name' => 'placeholders', 'src' => THEME_JS_URL.'/placeholders.js',),
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
+	array('name' => 'kinetic', 'src' => THEME_JS_URL.'/jquery.kinetic.min.js',),
+	array('name' => 'lazyload', 'src' => THEME_JS_URL.'/jquery.lazyload.min.js',),
 );
 
 Config::$metas = array(

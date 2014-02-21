@@ -2,6 +2,7 @@
  * Custom admin styles go here.
  **/
 
+ .i-am-a-fancy-admin h1 { margin: 20px 0 30px 0; }
 .i-am-a-fancy-admin .updated{margin: 0 0 20px 0;}
 .i-am-a-fancy-admin .container{margin: 0 19px 0 0; padding: 0;}
 .i-am-a-fancy-admin .block{display: block;}
@@ -13,10 +14,38 @@
 .i-am-a-fancy-admin .field li label{display: inherit;}
 .i-am-a-fancy-admin textarea{width: 70%; height: 10em;}
 .i-am-a-fancy-admin .updated{position: absolute; top: 40px; left: 50%; z-index: 100; text-align: center;}
-.i-am-a-fancy-admin .fields{margin-left: 215px; background-color: #fefefe; padding: 20px; border: 1px solid #f0f0f0;
+.i-am-a-fancy-admin .fields{
+	margin-left: 215px; 
+	background-color: #fefefe; 
+	padding: 50px 70px; 
+	border: 1px solid #f0f0f0;
 	box-shadow: rgba(160, 160, 160, .1) 0px 0px 12px;
+	max-width: 700px;
 }
-.i-am-a-fancy-admin .fields .section h3{padding: 0 0 10px 0; margin: 0; color: #21759B; font-size: 20px; border-bottom: 1px solid #E1E5EB;}
+.i-am-a-fancy-admin .fields .section h2{padding: 0 0 10px 0; margin: 0; color: #21759B; font-size: 30px; border-bottom: 1px solid #E1E5EB;}
+.i-am-a-fancy-admin .fields .section h3 { font-size: 24px; margin: 0; padding: 50px 0 10px 0; }
+.i-am-a-fancy-admin#theme-options .fields .section h3 { padding-top: 10px; }
+.i-am-a-fancy-admin .fields .section h4 { font-size: 18.5px; margin: 0; padding: 30px 0 10px 0; }
+.i-am-a-fancy-admin .fields .section h5 { font-size: 16px; margin: 0; padding: 20px 0 10px 0; }
+.i-am-a-fancy-admin .fields .section h6 { font-size: 14px; margin: 0; padding: 20px 0 10px 0; }
+.i-am-a-fancy-admin .fields .section p,
+.i-am-a-fancy-admin .fields .section ul,
+.i-am-a-fancy-admin .fields .section ol {
+	font-size: 15px;
+	line-height: 23px;
+	margin: 10px 0;
+}
+.i-am-a-fancy-admin .fields .section ul,
+.i-am-a-fancy-admin .fields .section ol {
+	list-style-type: disc;
+	margin-left: 25px;
+}
+.i-am-a-fancy-admin .fields .section hr {
+	margin: 50px 0 0 0;
+	color: #999;
+}
+.i-am-a-fancy-admin .fields .section img { max-width: 100%; margin: 20px 0; border: 1px solid #ccc; }
+.i-am-a-fancy-admin .fields .section .caption { font-style: italic; text-align: center; margin-top: 0; margin-bottom: 40px; }
 .i-am-a-fancy-admin .fields .section table{padding: 0; margin: 20px 0 20px 0; clear: none;}
 .i-am-a-fancy-admin .fields .submit{text-align: right; margin: 0; padding: 0;}
 .i-am-a-fancy-admin .sections{width: 200px; float: left;}
@@ -60,3 +89,46 @@ body.login #login h1 a .hide{display: block;}
 #theme-help table {border-collapse:collapse;}
 #theme-help table th, #theme-help table td {border:1px solid #333;padding:5px;}
 #theme-help table th {background-color:#f1f1f1;}
+
+
+li.custom_repeatable h3.hndle { margin-bottom: 16px !important; }
+li.custom_repeatable table { margin-top: -16px; }
+li.custom_repeatable.closed table { display: none; }
+a.repeatable-remove { margin: 0 0 15px 10px; }
+#ss_slides_all .custom_repeatable { padding-bottom: 15px; margin: 0 0 15px 0; }
+#slider-slides { background: #fff; border-color: #fff; }
+#slider-slides .inside { margin: 0; padding: 0; }
+#slider-slides .handlediv, #slider-slides > h3.hndle { display: none;}
+
+
+select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+select[id*="_default_font"] option[value="Aleo Light"] { font-family: "AleoLight", serif; }
+select[id*="_default_font"] option[value="Aleo Regular"] { font-family: "AleoRegular", serif; }
+select[id*="_default_font"] option[value="Aleo Bold"] { font-family: "AleoBold", serif; }
+select[id*="_default_font"] option[value="Georgia Regular"] { font-family: "Georgia", serif; }
+select[id*="_default_font"] option[value="Montserrat Regular"] { font-family: "MontserratRegular", sans-serif; }
+select[id*="_default_font"] option[value="Montserrat Bold"] { font-family: "MontserratBold", sans-serif; }
+select[id*="_default_font"] option[value="Arial Black"] { font-family: "Arial Black", sans-serif; }
+select[id*="_default_font"] option[value="Open Sans Condensed Bold"] { font-family: "OpenSansCondensedBold", sans-serif; text-transform: uppercase; }
+select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
+
+/* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
+#content_blockquote { display: none; }
+
+/* Shortcode modal */
+.shortcode-section {
+    display: none;
+}
+#select-shortcode-form-inner {}
+#select-shortcode-form-inner p { padding: 0 !important; }
+#select-shortcode-form-inner button.button-primary { margin-top: 15px; }
+#select-shortcode-form-inner .cols { overflow: hidden; clear: both; border-bottom: 1px solid #f0f0f0; padding: 15px 0; }
+#select-shortcode-form-inner .cols .col-left { width: 30%; float: left; }
+#select-shortcode-form-inner .cols .col-right { width: 65%; float: right; }
+
+#select-shortcode-form-inner #shortcode-descriptions { margin-top: 0; }
+#select-shortcode-form-inner #shortcode-descriptions li { margin-top: 5px; }
+
+#select-shortcode-form-inner #shortcode-editors { margin: 25px 0; }
+#select-shortcode-form-inner #shortcode-editors li { border-bottom: 1px solid #f0f0f0; padding: 0 0 25px 0; }
+

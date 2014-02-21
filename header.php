@@ -30,20 +30,33 @@
 		
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
-			var THEME_JS_URL = '<?=THEME_JS_URL?>';
+			var PROTOCOL = '<?=is_ssl() ? "http://" : "https://"?>';
+			var THEME_JS_URL = PROTOCOL + '<?=str_replace(array("http://", "https://"), '', THEME_JS_URL)?>';
+
+			var PostTypeSearchDataManager = {
+                'searches' : [],
+                'register' : function(search) {
+                    this.searches.push(search);
+                }
+            }
+            var PostTypeSearchData = function(column_count, column_width, data) {
+                this.column_count = column_count;
+                this.column_width = column_width;
+                this.data = data;
+            }
 		</script>
 
 		<?=output_header_markup($post);?>
 		
 	</head>
+
+	<?php $relevant_issue = get_relevant_issue($post); ?>
 	<? extract(get_navigation_stories()); ?>
-	<!--[if IE 7 ]>     <body class="ie ie7 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if IE 8 ]>     <body class="ie ie8 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if IE 9 ]>     <body class="ie ie9 <?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <![endif]-->
-	<!--[if (gt IE 9)|!(IE)]><!--> <body class="<?=body_classes()?> <? if ($post->post_type == 'page') { print 'subpage'; } ?>"> <!--<![endif]-->
+
+	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">
 			<div class="modal-header">
-				<h3>Pegasus Magazine is available on the iPad!</h3>
+				<strong>Pegasus Magazine is available on the iPad!</strong>
 				</div>
 			<div class="modal-body">
 				<a href="<?=get_theme_option('ipad_app_url')?>" class="btn btn-primary">Go to iTunes</a>
@@ -52,76 +65,88 @@
 			<div class="modal-footer">
 			</div>
 		</div>
-		<div class="container wide header_stories">
-			<div class="row">
-				<div class="span12">
-					<h3>More in this Issue</h3>
-				</div>
-				<div class="span12">
-					<ul class="thumbnails">
-						<? foreach($top_stories as $story) {?>
-						<li class="span3">
-							<a href="<?=get_permalink($story->ID)?>">
-								<div class="thumbnail">
-									<img src="<?=get_featured_image_url($story->ID)?>" />
-								</div>
-								<div class="title">
-									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?>
-									<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-										<span class="title_colon">:</span> </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-									<?php } else { ?></span><?php } ?>
-								</div>
-							</a>
-						</li>
-						<? } ?>
-					</ul>
-				</div>
-			</div>
-			<div class="row bottom">
-				<div class="span12">
-					<ul class="thumbnails">
-						<? foreach($bottom_stories as $story) {?>
-						<li class="span2">
-							<a href="<?=get_permalink($story->ID)?>">
-								<div class="thumbnail">
-									<img src="<?=get_featured_image_url($story->ID)?>" />
-								</div>
-								<div class="title">
-									<span class="title_text"><?=apply_filters('the_title', $story->post_title)?>
-									<?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-										<span class="title_colon">:</span> </span><span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-									<?php } else { ?></span><?php } ?>
-								</div>
-							</a>
-						</li>
-						<? } ?>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<div class="container wide" id="header">
-			<div class="row">
-				<div class="span12">
-					<div class="row" style="position:relative;">
-						<a href="<?=site_url()?>" class="span3 title">
-						PEGASUS
-						</a>
-						<div class="span5 issue">
-							<?php if($post->post_type == 'story') { ?>
-							<?php $issue = get_story_issue($post); echo $issue->post_title; ?>
-							<?php } else { ?> 
-							<?php $current_issue = get_current_issue(); echo $current_issue->post_title; ?>
-							<? } ?>
-						</div>
-			
-						<div class="span4 description">
-							<a href="<?=site_url()?>/about/">The Magazine of the University of Central Florida</a>
-						</div>
-						<div class="toggle_story_nav">
-							<a>&#9650;</a>
+
+		<div class="container-wide" id="pulldown">
+			<div class="pulldown-container pulldown-stories">
+				<div class="container">
+					<div class="row">
+						<div class="span12">
+							<span class="pulldown-title">In This Issue:</span>
 						</div>
 					</div>
 				</div>
+				<div class="items">
+					<?php
+						$relevant_issue_stories = get_issue_stories($relevant_issue);
+						if ($relevant_issue_stories) {
+					?>
+					<ul>
+						<?php
+							foreach ($relevant_issue_stories as $story) {
+								$title = $story->post_title;
+								$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
+								$thumb = get_featured_image_url($story->ID);
+						?>
+						<li>
+							<article>
+								<a href="<?=get_permalink($story)?>">
+									<?php if ($thumb) { ?>
+									<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+									<?php } ?>
+									<span class="story-title"><?=$title?></span>
+									<span class="subtitle"><?=$subtitle?></span>
+								</a>
+							</article>
+						</li>
+						<?php } ?>
+					</ul>
+					<?php } else { ?>
+					<p>No stories found.</p>
+					<?php } ?>
+				</div>
+				<div class="controls">
+					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">×</a>
+					<a class="backward icon-caret-left" href="#" alt="Backward"></a>
+					<a class="forward icon-caret-right" href="#" alt="Forward"></a>
+				</div>
 			</div>
 		</div>
+
+		<header class="container-wide" id="header-navigation">
+			<div class="container">
+				<div class="row">
+					<?php if ($post->post_type == 'issue') { ?>
+					<h1 class="sprite header-logo">
+						<a href="<?=get_site_url()?>">Pegasus</a>
+					</h1>
+					<?php } else { ?>
+					<span class="sprite header-logo">
+						<a href="<?=get_site_url()?>">Pegasus</a>
+					</span>
+					<?php } ?>
+					
+					<nav class="span12" role="navigation">
+						<ul class="navigation">
+							<li id="nav-about">
+								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
+							</li>
+							<li id="nav-mobile">
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"></a>
+							</li>
+							<li id="nav-issue">
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"><?=$relevant_issue->post_title?></a>
+							</li>
+							<li id="nav-archives">
+								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<?php if (is_fall_2013_or_older($post)) { ?>
 		<div class="container" id="body_content">
+		<?php } else { ?>
+		<main>
+		<?php } ?>

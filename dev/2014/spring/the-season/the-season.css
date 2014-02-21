@@ -1,0 +1,39 @@
+/* General */
+main, main > article.story {
+	min-height: 100%;
+}
+p:empty { display: none; }
+
+/* Story head */
+.story #story-head { height: 700px; }
+.story #story-head .story-header-image {
+	height: 100%;
+	margin: 0;
+	text-align: center;
+	background-color: #f0f0f0; /* replace later */
+}
+.story #story-head h1 {
+	line-height: 1em;
+	text-transform: uppercase;
+	color: rgba(255,255,255,0.8);
+}
+.story #story-head .subtitle {
+}
+
+/* Sections (games) */
+.story .big-image {
+	height: 550px;
+	background: #f0f0f0; /* replace later */
+}
+.story .big-image .caption-parent { position: relative; height: 100%; }
+.story .big-image .caption {
+	position: absolute;
+	display: block;
+	margin: 0 auto;
+	padding: 20px;
+	background: #ccc; /* change later */
+}
+.story .big-image .caption.left { left: 0; }
+.story .big-image .caption.right { right: 0; }
+.story .big-image .caption.bottom { bottom: 0; }
+.story .big-image .caption.top { top: 0; }

@@ -21,3 +21,4 @@ CVS
 ._*
 .DS_Store
 Thumbs.db
+.fuse_*
