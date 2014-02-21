@@ -648,23 +648,28 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	    	$data_id++;
 	    ?>
 	    	<div class="ss-slide-wrapper">
-	    		<div class="ss-slide ss-first-slide ss-current" data-id="<?=$data_id?>">
-	    			<div class="container ss-essay-intro">
-	    				<div class="row title-wrap">
-	    					<div class="span10 offset1">
-	    						<h1><?=$post->post_title?></h1>
-	    					</div>
+	    		<?php
+    				if (!empty($slide_order)):
+    					$s = $slide_order[0];
+    					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+    			?>
+	    		<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="<?=$data_id?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+
+					<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+
+	    			<div class="ss-essay-intro">
+	    				<div class="title-wrap">
+	    					<h1><?=$post->post_title?></h1>
 	    				</div>
-	    				<div class="row description-wrap">
-		    				<div class="span6 offset1">
-		    					<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
-		    				</div>
-		    				<div class="span3">
-		    					<?=display_social(get_permalink($post), $post->post_title)?>
-		    				</div>
+	    				<div class="description-wrap">
+		    				<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+		    				<?=display_social(get_permalink($post), $post->post_title)?>
 	    				</div>
 	    			</div>
 	    		</div>
+				<?php
+					endif;
+				?>
 	    	</div>
 	    <?php
 		}
@@ -697,7 +702,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	    	<div class="ss-caption ss-current" data-id="<?=$data_id?>"></div>
 	    <?php
 	    }
-	    
+
 	    foreach ($slide_order as $s) {
 	        if ($s !== '') {
 	            $data_id++;

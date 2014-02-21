@@ -412,7 +412,7 @@ article.story h4 { font-size: 20px; line-height: 20px; margin-bottom: 6px; }
 article.story h5 { font-size: 18px; line-height: 18px; }
 article.story h6 { font-size: 16px; line-height: 16px; }
 
-article.story .description { font-size: 22px; line-height: 32px; font-style: italic; }
+article.story .description { font-size: 22px; line-height: 32px; font-style: italic; white-space: normal;}
 article.story .lead { font-size: 18px; line-height: 28px; margin-bottom: 45px;}
 article.story .lead::first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
 article.story .lead:first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
@@ -502,11 +502,54 @@ article.story-default .social { float: right; }
  * Story - Photo Essay Template
  **************************/
 article.ss-photo-essay h1 { color: #fff; padding-bottom: 30px; }
+article.ss-photo-essay .ss-essay-intro-wrapper img {
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
+	filter: alpha(opacity=20);
+	-moz-opacity: 0.2;
+	-khtml-opacity: 0.2;
+     opacity: 0.2;
+}
 article.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 50%; }
 
 article.ss-photo-essay .description { color: #fff; }
 
 article.ss-photo-essay .ss-slide-wrapper { width: 85%; }
+
+article.ss-photo-essay .ss-essay-intro h1 {
+	text-align: center;
+}
+
+article.ss-photo-essay .ss-essay-intro span.description {
+	display: block;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+article.ss-photo-essay .ss-essay-intro .social {
+	z-index: 999;
+	position: relative;
+	left: 0;
+	right: 0;
+	text-align: center;
+}
+
+article.ss-photo-essay .ss-slide.ss-current .social {
+	display: block;
+}
+article.ss-photo-essay .ss-slide .social {
+	display: none;
+}
+
+article.ss-photo-essay .ss-essay-intro .social .share-twitter,
+article.ss-photo-essay .ss-essay-intro .social .share-facebook,
+article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
+    float: none;
+    margin-right: 0;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+
 
 
 /**************************
@@ -798,7 +841,7 @@ main .search-submit {
      transition:all 1.0s ease-in-out;
  }
  .ss-embed .ss-slides-wrapper { height: 360px; }
- .ss-photo-essay .ss-slides-wrapper { height: inherit; }
+ .ss-photo-essay .ss-slides-wrapper { height: 80%; }
 
  .ss-slide-wrapper {
      position: relative;
@@ -900,6 +943,10 @@ main .search-submit {
      right: 0;
  }
 
+ .ss-slide .title-wrap {
+ 	white-space: normal;
+ }
+
  .ss-captions-wrapper {
      position: relative;
      padding-top: 20px;
@@ -908,7 +955,12 @@ main .search-submit {
      width: 56%;
  }
  .ss-embed .ss-captions-wrapper { height: 300px; }
- .ss-photo-essay .ss-captions-wrapper { position: absolute; height: 20%; bottom: 0; }
+ .ss-photo-essay .ss-captions-wrapper {
+ 	position: absolute;
+ 	height: 20%;
+ 	bottom: 0;
+    padding-top: 0;
+ }
 
  .ss-caption {
      position: absolute;

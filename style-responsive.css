@@ -118,7 +118,6 @@
 	 **************************/
 	.section-title { font-size: 30px; }
 
-
 	/**************************
 	 * Header Pulldown Menu
 	 **************************/
@@ -222,6 +221,12 @@
 
 
 	/**************************
+	 * Subfooter - More Stories
+	 **************************/
+	#more-stories { margin-bottom: 40px; }
+
+
+	/**************************
 	 * Archives
 	 **************************/
 	#archives .issue { margin-bottom: 0; }
@@ -253,6 +258,17 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 50%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
+
+	article.ss-photo-essay .ss-essay-intro h1 {
+		font-size: 28px;
+		line-height: 32px;
+	}
+
+	article.ss-photo-essay .ss-essay-intro span.description {
+		font-size: 16px;
+		line-height: 20px;
+		margin-bottom: 5px;
+	}
 
 
 	/**************************
@@ -397,4 +413,6 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 40%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 15%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 60%; }
+
+	article.ss-photo-essay .ss-essay-intro .social { left: -20px; }
 }
