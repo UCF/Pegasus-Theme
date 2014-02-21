@@ -114,15 +114,20 @@
 
 
 	/**************************
+	 * General
+	 **************************/
+	.section-title { font-size: 30px; }
+
+	/**************************
 	 * Header Pulldown Menu
 	 **************************/
 
-	/* General */
-	.pulldown-container ul { margin-left: -20px; padding-right: 40px; }
-	.pulldown-container ul li:last-child { margin-right: -20px; }
+	/* Story lists */
+	.story-list { margin-left: -20px; padding-right: 40px; }
+	.story-list article.last-child { margin-right: 20px; }
 
 	/* Pulldown controls */
-	.pulldown-container .controls { display: none; }
+	.story-list + .controls { display: none !important; }
 
 
 	/**************************
@@ -173,8 +178,6 @@
 
 	article.story .description { font-size: 18px; line-height: 28px; margin-bottom: 25px; }
 	article.story .lead { font-size: 17px; line-height: 27px; margin-bottom: 30px; }
-	article.story .lead::first-letter,
-	article.story .lead:first-letter { font-size: 30px; font-weight: bold; }
 	article.story blockquote,
 	article.story blockquote p {
 		font-size: 28px;
@@ -201,6 +204,26 @@
 	 * Story - Default Template
 	 **************************/
 	article.story-default .title-wrap { margin-bottom: 15px; }
+
+
+	/**************************
+	 * Story - Photo Essay Template
+	 **************************/
+	article.ss-photo-essay h1,
+	article.ss-photo-essay .description {
+		white-space: pre-wrap;
+	}
+	article.ss-photo-essay h1 { padding-bottom: 10px; }
+	article.ss-photo-essay .social { padding-top: 10px; }
+	article.ss-photo-essay .ss-essay-intro { height: 100%; }
+
+	article.ss-photo-essay .ss-slide-wrapper { width: 100%; }
+
+
+	/**************************
+	 * Subfooter - More Stories
+	 **************************/
+	#more-stories { margin-bottom: 40px; }
 
 
 	/**************************
@@ -235,6 +258,17 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 50%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
+
+	article.ss-photo-essay .ss-essay-intro h1 {
+		font-size: 28px;
+		line-height: 32px;
+	}
+
+	article.ss-photo-essay .ss-essay-intro span.description {
+		font-size: 16px;
+		line-height: 20px;
+		margin-bottom: 5px;
+	}
 
 
 	/**************************
@@ -379,4 +413,6 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 40%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 15%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 60%; }
+
+	article.ss-photo-essay .ss-essay-intro .social { left: -20px; }
 }

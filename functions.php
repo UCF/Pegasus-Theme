@@ -82,6 +82,8 @@ function get_relevant_issue($post) {
 
 
 /*
+ * DEPRECATED.  USE get_issue_stories()/display_story_list() instead.
+ *
  * Retrieve a list of stories for navigation. Exclude a story if we are on
  * its page otherwise pick 4 at random.
  */
@@ -110,6 +112,54 @@ function get_navigation_stories($issue=null) {
 	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
 	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'limit' => 6));
 	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
+}
+
+
+/*
+ * Displays a list of stories in the current relevant issue.
+ * List is swipe/touch friendly and spans the full width of the screen.
+ */
+function display_story_list($issue, $class=null) {
+	$class = !empty($class) ? $class : '';
+	if ($issue) {
+		$stories = get_issue_stories($issue);
+		ob_start();
+
+		if ($stories) { ?>
+			<div class="story-list <?=$class?>">
+			<?php
+			$count = 0;
+			foreach ($stories as $story) {
+				$count++;
+
+				$title = $story->post_title;
+				$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
+				$thumb = get_featured_image_url($story->ID);
+			?>
+				<article<?php if ($count == count($stories)) { ?> class="last-child"<?php } ?>>
+					<a href="<?=get_permalink($story)?>">
+						<?php if ($thumb) { ?>
+						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+						<?php } ?>
+						<span class="story-title"><?=$title?></span>
+						<span class="subtitle"><?=$subtitle?></span>
+					</a>
+				</article>
+			<?php
+			}
+			?>
+			</div>
+		<?php	
+		}
+		else {
+		?>
+			<p>No stories found.</p>
+		<?php
+		}
+
+		return ob_get_clean();
+	}
+	else { return null; }
 }
 
 
@@ -469,6 +519,16 @@ function output_header_markup($post) {
 					main article h4,
 					main article h5,
 					main article h6 {
+						font-family: '.$font['family'].';
+						font-weight: '.$font['weight'].';
+						text-transform: '.$font['texttransform'].';
+					}
+					main article .lead::first-letter {
+						font-family: '.$font['family'].';
+						font-weight: '.$font['weight'].';
+						text-transform: '.$font['texttransform'].';
+					}
+					main article .lead:first-letter {
 						font-family: '.$font['family'].';
 						font-weight: '.$font['weight'].';
 						text-transform: '.$font['texttransform'].';

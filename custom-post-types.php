@@ -183,8 +183,13 @@ abstract class CustomPostType{
 			'supports'        => $this->supports(),
 			'public'          => $this->options('public'),
 			'taxonomies'      => $this->options('taxonomies'),
-			'_builtin'        => $this->options('built_in')
+			'_builtin'        => $this->options('built_in'),
 		);
+
+		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
+			$registration['capability_type'] = $this->options('name');
+			$registration['map_meta_cap'] = true;
+		}
 
 		if ($this->options('use_order')){
 			$registration = array_merge($registration, array('hierarchical' => True,));
@@ -391,27 +396,27 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Story Description',
+				'name' => '<strong>Default Templates:</strong> Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
 							default issue templates.',
 				'id'   => $prefix.'description',
 				'type' => 'textarea',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Font Family',
-				'desc' => 'The font family to use for headings in this story.  Font sizes/line heights are determined automatically based on the font selected.',
+				'name' => '<strong>Default Templates:</strong> Header Font Family',
+				'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 				'id'   => $prefix.'default_font',
 				'type'    => 'select',
 				'options' => $font_options,
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Font Color',
+				'name' => '<strong>Default Templates:</strong> Header Font Color',
 				'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
 				'id'   => $prefix.'default_color',
 				'type' => 'text',
 			),
 			array(
-				'name' => '<strong>Default Template:</strong> Header Image',
+				'name' => '<strong>Default Templates:</strong> Header Image',
 				'desc' => 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px',
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
@@ -514,7 +519,7 @@ class Issue extends CustomPostType {
 				'id'      => $prefix.'cover_story',
 				'type'    => 'select',
 				'options' => $story_options
-			),
+			),/*
 			array(
 				'name' => 'Issue Template',
 				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified
@@ -569,7 +574,7 @@ class Issue extends CustomPostType {
 					'Right' => 'right',
 				),
 			),
-
+*/
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
 				'desc' => 'Stylesheet specifically for the issue cover/home page.',

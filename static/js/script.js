@@ -267,43 +267,39 @@ var togglePulldown = function($) {
 }
 
 var loadPulldownMenus = function($) {
+	$('.story-list').kinetic({'cursor': 'pointer'});
+
 	$('.pulldown-toggle').each(function() {
 		var toggle = $(this),
-			pulldownContainer = $(toggle.attr('data-pulldown-container'));
+			pulldownContainer = $(toggle.attr('data-pulldown-container')),
+			storyList = pulldownContainer.find('.story-list');
 
-		// Activate kinetic scrolling for touch devices,
-		// lazy load in images (triggered on .pulldown-toggle click)
 		pulldownContainer
-			.find('.items ul')
-				.kinetic({'cursor': 'pointer'})
-				.end()
 			.find('img.lazy')
 				.lazyload({
 					effect: 'fadeIn',
-					container: $('ul.kinetic-active'),
+					container: storyList,
 					event: 'triggerLazy'
 				})
-				.end()
-			.find('.items ul li:last-child')
-				.addClass('last-child');
+				.end();
 	});
 }
 
 var pulldownMenuScroll = function($) {
-	// Handle left/right nav arrow btn click in pulldown
-	$('.pulldown-container .controls a').on('click', function(e) {
+	// Handle left/right nav arrow btn click in story list controls
+	$('.story-list + .controls a').on('click', function(e) {
 		e.preventDefault();
 
 		var controlBtn = $(this),
-			pulldownContainer = controlBtn.parents('.pulldown-container'),
-			itemList = pulldownContainer.find('.items ul'),
-			controlWrap = pulldownContainer.find('.controls');
+			parentContainer = controlBtn.parents('.controls').parent(),
+			itemList = parentContainer.find('.story-list'),
+			controlWrap = parentContainer.find('.controls');
 
 		// x-overflowing div width only calculates apparent window width.
 		// Need to calculate the combined widths of all child items
 		// to get the value that we need.
 		var itemListWidth = controlWrap.outerWidth();
-		itemList.children('li').each(function() {
+		itemList.children('article').each(function() {
 			itemListWidth += $(this).outerWidth();
 			itemListWidth += parseInt($(this).css('margin-left'));
 		}); 
@@ -313,11 +309,11 @@ var pulldownMenuScroll = function($) {
 
 		// Get the number of pixels to scroll the itemList
 		if (controlBtn.hasClass('forward')) {
-			newScrollVal = curScrollVal + pulldownContainer.width();
-			newScrollVal = (newScrollVal > itemListWidth - pulldownContainer.width()) ? controlWrap.outerWidth() + itemListWidth - pulldownContainer.width() : newScrollVal;
+			newScrollVal = curScrollVal + parentContainer.width();
+			newScrollVal = (newScrollVal > itemListWidth - parentContainer.width()) ? controlWrap.outerWidth() + itemListWidth - parentContainer.width() : newScrollVal;
 		}
 		else if (controlBtn.hasClass('backward')) {
-			newScrollVal = curScrollVal - pulldownContainer.width();
+			newScrollVal = curScrollVal - parentContainer.width();
 			newScrollVal = (newScrollVal < 0) ? 0 : newScrollVal;
 		}
 
@@ -519,23 +515,26 @@ var SlideShow = (function() {
     function _resizeSlides(slidesContent) {
         slidesContent.find('.ss-slide').each(function() {
             var slide = $(this),
-                data = slide.data(),
-                ratio = _getRatio(data.width, data.height);
+                data = slide.data();
 
-            var height = _min(slidesContent.find('.ss-slides-wrapper').height(), data.height);
-            var width = Math.round(height * ratio);
+            if (data) {
+                var ratio = _getRatio(data.width, data.height);
 
-            if (width > slidesContent.width() - 100) {
-                width = slidesContent.width() - 100;
-                height = Math.round(width / ratio);
+                var height = _min(slidesContent.find('.ss-slides-wrapper').height(), data.height);
+                var width = Math.round(height * ratio);
+
+                if (width > slidesContent.width() - 100) {
+                    width = slidesContent.width() - 100;
+                    height = Math.round(width / ratio);
+                }
+
+                slide.parent().css({
+                    width: width
+                });
+                slide.css({
+                    height: height
+                });
             }
-
-            slide.parent().css({
-                width: width
-            });
-            slide.css({
-                height: height
-            });
         });
     }
 
@@ -634,6 +633,17 @@ var SlideShow = (function() {
 });
 
 
+var lazyLoadAssets = function($) {
+	$('#more-stories .story-list-grid img')
+		.lazyload({ effect: 'fadeIn' });
+	$('#more-stories .story-list img')
+		.lazyload({
+			effect: 'fadeIn',
+			container: $('#more-stories .story-list')
+		});
+}
+
+
 
 if (typeof jQuery != 'undefined'){
 	(function(){
@@ -662,6 +672,7 @@ if (typeof jQuery != 'undefined'){
 			popovers($);
 		    slideshow = new SlideShow();
 		    slideshow.init();
+		    lazyLoadAssets($);
 		});
 		/*
 		$(window).load(function() {
