@@ -51,7 +51,7 @@
 	</head>
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
-	<? extract(get_navigation_stories()); ?>
+	<? //extract(get_navigation_stories()); ?>
 
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">
@@ -75,35 +75,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="items">
-					<?php
-						$relevant_issue_stories = get_issue_stories($relevant_issue);
-						if ($relevant_issue_stories) {
-					?>
-					<ul>
-						<?php
-							foreach ($relevant_issue_stories as $story) {
-								$title = $story->post_title;
-								$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
-								$thumb = get_featured_image_url($story->ID);
-						?>
-						<li>
-							<article>
-								<a href="<?=get_permalink($story)?>">
-									<?php if ($thumb) { ?>
-									<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
-									<?php } ?>
-									<span class="story-title"><?=$title?></span>
-									<span class="subtitle"><?=$subtitle?></span>
-								</a>
-							</article>
-						</li>
-						<?php } ?>
-					</ul>
-					<?php } else { ?>
-					<p>No stories found.</p>
-					<?php } ?>
-				</div>
+				<?=display_story_list($relevant_issue)?>
 				<div class="controls">
 					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">×</a>
 					<a class="backward icon-caret-left" href="#" alt="Backward"></a>

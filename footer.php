@@ -77,12 +77,45 @@
 			</div>
 		</div>
 
-	<?php } else { ?>
+	<?php } else { 
+		$issue = get_relevant_issue($post);
+		$stories = get_issue_stories($issue);
+		$perrow = 3; // .span4's
+	?>
 
 		</main>
-
-		<aside>
-			List of more stories here...
+		<aside class="container-wide" id="more-stories">
+			<div class="container story-list-grid hidden-tablet hidden-phone">
+				<div class="row">
+				<?php
+				$count = 0;
+				if ($stories) {
+					foreach ($stories as $story) {
+						if ($count % $perrow == 0 && $count !== 0) {
+							print '</div><div class="row">';
+						}
+						$count++;
+						
+						$title = $story->post_title;
+						$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
+						$thumb = get_featured_image_url($story->ID);
+				?>
+					<article class="span4">
+						<a href="<?=get_permalink($story)?>">
+							<?php if ($thumb) { ?>
+							<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+							<?php } ?>
+							<span class="story-title"><?=$title?></span>
+							<span class="subtitle"><?=$subtitle?></span>
+						</a>
+					</article>
+				<?php
+					}
+				}
+				?>
+				</div>
+			</div>
+			<?=display_story_list($issue, 'hidden-desktop')?>
 		</aside>
 
 	<?php } ?>

@@ -117,9 +117,9 @@
 	 * Header Pulldown Menu
 	 **************************/
 
-	/* General */
-	.pulldown-container ul { margin-left: -20px; padding-right: 40px; }
-	.pulldown-container ul li:last-child { margin-right: -20px; }
+	/* Story lists */
+	.story-list { margin-left: -20px; padding-right: 40px; }
+	.story-list article.last-child { margin-right: 20px; }
 
 	/* Pulldown controls */
 	.pulldown-container .controls { display: none; }
