@@ -51,7 +51,16 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
         if (selected.length < 1 || selected.val() == ''){return;}
 
         var editor = cls.shortcodeEditors.find('li.shortcode-' + cls.shortcodeSelected);
-        var enclosingText = selected.attr('data-enclosing') || null;
+        var dummyText = selected.attr('data-enclosing') || null;
+        var highlightedWysiwygText = tinymce.activeEditor.selection.getContent() || null;
+        var enclosingText = null;
+
+        if (dummyText && highlightedWysiwygText) {
+            enclosingText = highlightedWysiwygText;
+        }
+        else {
+            enclosingText = dummyText;
+        }
 
         var parameters = {};
         if (editor.length == 1) {
