@@ -31,6 +31,8 @@ div#header .row .description {
 h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helvetica Neue', Helvetica, sans-serif; float: none; }
 .icon-white { background-color:#000; border-radius: 7px; }
 
+#issue-carousel { margin: auto; }
+
 #footer {
 	background-color: #fff;
 }
@@ -51,7 +53,7 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 		color: #000;
 	}
 	
-	p {
+	#body_content p {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
    		font-weight: 400;
 		font-size: 16px;
@@ -60,31 +62,31 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 		padding: 0 0 5px 0;
 	}
 	
-	hr {
+	#body_content hr {
 		border-color: #dedede;	
 	}
 	
-	div.container {
-		width:100%;	
+	#body_content, #body_content .container {
+		width:100%;
 	}
 	
-	.row {
+	#body_content .row {
 		margin-left: -20px;
 	}
 	
-	.span7 {
+	#body_content .span7 {
 		width: 590px;	
 	}
 	
-	.intro h1, .intro h2 {
+	#body_content .intro h1, #body_content .intro h2 {
 		text-indent: -9999px;
 	}
 	
-	h3, h4 {
+	#body_content h3, #body_content h4 {
 		font-weight: bold;
 		color: #000;
 	}
-		h3 {
+		#body_content h3 {
 			font-size: 16px;
 			display: block;
 			float: left;
@@ -93,26 +95,26 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 			text-transform: uppercase;
 			line-height: 24px;
 		}
-			*:first-child+html h3 { /* IE7 fix */
+			*:first-child+html #body_content h3 { /* IE7 fix */
 				margin-top: 0;	
 			}
 			*:first-child+html #section1 h3, *:first-child+html #section2 h3 { /* IE7 fix */
 				margin-top: 1em;	
 			}
-		h4 {
+		#body_content h4 {
 			font-weight: bold;
 			text-transform: uppercase;
 			margin-bottom: 3px;
 			line-height: 14px;
 		}
 	
-	div.rowwrap {
+	#body_content div.rowwrap {
 		width: 967px;
 		margin: auto;
 		overflow: auto;
 	}
 	
-	div.intro {
+	#body_content div.intro {
 		width: 100%;
 		min-height: 915px;
 		margin-top: 40px;
@@ -120,7 +122,7 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 		margin-bottom: 20px;
 		margin-left: 0;
 	}
-		.intro #heavy_reading {
+		#body_content .intro #heavy_reading {
 			padding-top: 800px;
 				
 		}
@@ -196,30 +198,36 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 		}
 		
 		
-		
+
+/** RESPONSIVE STYLES - Article **/
+
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
 	
-	div.rowwrap, .rowwrap .span10.offset1 {
+	#body_content div.rowwrap, #body_content .rowwrap .span10.offset1 {
 		width: 88%;
 		margin: auto;	
 	}
 	
-	.intro {
-		background-size: 700px 553px !important;
+	#body_content .intro {
+		background-size: 100% auto !important;
 		min-height: 0 !important;	
 		margin-top: 20px !important;
 	}
-		.intro .rowwrap {
+		#body_content .intro .rowwrap {
 			overflow: hidden;	
 		}
 		#heavy_reading {
 			width: 100%;
-			padding-top: 450px !important;
+			padding-top: 75% !important;
 			margin-left: 0;
 		}
 	
-	.rowwrap .span12, .rowwrap .span10, .rowwrap .span8, .rowwrap .span5, .rowwrap .span4 {
+	#body_content .rowwrap .span12,
+	#body_content .rowwrap .span10,
+	#body_content .rowwrap .span8,
+	#body_content .rowwrap .span5,
+	#body_content .rowwrap .span4 {
 		width: 100%;
 		margin-left: 0;	
 	}
@@ -231,16 +239,16 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 		min-height: 836px;	
 	}
 	
-	.carousel-control {
+	#body_content .carousel-control {
 		top: 280px !important;	
 	}
 	
-	#jersey_guy {
+	#body_content .rowwrap #jersey_guy {
 		width: 33%;
 		padding-top: 520px !important;
 	}
-	#grape_ape {
-		width: 40%;	
+	#body_content .rowwrap #grape_ape {
+		text-align: right;
 		padding-top: 0 !important;
 	}
 		#jersey_guy p, #grape_ape p {
@@ -318,15 +326,16 @@ h3.issue-title, span.issue-title { color: #000 !important; font-family: 'Helveti
 (min-width: 768px) 
 and (max-width: 979px) {
 	
-	div.rowwrap, .rowwrap .span10.offset1 {
+	#body_content div.rowwrap,
+	#body_content .rowwrap .span10.offset1 {
 		width: 750px;
 		margin: auto;	
 	}
 	
-	.intro {
+	#body_content .intro {
 		background-size: 900px 711px !important;	
 	}
-		.intro .rowwrap {
+		#body_content .intro .rowwrap {
 			overflow: hidden;	
 		}
 		#heavy_reading {
@@ -430,8 +439,7 @@ and (max-width: 979px) {
 /* Landscape phones and down */
 @media only screen and (max-width: 480px) {
 	
-	.intro {
-		background-size: 360px 284px !important;
+	#body_content .intro {
 		margin-top: 10px !important; }/*
 		padding-top: 30px !important;
 	}
@@ -447,7 +455,7 @@ and (max-width: 979px) {
 			font-weight: 200;
 		}*/
 		#heavy_reading {
-			padding-top: 200px !important;
+			padding-top: 62% !important;
 		}
 	#section1 .rowwrap {
 		padding: 40px 0 20px 0 !important;	
@@ -463,19 +471,15 @@ and (max-width: 979px) {
 		min-height: 381px !important;	
 	}
 	
-	.carousel-control {
+	#body_content .carousel-control {
 		top: 190px !important;	
 	}
 	
-	#jersey_guy {
+	#body_content .rowwrap #jersey_guy {
 		width: 38%;
 		padding-top: 240px !important;
 		padding-right: 0 !important;
 		border-right: 0;
-	}
-	#grape_ape {
-		width: 40%;	
-		padding-top: 384px !important;
 	}
 		#jersey_guy p, #grape_ape p {
 			font-size: 11px !important;	
@@ -500,8 +504,7 @@ and (max-width: 979px) {
 
 
 
-/** RESPONSIVE STYLES **/
-
+/** RESPONSIVE STYLES: Header/Footer **/
 
 @media (max-width: 979px) {
 	/* Header */
@@ -510,7 +513,8 @@ and (max-width: 979px) {
 	#header .title { width: 162px; margin-right: 40px; }
 	#header .description { display: none; }
 	
-	#footer > .container.wide > .row, .header_stories > .row { width: 767px !important; }
+	#footer > .container.wide > .row,
+	.header_stories > .row { width: 767px !important; }
 	.header_stories .span12, #footer .span12 { width: 724px; }
 	.header_stories .span3, #footer .span3 { width: 166px; }
 	.header_stories .span2, #footer .span2 { width: 104px; }
@@ -533,7 +537,7 @@ and (max-width: 979px) {
 	#header .row {
 		width: 750px !important;	
 	}
-	.description {
+	#body_content .description {
 		display: none;	
 	}
 	#story_nav .span3, #footer .span3 {
@@ -609,7 +613,7 @@ and (max-width: 979px) {
 		padding-top: 20px;
 		margin-left: 45px;
 	}
-	.description {
+	#body_content .description {
 		display: none;	
 	}
 	#header .toggle_story_nav {
@@ -636,16 +640,20 @@ and (max-width: 979px) {
 	.footer_stories a span.title_colon { display: none; }
 
 	.header_stories .span12, 
-	#footer .span12 { width: 92% !important; }
+	#footer .span12 { width: 300px !important; }
 	
-	#footer > .container.wide > .row, 
 	.header_stories > .row { width: 100% !important; }
 
 	/* Footer */
-	#footer_stories, #footer_navigation {
+	#footer { padding-right: 0; }
+	#footer > .container { margin-left: -20px; padding-right: 0; }
+	#footer > .container.wide > .row { margin-left: 20px; width: 300px !important; }
+
+	#footer_navigation {
 		width: 100% !important;	
 	}
-	#footer_stories .span12, #footer_navigation .span12 {
+	.footer_stories { margin-left: 20px; width: 280px !important; }
+	.footer_stories .span12, #footer_navigation .span12 {
 		width: 93%;
 	}
 	#footer_navigation .span12 .row {
@@ -658,14 +666,13 @@ and (max-width: 979px) {
 		margin-bottom: 25px !important;	
 	}
 	
-	#footer > .container { margin-left: -20px; padding-right: 20px; }
-	#footer > .container > .row { margin-left: 20px; }
-	
 	#issue-carousel .item .issue-title { font-size: 18px; }
 	#issue-carousel .carousel-control { font-size: 12px; }
 	#issue-carousel .carousel-control, 
 	#issue-carousel .carousel-control.left .arrow,
 	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+
+	#issue-carousel .thumbnails { width: 300px !important; }
 	
 	#footer_navigation ul { padding-top: 10px; }
 	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
