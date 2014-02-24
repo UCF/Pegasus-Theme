@@ -66,12 +66,12 @@
 			</div>
 		</div>
 
-		<div class="container-wide" id="pulldown">
+		<aside class="container-wide" id="pulldown">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
 						<div class="span12">
-							<span class="section-title">In This Issue:</span>
+							<h2 class="section-title">In This Issue</h2>
 						</div>
 					</div>
 				</div>
@@ -82,7 +82,7 @@
 					<a class="forward icon-caret-right" href="#" alt="Forward"></a>
 				</div>
 			</div>
-		</div>
+		</aside>
 
 		<header class="container-wide" id="header-navigation">
 			<div class="container">

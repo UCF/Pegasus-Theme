@@ -84,13 +84,14 @@
 	?>
 
 		</main>
+	<?php
+	if ($post->post_type !== 'page' && $post->post_type !== 'post') {
+	?>
 		<aside class="container-wide" id="more-stories">
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						<span class="section-title">
-							More UCF Stories
-						</span>
+						<h2 class="section-title">More UCF Stories</h2>
 					</div>
 				</div>
 			</div>
@@ -114,7 +115,7 @@
 							<?php if ($thumb) { ?>
 							<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
 							<?php } ?>
-							<span class="story-title"><?=$title?></span>
+							<h3 class="story-title"><?=$title?></h3>
 							<span class="subtitle"><?=$subtitle?></span>
 						</a>
 					</article>
@@ -131,7 +132,10 @@
 			</div>
 		</aside>
 
-	<?php } ?>
+	<?php
+		}
+	}
+	?>
 
 		<footer class="container-wide" id="footer-navigation">
 			<div class="container">
