@@ -1,8 +1,8 @@
 <?php disallow_direct_load('default.php');?>
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
-	$header_img_id = get_post_meta($post->ID, 'story_default_header_img', TRUE);
-	$header_img = get_post($header_img_id)->guid;
+	$header_img_id = get_post(get_post_meta($post->ID, 'story_default_header_img', TRUE))->ID;
+	$header_img = wp_get_attachment_url($header_img_id);
 ?>
 
 <article class="story story-default">
