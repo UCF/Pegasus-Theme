@@ -30,8 +30,8 @@
 		
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
-			var PROTOCOL = '<?=is_ssl() ? "http://" : "https://"?>';
-			var THEME_JS_URL = PROTOCOL + '<?=str_replace(array("http://", "https://"), '', THEME_JS_URL)?>';
+			var PROTOCOL = '<?=is_ssl() ? "https://" : "http://"?>';
+			var THEME_JS_URL = PROTOCOL + '<?=str_replace(array("http://", "https://"), "", THEME_JS_URL)?>';
 
 			var PostTypeSearchDataManager = {
                 'searches' : [],
