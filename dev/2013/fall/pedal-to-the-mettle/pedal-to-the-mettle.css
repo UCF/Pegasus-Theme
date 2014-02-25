@@ -5,8 +5,8 @@
 
 /* Universal */
 #body_content { width: 0; height: 0; margin: 0; }
-.container-wide { 
-	background: top center no-repeat; 
+.container-wide {
+	background: top center no-repeat;
 	width: 100%;
 }
 #story-title,
@@ -14,7 +14,7 @@ h1 {
 	background-position: top center;
 	background-repeat: no-repeat;
 }
-#story-title { height: 710px; position: relative; z-index: 2; top: -50px; }
+#story-title { height: 710px; position: relative; z-index: 2; top: 0; }
 #story-title h1 {
 	text-indent: -9999px;
 	height: 165px;
@@ -37,7 +37,8 @@ h1 {
 #body-content {
 	position: relative;
 	z-index: 1;
-	top: -95px;
+	top: -50px;
+	padding-bottom: 30px;
 }
 #body-content p { margin-bottom: 15px; }
 #body-content blockquote {

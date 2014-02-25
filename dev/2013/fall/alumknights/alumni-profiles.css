@@ -13,7 +13,7 @@
 	background-position: top center;
 	background-repeat: no-repeat;
     position: relative;
-    top: -50px;
+    top: -40px;
     z-index: 1;
 }
 .ie7 #header-wrapper { top: -55px; }
@@ -86,7 +86,7 @@ p.last {
 .ie7 #fishing-subheader { position: relative; z-index: 2; }
 
 #fishing-subheader h2 {
-    font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif; 
+    font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif;
     font-weight: 900;
     font-stretch: condensed;
     font-size: 60px;
@@ -332,7 +332,7 @@ p.last {
     #run-title { margin-left: 15px; margin-bottom: 30px; }
     #run-quote { padding-left: 0; font-size: 18px; line-height: 30px; }
     #long-may-you-run .span6 { width: 414px; } /* span7 */
-    
+
     #past-title-img { width: 400px; height: 333px; }
     #past-subtitle { font-size: 22px; line-height: 27px; }
 
@@ -352,10 +352,10 @@ p.last {
         padding-right: 20px;
     }
     #header-wrapper {
-        background-position: 61% -75px;
+        background-position: 61% -60px;
     }
     #article-header { margin-bottom: 300px; }
-    #article-header h1 { font-size: 47px; line-height: 47px; margin-top: 60px; }
+    #article-header h1 { font-size: 47px; line-height: 47px; margin-top: 70px; }
 
     #fishing-subheader { margin-bottom: 20px; }
     #fishing-subheader h2 { font-size: 40px; line-height: 50px; }
@@ -385,7 +385,7 @@ p.last {
 
 @media only screen and (max-width: 480px) {
     #header-wrapper {
-        background-position: 60% -5px;
+        background-position: 60% 20px;
         background-size: 160% auto;
     }
     #article-header { margin-bottom: 0; }

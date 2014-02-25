@@ -13,7 +13,7 @@
 
 #header-wrapper {
 	background-color: #30333b;
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
 #header-img {
@@ -146,14 +146,16 @@ p.first {
     }
 
     #article-header {
-        margin-bottom: 30px;
+        margin-top: 110px;
+        margin-bottom: 0;
         margin-left: 20px;
-        margin-top: 40px;
     }
 
     #header-img {
         margin-left: -20px;
-        padding-right: 40px;
+        padding-right: 20px;
+        margin-right: -20px;
+        padding-left: 20px;
     }
 
     #windmill {

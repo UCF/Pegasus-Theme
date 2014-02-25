@@ -6,15 +6,14 @@
 
 /* Universal */
 #body_content { width: 0; height: 0; margin: 0; }
-.container-wide { 
-	background: top center no-repeat; 
+.container-wide {
+	background: top center no-repeat;
 	width: 100%;
 }
 
 #story-title {
 	position: relative;
 	z-index: 2;
-	top: -50px;
 	background-repeat: repeat;
 }
 #story-title > .container > .row {
@@ -131,7 +130,7 @@ span.first-letter {
 
 	#story-intro { width: 310px; margin-bottom: 135px; margin-left: 430px; margin-top: 20px; } /* break .span */
 	#story-intro .subtitle ~ p { display: none; }
-	#story-intro-small { display: block; padding-top: 15px; }
+	#story-intro-small { display: block; padding-top: 45px; }
 
 	#img-help-high-def { height: 468px; background-size: 796px auto; margin-bottom: -38px; }
 	#help-high-def h2 { font-size: 50px; line-height: 50px; }
@@ -153,7 +152,6 @@ span.first-letter {
 		margin-left: auto;
 		margin-right: auto;
 		float: none;
-		margin-top: 50px;
 		margin-bottom: 20px;
 	}
 	#story-intro {
