@@ -25,7 +25,7 @@ body,
 		margin-bottom: -20px;
 	}
 	
-	.container, .container.wide {
+	#body_content .container, #body_content .container.wide {
 		width: 100%;	
 	}
 	#featured_story, #featured_story .span12 {
@@ -41,10 +41,6 @@ body,
 	
 	#header, #header .row, #header .span12, #header .span12 .row {
 		width: 100%;
-	}
-	.row {
-		width: 93%;
-		margin-left: 20px;
 	}
 	#header .title {
 		margin-top: 12px;
@@ -70,7 +66,7 @@ body,
 (min-width: 768px) 
 and (max-width: 979px) {
 	
-	.container {
+	#body_content .container {
 		width: 100%;	
 	}
 	
