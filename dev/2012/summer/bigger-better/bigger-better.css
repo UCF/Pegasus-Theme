@@ -81,7 +81,7 @@ h4 { margin: 1em 0 1.5em 0; }
 .photo p.caption {font-size:13px;}
 
 /* RGraph styles */
-#sats_canvaswrap, #enrollment_canvaswrap { margin-left: 20px; float: left; overflow: auto; }
+#sats_canvaswrap, #enrollment_canvaswrap { margin-left: 20px; float: left; overflow: hidden; background-size: 100% auto; background-repeat: no-repeat; }
 #sats_canvaswrap { width: 780px; }
 #enrollment_canvaswrap { width: 700px; }
 
@@ -90,13 +90,128 @@ canvas#line1, canvas#line2 { position: relative; }
 img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; top: 0; left: 0; }
 
 
-/* Landscape phones and down */
-@media only screen and (max-width: 480px) {
+
+@media only screen and (max-width: 979px) {
+	body { overflow-x: hidden; }
+	canvas { display: none; }
+
+	.container.black,
+	.container.photo {
+		padding-left: 20px;
+		margin-left: -20px;
+	}
 }
-     
+
+/* Portrait tablet to landscape and desktop */
+@media only screen and
+(min-width: 768px) 
+and (max-width: 979px) {
+	
+	/* remove stray .container below #header */
+	#header+.container {
+		display: none;
+	}
+	
+	/* row/span12 reset to 750px instead of 967px */	
+	.container, .container .row, .container, .container.wide > .row {
+		width: 750px;
+	}
+	.container .row .span12 {
+		width: 730px;	
+	}
+	.container .row .span12 .row {
+		width: 729px;	
+	}
+	.container .row.section .span12 {
+		margin-left: 0;	
+	}
+	
+	/* eliminate offsets; all .spans in this viewport size should not have an offset */
+	.offset1, .offset2, .offset4 {
+		margin-left: 0;	
+	}
+	
+	/* reset .spans to be the full width of the row */
+	.row {
+		margin-left: 0;	
+	}
+	.row.section .span2, .row.section .span3, .row.section .span4, .row.section .span7, .row.section .span8, .first, .first .span10 {
+		width: 710px;	
+	}
+	
+	/* intro content */
+	#number, #better {
+		width: 710px;
+		text-align: center;
+	}
+	
+	/* top 10 universities table reset */
+	.span4.offset1 {
+		margin-left: 20px;	
+	}
+	
+	/* captions and excerpts */
+	p.excerpt {
+		width: 469px;	
+		float: left;
+		margin-top: 0;
+	}
+		p.excerpt.small {
+			text-align: left;	
+		}
+	p.caption {
+		width: 220px !important;
+		margin-left: 20px;
+		float: left;
+		clear: right;
+		margin-bottom: 40px;
+	}
+	#peoples-choice {
+		margin-top: 40px;	
+	}
+	
+	/* people's choice specific styles */
+	#peoples-choice .span3 {
+		width: 220px;	
+	}
+	
+	/* graphs */
+	#enrollment_canvaswrap {
+		width: 469px;	
+		height: 361px;
+	}
+	#sats_canvaswrap {
+		width: 709px;	
+		height: 416px;
+	}
+	.gradientwrap, #line1, #line2 {
+		display: none;	
+	}
+	
+	/* under video caption */
+	.photo .span3 {
+		width: 710px;	
+	}
+	.span3 p.caption {
+		margin-left: 0;
+		width: 100% !important;	
+	}
+	.span3 h4 { 
+		margin: 1em 0 0;	
+	}
+	
+		
+}
+
+
 /* Landscape phone to portrait tablet */
 @media only screen and (max-width: 767px) {
-	
+
+	.container.black,
+	.container.photo {
+		padding-right: 20px;
+	}
+
 	/* row/span12 reset to 100% instead of 967px */
 	.container, .container .row, .container, .container.wide > .row {
 		width: 100%;
@@ -212,8 +327,6 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	
 	/* SATs specific styles */
 	.row.white {
-		width: 280px !important;
-		margin-left: 20px;
 		padding-top: 20px;
 		padding-bottom: 20px;
 	}
@@ -221,16 +334,16 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 	/* graphs */
 	#enrollment_canvaswrap {
 		width: 280px;	
-		height: 216px;
+		height: 216px;/*
 		background: url('../05/bigger-comparison11.jpg') center center no-repeat !important;
-		background-size: 280px 216px !important;
+		background-size: 280px 216px !important;*/
 		margin-left: 0 !important;
 	}
 	#sats_canvaswrap {
 		width: 260px;	
-		height: 152px;
+		height: 152px;/*
 		background: url('../05/bigger-stats1.jpg') center center no-repeat !important;
-		background-size: 260px 152px !important;
+		background-size: 260px 152px !important;*/
 	}
 	.gradientwrap, #line1, #line2 {
 		display: none;	
@@ -273,120 +386,17 @@ img#sats_gradient, img#enrollment_gradient { display: none; position: absolute; 
 		margin-left: 0;	
 	}
 }
-     
+    
 
-/* Portrait tablet to landscape and desktop */
-@media only screen and
-(min-width: 768px) 
-and (max-width: 979px) {
-	
-	/* remove stray .container below #header */
-	#header+.container {
-		display: none;
-	}
-	
-	/* row/span12 reset to 750px instead of 967px */	
-	.container, .container .row, .container, .container.wide > .row {
-		width: 750px;
-	}
-	.container .row .span12 {
-		width: 730px;	
-	}
-	.container .row .span12 .row {
-		width: 729px;	
-	}
-	.container .row.section .span12 {
-		margin-left: 0;	
-	}
-	
-	/* eliminate offsets; all .spans in this viewport size should not have an offset */
-	.offset1, .offset2, .offset4 {
-		margin-left: 0;	
-	}
-	
-	/* reset .spans to be the full width of the row */
-	.row {
-		margin-left: 0;	
-	}
-	.row.section .span2, .row.section .span3, .row.section .span4, .row.section .span7, .row.section .span8, .first, .first .span10 {
-		width: 710px;	
-	}
-	
-	/* intro content */
-	#number, #better {
-		width: 710px;
-		text-align: center;
-	}
-	
-	/* top 10 universities table reset */
-	.span4.offset1 {
-		margin-left: 20px;	
-	}
-	
-	/* captions and excerpts */
-	p.excerpt {
-		width: 469px;	
-		float: left;
-		margin-top: 0;
-	}
-		p.excerpt.small {
-			text-align: left;	
-		}
-	p.caption {
-		width: 220px !important;
-		margin-left: 20px;
-		float: left;
-		clear: right;
-		margin-bottom: 40px;
-	}
-	#peoples-choice {
-		margin-top: 40px;	
-	}
-	
-	/* people's choice specific styles */
-	#peoples-choice .span3 {
-		width: 220px;	
-	}
-	
-	/* graphs */
-	#enrollment_canvaswrap {
-		width: 469px;	
-		height: 361px;
-		background: url('../05/bigger-comparison11.jpg') center center no-repeat !important;
-		background-size: 469px 361px !important;
-	}
-	#sats_canvaswrap {
-		width: 709px;	
-		height: 416px;
-		background: url('../05/bigger-stats1.jpg') center center no-repeat !important;
-		background-size: 709px 416px !important;
-	}
-	.gradientwrap, #line1, #line2 {
-		display: none;	
-	}
-	
-	/* under video caption */
-	.photo .span3 {
-		width: 710px;	
-	}
-	.span3 p.caption {
-		margin-left: 0;
-		width: 100% !important;	
-	}
-	.span3 h4 { 
-		margin: 1em 0 0;	
-	}
-	
-		
+/* Landscape phones and down */
+@media only screen and (max-width: 480px) {
 }
 
 
 
 
 
-/** RESPONSIVE STYLES **/
-
-
+/** RESPONSIVE HEADER/FOOTER STYLES **/
 @media (max-width: 979px) {
 	/* Header */
 	#header { }
@@ -394,7 +404,8 @@ and (max-width: 979px) {
 	#header .title { width: 162px; margin-right: 40px; }
 	#header .description { display: none; }
 	
-	#footer > .container.wide > .row, .header_stories > .row { width: 767px !important; }
+	#footer > .container.wide > .row,
+	.header_stories > .row { width: 767px !important; }
 	.header_stories .span12, #footer .span12 { width: 724px; }
 	.header_stories .span3, #footer .span3 { width: 166px; }
 	.header_stories .span2, #footer .span2 { width: 104px; }
@@ -417,7 +428,7 @@ and (max-width: 979px) {
 	#header .row {
 		width: 750px !important;	
 	}
-	.description {
+	#body_content .description {
 		display: none;	
 	}
 	#story_nav .span3, #footer .span3 {
@@ -493,7 +504,7 @@ and (max-width: 979px) {
 		padding-top: 20px;
 		margin-left: 45px;
 	}
-	.description {
+	#body_content .description {
 		display: none;	
 	}
 	#header .toggle_story_nav {
@@ -520,16 +531,20 @@ and (max-width: 979px) {
 	.footer_stories a span.title_colon { display: none; }
 
 	.header_stories .span12, 
-	#footer .span12 { width: 92% !important; }
+	#footer .span12 { width: 300px !important; }
 	
-	#footer > .container.wide > .row, 
 	.header_stories > .row { width: 100% !important; }
 
 	/* Footer */
-	#footer_stories, #footer_navigation {
+	#footer { }
+	#footer > .container { margin-left: -20px; padding-right: 0; }
+	#footer > .container.wide > .row { margin-left: 20px; width: 300px !important; }
+
+	#footer_navigation {
 		width: 100% !important;	
 	}
-	#footer_stories .span12, #footer_navigation .span12 {
+	.footer_stories { margin-left: 20px; width: 280px !important; }
+	.footer_stories .span12, #footer_navigation .span12 {
 		width: 93%;
 	}
 	#footer_navigation .span12 .row {
@@ -542,21 +557,19 @@ and (max-width: 979px) {
 		margin-bottom: 25px !important;	
 	}
 	
-	#footer > .container { margin-left: -20px; padding-right: 20px; }
-	#footer > .container > .row { margin-left: 20px; }
-	
 	#issue-carousel .item .issue-title { font-size: 18px; }
 	#issue-carousel .carousel-control { font-size: 12px; }
 	#issue-carousel .carousel-control, 
 	#issue-carousel .carousel-control.left .arrow,
 	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+
+	#issue-carousel .thumbnails { width: 300px !important; }
 	
 	#footer_navigation ul { padding-top: 10px; }
 	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
 	
 	#footer_navigation .span9 { width: 92% !important; }
 }
-
 
 
 #footer #footer_hr { display: none; }

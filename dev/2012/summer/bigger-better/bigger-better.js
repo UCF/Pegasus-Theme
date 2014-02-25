@@ -1,3 +1,25 @@
+	var switchCanvasBgs = function() {
+		var elems = $('#enrollment_canvaswrap, #sats_canvaswrap');
+		var windowSize = $(window).outerWidth();
+
+		if (windowSize > 979) {
+			elems.each(function() {
+				$(this).css('background-image', 'url(' + $(this).attr('data-bg-large') + ')');
+			});
+		}
+		else {
+			elems.each(function() {
+				$(this).css('background-image', 'url(' + $(this).attr('data-bg-small') + ')');
+			});
+		}
+	}
+
+	$(document).ready(function() {
+		switchCanvasBgs();
+	});
+	$(window).on('resize', switchCanvasBgs);
+
+
 	window.onload = function() {		
 		
 		$.when(
