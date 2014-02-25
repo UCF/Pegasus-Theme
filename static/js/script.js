@@ -302,7 +302,7 @@ var pulldownMenuScroll = function($) {
 		itemList.children('article').each(function() {
 			itemListWidth += $(this).outerWidth();
 			itemListWidth += parseInt($(this).css('margin-left'));
-		}); 
+		});
 
 		var newScrollVal = 0;
 		var curScrollVal = itemList.scrollLeft();
@@ -351,7 +351,7 @@ var mobileNavToggle = function($) {
 		}
 	});
 
-	// Handle link click (this assumes the mobile toggle link has 
+	// Handle link click (this assumes the mobile toggle link has
 	// a default data-pulldown-container attribute value set)
 	$('#nav-mobile a').on('click', function(e) {
 		e.preventDefault();
@@ -369,7 +369,7 @@ var mobileNavToggle = function($) {
 		else {
 			toggle.removeClass('close');
 			activeContainerToggle.removeClass('active');
-		}		
+		}
 
 		// Show Issue, Archive nav links; hide Pegasus logo
 		$('#header-navigation ul, #header-navigation .header-logo')
@@ -474,11 +474,14 @@ var SlideShow = (function() {
             }
 
             var slidesContent = $(this);
-            _resizeSlidesWrapper(slidesContent);
-            $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
-            slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
-            slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
-                _prevSlide);
+            // Safari 6.0.5 needs a delay for the writing of the slideshow images
+            setTimeout(function() {
+                _resizeSlidesWrapper(slidesContent);
+                $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
+                slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
+                slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
+                    _prevSlide);
+            }, 1000);
         });
     }
 
