@@ -4,7 +4,7 @@
  * Responsible for running code that needs to be executed as wordpress is
  * initializing.  Good place to register scripts, stylesheets, theme elements,
  * etc.
- * 
+ *
  * @return void
  * @author Jared Lang
  **/
@@ -18,10 +18,10 @@ function __init__(){
 
 	foreach(Config::$styles as $style){Config::add_css($style);}
 	foreach(Config::$scripts as $script){Config::add_script($script);}
-	
+
 	global $timer;
 	$timer = Timer::start();
-	
+
 	wp_deregister_script('l10n');
 	set_defaults_for_options();
 }
@@ -53,7 +53,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', false); # Never leave this activated in a production environment!
+define('DEV_MODE', true); # Never leave this activated in a production environment!
 
 
 /**
@@ -73,16 +73,17 @@ define('FALL_2013_OR_OLDER', serialize(array(
  * Structure array as key = font name, val = path to the font.
  * e.g. 'Font Name' => 'path/to/font-name/font-name.css'
  *
- * All fonts in these lists should have a single reference file, which points to all 
+ * All fonts in these lists should have a single reference file, which points to all
  * available font file formats.
  * (i.e., from FontSquirrel, use the included stylesheet.css as the reference file.)
  **/
 $custom_available_fonts_array = array(
-	'Theano Modern' => THEME_FONT_URL . '/theano-modern/stylesheet.css',
-	'League Gothic' => THEME_FONT_URL . '/league-gothic/stylesheet.css',
-	'Aleo'			=> THEME_FONT_URL . '/aleo/stylesheet.css',
-	'Visitor'		=> THEME_FONT_URL . '/visitor/stylesheet.css',
-	'Montserrat'	=> THEME_FONT_URL . '/montserrat/stylesheet.css',
+	'Theano Modern' 		=> THEME_FONT_URL . '/theano-modern/stylesheet.css',
+	'League Gothic' 		=> THEME_FONT_URL . '/league-gothic/stylesheet.css',
+	'Aleo'					=> THEME_FONT_URL . '/aleo/stylesheet.css',
+	'Visitor'				=> THEME_FONT_URL . '/visitor/stylesheet.css',
+	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
+	'Open Sans Condensed' 	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
 );
 define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 
@@ -97,17 +98,17 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  *
  * Options:
  * - url:			Reference to @font-face import css file for the font family.
- * - family:		'font-family' property for default Story template h1-h6 tags and dropcaps, and 
+ * - family:		'font-family' property for default Story template h1-h6 tags and dropcaps, and
  *					default Issue cover's h2-h3 tags.
  * - color:			'color' property for default Story template h1-h6, blockquote, and dropcaps, and
  *					default Issue cover's h2 tag.
  * - weight:		'font-weight' property for default Story template h1-h6 tags and default Issue
  *					cover's h2-h3 tags.
- * - size-desktop:	'font-size' property of default Story template h1 and default Issue cover h2 at 
+ * - size-desktop:	'font-size' property of default Story template h1 and default Issue cover h2 at
  *					980px+ screen width.
- * - size-tablet:	'font-size' property of default Story template h1 and default Issue cover h2 at 
+ * - size-tablet:	'font-size' property of default Story template h1 and default Issue cover h2 at
  *					979-768px screen width.
- * - size-mobile:	'font-size' property of default Story template h1 and default Issue cover h2 at 
+ * - size-mobile:	'font-size' property of default Story template h1 and default Issue cover h2 at
  *					<768px screen width.
  * - textalign:		'text-align' property of Issue cover h2.
  * - texttransform:	'text-transform' property of default Story template h1-h6 tags and default Issue
@@ -136,7 +137,7 @@ define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array))
  * Font reference files listed in $template_fonts_array are registered with WordPress
  * as admin stylesheets.
  *
- * If a font in $template_font_styles_array is web-safe and has no reference file, 
+ * If a font in $template_font_styles_array is web-safe and has no reference file,
  * leave the 'url' option as null.
  **/
 $template_fonts_array = array(
@@ -288,7 +289,7 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['cb_domain'],
 		)),
 	),
-	
+
 	'Search' => array(
 		new RadioField(array(
 			'name'        => 'Enable Google Search',
@@ -376,7 +377,7 @@ Config::$styles = array(
 );
 foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
-	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));    
+	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));
 }
 
 
@@ -408,6 +409,6 @@ function jquery_in_header() {
     wp_deregister_script( 'jquery' );
     wp_register_script( 'jquery', '//code.jquery.com/jquery-1.7.1.min.js');
     wp_enqueue_script( 'jquery' );
-}    
- 
+}
+
 add_action('wp_enqueue_scripts', 'jquery_in_header');

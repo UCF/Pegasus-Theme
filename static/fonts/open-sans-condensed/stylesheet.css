@@ -10,3 +10,14 @@
 
 }
 
+@font-face {
+    font-family: 'OpenSansCondensedLight';
+    src: url('OpenSans-CondLight-webfont.eot');
+    src: url('OpenSans-CondLight-webfont.eot?#iefix') format('embedded-opentype'),
+         url('OpenSans-CondLight-webfont.woff') format('woff'),
+         url('OpenSans-CondLight-webfont.ttf') format('truetype'),
+         url('OpenSans-CondLight-webfont.svg#open_sanscondensed_light') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}

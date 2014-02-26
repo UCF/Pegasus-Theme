@@ -45,7 +45,7 @@
 
 
 // Resizing title
-$('.story h1').fitText(0.8, { minFontSize: '33px' });
+$('.story .story-title').fitText(0.8, { minFontSize: '33px' });
 
 
 // Header img height
@@ -69,14 +69,28 @@ $(window).on('resize', function() {
 
 
 // Super fun parallax-y things
-function parallax(){
-    var scrolled = $(window).scrollTop();
-    $('.story h1').css({
+function parallax(scrolled, direction) {
+    var opacity = null;
+    $('.story .story-title h1').css({
         'top': (scrolled * 0.3) + 'px',
     });
+    opacity = (scrolled / -($('#story-head').height() / 4) ) + 1;
+    opacity = opacity > 0 ? opacity : 0;
+    $('.story .story-title').css({
+        'opacity': opacity,
+    });
 }
-$(window).scroll(function(e){
-    parallax();
+var lastScrollTop = 0;
+$(window).on('scroll', function(e) {
+    var direction = null;
+    var st = $(window).scrollTop();
+    if (st < lastScrollTop){
+        direction = 'down';
+    } else {
+        direction = 'up';
+    }
+    lastScrollTop = st;
+    parallax(st, direction);
 });
 
 
@@ -86,7 +100,7 @@ $(window).scroll(function(e){
 
 // Set a fixed height for #game-nav so affixing behaves
 var setGameNavHeight = function() {
-    $('#game-nav-placeholder').css('height', $('#game-nav').height());
+    $('#game-nav-placeholder').css('height', $('#game-nav').outerHeight());
 }
 setGameNavHeight();
 $(window).on('resize', function() {
@@ -96,13 +110,15 @@ $(window).on('resize', function() {
 
 // Handle nav btn clicks, anchor jumps
 var scrollToAnchor = function(elem) {
-    $('body').animate({
-        scrollTop: elem.offset().top - ($('#game-nav-placeholder').height() + 40)
+    $('html, body').animate({
+        scrollTop: Math.floor(elem.offset().top - ($('#game-nav-placeholder').outerHeight() + 20 - 1))
     }, 500);
 }
 $('#game-nav .logo a').on('click', function(e) {
     e.preventDefault();
-    scrollToAnchor($($(this).attr('href')));
+    var href = $(this).attr('href');
+    scrollToAnchor($(href));
+    window.location.hash = href;
 });
 $(window).on('load', function(){
     var anchor = window.location.hash.substring(1),
@@ -114,6 +130,9 @@ $(window).on('load', function(){
 
 
 // Handle affixing/active nav btns
+$(window).on('load', function() {
+    $(window).scroll(-0.1);
+});
 $(window).bind('scroll', function() {
     // Affix nav if viewport is somewhere between the bottom of #story-head and the top of #team-stats
     if ($(window).scrollTop() > $('#story-head').height() && $(window).scrollTop() < $('#team-stats').offset().top) {
@@ -125,7 +144,7 @@ $(window).bind('scroll', function() {
 
     $('.game').each(function() {
         var game = $(this);
-        if ($(window).scrollTop() >= (game.offset().top - $('#game-nav-placeholder').height() - 40)) { // -40 to accomodate for extra pad on .logo>a click
+        if ($(window).scrollTop() >= (game.offset().top - $('#game-nav-placeholder').height() - 20)) { // -20 to accomodate for extra pad on .logo>a click
             $('#game-nav .logo.active').removeClass('active');
             $('#game-nav .logo-' + game.attr('id')).addClass('active');
         }
