@@ -902,7 +902,7 @@ class PhotoEssay extends CustomPostType {
 
 							<div class="handlediv" title="Click to toggle"> </div>
 								<h3 class="hndle">
-								<span>Slide</span>
+								<span>Slide - </span><span class="slide-handle-header"></span>
 							</h3>
 							<table class="form-table">
 							<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
