@@ -466,22 +466,27 @@ var SlideShow = (function() {
 
     function _init() {
         $slidesContents.each(function() {
+            var slidesContent = $(this);
+
             // Make main tag 100% height width
             if ($('article.ss-photo-essay').length > 0) {
                 $('main, section.ss-content').addClass('ss-photo-essay');
-            } else {
-                $('section.ss-content').addClass('ss-embed');
-            }
-
-            var slidesContent = $(this);
-            // Safari 6.0.5 needs a delay for the writing of the slideshow images
-            setTimeout(function() {
                 _resizeSlidesWrapper(slidesContent);
                 $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
                 slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
                 slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
                     _prevSlide);
-            }, 1000);
+            } else {
+                $('section.ss-content').addClass('ss-embed');
+	            // Safari 6.0.5 needs a delay for the writing of the slideshow images
+	            setTimeout(function() {
+	                _resizeSlidesWrapper(slidesContent);
+	                $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
+	                slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
+	                slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
+	                    _prevSlide);
+	            }, 1000);
+            }
         });
     }
 
