@@ -385,13 +385,13 @@ article.story .story-header-image {
 	height: 600px;
 	/*max-width: 1200px;*/
 	margin: 0 auto 75px auto;
-	background-size: cover;
+	background-size: auto 100%;
 	background-position: center;
 	background-repeat: no-repeat;
 }
 .ie8 article.story .story-header-image { background-image: none !important; position: relative; text-align: center; }
-article.story .story-header-image img { position: absolute; clip: rect(1px, 1px, 1px, 1px); }
-.ie8 article.story .story-header-image img { position: relative; clip: none !important; height: 100%; width: auto; margin: auto;  }
+article.story .story-header-image img { position: absolute; clip: rect(1px, 1px, 1px, 1px); top: 0; left: 0; height: 1px; width: 1px; }
+.ie8 article.story .story-header-image img { position: relative; clip: none !important; height: 100%; width: auto; height: 100%; margin: auto; right: 0;  }
 article.story .title-wrap { padding-top: 30px; }
 article.story .story-header-image + .container .title-wrap { padding-top: 0; }
 article.story h1,

@@ -13,7 +13,7 @@ WebcomAdmin.__init__ = function($){
 	$('input[type="file"]').parents('form').attr('encoding','multipart/form-data');
 
     // Initialize all the color selectors
-    var colorInput = $('.shortcode-color,#issue_default_color,#story_default_color');
+    var colorInput = $('.shortcode-color,#issue_default_color,#story_default_color,#story_default_header_img_background_color');
     if (colorInput.length) {
         colorInput.iris();
     }
@@ -383,7 +383,7 @@ WebcomAdmin.storyFieldToggle = function($) {
             val = 'default';
         }
         var fields = {
-            "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img"],
+            "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img", "story_default_header_img_background_color"],
             "photo_essayFields": ["story_description", "story_default_font"],
             "customFields" : ["story_stylesheet", "story_javascript", "story_fonts"],
         };
