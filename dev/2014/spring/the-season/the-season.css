@@ -55,7 +55,7 @@ article.story h2 {
 
 
 /* Story head */
-article.story #story-head { height: 700px; position: relative; padding-bottom: 80px; }
+article.story #story-head { height: 700px; position: relative; /*padding-bottom: 80px;*/ }
 article.story #story-head .story-header-image {
 	height: 100%;
 	text-align: center;
@@ -111,17 +111,33 @@ article.story #story-head .subtitle strong,
 	margin-bottom: 30px;
 	font-size: 18px;
 	line-height: 22px;
-}/*
+}
 article.story #story-head .arrows {
 	display: block;
 	position: absolute;
-	bottom: 150px;
+	bottom: 100px;
 	left: 0;
 	right: 0;
 	margin-bottom: 0;
 	text-align: center;
 }
-article.story #story-head .arrows a { display: block; overflow: visible; height: 100%; }*/
+article.story #story-head .arrows a { display: block; overflow: visible; height: 100%; }
+
+article.story .hitt-quote {
+	background: rgba(0,0,0,0.5);
+	padding-top: 20px;
+	margin-bottom: 60px;
+}
+article.story .hitt-quote blockquote,
+article.story .hitt-quote blockquote p {
+	font-family: 'MontserratRegular', sans-serif;
+	font-size: 42px;
+	line-height: 50px;
+	font-style: normal;
+	color: #cab887;
+}
+article.story .hitt-quote blockquote {padding-top: 20px; padding-bottom: 20px; }
+article.story .hitt-quote blockquote small { color: #fff; font-weight: normal; }
 
 
 /* Story nav */
@@ -181,7 +197,7 @@ article.story #story-head .arrows a { display: block; overflow: visible; height:
 	font-weight: normal;
 	text-align: center;
 }
-#game-nav h2 { margin-top: 20px; }
+#game-nav h2 { margin: 0; position: relative; bottom: -15px; }
 #game-nav-mobile h2 { position: relative; overflow: visible; }
 #game-nav-mobile h2:after {
 	content: "";
@@ -199,20 +215,25 @@ article.story #story-head .arrows a { display: block; overflow: visible; height:
 }
 
 #game-nav .team-stats {
+	display: block;
+	float: right;
+	margin: 0;
 	padding: 0 6px;
 	font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif;
 	font-stretch: condensed;
 	text-transform: uppercase;
 	font-size: 24px;
 	line-height: 24px;
-	color: #fff;
 	text-shadow: 1px 1px 0 rgba(0,0,0,0.48);
 	background: #99cc99;
+	position: relative;
+	z-index: 3;
 }
+#game-nav .team-stats a { color: #fff; }
 
 
 /* Sections (games) */
-article.story .game .hr { height: 0; margin-top: 30px; margin-bottom: 30px; border-bottom: 2px dotted #000; }
+article.story .game .hr { height: 0; margin-top: 30px; margin-bottom: 30px; border-bottom: 2px dotted #777; }
 article.story .game-head { display: block; height: 100%; margin-bottom: 12px; max-width: 300px; } /* margin-bottom + .game p padding-top = 20px */
 
 article.story .game-head .left-col,
@@ -299,8 +320,15 @@ article.story .game-photo .bottom { bottom: 0; }
 article.story .game-photo .top { top: 0; }
 
 article.story .game blockquote,
-article.story .game blockquote p { font-size: 30px; line-height: 40px; }
+article.story .game blockquote p { font-size: 30px; line-height: 40px; color: #222; }
 article.story .game blockquote small { font-weight: 400; }
+
+article.story .nomargin,
+article.story .nomargin p {
+	margin-bottom: 0;
+}
+
+#temple .game-photo { margin-bottom: 0; }
 
 
 /* Fiesta Bowl */
@@ -429,6 +457,8 @@ article.story .credits {
 
 
 @media (max-width: 979px) {
+	article.story #story-head .arrows { display: none; }
+
 	article.story .game-head .date { font-size: 25px; }
 	article.story .game-head h2,
 	article.story .game-head .score {
@@ -448,6 +478,12 @@ article.story .credits {
 
 
 @media (max-width: 979px) and (min-width: 768px) {
+	article.story .hitt-quote blockquote,
+	article.story .hitt-quote blockquote p {
+		font-size: 34px;
+		line-height: 42px;
+	}
+
 	#game-nav .logo.active:after {
 		bottom: -25px;
 		border-left: 22px solid transparent;
@@ -459,20 +495,29 @@ article.story .credits {
 }
 
 @media (max-width: 767px) {
+	article.story .hitt-quote { padding: 20px; margin-bottom: 30px; }
+	article.story .hitt-quote blockquote,
+	article.story .hitt-quote blockquote p {
+		font-size: 20px;
+		line-height: 24px;
+		margin-bottom: 0;
+	}
+	article.story .hitt-quote blockquote { padding-top: 10px; padding-bottom: 10px; }
+
 	article.story #story-head { padding-bottom: 0; }
 	article.story #story-head .story-title { opacity: 1 !important; }
 	article.story #story-head h1 { line-height: 1em; top: 0 !important; }
 	article.story #story-head .subtitle { display: none; }
 
-	article.story .m-nomargin,
-	article.story .m-nomargin p {
-		margin-bottom: 0;
+	article.story .m-addmargin,
+	article.story .m-addmargin p {
+		margin-bottom: 20px;
 	}
 
 	article.story .game-photo .caption { max-width: 100%; position: static; }
+	#temple .game-photo { margin-bottom: 20px; }
 	#temple .game-photo .caption { margin-top: 5px; }
 
-	#fiesta-bowl { margin-top: 10px; }
 	#fiesta-bowl h2 { margin-bottom: 20px; }
 	#fiesta-bowl h3 { font-size: 75px; }
 }

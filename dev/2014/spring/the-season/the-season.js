@@ -151,7 +151,10 @@ $(window).on('load', function() {
 $(window).bind('scroll', function() {
     if ($(window).width() > 767) {
         // Affix nav if viewport is somewhere between the bottom of #story-head and the top of #team-stats
-        if ($(window).scrollTop() > $('#story-head').outerHeight() && $(window).scrollTop() < ($('#smu').offset().top + ($('#smu').height() / 2))) {
+        if (
+            $(window).scrollTop() > ($('.hitt-quote').offset().top + $('.hitt-quote').outerHeight()) && 
+            $(window).scrollTop() < ($('#team-stats').offset().top + ($('#team-stats').height() / 2))
+        ) {
             $('#game-nav').addClass('affixed');
         }
         else {
@@ -161,9 +164,14 @@ $(window).bind('scroll', function() {
         $('.game').each(function() {
             var game = $(this);
             if ($(window).scrollTop() >= (game.offset().top - $('#game-nav-placeholder').height() - 20)) { // -20 to accomodate for extra pad on .logo>a click
-                $('#game-nav .logo.active').removeClass('active');
+                $('#game-nav .logo.active, #game-nav .team-stats.active').removeClass('active');
                 $('#game-nav .logo-' + game.attr('id')).addClass('active');
             }
         });
+
+        if ($(window).scrollTop() >= ($('#team-stats').offset().top - $('#game-nav-placeholder').height() - 20)) {
+            $('#game-nav .logo.active').removeClass('active');
+            //$('#game-nav .team-stats').addClass('active');
+        }
     }
 });
