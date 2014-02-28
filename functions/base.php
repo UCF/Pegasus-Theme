@@ -1481,11 +1481,6 @@ add_action('do_meta_boxes', 'register_meta_boxes');
  * @author Jared Lang
  **/
 function save_meta_data($post){
-
-	if ( defined('DOING_AUTOSAVE') && DOING_AUTOSAVE ) {
-        return $post_id;
-    }
-
 	#Register custom post types metaboxes
 	foreach(installed_custom_post_types() as $custom_post_type){
 		if (post_type($post) == $custom_post_type->options('name')){
@@ -1582,6 +1577,11 @@ function _save_meta_data($post_id, $meta_box){
 		}
 	}
 
+	// check autosave
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+		return $post_id;
+	}
+
 	// check permissions
 	if ('page' == $_POST['post_type']) {
 		if (!current_user_can('edit_page', $post_id)) {
@@ -1635,8 +1635,15 @@ function _save_meta_data($post_id, $meta_box){
 				}
 				// Get any file numbers that are already set and compare them to the numbers
 				// in $new_slide_list[].  If the keys in $old_attachments aren't in
-				// $new_slide_list[], add them to $unchanged_slide_list[]:
-				$old_attachments = get_post_meta($post_id, $field['id'], TRUE);
+				// $new_slide_list[], add them to $unchanged_slide_list[]. Ensure we are getting
+				// metadata from the right post ID.
+				$parent_post_id = $post_id;
+				$post = get_post($post_id);
+				if ($post->post_parent) {
+					$parent_post_id = $post->post_parent;
+				}
+
+				$old_attachments = get_post_meta($parent_post_id, $field['id'], TRUE);
 				foreach ($old_attachments as $key => $val) {
 					if (!(in_array($key, $new_slide_list))) {
 						$unchanged_slide_list[] .= $key;
