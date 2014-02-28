@@ -59,52 +59,77 @@ article.story #story-head { height: 700px; position: relative; padding-bottom: 8
 article.story #story-head .story-header-image {
 	height: 100%;
 	text-align: center;
+	background-size: cover;
 	background-position: top center;
 	position: relative;
 }
 article.story #story-head .story-title {
 	width: 100%;
 	opacity: 1;
+	filter: alpha(opacity=1);
 	position: absolute;
-	top: -0.2em;
+	top: 0;
 	left: 0;
 	right: 0;
 	text-align: center;
 }
 article.story #story-head h1 {
 	font-size: inherit;
+	font-weight: 900;
 	line-height: 1em;
 	text-transform: uppercase;
+	color: #d7d7d7;
 	color: rgba(215,215,215,0.5);
 	font-family: 'Arial Black', sans-serif;
-	font-weight: normal;
+	opacity: inherit;
+	filter: inherit;
+	font-weight: 900;
 	letter-spacing: -.04em;
 	position: relative;
 	top: 0;
 	padding-bottom: 20px;
-	/*position: absolute;*/
-	/*top: -0.2em;*/
-	/*top: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	display: block;
-	opacity: 1;*/
 }
-article.story #story-head .subtitle {
+article.story #story-head .subtitle,
+#game-nav-mobile .subtitle {
 	display: block;
-	padding: 0 20px;
+	width: 80%;
+	margin: auto;
 	font-family: 'OpenSansCondensedLight', sans-serif;
 	font-size: 22px;
 	line-height: 26px;
 	letter-spacing: 0.04em;
 	text-transform: uppercase;
 }
-article.story #story-head .subtitle strong { font-family: 'OpenSansCondensedBold', sans-serif; font-weight: normal; }
+article.story #story-head .subtitle strong,
+#game-nav-mobile .subtitle strong {
+	font-family: 'OpenSansCondensedBold', sans-serif;
+	font-weight: normal;
+}
+#game-nav-mobile .subtitle {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 30px;
+	font-size: 18px;
+	line-height: 22px;
+}/*
+article.story #story-head .arrows {
+	display: block;
+	position: absolute;
+	bottom: 150px;
+	left: 0;
+	right: 0;
+	margin-bottom: 0;
+	text-align: center;
+}
+article.story #story-head .arrows a { display: block; overflow: visible; height: 100%; }*/
 
 
 /* Story nav */
-#game-nav { padding-bottom: 35px; background-color: #fff; }
+#game-nav,
+#game-nav-mobile {
+	padding-bottom: 35px;
+	background-color: #fff;
+}
 #game-nav.affixed {
 	position: fixed;
 	top: 0;
@@ -113,7 +138,10 @@ article.story #story-head .subtitle strong { font-family: 'OpenSansCondensedBold
 #game-nav + #game-nav-placeholder { display: none; }
 #game-nav.affixed + #game-nav-placeholder { display: block; }
 
-#game-nav .nav-divider { border-top: 2px solid #99cc99; }
+#game-nav .nav-divider,
+#game-nav-mobile .nav-divider {
+	border-top: 2px solid #99cc99;
+}
 #game-nav ul { list-style-type: none; margin-bottom: 0; padding-top: 5px; padding-bottom: 5px; }
 #game-nav .logo {
 	position: relative;
@@ -144,31 +172,307 @@ article.story #story-head .subtitle strong { font-family: 'OpenSansCondensedBold
 	overflow: hidden;
 }
 
-#game-nav h2 { color: #99cc99; font-weight: normal; text-align: center; }
+#game-nav nav { text-align: center; }
+
+#game-nav h2,
+#game-nav-mobile h2,
+#fiesta-bowl h2 {
+	color: #99cc99;
+	font-weight: normal;
+	text-align: center;
+}
+#game-nav h2 { margin-top: 20px; }
+#game-nav-mobile h2 { position: relative; overflow: visible; }
+#game-nav-mobile h2:after {
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 20px solid transparent;
+	border-right: 20px solid transparent;
+	border-top: 20px solid #99cc99;
+}
+
+#game-nav .team-stats {
+	padding: 0 6px;
+	font-family: "HelveticaNeue-CondensedBold", "HelveticaNeueBoldCondensed", "HelveticaNeue-Bold-Condensed", "Helvetica Neue Bold Condensed", "HelveticaNeueBold", "HelveticaNeue-Bold", "Helvetica Neue Bold", "HelveticaNeue", "Helvetica Neue", 'TeXGyreHerosCnBold', "Helvetica", "Tahoma", "Geneva", "Arial Narrow", "Arial", sans-serif;
+	font-stretch: condensed;
+	text-transform: uppercase;
+	font-size: 24px;
+	line-height: 24px;
+	color: #fff;
+	text-shadow: 1px 1px 0 rgba(0,0,0,0.48);
+	background: #99cc99;
+}
 
 
 /* Sections (games) */
 article.story .game .hr { height: 0; margin-top: 30px; margin-bottom: 30px; border-bottom: 2px dotted #000; }
+article.story .game-head { display: block; height: 100%; margin-bottom: 12px; max-width: 300px; } /* margin-bottom + .game p padding-top = 20px */
 
-article.story .game-photo { position: relative; }
+article.story .game-head .left-col,
+article.story .game-head .right-col {
+	display: table-cell;
+	height: 100%;
+	vertical-align: middle;
+}
+article.story .game-head .left-col { border-right: 2px solid #99cc99; padding-right: 10px; }
+article.story .game-head .right-col { width: 100%; }
+
+article.story .game-head .date {
+	display: table-row;
+	vertical-align: middle;
+	font-family: 'MontserratBold', sans-serif;
+	font-size: 27px;
+	line-height: 27px;
+	color: #99cc99;
+	height: 100%;
+}
+article.story .game-head h2,
+article.story .game-head .score {
+	display: block;
+	padding-left: 10px;
+}
+article.story .game-head h2 {
+	font-size: 25px;
+	line-height: 25px;
+	padding-top: 10px;
+	padding-bottom: 5px;
+	margin-bottom: 0;
+	border-bottom: 2px solid #99cc99;
+}
+article.story .game-head .score {
+	font-family: 'MontserratRegular', sans-serif;
+	font-size: 25px;
+	line-height: 25px;
+	color: #99cc99;
+	margin-bottom: 0;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+article.story .game-head .score.lose { color: #d44227; }
+
+article.story .game div > p,
+article.story .game strong {
+	font-family: 'HelveticaNeue', 'Helvetica-Neue', Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 22px;
+	font-weight: normal;
+}
+article.story .game div > p { padding-top: 8px; }
+article.story .game strong { text-transform: uppercase; }
+
+article.story .game-photo { position: relative; margin-bottom: 20px; }
 article.story .game-photo .caption {
 	position: absolute;
 	display: block;
 	margin: 0 auto;
-	padding: 20px;
-	background: #ccc; /* change later */
+	padding: 15px;
+	background: #cab887;
+	font-family: 'OpenSansCondensedLight', sans-serif;
+	font-size: 17px;
+	line-height: 20px;
+	color: #fff;
+	max-width: 300px;
 }
-article.story .game-photo .caption.left { left: 0; }
-article.story .game-photo .caption.right { right: 0; }
-article.story .game-photo .caption.bottom { bottom: 0; }
-article.story .game-photo .caption.top { top: 0; }
+article.story .game-photo .credit {
+	position: absolute;
+	display: block;
+	padding: 5px;
+	font-family: Helvetica, sans-serif;
+	font-size: 10px;
+	line-height: 10px;
+	max-width: 300px;
+	color: #fff;
+	text-transform: uppercase;
+	margin: 0;
+}
+article.story .game-photo .credit.black { color: #000; }
+article.story .game-photo .left { left: 0; }
+article.story .game-photo .right { right: 0; }
+article.story .game-photo .bottom { bottom: 0; }
+article.story .game-photo .top { top: 0; }
+
+article.story .game blockquote,
+article.story .game blockquote p { font-size: 30px; line-height: 40px; }
+article.story .game blockquote small { font-weight: 400; }
 
 
+/* Fiesta Bowl */
+#fiesta-bowl { margin-top: 50px; }
+#fiesta-bowl h2 { border-bottom: 2px solid #99cc99; padding-bottom: 10px; margin-bottom: 60px; position: relative; }
+#fiesta-bowl h2:after {
+	content: "";
+	position: absolute;
+	bottom: -30px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-top: 30px solid #99cc99;
+}
+#fiesta-bowl h3 {
+	text-align: center;
+	font-family: 'Arial Black', sans-serif;
+	font-size: 95px;
+	font-weight: 900;
+	line-height: 90px;
+	font-weight: 900;
+	color: #e55a16;
+	text-shadow: 2px 3px 3px rgba(0,0,0,0.4);
+	text-transform: uppercase;
+	letter-spacing: -0.08em;
+}
+#fiesta-bowl .bullets,
+#fiesta-bowl .score {
+	text-align: center;
+	font-family: 'MontserratRegular', sans-serif;
+	line-height: 40px;
+	margin-bottom: 0;
+}
+#fiesta-bowl .bullets { font-size: 22px; color: #515151; }
+#fiesta-bowl .score { font-size: 30px; color: #868686; font-weight: bold; }
+
+
+/* Team Stats */
+#team-stats { background-color: #cce5cc; position: relative; margin-top: 60px; padding-top: 50px; padding-bottom: 70px; }
+#team-stats:after {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	display: block;
+	width: 0;
+	height: 0;
+	border-left: 30px solid transparent;
+	border-right: 30px solid transparent;
+	border-top: 30px solid #fff;
+}
+
+#team-stats h2,
+#team-stats h3 {
+	font-family: 'HelveticaNeue-CondensedBold', 'Helvetica Neue', Helvetica, sans-serif;
+	font-stretch: condensed;
+	text-transform: uppercase;
+}
+#team-stats h2 {
+	text-align: center;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+	border-bottom: 2px solid #99cc99;
+	font-size: 48px;
+	line-height: 48px;
+	color: #99cc99;
+}
+#team-stats h3 { color: #fff; font-size: 30px; line-height: 30px; margin-bottom: 20px; }
+#team-stats dt,
+#team-stats p,
+#team-stats p strong,
+#team-stats .trivia {
+	font-family: 'OpenSansCondensedBold', sans-serif;
+	font-weight: normal;
+}
+#team-stats p { line-height: 22px; margin-bottom: 15px; }
+
+#team-stats dd,
+#team-stats dd dl dt,
+#team-stats ul,
+#team-stats blockquote,
+#team-stats blockquote p {
+	font-family: 'OpenSansCondensedLight', sans-serif;
+	margin-left: 0;
+	font-size: 18px;
+	line-height: 22px;
+}
+#team-stats dl { margin: 0; }
+#team-stats dd,
+#team-stats li {
+	margin-bottom: 20px;
+}
+#team-stats dd dl dd { margin-bottom: 0; }
+#team-stats dd dl dt { display: block; float: left; padding-right: 5px; }
+#team-stats ul { list-style-type: none; }
+#team-stats blockquote,
+#team-stats blockquote p {
+	font-style: normal;
+}
+#team-stats .trivia {
+	font-size: 24px;
+	line-height: 28px;
+	border-top: 2px dotted #000;
+	border-bottom: 2px dotted #000;
+	padding: 20px 0;
+}
+
+
+article.story .credits {
+	padding-top: 40px;
+	padding-bottom: 50px;
+	font-family: Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 13px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+
+
+@media (max-width: 979px) {
+	article.story .game-head .date { font-size: 25px; }
+	article.story .game-head h2,
+	article.story .game-head .score {
+		font-size: 21px;
+		line-height: 21px;
+	}
+
+	article.story .game blockquote,
+	article.story .game blockquote p {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	#fiesta-bowl .bullets { font-size: 16px; line-height: 22px; padding-top: 10px; }
+	#fiesta-bowl .score { font-size: 24px; line-height: 24px; padding-top: 15px; }
+}
 
 
 @media (max-width: 979px) and (min-width: 768px) {
+	#game-nav .logo.active:after {
+		bottom: -25px;
+		border-left: 22px solid transparent;
+		border-right: 22px solid transparent;
+		border-top: 20px solid #99cc99;
+	}
+	
+	article.story .game-photo .caption { max-width: 240px; }	
 }
 
 @media (max-width: 767px) {
-	article.story #story-head h1 { line-height: 1em; }
+	article.story #story-head { padding-bottom: 0; }
+	article.story #story-head .story-title { opacity: 1 !important; }
+	article.story #story-head h1 { line-height: 1em; top: 0 !important; }
+	article.story #story-head .subtitle { display: none; }
+
+	article.story .m-nomargin,
+	article.story .m-nomargin p {
+		margin-bottom: 0;
+	}
+
+	article.story .game-photo .caption { max-width: 100%; position: static; }
+	#temple .game-photo .caption { margin-top: 5px; }
+
+	#fiesta-bowl { margin-top: 10px; }
+	#fiesta-bowl h2 { margin-bottom: 20px; }
+	#fiesta-bowl h3 { font-size: 75px; }
 }

@@ -44,6 +44,10 @@
 
 
 
+// Empty p tags for dev mode
+$('p:empty').remove();
+
+
 // Resizing title
 $('.story .story-title').fitText(0.8, { minFontSize: '33px' });
 
@@ -71,26 +75,34 @@ $(window).on('resize', function() {
 // Super fun parallax-y things
 function parallax(scrolled, direction) {
     var opacity = null;
+    var scroll = scrolled * 0.4;
+    if (scroll > ($('#story-head').height() / 4)) {
+        scroll = 0;
+    }
     $('.story .story-title h1').css({
-        'top': (scrolled * 0.3) + 'px',
+        'top': scroll + 'px',
     });
+
     opacity = (scrolled / -($('#story-head').height() / 4) ) + 1;
     opacity = opacity > 0 ? opacity : 0;
     $('.story .story-title').css({
+        'filter': 'alpha(opacity=' + opacity * 100 + ')',
         'opacity': opacity,
     });
 }
 var lastScrollTop = 0;
 $(window).on('scroll', function(e) {
-    var direction = null;
-    var st = $(window).scrollTop();
-    if (st < lastScrollTop){
-        direction = 'down';
-    } else {
-        direction = 'up';
+    if ($(window).width() > 767) {
+        var direction = null;
+        var st = $(window).scrollTop();
+        if (st < lastScrollTop){
+            direction = 'down';
+        } else {
+            direction = 'up';
+        }
+        lastScrollTop = st;
+        parallax(st, direction);
     }
-    lastScrollTop = st;
-    parallax(st, direction);
 });
 
 
@@ -114,7 +126,7 @@ var scrollToAnchor = function(elem) {
         scrollTop: Math.floor(elem.offset().top - ($('#game-nav-placeholder').outerHeight() + 20 - 1))
     }, 500);
 }
-$('#game-nav .logo a').on('click', function(e) {
+$('#game-nav a, #story-head .arrows a').on('click', function(e) {
     e.preventDefault();
     var href = $(this).attr('href');
     scrollToAnchor($(href));
@@ -131,22 +143,27 @@ $(window).on('load', function(){
 
 // Handle affixing/active nav btns
 $(window).on('load', function() {
-    $(window).scroll(-0.1);
+    if ($(window).width() > 767) {
+        // Trigger a scroll on page load to initiate scroll bind
+        $('html, body').scrollTop($(window).scrollTop() + 1);
+    }
 });
 $(window).bind('scroll', function() {
-    // Affix nav if viewport is somewhere between the bottom of #story-head and the top of #team-stats
-    if ($(window).scrollTop() > $('#story-head').height() && $(window).scrollTop() < $('#team-stats').offset().top) {
-        $('#game-nav').addClass('affixed');
-    }
-    else {
-        $('#game-nav').removeClass('affixed');
-    }
-
-    $('.game').each(function() {
-        var game = $(this);
-        if ($(window).scrollTop() >= (game.offset().top - $('#game-nav-placeholder').height() - 20)) { // -20 to accomodate for extra pad on .logo>a click
-            $('#game-nav .logo.active').removeClass('active');
-            $('#game-nav .logo-' + game.attr('id')).addClass('active');
+    if ($(window).width() > 767) {
+        // Affix nav if viewport is somewhere between the bottom of #story-head and the top of #team-stats
+        if ($(window).scrollTop() > $('#story-head').outerHeight() && $(window).scrollTop() < ($('#smu').offset().top + ($('#smu').height() / 2))) {
+            $('#game-nav').addClass('affixed');
         }
-    });
+        else {
+            $('#game-nav').removeClass('affixed');
+        }
+
+        $('.game').each(function() {
+            var game = $(this);
+            if ($(window).scrollTop() >= (game.offset().top - $('#game-nav-placeholder').height() - 20)) { // -20 to accomodate for extra pad on .logo>a click
+                $('#game-nav .logo.active').removeClass('active');
+                $('#game-nav .logo-' + game.attr('id')).addClass('active');
+            }
+        });
+    }
 });
