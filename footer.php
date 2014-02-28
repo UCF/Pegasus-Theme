@@ -79,7 +79,14 @@
 
 	<?php } else { 
 		$issue = get_relevant_issue($post);
-		$stories = get_issue_stories($issue);
+		$args = array();
+		if ($post->post_type == 'issue') {
+			$args['exclude'] = intval(get_post_meta($post->ID, 'issue_cover_story', TRUE));
+		}
+		else if ($post->post_type == 'story') {
+			$args['exclude'] = $post->ID;
+		}
+		$stories = get_issue_stories($issue, $args);
 		$perrow = 3; // .span4's
 	?>
 
