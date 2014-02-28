@@ -1,0 +1,181 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+main article h1,
+main article h2,
+main article h3,
+main article h4,
+main article h5,
+main article h6 {
+    font-family: "Arial Black", serif;
+    font-weight: normal;
+    text-transform: none;
+}
+
+article.story .story-header-image {
+    background-position: top;
+    margin-bottom: 0;
+    background-color: #161919;
+}
+
+#briefs-header-wrap {
+    position: relative;
+    height: 100%;
+}
+
+#briefs-header {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+}
+
+.ie8 #briefs-header {
+    position: relative;
+    bottom: 100px;
+}
+
+#briefs-header h1 {
+    color: #fff;
+    font-size: 100px;
+    line-height: 100px;
+}
+
+.briefs-heading {
+    border-bottom: solid #e6e6e6 1px;
+    margin-top: 40px;
+}
+
+article .briefs-heading h2 {
+    margin-bottom: 2px;
+}
+
+#reach-for-wrap {
+    background-color: #000;
+    color: #fff;
+    padding: 20px;
+}
+
+article.story h2 {
+    font-size: 38px;
+    line-height: 38px;
+}
+
+article.story h3 {
+    font-size: 30px;
+    line-height: 30px;
+}
+
+article.story h3.caps {
+    text-transform: uppercase;
+    font-size: 22px;
+    line-height: 22px;
+}
+
+article {
+    margin-top: 20px;
+}
+
+#temp {
+    display: block;
+    color: #ff0000;
+    font-size: 80px;
+    font-family: arial, serif;
+    line-height: 85px;
+}
+
+#cheer-up img {
+    margin-top: 90px;
+}
+
+#signature-pieces img {
+    margin-right: 20px;
+    margin-bottom: 60px;
+}
+
+#star-power-wrap {
+    clear: both;
+}
+
+#star-power-img {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+article p.credit {
+    font-size: 13px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+#x-factor-wrap {
+    margin-top: 30px;
+}
+
+.social-wrap {
+    padding-top: 60px;
+}
+
+article.story p.ranks {
+    margin-top: 16px;
+}
+
+ol.ranks li {
+    line-height: 26px;
+}
+
+.sig-quote {
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin-top: 20px;
+    clear: both;
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+    .social-wrap {
+        margin-left: 82px;
+        padding-top: 20px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .social-wrap {
+        padding-top: 10px;
+    }
+
+    #briefs-header h1 {
+        font-size: 60px;
+        line-height: 60px;
+    }
+
+    #temp {
+        font-size: 50px;
+        line-height: 55px;
+    }
+    #signature-pieces img {
+        margin-right: 10px;
+    }
+
+    #signature-pieces article {
+        margin-top: 0;
+    }
+
+    #signature-pieces h3 {
+        padding-top: 20px;
+    }
+
+    article.story p {
+       margin-bottom: 0;
+    }
+
+    #cheer-up img {
+        margin-top: 20px;
+    }
+
+    article {
+        margin-top: 30px;
+    }
+}
