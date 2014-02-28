@@ -44,6 +44,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	font-size: 32px;
 	line-height: 90px;
 	font-style: italic;
+	font-weight: normal;
 	color: #222;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
@@ -180,6 +181,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	font-family: "AleoBold", serif;
 	font-size: 17px;
 	line-height: 18px;
+	font-weight: normal;
 	color: #d7a900;
 	padding-top: 15px;
 	-webkit-font-smoothing: antialiased;
