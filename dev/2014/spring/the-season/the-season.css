@@ -124,20 +124,9 @@ article.story #story-head .arrows {
 article.story #story-head .arrows a { display: block; overflow: visible; height: 100%; }
 
 article.story .hitt-quote {
-	background: rgba(0,0,0,0.5);
-	padding-top: 20px;
-	margin-bottom: 60px;
+	padding-top: 40px;
+	margin-bottom: 40px;
 }
-article.story .hitt-quote blockquote,
-article.story .hitt-quote blockquote p {
-	font-family: 'MontserratRegular', sans-serif;
-	font-size: 42px;
-	line-height: 50px;
-	font-style: normal;
-	color: #cab887;
-}
-article.story .hitt-quote blockquote {padding-top: 20px; padding-bottom: 20px; }
-article.story .hitt-quote blockquote small { color: #fff; font-weight: normal; }
 
 
 /* Story nav */
@@ -165,6 +154,8 @@ article.story .hitt-quote blockquote small { color: #fff; font-weight: normal; }
 	background-position: center center;
 	background-repeat: no-repeat;
 	background-size: 85% auto;
+	image-rendering: optimizeQuality;
+	-ms-interpolation-mode: bicubic;
 }
 #game-nav .logo:hover { background-size: 100% auto; }
 #game-nav .logo.active:after {
@@ -319,9 +310,18 @@ article.story .game-photo .right { right: 0; }
 article.story .game-photo .bottom { bottom: 0; }
 article.story .game-photo .top { top: 0; }
 
+article.story .hitt-quote blockquote,
+article.story .hitt-quote blockquote p,
 article.story .game blockquote,
-article.story .game blockquote p { font-size: 30px; line-height: 40px; color: #222; }
-article.story .game blockquote small { font-weight: 400; }
+article.story .game blockquote p {
+	font-size: 30px;
+	line-height: 40px;
+	color: #444;
+}
+article.story .game blockquote small,
+article.story .hitt-quote blockquote small {
+	font-weight: 400;
+}
 
 article.story .nomargin,
 article.story .nomargin p {
@@ -466,6 +466,8 @@ article.story .credits {
 		line-height: 21px;
 	}
 
+	article.story .hitt-quote blockquote,
+	article.story .hitt-quote blockquote p,
 	article.story .game blockquote,
 	article.story .game blockquote p {
 		font-size: 24px;
@@ -478,12 +480,6 @@ article.story .credits {
 
 
 @media (max-width: 979px) and (min-width: 768px) {
-	article.story .hitt-quote blockquote,
-	article.story .hitt-quote blockquote p {
-		font-size: 34px;
-		line-height: 42px;
-	}
-
 	#game-nav .logo.active:after {
 		bottom: -25px;
 		border-left: 22px solid transparent;
@@ -495,14 +491,7 @@ article.story .credits {
 }
 
 @media (max-width: 767px) {
-	article.story .hitt-quote { padding: 20px; margin-bottom: 30px; }
-	article.story .hitt-quote blockquote,
-	article.story .hitt-quote blockquote p {
-		font-size: 20px;
-		line-height: 24px;
-		margin-bottom: 0;
-	}
-	article.story .hitt-quote blockquote { padding-top: 10px; padding-bottom: 10px; }
+	article.story .hitt-quote { padding-top: 0; margin-bottom: 40px; }
 
 	article.story #story-head { padding-bottom: 0; }
 	article.story #story-head .story-title { opacity: 1 !important; }
