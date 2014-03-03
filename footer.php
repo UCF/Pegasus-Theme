@@ -134,8 +134,8 @@
 			</div>
 			<?=display_story_list($issue, 'hidden-desktop')?>
 			<div class="controls hidden-desktop">
-				<a class="backward icon-caret-left" href="#" alt="Backward"></a>
-				<a class="forward icon-caret-right" href="#" alt="Forward"></a>
+				<a class="backward icon-caret-left" href="#">Back</a>
+				<a class="forward icon-caret-right" href="#">Forward</a>
 			</div>
 		</aside>
 

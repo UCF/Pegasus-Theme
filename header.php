@@ -77,9 +77,9 @@
 				</div>
 				<?=display_story_list($relevant_issue)?>
 				<div class="controls">
-					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">×</a>
-					<a class="backward icon-caret-left" href="#" alt="Backward"></a>
-					<a class="forward icon-caret-right" href="#" alt="Forward"></a>
+					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
+					<a class="backward icon-caret-left" href="#">Back</a>
+					<a class="forward icon-caret-right" href="#">Forward</a>
 				</div>
 			</div>
 		</aside>
@@ -100,7 +100,7 @@
 					<nav class="span12" role="navigation">
 						<ul class="navigation">
 							<li id="nav-about">
-								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>" alt="About Pegasus Magazine" title="About Pegasus Magazine">The Magazine of the University of Central Florida</a>
+								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
 							</li>
 							<li id="nav-mobile">
 								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"></a>
