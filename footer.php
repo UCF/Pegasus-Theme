@@ -172,7 +172,10 @@
 						wp_nav_menu( $defaults );
 						?>
 						<p class="copyright">
-							&copy; University of Central Florida
+							&copy; <?=get_theme_option('org_name')?>
+						</p>
+						<p class="address">
+							<?=nl2br(get_theme_option('org_address'))?>
 						</p>
 					</div>
 				</div>

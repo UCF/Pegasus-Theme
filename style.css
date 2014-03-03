@@ -632,7 +632,12 @@ article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 #footer-navigation li:first-child:before { content: ""; }
 
 /* Footer copyright line */
-#footer-navigation .copyright { text-align: center; padding-top: 40px; }
+#footer-navigation .copyright,
+#footer-navigation .address {
+	text-align: center;
+	margin: 0;
+}
+#footer-navigation .copyright { padding-top: 60px; }
 
 
 /**************************

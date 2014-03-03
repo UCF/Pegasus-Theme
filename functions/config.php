@@ -356,6 +356,23 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['current_issue_cover'],
 		)),
 	),
+	'Contact Information' => array(
+		new TextField(array(
+			'name' => 'Organization Name',
+			'id' => THEME_OPTIONS_NAME.'[org_name]',
+			'description' => 'The name for your organization, used when displaying your organization\'s address.',
+			'value' => $theme_options['org_name'],
+			'default'	=> 'University of Central Florida',
+		)),
+		new TextareaField(array(
+			'name' => 'Organization Address',
+			'id' => THEME_OPTIONS_NAME.'[org_address]',
+			'description' => 'The address for your organization.',
+			'value' => $theme_options['org_address'],
+			'default'	=> '4000 Central Florida Blvd.
+Orlando, FL 32816',
+		)),
+	),
 );
 
 Config::$links = array(
