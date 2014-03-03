@@ -236,6 +236,15 @@ add_shortcode('social_buttons', 'sc_social_buttons');
 
 
 /**
+ * Returns the site URL.
+ **/
+function sc_site_url($attr) {
+	return site_url();
+}
+add_shortcode('site-url', 'sc_site_url');
+
+
+/**
  * Post search
  *
  * @return string
