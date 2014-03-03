@@ -80,10 +80,10 @@
 	<?php } else { 
 		$issue = get_relevant_issue($post);
 		$args = array();
-		if ($post->post_type == 'issue') {
+		/*if ($post->post_type == 'issue') {
 			$args['exclude'] = intval(get_post_meta($post->ID, 'issue_cover_story', TRUE));
 		}
-		else if ($post->post_type == 'story') {
+		else */if ($post->post_type == 'story') {
 			$args['exclude'] = $post->ID;
 		}
 		$stories = get_issue_stories($issue, $args);
@@ -92,7 +92,7 @@
 
 		</main>
 	<?php
-	if ($post->post_type !== 'page' && $post->post_type !== 'post') {
+	if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue') {
 	?>
 		<aside class="container-wide" id="more-stories">
 			<div class="container">
