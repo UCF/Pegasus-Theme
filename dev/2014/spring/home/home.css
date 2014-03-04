@@ -106,10 +106,10 @@ p:empty { display: none; }
 @media (max-width: 767px) {
 	#nothing-for-granted .description {
 		position: static;
-		color: #000;
 		padding-left: 0;
 		padding-right: 0;
 	}
+	#nothing-for-granted .description p { color: #000; }
 
 	#home .heading-wrap { overflow: hidden;	}
 	#home .heading-wrap h2 { top: 0; }
