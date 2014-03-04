@@ -91,9 +91,9 @@
 	?>
 
 		</main>
-	<?php
-	if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue') {
-	?>
+		<?php
+		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue') {
+		?>
 		<aside class="container-wide" id="more-stories">
 			<div class="container">
 				<div class="row">
@@ -138,7 +138,55 @@
 				<a class="forward icon-caret-right" href="#">Forward</a>
 			</div>
 		</aside>
+		<?php
+		}
+		?>
 
+		<?php
+		$fb_url = get_theme_option('fb_url');
+		$twitter_url = get_theme_option('twitter_url');
+		$googleplus_url = get_theme_option('googleplus_url');
+		$flickr_url = get_theme_option('flickr_url');
+		$youtube_url = get_theme_option('youtube_url');
+		if (
+			!empty($fb_url) ||
+			!empty($twitter_url) ||
+			!empty($googleplus_url) ||
+			!empty($flickr_url) ||
+			!empty($youtube_url)
+		) {
+		?>	
+		<aside class="container-wide" id="footer-social">
+			<div class="container">
+				<div class="row">
+					<div class="span10 offset1 border-top">
+						<ul>
+							<?php if (!empty($fb_url)) { ?>
+							<li>
+								<a target="_blank" class="sprite facebook" href="<?=$fb_url?>">Follow UCF on Facebook</a>
+							</li>
+							<?php } if (!empty($twitter_url)) { ?>
+							<li>
+								<a target="_blank" class="sprite twitter" href="<?=$twitter_url?>">Follow UCF on Twitter</a>
+							</li>
+							<?php } if (!empty($flickr_url)) { ?>
+							<li>
+								<a target="_blank" class="sprite flickr" href="<?=$flickr_url?>">Follow UCF on Flickr</a>
+							</li>
+							<?php } if (!empty($youtube_url)) { ?>
+							<li>
+								<a target="_blank" class="sprite youtube" href="<?=$youtube_url?>">Follow UCF on YouTube</a>
+							</li>
+							<?php } if (!empty($googleplus_url)) { ?>
+							<li>
+								<a target="_blank" class="sprite googleplus" href="<?=$googleplus_url?>">Follow UCF on Google+</a>
+							</li>
+							<?php } ?>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</aside>
 	<?php
 		}
 	}

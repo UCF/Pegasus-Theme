@@ -336,6 +336,41 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => $theme_options['fb_admins'],
 		)),
+		new TextField(array(
+			'name'        => 'Facebook URL',
+			'id'          => THEME_OPTIONS_NAME.'[fb_url]',
+			'description' => 'URL of the Facebook page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => 'http://www.facebook.com/UCF',
+			'value'       => $theme_options['fb_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Twitter URL',
+			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
+			'description' => 'URL of the Twitter page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => 'http://twitter.com/UCF',
+			'value'       => $theme_options['twitter_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Flickr URL',
+			'id'          => THEME_OPTIONS_NAME.'[flickr_url]',
+			'description' => 'URL of the Flickr page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => 'http://www.flickr.com/groups/ucf/',
+			'value'       => $theme_options['flickr_url'],
+		)),
+		new TextField(array(
+			'name'        => 'YouTube URL',
+			'id'          => THEME_OPTIONS_NAME.'[youtube_url]',
+			'description' => 'URL of the YouTube page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => 'http://www.youtube.com/user/UCF',
+			'value'       => $theme_options['youtube_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Google+ URL',
+			'id'          => THEME_OPTIONS_NAME.'[googleplus_url]',
+			'description' => 'URL of the Google+ page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => 'https://plus.google.com/+UCF',
+			'value'       => $theme_options['googleplus_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(

@@ -20,14 +20,18 @@ Version: v2.1.3
 
 .sprite {
 	display: block;
-	background: url('static/img/spritesheet.png');
+	background-image: url('static/img/spritesheet.png');
 	background-repeat: no-repeat;
 	text-indent: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 }
 @media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-	.sprite { background: url('static/img/spritesheet-r.png'); background-size: 193px 111px; }
+	.sprite {
+		background-image: url('static/img/spritesheet-r.png');
+		background-size: 193px 142px;
+		background-repeat: no-repeat;
+	}
 }
 
 
@@ -586,6 +590,23 @@ article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 }
 
 #more-stories .story-list-grid article img { float: left; margin: 0 20px 20px 0; }
+
+
+/**************************
+ * Subfooter - Social Links
+ **************************/
+#footer-social .border-top { border-top: 1px solid #eee; padding: 20px 0; }
+#footer-social ul { list-style-type: none; text-align: center; margin: 0; }
+#footer-social li { display: inline-block; padding: 0 3px; }
+#footer-social li a {
+	width: 35px;
+	height: 32px;
+}
+#footer-social li a.facebook { background-position: 3px -114px; }
+#footer-social li a.twitter { background-position: -63px -113px; }
+#footer-social li a.flickr { background-position: -30px -114px; }
+#footer-social li a.youtube { background-position: -98px -114px; }
+#footer-social li a.googleplus { background-position: -131px -114px; }
 
 
 /**************************

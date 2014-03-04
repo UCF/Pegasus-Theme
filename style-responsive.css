@@ -58,6 +58,12 @@
 
 
 	/**************************
+	 * Subfooter - More Stories
+	 **************************/
+	#more-stories { margin-bottom: 40px; }
+
+
+	/**************************
 	 * Footer
 	 **************************/
 
@@ -221,12 +227,6 @@
 	article.ss-photo-essay .ss-essay-intro { height: 100%; }
 
 	article.ss-photo-essay .ss-slide-wrapper { width: 100%; }
-
-
-	/**************************
-	 * Subfooter - More Stories
-	 **************************/
-	#more-stories { margin-bottom: 40px; }
 
 
 	/**************************
