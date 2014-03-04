@@ -52,6 +52,7 @@
 	 **************************/
 	main.ss-photo-essay{ height: 500px; }
 	article.ss-photo-essay { padding-top: 5%;}
+	article.ss-photo-essay .ss-essay-intro { height: 100%; }
 	.ss-photo-essay .ss-slides-wrapper { height: 65%; }
 	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 30%; }
@@ -268,11 +269,16 @@
 	.ss-photo-essay .ss-arrow-wrapper { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
 
+	article.ss-photo-essay .ss-essay-intro h1,
+	article.ss-photo-essay .ss-essay-intro span.description {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	article.ss-photo-essay .ss-essay-intro h1 {
 		font-size: 28px;
 		line-height: 32px;
 	}
-
 	article.ss-photo-essay .ss-essay-intro span.description {
 		font-size: 16px;
 		line-height: 20px;

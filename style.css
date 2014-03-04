@@ -541,12 +541,17 @@ article.ss-photo-essay .ss-essay-intro-wrapper img {
 	-khtml-opacity: 0.2;
      opacity: 0.2;
 }
-article.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 50%; }
+article.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 75%; }
 
 article.ss-photo-essay .description { color: #fff; }
 
 article.ss-photo-essay .ss-slide-wrapper { width: 85%; }
 
+article.ss-photo-essay .ss-essay-intro h1,
+article.ss-photo-essay .ss-essay-intro span.description {
+ 	padding-left: 20px;
+ 	padding-right: 20px;
+}
 article.ss-photo-essay .ss-essay-intro h1 {
 	text-align: center;
 }
@@ -890,9 +895,9 @@ main .search-submit {
      top: 0;
      white-space: nowrap;
 
-     -webkit-transition:all 1.0s ease-in-out;
-     -moz-transition:all 1.0s ease-in-out;
-     transition:all 1.0s ease-in-out;
+    -webkit-transition:all 1.0s ease-in-out;
+    -moz-transition:all 1.0s ease-in-out;
+    transition:all 1.0s ease-in-out;
  }
  .ss-embed .ss-slides-wrapper { height: 360px; }
  .ss-photo-essay .ss-slides-wrapper { height: 80%; }
