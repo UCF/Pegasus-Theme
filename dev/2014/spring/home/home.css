@@ -1,13 +1,21 @@
+p:empty { display: none; }
 #footer-social .border-top { border-top: 0; }
 
 
 #home { background-color: #e5e5e5; overflow: hidden; padding-top: 11px; padding-bottom: 40px; }
 
-#the-season { margin-bottom: 11px; }
-#hero article img {
+#nothing-for-granted { position: relative; }
+#nothing-for-granted .description {
+	position: absolute;
+	bottom: 0;
+	padding: 10px;
+}
+#nothing-for-granted .description p { margin-bottom: 0; color: #fff; }
+#nothing-for-granted img {
 	-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
 	box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
 }
+#the-season { margin-bottom: 11px; }
 #more-in-spring-2014 { margin-top: 11px; }
 
 #home .heading-wrap {
@@ -48,6 +56,11 @@
 #home .thumb.t-6 {
 	margin-left: 0;
 }
+#home .thumb.featured,
+.ie8 #home .thumb.featured {
+	width: 100%;
+	margin-left: 0;
+}
 #home .thumb a {
 	display: block;
 	width: 100%;
@@ -83,6 +96,7 @@
 
 @media (max-width: 979px) {
 	#home .thumb { width: 128.8px; }
+	#home .thumb.featured { width: 100%; }
 	#home .thumb .description { display: none; }
 }
 
@@ -90,6 +104,13 @@
 }
 
 @media (max-width: 767px) {
+	#nothing-for-granted .description {
+		position: static;
+		color: #000;
+		padding-left: 0;
+		padding-right: 0;
+	}
+
 	#home .heading-wrap { overflow: hidden;	}
 	#home .heading-wrap h2 { top: 0; }
 
@@ -110,6 +131,7 @@
 	#home .thumb.t-10 {
 		margin-left: 0;
 	}
+	#home .thumb.featured { width: 48.5%; margin-left: 0; }
 	#home .thumb a { overflow: visible; }
 	#home .thumb img {
 		-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
@@ -117,16 +139,8 @@
 	}
 
 	#nothing-for-granted { margin-bottom: 11px; }
-	#the-season,
-	#work-of-art {
-		width: 48%;
-	}
-	#the-season { float: left; }
-	#work-of-art { float: right; }
-	#the-season img,
-	#work-of-art img {
-		width: 100%;
-	}
+	#home .thumb.featured#the-season { float: left; }
+	#home .thumb.featured#work-of-art { float: right; }
 	#past-issues { margin-top: 11px; }
 }
 
@@ -147,9 +161,6 @@
 		margin-left: 3%;
 	}
 
-	#the-season,
-	#work-of-art {
-		width: 100%;
-		float: left
-	}
+	#home .thumb.featured {	width: 100%; float: left; }
+	#home .thumb.featured img { width: 100%; }
 }
