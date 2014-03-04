@@ -506,6 +506,10 @@ article.story .sidebar.pull-right { float: right; }
 article.story .sidebar.pull-left { float: left; margin-left: 0; margin-right: 20px; }
 article.story .sidebar-inner { padding: 30px; }
 
+article.story img.pull-left { margin-right: 15px; margin-bottom: 15px; }
+article.story img.pull-right { margin-left: 15px; margin-bottom: 15px; }
+article.story img.pull-center { margin-top: 15px; margin-bottom: 15px; }
+
 
 /**************************
  * Story - Default Template
