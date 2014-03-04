@@ -204,7 +204,7 @@ $template_font_styles_array = array(
 		'weight' => 'normal',
 		'size-desktop' => '60px',
 		'size-tablet' => '60px',
-		'texttransform' => 'uppercase',
+		//'texttransform' => 'uppercase',
 	),
 );
 define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
