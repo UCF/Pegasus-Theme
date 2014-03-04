@@ -215,6 +215,9 @@ addBodyClasses = function($) {
 }
 
 var togglePulldown = function($) {
+	// Unset tabbability on links inside a hidden pulldown.
+	$('#pulldown a').attr('tabindex', '-1');
+
 	$('.pulldown-toggle').on('click', function(e) {
 		e.preventDefault();
 
@@ -227,29 +230,48 @@ var togglePulldown = function($) {
 			.find('img.lazy')
 				.trigger('triggerLazy');
 
+		// Make sure that any previously set tabindex values are reset to -1.
+		pulldownWrap
+			.find('a')
+				.attr('tabindex', '-1');
+
 		// If another pulldown is active while a different pulldown is activated,
 		// deactivate any existing active pulldowns and activate the new toggle
 		// and pulldown.
 		if ($('#pulldown.active').length > 0 && !pulldownContainer.hasClass('active')) {
 			$('.pulldown-container.active, .pulldown-toggle.active')
 				.removeClass('active');
-			pulldownContainer.addClass('active');
+			pulldownContainer
+				.addClass('active')
+				.find('a')
+					.attr('tabindex', '0');
 			toggle.addClass('active');
 		}
 		// If the activated pulldown is not active, activate it and its toggle.
 		// Else, deactivate it.
 		// When mobile navigation is active, disable this functionality.
 		else if (!$('#nav-mobile a').hasClass('active')) {
-			$('#pulldown').toggleClass('active');
+			pulldownWrap.toggleClass('active');
 			pulldownContainer.toggleClass('active');
+
+			if (pulldownContainer.hasClass('active')) {
+				pulldownContainer.find('a').attr('tabindex', '0');
+			}
+			else {
+				pulldownContainer.find('a').attr('tabindex', '-1');
+			}
+			
 			toggle.toggleClass('active');
 		}
 
-		// If toggle is a close button, always remove .active classes.
+		// If toggle is a close button, always remove .active classes and tabbability.
 		if (toggle.hasClass('close')) {
 			$('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
 				.andSelf()
 				.removeClass('active');
+			pulldownWrap
+				.find('a')
+					.attr('tabindex', '-1');
 		}
 
 		// Check newly-assigned .active classes on #pulldown.
