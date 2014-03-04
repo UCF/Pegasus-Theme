@@ -146,16 +146,23 @@
 	/* General - nav, nav ul */
 	#header-navigation ul { text-align: center; }
 
-	/* General - nav list items */
-	#header-navigation li { display: inline-block; }
-
 	/* Peg logo, Mobile nav, Issue, Archives list items */
+	#header-navigation .header-logo {
+		position: absolute;
+		z-index: 2;
+		top: 12.5px;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
 	li#nav-about,
 	li#nav-issue,
 	li#nav-archives,
 	#header-navigation .header-logo.mobile-nav-visible {
 		display: none;
 	}
+
+	li#nav-mobile { display: block; }
 	#header-navigation ul.mobile-nav-visible li#nav-issue,
 	#header-navigation ul.mobile-nav-visible li#nav-archives {
 		display: inline-block;

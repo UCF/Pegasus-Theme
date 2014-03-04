@@ -87,17 +87,17 @@
 		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
-					<?php if ($post->post_type == 'issue') { ?>
-					<h1 class="sprite header-logo">
-						<a href="<?=get_site_url()?>">Pegasus</a>
-					</h1>
-					<?php } else { ?>
-					<span class="sprite header-logo">
-						<a href="<?=get_site_url()?>">Pegasus</a>
-					</span>
-					<?php } ?>
-					
 					<nav class="span12" role="navigation">
+						<?php if ($post->post_type == 'issue') { ?>
+						<h1 class="sprite header-logo">
+							<a href="<?=get_site_url()?>">Pegasus</a>
+						</h1>
+						<?php } else { ?>
+						<span class="sprite header-logo">
+							<a href="<?=get_site_url()?>">Pegasus</a>
+						</span>
+						<?php } ?>
+
 						<ul class="navigation">
 							<li id="nav-about">
 								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
@@ -106,7 +106,7 @@
 								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"></a>
 							</li>
 							<li id="nav-issue">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"><?=$relevant_issue->post_title?></a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>">In This Issue</a>
 							</li>
 							<li id="nav-archives">
 								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
