@@ -994,14 +994,16 @@ main .search-submit {
      text-decoration: none;
  }
 
- .ss-arrow.ss-last,
- .ss-arrow.ss-last:hover {
- 	color: #333;
- }
-
  .ss-arrow:hover {
      text-decoration: none;
      color: #fff;
+ }
+
+ .ss-arrow.ss-last,
+ .ss-arrow.ss-last:hover {
+ 	color: #bebebe;
+ 	opacity: 0.2;
+ 	filter: alpha(opacity=20);
  }
 
  .ss-arrow-prev {
