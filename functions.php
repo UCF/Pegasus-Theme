@@ -411,32 +411,26 @@ function get_story_issue($story) {
  * Get the stories associated with an issue
  */
 function get_issue_stories($issue, $options=array()) {
+	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
+	# to MATCH issue POST slugs!
+	$issue_term_slug = $issue->post_name;
+
 	$default_options = array(
-		'exclude' => array(),
-		'limit'   => -1,
-		'orderby' => 'rand'
+		'post_type'   => 'story',
+		'exclude'     => array(),
+		'numberposts' => -1,
+		'orderby'     => 'rand',
+		'tax_query'   => array(
+			array(
+				'taxonomy' => 'issues',
+				'field'    => 'slug',
+				'terms'    => $issue_term_slug
+			)
+		),
 	);
 	$options = array_merge($default_options, $options);
 
-	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
-	# to MATCH issue POST slugs!
-	
-	#$issue_term_slug = implode('-', array_reverse(explode('-', $issue->post_name)));
-	$issue_term_slug = $issue->post_name;
-
-	return get_posts(array(
-		'post_type'   => 'story',
-		'numberposts' => $options['limit'],
-		'exclude'     => $options['exclude'],
-		'orderby'     => $options['orderby'],
-		'tax_query'   => array(
-				array(
-					'taxonomy' => 'issues',
-					'field'    => 'slug',
-					'terms'    => $issue_term_slug
-				)
-			)
-	));
+	return get_posts($options);
 }
 
 

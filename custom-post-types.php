@@ -510,7 +510,12 @@ class Issue extends CustomPostType {
 		$prefix = $this->options('name').'_';
 
 		$story_options = array();
-		foreach(get_issue_stories($post) as $story) {
+		$args = array(
+			'post_status' => array('publish', 'pending', 'draft'),
+			'orderby' => 'title',
+			'order' => 'ASC'
+		);
+		foreach(get_issue_stories($post, $args) as $story) {
 			$story_options[$story->post_title] = $story->ID;
 		}
 		$font_options = array();
