@@ -407,6 +407,7 @@ article.story ul {
 	margin-top: 0;
 }
 article.story p { margin-bottom: 16px; }
+article.story p:empty { display: none; }
 
 article.story .story-header-image {
 	height: 600px;
@@ -494,6 +495,12 @@ body article.story .callout-inner > div {
 	margin-left: auto;
 	margin-right: auto;
 }
+body article.story .callout-inner > * {
+	/* Try to eliminate excess spacing between callout and inner element */
+	margin-top: 0;
+	margin-bottom: 0;
+}
+body article.story .callout-inner blockquote p { margin-bottom: 0; }
 body:not(.ie8) article.story .callout-inner > div:not([class]),
 body:not(.ie8) article.story .wp-video-shortcode,
 body:not(.ie8) article.story .mejs-shim,
