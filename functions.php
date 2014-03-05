@@ -42,7 +42,7 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 	if($current_issue === False) {
 		return False;
 	} else {
-		return get_issue_stories($current_issue, array('exclude'=>$exclude, 'limit'=>$limit));
+		return get_issue_stories($current_issue, array('exclude'=>$exclude, 'numberposts'=>$limit));
 	}
 }
 
@@ -108,9 +108,9 @@ function get_navigation_stories($issue=null) {
 		$exclude[] = $post->ID;
 	}
 	
-	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'limit' => 4));
+	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'numberposts' => 4));
 	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
-	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'limit' => 6));
+	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'numberposts' => 6));
 	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
 }
 
