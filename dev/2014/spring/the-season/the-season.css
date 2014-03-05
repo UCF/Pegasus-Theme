@@ -368,7 +368,7 @@ article.story .nomargin p {
 	margin-bottom: 0;
 }
 #fiesta-bowl .bullets { font-size: 22px; color: #515151; }
-#fiesta-bowl .score { font-size: 30px; color: #868686; font-weight: bold; }
+#fiesta-bowl .score { font-size: 30px; color: #868686; font-weight: bold; margin-bottom: 20px; }
 
 
 /* Team Stats */
