@@ -52,6 +52,7 @@ article.story h2 {
 	margin-bottom: 10px;
 	text-transform: uppercase;
 }
+article.story img { margin-top: 0; margin-bottom: 0; }
 
 
 /* Story head */
