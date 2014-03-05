@@ -600,8 +600,9 @@ add_shortcode('archive-search', 'sc_archive_search');
  * Photo Essay Slider
  **/
 function sc_photo_essay_slider( $atts, $content = null ) {
-	$slug 		= @$atts['slug'];
-	$recent 	= get_posts(array(
+	$slug 		   = @$atts['slug'];
+	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : null;
+	$recent 	   = get_posts(array(
 		'numberposts' => 1,
 		'post_type' => 'photo_essay',
 		'post_status' => 'publish',
@@ -718,7 +719,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	    ?>
 
             <div class="ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?=$data_id?>">
-                <p class="caption"><?=$slide_caption[$s]; ?></p>
+                <p class="caption"<?php if ($caption_color) { ?> style="color: <?=$caption_color?>;"<?php } ?>><?=$slide_caption[$s]; ?></p>
             </div>
 
 	    <?php

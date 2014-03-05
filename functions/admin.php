@@ -66,7 +66,9 @@ function add_shortcode_interface_modal() {
 			'static-image'     => null,
 			'story-list'       => null,
 			'audio'            => null,
-			'video'            => null
+			'video'            => null,
+			'site-url'         => null,
+			'social_buttons'   => null,
 		);
 		// Dummy text to place between shortcodes that are enclosing.
 		$enclosing = array(
@@ -194,6 +196,12 @@ function add_shortcode_interface_modal() {
 							?>
 
 						</select>
+
+						<h3>Select a caption color:</h3>
+						<p class="help">
+							(Optional) The color of caption text in this slideshow. Defaults to white (#fff).
+						</p>
+						<input type="text" name="caption-color" class="shortcode-color" value="#ffffff" data-default-color="#ffffff" data-parameter="caption_color">
 					</li>
 				</ul>
 

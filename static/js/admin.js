@@ -52,7 +52,7 @@ WebcomAdmin.shortcodeInterfaceTool = function($) {
 
         var editor = cls.shortcodeEditors.find('li.shortcode-' + cls.shortcodeSelected);
         var dummyText = selected.attr('data-enclosing') || null;
-        var highlightedWysiwygText = tinymce.activeEditor.selection.getContent() || null;
+        var highlightedWysiwygText = tinymce.activeEditor ? tinymce.activeEditor.selection.getContent() : null;
         var enclosingText = null;
 
         if (dummyText && highlightedWysiwygText) {
