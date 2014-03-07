@@ -484,10 +484,28 @@ article.story blockquote.quote p:after {
 	content: "”";
 }
 
+article.story .sidebar-inner blockquote,
+article.story .sidebar-inner blockquote p {
+	font-size: 28px;
+	line-height: 38px;
+}
+article.story .sidebar-inner blockquote small {
+	font-size: 16px;
+	line-height: 22px;
+	margin-top: 14px;
+}
+article.story .sidebar-inner blockquote.quote {	padding-left: 0; }
+article.story .sidebar-inner blockquote.quote:before,
+article.story .sidebar-inner blockquote.quote p:after {
+	/* Conserve space for blockquotes in sidebars; don't use fancy quotes */
+	content: "";
+}
+
 article.story .callout { margin-top: 30px; margin-bottom: 40px; }
 article.story .callout-inner { padding: 30px 0; text-align: center; }
-article.story .callout-inner > p:empty {
-	/* kill_empty_p_tags won't work for the callout shortcode for some reason :( */
+article.story .callout-inner > p:empty,
+article.story .sidebar-inner > p:empty {
+	/* kill_empty_p_tags won't work for these shortcodes :( */
 	display: none;
 }
 body article.story .callout-inner > div {
@@ -495,12 +513,16 @@ body article.story .callout-inner > div {
 	margin-left: auto;
 	margin-right: auto;
 }
-body article.story .callout-inner > * {
-	/* Try to eliminate excess spacing between callout and inner element */
+body article.story .callout-inner > *,
+body article.story .sidebar-inner > * {
+	/* Try to eliminate excess spacing between callout/sidebar and inner element */
 	margin-top: 0;
 	margin-bottom: 0;
 }
-body article.story .callout-inner blockquote p { margin-bottom: 0; }
+article.story .callout-inner blockquote p,
+article.story .sidebar-inner blockquote p {
+ 	margin-bottom: 0;
+}
 body:not(.ie8) article.story .callout-inner > div:not([class]),
 body:not(.ie8) article.story .wp-video-shortcode,
 body:not(.ie8) article.story .mejs-shim,
