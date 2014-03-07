@@ -1,18 +1,22 @@
 <?php disallow_direct_load('default.php');?>
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
-	$header_img_id = get_post(get_post_meta($post->ID, 'story_default_header_img', TRUE))->ID;
-	$header_img = wp_get_attachment_url($header_img_id);
+	$header_img_id = get_post_meta($post->ID, 'story_default_header_img', TRUE);
+	$header_img = wp_get_attachment_url(get_post($header_img_id)->ID);
 	$header_img_background_color = get_post_meta($post->ID, 'story_default_header_img_background_color', TRUE);
 ?>
 
 <article class="story story-default">
-	<?php if ($header_img_id) { ?>
+	<?php
+	// Deleting a header image from the media library does not
+	// clear the story's meta value for the header image ID.
+	// Check both these values to make sure a header image is set.
+	if ($header_img_id && !empty($header_img)) {
+	?>
 	<div class="container-wide story-header-image" style="background-image: url('<?=$header_img?>');<?=(empty($header_img_background_color) ? '' : ' background-color: ' . $header_img_background_color . ';'); ?>">
 		<img src="<?=$header_img?>" alt="<?=$post->post_title?>" title="<?=$post->post_title?>" />
 	</div>
 	<?php } ?>
-
 	<div class="container">
 		<div class="row title-wrap">
 			<div class="span10 offset1">
