@@ -1613,15 +1613,16 @@ function _save_meta_data($post_id, $meta_box){
 
 		// Single slide meta data:
 		$single_slide_meta = PhotoEssay::get_single_slide_meta();
-
 		foreach ($single_slide_meta as $field) {
 
 			// File upload handling (for slide images):
 			if ($field['type'] == 'file') {
 
+				// NOTE: php max_file_uploads directive sets a limit to the number of slide images
+				// that can be uploaded to a slideshow.  PHP's default is 20.  Update php.ini to
+				// modify this limit.
 				$files = $_FILES[$field['id']];
 				$file_uploaded = @!empty($files);
-
 				$update_metadata_list = array();
 
 				$new_slide_list = array();
