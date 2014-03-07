@@ -530,7 +530,7 @@ class Issue extends CustomPostType {
 				'id'      => $prefix.'cover_story',
 				'type'    => 'select',
 				'options' => $story_options
-			),/*
+			),
 			array(
 				'name' => 'Issue Template',
 				'desc' => 'The type of template to use for this issue.  Issues <em>not</em> set to "Custom" use a premade template and can be modified
@@ -542,7 +542,7 @@ class Issue extends CustomPostType {
 					'Custom (requires custom CSS/JS)' => 'custom',
 				)
 			),
-
+/*
 			array(
 				'name' => '<strong>Default Template:</strong> Header Font Family',
 				'desc' => 'The font family to use for primary title lines in this issue cover.',
