@@ -22,7 +22,7 @@
 	/**************************
 	 * Stories - General
 	 **************************/
-	article.story .story-header-image { height: 490px; max-width: 980px; margin-bottom: 60px; }
+	article.story .story-header-image { height: 490px; max-width: 980px; }
 
 	article.story blockquote.quote { padding-left: 42px; }
 	article.story blockquote.quote:before {	font-size: 95px; line-height: 92px;	}
