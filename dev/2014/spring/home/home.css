@@ -53,7 +53,8 @@ p:empty { display: none; }
 }
 .ie8 #home .thumb { width: 168px; }
 #home .thumb.t-1, 
-#home .thumb.t-6 {
+#home .thumb.t-6,
+#home .thumb.t-11 {
 	margin-left: 0;
 }
 #home .thumb.featured,
@@ -161,14 +162,16 @@ p:empty { display: none; }
 	#home .thumb.t-3,
 	#home .thumb.t-5,
 	#home .thumb.t-7,
-	#home .thumb.t-9 {
+	#home .thumb.t-9,
+	#home .thumb.t-11 {
 		margin-left: 0;
 	}
 	#home .thumb.t-2,
 	#home .thumb.t-4,
 	#home .thumb.t-6,
 	#home .thumb.t-8,
-	#home .thumb.t-10 {
+	#home .thumb.t-10,
+	#home .thumb.t-12 {
 		margin-left: 3%;
 	}
 
