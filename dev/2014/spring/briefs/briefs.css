@@ -134,6 +134,9 @@ ol.ranks li {
 }
 
 @media (max-width: 979px) and (min-width: 768px) {
+    article.story-default .social-wrap {
+        width: 642px;
+    }
     .social-wrap {
         margin-left: 82px;
         padding-top: 20px;
