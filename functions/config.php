@@ -176,7 +176,7 @@ $template_font_styles_array = array(
 	),
 	'Montserrat Regular' => array(
 		'url' => $template_fonts_array['Montserrat'],
-		'family' => '"MontserratRegular", serif',
+		'family' => '"MontserratRegular", sans-serif',
 		'weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
@@ -184,7 +184,7 @@ $template_font_styles_array = array(
 	),
 	'Montserrat Bold' => array(
 		'url' => $template_fonts_array['Montserrat'],
-		'family' => '"MontserratBold", serif',
+		'family' => '"MontserratBold", sans-serif',
 		'weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
@@ -200,7 +200,7 @@ $template_font_styles_array = array(
 	),
 	'Open Sans Condensed Bold' => array(
 		'url' => $template_fonts_array['Open Sans Condensed'],
-		'family' => '"OpenSansCondensedBold", serif',
+		'family' => '"OpenSansCondensedBold", sans-serif',
 		'weight' => 'normal',
 		'size-desktop' => '60px',
 		'size-tablet' => '60px',
