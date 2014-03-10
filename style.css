@@ -494,7 +494,7 @@ article.story .sidebar-inner blockquote small {
 	line-height: 22px;
 	margin-top: 14px;
 }
-article.story .sidebar-inner blockquote.quote {	padding-left: 0; }
+article.story .sidebar-inner blockquote.quote { padding-left: 0; }
 article.story .sidebar-inner blockquote.quote:before,
 article.story .sidebar-inner blockquote.quote p:after {
 	/* Conserve space for blockquotes in sidebars; don't use fancy quotes */
