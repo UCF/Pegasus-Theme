@@ -151,7 +151,8 @@ p:empty { display: none; }
 	#home .thumb.t-1,
 	#home .thumb.t-4,
 	#home .thumb.t-7,
-	#home .thumb.t-10 {
+	#home .thumb.t-10,
+	#home .thumb.t-13 {
 		margin-left: 0;
 	}
 	#home .thumb.featured { width: 48.5%; margin-left: 0; }
@@ -182,7 +183,8 @@ p:empty { display: none; }
 	#home .thumb.t-6,
 	#home .thumb.t-8,
 	#home .thumb.t-10,
-	#home .thumb.t-12 {
+	#home .thumb.t-12,
+	#home .thumb.t-14 {
 		margin-left: 3%;
 	}
 
