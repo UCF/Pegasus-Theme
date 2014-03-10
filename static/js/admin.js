@@ -348,6 +348,11 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
             field.fadeIn().insertAfter(fieldLocation, $(this).prev('li'));
 
+            // Kill cloned tinymce instance and re-initialize:
+            /*var fieldId = 'ss_slide_caption['+ (highestNum + 1) +']';
+            $('div[id^="wp-ss_slide_caption["]', field).replaceWith('<textarea id="'+ fieldId +'" />');
+            tinymce.EditorManager.execCommand('mceAddControl', false, fieldId);*/
+
             $('.slide-handle-header', field).text('');
             WebcomAdmin.sliderHeaderTitleAction($, field);
 
