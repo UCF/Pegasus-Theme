@@ -74,7 +74,7 @@
 	 * Footer
 	 **************************/
 
-	#footer-navigation a { font-size: 15px; }
+	#footer-navigation a { font-size: 14px; }
 
 	#footer-navigation .footer-logo,
 	#footer-navigation .footer-ipad-app { padding-bottom: 30px; }
@@ -193,7 +193,7 @@
 
 	article.story h1,
 	article.story h2 {
-		overflow: hidden;
+		overflow: visible;
 	}
 	article.story h2 { font-size: 30px; line-height: 30px; margin-bottom: 10px; }
 	article.story p { margin-bottom: 20px; }

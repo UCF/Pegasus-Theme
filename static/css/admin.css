@@ -101,17 +101,6 @@ a.repeatable-remove { margin: 0 0 15px 10px; }
 #slider-slides .handlediv, #slider-slides > h3.hndle { display: none;}
 
 
-select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-select[id*="_default_font"] option[value="Aleo Light"] { font-family: "AleoLight", serif; }
-select[id*="_default_font"] option[value="Aleo Regular"] { font-family: "AleoRegular", serif; }
-select[id*="_default_font"] option[value="Aleo Bold"] { font-family: "AleoBold", serif; }
-select[id*="_default_font"] option[value="Georgia Regular"] { font-family: "Georgia", serif; }
-select[id*="_default_font"] option[value="Montserrat Regular"] { font-family: "MontserratRegular", sans-serif; }
-select[id*="_default_font"] option[value="Montserrat Bold"] { font-family: "MontserratBold", sans-serif; }
-select[id*="_default_font"] option[value="Arial Black"] { font-family: "Arial Black", sans-serif; }
-select[id*="_default_font"] option[value="Open Sans Condensed Bold"] { font-family: "OpenSansCondensedBold", sans-serif; text-transform: uppercase; }
-select[id*="_default_font"] option[value="Helvetica Neue Bold"] { font-family: "Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif; font-weight: bold; }
-
 /* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
 #content_blockquote { display: none; }
 

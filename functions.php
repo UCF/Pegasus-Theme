@@ -499,7 +499,7 @@ function output_header_markup($post) {
 				}
 			// Default template stories
 			} else {
-				$font = get_template_title_styles($post);
+				$font = get_template_heading_styles($post);
 
 				if ($font['url']) {
 					$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
@@ -516,16 +516,19 @@ function output_header_markup($post) {
 						font-family: '.$font['family'].';
 						font-weight: '.$font['weight'].';
 						text-transform: '.$font['texttransform'].';
+						font-style: '.$font['fontstyle'].';
 					}
 					main article .lead::first-letter {
 						font-family: '.$font['family'].';
 						font-weight: '.$font['weight'].';
 						text-transform: '.$font['texttransform'].';
+						font-style: '.$font['fontstyle'].';
 					}
 					main article .lead:first-letter {
 						font-family: '.$font['family'].';
 						font-weight: '.$font['weight'].';
 						text-transform: '.$font['texttransform'].';
+						font-style: '.$font['fontstyle'].';
 					}
 					main article h1,
 					main article h2,
@@ -562,7 +565,7 @@ function output_header_markup($post) {
 
 		// Issue font declarations (custom templates)
 		if ($post->post_type == 'issue' && !uses_custom_template($post)) {
-			$font = get_template_title_styles($post);
+			$font = get_template_heading_styles($post);
 
 			if ($font['url']) {
 				$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
@@ -715,6 +718,18 @@ function uses_custom_template($post) {
 
 
 /**
+ * Returns a full set of heading styles for the specified font.
+ *
+ * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
+ **/
+function get_heading_styles($font_name) {
+	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
+	return array_merge($template_fonts_base, $template_fonts[$font_name]);
+}
+
+
+/**
  * Get a non-custom story or issue's title font styling specs, based on 
  * the story/issue's selected title font family and color.
  *
@@ -722,7 +737,7 @@ function uses_custom_template($post) {
  *
  * @return array
  **/
-function get_template_title_styles($post) {
+function get_template_heading_styles($post) {
 	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
 	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
 

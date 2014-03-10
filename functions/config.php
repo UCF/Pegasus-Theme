@@ -125,6 +125,7 @@ $template_font_styles_base_array = array(
 	'size-mobile' => '40px',
 	'textalign' => 'left',
 	'texttransform' => 'none',
+	'fontstyle' => 'normal'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
 
@@ -138,7 +139,8 @@ define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array))
  * as admin stylesheets.
  *
  * If a font in $template_font_styles_array is web-safe and has no reference file,
- * leave the 'url' option as null.
+ * or if the font is loaded in via the Cloud.Typography stylesheet, leave the 'url'
+ * option as null.
  **/
 $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
@@ -146,6 +148,66 @@ $template_fonts_array = array(
 	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
 );
 $template_font_styles_array = array(
+	'Archer Medium' => array(
+		'url' => null,
+		'family' => '"Archer A", "Archer B", serif',
+		'weight' => '600',
+	),
+	'Archer Medium Italic' => array(
+		'url' => null,
+		'family' => '"Archer A", "Archer B", serif',
+		'weight' => '600',
+		'fontstyle' => 'italic',
+	),
+	'Archer Bold' => array(
+		'url' => null,
+		'family' => '"Archer A", "Archer B", serif',
+		'weight' => '800',
+	),
+	'Archer Bold Italic' => array(
+		'url' => null,
+		'family' => '"Archer A", "Archer B", serif',
+		'weight' => '800',
+		'fontstyle' => 'italic',
+	),
+	'Chronicle Display Roman' => array(
+		'url' => null,
+		'family' => '"Chronicle Display A", "Chronicle Display B", serif',
+		'weight' => '400',
+	),
+	'Chronicle Display Bold' => array(
+		'url' => null,
+		'family' => '"Chronicle Display A", "Chronicle Display B", serif',
+		'weight' => '700',
+	),
+	'Georgia Regular' => array(
+		'url' => null,
+		'family' => 'Georgia, serif',
+		'weight' => 'normal',
+		'size-desktop' => '56px',
+		'size-tablet' => '56px',
+	),
+	'Gotham Light' => array(
+		'url' => null,
+		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'weight' => '300',
+	),
+	'Gotham Book' => array(
+		'url' => null,
+		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'weight' => '400',
+	),
+	'Gotham Bold' => array(
+		'url' => null,
+		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'weight' => '700',
+	),
+	'Gotham Black' => array(
+		'url' => null,
+		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'weight' => '800',
+	),
+	/* For backward compatibility with Spring 2014 stories: */
 	'Aleo Light' => array(
 		'url' => $template_fonts_array['Aleo'],
 		'family' => '"AleoLight", serif',
@@ -166,13 +228,6 @@ $template_font_styles_array = array(
 		'weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
-	),
-	'Georgia Regular' => array(
-		'url' => null,
-		'family' => 'Georgia, serif',
-		'weight' => 'normal',
-		'size-desktop' => '56px',
-		'size-tablet' => '56px',
 	),
 	'Montserrat Regular' => array(
 		'url' => $template_fonts_array['Montserrat'],
@@ -418,7 +473,8 @@ Config::$links = array(
 
 Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
-	//array('name' => 'font-cloudtypography', 'src' => '//cloud.typography.com/730568/638384/css/fonts.css'),
+	array('name' => 'font-cloudtypography', 'src' => '//cloud.typography.com/730568/638384/css/fonts.css'),
+	array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => '//cloud.typography.com/730568/638384/css/fonts.css'),
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),

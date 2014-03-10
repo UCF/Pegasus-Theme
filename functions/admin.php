@@ -7,6 +7,7 @@ if (is_login()){
 if (is_admin()){
 	add_action('admin_menu', 'create_utility_pages');
 	add_action('admin_init', 'init_theme_options');
+	add_action('admin_head', 'custom_font_styles');
 }
 
 // Used to import the color picker for the shortcode_callout_html
@@ -329,7 +330,32 @@ function editor_format_options($row){
 }
 add_filter('mce_buttons_2', 'editor_format_options');
 
+
 /**
  * Remove paragraph tag from excerpts
  **/
 remove_filter('the_excerpt', 'wpautop');
+
+
+/**
+ * Dynamically set up font styles for Heading Font Family dropdowns
+ **/
+function custom_font_styles() {
+	$html = '<style type="text/css">';
+	$html .= 'select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+			';
+	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
+		$styles = get_heading_styles($font);
+		$html .= 'select[id*="_default_font"] option[value="'.$font.'"] { ';
+			$html .= 'font-family: '.$styles['family'].'; ';
+			$html .= 'color: '.$styles['color'].'; ';
+			$html .= 'font-weight: '.$styles['weight'].'; ';
+			$html .= 'text-transform: '.$styles['texttransform'].';';
+			$html .= 'font-style: '.$styles['fontstyle'].';';
+		$html .= ' }
+		';
+	}
+	$html .= '</style>';
+
+	print $html;
+}
