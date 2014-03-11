@@ -159,6 +159,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	overflow-x: scroll;
 	white-space: nowrap;
 }
+
 .story-list article {
 	display: inline-block;
 	vertical-align: top;
@@ -167,12 +168,24 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	white-space: normal;
 	margin-bottom: 25px;
 }
+.pulldown-stories .story-list article { width: 180px; }
 .story-list article.last-child { margin-right: 80px; } /* Assign class via jquery; :last-child doesn't work in ie8; */
-.story-list article img,
-.story-list-grid article img {
+.story-list article img {
+	/* Fixed width/height required for lazyload */
 	width: 140px;
 	height: 146px;
 }
+.pulldown-stories .story-list article img {
+	/* Fixed width/height required for lazyload */
+	width: 180px;
+	height: 188px;
+}
+.story-list-grid article img {
+	/* Fixed width/height required for lazyload */
+	width: 80px;
+	height: 84px;
+}
+
 .story-list article .story-title,
 .story-list article .subtitle {
 	display: block;
@@ -183,10 +196,10 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 .story-list article .story-title,
 .story-list-grid article .story-title {
 	font-family: "AleoBold", serif;
-	font-size: 17px;
+	font-size: 16px;
 	line-height: 18px;
 	font-weight: normal;
-	color: #d7a900;
+	color: #333;
 	padding-top: 15px;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;

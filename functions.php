@@ -142,14 +142,16 @@ function display_story_list($issue, $class=null) {
 						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
 						<?php } ?>
 						<h3 class="story-title"><?=$title?></h3>
+						<?php if (!empty($subtitle)) { ?>
 						<span class="subtitle"><?=$subtitle?></span>
+						<?php } ?>
 					</a>
 				</article>
 			<?php
 			}
 			?>
 			</div>
-		<?php	
+		<?php
 		}
 		else {
 		?>
