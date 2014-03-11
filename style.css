@@ -168,6 +168,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	white-space: normal;
 	margin-bottom: 25px;
 }
+.story-list-grid article { margin-bottom: 20px; }
 .pulldown-stories .story-list article { width: 180px; }
 .story-list article.last-child { margin-right: 80px; } /* Assign class via jquery; :last-child doesn't work in ie8; */
 .story-list article img {
@@ -193,6 +194,10 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	float: left;
 	clear: both;
 }
+.story-list-grid article .story-title,
+.story-list-grid article .subtitle {
+	padding-left: 100px;
+}
 .story-list article .story-title,
 .story-list-grid article .story-title {
 	font-family: "AleoBold", serif;
@@ -204,6 +209,7 @@ p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+.story-list-grid article .story-title { padding-top: 0; }
 .story-list article:hover .story-title,
 .story-list article:active .story-title,
 .story-list-grid article:hover .story-title,
