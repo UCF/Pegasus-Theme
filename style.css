@@ -1064,6 +1064,7 @@ main .search-submit {
 
  .ss-caption > p {
      opacity: 0;
+     filter: alpha(opacity=0);
      transition: opacity 0.3s ease-in-out;
      -moz-transition: opacity 0.3s ease-in-out;
      -webkit-transition: opacity 0.3s ease-in-out;
@@ -1072,6 +1073,7 @@ main .search-submit {
 
  .ss-caption.ss-current > p {
      opacity: 1;
+     filter: alpha(opacity=100);
  }
 
 
