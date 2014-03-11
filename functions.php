@@ -469,7 +469,8 @@ function output_header_markup($post) {
 	$output = '';
 
 	// Page stylesheet
-	if($post->post_type == 'page' && ($page_stylesheet_url = Page::get_stylesheet_url($post)) !== False) {
+	$page_stylesheet_url = Page::get_stylesheet_url($post);
+	if($post->post_type == 'page' && !empty($page_stylesheet_url)) {
 		$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
 	}
 
@@ -610,10 +611,12 @@ function output_header_markup($post) {
 
 		// DEPRECATED:  Issue-wide stylesheet (on home/issue cover page)
 		if( (is_home() || $post->post_type == 'issue') && (is_fall_2013_or_older($post)) ) {
-			if ( ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($post)) !== False ) {
+			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($post);
+			$dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE);
+			if ( !empty($issue_stylesheet_url) ) {
 				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
 			}
-			elseif ( DEV_MODE == true && ($dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE)) !== NULL ) {
+			elseif ( DEV_MODE == true && !empty($dev_issue_directory) ) {
 				$dev_issue_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
 				if (curl_exists($dev_issue_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_issue_stylesheet_url.'" type="text/css" media="all" />';
@@ -622,13 +625,15 @@ function output_header_markup($post) {
 		}
 		// DEPRECATED:  Issue-wide stylesheet (on story)
 		if( $post->post_type == 'story' && is_fall_2013_or_older($post) ) {
-			if ( ($story_issue = get_story_issue($post)) !== False && ($issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue)) !== False ) {
+			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue);
+			$dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE);
+			if ( ($story_issue = get_story_issue($post)) !== False && !empty($issue_stylesheet_url)) {
 				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif (
 				($story_issue = get_story_issue($post)) !== False &&
 				DEV_MODE == true &&
-				($dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE)) !== False)
+				!empty($dev_issue_directory))
 				{
 					$dev_issue_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.css';
 					if (curl_exists($dev_issue_home_stylesheet_url)) {
@@ -639,10 +644,12 @@ function output_header_markup($post) {
 
 		// Custom issue page-specific stylesheet
 		if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
-			if (( $home_stylesheet_url = Issue::get_home_stylesheet_url($post)) !== False) {
+			$home_stylesheet_url = Issue::get_home_stylesheet_url($post);
+			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
+			if (!empty($home_stylesheet_url)) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
-			elseif ( DEV_MODE == true && ($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== NULL ) {
+			elseif ( DEV_MODE == true && !empty($dev_issue_home_directory) ) {
 				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
@@ -652,10 +659,12 @@ function output_header_markup($post) {
 
 		// Custom story stylesheet
 		if( $post->post_type == 'story' && uses_custom_template($post) ) {
-			if ( ($story_stylesheet_url = Story::get_stylesheet_url($post)) !== False ) {
+			$story_stylesheet_url = Story::get_stylesheet_url($post);
+			$dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
+			if ( !empty($story_stylesheet_url) ) {
 				$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
 			}
-			elseif ( (DEV_MODE == true) && ($dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE)) !== NULL ) {
+			elseif ( (DEV_MODE == true) && !empty($dev_issue_directory) ) {
 				$dev_story_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
 				if (curl_exists($dev_story_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_story_stylesheet_url.'" type="text/css" media="all" />';
