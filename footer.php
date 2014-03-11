@@ -123,7 +123,9 @@
 							<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
 							<?php } ?>
 							<h3 class="story-title"><?=$title?></h3>
+							<?php if (!empty($subtitle)) { ?>
 							<span class="subtitle"><?=$subtitle?></span>
+							<?php } ?>
 						</a>
 					</article>
 				<?php
