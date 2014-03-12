@@ -150,34 +150,34 @@ $template_fonts_array = array(
 $template_font_styles_array = array(
 	'Archer Medium' => array(
 		'url' => null,
-		'family' => '"Archer A", "Archer B", serif',
+		'family' => '"Archer 6r", "Archer A", "Archer B", serif',
 		'weight' => '600',
 	),
 	'Archer Medium Italic' => array(
 		'url' => null,
-		'family' => '"Archer A", "Archer B", serif',
+		'family' => '"Archer 6i", "Archer A", "Archer B", serif',
 		'weight' => '600',
 		'fontstyle' => 'italic',
 	),
 	'Archer Bold' => array(
 		'url' => null,
-		'family' => '"Archer A", "Archer B", serif',
+		'family' => '"Archer 8r", "Archer A", "Archer B", serif',
 		'weight' => '800',
 	),
 	'Archer Bold Italic' => array(
 		'url' => null,
-		'family' => '"Archer A", "Archer B", serif',
+		'family' => '"Archer 8i", "Archer A", "Archer B", serif',
 		'weight' => '800',
 		'fontstyle' => 'italic',
 	),
 	'Chronicle Display Roman' => array(
 		'url' => null,
-		'family' => '"Chronicle Display A", "Chronicle Display B", serif',
+		'family' => '"Chronicle Display 4r", "Chronicle Display A", "Chronicle Display B", serif',
 		'weight' => '400',
 	),
 	'Chronicle Display Bold' => array(
 		'url' => null,
-		'family' => '"Chronicle Display A", "Chronicle Display B", serif',
+		'family' => '"Chronicle Display 7r","Chronicle Display A", "Chronicle Display B", serif',
 		'weight' => '700',
 	),
 	'Georgia Regular' => array(
@@ -189,22 +189,22 @@ $template_font_styles_array = array(
 	),
 	'Gotham Light' => array(
 		'url' => null,
-		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'family' => '"Gotham SSm 3r", "Gotham SSm A", "Gotham SSm B", sans-serif',
 		'weight' => '300',
 	),
 	'Gotham Book' => array(
 		'url' => null,
-		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'family' => '"Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif',
 		'weight' => '400',
 	),
 	'Gotham Bold' => array(
 		'url' => null,
-		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'family' => '"Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif',
 		'weight' => '700',
 	),
 	'Gotham Black' => array(
 		'url' => null,
-		'family' => '"Gotham SSm A", "Gotham SSm B", sans-serif',
+		'family' => '"Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif',
 		'weight' => '800',
 	),
 	/* For backward compatibility with Spring 2014 stories: */

@@ -333,7 +333,7 @@ li#nav-mobile {
 li#nav-mobile a,
 li#nav-issue a,
 li#nav-archives a {
-	font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 	font-size: 14px;
 	line-height: 14px;
 	color: #222;
@@ -341,6 +341,11 @@ li#nav-archives a {
 	text-decoration: none;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.ie8 li#nav-mobile a,
+.ie8 li#nav-issue a,
+.ie8 li#nav-archives a {
+	font-weight: normal;
 }
 li#nav-mobile a {
 	font-size: 18px;
@@ -460,6 +465,14 @@ article.story h3 { font-size: 26px; line-height: 26px; margin-bottom: 6px; }
 article.story h4 { font-size: 20px; line-height: 20px; margin-bottom: 6px; }
 article.story h5 { font-size: 18px; line-height: 18px; }
 article.story h6 { font-size: 16px; line-height: 16px; }
+.ie8 article.story h1,
+.ie8 article.story h2,
+.ie8 article.story h3,
+.ie8 article.story h4,
+.ie8 article.story h5,
+.ie8 article.story h6 {
+	font-weight: normal !important;
+}
 
 article.story .description { font-size: 22px; line-height: 32px; font-style: italic; white-space: normal;}
 article.story .lead { font-size: 20px; line-height: 28px; margin-bottom: 30px; }
@@ -818,7 +831,7 @@ main .search-submit {
 	-moz-osx-font-smoothing: grayscale;
 }
 #archives h2 {
-	font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 	font-size: 36px;
 	font-weight: 700;
 	line-height: 36px;
@@ -827,7 +840,7 @@ main .search-submit {
 #archives h3,
 #archives .post-type-search-results ul:before,
 #archives .results-story-issue {
-	font-family: 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+	font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
 	line-height: 14px;
