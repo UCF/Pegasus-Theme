@@ -857,65 +857,10 @@ function display_issue($post) {
 
 
 /**
- * Replace default WordPress markup for image insertion with
- * markup to generate a [photo] shortcode.
- **/
-function editor_insert_image_as_shortcode($html, $id, $caption, $title, $align, $url, $size, $alt) {
-    $s_id = $id;
-    $s_title = '';
-    $s_alt = $alt;
-    $s_position = null;
-    $s_width = '100%';
-    $s_caption = '';
-
-    $attachment = get_post($id);
-
-    // Get usable image position
-    if ($align && $align !== 'none') {
-    	$s_position = $align;
-    }
-    // Get usable image width.
-    // Assume that if a user sets an image alignment, they don't
-    // want the image to be blown up to 100% width
-    $attachment_src = wp_get_attachment_image_src($id, $size);
-    if ($s_position) {
-    	$s_width = $attachment_src[1].'px';
-    }
-
-    // Get usable image title (passed $title doesn't always work here?)
-    $s_title = $attachment->post_title;
-    // Get usable image caption
-    $s_caption = $attachment->post_excerpt;
-
-    // Create markup
-    $html = '[photo id="'.$s_id.'" title="'.$s_title.'" alt="'.$s_alt.'" ';
-    if ($s_position) {
-    	$html .= 'position="'.$s_position.'" ';
-    }
-    $html .= 'width="'.$s_width.'"]'.$s_caption.'[/photo]';
-
-    return $html;
-}
-add_filter('image_send_to_editor', 'editor_insert_image_as_shortcode', 10, 8);
-
-
-/**
  * Prevent WordPress from wrapping images with captions with a
  * [caption] shortcode.
  **/
 add_filter('disable_captions', create_function('$a', 'return true;'));
-
-
-/**
- * Set some default values when inserting photos in the Media Uploader.
- * Particularly, prevents images being linked to themselves by default.
- **/
-function editor_default_photo_values() {
-	update_option('image_default_align', 'none');
-	update_option('image_default_link_type', 'none');
-	update_option('image_default_size', 'full');
-}
-add_action('after_setup_theme', 'editor_default_photo_values');
 
 
 /**
@@ -939,25 +884,5 @@ function set_template_for_fall_2013_or_earlier($post) {
 }
 add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
-
-/**
- * Force the WYSIWYG editor's kitchen sink to always be open.
- **/
-function unhide_kitchensink( $args ) {
-	$args['wordpress_adv_hidden'] = false;
-	return $args;
-}
-add_filter('tiny_mce_before_init', 'unhide_kitchensink');
-
-
-/**
- * Remove Tools admin menu item for everybody but admins.
- **/
-function remove_menus(){
-	if (!current_user_can('manage_sites')) {
-		remove_menu_page('tools.php');
-	}
-}
-add_action('admin_menu', 'remove_menus');
 
 ?>
