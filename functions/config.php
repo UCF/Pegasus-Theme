@@ -344,7 +344,6 @@ Config::$theme_settings = array(
 			'value'       => $theme_options['cb_domain'],
 		)),
 	),
-
 	'Search' => array(
 		new RadioField(array(
 			'name'        => 'Enable Google Search',
@@ -463,6 +462,18 @@ Config::$theme_settings = array(
 Orlando, FL 32816',
 		)),
 	),
+	'Web Fonts' => array(
+		new TextField(array(
+			'name'        => 'Cloud.Typography CSS Key URL',
+			'id'          => THEME_OPTIONS_NAME.'[cloud_font_key]',
+			'description' => 'The CSS Key provided by Cloud.Typography for this project.  <strong>Only include the value in the "href" portion of the link
+								tag provided; e.g. "//cloud.typography.com/000000/000000/css/fonts.css".</strong><br/><br/>NOTE: Make sure the Cloud.Typography 
+								project has been configured to deliver fonts to this site\'s domain.<br/>
+								See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
+			'default'     => '//cloud.typography.com/730568/671204/css/fonts.css', /* CSS Key relative to PROD project */
+			'value'       => $theme_options['cloud_font_key'],
+		))
+	),
 );
 
 Config::$links = array(
@@ -473,8 +484,6 @@ Config::$links = array(
 
 Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
-	array('name' => 'font-cloudtypography', 'src' => '//cloud.typography.com/730568/638384/css/fonts.css'),
-	array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => '//cloud.typography.com/730568/638384/css/fonts.css'),
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
@@ -488,7 +497,10 @@ foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
 	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));
 }
-
+if (!empty($theme_options['cloud_font_key'])) {
+	array_push(Config::$styles, array('name' => 'font-cloudtypography', 'src' => $theme_options['cloud_font_key']));
+	array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
+}
 
 Config::$scripts = array(
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
