@@ -308,7 +308,7 @@ function theme_options_sanitize($input){
  **/
 function editor_styles($css){
 	$css   = array_map('trim', explode(',', $css));
-	$css[] = THEME_CSS_URL.'/formatting.css';
+	$css[] = THEME_CSS_URL.'/formatting.php';
 	$css   = implode(',', $css);
 	return $css;
 }
@@ -339,21 +339,22 @@ remove_filter('the_excerpt', 'wpautop');
 
 /**
  * Dynamically set up font styles for Heading Font Family dropdowns
+ * and TinyMCE font selection dropdown
  **/
 function custom_font_styles() {
 	$html = '<style type="text/css">';
-	$html .= 'select[id*="_default_font"] option { font-size: 20px; padding: 5px 0; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+	$html .= 'select[id*="_default_font"] option,
+			#menu_content_content_fontselect_menu_tbl .mceText:not([title="Font family"]),
+			#menu_content_content_styleselect_menu_tbl .mceText:not([title="Styles"]) {
+			 	font-size: 20px;
+			 	padding: 5px 0;
+			 	-webkit-font-smoothing: antialiased;
+			 	-moz-osx-font-smoothing: grayscale;
+			 }
 			';
 	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
-		$styles = get_heading_styles($font);
-		$html .= 'select[id*="_default_font"] option[value="'.$font.'"] { ';
-			$html .= 'font-family: '.$styles['family'].'; ';
-			$html .= 'color: '.$styles['color'].'; ';
-			$html .= 'font-weight: '.$styles['weight'].'; ';
-			$html .= 'text-transform: '.$styles['texttransform'].';';
-			$html .= 'font-style: '.$styles['fontstyle'].';';
-		$html .= ' }
-		';
+		$selector = 'select[id*="_default_font"] option[value="'.$font.'"],	#menu_content_content_fontselect_menu_tbl .mceText[title="'.$font.'"], #menu_content_content_styleselect_menu_tbl .mceText[title="'.$font.'"]';
+		$html .= get_webfont_css_styles($font, $selector, null, true);
 	}
 	$html .= '</style>';
 
@@ -439,11 +440,59 @@ add_action('admin_menu', 'remove_menus');
 
 
 /**
- * Add custom font, font size dropdowns to TinyMCE editor.
+ * Add font size dropdown to TinyMCE editor; move it
+ * and style select dropdown close together.
  **/
 function add_options_to_tinymce($buttons) {
-	array_push($buttons, 'fontselect');
+	//array_push($buttons, 'fontselect');
 	array_push($buttons, 'fontsizeselect');
+	array_unshift($buttons, 'fontsizeselect');
 	return $buttons;
 }
-add_filter('mce_buttons', 'add_options_to_tinymce');
+add_filter('mce_buttons_2', 'add_options_to_tinymce');
+
+
+/**
+ * Add webfont options and their stylesheets to TinyMCE editor.
+ **/
+function add_webfonts_to_tinymce($settings) {
+	$fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$cloud_font_key = get_theme_option('cloud_font_key');
+	//$theme_advanced_fonts = '';
+	$style_formats = array();
+	$content_css = array();
+
+	foreach ($fonts as $font=>$styles) {
+		$styles = get_heading_styles($font);
+/*
+		$str = $font.'='.str_replace('"', "'", $styles['font-family']).';';
+		$theme_advanced_fonts .= $str;
+*/
+
+		$style_formats[] = array(
+			'title' => $font,
+			'inline' => 'span',
+			'classes' => sanitize_title($font)
+		);
+
+		if ($styles['url'] !== null) {
+			$content_css[] = $styles['url'];
+		}
+	}
+
+	if (!empty($cloud_font_key)) {
+		$content_css[] .= $cloud_font_key;
+	}
+	$content_css = implode(',', array_unique($content_css));
+
+	//$settings['theme_advanced_fonts'] = $theme_advanced_fonts;
+	$settings['content_css'] = $settings['content_css'].','.$content_css;
+	$settings['style_formats'] = json_encode($style_formats);
+	$settings['theme_advanced_buttons2_add_before'] = 'styleselect';
+	$settings['theme_advanced_font_sizes'] = '10px,11px,12px,13px,14px,15px,16px,17px,18px,19px,20px,21px,22px,23px,24px,25px,26px,27px,28px,29px,30px,32px,36px,42px,48px,52px,58px,62px';
+
+	return $settings;
+}
+add_filter('tiny_mce_before_init', 'add_webfonts_to_tinymce' );
+
+?>

@@ -104,6 +104,9 @@ a.repeatable-remove { margin: 0 0 15px 10px; }
 /* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
 #content_blockquote { display: none; }
 
+/* Fix font selector dropdown line heights */
+#menu_content_content_fontsizeselect_menu_tbl .mceText { line-height: 1em; }
+
 /* Shortcode modal */
 .shortcode-section {
     display: none;

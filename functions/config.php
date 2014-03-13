@@ -89,43 +89,48 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 
 
 /**
- * A base fallback set of font styles for default template titles.
+ * A base fallback set of font styles for default Story/Issue template headings and
+ * custom styling in the WYSIWYG editor.
  *
  * These options will be overridden per-font, as defined in
- * $template_font_styles_array, then by per-post meta values, if available.
+ * $template_font_styles_array, then by per-post meta values (for headings), if 
+ * available.
  *
- * See output_header_markup() in functions.php for usage.
+ * See output_header_markup() and get_webfont_css_styles() in functions.php for 
+ * usage.
  *
  * Options:
- * - url:			Reference to @font-face import css file for the font family.
- * - family:		'font-family' property for default Story template h1-h6 tags and dropcaps, and
- *					default Issue cover's h2-h3 tags.
- * - color:			'color' property for default Story template h1-h6, blockquote, and dropcaps, and
- *					default Issue cover's h2 tag.
- * - weight:		'font-weight' property for default Story template h1-h6 tags and default Issue
- *					cover's h2-h3 tags.
- * - size-desktop:	'font-size' property of default Story template h1 and default Issue cover h2 at
- *					980px+ screen width.
- * - size-tablet:	'font-size' property of default Story template h1 and default Issue cover h2 at
- *					979-768px screen width.
- * - size-mobile:	'font-size' property of default Story template h1 and default Issue cover h2 at
- *					<768px screen width.
- * - textalign:		'text-align' property of Issue cover h2.
- * - texttransform:	'text-transform' property of default Story template h1-h6 tags and default Issue
- *					cover's h2-h3 tags.
+ * - url:            Reference to @font-face import css file for the font family.
+ * - font-family:    Used on all Story template headings, Story template dropcaps, Issue template
+ *                     h2-h3's, and all tags with class '.font-name'.
+ * - font-weight:    Used on all Story template headings, Story template dropcaps, Issue template
+ *                     h2-h3's, and all tags with class '.font-name'.
+ * - text-align:     Used on Issue template h2's.
+ * - text-transform: Used on all Story template headings, Story template dropcaps, Issue template
+ *                     h2-h3's, and all tags with class '.font-name'.
+ * - font-style:     Used on all Story template headings, Story template dropcaps, Issue template
+ *                     h2-h3's, and all tags with class '.font-name'.
+ * - letter-spacing: 'letter-spacing' property of default Story template h1-h6 tags and dropcaps,
+ *                     default Issue cover's h2-h3 tags, and tags with class '.font-name'.
+ * - size-desktop:   'font-size' property of default Story template h1 and default Issue cover h2 at
+ *                     980px+ screen width.
+ * - size-tablet:    'font-size' property of default Story template h1 and default Issue cover h2 at
+ *                     979-768px screen width.
+ * - size-mobile:    'font-size' property of default Story template h1 and default Issue cover h2 at
+ *                     <768px screen width.
  *
  **/
 $template_font_styles_base_array = array(
 	'url' => null,
-	'family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
-	'color' => '#222',
-	'weight' => 'bold',
+	'font-family' => '"Helvetica Neue", "Helvetica-Neue", Helvetica, sans-serif',
+	'font-weight' => 'bold',
+	'text-align' => 'left',
+	'text-transform' => 'none',
+	'font-style' => 'normal',
+	'letter-spacing' => 'normal',
 	'size-desktop' => '60px',
 	'size-tablet' => '60px',
 	'size-mobile' => '40px',
-	'textalign' => 'left',
-	'texttransform' => 'none',
-	'fontstyle' => 'normal'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
 
@@ -150,116 +155,120 @@ $template_fonts_array = array(
 $template_font_styles_array = array(
 	'Archer Medium' => array(
 		'url' => null,
-		'family' => '"Archer 6r", "Archer A", "Archer B", serif',
-		'weight' => '600',
+		'font-family' => '"Archer 6r", "Archer A", "Archer B", serif',
+		'font-weight' => '600',
 	),
 	'Archer Medium Italic' => array(
 		'url' => null,
-		'family' => '"Archer 6i", "Archer A", "Archer B", serif',
-		'weight' => '600',
-		'fontstyle' => 'italic',
+		'font-family' => '"Archer 6i", "Archer A", "Archer B", serif',
+		'font-weight' => '600',
+		'font-style' => 'italic',
 	),
 	'Archer Bold' => array(
 		'url' => null,
-		'family' => '"Archer 8r", "Archer A", "Archer B", serif',
-		'weight' => '800',
+		'font-family' => '"Archer 8r", "Archer A", "Archer B", serif',
+		'font-weight' => '800',
 	),
 	'Archer Bold Italic' => array(
 		'url' => null,
-		'family' => '"Archer 8i", "Archer A", "Archer B", serif',
-		'weight' => '800',
-		'fontstyle' => 'italic',
+		'font-family' => '"Archer 8i", "Archer A", "Archer B", serif',
+		'font-weight' => '800',
+		'font-style' => 'italic',
 	),
 	'Chronicle Display Roman' => array(
 		'url' => null,
-		'family' => '"Chronicle Display 4r", "Chronicle Display A", "Chronicle Display B", serif',
-		'weight' => '400',
+		'font-family' => '"Chronicle Display 4r", "Chronicle Display A", "Chronicle Display B", serif',
+		'font-weight' => '400',
 	),
 	'Chronicle Display Bold' => array(
 		'url' => null,
-		'family' => '"Chronicle Display 7r","Chronicle Display A", "Chronicle Display B", serif',
-		'weight' => '700',
+		'font-family' => '"Chronicle Display 7r","Chronicle Display A", "Chronicle Display B", serif',
+		'font-weight' => '700',
 	),
 	'Georgia Regular' => array(
 		'url' => null,
-		'family' => 'Georgia, serif',
-		'weight' => 'normal',
+		'font-family' => 'Georgia, serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '56px',
 		'size-tablet' => '56px',
 	),
 	'Gotham Light' => array(
 		'url' => null,
-		'family' => '"Gotham SSm 3r", "Gotham SSm A", "Gotham SSm B", sans-serif',
-		'weight' => '300',
+		'font-family' => '"Gotham SSm 3r", "Gotham SSm A", "Gotham SSm B", sans-serif',
+		'font-weight' => '300',
+		'letter-spacing' => '-0.03em',
 	),
 	'Gotham Book' => array(
 		'url' => null,
-		'family' => '"Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif',
-		'weight' => '400',
+		'font-family' => '"Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif',
+		'font-weight' => '400',
+		'letter-spacing' => '-0.03em',
 	),
 	'Gotham Bold' => array(
 		'url' => null,
-		'family' => '"Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif',
-		'weight' => '700',
+		'font-family' => '"Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif',
+		'font-weight' => '700',
+		'letter-spacing' => '-0.03em',
 	),
 	'Gotham Black' => array(
 		'url' => null,
-		'family' => '"Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif',
-		'weight' => '800',
+		'font-family' => '"Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif',
+		'font-weight' => '800',
+		'letter-spacing' => '-0.03em',
 	),
 	/* For backward compatibility with Spring 2014 stories: */
 	'Aleo Light' => array(
 		'url' => $template_fonts_array['Aleo'],
-		'family' => '"AleoLight", serif',
-		'weight' => 'normal',
+		'font-family' => '"AleoLight", serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 	),
 	'Aleo Regular' => array(
 		'url' => $template_fonts_array['Aleo'],
-		'family' => '"AleoRegular", serif',
-		'weight' => 'normal',
+		'font-family' => '"AleoRegular", serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 	),
 	'Aleo Bold' => array(
 		'url' => $template_fonts_array['Aleo'],
-		'family' => '"AleoBold", serif',
-		'weight' => 'normal',
+		'font-family' => '"AleoBold", serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 	),
 	'Montserrat Regular' => array(
 		'url' => $template_fonts_array['Montserrat'],
-		'family' => '"MontserratRegular", sans-serif',
-		'weight' => 'normal',
+		'font-family' => '"MontserratRegular", sans-serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 		'size-mobile' => '36px',
 	),
 	'Montserrat Bold' => array(
 		'url' => $template_fonts_array['Montserrat'],
-		'family' => '"MontserratBold", sans-serif',
-		'weight' => 'normal',
+		'font-family' => '"MontserratBold", sans-serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 		'size-mobile' => '36px',
 	),
 	'Arial Black' => array(
 		'url' => null,
-		'family' => '"Arial Black", sans-serif',
-		'weight' => 'bold',
+		'font-family' => '"Arial Black", sans-serif',
+		'font-weight' => 'bold',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 		'size-mobile' => '34px',
 	),
 	'Open Sans Condensed Bold' => array(
 		'url' => $template_fonts_array['Open Sans Condensed'],
-		'family' => '"OpenSansCondensedBold", sans-serif',
-		'weight' => 'normal',
+		'font-family' => '"OpenSansCondensedBold", sans-serif',
+		'font-weight' => 'normal',
 		'size-desktop' => '60px',
 		'size-tablet' => '60px',
-		//'texttransform' => 'uppercase',
+		//'text-transform' => 'uppercase',
 	),
 );
 define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));

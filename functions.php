@@ -524,22 +524,25 @@ function output_header_markup($post) {
 					main article h4,
 					main article h5,
 					main article h6 {
-						font-family: '.$font['family'].';
-						font-weight: '.$font['weight'].';
-						text-transform: '.$font['texttransform'].';
-						font-style: '.$font['fontstyle'].';
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
 					}
 					main article .lead::first-letter {
-						font-family: '.$font['family'].';
-						font-weight: '.$font['weight'].';
-						text-transform: '.$font['texttransform'].';
-						font-style: '.$font['fontstyle'].';
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
 					}
 					main article .lead:first-letter {
-						font-family: '.$font['family'].';
-						font-weight: '.$font['weight'].';
-						text-transform: '.$font['texttransform'].';
-						font-style: '.$font['fontstyle'].';
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
 					}
 					main article h1,
 					main article h2,
@@ -555,21 +558,19 @@ function output_header_markup($post) {
 					main article .lead:first-letter { color: '.$font['color'].'; }
 					main article h1 {
 						font-size: '.$font['size-desktop'].';
-						line-height: '.$font['size-desktop'].';
 					}
 					@media (max-width: 979px) {
 						main article h1 {
 							font-size: '.$font['size-tablet'].';
-							line-height: '.$font['size-tablet'].';
 						}
 					}
 					@media (max-width: 767px) {
 						main article h1 {
 							font-size: '.$font['size-mobile'].';
-							line-height: '.$font['size-mobile'].';
 						}
 					}
 				';
+				$output .= get_webfont_css_classes();
 				$output .= '</style>';
 			}
 		}
@@ -587,28 +588,28 @@ function output_header_markup($post) {
 				main h2 {
 					color: '.$font['color'].';
 					font-size: '.$font['size-desktop'].';
-					line-height: '.$font['size-desktop'].';
-					text-align: '.$font['textalign'].';
+					text-align: '.$font['text-align'].';
 				}
 				main h2,
 				main h3 {
-					font-family: '.$font['family'].';
-					font-weight: '.$font['weight'].';
-					text-transform: '.$font['texttransform'].';
+					font-family: '.$font['font-family'].';
+					font-weight: '.$font['font-weight'].';
+					text-transform: '.$font['text-transform'].';
+					font-style: '.$font['font-style'].';
+					letter-spacing: '.$font['letter-spacing'].';
 				}
 				@media (max-width: 979px) {
 					main h2 {
 						font-size: '.$font['size-tablet'].';
-						line-height: '.$font['size-tablet'].';
 					}
 				}
 				@media (max-width: 767px) {
 					main h2 {
 						font-size: '.$font['size-mobile'].';
-						line-height: '.$font['size-mobile'].';
 					}
 				}
 			';
+			$output .= get_webfont_css_classes();
 			$output .= '</style>';
 		}
 
@@ -762,7 +763,7 @@ function get_template_heading_styles($post) {
 
 	// Capture any available inputted values
 	$post_meta = array(
-		'family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
+		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
 		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE),
 	);
 	if ($post->post_type == 'issue') {
@@ -775,17 +776,17 @@ function get_template_heading_styles($post) {
 	// Set base font styles.
 	$styles = $template_fonts_base;
 	// Override base styles with per-font defaults.
-	if (!empty($post_meta['family']) && isset($template_fonts[$post_meta['family']])) {
-		foreach ($template_fonts[$post_meta['family']] as $key => $val) {
+	if (!empty($post_meta['font-family']) && isset($template_fonts[$post_meta['font-family']])) {
+		foreach ($template_fonts[$post_meta['font-family']] as $key => $val) {
 			$styles[$key] = $val;
 		}
 	}
 
 	// Override any default values with set post meta values.
-	// Don't override 'family' option; it does not contain a valid CSS font-family
+	// Don't override 'font-family' option; it does not contain a valid CSS font-family
 	// value (this is handled in the base style override loop above.)
 	foreach ($post_meta as $key => $val) {
-		if (!empty($val) && $key !== 'family') {
+		if (!empty($val) && $key !== 'font-family') {
 			$styles[$key] = $val;
 		}
 	}
@@ -884,5 +885,78 @@ function set_template_for_fall_2013_or_earlier($post) {
 }
 add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
+
+/**
+ * Generate font-specific classes used in default story templates and 
+ * in formatting.css (static/css/formatting.php) for all registered font
+ * families in TEMPLATE_FONT_STYLES (see functions/config.php)
+ *
+ * Font classes are assigned in this manner, instead of using TinyMCE's
+ * default inline font-family selection, to ensure consistency in font 
+ * formatting across stories.
+ *
+ * Set $style_tag arg to true to wrap returned CSS in a <style> tag.
+ **/
+function get_webfont_css_classes($style_tag=false) {
+	$fonts = unserialize(TEMPLATE_FONT_STYLES);
+
+	$output = '';
+	if ($style_tag) {
+		$output .= '<style type="text/css">';
+	}
+
+	foreach ($fonts as $font=>$styles) {
+		$ie8_selector = '.ie8 .'.sanitize_title($font);
+		$ie8_args = array(
+			'font-weight' => 'normal',
+			'font-style' => 'normal',
+			'line-height' => '1em'
+		);
+		$output .= get_webfont_css_styles($font, null, array('line-height'=>'1em'));
+		$output .= get_webfont_css_styles($font, $ie8_selector, $ie8_args, true);
+	}
+
+	if ($style_tag) {
+		$output .= '</style>';
+	}
+
+	return $output;
+}
+
+
+/**
+ * Returns a base set of CSS styles for a particular web font.
+ *
+ * Specify the font name by $font (should match a font name registered
+ * in TEMPLATE_FONT_STYLES).
+ * Specify a custom selector by $selector (default is .font-name-sanitized).
+ * Add extra styles or override existing styles with $extra[].
+ * Add !important to all base styles returned by setting $important to true.
+ **/
+function get_webfont_css_styles($font, $selector=null, $extra=null, $important=false) {
+	if (!$font) { return null; }
+
+	$styles 	= get_heading_styles($font);
+	$selector 	= $selector !== null ? $selector : '.'.sanitize_title($font);
+	$extra 		= is_array($extra) ? $extra : array();
+	$important 	= $important == false ? '' : ' !important';
+
+	if (!$styles) { return null; }
+
+	$all_styles = array_merge($styles, $extra);
+	$blacklist  = array('url', 'size-desktop', 'size-tablet', 'size-mobile');
+	$output 	= '';
+
+	// Set up selector with attributes. Don't include attributes in $blacklist.
+	$output .= $selector.' {';
+	foreach ($all_styles as $attr=>$val) {
+		if (!in_array($attr, $blacklist)) {
+			$output .= $attr.': '.$val.$important.';';
+		}
+	}
+	$output .= '}';
+
+	return $output;
+}
 
 ?>

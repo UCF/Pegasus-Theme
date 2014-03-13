@@ -39,7 +39,7 @@ Version: v2.1.12
  * General
  **************************/
 
-p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.4em;}
+p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.38em;}
 p.excerpt {font-size:23px;font-style:italic;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
@@ -428,7 +428,7 @@ article.story ol,
 article.story ul {
 	font-family: Georgia, serif;
 	font-size: 16px;
-	line-height: 22px;
+	line-height: 1.38em;
 	margin-top: 0;
 }
 article.story p { margin-bottom: 16px; }
@@ -448,23 +448,20 @@ article.story .story-header-image img { position: absolute; clip: rect(1px, 1px,
 
 article.story .title-wrap { padding-top: 30px; }
 article.story .story-header-image + .container .title-wrap { padding-top: 0; }
-/*article.story h1,
+article.story h1,
 article.story h2,
 article.story h3,
 article.story h4,
 article.story h5,
-article.story h6,
-article.story .description,
-article.story blockquote,
-article.story blockquote p {
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-}*/
-article.story h2 { font-size: 36px; line-height: 36px; margin-bottom: 15px; }
-article.story h3 { font-size: 26px; line-height: 26px; margin-bottom: 6px; }
-article.story h4 { font-size: 20px; line-height: 20px; margin-bottom: 6px; }
-article.story h5 { font-size: 18px; line-height: 18px; }
-article.story h6 { font-size: 16px; line-height: 16px; }
+article.story h6 {
+	line-height: 1em;
+	color: #222;
+}
+article.story h2 { font-size: 36px; margin-bottom: 15px; }
+article.story h3 { font-size: 26px; margin-bottom: 6px; }
+article.story h4 { font-size: 20px; margin-bottom: 6px; }
+article.story h5 { font-size: 18px; }
+article.story h6 { font-size: 16px; }
 .ie8 article.story h1,
 .ie8 article.story h2,
 .ie8 article.story h3,
@@ -701,6 +698,11 @@ article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+.ie8 #footer-navigation,
+.ie8 #footer-navigation p,
+.ie8 #footer-navigation a {
+	font-weight: normal;
 }
 #footer-navigation a { font-size: 18px; }
 
