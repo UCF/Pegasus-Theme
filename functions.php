@@ -764,7 +764,7 @@ function get_template_heading_styles($post) {
 	// Capture any available inputted values
 	$post_meta = array(
 		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
-		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE),
+		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) ? get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) : '#222',
 	);
 	if ($post->post_type == 'issue') {
 		$post_meta['size-desktop'] = get_post_meta($post->ID, 'issue_default_fontsize_d', TRUE);
