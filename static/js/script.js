@@ -749,6 +749,32 @@ var lazyLoadAssets = function($) {
 }
 
 
+var socialButtonTracking = function($) {
+    // Track social media button clicks, using GA's integrated
+    // _trackSocial method.
+    $('aside.social a').click(function() {
+        var link = $(this),
+            target = link.attr('data-button-target'),
+            network = '',
+            socialAction = '';
+
+        if (link.hasClass('share-facebook')) {
+            network = 'Facebook';
+            socialAction = 'Like';
+        }
+        else if (link.hasClass('share-twitter')) {
+            network = 'Twitter';
+            socialAction = 'Tweet';
+        }
+        else if (link.hasClass('share-googleplus')) {
+            network = 'Google+';
+            socialAction = 'Share';
+        }
+
+        _gaq.push(['_trackSocial', network, socialAction, target]);
+    });
+}
+
 
 if (typeof jQuery != 'undefined'){
 	(function(){
@@ -778,6 +804,7 @@ if (typeof jQuery != 'undefined'){
 		    slideshow = new SlideShow();
 		    slideshow.init();
 		    lazyLoadAssets($);
+            socialButtonTracking($);
 		});
 		/*
 		$(window).load(function() {
