@@ -86,7 +86,7 @@
 	 * Footer
 	 **************************/
 
-	#footer-navigation a { font-size: 15px; }
+	#footer-navigation a { font-size: 14px; }
 
 	#footer-navigation .footer-logo,
 	#footer-navigation .footer-ipad-app { padding-bottom: 30px; }
@@ -202,6 +202,11 @@
 	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 118%; }
 	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; height: auto; width: auto; }
 	article.story .description-wrap { margin-bottom: 35px; }
+
+	article.story h1,
+	article.story h2 {
+		overflow: visible;
+	}
 
 	article.story h2 { font-size: 30px; line-height: 30px; margin-bottom: 10px; }
 	article.story p { margin-bottom: 20px; }

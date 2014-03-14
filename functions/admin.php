@@ -7,6 +7,7 @@ if (is_login()){
 if (is_admin()){
 	add_action('admin_menu', 'create_utility_pages');
 	add_action('admin_init', 'init_theme_options');
+	add_action('admin_head', 'custom_font_styles');
 }
 
 // Used to import the color picker for the shortcode_callout_html
@@ -307,7 +308,7 @@ function theme_options_sanitize($input){
  **/
 function editor_styles($css){
 	$css   = array_map('trim', explode(',', $css));
-	$css[] = THEME_CSS_URL.'/formatting.css';
+	$css[] = THEME_CSS_URL.'/formatting.php';
 	$css   = implode(',', $css);
 	return $css;
 }
@@ -329,7 +330,169 @@ function editor_format_options($row){
 }
 add_filter('mce_buttons_2', 'editor_format_options');
 
+
 /**
  * Remove paragraph tag from excerpts
  **/
 remove_filter('the_excerpt', 'wpautop');
+
+
+/**
+ * Dynamically set up font styles for Heading Font Family dropdowns
+ * and TinyMCE font selection dropdown
+ **/
+function custom_font_styles() {
+	$html = '<style type="text/css">';
+	$html .= 'select[id*="_default_font"] option,
+			#menu_content_content_fontselect_menu_tbl .mceText:not([title="Font family"]),
+			#menu_content_content_styleselect_menu_tbl .mceText:not([title="Styles"]) {
+			 	font-size: 20px;
+			 	padding: 5px 0;
+			 	-webkit-font-smoothing: antialiased;
+			 	-moz-osx-font-smoothing: grayscale;
+			 }
+			';
+	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
+		$selector = 'select[id*="_default_font"] option[value="'.$font.'"],	#menu_content_content_fontselect_menu_tbl .mceText[title="'.$font.'"], #menu_content_content_styleselect_menu_tbl .mceText[title="'.$font.'"]';
+		$html .= get_webfont_css_styles($font, $selector, null, true);
+	}
+	$html .= '</style>';
+
+	print $html;
+}
+
+
+
+/**
+ * Replace default WordPress markup for image insertion with
+ * markup to generate a [photo] shortcode.
+ **/
+function editor_insert_image_as_shortcode($html, $id, $caption, $title, $align, $url, $size, $alt) {
+    $s_id = $id;
+    $s_title = '';
+    $s_alt = $alt;
+    $s_position = null;
+    $s_width = '100%';
+    $s_caption = '';
+
+    $attachment = get_post($id);
+
+    // Get usable image position
+    if ($align && $align !== 'none') {
+    	$s_position = $align;
+    }
+    // Get usable image width.
+    // Assume that if a user sets an image alignment, they don't
+    // want the image to be blown up to 100% width
+    $attachment_src = wp_get_attachment_image_src($id, $size);
+    if ($s_position) {
+    	$s_width = $attachment_src[1].'px';
+    }
+
+    // Get usable image title (passed $title doesn't always work here?)
+    $s_title = $attachment->post_title;
+    // Get usable image caption
+    $s_caption = $attachment->post_excerpt;
+
+    // Create markup
+    $html = '[photo id="'.$s_id.'" title="'.$s_title.'" alt="'.$s_alt.'" ';
+    if ($s_position) {
+    	$html .= 'position="'.$s_position.'" ';
+    }
+    $html .= 'width="'.$s_width.'"]'.$s_caption.'[/photo]';
+
+    return $html;
+}
+add_filter('image_send_to_editor', 'editor_insert_image_as_shortcode', 10, 8);
+
+
+/**
+ * Set some default values when inserting photos in the Media Uploader.
+ * Particularly, prevents images being linked to themselves by default.
+ **/
+function editor_default_photo_values() {
+	update_option('image_default_align', 'none');
+	update_option('image_default_link_type', 'none');
+	update_option('image_default_size', 'full');
+}
+add_action('after_setup_theme', 'editor_default_photo_values');
+
+
+/**
+ * Force the WYSIWYG editor's kitchen sink to always be open.
+ **/
+function unhide_kitchensink( $args ) {
+	$args['wordpress_adv_hidden'] = false;
+	return $args;
+}
+add_filter('tiny_mce_before_init', 'unhide_kitchensink');
+
+
+/**
+ * Remove Tools admin menu item for everybody but admins.
+ **/
+function remove_menus(){
+	if (!current_user_can('manage_sites')) {
+		remove_menu_page('tools.php');
+	}
+}
+add_action('admin_menu', 'remove_menus');
+
+
+/**
+ * Add font size dropdown to TinyMCE editor; move it
+ * and style select dropdown close together.
+ **/
+function add_options_to_tinymce($buttons) {
+	//array_push($buttons, 'fontselect');
+	array_push($buttons, 'fontsizeselect');
+	array_unshift($buttons, 'fontsizeselect');
+	return $buttons;
+}
+add_filter('mce_buttons_2', 'add_options_to_tinymce');
+
+
+/**
+ * Add webfont options and their stylesheets to TinyMCE editor.
+ **/
+function add_webfonts_to_tinymce($settings) {
+	$fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$cloud_font_key = get_theme_option('cloud_font_key');
+	//$theme_advanced_fonts = '';
+	$style_formats = array();
+	$content_css = array();
+
+	foreach ($fonts as $font=>$styles) {
+		$styles = get_heading_styles($font);
+/*
+		$str = $font.'='.str_replace('"', "'", $styles['font-family']).';';
+		$theme_advanced_fonts .= $str;
+*/
+
+		$style_formats[] = array(
+			'title' => $font,
+			'inline' => 'span',
+			'classes' => sanitize_title($font)
+		);
+
+		if ($styles['url'] !== null) {
+			$content_css[] = $styles['url'];
+		}
+	}
+
+	if (!empty($cloud_font_key)) {
+		$content_css[] .= $cloud_font_key;
+	}
+	$content_css = implode(',', array_unique($content_css));
+
+	//$settings['theme_advanced_fonts'] = $theme_advanced_fonts;
+	$settings['content_css'] = $settings['content_css'].','.$content_css;
+	$settings['style_formats'] = json_encode($style_formats);
+	$settings['theme_advanced_buttons2_add_before'] = 'styleselect';
+	$settings['theme_advanced_font_sizes'] = '10px,11px,12px,13px,14px,15px,16px,17px,18px,19px,20px,21px,22px,23px,24px,25px,26px,27px,28px,29px,30px,32px,36px,42px,48px,52px,58px,62px';
+
+	return $settings;
+}
+add_filter('tiny_mce_before_init', 'add_webfonts_to_tinymce' );
+
+?>
