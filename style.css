@@ -491,6 +491,7 @@ article.story blockquote p {
 	font-size: 33px;
 	line-height: 43px;
 	font-style: italic;
+    text-align: left;
 }
 article.story blockquote small {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
