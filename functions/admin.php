@@ -87,11 +87,11 @@ function add_shortcode_interface_modal() {
 			<div id="select-shortcode-form-inner">
 				<h1>Select a Shortcode</h1>
 				<p>
-					This shortcode will be inserted into the text editor when you click the 
+					This shortcode will be inserted into the text editor when you click the
 					"Insert into Post" button.
 					<br/>
-					For more information about shortcodes and what they do, please see the 
-					<a target="_blank" href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help 
+					For more information about shortcodes and what they do, please see the
+					<a target="_blank" href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help
 					documentation for shortcodes</a>.
 				</p>
 
@@ -123,7 +123,7 @@ function add_shortcode_interface_modal() {
 								Adds a full-width divider line between content.
 							</li>
 							<li class="shortcode-lead">
-								Styles a line of text intended for use as the lead paragraph of an entire story or a major 
+								Styles a line of text intended for use as the lead paragraph of an entire story or a major
 								section of a story.  The first letter of this line will be styled as a dropcap.
 							</li>
 							<li class="shortcode-sidebar">
