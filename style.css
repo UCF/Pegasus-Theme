@@ -515,6 +515,12 @@ article.story blockquote.quote p:after {
 	content: "”";
 }
 
+article.story .sidebar-inner blockquote.quote:before {
+    font-size: 28px;
+    line-height: 38px;
+    left: -12px;
+}
+
 article.story .sidebar-inner blockquote,
 article.story .sidebar-inner blockquote p {
 	font-size: 28px;
@@ -526,11 +532,6 @@ article.story .sidebar-inner blockquote small {
 	margin-top: 14px;
 }
 article.story .sidebar-inner blockquote.quote { padding-left: 0; }
-article.story .sidebar-inner blockquote.quote:before,
-article.story .sidebar-inner blockquote.quote p:after {
-	/* Conserve space for blockquotes in sidebars; don't use fancy quotes */
-	content: "";
-}
 
 article.story .callout { margin-top: 30px; margin-bottom: 40px; }
 article.story .callout-inner { padding: 30px 0; text-align: center; }

@@ -39,6 +39,11 @@
 	article.story blockquote.quote { padding-left: 42px; }
 	article.story blockquote.quote:before {	font-size: 95px; line-height: 92px;	}
 
+    article.story .sidebar-inner blockquote.quote:before {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
 	article.story .sidebar-inner blockquote,
 	article.story .sidebar-inner blockquote p {
 		font-size: 26px;

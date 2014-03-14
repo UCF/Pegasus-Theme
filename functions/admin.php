@@ -148,6 +148,10 @@ function add_shortcode_interface_modal() {
 						<h3>Cite:</h3>
 						<p class="help">(Optional) If this quote originated from some publication, specify it here.</p>
 						<input type="text" name="blockquote-cite" value="" data-default-value="" data-parameter="cite">
+
+                        <h3>Text Color:</h3>
+                        <p class="help">(Optional) This will change the text color of the quote, source and cite. If it is left blank then the default text color will be used.</p>
+                        <input type="text" name="blockquote-color" class="shortcode-color" data-default-color="#ffffff" data-parameter="color">
 					</li>
 					<li class="shortcode-callout">
 						<h2>Callout Options</h2>

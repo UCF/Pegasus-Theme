@@ -146,14 +146,30 @@ add_shortcode('lead', 'sc_lead');
 function sc_blockquote($attr, $content='') {
 	$source = $attr['source'] ? $attr['source'] : null;
 	$cite = $attr['cite'] ? $attr['cite'] : null;
+    $color = $attr['color'] ? $attr['color'] : null;
 
 	$html = '<blockquote';
 	if ($source) {
 		$html .= ' class="quote"';
 	}
-	$html .='><p>'.$content.'</p>';
+
+    if ($color) {
+        $html .= ' style="color: ' . $color . '"';
+    }
+
+	$html .= '><p';
+    if ($color) {
+        $html .= ' style="color: ' . $color . '"';
+    }
+    $html .= '>'.$content.'</p>';
+
 	if ($source || $cite) {
-		$html .= '<small>';
+		$html .= '<small';
+        if ($color) {
+            $html .= ' style="color: ' . $color . '"';
+        }
+        $html .= '>';
+
 		if ($source) {
 			$html .= $source;
 		}
