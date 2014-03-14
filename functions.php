@@ -554,6 +554,11 @@ function output_header_markup($post) {
 						font-size: '.$font['size-desktop'].';
 						line-height: '.$font['size-desktop'].';
 					}
+                    main article .ss-closing-overlay {
+                        font-family: '.$font['family'].';
+                        font-weight: '.$font['weight'].';
+                        text-transform: '.$font['texttransform'].';
+                    }
 					@media (max-width: 979px) {
 						main article h1 {
 							font-size: '.$font['size-tablet'].';

@@ -635,7 +635,8 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	if( $essay ) {
 
 		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
-		$slide_order	= explode(",", $slide_order);
+        // Get rid of blank array entries
+		$slide_order	= array_filter(explode(",", $slide_order), 'strlen' );
 		$slide_title 	= get_post_meta($essay->ID, 'ss_slide_title', TRUE);
 		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
 		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
@@ -649,53 +650,69 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 		        <div class="ss-arrow-wrapper ss-arrow-wrapper-right">
 		            <a class="ss-arrow ss-arrow-next" href="#2">&rsaquo;</a>
 		        </div>
+
 	        	<div class="ss-slides-wrapper">
 			    <?php
-			    $data_id = 0;
-			    if ($is_fullscreen) {
-			    	$data_id++;
-			    ?>
-			    	<div class="ss-slide-wrapper">
-			    		<?php
-		    				if (!empty($slide_order)):
-		    					$s = $slide_order[0];
-		    					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
-		    			?>
-			    		<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="<?=$data_id?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
 
-							<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+                $slide_count = count($slide_order);
+                $ss_half = floor($slide_count/2) + 1;
+                $end = false;
+                $i = $ss_half;
+                if ($is_fullscreen) {
+                    $photo_essay_offset = 1;
+                }
+                while ($end == false) {
+                    if ($i == $slide_count) {
+                        $i = 0;
+                    }
 
-			    			<div class="ss-essay-intro">
-			    				<div class="title-wrap">
-			    					<h1><?=$post->post_title?></h1>
-			    				</div>
-			    				<div class="description-wrap">
-				    				<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
-				    				<?=display_social(get_permalink($post), $post->post_title)?>
-			    				</div>
-			    			</div>
-			    		</div>
-						<?php
-							endif;
-						?>
-			    	</div>
-				    <?php
-					}
-				    foreach ($slide_order as $s) {
-				        if ($s !== '') {
-				            $data_id++;
-				            $image = wp_get_attachment_image_src($slide_image[$s], 'full');
-				    ?>
-		            <div class="ss-slide-wrapper">
-		                <div class="ss-slide<?= $data_id == 1 ? ' ss-first-slide ss-current' : '' ?><?= $data_id == count($slide_order) - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$data_id?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-		                    <img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
-		                </div>
-		            </div>
-			    <?php
-			        }
-			    }
-			    ?>
+                    if ($i == $ss_half - 1) {
+                        $end = true;
+                    }
+
+                    if ($is_fullscreen && $i == 0) {
+                    ?>
+                        <div class="ss-slide-wrapper">
+                            <?php
+                                if (!empty($slide_order)):
+                                    $s = $slide_order[0];
+                                    $image = wp_get_attachment_image_src($slide_image[$s], 'full');
+                            ?>
+                            <div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+
+                                <img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+
+                                <div class="ss-essay-intro">
+                                    <div class="title-wrap">
+                                        <h1><?=$post->post_title?></h1>
+                                    </div>
+                                    <div class="description-wrap">
+                                        <span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+                                        <?=display_social(get_permalink($post), $post->post_title)?>
+                                    </div>
+                                </div>
+                            </div>
+                            <?php
+                                endif;
+                            ?>
+                        </div>
+                        <?php
+                    }
+
+                    $s = $slide_order[$i];
+                    $image = wp_get_attachment_image_src($slide_image[$s], 'full');
+                    ?>
+                    <div class="ss-slide-wrapper">
+                        <div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+                            <img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+                        </div>
+                    </div>
+                <?php
+                    $i++;
+                }
+                ?>
 			    </div>
+
 			    <div class="ss-captions-wrapper">
 			    <?php
 			    $data_id = 0;
@@ -717,6 +734,13 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 			    }
 			    ?>
 				</div>
+
+                <div class="ss-closing-overlay" style="display: none;">
+                    <div class="ss-slide" data-id="restart-slide">
+                        <a class="ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
+                        <? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
+                    </div>
+                </div>
 			</div>
 	    </section>
 

@@ -13,7 +13,7 @@
 	/**************************
 	 * Header Pulldown Menu
 	 **************************/
-	 
+
 	.pulldown-stories .story-list article { width: 140px; }
 	.pulldown-stories .story-list article img {
 		/* Fixed width/height required for lazyload */
@@ -202,7 +202,7 @@
 	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 118%; }
 	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; height: auto; width: auto; }
 	article.story .description-wrap { margin-bottom: 35px; }
-	
+
 	article.story h2 { font-size: 30px; line-height: 30px; margin-bottom: 10px; }
 	article.story p { margin-bottom: 20px; }
 
@@ -298,6 +298,36 @@
 		line-height: 20px;
 		margin-bottom: 5px;
 	}
+
+    .ss-closing-overlay .ss-slide {
+        margin-top: 25px;
+    }
+
+    .ss-closing-overlay > .ss-slide {
+        width: 80%;
+    }
+
+    .ss-closing-overlay > .ss-slide .ss-title {
+        font-size: 16px;
+        line-height: 16px;
+        margin-top: 10px;
+    }
+
+    a.ss-restart {
+        font-size: 11px;
+    }
+
+    a.ss-restart i {
+        padding: 10px;
+        background-color: #000;
+        margin-bottom: 10px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    a.ss-restart i:hover {
+        background-color: #990000;
+    }
 
 
 	/**************************

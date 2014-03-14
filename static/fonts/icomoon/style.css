@@ -14,7 +14,8 @@
 .icon-reorder,
 .icon-caret-left,
 .icon-caret-right,
-.icon-search {
+.icon-search,
+.repeat-alt-icon {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -45,4 +46,7 @@
 }
 .icon-search:before {
 	content: "\e605";
+}
+.repeat-alt-icon:before {
+    content: "\e606";
 }

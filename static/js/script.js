@@ -260,7 +260,7 @@ var togglePulldown = function($) {
 			else {
 				pulldownContainer.find('a').attr('tabindex', '-1');
 			}
-			
+
 			toggle.toggleClass('active');
 		}
 
@@ -487,28 +487,25 @@ var SlideShow = (function() {
         $slidesContents = $('.ss-content');
 
     function _init() {
-        $slidesContents.each(function() {
+        $slidesContents.each(function(index) {
             var slidesContent = $(this);
 
             // Make main tag 100% height width
             if ($('article.ss-photo-essay').length > 0) {
                 $('main, section.ss-content').addClass('ss-photo-essay');
-                _resizeSlidesWrapper(slidesContent);
-                $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
-                slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
-                slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
-                    _prevSlide);
+                _resizeSlidesWrapper(slidesContent, 0);
             } else {
                 $('section.ss-content').addClass('ss-embed');
-	            // Safari 6.0.5 needs a delay for the writing of the slideshow images
-	            setTimeout(function() {
-	                _resizeSlidesWrapper(slidesContent);
-	                $win.resize({ slidesContent: slidesContent }, _resizeSlidesContent);
-	                slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent },_nextSlide);
-	                slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent },
-	                    _prevSlide);
-	            }, 1000);
+                // Safari 6.0.5 needs a delay for the writing of the slideshow images
+                setTimeout(function() {
+                    _resizeSlidesWrapper(slidesContent, 0);
+                }, 1000);
             }
+
+            $win.resize({ slidesContent: slidesContent, slideIndex: index }, _resizeSlidesContent);
+            slidesContent.find('.ss-arrow-next').click({ slidesContent: slidesContent }, _nextSlide);
+            slidesContent.find('.ss-arrow-prev').click({ slidesContent: slidesContent }, _prevSlide);
+            slidesContent.find('.ss-restart').click({ slidesContent: slidesContent }, _restartSlide);
         });
     }
 
@@ -525,11 +522,18 @@ var SlideShow = (function() {
     }
 
     function _resizeSlidesContent(e) {
+        var dynamicTimeout = 'timeout' + e.data.slideIndex.toString();
+        if (typeof window[dynamicTimeout] !== 'undefined') {
+            clearTimeout(window[dynamicTimeout]);
+        }
         var slidesContent = e.data.slidesContent;
-        _resizeSlidesWrapper(slidesContent);
+
+        window[dynamicTimeout] = setTimeout(function() {
+            _resizeSlidesWrapper(slidesContent, 1000);
+        }, 100);
     }
 
-    function _resizeSlidesWrapper(slidesContent) {
+    function _resizeSlidesWrapper(slidesContent, duration) {
         _resizeSlides(slidesContent);
         _resizeCaptions(slidesContent);
 
@@ -537,8 +541,10 @@ var SlideShow = (function() {
         var left = (slidesContent.width() - currentSlide.outerWidth()) / 2;
 
         left -= currentSlide.parent().position().left;
-        slidesContent.find('.ss-slides-wrapper').css({
+        slidesContent.find('.ss-slides-wrapper').animate({
             left: left
+        }, {
+            duration: duration
         });
     }
 
@@ -599,7 +605,7 @@ var SlideShow = (function() {
             nextDataId = slidesContent.find('.ss-arrow-next').attr('href');
 
         if (nextDataId) {
-            _transitionSlide(slidesContent, nextDataId.replace('#', ''));
+            _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
         }
     }
 
@@ -610,22 +616,55 @@ var SlideShow = (function() {
             prevDataId = slidesContent.find('.ss-arrow-prev').attr('href');
 
         if (prevDataId) {
-            _transitionSlide(slidesContent, prevDataId.replace('#', ''));
+            _transitionSlide(slidesContent, prevDataId.replace('#', ''), false);
         }
     }
 
-    function _transitionSlide(slidesContent, nextDataId) {
-        var button = $(this),
-            href = button.attr('href'),
-            currentSlide = _getCurrentSlide(slidesContent),
+    function _restartSlide(e) {
+        e.preventDefault();
+
+        var slidesContent = e.data.slidesContent,
+            nextDataId = slidesContent.find('.ss-restart').attr('href');
+
+        if (nextDataId) {
+            _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
+        }
+    }
+
+    function _transitionSlide(slidesContent, nextDataId, isForward) {
+        var currentSlide = _getCurrentSlide(slidesContent),
             nextSlide = slidesContent.find('div[data-id="' + nextDataId + '"].ss-slide'),
-            nextCaption = slidesContent.find('div[data-id="' + nextDataId + '"].ss-caption');
+            nextCaption = slidesContent.find('div[data-id="' + nextDataId + '"].ss-caption'),
+            restartSlide = slidesContent.find('.ss-closing-overlay');
 
         if (nextSlide.length) {
-            nextSlide.addClass('ss-current');
-            currentSlide.removeClass('ss-current');
-            _resizeSlidesWrapper(slidesContent);
-            _updateButtons(nextSlide, slidesContent);
+            if (nextDataId == 'restart-slide') {
+                restartSlide.fadeIn(300, function() {
+                    _updateButtons(currentSlide, slidesContent);
+                });
+            } else {
+
+                // if restart slide is visible the hide it otherwise rotate slides
+                if (restartSlide.is(':visible')) {
+                    restartSlide.fadeOut(300, function() {
+                        // only rotate slides if advancing back to the beginning
+                        if (isForward) {
+                            _rotateSlides(slidesContent, isForward);
+                        }
+
+                        currentSlide.removeClass('ss-current');
+                        nextSlide.addClass('ss-current');
+                        _resizeSlidesWrapper(slidesContent);
+                        _updateButtons(nextSlide, slidesContent);
+                    });
+                } else {
+                    _rotateSlides(slidesContent, isForward);
+                    currentSlide.removeClass('ss-current');
+                    nextSlide.addClass('ss-current');
+                    _resizeSlidesWrapper(slidesContent);
+                    _updateButtons(nextSlide, slidesContent);
+                }
+            }
         }
 
         if (nextCaption.length) {
@@ -634,26 +673,62 @@ var SlideShow = (function() {
         }
     }
 
+    function _rotateSlides(slidesContent, isForward) {
+        var slidesWrapper = slidesContent.find('.ss-slides-wrapper'),
+            slides = slidesContent.find('.ss-slide-wrapper'),
+            first = slides.first(),
+            last = slides.last();
+
+        if (isForward) {
+            first.insertAfter(last);
+        } else {
+            last.insertBefore(first);
+        }
+
+        // change the slides wrapper left to handle the slide rotation
+        var currentSlide = _getCurrentSlide(slidesContent);
+        var left = (slidesContent.width() - currentSlide.outerWidth()) / 2;
+
+        left -= currentSlide.parent().position().left;
+        slidesContent.find('.ss-slides-wrapper').css({
+            left: left
+        });
+    }
+
     function _updateButtons(currentSlide, slidesContent) {
         var prevButton = slidesContent.find('.ss-arrow-prev'),
             nextButton = slidesContent.find('.ss-arrow-next'),
             prevSlide = currentSlide.parent().prev().find('.ss-slide'),
-            nextSlide = currentSlide.parent().next().find('.ss-slide');
+            nextSlide = currentSlide.parent().next().find('.ss-slide'),
+            restartSlide = slidesContent.find('.ss-closing-overlay');
 
-        if (prevSlide.length) {
-            prevButton.attr('href', '#' + prevSlide.data('id'));
+        if (prevSlide.length && !currentSlide.hasClass('ss-first-slide')) {
+            // Set prev href to last slide if on restart slide is visible
+            if (restartSlide.is(':visible')) {
+                prevButton.attr('href', '#' + currentSlide.data('id'));
+            } else {
+                prevButton.attr('href', '#' + prevSlide.data('id'));
+            }
+
             prevButton.removeClass('ss-last');
         } else {
             prevButton.removeAttr('href');
             prevButton.addClass('ss-last');
         }
 
-        if (nextSlide.length) {
+        if (nextSlide.length && !currentSlide.hasClass('ss-last-slide')) {
             nextButton.attr('href', '#' + nextSlide.data('id'));
             nextButton.removeClass('ss-last');
         } else {
-            nextButton.removeAttr('href');
-            nextButton.addClass('ss-last');
+            // Disable next button if restart slide is visible otherwise
+            // set next href to restart slide
+            if (restartSlide.is(':visible')) {
+                nextButton.removeAttr('href');
+                nextButton.addClass('ss-last');
+            } else {
+                nextButton.attr('href', '#' + restartSlide.find('.ss-slide').data('id'));
+                nextButton.removeClass('ss-last');
+            }
         }
     }
 
