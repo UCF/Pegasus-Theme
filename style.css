@@ -1087,31 +1087,43 @@ a.ss-restart i:hover {
 
 .ss-arrow-wrapper {
     position: absolute;
+    top: 0;
+    height: 100%;
     width: 40px;
-    height: 40px;
-    top: 40%;
     z-index: 10;
 }
-.ss-embed .ss-arrow-wrapper { top: 180px; }
+
+.ss-arrow-wrapper .ss-arrow {
+    background-image: url('static/img/transparent.gif');
+    background-repeat: repeat;
+}
 
 .ss-arrow-wrapper-left {
-    margin-left: 10px;
     left: 0;
 }
 
+.ss-arrow-wrapper-left .ss-arrow > div {
+    left: 0;
+    margin-left: 10px;
+}
+
 .ss-arrow-wrapper-right {
-    margin-right: 10px;
     right: 0;
 }
 
+.ss-arrow-wrapper-right .ss-arrow > div {
+    right: 0;
+    margin-right: 10px;
+}
+
 .ss-arrow {
-    position: absolute;
-    width: 40px;
-    height: 40px;
+    display: block;
+    height: 100%;
+    background-color: transparent;
     font-family: "Times New Roman", Times, serif;
     font-size: 80px;
     color: #BEBEBE;
-    line-height: 30px;
+    line-height: 50px;
     text-align: center;
     text-decoration: none;
 }
@@ -1121,8 +1133,19 @@ a.ss-restart i:hover {
     color: #fff;
 }
 
-.ss-arrow.ss-last,
-.ss-arrow.ss-last:hover {
+.ss-arrow > div {
+    position: absolute;
+    top: 40%;
+    min-width: 40px;
+    height: 60px;
+}
+
+.ss-embed .ss-arrow > div {
+    top: 180px;
+}
+
+.ss-arrow.ss-last > div,
+.ss-arrow.ss-last > div:hover {
 	color: #bebebe;
 	opacity: 0.2;
 	filter: alpha(opacity=20);

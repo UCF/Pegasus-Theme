@@ -544,7 +544,10 @@ var SlideShow = (function() {
         slidesContent.find('.ss-slides-wrapper').animate({
             left: left
         }, {
-            duration: duration
+            duration: duration,
+            complete: function() {
+                _updateButtonWidths(slidesContent.find('.ss-current'), slidesContent);
+            }
         });
     }
 
@@ -702,6 +705,8 @@ var SlideShow = (function() {
             nextSlide = currentSlide.parent().next().find('.ss-slide'),
             restartSlide = slidesContent.find('.ss-closing-overlay');
 
+        _updateButtonWidths(currentSlide, slidesContent, prevButton, nextButton);
+
         if (prevSlide.length && !currentSlide.hasClass('ss-first-slide')) {
             // Set prev href to last slide if on restart slide is visible
             if (restartSlide.is(':visible')) {
@@ -730,6 +735,21 @@ var SlideShow = (function() {
                 nextButton.removeClass('ss-last');
             }
         }
+    }
+
+    function _updateButtonWidths(currentSlide, slidesContent, prevButton, nextButton) {
+        var arrowWidth = (slidesContent.outerWidth() - currentSlide.outerWidth()) / 2;
+
+        if (prevButton === undefined) {
+            prevButton = slidesContent.find('.ss-arrow-prev');
+        }
+
+        if (nextButton === undefined) {
+            nextButton = slidesContent.find('.ss-arrow-next');
+        }
+
+        prevButton.parent().width(arrowWidth);
+        nextButton.parent().width(arrowWidth);
     }
 
     return {
