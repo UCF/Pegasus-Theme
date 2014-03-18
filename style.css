@@ -614,8 +614,13 @@ article.ss-photo-essay .ss-essay-intro span.description {
  	padding-left: 20px;
  	padding-right: 20px;
 }
+
 article.ss-photo-essay .ss-essay-intro h1 {
 	text-align: center;
+}
+
+article.ss-photo-essay .ss-essay-intro .description-wrap {
+    text-align: center;
 }
 
 article.ss-photo-essay .ss-essay-intro span.description {
@@ -1013,30 +1018,38 @@ article.ss-photo-essay {
     margin-top: 20px;
 }
 
-a.ss-restart {
+a.ss-control {
     font-size: 16px;
     color: #fff;
 }
 
-a.ss-restart:hover {
+a.ss-control:hover {
     color: #fff;
 }
 
-a.ss-restart i {
+a.ss-control i {
     display: inline-block;
     padding: 20px;
+    margin-bottom: 20px;
     background-color: #000;
     color: #fff;
     border-color: #fff;
     border-width: 1px;
     border-style: solid;
-    margin-bottom: 20px;
     font-size: 50px;
-    line-height: 50px;
+    background-image: none !important;
 }
 
-a.ss-restart i:hover {
+a.ss-control i:hover {
     background-color: #990000;
+}
+
+a.ss-control.ss-play i {
+    line-height: 15px;
+}
+
+a.ss-control.ss-restart i {
+    line-height: 50px;
 }
 
 .ss-slide {

@@ -704,6 +704,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
                                     </div>
                                     <div class="description-wrap">
                                         <span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+                                        <a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
                                         <?=display_social(get_permalink($post), $post->post_title)?>
                                     </div>
                                 </div>
@@ -753,7 +754,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
                 <div class="ss-closing-overlay" style="display: none;">
                     <div class="ss-slide" data-id="restart-slide">
-                        <a class="ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
+                        <a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
                         <? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
                     </div>
                 </div>

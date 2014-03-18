@@ -14,10 +14,10 @@
 
         <div class='ss-nav-wrapper' style="height: <?php if (array_filter($captions)) { ?>80%<?php } else { ?>100%<?php } ?>;">
             <div class='ss-arrow-wrapper ss-arrow-wrapper-left'>
-                <a class='ss-arrow ss-arrow-prev ss-last'>&lsaquo;</a>
+                <a class='ss-arrow ss-arrow-prev ss-last'><div>&lsaquo;</div></a>
             </div>
             <div class='ss-arrow-wrapper ss-arrow-wrapper-right'>
-                <a class='ss-arrow ss-arrow-next' href='#2'>&rsaquo;</a>
+                <a class='ss-arrow ss-arrow-next' href='#2'><div>&rsaquo;</div></a>
             </div>
             <div class='ss-slides-wrapper'>
 
@@ -76,7 +76,7 @@
 
             <div class="ss-closing-overlay" style="display: none;">
                 <div class="ss-slide" data-id="restart-slide">
-                    <a class="ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY:</div></a>
+                    <a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY:</div></a>
                     <? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
                 </div>
             </div>

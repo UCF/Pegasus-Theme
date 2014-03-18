@@ -493,6 +493,7 @@ var SlideShow = (function() {
             // Make main tag 100% height width
             if ($('article.ss-photo-essay').length > 0) {
                 $('main, section.ss-content').addClass('ss-photo-essay');
+                slidesContent.find('.ss-play').click({ slidesContent: slidesContent }, _playSlide);
                 _resizeSlidesWrapper(slidesContent, 0);
             } else {
                 $('section.ss-content').addClass('ss-embed');
@@ -620,6 +621,17 @@ var SlideShow = (function() {
 
         if (prevDataId) {
             _transitionSlide(slidesContent, prevDataId.replace('#', ''), false);
+        }
+    }
+
+    function _playSlide(e) {
+        e.preventDefault();
+
+        var slidesContent = e.data.slidesContent,
+            nextDataId = slidesContent.find('.ss-play').attr('href');
+
+        if (nextDataId) {
+            _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
         }
     }
 

@@ -322,20 +322,27 @@
         margin-top: 10px;
     }
 
-    a.ss-restart {
+    a.ss-control {
         font-size: 11px;
     }
 
-    a.ss-restart i {
+    a.ss-control i {
         padding: 10px;
         background-color: #000;
         margin-bottom: 10px;
         font-size: 30px;
+    }
+
+    a.ss-control.ss-restart i {
         line-height: 30px;
     }
 
-    a.ss-restart i:hover {
-        background-color: #990000;
+
+    a.ss-control.ss-play i {
+        padding: 12px;
+        margin-bottom: 0;
+        font-size: 35px;
+        line-height: 13px;
     }
 
 
