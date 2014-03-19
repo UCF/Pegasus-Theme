@@ -53,7 +53,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', $theme_options['dev_mode']); # Never leave this activated in a production environment!
+define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
 
 
 /**
