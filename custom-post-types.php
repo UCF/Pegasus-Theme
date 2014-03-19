@@ -595,6 +595,12 @@ class Issue extends CustomPostType {
 			),
 */
 			array(
+				'name' => '<strong>Custom Issue Template:</strong> Home Page HTML File',
+				'desc' => 'HTML markup specifically for the issue cover/home page.',
+				'id'   => $prefix.'html',
+				'type' => 'file',
+			),
+			array(
 				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
 				'desc' => 'Stylesheet specifically for the issue cover/home page.',
 				'id'   => $prefix.'stylesheet_home',

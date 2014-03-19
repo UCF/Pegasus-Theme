@@ -827,36 +827,86 @@ function display_social($url, $title) {
 
 
 /**
- * Displays an issue cover.
+ * Displays an issue cover or story contents.  Accounts for whether or
+ * not Developer Mode is on/off and what story/issue template is set.
+ *
+ * Markup priority: Uploaded HTML File -> WYSIWYG editor content -> dev directory content
  **/
-function display_issue($post) {
+function display_markup_or_template($post) {
+	if ($post->post_type == 'issue') {
+		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
+		$dev_directory_html_url = THEME_DEV_URL.'/'.$dev_directory.'home.html';
+	}
+	else {
+		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
+		$dev_directory_html_url = THEME_DEV_URL.'/'.$dev_directory.$post->post_name.'.html';
+	}
+	$post_template     = get_post_meta($post->ID, $post->post_type.'_template', TRUE);
+	$uploaded_html     = get_post_meta($post->ID, $post->post_type.'_html', TRUE);
+	$uploaded_html_url = wp_get_attachment_url($uploaded_html);
+
+	// If developer mode is on and this story/issue is custom,
+	// try to use dev directory contents:
 	if (
-		$post->post_content == '' &&
 		DEV_MODE == 1 &&
-		($dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE)) !== False &&
+		empty($post->post_content) &&
+		$dev_directory !== False &&
 		uses_custom_template($post)
 	) {
-		$dev_issue_html_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.html';
-		if (curl_exists($dev_issue_html_url)) {
-			$content = file_get_contents($dev_issue_html_url);
-			print apply_filters('the_content', $content);
+		add_filter('the_content', 'kill_empty_p_tags', 999);
+
+		// Uploaded HTML file should always take priority over dev directory contents
+		if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
+			print apply_filters('the_content', file_get_contents($uploaded_html_url));
+		}
+		else {
+			if (curl_exists($dev_directory_html_url)) {
+				$content = file_get_contents($dev_directory_html_url);
+				print apply_filters('the_content', $content);
+			}
 		}
 	}
 	else {
-		switch (get_post_meta($post->ID, 'issue_template', TRUE)) {
-			case 'default':
-				require_once('templates/issue/default.php');
-				break;
-			case 'custom':
-			default:
-				if (!is_fall_2013_or_older($post)) {
-					// Kill automatic <p> tag insertion if this isn't an old story.
-					// Don't want to accidentally screw up an old story that worked
-					// around the <p> tag issue.
-					add_filter('the_content', 'kill_empty_p_tags', 999);
-				}
+		// Check the set post template.  Note that if this value is set to 'default'
+		// it is saved in the database as an empty value.
+		if (!empty($post_template)) {
+			switch ($post_template) {
+				case 'custom':
+					if (!is_fall_2013_or_older($post)) {
+						// Kill automatic <p> tag insertion if this isn't an old story.
+						// Don't want to accidentally screw up an old story that worked
+						// around the <p> tag issue.
+						add_filter('the_content', 'kill_empty_p_tags', 999);
+
+						// If an uploaded HTML file is present, use it.  Otherwise, use
+						// any content available in the WYSIWYG editor
+						if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
+							print apply_filters('the_content', file_get_contents($uploaded_html_url));
+						}
+						else {
+							the_content();
+						}
+					}
+					else {
+						the_content();
+					}
+					break;
+				default:
+					require_once('templates/'.$post->post_type.'/'.$post_template.'.php');
+					break;
+			}
+		}
+		else {
+			if (!is_fall_2013_or_older($post)) {
+				// Newer stories without a value should assume 'default' template
+				add_filter('the_content', 'kill_empty_p_tags', 999);
+				require_once('templates/story/default.php');
+			}
+			else {
+				// Use WYSIWYG editor contents for old stories that don't have a
+				// field value set
 				the_content();
-				break;
+			}
 		}
 	}
 }
