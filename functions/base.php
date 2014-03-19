@@ -1782,7 +1782,9 @@ function _show_meta_boxes($post, $meta_box){
 				?>
 				<?php if($document):?>
 					<a target="_blank" href="<?=$url?>">
+						<?php if (wp_attachment_is_image($document->ID)): ?>
 						<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
+						<?php endif; ?>
 						<?=$document->post_title?>
 					</a><br /><br />
 				<?php endif;?>
