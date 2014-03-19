@@ -4,7 +4,7 @@ Theme for the online version of Pegasus Magazine.
 
 ## Notes
 
-This theme has a built-in Developer Mode that should be activated while stories and issue covers are in development.  Update the DEV_MODE constant in functions/config.php to activate or deactivate Developer Mode.
+This theme has a built-in Developer Mode that should be activated while stories and issue covers are in development.  Update the Developer Mode setting in Theme Options to activate or deactivate Developer Mode.
 
 Developer Mode allows for a streamlined development process; instead of uploading updated css and javascript files into WordPress's editor with every update to view changes, you can maintain a consistent naming schema for all story/issue-related files in the dev directory and reference those files by story/issue directory.  With Developer Mode turned on, these files will be referenced automatically if the naming schema matches the post slug (e.g., a story with slug 'my-story' has the css file 'my-story.css') and a particular directory in the dev directory is specified in the Developer Mode meta field(s).  More information is provided in the meta field description for those fields.  The fields will only appear if Developer Mode is turned on.
 

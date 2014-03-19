@@ -447,7 +447,7 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 		);
-		if (DEV_MODE == true) {
+		if (DEV_MODE == 1) {
 			array_unshift($fields, array(
 				'name' => '<strong>Developer Mode:</strong> Directory URL',
 				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash, relative to <code>/dev/</code>).  Properly named html, css and javascript files
@@ -617,7 +617,7 @@ class Issue extends CustomPostType {
 			),
 		);
 
-		if (DEV_MODE == true) {
+		if (DEV_MODE == 1) {
 			array_unshift($fields, array(
 				'name' => '<strong>Developer Mode:</strong> Issue\'s Home Page Asset Directory',
 				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files

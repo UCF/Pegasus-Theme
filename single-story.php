@@ -7,7 +7,7 @@
 	// If developer mode is on and this is a custom story,
 	// try to use dev directory contents:
 	if (
-		DEV_MODE == true &&
+		DEV_MODE == 1 &&
 		$post->post_content == '' &&
 		$dev_story_directory !== False &&
 		uses_custom_template($post)

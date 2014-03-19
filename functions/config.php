@@ -53,7 +53,7 @@ define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
-define('DEV_MODE', false); # Never leave this activated in a production environment!
+define('DEV_MODE', $theme_options['dev_mode']); # Never leave this activated in a production environment!
 
 
 /**
@@ -482,6 +482,20 @@ Orlando, FL 32816',
 			'default'     => '//cloud.typography.com/730568/671204/css/fonts.css', /* CSS Key relative to PROD project */
 			'value'       => $theme_options['cloud_font_key'],
 		))
+	),
+	'Developers' => array(
+		new RadioField(array(
+			'name'        => 'Enable Developer Mode',
+			'id'          => THEME_OPTIONS_NAME.'[dev_mode]',
+			'description' => 'Turn on Developer Mode, which enables direct editing from the theme\'s dev/ directory. <strong>Never enable this
+								setting in a production environment.</strong>',
+			'default'     => 0,
+			'choices'     => array(
+				'On'  => 1,
+				'Off' => 0,
+			),
+			'value'       => $theme_options['dev_mode'],
+	    )),
 	),
 );
 
