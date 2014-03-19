@@ -428,6 +428,12 @@ class Story extends CustomPostType {
 				'type' => 'text',
 			),
 			array(
+				'name' => '<strong>Custom Story Template:</strong> HTML File',
+				'desc' => '',
+				'id'   => $prefix.'html',
+				'type' => 'file',
+			),
+			array(
 				'name' => '<strong>Custom Story Template:</strong> Stylesheet',
 				'desc' => '',
 				'id'   => $prefix.'stylesheet',
@@ -442,7 +448,8 @@ class Story extends CustomPostType {
 			array(
 				'name' => '<strong>Custom Story Template:</strong> Font Includes',
 				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant
-							(functions/config.php).  Fonts should be referenced by name and be comma-separated.',
+							(functions/config.php).  Fonts should be referenced by name and be comma-separated.  (Fonts from Cloud.Typography do not need to be included
+							here.)',
 				'id'   => $prefix.'fonts',
 				'type' => 'textarea',
 			),
@@ -454,6 +461,7 @@ class Story extends CustomPostType {
 							(story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.<br/><br/>
 							<strong>NOTE:</strong>
 							<ul style="list-style: disc !important;">
+							<li>An HTML file uploaded to the HTML file field below takes priority over the WYSIWYG editor AND the dev directory\'s HTML file contents.</li>
 							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
 							<li>Any files uploaded to the stylesheet/javascript fields below take priority over the dev directory\'s contents.</li>
 							<li>The Story Template field below should be either empty or set to "Custom" for custom stylesheets/javascript files to have any effect.
