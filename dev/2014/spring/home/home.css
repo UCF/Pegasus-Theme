@@ -175,7 +175,9 @@ p:empty { display: none; }
 	#home .thumb.t-5,
 	#home .thumb.t-7,
 	#home .thumb.t-9,
-	#home .thumb.t-11 {
+	#home .thumb.t-11,
+	#home .thumb.t-13,
+	#home .thumb.t-15 {
 		margin-left: 0;
 	}
 	#home .thumb.t-2,
