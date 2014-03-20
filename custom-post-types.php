@@ -26,7 +26,11 @@ abstract class CustomPostType{
 
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
-		$default_order   = null;
+		$default_order   = null,
+
+		# Whether or not the post type uses cloneable fields and requires special saving
+		# functionality and nonce handling.
+		$cloneable_fields = False;
 
 
 	static function get_file_url($object, $field_name) {
@@ -719,7 +723,8 @@ class PhotoEssay extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_revisions	= False,
-		$taxonomies     = array('issues');
+		$taxonomies     = array('issues'),
+		$cloneable_fields = True;
 
 	public function fields(){
 	//
@@ -773,27 +778,23 @@ class PhotoEssay extends CustomPostType {
 
 	/** Function used for defining single slide meta values; primarily
 	  * for use in saving meta data (_save_meta_data(), functions/base.php).
-	  * The 'type' val is just for determining which fields are file fields;
-	  * 'default' is an arbitrary name for 'anything else' which gets saved
-	  * via the save_default() function in functions/base.php. File fields
-	  * need a type of 'file' to be saved properly.
 	  **/
 	public static function get_single_slide_meta() {
 		$single_slide_meta = array(
 			array(
 				'id'	=> 'ss_slide_title',
-				'type'	=> 'default',
 				'val'	=> $_POST['ss_slide_title'],
+				'type'  => 'text',
 			),
 			array(
 				'id'	=> 'ss_slide_caption',
-				'type'	=> 'default',
 				'val'	=> $_POST['ss_slide_caption'],
+				'type'  => 'text',
 			),
 			array(
 				'id'	=> 'ss_slide_image',
-				'type'	=> 'default',
 				'val' 	=> $_POST['ss_slide_image'],
+				'type'  => 'text',
 			),
 		);
 		return $single_slide_meta;
