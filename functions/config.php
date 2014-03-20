@@ -93,10 +93,10 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * custom styling in the WYSIWYG editor.
  *
  * These options will be overridden per-font, as defined in
- * $template_font_styles_array, then by per-post meta values (for headings), if 
+ * $template_font_styles_array, then by per-post meta values (for headings), if
  * available.
  *
- * See output_header_markup() and get_webfont_css_styles() in functions.php for 
+ * See output_header_markup() and get_webfont_css_styles() in functions.php for
  * usage.
  *
  * Options:
@@ -476,7 +476,7 @@ Orlando, FL 32816',
 			'name'        => 'Cloud.Typography CSS Key URL',
 			'id'          => THEME_OPTIONS_NAME.'[cloud_font_key]',
 			'description' => 'The CSS Key provided by Cloud.Typography for this project.  <strong>Only include the value in the "href" portion of the link
-								tag provided; e.g. "//cloud.typography.com/000000/000000/css/fonts.css".</strong><br/><br/>NOTE: Make sure the Cloud.Typography 
+								tag provided; e.g. "//cloud.typography.com/000000/000000/css/fonts.css".</strong><br/><br/>NOTE: Make sure the Cloud.Typography
 								project has been configured to deliver fonts to this site\'s domain.<br/>
 								See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
 			'default'     => '//cloud.typography.com/730568/671204/css/fonts.css', /* CSS Key relative to PROD project */
@@ -526,6 +526,7 @@ if (!empty($theme_options['cloud_font_key'])) {
 }
 
 Config::$scripts = array(
+    array('admin' => True, 'src' => THEME_JS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
 	THEME_STATIC_URL.'/js/jquery.cookie.js',
