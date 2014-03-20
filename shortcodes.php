@@ -658,7 +658,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
 		?>
 
-		<section class="ss-content">
+		<section class="ss-content" id="<?=$slug?>">
 			<div class="ss-nav-wrapper">
 		        <div class="ss-arrow-wrapper ss-arrow-wrapper-left">
 		            <a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
