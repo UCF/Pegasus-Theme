@@ -272,11 +272,41 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                     updateSliderSortOrder();
         });
 
+        // White list of tags to allow
+        var wysihtml5ParserRules = {
+            tags: {
+                strong: {},
+                b:      {},
+                i:      {},
+                em:     {},
+                u:      {},
+                a:      {
+                    set_attributes: {
+                        target: "_blank"
+                    },
+                    check_attributes: {
+                        href:   "url" // important to avoid XSS
+                    }
+                }
+            }
+        };
+
         $(getAllSlides()).each(function() {
             var slideContent = $(this);
             WebcomAdmin.sliderHeaderTitleAction($, slideContent);
-        });
 
+            // Initialize the wysihtml5 editor
+            // DO NOT initialize the hidden clone object as it is initialize when slide is created
+            if (slideContent.find('div[id^="wysihtml5-toolbar["]').attr('id').indexOf("xxxxxx") === -1) {
+                toolbar = slideContent.find('div[id^="wysihtml5-toolbar["]'),
+                textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
+
+                var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+                    toolbar:     toolbar.attr('id'), // id of toolbar element
+                    parserRules: wysihtml5ParserRules, // defined in parser rules set
+                });
+            }
+        });
 
         // Sortable slides
         $('#ss_slides_all').sortable({
@@ -284,6 +314,20 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             placeholder : 'sortable-placeholder',
             sort : function( event, ui ) {
                 $('.sortable-placeholder').height( $(this).find('.ui-sortable-helper').height() );
+            },
+            stop : function ( event, ui ) {
+                var html5iframe = $(ui.item).find('iframe.wysihtml5-sandbox'),
+                    toolbar = $(ui.item).find('div[id^="wysihtml5-toolbar["]'),
+                    textarea = $(ui.item).find('textarea[id^="ss_slide_caption["]');
+
+                textarea.show();
+                html5iframe.remove();
+
+                toolbar.hide();
+                var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+                    toolbar:     toolbar.attr('id'), // id of toolbar element
+                    parserRules: wysihtml5ParserRules, // defined in parser rules set
+                });
             },
             update : function( event, ui ) {
                 updateSliderSortOrder();
@@ -319,10 +363,12 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             });
             // Update 'for' attributes (in <label>)
             $('label', newSlide).val('').attr('for', function(index, forval) {
-                return forval.replace('xxxxxx', attachment_id);
+                if (forval) {
+                    return forval.replace('xxxxxx', attachment_id);
+                }
             });
             // Update 'id' attributes
-            $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"]', newSlide).attr('id', function(index, idval) {
+            $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"], div[id^="wysihtml5-toolbar"]', newSlide).attr('id', function(index, idval) {
                 return idval.replace('xxxxxx', attachment_id);
             });
 
@@ -350,6 +396,11 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachment_caption);
             $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
             newSlide.insertAfter(newSlideSibling).show();
+
+            var editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
+              toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
+              parserRules:  wysihtml5ParserRules, // defined in parser rules set
+            });
 
             // Update slide count, order
             updateSlideCount();

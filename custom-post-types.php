@@ -870,6 +870,21 @@ class PhotoEssay extends CustomPostType {
 				<tr>
 					<th><label for="ss_slide_caption[<?=$id?>]">Slide Caption</label></th>
 					<td>
+                        <div id="wysihtml5-toolbar[<?=$id?>]" style="display: none;">
+                            <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+                            <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+                            <a data-wysihtml5-command="underline">underline</a>
+
+                          <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+                            <a data-wysihtml5-command="createLink">insert link</a>
+                            <div data-wysihtml5-dialog="createLink" style="display: none;">
+                                <label>
+                                    Link:
+                                    <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+                                </label>
+                                <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                            </div>
+                        </div>
 						<textarea name="ss_slide_caption[<?=$id?>]" id="ss_slide_caption[<?=$id?>]" cols="60" rows="4"><?=$slide_caption?></textarea>
 					</td>
 				</tr>
