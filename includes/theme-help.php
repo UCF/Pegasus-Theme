@@ -129,6 +129,7 @@
 					</p>
 
 					<h4 id="stories-issue-tags">Assign an Issue, Tags</h4>
+					<p style="text-align: center;">
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
 						Fall/Spring/Summer, and the year) and add any appropriate tags in the Tags metabox.  When picking 
@@ -362,7 +363,7 @@
 						<li>
 							The Default Template Header Image’s recommended dimensions (1600x900px) are relatively large for the web—please 
 							make sure your image is optimized for the web BEFORE uploading it to WordPress.  See the 
-							<a href="#stories-adding-media">Adding Media documentation section</a> for more information.
+							<a href="#stories-add-media">Adding Media documentation section</a> for more information.
 						</li>
 						<li>
 							The Default Template Header Image will be stretched and cropped at different window sizes.  Please keep the 
