@@ -155,8 +155,8 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     // Slider Meta Box Updates:
     // (only run this code if we're on a screen with #slider-slides-settings-basic;
     // i.e. if we're on a slider edit screen:
-    if ($('#ss_slides_wrapper').length > 0) {
-
+    if ($('body.post-type-photo_essay').length > 0) {
+        var frame;
         var slideCountWidget = $('#slider-slides-settings-count'),
             slideCountField = $('input#ss_slider_slidecount'),
             slideOrderField = $('input#ss_slider_slideorder'),
@@ -258,23 +258,10 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         }
 
 
-        // If only one slide is available on the page, hide the 'Remove slide' button for that slide:
-        var hideOnlyRemoveBtn = function() {
-            if ($('#ss_slides_all li.custom_repeatable').length < 2) {
-                $('#ss_slides_all li.custom_repeatable:first-child a.repeatable-remove').hide();
-            }
-            else {
-                $('#ss_slides_all li.custom_repeatable a.repeatable-remove').show();
-            }
-        }
-
-
-
         // Admin onload:
         slideCountWidget.hide();
         updateSlideCount();
         updateSliderSortOrder();
-        hideOnlyRemoveBtn();
 
 
         // Update slide count when a slide's content changes:
@@ -311,61 +298,100 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         });
 
 
-        // Add/remove Slide button functionality:
-        $('.repeatable-add').on('click', function() {
-            var field = $(this).prev('li').clone(true);
-            var fieldLocation = $(this).prev('li');
-            var widgetNumbers = [];
-            var highestNum = 0;
+        // Create a new slide
+        var createSlide = function(attachment) {
+            var newSlideSibling = $('#ss_slides_all li.postbox:last-child'),
+                slideCloner = $('#ss_slides_all li.cloner'),
+                newSlide = slideCloner.clone(true).removeClass('cloner');
 
-            // Get the highest ID 'widget' number to prevent duplicate IDs after sorting:
-            $(keyField).each(function() {
-                // get number by trimming the input ID
-                var inputID = getInputID($(this).attr('name'));
-                widgetNumbers[widgetNumbers.length] = inputID;
-            });
-            highestNum = Math.max.apply(Math, widgetNumbers);
+            var attachment_id = attachment.attributes.id,
+                attachment_filename = attachment.attributes.filename,
+                attachment_url = attachment.attributes.url,
+                attachment_title = attachment.attributes.title,
+                attachment_caption = attachment.attributes.caption;
 
             // Update 'name' attributes
-            $('textarea, input[type="text"], input[type="select"], input[type="file"]', field).val('').attr('name', function(index, name) {
-                return name.replace(/(\d+)/, highestNum + 1);
+            $('textarea, input[type="text"], input[type="select"], input[type="file"], input[type="hidden"]', newSlide).val('').attr('name', function(index, name) {
+                return name.replace('xxxxxx', attachment_id);
             });
-            $('input[type="checkbox"], input[type="radio"]', field).attr('name', function(index, name) {
-                return name.replace(/(\d+)/, highestNum + 1);
+            $('input[type="checkbox"], input[type="radio"]', newSlide).attr('name', function(index, name) {
+                return name.replace('xxxxxx', attachment_id);
             });
             // Update 'for' attributes (in <label>)
-            $('label', field).val('').attr('for', function(index, forval) {
-                return forval.replace(/(\d+)/, highestNum + 1);
+            $('label', newSlide).val('').attr('for', function(index, forval) {
+                return forval.replace('xxxxxx', attachment_id);
             });
             // Update 'id' attributes
-            $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"]', field).attr('id', function(index, idval) {
-                return idval.replace(/(\d+)/, highestNum + 1);
+            $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"]', newSlide).attr('id', function(index, idval) {
+                return idval.replace('xxxxxx', attachment_id);
             });
+
             // Remove other existing data from previous slide:
-            $('.has-value', field).removeClass('has-value');
-            $('input[type="radio"]', field).removeAttr('checked');
-            $('label[for^="ss_slide_image["]', field).parent('th').next('td').children('a, br:nth-child(2)').remove();
+            $('.has-value', newSlide).removeClass('has-value');
+            $('input[type="radio"]', newSlide).removeAttr('checked');
 
-            field.fadeIn().insertAfter(fieldLocation, $(this).prev('li'));
+            // Update slide header title:
+            $('.slide-handle-header', newSlide).text(attachment_title);
+            WebcomAdmin.sliderHeaderTitleAction($, newSlide);
 
-            // Kill cloned tinymce instance and re-initialize:
-            /*var fieldId = 'ss_slide_caption['+ (highestNum + 1) +']';
-            $('div[id^="wp-ss_slide_caption["]', field).replaceWith('<textarea id="'+ fieldId +'" />');
-            tinymce.EditorManager.execCommand('mceAddControl', false, fieldId);*/
+            // Update new slide values with anything made available
+            // from the attachment object provided
+            $('label[for^="ss_slide_image["]', newSlide)
+                .parent('th')
+                    .next('td')
+                        .find('a')
+                            .attr('href', attachment_url)
+                            .find('img')
+                                .attr('src', attachment_url)
+                                .siblings('span')
+                                    .text(attachment_filename);
 
-            $('.slide-handle-header', field).text('');
-            WebcomAdmin.sliderHeaderTitleAction($, field);
+            $('input[id^="ss_slide_title"]', newSlide).attr('value', attachment_title);
+            $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachment_caption);
+            $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
+            newSlide.insertAfter(newSlideSibling).show();
 
-            hideOnlyRemoveBtn();
+            // Update slide count, order
+            updateSlideCount();
+            updateSliderSortOrder();
+
             return false;
-        });
+        }
 
+
+        // Remove a slide
         $('.repeatable-remove').on('click', function() {
             $(this).parent().remove();
-            hideOnlyRemoveBtn();
+            //hideOnlyRemoveBtn();
             updateSlideCount();
             updateSliderSortOrder();
             return false;
+        });
+
+
+        // Handle Media Library modal toggle
+        $('#slide_modal_toggle').on('click', function(event){
+            event.preventDefault();
+
+            if (!frame) {
+                // Create uploader object
+                var frame = wp.media({
+                    title: 'Select Slide Images',
+                    multiple: true,
+                    library: { type: 'image' },
+                    button : { text : 'Create New Slides' }
+                });
+                frame.on('select', function() {
+                    var selection = frame.state().get('selection');
+                    selection.each(function(attachment) {
+                        //console.log(attachment.attributes);
+                        createSlide(attachment);
+                    });
+                });
+            }
+
+            // Open the Media Library modal
+            frame.open();
         });
     }
 };
@@ -377,7 +403,7 @@ WebcomAdmin.sliderHeaderTitleAction = function($, field) {
         var slideHeader = $('.slide-handle-header', e.data.slideDiv);
         slideHeader.text(titleFieldValue);
     });
-}
+};
 
 
 WebcomAdmin.storyFieldToggle = function($) {

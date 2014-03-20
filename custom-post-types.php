@@ -713,7 +713,7 @@ class PhotoEssay extends CustomPostType {
 		$edit_item      = 'Edit Photo Essay',
 		$new_item       = 'New Photo Essay',
 		$public         = True,
-		$use_editor     = False,
+		$use_editor     = True,
 		$use_thumbnails = False,
 		$use_order      = False,
 		$use_title      = True,
@@ -792,7 +792,7 @@ class PhotoEssay extends CustomPostType {
 			),
 			array(
 				'id'	=> 'ss_slide_image',
-				'type'	=> 'file',
+				'type'	=> 'default',
 				'val' 	=> $_POST['ss_slide_image'],
 			),
 		);
@@ -844,115 +844,91 @@ class PhotoEssay extends CustomPostType {
 
 
 	/**
+	 * Generate markup for a cloneable set of meta fields
+	 **/
+	public static function display_cloneable_fieldset($fields, $id=null) {
+		$id             = $id !== null ? intval($id) : 'xxxxxx';
+		$slide_title    = $fields['slide_title'][$id]   ? $fields['slide_title'][$id] : '';
+		$slide_caption  = $fields['slide_caption'][$id] ? $fields['slide_caption'][$id] : '';
+		$slide_image_id = !is_string($id) ? intval($fields['slide_image'][$id]) : $id;
+		$slide_image    = !is_string($slide_image_id) ? get_post($slide_image_id) : null;
+	?>
+		<li class="custom_repeatable postbox<?php if (is_string($id)) {?> cloner" style="display:none;<?php } ?>">
+			<div class="handlediv" title="Click to toggle"> </div>
+				<h3 class="hndle">
+				<span>Slide - </span><span class="slide-handle-header"><?=$slide_title?></span>
+			</h3>
+			<table class="form-table">
+			<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+				<tr>
+					<th><label for="ss_slide_title[<?=$id?>]">Title</label></th>
+					<td>
+						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" cols="60" rows="4" value="<?=$slide_title?>" />
+					</td>
+				</tr>
+				<tr>
+					<th><label for="ss_slide_caption[<?=$id?>]">Slide Caption</label></th>
+					<td>
+						<textarea name="ss_slide_caption[<?=$id?>]" id="ss_slide_caption[<?=$id?>]" cols="60" rows="4"><?=$slide_caption?></textarea>
+					</td>
+				</tr>
+				<tr>
+					<th><label for="ss_slide_image[<?=$id?>]">Slide Image</label></th>
+					<td>
+						<?php
+							if (!empty($slide_image)) {
+								$url = wp_get_attachment_url($slide_image->ID);
+							} else {
+								$url = '';
+							}
+						?>
+						<a target="_blank" href="<?=$url?>">
+							<img src="<?=$url?>" style="max-width: 400px; height: auto;" /><br/>
+							<span><?php if (!empty($slide_image)) { print $slide_image->post_title; }?></span>
+						</a><br />
+						<input type="text" id="file_img_<?=$slide_image_id?>" value="<?=$slide_image_id?>" name="ss_slide_image[<?=$id?>]">
+					</td>
+				</tr>
+			</table>
+			<a class="repeatable-remove button" href="#">Remove Slide</a>
+		</li>
+	<?php
+	}
+
+
+	/**
 	 * Show fields for single slides:
 	 **/
 	public static function display_slide_meta_fields($post) {
-
 		// Get any already-existing values for these fields:
-		$slide_title		= get_post_meta($post->ID, 'ss_slide_title', TRUE);
-		$slide_caption		= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
-		$slide_image		= get_post_meta($post->ID, 'ss_slide_image', TRUE);
-		$slide_order 		= get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
+		$slide_title	= get_post_meta($post->ID, 'ss_slide_title', TRUE);
+		$slide_caption	= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
+		$slide_image	= get_post_meta($post->ID, 'ss_slide_image', TRUE);
+		$slide_order    = get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
+		$args = array(
+			'slide_title' => $slide_title,
+			'slide_caption' => $slide_caption,
+			'slide_image' => $slide_image
+		);
 		?>
 		<div id="ss_slides_wrapper">
+			<a class="button-primary" id="slide_modal_toggle" href="#">Create New Slides</a>
 			<ul id="ss_slides_all">
 				<?php
+				// Print a cloner slide
+				PhotoEssay::display_cloneable_fieldset($args);
 
-					// Loop through slides_array for existing slides. Else, display
-					// a single empty slide 'widget'.
-					if ($slide_order) {
-						$slide_array = explode(",", $slide_order);
-						foreach ($slide_array as $s) {
-							if ($s !== '') {
-					?>
-							<li class="custom_repeatable postbox">
-
-								<div class="handlediv" title="Click to toggle"> </div>
-									<h3 class="hndle">
-									<span>Slide - </span><span class="slide-handle-header"><?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?></span>
-								</h3>
-
-								<table class="form-table">
-								<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
-									<tr>
-										<th><label for="ss_slide_title[<?=$s?>]">Title</label></th>
-										<td>
-											<input type="text" name="ss_slide_title[<?=$s?>]" id="ss_slide_title[<?=$s?>]" cols="60" rows="4" value="<?php ($slide_title[$s] !== '') ? print $slide_title[$s] : ''; ?>">
-										</td>
-									</tr>
-									<tr>
-										<th><label for="ss_slide_caption[<?=$s?>]">Caption</label></th>
-										<td>
-											<textarea name="ss_slide_caption[<?=$s?>]" id="ss_slide_caption[<?=$s?>]" cols="60" rows="4"><?php ($slide_caption[$s] !== '') ? print $slide_caption[$s] : ''; ?></textarea>
-										</td>
-									</tr>
-									<tr>
-										<th><label for="ss_slide_image[<?=$s?>]">Slide Image</label></th>
-										<td>
-											<?php
-												if ($slide_image[$s]){
-													$image = get_post($slide_image[$s]);
-													$url   = wp_get_attachment_url($image->ID);
-												}else{
-													$image= null;
-												}
-											?>
-											<?php if($image):?>
-											<a target="_blank" href="<?=$url?>">
-												<img src="<?=$url?>" style="max-width: 400px; height: auto;" /><br/>
-												<?=$image->post_title?>
-											</a><br /><br />
-											<?php endif;?>
-											<input type="file" <?php if($image){ ?>class="has-value"<?php } ?> id="file_img_<?=$post->ID?>" name="ss_slide_image[<?=$s?>]"><br />
-										</td>
-									</tr>
-								</table>
-								<a class="repeatable-remove button" href="#">Remove Slide</a>
-							</li>
-
-					<?php
-							}
+				// Loop through slides_array for existing slides.
+				if ($slide_order) {
+					$slide_array = explode(",", $slide_order);
+					foreach ($slide_array as $s) {
+						if ($s !== '') {
+							print PhotoEssay::display_cloneable_fieldset($args, $s);
 						}
-
-					} else {
-						$i = 0;
-						?>
-						<li class="custom_repeatable postbox">
-
-							<div class="handlediv" title="Click to toggle"> </div>
-								<h3 class="hndle">
-								<span>Slide - </span><span class="slide-handle-header"></span>
-							</h3>
-							<table class="form-table">
-							<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
-								<tr>
-									<th><label for="ss_slide_title[<?=$i?>]">Title</label></th>
-									<td>
-										<input type="text" name="ss_slide_title[<?=$i?>]" id="ss_slide_title[<?=$i?>]" cols="60" rows="4" value="<?php ($slide_title[$i] !== '') ? print $slide_title[$i] : ''; ?>" />
-									</td>
-								</tr>
-								<tr>
-									<th><label for="ss_slide_caption[<?=$i?>]">Slide Caption</label></th>
-									<td>
-										<textarea name="ss_slide_caption[<?=$i?>]" id="ss_slide_caption[<?=$i?>]" cols="60" rows="4"></textarea>
-									</td>
-								</tr>
-								<tr>
-									<th><label for="ss_slide_image[<?=$i?>]">Slide Image</label></th>
-									<td>
-										<input type="file" id="file_<?=$post->ID?>" name="ss_slide_image[<?=$i?>]"><br />
-									</td>
-								</tr>
-							</table>
-							<a class="repeatable-remove button" href="#">Remove Slide</a>
-						</li>
-						<?php
-
 					}
+				}
 				?>
-						<a class="repeatable-add button-primary" href="#">Add New Slide</a><br/>
 			</ul>
-
 		</div>
 		<?php
 	}
