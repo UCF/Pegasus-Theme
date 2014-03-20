@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<meta name="viewport" content="width=device-width">
 		<?="\n".header_()."\n"?>
+		<meta name="viewport" content="width=device-width">
 		<?php if(GA_ACCOUNT or CB_UID):?>
 
 		<script type="text/javascript">
