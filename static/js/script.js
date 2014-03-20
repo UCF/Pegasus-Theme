@@ -609,7 +609,17 @@ var SlideShow = (function() {
             nextDataId = slidesContent.find('.ss-arrow-next').attr('href');
 
         if (nextDataId) {
-            _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
+            var nextDataId = nextDataId.replace('#', '');
+            _transitionSlide(slidesContent, nextDataId, true);
+            _trackSlideShow(slidesContent, 'next');
+
+            if (nextDataId == '2') {
+                _trackSlideShow(slidesContent, 'start-next');
+            }
+
+            if (nextDataId == 'restart-slide') {
+                _trackSlideShow(slidesContent, 'end-next');
+            }
         }
     }
 
@@ -621,6 +631,7 @@ var SlideShow = (function() {
 
         if (prevDataId) {
             _transitionSlide(slidesContent, prevDataId.replace('#', ''), false);
+            _trackSlideShow(slidesContent, 'previous');
         }
     }
 
@@ -632,6 +643,7 @@ var SlideShow = (function() {
 
         if (nextDataId) {
             _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
+            _trackSlideShow(slidesContent, 'start-play');
         }
     }
 
@@ -643,7 +655,20 @@ var SlideShow = (function() {
 
         if (nextDataId) {
             _transitionSlide(slidesContent, nextDataId.replace('#', ''), true);
+            _trackSlideShow(slidesContent, 'restart');
         }
+    }
+
+    function _trackSlideShow(slidesContent, action, value) {
+        var isPhotoEssay = slidesContent.hasClass('ss-photo-essay'),
+            category = isPhotoEssay ? 'photo-essay' : 'photo-slideshow',
+            slug = slidesContent.attr('id');
+
+            if (value) {
+                _gaq.push(['_trackEvent', category, action, slug, value]);
+            } else {
+                _gaq.push(['_trackEvent', category, action, slug]);
+            }
     }
 
     function _transitionSlide(slidesContent, nextDataId, isForward) {
