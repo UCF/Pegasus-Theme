@@ -1198,6 +1198,10 @@ a.ss-control.ss-restart i {
     width: 100%;
 }
 
+.ss-caption.ss-current {
+    z-index: 11;
+}
+
 .ss-caption > p {
     opacity: 0;
     filter: alpha(opacity=0);
