@@ -275,7 +275,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         // White list of tags to allow
         var wysihtml5ParserRules = {
             tags: {
-                br      {},
+                br:     {},
                 strong: {},
                 b:      {},
                 i:      {},
