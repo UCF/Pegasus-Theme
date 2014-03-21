@@ -871,20 +871,20 @@ class PhotoEssay extends CustomPostType {
 					<th><label for="ss_slide_caption[<?=$id?>]">Slide Caption</label></th>
 					<td>
                         <div id="wysihtml5-toolbar[<?=$id?>]" style="display: none;">
-                            <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
-                            <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
-                            <a data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
+                            <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+                            <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+                            <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
                           <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
-                            <a data-wysihtml5-command="createLink">insert link</a>
-                            <div data-wysihtml5-dialog="createLink" style="display: none;">
+                            <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
+                            <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
                                 <label>
                                     Link:
                                     <input data-wysihtml5-dialog-field="href" value="http://" class="text">
                                 </label>
-                                <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
+                                <a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
                             </div>
-                            <a data-wysihtml5-action="change_view">HTML</a>
+                            <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
                         </div>
 						<textarea name="ss_slide_caption[<?=$id?>]" id="ss_slide_caption[<?=$id?>]" cols="60" rows="4"><?=$slide_caption?></textarea>
 					</td>

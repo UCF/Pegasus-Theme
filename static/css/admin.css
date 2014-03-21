@@ -184,58 +184,58 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-dialog-action]:active {
 	background-image: none;
 }
 
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-strong {
 	background-position: 1px -19px;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"]:hover,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"]:active,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"][class="wysihtml5-command-active"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-strong:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-strong:active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-strong.wysihtml5-command-active {
 	background-position: 1px 1px;
 }
 
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-em {
 	background-position: -19px -19px;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"]:hover,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"]:active,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"][class="wysihtml5-command-active"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-em:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-em:active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-em.wysihtml5-command-active {
 	background-position: -19px 1px;
 }
 
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-u {
 	background-position: -279px -19px;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"]:hover,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"]:active,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"][class="wysihtml5-command-active"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-u:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-u:active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-u.wysihtml5-command-active {
 	background-position: -279px 1px;
 }
 
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-createlink {
 	background-position: -159px -19px;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"]:hover,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"]:active,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"][class="wysihtml5-command-dialog-opened"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-createlink:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-createlink:active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-createlink.wysihtml5-command-dialog-opened {
 	background-position: -159px 1px;
 }
 
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form {
 	display: inline-block;
 	vertical-align: top;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] label {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form label {
 	padding-left: 8px;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] input {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form input {
 	width: 180px;
 	margin: 0;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a {
 	display: inline-block;
 	position: relative;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a:after {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a:after {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -248,18 +248,18 @@ div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a:after {
 	line-height: 24px;
 	font-weight: bold;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a[data-wysihtml5-dialog-action="save"]:after {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a.wysihtml5-createlink-save:after {
 	content: "✓";
 	line-height: 26px;
 	color: #3C763D;
 }
-div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a[data-wysihtml5-dialog-action="cancel"]:after {
+div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a.wysihtml5-createlink-cancel:after {
 	content: "×";
 	font-size: 20px;
 	color: #A94442;
 }
 
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"] {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html {
 	position: absolute;
 	top: -26px;
 	right: 8px;
@@ -268,12 +268,12 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"] {
 	height: 26px;
 	border: 0px solid transparent;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:hover,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:active {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:active {
 	background: none;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:before,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:before,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:after {
 	display: block;
 	position: absolute;
 	top: 0;
@@ -289,11 +289,11 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
 	border-bottom: 1px solid #f4f4f4;
 	background-color: #f4f4f4;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:before {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:before {
 	content: "Visual";
 	left: 0;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:after {
 	content: "Text";
 	right: 0;
 	border-top: 1px solid #dfdfdf;
@@ -303,11 +303,11 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
 	background-color: #f1f1f1;
 	color: #999;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:hover:after,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:active:after {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:hover:after,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html:active:after {
 	color: #d54e21;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:before {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:before {
 	border-top: 1px solid #dfdfdf;
 	border-right: 1px solid #dfdfdf;
 	border-left: 1px solid #dfdfdf;
@@ -315,7 +315,7 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-ac
 	background-color: #f1f1f1;
 	color: #999;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:after {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:after {
 	border-top: 1px solid #ccc;
 	border-right: 1px solid #ccc;
 	border-left: 1px solid #ccc;
@@ -323,12 +323,12 @@ div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-ac
 	background-color: #f4f4f4;
 	color: #000;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:hover:before,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:active:before {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:hover:before,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:active:before {
 	color: #d54e21;
 }
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:hover:after,
-div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:active:after {
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:hover:after,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:active:after {
 	color: #000;
 }
 
