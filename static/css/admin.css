@@ -138,4 +138,206 @@ body.post-type-photo_essay .postarea.edit-form-section { display: none; }
 #slide_modal_toggle { width: 100%; height: 45px; padding: 10px 0; font-size: 16px; text-align: center; margin: 20px 0;}
 body.post-type-photo_essay input[id^="file_img_"] { display: none; }
 
+/* Caption WYSIWYG - Toolbar */
+div[id^="wysihtml5-toolbar"] {
+	position: relative;
+	width: 417px;
+	background-color: #E5E5E5;
+	background: linear-gradient(to top, #E5E5E5, #F4F4F4) repeat scroll 0 0 #EEEEEE;
+	overflow: visible;
+	border: 1px solid #ccc;
+	border-radius: 3px 3px 0 0;
+	padding: 3px;
+}
+/* Caption WYSIWYG - Buttons */
+div[id^="wysihtml5-toolbar"] a {
+	display: inline-block;
+	vertical-align: top;
+	width: 22px;
+	height: 22px;
+	margin: 1px;
+	text-indent: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	background: transparent;
+	background-image: url("../../../../../wp-includes/images/wpicons.png");
+	border: 1px solid transparent;
+	border-radius: 2px;
+}
+div[id^="wysihtml5-toolbar"] a:hover,
+div[id^="wysihtml5-toolbar"] a:active {
+	border-color: #bbb;
+	background: linear-gradient(to top, #E5E5E5, #FFFFFF) repeat scroll 0 0 #EEEEEE;
+	background-image: url("../../../../../wp-includes/images/wpicons.png");
+}
 
+div[id^="wysihtml5-toolbar"] a.wysihtml5-command-active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-command-dialog-opened {
+	border-color: #999999 #CCCCCC #CCCCCC #999999;
+	background: linear-gradient(to top, #F6F6F6, #E3E3E3) repeat scroll 0 0 #EEEEEE;
+	background-image: url("../../../../../wp-includes/images/wpicons.png");
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-dialog-action],
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-dialog-action]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-dialog-action]:active {
+	background-image: none;
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"] {
+	background-position: 1px -19px;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"]:active,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="strong"][class="wysihtml5-command-active"] {
+	background-position: 1px 1px;
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"] {
+	background-position: -19px -19px;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"]:active,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command-value="em"][class="wysihtml5-command-active"] {
+	background-position: -19px 1px;
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"] {
+	background-position: -279px -19px;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"]:active,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="underline"][class="wysihtml5-command-active"] {
+	background-position: -279px 1px;
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"] {
+	background-position: -159px -19px;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"]:active,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-command="createLink"][class="wysihtml5-command-dialog-opened"] {
+	background-position: -159px 1px;
+}
+
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] {
+	display: inline-block;
+	vertical-align: top;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] label {
+	padding-left: 8px;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] input {
+	width: 180px;
+	margin: 0;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a {
+	display: inline-block;
+	position: relative;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	text-align: center;
+	text-indent: 0;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: bold;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a[data-wysihtml5-dialog-action="save"]:after {
+	content: "✓";
+	line-height: 26px;
+	color: #3C763D;
+}
+div[id^="wysihtml5-toolbar"] div[data-wysihtml5-dialog="createLink"] a[data-wysihtml5-dialog-action="cancel"]:after {
+	content: "×";
+	font-size: 20px;
+	color: #A94442;
+}
+
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"] {
+	position: absolute;
+	top: -26px;
+	right: 8px;
+	background-image: none;
+	width: 85px;
+	height: 26px;
+	border: 0px solid transparent;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:hover,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:active {
+	background: none;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:before,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
+	display: block;
+	position: absolute;
+	top: 0;
+	text-indent: 0;
+	text-align: center;
+	line-height: 16px;
+	color: #000;
+	padding: 5px 5px 2px 5px;
+	border-radius: 3px 3px 0 0;
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #f4f4f4;
+	background-color: #f4f4f4;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:before {
+	content: "Visual";
+	left: 0;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:after {
+	content: "Text";
+	right: 0;
+	border-top: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #ccc;
+	background-color: #f1f1f1;
+	color: #999;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:hover:after,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"]:active:after {
+	color: #d54e21;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:before {
+	border-top: 1px solid #dfdfdf;
+	border-right: 1px solid #dfdfdf;
+	border-left: 1px solid #dfdfdf;
+	border-bottom: 1px solid #ccc;
+	background-color: #f1f1f1;
+	color: #999;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:after {
+	border-top: 1px solid #ccc;
+	border-right: 1px solid #ccc;
+	border-left: 1px solid #ccc;
+	border-bottom: 1px solid #f4f4f4;
+	background-color: #f4f4f4;
+	color: #000;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:hover:before,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:active:before {
+	color: #d54e21;
+}
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:hover:after,
+div[id^="wysihtml5-toolbar"] a[data-wysihtml5-action="change_view"].wysihtml5-action-active:active:after {
+	color: #000;
+}
+
+.wysihtml5-sandbox,
+textarea[id^="ss_slide_caption"] {
+	margin: 0 !important;
+	border-radius: 0 0 3px 3px !important;
+	border-top: 0 !important;
+	padding: 8px !important;
+	width: 425px !important;
+	height: 150px !important;
+}

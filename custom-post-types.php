@@ -873,7 +873,7 @@ class PhotoEssay extends CustomPostType {
                         <div id="wysihtml5-toolbar[<?=$id?>]" style="display: none;">
                             <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
                             <a data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
-                            <a data-wysihtml5-command="underline">underline</a>
+                            <a data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
                           <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
                             <a data-wysihtml5-command="createLink">insert link</a>
@@ -884,6 +884,7 @@ class PhotoEssay extends CustomPostType {
                                 </label>
                                 <a data-wysihtml5-dialog-action="save">OK</a> <a data-wysihtml5-dialog-action="cancel">Cancel</a>
                             </div>
+                            <a data-wysihtml5-action="change_view">HTML</a>
                         </div>
 						<textarea name="ss_slide_caption[<?=$id?>]" id="ss_slide_caption[<?=$id?>]" cols="60" rows="4"><?=$slide_caption?></textarea>
 					</td>
