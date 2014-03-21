@@ -126,7 +126,8 @@
 
 					<h4 id="stories-add-title">Add a Title</h4>
 					<p>
-						Enter the title of the story in the title field at the top of the screen.
+						Enter the title of the story in the title field at the top of the screen.  Keep in mind that custom font sizes,
+						colors, or colors cannot be applied to the story title.
 					</p>
 
 					<h4 id="stories-issue-tags">Assign an Issue, Tags</h4>
@@ -265,7 +266,7 @@
 						<p><strong>Notes About Using Different Font Families:</strong></p>
 						<ul>
 							<li>
-								<strong>Note: DO NOT use this tool just to style your story's titles and subtitles!  Use
+								<strong>Note: DO NOT use this tool to create your story's titles and subtitles!  Use
 								<a href="#stories-about-headings">headings</a> instead.</strong>
 							</li>
 							<li>

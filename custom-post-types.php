@@ -896,7 +896,12 @@ class PhotoEssay extends CustomPostType {
 							if (!empty($slide_image)) {
 								$url = wp_get_attachment_url($slide_image->ID);
 							} else {
-								$url = '';
+								$url = False;
+							}
+							// Attempt to catch an attachment that was deleted
+							if ($url == False) {
+								$url = THEME_IMG_URL.'/slide-deleted.jpg';
+								$slide_image_id = '';
 							}
 						?>
 						<a target="_blank" href="<?=$url?>">
