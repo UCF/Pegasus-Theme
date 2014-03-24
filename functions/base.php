@@ -1567,13 +1567,14 @@ function _save_meta_data($post_id, $meta_box){
 
 	// Get post type object
 	$post_type = get_custom_post_type(post_type($post_id));
-	$post_type = new $post_type;
-
-	// verify nonce
-	if ($post_type->options('cloneable_fields')) {
-		if (!wp_verify_nonce($_POST['meta_box_nonce'], 'nonce-content')) {
-			//var_dump(wp_verify_nonce($_POST['meta_box_nonce'], 'nonce-content'));
-			return $post_id;
+	if ($post_type) {
+		$post_type = new $post_type;
+		// verify nonce
+		if ($post_type->options('cloneable_fields')) {
+			if (!wp_verify_nonce($_POST['meta_box_nonce'], 'nonce-content')) {
+				//var_dump(wp_verify_nonce($_POST['meta_box_nonce'], 'nonce-content'));
+				return $post_id;
+			}
 		}
 	}
 	else {
@@ -1597,7 +1598,7 @@ function _save_meta_data($post_id, $meta_box){
 	}
 
 	$all_fields = array();
-	if ($post_type->options('cloneable_fields')) {
+	if ($post_type && $post_type->options('cloneable_fields')) {
 		foreach ($meta_box as $single_meta_box) {
 			if ($single_meta_box['fields']) {
 				foreach ($single_meta_box['fields'] as $field) {
