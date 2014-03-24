@@ -900,7 +900,7 @@ function display_markup_or_template($post) {
 			if (!is_fall_2013_or_older($post)) {
 				// Newer stories without a value should assume 'default' template
 				add_filter('the_content', 'kill_empty_p_tags', 999);
-				require_once('templates/story/default.php');
+				require_once('templates/'.$post->post_type.'/default.php');
 			}
 			else {
 				// Use WYSIWYG editor contents for old stories that don't have a

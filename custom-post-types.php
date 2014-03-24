@@ -550,9 +550,9 @@ class Issue extends CustomPostType {
 				'id'   => $prefix.'template',
 				'type'    => 'select',
 				'options' => array(
-					'Default' => 'default',
 					'Custom (requires custom CSS/JS)' => 'custom',
-				)
+				),
+				'default' => 'Default'
 			),
 /*
 			array(
