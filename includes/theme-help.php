@@ -523,17 +523,14 @@
 						<li>
 							<a href="#photo-essays-creating-slides">Creating Slides</a>
 							<ul>
+								<li><a href="#photo-essays-slide-content">Title and Caption</a></li>
 								<li><a href="#photo-essays-requirements">Requirements</a></li>
-								<li><a href="#photo-essays-slide-content">Title, Caption and Image</a></li>
 								<li><a href="#photo-essays-order-slides">Ordering Slides</a></li>
 								<li><a href="#photo-essays-delete-slide">Delete a Slide</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="#photo-essays-save">Saving a Photo Essay</a>
-						</li>
-						<li>
-							<a href="#photo-essays-modifying">Modifying a Photo Essay</a>
 						</li>
 					</ul>
 
@@ -550,63 +547,108 @@
 					</p>
 
 					<h4 id="photo-essays-issue">Assign an Issue</h4>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-issue.jpg" />
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
-						Fall/Spring/Summer, and the year).  Setting an Issue here makes it appear in the Photo Essay dropdown in the 
-						"Insert Shortcode" popup window when creating stories/issues.
+						Fall/Spring/Summer, AND the year.)
 					</p>
 
 
 					<h3 id="photo-essays-creating-slides">Creating Slides</h3>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-create-slides.jpg" />
 					<p>
-						When creating a new photo essay, a single Slide metabox is available to add an image and caption to.  To add more slides,
-						click the "Add New Slide" button under the Slide metabox.  A new Slide metabox will appear underneath the last one.
+						The Photo Essay editor has been revamped to allow for faster and more efficient slide creation.  To create your first slide(s),
+						click the "Create New Slides" button at the top of the screen.
+					</p>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-create-modal.jpg" />
+					<p>
+						The window that appears is just like the window that you select media from when creating stories.  You can either upload new
+						images under the "Upload Files" section, or select one or more existing images from the Media Library.
+					</p>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-modal-select.jpg" />
+					<p>
+						To select more than one image from the Media Library for slide creation, click the first thumbnail in the set you want to select, 
+						then hold the Shift key and click the last thumbnail in the set.  All the thumbnails between the first and last thumbnail will 
+						have a checkbox icon next to them in the top-right hand corner.
+					</p>
+					<p>
+						Titles and captions for slides can be added or modified in this window.  Keep in mind that modifying a title or caption here will
+						modify it anywhere else on the site if that same image is used elsewhere.  Custom, per-slide overrides can be added later.
+					</p>
+					<p>
+						To create your slides, click the "Create New Slides" button at the bottom of the window.  The Media Library window will close, and
+						any image with a checkbox next to it will be inserted as a slide.  New slides are added at the bottom of the list of existing slides.
 					</p>
 
-					<h4 id="photo-essays-requirements">Requirements</h4>
-					<ul>
-						<li>
-							<strong>Each photo essay slide requires a title and image.</strong>  If both of these are not set for any slide, that 
-							slide will not be saved when the photo essay is saved/published.
-						</li>
-						<li>
-							All images uploaded to photo essay slides should be <strong>web-optimized</strong>!  Please see the Media Specs/Guidelines 
-							section of the <a href="#stories">Story documentation</a> for basic image optimization requirements.
-						</li>
-						<li>
-							<strong>All images uploaded to a single photo essay must be the same height</strong>.  Widths can vary, but the height 
-							must be consistent throughout all images.
-						</li>
-					</ul>
-
-					<h4 id="photo-essays-slide-content">Title, Caption and Image</h4>
+					<h4 id="photo-essays-slide-content">Title and Caption</h4>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-title-caption.jpg" />
 					<p>
-						Add a title, image, and caption (optional) for each slide.  Captions can use plain text values (no shortcodes.)
+						When a slide is created from an image in the Media Library, whatever title and caption were set for that image are pulled
+						automatically as the default title and caption for that slide.  To override these without modifying the title/caption of the 
+						image in the Media Library, just change the Title and Caption fields for the slide after it's been created.
 					</p>
+					<p>
+						Captions modified within the slide can use a mini WYSIWYG editor to apply bold, italics, or underline to text, and also add links.
+					</p>
+					<p>
+						Keep in mind that anything saved here will not modify the corresponding image title/caption in the Media Library.  Modify the image
+						from the Media Library instead to change those values.
+					</p>
+
+					<div class="well">
+						<h4 id="photo-essays-requirements">Requirements</h4>
+						<ul>
+							<li>
+								<strong>Each photo essay slide requires a title and image.</strong>  If both of these are not set for any slide, that 
+								slide will not be saved when the photo essay is saved/published.
+							</li>
+							<li>
+								All images uploaded to photo essays should be <strong>web-optimized</strong>!  Please see the Media Specs/Guidelines 
+								section of the <a href="#stories">Story documentation</a> for basic image optimization requirements.
+							</li>
+							<li>
+								<strong>All images uploaded to a single photo essay must be the same height</strong>.  Widths can vary, but the height 
+								must be consistent throughout all images.
+							</li>
+						</ul>
+					</div>
 
 					<h4 id="photo-essays-order-slides">Ordering Slides</h4>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-move.jpg" />
 					<p>
 						To re-order a slide, click and drag the top bar of the slide's metabox up or down to re-order it.
 					</p>
 
 					<h4 id="photo-essays-delete-slide">Delete a Slide</h4>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-delete-slide.jpg" />
 					<p>
 						To delete a single slide, click the "Remove Slide" button on the bottom-left of any single slide metabox.  Note that this
-						button will not appear if only one slide is left on the screen.
+						button will not appear if only one slide is left on the screen.  Also note that this does not delete the image from the Media
+						Library.
 					</p>
+					<div class="well">
+						<p>
+							<strong>NOTE:</strong> If an image has been deleted from the Media Library but is still saved as a slide in a photo essay,
+							<strong>that slide will display an empty or broken image on the slideshow it generates.</strong>  The slide created from
+							the deleted image will have to be deleted manually to fix this.
+						</p>
+					</div>
 
 
 					<h3 id="photo-essays-save">Saving a Photo Essay</h3>
+					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-save.jpg" />
 					<p>
 						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish
 						metabox.
 					</p>
+					<div class="well">
+						<p>
+							<strong>Note: auto-saving has been disabled for Photo Essays.  To use the "Preview" button, you MUST save your post as a
+							draft first!  This must be done with any set of revisions--even if the post has been published already.</strong>
+						</p>
+					</div>
 					<p>
-						<strong>Note: auto-saving has been disabled for Photo Essays.  To use the "Preview" button, you MUST save your post as a
-						draft first!  This must be done with any set of revisions--even if the post has been published already.</strong>
-					</p>
-					<p>
-						If your story is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by
+						If your photo essay is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by
 						clicking the blue "Publish" button in the Publish metabox.
 					</p>
 				</li>
@@ -679,7 +721,8 @@
 					<p>
 						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
 						Only a <strong>single line of text</strong> (no line breaks or new paragraphs) is permitted between the shortcode tags.<br/>
-						When used in a story, the Default Template Header Font Color is used for the color of the main quote.
+						When used in a story, the Default Template Header Font Color is used for the color of the main quote, unless a Text Color attribute
+						is specified.
 					</p>
 
 					<h4>Attributes</h4>
@@ -701,6 +744,12 @@
 							<td>cite</td>
 							<td>Citing of where the quote came from. (optional)</td>
 							<td>n/a</td>
+						</tr>
+						<tr>
+							<td>Text Color</td>
+							<td>color</td>
+							<td>The color of the blockquote text, source and cite. (optional)</td>
+							<td>#000 (source/cite: #444)</td>
 						</tr>
 					</table>
 
@@ -847,6 +896,12 @@
 							<td>slug</td>
 							<td>The slug of the Photo Essay to be used in the slideshow.</td>
 							<td>n/a</td>
+						</tr>
+						<tr>
+							<td>Caption Color</td>
+							<td>caption_color</td>
+							<td>The color of caption text in the slideshow.</td>
+							<td>#fff</td>
 						</tr>
 					</table>
 
