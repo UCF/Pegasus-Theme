@@ -479,7 +479,7 @@ Orlando, FL 32816',
 								tag provided; e.g. "//cloud.typography.com/000000/000000/css/fonts.css".</strong><br/><br/>NOTE: Make sure the Cloud.Typography
 								project has been configured to deliver fonts to this site\'s domain.<br/>
 								See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
-			'default'     => '//cloud.typography.com/730568/671204/css/fonts.css', /* CSS Key relative to PROD project */
+			'default'     => '//cloud.typography.com/730568/702404/css/fonts.css', /* CSS Key relative to PROD project */
 			'value'       => $theme_options['cloud_font_key'],
 		))
 	),
