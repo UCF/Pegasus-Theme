@@ -830,20 +830,25 @@ function display_social($url, $title) {
  * Displays an issue cover or story contents.  Accounts for whether or
  * not Developer Mode is on/off and what story/issue template is set.
  *
+ * Note: files pulled via file_get_contents() here should be requested over http.
+ *
  * Markup priority: Uploaded HTML File -> WYSIWYG editor content -> dev directory content
  **/
 function display_markup_or_template($post) {
 	if ($post->post_type == 'issue') {
 		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-		$dev_directory_html_url = THEME_DEV_URL.'/'.$dev_directory.'home.html';
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
 	}
 	else {
 		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
-		$dev_directory_html_url = THEME_DEV_URL.'/'.$dev_directory.$post->post_name.'.html';
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.$post->post_name.'.html');
 	}
 	$post_template     = get_post_meta($post->ID, $post->post_type.'_template', TRUE);
 	$uploaded_html     = get_post_meta($post->ID, $post->post_type.'_html', TRUE);
 	$uploaded_html_url = wp_get_attachment_url($uploaded_html);
+	if ($uploaded_html_url) {
+		$uploaded_html_url = str_replace('https', 'http', $uploaded_html_url);
+	}
 
 	// If developer mode is on and this story/issue is custom,
 	// try to use dev directory contents:
