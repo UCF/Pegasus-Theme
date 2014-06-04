@@ -289,8 +289,6 @@ var togglePulldown = function($) {
 }
 
 var loadPulldownMenus = function($) {
-	$('.story-list').kinetic({'cursor': 'pointer'});
-
 	$('.pulldown-toggle').each(function() {
 		var toggle = $(this),
 			pulldownContainer = $(toggle.attr('data-pulldown-container')),

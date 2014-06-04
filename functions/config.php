@@ -534,7 +534,6 @@ Config::$scripts = array(
 	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
 	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
 	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
-	array('name' => 'kinetic', 'src' => THEME_JS_URL.'/jquery.kinetic.min.js',),
 	array('name' => 'lazyload', 'src' => THEME_JS_URL.'/jquery.lazyload.min.js',),
 );
 
