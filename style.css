@@ -568,7 +568,7 @@ article.story p:empty { display: none; }
 article.story .story-header-image {
 	height: 600px;
 	/*max-width: 1200px;*/
-	margin: 0 auto 55px auto;
+	margin: 0 auto 35px auto;
 	background-size: auto 100%;
 	background-position: center;
 	background-repeat: no-repeat;
