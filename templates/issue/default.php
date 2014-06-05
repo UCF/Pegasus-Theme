@@ -1,7 +1,7 @@
 <?php disallow_direct_load('default.php');?>
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
-	$all_stories = get_issue_stories($post);
+	$fallback_featured_stories = get_issue_stories($post, array('numberposts'=>3));
 	$story_1_id = intval(get_post_meta($post->ID, 'issue_story_1', TRUE));
 	$story_2_id = intval(get_post_meta($post->ID, 'issue_story_2', TRUE));
 	$story_3_id = intval(get_post_meta($post->ID, 'issue_story_3', TRUE));
@@ -19,15 +19,14 @@
 	));
 
 	// Make sure story 1, 2, and 3 IDs are set.  If not, grab the first posts
-	// that appear in $all_stories and set them as the featured stories, 
-	// then unset them from $all_stories to prevent duplicates.
+	// that appear in $fallback_featured_stories and set them as the featured stories.
+	// NOTE: IDs set previously are replaced with post objects here.
 	$count = 0;
 	foreach ($featured_stories as $key=>$val) {
 		$story = get_post($val);
 
 		if ($val == 0 || $story == null) {
-			$featured_stories[$key] = $story = $all_stories[$count];
-			unset($all_stories[$count]);
+			$featured_stories[$key] = $story = $fallback_featured_stories[$count];
 			$count++;
 		}
 		else {
@@ -40,8 +39,9 @@
 	$story_1 = $featured_stories[0];
 	$story_2 = $featured_stories[1];
 	$story_3 = $featured_stories[2];
+	$other_stories = get_issue_stories($post, array('exclude'=>array($story_1->ID, $story_2->ID, $story_3->ID)));
 
-	// Number of stories per 'faux' row.
+	// Number of story/issue thumbnails per 'faux' row.
 	$per_row_m = 5;   // 980px+
 	$per_row_s = 5;   // 768-979px
 	$per_row_xs = 3;  // 481-767px
@@ -92,7 +92,7 @@
 		</div>
 		<?php
 		$count = 0;
-		foreach ($all_stories as $story) {
+		foreach ($other_stories as $story) {
 			$classes = '';
 			if ($count % $per_row_m == 0) { $classes .= ' thumb-1-m'; }
 			if ($count % $per_row_s == 0) { $classes .= ' thumb-1-s'; }

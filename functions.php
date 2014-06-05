@@ -582,7 +582,7 @@ function output_header_markup($post) {
 		}
 
 		// Issue font declarations (custom templates)
-		if ($post->post_type == 'issue' && !uses_custom_template($post)) {
+		if ($post->post_type == 'issue' && uses_custom_template($post)) {
 			$font = get_template_heading_styles($post);
 
 			if ($font['url']) {
