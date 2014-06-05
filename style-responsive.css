@@ -227,6 +227,13 @@
 	}
 
 	/* Story Thumbnails */
+	#home .home-article-1 .description {
+		position: static;
+		padding: 0;
+		margin-top: 6px;
+		color: #000;
+	}
+	#home .home-article-1 .description h2 { font-size: 18px; line-height: 1.25em; }
 	#home .thumb.featured { width: 48%; }
 	#home .home-article-1 { margin-bottom: 20px; }
 	#home .home-article-2 { float: left; }
