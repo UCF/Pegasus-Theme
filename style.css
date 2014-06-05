@@ -434,8 +434,8 @@ li#nav-about a {
 }
 #home .heading-wrap h2 {
 	background: #e5e5e5;
-	font-family: 'MontserratBold', sans-serif;
-	font-weight: normal;
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+	font-weight: 700;
 	font-size: 18px;
 	line-height: 30px;
 	color: #828282;
@@ -534,7 +534,15 @@ li#nav-about a {
 }
 #home .thumb .description h3 { line-height: 20px; }
 
+/* Past issues */
 #home .home-past-issues .thumb a { text-indent: 0; position: static; }
+#home .home-past-issues .archives-link { margin-top: 8px; }
+#home .home-past-issues .archives-link a {
+	font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+	font-size: 14px;
+	font-weight: 700;
+	color: #000;
+}
 
 
 /**************************
@@ -799,7 +807,8 @@ article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 /**************************
  * Subfooter - Social Links
  **************************/
-#footer-social .border-top { border-top: 1px solid #eee; padding: 20px 0; }
+#footer-social { margin-top: -1px; } /* "hide" .border-top border on default issue template */
+#footer-social .border-top { border-top: 1px solid #e5e5e5; padding: 20px 0; }
 #footer-social ul { list-style-type: none; text-align: center; margin: 0; }
 #footer-social li { display: inline-block; padding: 0 3px; }
 #footer-social li a {

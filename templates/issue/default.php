@@ -114,7 +114,7 @@
 	<section class="container home-past-issues">
 		<div class="row">
 			<div class="span12 heading-wrap">
-				<h2>Past Issues of Pegasus Magazine</h2>
+				<h2>Recent Issues of Pegasus Magazine</h2>
 			</div>
 		</div>
 		<?php
@@ -134,5 +134,12 @@
 			$count++;
 		}
 		?>
+		<div class="row">
+			<div class="span12">
+				<span class="pull-right archives-link">
+					<a href="<?=get_permalink(get_page_by_title('Archives'))?>">View Archives &raquo;</a>
+				</span>
+			</div>
+		</div>
 	</section>
 </div>
