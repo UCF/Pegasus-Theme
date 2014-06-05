@@ -59,24 +59,161 @@
 
 					<p>
 						<strong>Issues</strong> are used to categorize Stories just like in the physical magazine.
-						They consist of a cover story and a listing of the other Stories related to this issue.
+						They exist in two different forms: as a <a target="_blank" href="http://codex.wordpress.org/Taxonomies">taxonomy</a>
+						(a means of grouping content, like categories or tags) and as a type of post, which serves as the landing page/cover for the website
+						when that issue is active.
+					</p>
+					
+					<p><strong>Navigation:</strong></p>
+					<ul class="section-nav">
+						<li>
+							<a href="#issues-creating-issue">Creating Issues</a>
+							<ul>
+								<li><a href="#issues-create-taxonomy">1. Create the Taxonomy Term</a></li>
+								<li><a href="#issues-create-post">2. Create the Issue Cover</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#issues-modifying">Modifying an Issue</a>
+						</li>
+						<li>
+							<a href="#issues-active">Updating the Active Issue</a>
+						</li>
+					</ul>
+
+					<h3 id="issues-creating-issue">Creating Issues</h3>
+					<p>
+						Creating an issue involves two core steps: creating the taxonomy term for the issue, and creating the issue
+						cover page.  The taxonomy term will allow you to assign stories to that issue, while the issue cover page
+						lists those stories using either a pre-built template or a custom-built one (by a developer.)
+					</p>
+
+					<h4 id="issues-create-taxonomy">1. Create the Taxonomy Term</h4>
+					<p>
+						To create a new Issue taxonomy term, hover over the “Stories” link in the left-hand WordPress admin menu, and
+						click "Issues".  You'll see a list of existing Issues on the right, grouped by year, and a form on the left for
+						creating new issues.
 					</p>
 					<p>
-						The titles follow a year and semester format (ex. Fall 2013, Summer 2014, etc). Below the
-						Issue content area you will be able to set values for various pieces of the
-						page (descriptions below).
+						Before creating the new issue, make sure a year grouping has already been defined in the list to the right.
+						(i.e., if you're creating the issue "Summer 2014", make sure the term "2014" exists.)  If it doesn't, use
+						the form on the left to add it.
+					</p>
+					<ul>
+						<li>The "Name" value will be the year.</li>
+						<li>The "Slug", "Parent" and "Description" fields should be left blank.</li>
+					</ul>
+					<p>
+						Click the "Add New Issue" button to create the new term.  You should see the term appear in the list on the 
+						right after a second or two.
 					</p>
 					<p>
+						If the year term for your new issue exists, use the form on the left to create it.
+					</p>
+					<ul>
+						<li>The "Name" value will be the season and year, i.e. "Summer 2014".</li>
+						<li>The "Slug" value will be created automatically for you and should be left blank.</li>
+						<li>The "Parent" value should be the year term, i.e. "2014".</li>
+						<li>Leave the "Description" field blank.</li>
+					</ul>
+					<p>
+						Click the "Add New Issue" button to save the new issue term.
+					</p>
+
+					<h4 id="issues-create-post">2. Create the Issue Cover</h4>
+					<p>
+						To create a new Issue cover, hover over the "Issues" link in the left-hand WordPress admin menu, and click
+						"Add New".
+					</p>
+
+					<h5>Add a Title</h5>
+					<p>
+						Enter the title of the issue in the title field at the top of the screen.  This title should match the issue
+						taxonomy term <strong>exactly.</strong>
+					</p>
+					<div class="well">
+						<p>
+							<strong>Important:</strong> The issue taxonomy term and issue cover names must match <strong>exactly</strong>
+							for the term and cover post to relate to each other correctly.  If you change the title (or slug) of an 
+							issue at any time, make sure that both the taxonomy term and issue cover title and slug are updated.
+						</p>
+					</div>
+
+					<h5>Add a Thumbnail</h5>
+					<p>
+						The Issue's Featured Image should be a screenshot of the print magazine's cover for that issue.  The Issue's
+						thumbnail is used on the site's homepage on newer issues and in the site archives.  To set the Featured Image,
+						click the “Set featured image” link in the Featured Image metabox on the right side of the screen. Upload or 
+						select an image as usual and click the “Set featured image” button. 
+					</p>
+					<div class="well">
+						<p><strong>Thumbnail Specs/Guidelines:</strong></p>
 						<ul>
-							<li><strong>Cover Story:</strong> This will be the headline story for the Issue.</li>
-							<li><strong>Issue Template:</strong> Give the ability to set a custom template to use (rarely used for consistancy purposes).</li>
-							<li><strong>Header Font Family:</strong> This will set the font family for all the headers (h1-h6) on the Issue page.</li>
-							<li><strong>Header Font Color:</strong> Sets a color to all the headers (h1-h6) on the Issue page.</li>
-							<li><strong>Header Font Size (Desktop, Tablet, and Mobile):</strong> This sets the font size to use for the headers (h1-h6) based on the device the user is on.</li>
-							<li><strong>Header Font Text Align:</strong> Sets the alignment of the Issue header (h1-h6) to left, center or right.</li>
-							<li><strong>Home Page Stylesheet:</strong> Only used when developing a custom Issue page.</li>
-							<li><strong>Home Page JavaScript File:</strong> Only used when developing a custom Issue page.</li>
+							<li>Issue thumbnails should be <strong>190x248px</strong></li>
+							<li>Thumbnails can be <strong>.jpg or .png’s</strong>.  Adding transparency is not recommended.</li>
+							<li>
+								Running thumbnails through an image compression service like 
+								<a href="http://imageoptim.com/" target="_blank">ImageOptim</a> is recommended.
+							</li>
 						</ul>
+					</div>
+
+					<h5>Issue Content</h5>
+					<p>
+						Issue covers that use the Default Issue Template do not use the content (WYSIWYG) editor; all
+						stories and past issues of Pegasus are filled in automatically, so this field should be left blank.
+					</p>
+
+					<h5>Issue Customization</h5>
+					<p>
+						The Issue Fields metabox, located under the issue content editor, contains set of extra fields that add custom 
+						settings to the issue cover.  Most of these fields are straightforward and provide descriptions. 
+					</p>
+					<p>
+						Generally, you will only need to add a Cover Story and set the 3 Featured Stories.  The Issue Template value
+						should not be modified unless the issue cover is being build custom by a developer.
+					</p>
+					<div class="well">
+						<p><strong>Things to keep in mind:</strong></p>
+						<ul>
+							<li>Issue covers that are not created by a developer should never use a “Custom” Issue Template.</li>
+							<li>Do not modify fields labeled as "DEPRECATED".  They are only used by old issues.</li>
+						</ul>
+					</div>
+
+					<h3 id="issues-modifying">Modifying an Issue</h3>
+					<p>
+						Because issues are composed of both a taxonomy term and post type, both will need to be modified if the title
+						or slug of the issue changes.
+					</p>
+					<p>
+						Issue taxonomy terms can be modified by hovering over "Stories" in the WordPress admin menu and clicking
+						"Issues".  Hover over the issue term and click "Edit" (you can alternatively use the Quick Edit option if
+						you're only modifying the title and/or slug.)
+					</p>
+					<p>
+						Issue covers can be modified by clicking "Issues" in the WordPress admin menu.  Click the title of the issue cover
+						to go to the post editor.
+					</p>
+
+					<h3 id="issues-active">Updating the Active Issue</h3>
+					<div class="well">
+						<p>
+							<strong>Note: Updating the active issue requires access to the site's Theme Options menu.</strong>
+						</p>
+					</div>
+					<p>
+						Before switching out the current active issue, first make sure that all stories for the new issue have been reviewed and
+						are free of spelling/grammatical errors, all media assets are uploaded and working correctly, and that the markup generated
+						by the WYSIWYG editor are free of markup errors.  Also make sure that the issue cover loads correctly, and that all stories
+						appear where they should appear.
+					</p>
+					<p>
+						To switch out the active issue, click "Theme Options" in the WordPress admin menu, and click "Issues".  Select the new
+						issue in the dropdown menu and click "Save Options".
+					</p>
+					<p>
+						The active issue will be switched immediately upon saving.  Make sure everything works correctly after the switch!
 					</p>
 				</li>
 

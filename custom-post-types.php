@@ -543,7 +543,8 @@ class Issue extends CustomPostType {
 		$fields = array(
 			array(
 				'name'    => 'Cover Story',
-				'desc'    => '',
+				'desc'    => 'The story featured on the front cover of the print magazine.  This is listed as the "featured story" for the issue in the site archives,
+								and is used by older issue covers with custom styling.',
 				'id'      => $prefix.'cover_story',
 				'type'    => 'select',
 				'options' => $story_options
