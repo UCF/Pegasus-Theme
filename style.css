@@ -980,6 +980,7 @@ main .search-submit {
 	color: #818181;
 	text-transform: uppercase;
 }
+#archives .issue h3 { margin-top: 10px; }
 #archives h4 {
 	font-family: 'AleoBold', serif;
 	font-size: 17px;
@@ -1016,7 +1017,7 @@ main .search-submit {
 }
 
 /* General */
-#archives img { margin-bottom: 20px; }
+#archives img { margin-bottom: 10px; }
 #archives ul { list-style-type: none; margin: 0; }
 #archives ul li { margin-bottom: 20px; display: block; overflow: hidden; }
 #archives ul li.featured-story { display: none; }
