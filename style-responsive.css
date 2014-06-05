@@ -250,8 +250,21 @@
 	 article.story ul {
 	 	font-size: 15px;
 	 }
-	article.story .story-header-image { margin-left: -20px; margin-bottom: 25px; height: auto; background-size: 118%; }
-	article.story .story-header-image img { position: static; visibility: hidden; padding-bottom: 8%; height: auto; width: auto; }
+	article.story .story-header-image {
+		margin-left: -20px;
+		margin-bottom: 25px;
+		height: auto;
+		background-size: 100% auto;
+	}
+	article.story .story-header-image img {
+		position: static;
+		visibility: hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		height: auto;
+		width: auto;
+		margin: 0;
+	}
 	article.story .description-wrap { margin-bottom: 35px; }
 
 	article.story h1,
