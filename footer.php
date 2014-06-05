@@ -92,7 +92,7 @@
 
 		</main>
 		<?php
-		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue') {
+		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home()) {
 		?>
 		<aside class="container-wide" id="more-stories">
 			<div class="container">
