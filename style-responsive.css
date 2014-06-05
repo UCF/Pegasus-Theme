@@ -32,6 +32,20 @@
 
 
 	/**************************
+	 * Issue Cover - Default Template
+	 **************************/
+
+	/* Story Thumbnails */
+	#home .thumb {
+		width: 129.6px;
+		margin-left: 15px;
+	}
+	#home .thumb.featured { margin-bottom: 12px; }
+
+	#home .thumb .description { display: none; }
+
+
+	/**************************
 	 * Stories - General
 	 **************************/
 	article.story .story-header-image { height: 490px; max-width: 980px; }
@@ -151,6 +165,7 @@
 	 **************************/
 	.section-title { font-size: 30px; }
 
+
 	/**************************
 	 * Header Pulldown Menu
 	 **************************/
@@ -193,6 +208,37 @@
 		float: none;
 	}
 	#header-navigation ul li#nav-issue { margin-left: -30px; }
+
+
+	/**************************
+	 * Issue Cover - Default Template
+	 **************************/
+
+	/* General */
+	#home .heading-wrap {
+		overflow: hidden;
+		height: auto;
+		margin-bottom: 15px;
+	}
+	#home .heading-wrap h2 {
+		top: 0;
+		line-height: 1.2em;
+		padding-bottom: 4px;
+	}
+
+	/* Story Thumbnails */
+	#home .thumb.featured { width: 48%; }
+	#home .home-article-1 { margin-bottom: 20px; }
+	#home .home-article-2 { float: left; }
+	#home .home-article-3 { float: right; }
+
+	#home .thumb,
+	#home .thumb.thumb-1-m,
+	#home .thumb.thumb-1-s {
+		width: 31%;
+		margin-left: 2.35%;
+	}
+	#home .thumb.thumb-1-xs { margin-left: 0; }
 
 
 	/**************************
@@ -482,6 +528,25 @@
         margin-top: 50px;
     }
 
+
+    /**************************
+     * Issue Cover - Default Template
+     **************************/
+
+    /* Story Thumbnails */
+    #home .thumb,
+    #home .thumb.thumb-1-m,
+    #home .thumb.thumb-1-s,
+    #home .thumb.thumb-1-xs {
+    	width: 47.75%;
+    	margin-left: 3%;
+    }
+    #home .thumb.thumb-1-xss { margin-left: 0; }
+
+    #home .thumb.featured {
+    	width: 100%;
+    	float: none;
+    }
 }
 
 

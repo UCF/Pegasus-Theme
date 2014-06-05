@@ -14,6 +14,7 @@ function __init__(){
 	add_image_size('homepage', 620);
 	add_image_size('single-post-thumbnail', 220, 230, true);
 	add_image_size('issue-thumbnail', 190, 248);
+	add_image_size('issue-cover-feature', 768, 432, true);
 	register_nav_menu('footer-menu', __('Footer Menu'));
 
 	foreach(Config::$styles as $style){Config::add_css($style);}

@@ -507,10 +507,59 @@ WebcomAdmin.storyFieldToggle = function($) {
 };
 
 
+WebcomAdmin.issueFieldToggle = function($) {
+    var templateField = $('#issue_template');
+
+    var toggleFields = function(val) {
+        if (val == '') {
+            val = 'default';
+        }
+        var fields = {
+            "defaultFields" : ["issue_story_1", "issue_story_2", "issue_story_3"],
+            "customFields" : ["issue_html", "issue_stylesheet_home", "issue_javascript_home"],
+        };
+        var fieldsOnKey = val + 'Fields';
+        var fieldsOn = fields[fieldsOnKey];
+
+        delete fields[fieldsOnKey];
+        fieldsOff = fields;
+
+        if (fieldsOff) {
+            $.each(fieldsOff, function(key, array) {
+                $.each(array, function(k, f) {
+                    $('label[for="' + f + '"]').parents('tr').hide();
+                });
+            });
+        }
+        if (fieldsOn) {
+            $.each(fieldsOn, function(key, field) {
+                if ($.isArray(field)) {
+                    $.each(val, function(k, f) {
+                        $('label[for="' + f + '"]').parents('tr').fadeIn();
+                    });
+                }
+                else {
+                    $('label[for="' + field + '"]').parents('tr').fadeIn();
+                }
+            });
+        }
+    }
+
+    // Toggle on load
+    toggleFields(templateField.val());
+
+    // Toggle fields on Story Template field change
+    templateField.on('change', function() {
+        toggleFields($(this).val());
+    });
+};
+
+
 (function($){
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
 	WebcomAdmin.shortcodeInterfaceTool($);
     WebcomAdmin.sliderMetaBoxes($);
     WebcomAdmin.storyFieldToggle($);
+    WebcomAdmin.issueFieldToggle($);
 })(jQuery);

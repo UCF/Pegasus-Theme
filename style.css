@@ -416,6 +416,128 @@ li#nav-about a {
 
 
 /**************************
+ * Issue Cover - Default Template
+ **************************/
+
+/* General */
+#home {
+	background-color: #e5e5e5;
+	overflow: hidden;
+	padding-top: 11px;
+	padding-bottom: 40px;
+}
+#home .heading-wrap {
+	border-bottom: 1px solid #828282;
+	margin-top: 10px;
+	margin-bottom: 25px;
+	height: 25px;
+}
+#home .heading-wrap h2 {
+	background: #e5e5e5;
+	font-family: 'MontserratBold', sans-serif;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 30px;
+	color: #828282;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: block;
+	height: 100%;
+	float: left;
+	padding-right: 10px;
+	position: relative;
+	top: 10px;
+	letter-spacing: -0.03em;
+}
+
+/* Story thumbnails */
+#home .thumb {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 20px;
+	margin-bottom: 11px;
+	width: 168.75px;
+	-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
+	position: relative;
+	overflow: hidden;
+}
+.ie8 #home .thumb { width: 168.5px; }
+#home .thumb.thumb-1-m { margin-left: 0; }
+
+#home .thumb.featured,
+.ie8 #home .thumb.featured {
+	width: 100%;
+	margin-left: 0;
+	margin-bottom: 11px;
+}
+@media only screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+	#home .thumb.featured { margin-bottom: 12px; }
+}
+#home .home-article-1 { margin-bottom: 10px; position: relative; }
+#home .home-article-1 a {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+#home .home-article-1 img {
+	-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
+}
+#home .home-article-1 .description { margin-top: 6px; }
+
+#home .thumb a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-indent: 200%;
+	white-space: nowrap;
+	overflow: hidden;
+	position: absolute;
+	z-index: 5;
+}
+.ie #home .thumb a,
+#home .home-article-1 a {
+	/* Thanks IE.  http://stackoverflow.com/a/15034224 */
+	background: url('about:blank');
+}
+
+#home .thumb img { width: 100%; height: auto; }
+
+#home .thumb .description {
+	position: absolute;
+	z-index: 4;
+	top: 100%;
+	width: 100%;
+	height: 100%;
+	background: #222;
+	filter: alpha(opacity=85);
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	-webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+    line-height: 22px;
+}
+#home .thumb:hover .description {
+	top: 0;
+}
+#home .thumb .description > * {
+	padding: 15px;
+	margin: 0;
+}
+#home .thumb .description h2,
+#home .home-article-1 .description h2 {
+ 	line-height: 28px;
+}
+#home .thumb .description h3 { line-height: 20px; }
+
+#home .home-past-issues .thumb a { text-indent: 0; position: static; }
+
+
+/**************************
  * Stories - General
  **************************/
 article.story {

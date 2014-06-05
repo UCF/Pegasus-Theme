@@ -502,7 +502,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Get posts, split them up by issue:
 	global $theme_options;
 
-	// Get all issues, excluding the current issue
+	// Get all past issues, excluding the current issue
 	$issues_sorted = array();
 	$current_issue = get_posts(array(
 		'name' => $theme_options['current_issue_cover'],
@@ -518,6 +518,11 @@ function sc_archive_search($params=array(), $content='') {
 		'order' => 'desc',
 		'post_status' => 'publish',
 		'exclude' => array($current_issue[0]->ID),
+		'date_query' => array(
+			array(
+				'before' => $current_issue[0]->post_date,
+			),
+		)
 	));
 
 	foreach ($issues_all as $issue) {

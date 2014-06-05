@@ -395,14 +395,19 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => 'Story Subtitle',
-				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer.',
+				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer and archives.',
 				'id'   => $prefix.'subtitle',
 				'type' => 'textarea',
 			),
 			array(
+				'name' => 'Default Issue Template Featured Story Thumbnail',
+				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 768x432px',
+				'id'   => $prefix.'issue_featured_thumb',
+				'type' => 'file',
+			),
+			array(
 				'name' => '<strong>Default Templates:</strong> Story Description',
-				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates, and potentially on
-							default issue templates.',
+				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
 				'id'   => $prefix.'description',
 				'type' => 'textarea',
 			),
@@ -553,6 +558,27 @@ class Issue extends CustomPostType {
 					'Custom (requires custom CSS/JS)' => 'custom',
 				),
 				'default' => 'Default'
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Featured Story #1',
+				'desc' => 'The story that appears in the top-left featured story slot of the default Issue template.',
+				'id'   => $prefix.'story_1',
+				'type' => 'select',
+				'options' => $story_options,
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Featured Story #2',
+				'desc' => 'The story that appears in the top-right featured story slot of the default Issue template.',
+				'id'   => $prefix.'story_2',
+				'type' => 'select',
+				'options' => $story_options,
+			),
+			array(
+				'name' => '<strong>Default Template:</strong> Featured Story #3',
+				'desc' => 'The story that appears in the bottom-right featured story slot of the default Issue template.',
+				'id'   => $prefix.'story_3',
+				'type' => 'select',
+				'options' => $story_options,
 			),
 /*
 			array(
