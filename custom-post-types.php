@@ -430,12 +430,12 @@ class Story extends CustomPostType {
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
 			),
-			array(
-				'name' => '<strong>Default Templates:</strong> Header Image Background Color',
-				'desc' => 'The background color for the header image. This will be seen if the size of the window expands past the max size of the image. Hex values preferred.',
-				'id'   => $prefix.'default_header_img_background_color',
-				'type' => 'text',
-			),
+			// array(
+			// 	'name' => '<strong>Default Templates:</strong> Header Image Background Color',
+			// 	'desc' => 'The background color for the header image. This will be seen if the size of the window expands past the max size of the image. Hex values preferred.',
+			// 	'id'   => $prefix.'default_header_img_background_color',
+			// 	'type' => 'text',
+			// ),
 			array(
 				'name' => '<strong>Custom Story Template:</strong> HTML File',
 				'desc' => '',
