@@ -169,4 +169,9 @@ main article.story .sidebar {
     .social-wrap {
         padding-top: 10px;
     }
+
+    #briefs-header h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
 }
