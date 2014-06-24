@@ -257,8 +257,8 @@ $template_font_styles_array = array(
 	),
 	'Arial Black' => array(
 		'url' => null,
-		'font-family' => '"Arial Black", sans-serif',
-		'font-weight' => 'bold',
+		'font-family' => '"Arial Black", "Arial Bold", Gadget, sans-serif',
+		'font-weight' => '900',
 		'size-desktop' => '58px',
 		'size-tablet' => '58px',
 		'size-mobile' => '34px',
