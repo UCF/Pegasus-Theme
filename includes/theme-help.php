@@ -445,6 +445,25 @@
 						"Paragraph" dropdown.)  To specify a custom hex value, click the "More Colors" button at the bottom of the box that appears.
 					</p>
 
+					<div class="well">
+						<p><strong>Other Font Styles/Text Formatting Notes:</strong></p>
+						<p>
+							To make sure that our stories are formatted in a readable way for our users and for screenreaders, please keep the following in mind:
+						</p>
+						<ul>
+							<li>
+								<strong>Do not write text in all-caps anywhere in your story's copy, including headings</strong> (i.e. "MY HEADING TEXT").
+								This is considered a style adjustment, which should be handled by a developer.
+							</li>
+							<li>
+								When creating bulleted list items, please use the bulleted list tool (next to the line-through button in the kitchen sink.)
+								For ordered/numbered lists, use the numbered list tool (next to the bulleted list tool, to the left of the left-align button.)
+								Lists created using these tools are interpreted differently by screenreaders than copy+pasted bullets and lines of text, so it's
+								important to utilize these whenever necessary.
+							</li>
+						</ul>
+					</div>
+
 					<h4 id="stories-add-media">Adding Media</h4>
 					<p>
 						Media (images, videos, and audio) can be uploaded to WordPress’s media library so that they are self-hosted.  
