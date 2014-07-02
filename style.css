@@ -738,41 +738,41 @@ article.story-default .social { float: right; }
 /**************************
  * Story - Photo Essay Template
  **************************/
-article.ss-photo-essay h1 { color: #fff; padding-bottom: 30px; }
-article.ss-photo-essay .ss-essay-intro-wrapper img {
+article.story.ss-photo-essay h1 { color: #fff; padding-bottom: 30px; }
+article.story.ss-photo-essay .ss-essay-intro-wrapper img {
 	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
 	filter: alpha(opacity=20);
 	-moz-opacity: 0.2;
 	-khtml-opacity: 0.2;
      opacity: 0.2;
 }
-article.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 75%; }
+article.story.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 75%; }
 
-article.ss-photo-essay .description { color: #fff; }
+article.story.ss-photo-essay .description { color: #fff; }
 
-article.ss-photo-essay .ss-slide-wrapper { width: 85%; }
+article.story.ss-photo-essay .ss-slide-wrapper { width: 85%; }
 
-article.ss-photo-essay .ss-essay-intro h1,
-article.ss-photo-essay .ss-essay-intro span.description {
+article.story.ss-photo-essay .ss-essay-intro h1,
+article.story.ss-photo-essay .ss-essay-intro span.description {
  	padding-left: 20px;
  	padding-right: 20px;
 }
 
-article.ss-photo-essay .ss-essay-intro h1 {
+article.story.ss-photo-essay .ss-essay-intro h1 {
 	text-align: center;
 }
 
-article.ss-photo-essay .ss-essay-intro .description-wrap {
+article.story.ss-photo-essay .ss-essay-intro .description-wrap {
     text-align: center;
 }
 
-article.ss-photo-essay .ss-essay-intro span.description {
+article.story.ss-photo-essay .ss-essay-intro span.description {
 	display: block;
 	text-align: center;
 	margin-bottom: 20px;
 }
 
-article.ss-photo-essay .ss-essay-intro .social {
+article.story.ss-photo-essay .ss-essay-intro .social {
 	z-index: 999;
 	position: relative;
 	left: 0;
@@ -780,16 +780,16 @@ article.ss-photo-essay .ss-essay-intro .social {
 	text-align: center;
 }
 
-article.ss-photo-essay .ss-slide.ss-current .social {
+article.story.ss-photo-essay .ss-slide.ss-current .social {
 	display: block;
 }
-article.ss-photo-essay .ss-slide .social {
+article.story.ss-photo-essay .ss-slide .social {
 	display: none;
 }
 
-article.ss-photo-essay .ss-essay-intro .social .share-twitter,
-article.ss-photo-essay .ss-essay-intro .social .share-facebook,
-article.ss-photo-essay .ss-essay-intro .social .share-googleplus {
+article.story.ss-photo-essay .ss-essay-intro .social .share-twitter,
+article.story.ss-photo-essay .ss-essay-intro .social .share-facebook,
+article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
     float: none;
     margin-right: 0;
     display: inline-block;
@@ -1099,7 +1099,7 @@ main .search-submit {
     height: 100%;
     width: 100%;
 }
-article.ss-photo-essay {
+article.story.ss-photo-essay {
 	background-color: #212121;
 }
 

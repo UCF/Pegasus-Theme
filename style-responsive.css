@@ -87,9 +87,9 @@
 	/**************************
 	 * Story - Slideshow
 	 **************************/
-	main.ss-photo-essay{ height: 500px; }
-	article.ss-photo-essay { padding-top: 5%;}
-	article.ss-photo-essay .ss-essay-intro { height: 100%; }
+	main.ss-photo-essay { height: 500px; }
+	article.story.ss-photo-essay { padding-top: 5%; }
+	article.story.ss-photo-essay .ss-essay-intro { height: 100%; }
 	.ss-photo-essay .ss-slides-wrapper { height: 65%; }
     .ss-photo-essay .ss-arrow-wrapper .ss-arrow > div { top: 20%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 30%; }
@@ -251,12 +251,12 @@
 	/**************************
 	 * Stories - General
 	 **************************/
-	 article.story,
-	 article.story p,
-	 article.story ol,
-	 article.story ul {
-	 	font-size: 15px;
-	 }
+	article.story,
+	article.story p,
+	article.story ol,
+	article.story ul {
+		font-size: 15px;
+	}
 	article.story .story-header-image {
 		margin-left: -20px;
 		margin-bottom: 25px;
@@ -315,15 +315,15 @@
 	/**************************
 	 * Story - Photo Essay Template
 	 **************************/
-	article.ss-photo-essay h1,
-	article.ss-photo-essay .description {
+	article.story.ss-photo-essay h1,
+	article.story.ss-photo-essay .description {
 		white-space: pre-wrap;
 	}
-	article.ss-photo-essay h1 { padding-bottom: 10px; }
-	article.ss-photo-essay .social { padding-top: 10px; }
-	article.ss-photo-essay .ss-essay-intro { height: 100%; }
+	article.story.ss-photo-essay h1 { padding-bottom: 10px; }
+	article.story.ss-photo-essay .social { padding-top: 10px; }
+	article.story.ss-photo-essay .ss-essay-intro { height: 100%; }
 
-	article.ss-photo-essay .ss-slide-wrapper { width: 100%; }
+	article.story.ss-photo-essay .ss-slide-wrapper { width: 100%; }
 
 
 	/**************************
@@ -358,17 +358,17 @@
 	.ss-photo-essay .ss-slides-wrapper { height: 50%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
 
-	article.ss-photo-essay .ss-essay-intro h1,
-	article.ss-photo-essay .ss-essay-intro span.description {
+	article.story.ss-photo-essay .ss-essay-intro h1,
+	article.story.ss-photo-essay .ss-essay-intro span.description {
 		padding-left: 0;
 		padding-right: 0;
 	}
 
-	article.ss-photo-essay .ss-essay-intro h1 {
+	article.story.ss-photo-essay .ss-essay-intro h1 {
 		font-size: 28px;
 		line-height: 32px;
 	}
-	article.ss-photo-essay .ss-essay-intro span.description {
+	article.story.ss-photo-essay .ss-essay-intro span.description {
 		font-size: 16px;
 		line-height: 20px;
 		margin-bottom: 5px;
@@ -577,12 +577,12 @@
 	.ss-embed .ss-slides-wrapper { height: 140px; }
 	.ss-embed .ss-arrow-wrapper .ss-arrow > div { top: 50px; }
 
-	main.ss-photo-essay{ height: 400px; }
+	main.ss-photo-essay { height: 400px; }
 	.ss-photo-essay .ss-slides-wrapper { height: 40%; }
 	.ss-photo-essay .ss-arrow-wrapper .ss-arrow > div { top: 15%; }
 	.ss-photo-essay .ss-captions-wrapper { height: 60%; }
 
-	article.ss-photo-essay .ss-essay-intro .social { left: -20px; }
+	article.story.ss-photo-essay .ss-essay-intro .social { left: -20px; }
 
     .ss-closing-overlay .ss-slide {
         margin-top: 25px;
