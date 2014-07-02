@@ -466,8 +466,8 @@ WebcomAdmin.storyFieldToggle = function($) {
             val = 'default';
         }
         var fields = {
-            "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img", "story_default_header_img_background_color"],
-            "photo_essayFields": ["story_description", "story_default_font"],
+            "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img"],
+            "photo_essayFields": ["story_description", "story_default_font", "story_default_color"],
             "customFields" : ["story_html", "story_stylesheet", "story_javascript", "story_fonts"],
         };
         var fieldsOnKey = val + 'Fields';
