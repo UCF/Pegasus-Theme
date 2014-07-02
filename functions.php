@@ -519,59 +519,59 @@ function output_header_markup($post) {
 
 				$output .= '<style type="text/css">';
 				$output .= '
-					main article h1,
-					main article h2,
-					main article h3,
-					main article h4,
-					main article h5,
-					main article h6 {
+					article.story h1,
+					article.story h2,
+					article.story h3,
+					article.story h4,
+					article.story h5,
+					article.story h6 {
 						font-family: '.$font['font-family'].';
 						font-weight: '.$font['font-weight'].';
 						text-transform: '.$font['text-transform'].';
 						font-style: '.$font['font-style'].';
 						letter-spacing: '.$font['letter-spacing'].';
 					}
-					main article .lead::first-letter {
+					article.story .lead::first-letter {
 						font-family: '.$font['font-family'].';
 						font-weight: '.$font['font-weight'].';
 						text-transform: '.$font['text-transform'].';
 						font-style: '.$font['font-style'].';
 						letter-spacing: '.$font['letter-spacing'].';
 					}
-					main article .lead:first-letter {
+					article.story .lead:first-letter {
 						font-family: '.$font['font-family'].';
 						font-weight: '.$font['font-weight'].';
 						text-transform: '.$font['text-transform'].';
 						font-style: '.$font['font-style'].';
 						letter-spacing: '.$font['letter-spacing'].';
 					}
-					main article h1,
-					main article h2,
-					main article h3,
-					main article h4,
-					main article h5,
-					main article h6,
-					main article blockquote,
-					main article blockquote p {
+					article.story h1,
+					article.story h2,
+					article.story h3,
+					article.story h4,
+					article.story h5,
+					article.story h6,
+					article.story blockquote,
+					article.story blockquote p {
 						color: '.$font['color'].';
 					}
-					main article .lead::first-letter { color: '.$font['color'].'; }
-					main article .lead:first-letter { color: '.$font['color'].'; }
-					main article h1 {
+					article.story .lead::first-letter { color: '.$font['color'].'; }
+					article.story .lead:first-letter { color: '.$font['color'].'; }
+					article.story h1 {
 						font-size: '.$font['size-desktop'].';
 					}
-                    main article .ss-closing-overlay {
+                    article.story .ss-closing-overlay {
                         font-family: '.$font['family'].';
                         font-weight: '.$font['weight'].';
                         text-transform: '.$font['texttransform'].';
                     }
 					@media (max-width: 979px) {
-						main article h1 {
+						article.story h1 {
 							font-size: '.$font['size-tablet'].';
 						}
 					}
 					@media (max-width: 767px) {
-						main article h1 {
+						article.story h1 {
 							font-size: '.$font['size-mobile'].';
 						}
 					}
