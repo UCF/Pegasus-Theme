@@ -1,0 +1,195 @@
+/* General */
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.sr-only { /* copied from bootstrap3 */
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+.ie8 main {
+    margin-top: -20px; /* wat */
+}
+
+main article h1,
+main article h2,
+main article h3,
+main article h4,
+main article h5,
+main article h6 {
+    font-family: "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-weight: 900;
+    text-transform: none;
+}
+
+main article.story a {
+    font-weight: bold;
+    color: #000;
+}
+main article.story a:hover,
+main article.story a:active {
+    text-decoration: underline;
+}
+
+main article.story .caps {
+    text-transform: uppercase;
+}
+
+main article.story h2,
+main article.story .h2 {
+    font-size: 38px;
+    line-height: 38px;
+}
+
+main article.story h3,
+main article.story .h3 {
+    font-size: 30px;
+    line-height: 30px;
+}
+main article.story h3.caps,
+main article.story .h3.caps {
+    font-size: 22px;
+    line-height: 22px;
+}
+
+main article.story h4,
+main article.story .h4 {
+    font-size: 16px;
+    line-height: 1em;
+}
+
+main article {
+    margin-top: 20px;
+}
+
+main article blockquote small {
+    font-size: 16px;
+    font-weight: bold;
+}
+main article blockquote small:before {
+    content: "";
+}
+
+main article p.credit {
+    font-size: 11px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+}
+
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.text-center { text-align: center; }
+
+/* Header */
+main article.story .story-header-image {
+    background-position: top;
+    margin-bottom: 0;
+    background-color: #161919;
+}
+
+#briefs-header-wrap {
+    position: relative;
+    height: 100%;
+}
+
+#briefs-header {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    width: 100%;
+}
+
+#briefs-header h1 {
+    color: #fff;
+    font-size: 100px;
+    line-height: 100px;
+}
+
+.social-wrap {
+    padding-top: 60px;
+}
+
+.briefs-heading {
+    border-bottom: solid #e6e6e6 1px;
+    margin-top: 40px;
+}
+
+main article .briefs-heading h2 {
+    margin-bottom: 2px;
+}
+
+/* Story-specific */
+h2#lets-ride {
+    margin-top: 30px;
+}
+
+#img-camp-chef-1 {
+    margin-top: 5px;
+}
+
+#img-wu {
+    margin-top: 0;
+}
+
+#img-jazz {
+    margin-bottom: 0;
+}
+
+h3#us-news {
+    margin-top: 40px;
+}
+
+
+
+@media (max-width: 979px) and (min-width: 768px) {
+    /* Header */
+    .social-wrap {
+        width: auto !important;
+        margin-left: 82px;
+        padding-top: 55px;
+    }
+
+    /* Story-specific */
+}
+
+@media (max-width: 767px) {
+    /* General */
+    main article {
+        margin-top: 30px;
+    }
+
+    main article.story p {
+       margin-bottom: 0;
+    }
+
+    /* Header */
+    .social-wrap {
+        padding-top: 10px;
+    }
+
+    #briefs-header h1 {
+        font-size: 40px;
+        line-height: 40px;
+    }
+
+    /* Story-specific */
+    #img-camp-chef-1 {
+        margin-top: 15px;
+    }
+
+    #img-jazz {
+        margin-bottom: 10px;
+    }
+
+    h3#us-news {
+        margin-top: 0;
+    }
+}
