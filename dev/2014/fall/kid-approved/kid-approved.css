@@ -1,0 +1,325 @@
+/* We only have open sans condensed bold included in the theme--fetch the 300 weight from google: */
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+
+/* General */
+main article.story .sr-only { /* copied from bootstrap3 */
+    border: 0 none;
+    clip: rect(0px, 0px, 0px, 0px);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+main article.story .text-left { text-align: left; }
+main article.story .text-right { text-align: right; }
+main article.story .text-center { text-align: center; }
+main article.story .text-left > img,
+main article.story .text-right > img,
+main article.story .text-center > img {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+main article.story .text-inline { display: inline; }
+
+main article.story h1 {
+    font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.055em;
+}
+
+main article.story h1 {
+    text-transform: none;
+    font-size: 72px;
+    color: #f1b052;
+}
+
+main article.story h2,
+main article.story .h2,
+main article.story h3,
+main article.story .h3,
+main article.story h4,
+main article.story .h4,
+main article.story h5,
+main article.story .h5,
+main article.story h6,
+main article.story .h6 {
+    font-family: 'OpenSansCondensedBold', sans-serif;
+    font-weight: normal;
+    letter-spacing: -0.04em;
+    text-transform: uppercase;
+}
+
+main article.story .social-wrap {
+    vertical-align: bottom;
+}
+
+main article.story .caption {
+    font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: -0.035em;
+    color: #000;
+}
+
+
+/* infographic section */
+#infographic {
+    position: relative;
+    background: #66c1ee; /* Old browsers */
+    background: -moz-linear-gradient(left,  #346279 0%, #4f95b8 9%, #66c1ee 18%, #66c1ee 82%, #4f95b8 91%, #346279 100%); /* FF3.6+ */
+    background: -webkit-linear-gradient(left,  #346279 0%,#4f95b8 9%,#66c1ee 18%,#66c1ee 82%,#4f95b8 91%,#346279 100%); /* Chrome10+,Safari5.1+ */
+    background: -ms-linear-gradient(left,  #346279 0%,#4f95b8 9%,#66c1ee 18%,#66c1ee 82%,#4f95b8 91%,#346279 100%); /* IE10+ */
+    background: linear-gradient(to right,  #346279 0%,#4f95b8 9%,#66c1ee 18%,#66c1ee 82%,#4f95b8 91%,#346279 100%); /* W3C */
+    border-top: 20px solid #f7e1af;
+    border-bottom: 20px solid #f7e1af;
+    margin-top: 80px;
+    padding-bottom: 40px;
+}
+/* hide top shadow from .infographic-title-wrap */
+#infographic:before {
+    background: none repeat scroll 0 0 #fff;
+    content: "";
+    display: block;
+    height: 30px;
+    position: absolute;
+    top: -50px;
+    width: 100%;
+    z-index: 999;
+}
+
+#infographic p {
+    font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: -0.035em;
+    font-size: 20px;
+    line-height: 1.25em;
+    color: #000;
+}
+#infographic blockquote p,
+#infographic blockquote small,
+#infographic ol,
+#infographic ul,
+#infographic .infographic-callout-text {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    letter-spacing: 0;
+    /* font is too light with antialiasing--unset it */
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+#infographic blockquote p,
+#infographic blockquote small,
+#infographic .infographic-callout-text {
+    color: #004470;
+    font-style: italic;
+}
+#infographic blockquote p,
+#infographic blockquote small {
+    font-size: 34px;
+    line-height: 1.25em;
+}
+#infographic .infographic-callout-text {
+    font-size: 28px;
+    line-height: 1.2em;
+}
+#infographic blockquote,
+#infographic .infographic-callout-text {
+    margin: 30px 0;
+}
+#infographic ol,
+#infographic ul {
+    color: #000;
+    font-size: 19px;
+    list-style-type: none;
+    margin-left: 0;
+}
+#infographic li:before {
+    content: "•";
+    display: inline-block;
+    padding: 0 7px 0 5px;
+}
+#infographic hr {
+    border-color: #004470;
+    margin: 30px 0;
+}
+#infographic h2 {
+    background-color: #f7e1af;
+    margin-bottom: 30px;
+    padding: 10px 0;
+    font-size: 140px;
+    color: #00719d;
+}
+#infographic h3,
+#infographic h4 {
+    color: #fff;
+    margin-top: 30px;
+}
+#infographic h3 {
+    font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    font-weight: 800;
+    font-style: normal;
+    letter-spacing: -0.055em;
+    font-size: 30px;
+}
+#infographic ul.parts {
+    font-size: 18px;
+}
+#infographic ul.parts li {
+    line-height: 1.2em;
+}
+
+#infographic .infographic-title-wrap {
+    background-color: #fdbd73;
+    border-bottom: 20px solid #f7e1af;
+    border-left: 20px solid #f7e1af;
+    border-radius: 0 0 40px 40px;
+    border-right: 20px solid #f7e1af;
+    padding: 90px 0 20px 0;
+    position: relative;
+    top: -20px;
+    box-shadow: 12px 12px 20px 0 rgba(0, 0, 0, 0.5);
+    text-align: center;
+    margin-bottom: 30px;
+}
+#infographic .infographic-title-wrap p {
+    color: #00719d;
+    padding: 0 70px;
+    line-height: 1.2em;
+    letter-spacing: 0;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-weight: 300;
+    /* font is too light with antialiasing--unset it */
+    -webkit-font-smoothing: auto;
+    -moz-osx-font-smoothing: auto;
+}
+#infographic .infographic-title-wrap .infographic-subtitle {
+    font-family: 'OpenSansCondensedBold', sans-serif;
+    font-size: 36px;
+    padding: 0 30px;
+    letter-spacing: -0.035em;
+    /* re-set aliasing */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+#infographic #the-team {
+    display: inline;
+    color: #004470;
+    font-size: 22px;
+    font-family: 'OpenSansCondensedBold', sans-serif;
+    font-weight: normal;
+}
+#infographic #the-team + ul {
+    display: inline;
+}
+#infographic #the-team + ul li {
+    display: inline;
+    font-size: 20px;
+}
+#infographic #the-team + ul li:first-child {
+    padding-left: 0;
+}
+#infographic #the-team + ul li:first-child:before {
+    content: "";
+}
+
+
+/* slideshow */
+#slideshow {
+    background-color: #cccccc;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+
+/* responsive styles */
+@media (max-width: 979px) and (min-width: 768px) {
+    /* infographic */
+    #infographic {
+        background: -moz-linear-gradient(left,  #346279 0%, #4f95b8 5%, #66c1ee 11%, #66c1ee 89%, #4f95b8 95%, #346279 100%); /* FF3.6+ */
+        background: -webkit-linear-gradient(left,  #346279 0%,#4f95b8 5%,#66c1ee 11%,#66c1ee 89%,#4f95b8 95%,#346279 100%); /* Chrome10+,Safari5.1+ */
+        background: -ms-linear-gradient(left,  #346279 0%,#4f95b8 5%,#66c1ee 11%,#66c1ee 89%,#4f95b8 95%,#346279 100%); /* IE10+ */
+        background: linear-gradient(to right,  #346279 0%,#4f95b8 5%,#66c1ee 11%,#66c1ee 89%,#4f95b8 95%,#346279 100%); /* W3C */
+    }
+    #infographic p {
+        font-size: 20px;
+    }
+    #infographic h2 {
+        font-size: 100px;
+    }
+    #infographic .infographic-title-wrap {
+        padding-top: 70px;
+    }
+    #infographic .infographic-title-wrap .infographic-subtitle {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 767px) {
+    /* general */
+    main article.story .caption {
+        text-align: center;
+    }
+
+    main article.story h1 {
+        font-size: 40px;
+    }
+    main article.story .description {
+        line-height: 1.2em;
+    }
+
+
+    /* infographic */
+    #infographic {
+        background: #66c1ee;
+        margin-top: 30px;
+    }
+    #infographic:before {
+        display: none;
+    }
+
+    #infographic h2 {
+        font-size: 56px;
+        line-height: 1em;
+    }
+    #infographic h3 {
+        font-size: 24px;
+    }
+    #infographic p {
+        font-size: 16px;
+        line-height: 1.35em;
+    }
+    #infographic blockquote p,
+    #infographic blockquote small,
+    #infographic .infographic-callout-text {
+        font-size: 24px;
+        line-height: 1.2em;
+    }
+    #infographic .infographic-callout-text {
+        margin: 20px 0;
+    }
+
+    #infographic .infographic-title-wrap {
+        padding: 30px 0 0 0;
+    }
+    #infographic .infographic-title-wrap p {
+        font-size: 18px;
+        padding: 0 15px;
+    }
+    #infographic .infographic-title-wrap .infographic-subtitle {
+        font-size: 20px;
+        padding: 0 15px;
+    }
+
+    #infographic #the-team {
+        font-size: 20px;
+    }
+    #infographic #the-team + ul li {
+        font-size: 18px;
+    }
+}
