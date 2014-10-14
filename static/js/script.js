@@ -856,7 +856,7 @@ if (typeof jQuery != 'undefined'){
 			gformSublabels($);
 			videoCarousels($);
 			popovers($);
-		    slideshow = new SlideShow();
+		    var slideshow = new SlideShow();
 		    slideshow.init();
 		    lazyLoadAssets($);
             socialButtonTracking($);
