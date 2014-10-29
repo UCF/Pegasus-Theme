@@ -1583,8 +1583,8 @@ function _save_meta_data($post_id, $meta_box){
 		}
 	}
 
-	// check autosave
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+	// prevent autosave and quick/bulk edits from wiping metadata
+	if ((defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) || (defined('DOING_AJAX') && DOING_AJAX) || isset($_REQUEST['bulk_edit'])) {
 		return $post_id;
 	}
 
