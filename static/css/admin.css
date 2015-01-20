@@ -15,9 +15,9 @@
 .i-am-a-fancy-admin textarea{width: 70%; height: 10em;}
 .i-am-a-fancy-admin .updated{position: absolute; top: 40px; left: 50%; z-index: 100; text-align: center;}
 .i-am-a-fancy-admin .fields{
-	margin-left: 215px; 
-	background-color: #fefefe; 
-	padding: 50px 70px; 
+	margin-left: 215px;
+	background-color: #fefefe;
+	padding: 50px 70px;
 	border: 1px solid #f0f0f0;
 	box-shadow: rgba(160, 160, 160, .1) 0px 0px 12px;
 	max-width: 700px;
@@ -102,15 +102,21 @@ body.login #login h1 a .hide{display: block;}
 li.custom_repeatable h3.hndle { margin-bottom: 16px !important; }
 li.custom_repeatable table { margin-top: -16px; }
 li.custom_repeatable.closed table { display: none; }
-a.repeatable-remove { margin: 0 0 15px 10px; }
+a.repeatable-remove { margin-left: 10px !important; }
 #ss_slides_all .custom_repeatable { padding-bottom: 15px; margin: 0 0 15px 0; }
-#slider-slides { background: #fff; border-color: #fff; }
+#slider-slides { background: transparent !important; border-color: transparent !important; box-shadow: 0 0 0 transparent !important; }
 #slider-slides .inside { margin: 0; padding: 0; }
-#slider-slides .handlediv, #slider-slides > h3.hndle { display: none;}
+#slider-slides > h3.hndle { display: none; }
+#slider-slides .handlediv { position: absolute; top: 0; right: 0; }
+#slider-slides > .handlediv { display: none; }
+#slider-slides .form-table th { padding-left: 10px; }
 
 
-/* Hide blockquote tinymce button. Use [blockquote] shortcode instead. */
-#content_blockquote { display: none; }
+/* Hide various tinymce buttons */
+.mce-btn[aria-label="Blockquote"],
+.mce-btn[aria-label="Increase indent"],
+.mce-btn[aria-label="Decrease indent"],
+.mce-btn[aria-label="Insert Read More tag"] { display: none; }
 
 /* Fix font selector dropdown line heights */
 #menu_content_content_fontsizeselect_menu_tbl .mceText { line-height: 1em; }
@@ -142,10 +148,9 @@ body.post-type-photo_essay input[id^="file_img_"] { display: none; }
 div[id^="wysihtml5-toolbar"] {
 	position: relative;
 	width: 417px;
-	background-color: #E5E5E5;
-	background: linear-gradient(to top, #E5E5E5, #F4F4F4) repeat scroll 0 0 #EEEEEE;
+	background: #f5f5f5;
 	overflow: visible;
-	border: 1px solid #ccc;
+	border: 1px solid #e5e5e5;
 	border-radius: 3px 3px 0 0;
 	padding: 3px;
 }
@@ -162,7 +167,7 @@ div[id^="wysihtml5-toolbar"] a {
 	background: transparent;
 	background-image: url("../../../../../wp-includes/images/wpicons.png");
 	border: 1px solid transparent;
-	border-radius: 2px;
+  transition-duration: 0s;
 }
 div[id^="wysihtml5-toolbar"] a:hover,
 div[id^="wysihtml5-toolbar"] a:active {
@@ -245,12 +250,11 @@ div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a:after {
 	text-align: center;
 	text-indent: 0;
 	font-size: 16px;
-	line-height: 24px;
+	line-height: 22px;
 	font-weight: bold;
 }
 div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a.wysihtml5-createlink-save:after {
 	content: "✓";
-	line-height: 26px;
 	color: #3C763D;
 }
 div[id^="wysihtml5-toolbar"] .wysihtml5-createlink-form a.wysihtml5-createlink-cancel:after {
@@ -267,6 +271,7 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-html {
 	width: 85px;
 	height: 26px;
 	border: 0px solid transparent;
+  font-size: 12px;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html:hover,
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html:active {
@@ -282,12 +287,11 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-html:after {
 	line-height: 16px;
 	color: #000;
 	padding: 5px 5px 2px 5px;
-	border-radius: 3px 3px 0 0;
-	border-top: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #f4f4f4;
-	background-color: #f4f4f4;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #f5f5f5;
+	background-color: #f5f5f5;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html:before {
 	content: "Visual";
@@ -296,11 +300,8 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-html:before {
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html:after {
 	content: "Text";
 	right: 0;
-	border-top: 1px solid #dfdfdf;
-	border-right: 1px solid #dfdfdf;
-	border-left: 1px solid #dfdfdf;
-	border-bottom: 1px solid #ccc;
-	background-color: #f1f1f1;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #ebebeb;
 	color: #999;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html:hover:after,
@@ -308,19 +309,19 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-html:active:after {
 	color: #d54e21;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:before {
-	border-top: 1px solid #dfdfdf;
-	border-right: 1px solid #dfdfdf;
-	border-left: 1px solid #dfdfdf;
-	border-bottom: 1px solid #ccc;
-	background-color: #f1f1f1;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #ececec;
 	color: #999;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:after {
-	border-top: 1px solid #ccc;
-	border-right: 1px solid #ccc;
-	border-left: 1px solid #ccc;
-	border-bottom: 1px solid #f4f4f4;
-	background-color: #f4f4f4;
+	border-top: 1px solid #e5e5e5;
+	border-right: 1px solid #e5e5e5;
+	border-left: 1px solid #e5e5e5;
+	border-bottom: 1px solid #f5f5f5;
+	background-color: #f5f5f5;
 	color: #000;
 }
 div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:hover:before,
@@ -337,6 +338,7 @@ textarea[id^="ss_slide_caption"] {
 	margin: 0 !important;
 	border-radius: 0 0 3px 3px !important;
 	border-top: 0 !important;
+  box-shadow: 0 0 0 transparent !important;
 	padding: 8px !important;
 	width: 425px !important;
 	height: 150px !important;
