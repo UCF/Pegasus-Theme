@@ -448,9 +448,8 @@ add_action('admin_menu', 'remove_menus');
  * and style select dropdown close together.
  **/
 function add_options_to_tinymce($buttons) {
-	//array_push($buttons, 'fontselect');
-	array_push($buttons, 'fontsizeselect');
 	array_unshift($buttons, 'fontsizeselect');
+	array_unshift($buttons, 'styleselect');
 	return $buttons;
 }
 add_filter('mce_buttons_2', 'add_options_to_tinymce');
