@@ -492,7 +492,7 @@ function add_webfonts_to_tinymce($settings) {
 	$settings['content_css'] = $settings['content_css'].','.$content_css;
 	$settings['style_formats'] = json_encode($style_formats);
 	$settings['theme_advanced_buttons2_add_before'] = 'styleselect';
-	$settings['theme_advanced_font_sizes'] = '10px,11px,12px,13px,14px,15px,16px,17px,18px,19px,20px,21px,22px,23px,24px,25px,26px,27px,28px,29px,30px,32px,36px,42px,48px,52px,58px,62px';
+	$settings['fontsize_formats'] = '10px 11px 12px 13px 14px 15px 16px 17px 18px 19px 20px 21px 22px 23px 24px 25px 26px 27px 28px 29px 30px 32px 36px 42px 48px 52px 58px 62px';
 
 	return $settings;
 }
