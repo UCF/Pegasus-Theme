@@ -258,7 +258,7 @@ function create_utility_pages() {
 		'edit_theme_options',
 		'theme-options',
 		'theme_options_page',
-		THEME_IMG_URL.'/pegasus.png'
+		'dashicons-admin-generic'
 	);
 	add_utility_page(
 		__('Help'),
@@ -266,7 +266,7 @@ function create_utility_pages() {
 		'edit_posts',
 		'theme-help',
 		'theme_help_page',
-		THEME_IMG_URL.'/help.png'
+		'dashicons-editor-help'
 	);
 }
 
