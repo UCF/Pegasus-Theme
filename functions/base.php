@@ -184,9 +184,17 @@ abstract class Field{
  * @author Jared Lang
  **/
 abstract class ChoicesField extends Field{
+	// Ensure 'default' value is added to choices if it isn't already
+	protected function add_default_to_choices() {
+		if ( isset( $this->default ) && !array_key_exists( $this->default, $this->choices ) ) {
+			$this->choices = array( $this->default => '' ) + $this->choices;
+		}
+	}
+
 	function __construct($attr){
 		$this->choices = @$attr['choices'];
 		parent::__construct($attr);
+		$this->add_default_to_choices();
 	}
 }
 
@@ -1629,83 +1637,114 @@ function _save_meta_data($post_id, $meta_box){
 
 
 /**
+ * Displays meta box fields with current or default values.
+ **/
+function display_meta_box_field( $post_id, $field ) {
+	$field_obj = null;
+	$field_value = get_post_meta( $post_id, $field['id'], true );
+
+	// Fix inconsistencies between CPT field array keys and Field obj property names
+	// TODO: why are these different anyway?
+	if ( isset( $field['desc'] ) ) {
+		$field['description'] = $field['desc'];
+		unset( $field['desc'] );
+	}
+	if ( isset( $field['options'] ) ) {
+		$field['choices'] = $field['options'];
+		unset( $field['options'] );
+	}
+
+	switch ( $field['type'] ) {
+		case 'text':
+			$field_obj = new TextField( $field );
+			break;
+		case 'textarea':
+			$field_obj = new TextareaField( $field );
+			break;
+		case 'select':
+			$field_obj = new SelectField( $field );
+			break;
+		case 'radio':
+			$field_obj = new RadioField( $field );
+			break;
+		case 'checkbox':
+			$field_obj = new CheckboxField( $field );
+			break;
+		case 'file':
+		default:
+			break;
+	}
+
+	$markup = '';
+
+	if ( $field_obj ) {
+		ob_start();
+	?>
+		<tr>
+			<th><?php echo $field_obj->label_html(); ?></th>
+			<td>
+				<?php echo $field_obj->description_html(); ?>
+				<?php echo $field_obj->input_html(); ?>
+			</td>
+		</tr>
+	<?php
+		$markup = ob_get_clean();
+	}
+	else if ( $field['type'] == 'file' ) {
+		$document_id = get_post_meta( $post_id, $field['id'], True );
+		$document = null;
+
+		if ( $document_id ){
+			$document = get_post( $document_id );
+			$url = wp_get_attachment_url( $document_id );
+		}
+
+		ob_start();
+	?>
+		<tr>
+			<th><label for="<?php echo $field['id']; ?>"><?php echo $field['name']; ?></label></th>
+			<td>
+				<?php if ( $document ): ?>
+					<a target="_blank" href="<?php echo $url; ?>">
+						<?php if ( wp_attachment_is_image( $document_id ) ): ?>
+						<img src="<?php echo $url; ?>" style="max-width:400px; height:auto"; /><br/>
+						<?php endif; ?>
+						<?php echo $document->post_title; ?>
+					</a>
+					<br><br>
+				<?php endif;?>
+				<input type="file" id="file_<?php echo $post_id; ?>" name="<?php echo $field['id']; ?>">
+				<br>
+			</td>
+		</tr>
+	<?php
+		$markup = ob_get_clean();
+	}
+	else {
+		$markup = '<tr><th></th><td>Don\'t know how to handle field of type '. $field_type .'</td></tr>';
+	}
+
+	return $markup;
+}
+
+
+/**
  * Outputs the html for the fields defined for a given post and metabox.
  *
  * @return void
  * @author Jared Lang
  **/
-function _show_meta_boxes($post, $meta_box){
+function _show_meta_boxes( $post, $meta_box ) {
 	?>
 	<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce(basename(__FILE__))?>"/>
 	<table class="form-table">
-	<?php foreach($meta_box['fields'] as $field):
-		$current_value = get_post_meta($post->ID, $field['id'], true);?>
-		<tr>
-			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
-			<td>
-			<?php if($field['desc']):?>
-				<div class="description">
-					<?=$field['desc']?>
-				</div>
-			<?php endif;?>
-
-			<?php switch ($field['type']):
-				case 'text':?>
-				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
-
-			<?php break; case 'textarea':?>
-				<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
-
-			<?php break; case 'select':?>
-				<select name="<?=$field['id']?>" id="<?=$field['id']?>">
-					<option value=""><?=($field['default']) ? $field['default'] : '--'?></option>
-				<?php foreach ($field['options'] as $k=>$v):?>
-					<option <?=($current_value == $v) ? ' selected="selected"' : ''?> value="<?=$v?>"><?=$k?></option>
-				<?php endforeach;?>
-				</select>
-
-			<?php break; case 'radio':?>
-				<?php foreach ($field['options'] as $k=>$v):?>
-				<label for="<?=$field['id']?>_<?=slug($k, '_')?>"><?=$k?></label>
-				<input type="radio" name="<?=$field['id']?>" id="<?=$field['id']?>_<?=slug($k, '_')?>" value="<?=$v?>"<?=($current_value == $v) ? ' checked="checked"' : ''?> />
-				<?php endforeach;?>
-
-			<?php break; case 'checkbox':?>
-				<input type="checkbox" name="<?=$field['id']?>" id="<?=$field['id']?>"<?=($current_value) ? ' checked="checked"' : ''?> />
-
-			<?php break; case 'file':?>
-				<?php
-					$document_id = get_post_meta($post->ID, $field['id'], True);
-					if ($document_id){
-						$document = get_post($document_id);
-						$url      = wp_get_attachment_url($document->ID);
-					}else{
-						$document = null;
-					}
-				?>
-				<?php if($document):?>
-					<a target="_blank" href="<?=$url?>">
-						<?php if (wp_attachment_is_image($document->ID)): ?>
-						<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
-						<?php endif; ?>
-						<?=$document->post_title?>
-					</a><br /><br />
-				<?php endif;?>
-				<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
-
-			<?php break; case 'help':?><!-- Do nothing for help -->
-			<?php break; default:?>
-				<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
-			<?php break; endswitch;?>
-			<td>
-		</tr>
-	<?php endforeach;?>
+		<?php
+		foreach ( $meta_box['fields'] as $field ) {
+			echo display_meta_box_field( $post->ID, $field );
+		}
+		?>
 	</table>
-
-	<?php if($meta_box['helptxt']):?>
-	<p><?=$meta_box['helptxt']?></p>
-	<?php endif;?>
-	<?php
+<?php
 }
 
 ?>
