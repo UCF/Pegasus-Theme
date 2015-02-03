@@ -829,50 +829,8 @@ class PhotoEssay extends CustomPostType {
 
 
 	/**
-	  * Show meta box fields for Slider post type (generic field loop-through)
-	  * Copied from _show_meta_boxes (functions/base.php)
-	 **/
-	public static function display_meta_fields($post, $field) {
-		$current_value = get_post_meta($post->ID, $field['id'], true);
-	?>
-		<tr>
-			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
-				<td>
-				<?php switch ($field['type']):
-					case 'text':?>
-					<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
-				<?php break; case 'textarea':?>
-					<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
-
-				<?php break; case 'file':?>
-					<?php
-						$document_id = get_post_meta($post->ID, $field['id'], True);
-						if ($document_id){
-							$document = get_post($document_id);
-							$url      = wp_get_attachment_url($document->ID);
-						}else{
-							$document = null;
-						}
-					?>
-					<?php if($document):?>
-						<a target="_blank" href="<?=$url?>">
-							<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
-							<?=$document->post_title?>
-						</a><br /><br />
-					<?php endif;?>
-					<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
-
-				<?php break; default:?>
-					<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
-				<?php break; endswitch;?>
-				</td>
-			</tr>
-	<?php
-	}
-
-
-	/**
 	 * Generate markup for a cloneable set of meta fields
+	 * TODO: genericize to use display_meta_box_field() for printing fields
 	 **/
 	public static function display_cloneable_fieldset($fields, $id=null) {
 		$id             = $id !== null ? intval($id) : 'xxxxxx';
@@ -998,10 +956,12 @@ class PhotoEssay extends CustomPostType {
 		<table class="form-table">
 		<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
 		<?php
-			foreach($meta_box['fields'] as $field):
-				$this->display_meta_fields($post, $field);
-			endforeach;
-		print "</table>";
+			foreach( $meta_box['fields'] as $field ) {
+				display_meta_box_field( $post->ID, $field );
+			}
+		?>
+		</table>
+	<?php
 	}
 
 

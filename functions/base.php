@@ -1724,7 +1724,7 @@ function display_meta_box_field( $post_id, $field ) {
 		$markup = '<tr><th></th><td>Don\'t know how to handle field of type '. $field_type .'</td></tr>';
 	}
 
-	return $markup;
+	echo $markup;
 }
 
 
@@ -1740,7 +1740,7 @@ function _show_meta_boxes( $post, $meta_box ) {
 	<table class="form-table">
 		<?php
 		foreach ( $meta_box['fields'] as $field ) {
-			echo display_meta_box_field( $post->ID, $field );
+			display_meta_box_field( $post->ID, $field );
 		}
 		?>
 	</table>
