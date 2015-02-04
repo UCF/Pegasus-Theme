@@ -240,8 +240,38 @@ class TextareaField extends Field{
 	function input_html(){
 		ob_start();
 		?>
-		<textarea id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
+		<textarea cols="60" rows="4" id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
 		<?php
+		return ob_get_clean();
+	}
+}
+
+
+/**
+ * Textarea field with simple WYSIWYG editor capabilities.
+ **/
+class WysiwygField extends Field {
+	function input_html() {
+		ob_start();
+	?>
+	    <div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
+	        <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+	        <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+	        <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
+
+	      <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+	        <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
+	        <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
+	            <label>
+	                Link:
+	                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+	            </label>
+	            <a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
+	        </div>
+	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
+	    </div>
+		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlentities( $this->value ); ?></textarea>
+	<?php
 		return ob_get_clean();
 	}
 }
@@ -1641,7 +1671,7 @@ function _save_meta_data($post_id, $meta_box){
  **/
 function display_meta_box_field( $post_id, $field ) {
 	$field_obj = null;
-	$field_value = get_post_meta( $post_id, $field['id'], true );
+	$field['value'] = get_post_meta( $post_id, $field['id'], true );
 
 	// Fix inconsistencies between CPT field array keys and Field obj property names
 	// TODO: why are these different anyway?
@@ -1660,6 +1690,9 @@ function display_meta_box_field( $post_id, $field ) {
 			break;
 		case 'textarea':
 			$field_obj = new TextareaField( $field );
+			break;
+		case 'wysiwyg':
+			$field_obj = new WysiwygField( $field );
 			break;
 		case 'select':
 			$field_obj = new SelectField( $field );

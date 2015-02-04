@@ -409,7 +409,7 @@ class Story extends CustomPostType {
 				'name' => '<strong>Default Templates:</strong> Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
 				'id'   => $prefix.'description',
-				'type' => 'textarea',
+				'type' => 'wysiwyg',
 			),
 			array(
 				'name' => '<strong>Default Templates:</strong> Header Font Family',
@@ -430,12 +430,6 @@ class Story extends CustomPostType {
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
 			),
-			// array(
-			// 	'name' => '<strong>Default Templates:</strong> Header Image Background Color',
-			// 	'desc' => 'The background color for the header image. This will be seen if the size of the window expands past the max size of the image. Hex values preferred.',
-			// 	'id'   => $prefix.'default_header_img_background_color',
-			// 	'type' => 'text',
-			// ),
 			array(
 				'name' => '<strong>Custom Story Template:</strong> HTML File',
 				'desc' => '',
@@ -581,50 +575,6 @@ class Issue extends CustomPostType {
 				'type' => 'select',
 				'options' => $story_options,
 			),
-/*
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Family',
-				'desc' => 'The font family to use for primary title lines in this issue cover.',
-				'id'   => $prefix.'default_font',
-				'type' => 'select',
-				'options' => $font_options,
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Color',
-				'desc' => 'Color for h1 title.  Hex values preferred.',
-				'id'   => $prefix.'default_color',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Desktop)',
-				'desc' => 'Font size for h1 title at desktop sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_d',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Tablet)',
-				'desc' => 'Font size for h1 title at tablet sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_t',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Mobile)',
-				'desc' => 'Font size for h1 title at mobile sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_m',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Text Align',
-				'desc' => 'Alignment of the h1 title within its container.',
-				'id'   => $prefix.'default_textalign',
-				'type' => 'select',
-				'options' => array(
-					'Left' => 'left',
-					'Center' => 'center',
-					'Right' => 'right',
-				),
-			),
-*/
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Home Page HTML File',
 				'desc' => 'HTML markup specifically for the issue cover/home page.',

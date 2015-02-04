@@ -163,6 +163,7 @@ div[id^="wysihtml5-toolbar"] {
 	border: 1px solid #e5e5e5;
 	border-radius: 3px 3px 0 0;
 	padding: 3px;
+  margin-top: 35px;
 }
 /* Caption WYSIWYG - Buttons */
 div[id^="wysihtml5-toolbar"] a {
@@ -344,7 +345,7 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-html.wysihtml5-action-active:active:aft
 }
 
 .wysihtml5-sandbox,
-textarea[id^="ss_slide_caption"] {
+div[id^="wysihtml5-toolbar"] + textarea {
 	margin: 0 !important;
 	border-radius: 0 0 3px 3px !important;
 	border-top: 0 !important;
