@@ -726,8 +726,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
                     // TODO sometimes wp_get_attachment_image_src fails, why?
                     $image = wp_get_attachment_image_src( $image_id, 'full' );
                     if ( $image === false ) {
-                    	$image_post = get_post( $image_id );
-                    	$image[0] = $image_post->guid;
+                    	$image[0] = wp_get_attachment_url( $image_id );
                     	@list( $width, $height ) = getimagesize( $image[0] );
                     	$image[1] = $width;
                     	$image[2] = $height;
