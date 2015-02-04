@@ -259,7 +259,7 @@ class WysiwygField extends Field {
 	        <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
 	        <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
-	      <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+	      <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
 	        <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
 	        <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
 	            <label>

@@ -38,7 +38,8 @@
 
                 $s = intval( $slide_order[$i] );
                 $image_id = intval( $images[$s] );
-                // TODO sometimes wp_get_attachment_image_src fails, why?
+                // TODO sometimes attachments fail to save _wp_attached_file meta val
+                // on upload and cause wp_get_attachment_image_src to fail, why?
                 $image = wp_get_attachment_image_src( $image_id, 'full' );
                 if ( $image === false ) {
                 	$image[0] = wp_get_attachment_url( $image_id );

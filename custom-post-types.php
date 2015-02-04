@@ -780,7 +780,6 @@ class PhotoEssay extends CustomPostType {
 
 	/**
 	 * Generate markup for a cloneable set of meta fields
-	 * TODO: genericize to use display_meta_box_field() for printing fields
 	 **/
 	public static function display_cloneable_fieldset($fields, $id=null) {
 		$id             = $id !== null ? intval($id) : 'xxxxxx';
@@ -799,7 +798,7 @@ class PhotoEssay extends CustomPostType {
 				<tr>
 					<th><label for="ss_slide_title[<?=$id?>]">Title</label></th>
 					<td>
-						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" cols="60" rows="4" value="<?=$slide_title?>" />
+						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" value="<?=$slide_title?>" />
 					</td>
 				</tr>
 				<tr>
@@ -810,7 +809,7 @@ class PhotoEssay extends CustomPostType {
                             <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
                             <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
-                          <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+                          <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
                             <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
                             <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
                                 <label>
