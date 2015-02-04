@@ -722,7 +722,16 @@ function sc_photo_essay_slider( $atts, $content = null ) {
                     }
 
                     $s = $slide_order[$i];
-                    $image = wp_get_attachment_image_src($slide_image[$s], 'full');
+                    $image_id = intval( $slide_image[$s] );
+                    // TODO sometimes wp_get_attachment_image_src fails, why?
+                    $image = wp_get_attachment_image_src( $image_id, 'full' );
+                    if ( $image === false ) {
+                    	$image_post = get_post( $image_id );
+                    	$image[0] = $image_post->guid;
+                    	@list( $width, $height ) = getimagesize( $image[0] );
+                    	$image[1] = $width;
+                    	$image[2] = $height;
+                    }
                     ?>
                     <div class="ss-slide-wrapper">
                         <div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
