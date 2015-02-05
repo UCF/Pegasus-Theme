@@ -346,6 +346,7 @@ class CheckboxField extends ChoicesField{
 }
 
 
+
 /**
  * Convenience class to calculate total execution times.
  *
@@ -1550,17 +1551,22 @@ function show_meta_boxes($post){
 	return _show_meta_boxes($post, $meta_box);
 }
 
-function save_file($post_id, $field){
-	$file_uploaded = @!empty($_FILES[$field['id']]);
-	if ($file_uploaded){
-		require_once(ABSPATH.'wp-admin/includes/file.php');
+function save_file( $post_id, $field ) {
+	if ( !$post_id ) {
+		$post_id = 0;
+	}
+
+	$file_uploaded = @!empty( $_FILES[$field['id']] );
+	if ( $file_uploaded ){
+		require_once( ABSPATH.'wp-admin/includes/file.php' );
 		$override['action'] = 'editpost';
 		$file               = $_FILES[$field['id']];
 		$uploaded_file      = wp_handle_upload($file, $override);
 
 		# TODO: Pass reason for error back to frontend
-		if ($uploaded_file['error']){return;}
+		if ( $uploaded_file['error'] ){ return; }
 
+		// Array of data about the new attachment post being created.
 		$attachment = array(
 			'post_title'     => $file['name'],
 			'post_content'   => '',
@@ -1569,12 +1575,18 @@ function save_file($post_id, $field){
 			'post_mime_type' => $file['type'],
 			'guid'           => $uploaded_file['url'],
 		);
-		$id = wp_insert_attachment($attachment, $file['file'], $post_id);
+
+		// Create (and return) an attachment post
+		$id = wp_insert_attachment( $attachment, $uploaded_file['file'], $post_id );
+
+		// Set the new attachment's metadata
 		wp_update_attachment_metadata(
 			$id,
-			wp_generate_attachment_metadata($id, $file['file'])
+			wp_generate_attachment_metadata( $id, $uploaded_file['file'] )
 		);
-		update_post_meta($post_id, $field['id'], $id);
+
+		// Update the parent post's meta field value
+		update_post_meta( $post_id, $field['id'], $id );
 	}
 }
 

@@ -38,15 +38,7 @@
 
                 $s = intval( $slide_order[$i] );
                 $image_id = intval( $images[$s] );
-                // TODO sometimes attachments fail to save _wp_attached_file meta val
-                // on upload and cause wp_get_attachment_image_src to fail, why?
                 $image = wp_get_attachment_image_src( $image_id, 'full' );
-                if ( $image === false ) {
-                	$image[0] = wp_get_attachment_url( $image_id );
-                	@list( $width, $height ) = getimagesize( $image[0] );
-                	$image[1] = $width;
-                	$image[2] = $height;
-                }
                 ?>
                 <div class="ss-slide-wrapper">
                     <div class="ss-slide<?= $i == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
