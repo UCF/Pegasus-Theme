@@ -176,12 +176,16 @@ WebcomAdmin.wysiwygFields = function($) {
 
   $toolbars.each(function() {
       var $toolbar = $(this);
-      var $textarea = $('#' + $toolbar.attr('data-textarea-id'));
+      var toolbarID = $toolbar.attr('id');
+      // Theme Option field IDs contain brackets, which are invalid markup;
+      // getting the textarea via vanilla js and passing the whole node to
+      // wysihtml5 is easier than trying to pass its ID:
+      var textarea = document.getElementById($toolbar.attr('data-textarea-id'));
 
       // Initialize the wysihtml5 editor
-      if ($textarea.length > 0) {
-          var editor = new wysihtml5.Editor($textarea.attr('id'), { // id of textarea element
-              toolbar:     $toolbar.attr('id'), // id of toolbar element
+      if ($(textarea).length > 0) {
+          var editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
+              toolbar:     toolbarID, // id of toolbar element
               parserRules: wysihtml5ParserRules, // defined in parser rules set
           });
       }
