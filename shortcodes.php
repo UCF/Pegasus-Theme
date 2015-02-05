@@ -722,8 +722,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
                     }
 
                     $s = $slide_order[$i];
-                    $image_id = intval( $slide_image[$s] );
-                    $image = wp_get_attachment_image_src( $image_id, 'full' );
+                    $image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
                     ?>
                     <div class="ss-slide-wrapper">
                         <div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">

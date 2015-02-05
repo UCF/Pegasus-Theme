@@ -36,9 +36,8 @@
                     $end = true;
                 }
 
-                $s = intval( $slide_order[$i] );
-                $image_id = intval( $images[$s] );
-                $image = wp_get_attachment_image_src( $image_id, 'full' );
+                $s = $slide_order[$i];
+                $image = wp_get_attachment_image_src( $images[$s], 'full' );
                 ?>
                 <div class="ss-slide-wrapper">
                     <div class="ss-slide<?= $i == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
