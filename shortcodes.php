@@ -85,13 +85,38 @@ add_shortcode('media', 'sc_get_media');
  * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
+	$css_classes = '';
 	$content = $content ? $content : '';
 	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
 	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
 
 	$alt = $attr['alt'] ? $attr['alt'] : $content;
 	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
-	$width = $attr['width'] ? $attr['width'] : '100%';
+	if ( !empty( $position ) ) {
+		$css_classes .= $position.' ';
+	}
+	//$width = $attr['width'] ? $attr['width'] : '100%';
+
+	// For images with a fixed width/position, check the image size;
+    // if the width is greater than 140px wide (1/2 minimum supported
+    // mobile screen width), or if we have no idea what the width is (it
+    // was manually removed from the shortcode for some reason), force
+    // the image to be fluid at mobile sizes.
+	$width = $attr['width'];
+	if ( empty( $position ) && !isset( $width ) ) {
+		$width = '100%';
+	}
+	if ( !empty( $position ) || ( !isset( $width ) ) || ( isset( $width ) && $width !== '100%' ) ) {
+		if ( isset( $width ) ) {
+			$width_px = intval( str_replace( 'px', '', $width ) );
+			if ( $width_px > 140 ) {
+				$css_classes .= 'mobile-img-fluid ';
+			}
+		}
+		else {
+			$css_classes .= 'mobile-img-fluid';
+		}
+	}
 
 	$url = null;
 	$html = '';
@@ -106,13 +131,25 @@ function sc_photo($attr, $content) {
 	}
 	if ($url) {
 		if ($content) {
-			$html .= '<figure class="'.$position.'" style="max-width: '.$width.'; height: auto;">';
-			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="max-width: '.$width.'; height: auto;" />';
+			$html .= '<figure class="'.$css_classes.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' max-width: '.$width;
+			}
+			$html .= '">';
+			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' max-width: '.$width;
+			}
+			$html .= '" />';
 			$html .= '<p class="caption">'.$content.'</p>';
 			$html .= '</figure>';
 		}
 		else {
-			$html .= '<img class="'.$position.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
+			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' width: '.$width;
+			}
+			$html .= '" />';
 		}
 
 	}

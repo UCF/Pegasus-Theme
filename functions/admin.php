@@ -386,11 +386,15 @@ function editor_insert_image_as_shortcode($html, $id, $caption, $title, $align, 
     	$s_position = $align;
     }
     // Get usable image width.
-    // Assume that if a user sets an image alignment, they don't
-    // want the image to be blown up to 100% width
+    // - Force aligned images to have a fixed width.
+    // - Assume fixed-width images with no set alignment should
+    //   be centered.
     $attachment_src = wp_get_attachment_image_src($id, $size);
-    if ($s_position) {
+    if ( $s_position || $size !== 'full' ) {
     	$s_width = $attachment_src[1].'px';
+    }
+    if ( !$s_position && $size !== 'full' ) {
+    	$s_position = 'center';
     }
 
     // Get usable image title (passed $title doesn't always work here?)
