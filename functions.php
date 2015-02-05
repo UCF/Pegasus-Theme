@@ -756,7 +756,7 @@ function get_heading_styles($font_name) {
 
 
 /**
- * Get a non-custom story or issue's title font styling specs, based on 
+ * Get a non-custom story or issue's title font styling specs, based on
  * the story/issue's selected title font family and color.
  *
  * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
@@ -948,12 +948,12 @@ add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
 
 /**
- * Generate font-specific classes used in default story templates and 
+ * Generate font-specific classes used in default story templates and
  * in formatting.css (static/css/formatting.php) for all registered font
  * families in TEMPLATE_FONT_STYLES (see functions/config.php)
  *
  * Font classes are assigned in this manner, instead of using TinyMCE's
- * default inline font-family selection, to ensure consistency in font 
+ * default inline font-family selection, to ensure consistency in font
  * formatting across stories.
  *
  * Set $style_tag arg to true to wrap returned CSS in a <style> tag.
@@ -1019,5 +1019,15 @@ function get_webfont_css_styles($font, $selector=null, $extra=null, $important=f
 
 	return $output;
 }
+
+
+/**
+ * Allow SVGs in the Media Library.
+ **/
+function allow_svgs( $mimes ) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'allow_svgs' );
 
 ?>
