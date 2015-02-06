@@ -316,9 +316,12 @@ Config::$body_classes = array();
  **/
 $issue_covers 		= get_posts(array('post_type' => 'issue'));
 $issue_cover_array 	= array();
-foreach ($issue_covers as $cover) {
+$issue_cover_first = null;
+foreach ( $issue_covers as $cover ) {
 	$issue_cover_array[$cover->post_title] = $cover->post_name;
 }
+$issue_cover_keys = array_keys( $issue_cover_array );
+$issue_cover_first = $issue_cover_keys[0];
 
 
 /**
@@ -467,7 +470,7 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
 			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
 			'choices'     => $issue_cover_array,
-			'default'     => $issue_cover_array[0],
+			'default'     => $issue_cover_first,
 			'value'       => $theme_options['current_issue_cover'],
 		)),
 	),
