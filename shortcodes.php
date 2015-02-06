@@ -137,7 +137,7 @@ function sc_photo($attr, $content) {
 			$html .= '">';
 			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
 			if ( $width ) {
-				$html .= ' max-width: '.$width;
+				$html .= ' width: '.$width;
 			}
 			$html .= '" />';
 			$html .= '<p class="caption">'.$content.'</p>';

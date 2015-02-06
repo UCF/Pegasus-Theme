@@ -719,7 +719,7 @@ article.story img { margin-top: 15px; margin-bottom: 15px; }
 article.story img.pull-left { margin-right: 15px; }
 article.story img.pull-right { margin-left: 15px; }
 
-article.story figure { margin: 15px 0; }
+article.story figure { margin-top: 15px; margin-bottom: 15px; }
 article.story figure img { margin-top: 0; margin-bottom: 0; }
 
 
