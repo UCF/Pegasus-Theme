@@ -556,6 +556,8 @@ Config::$scripts = array(
 
 Config::$metas = array(
 	array('charset' => 'utf-8',),
+	array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=Edge'),
+	array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'),
 );
 if ($theme_options['gw_verify']){
 	Config::$metas[] = array(
