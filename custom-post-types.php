@@ -23,6 +23,7 @@ abstract class CustomPostType{
 		                         # (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array('post_tag'),
 		$built_in       = False,
+		$menu_icon      = 'dashicons-admin-post',
 
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
@@ -188,6 +189,7 @@ abstract class CustomPostType{
 			'public'          => $this->options('public'),
 			'taxonomies'      => $this->options('taxonomies'),
 			'_builtin'        => $this->options('built_in'),
+			'menu_icon'       => $this->options('menu_icon'),
 		);
 
 		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
@@ -363,6 +365,7 @@ class Story extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
+		$menu_icon      = 'dashicons-media-document',
 		$taxonomies     = array('issues', 'post_tag');
 
 	static function get_javascript_url($story) {
@@ -503,6 +506,7 @@ class Issue extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
+		$menu_icon      = 'dashicons-book',
 		$taxonomies     = array();
 
 	static function get_home_javascript_url($issue) {
@@ -750,6 +754,7 @@ class PhotoEssay extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_revisions	= False,
+		$menu_icon      = 'dashicons-images-alt2',
 		$taxonomies     = array('issues'),
 		$cloneable_fields = True;
 
