@@ -132,12 +132,12 @@ function sc_photo($attr, $content) {
 		if ($content) {
 			$html .= '<figure class="'.$css_classes.'" style="height: auto;';
 			if ( $width ) {
-				$html .= ' max-width: '.$width;
+				$html .= ' max-width: '.$width.';';
 			}
 			$html .= '">';
 			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
 			if ( $width ) {
-				$html .= ' width: '.$width;
+				$html .= ' width: '.$width.';';
 			}
 			$html .= '" />';
 			$html .= '<p class="caption">'.$content.'</p>';
@@ -146,7 +146,7 @@ function sc_photo($attr, $content) {
 		else {
 			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
 			if ( $width ) {
-				$html .= ' width: '.$width;
+				$html .= ' width: '.$width.';';
 			}
 			$html .= '" />';
 		}
