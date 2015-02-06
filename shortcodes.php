@@ -95,7 +95,6 @@ function sc_photo($attr, $content) {
 	if ( !empty( $position ) ) {
 		$css_classes .= $position.' ';
 	}
-	//$width = $attr['width'] ? $attr['width'] : '100%';
 
 	// For images with a fixed width/position, check the image size;
     // if the width is greater than 140px wide (1/2 minimum supported
