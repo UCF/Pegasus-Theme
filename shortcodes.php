@@ -92,9 +92,6 @@ function sc_photo($attr, $content) {
 
 	$alt = $attr['alt'] ? $attr['alt'] : $content;
 	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
-	if ( !empty( $position ) ) {
-		$css_classes .= $position.' ';
-	}
 
 	// For images with a fixed width/position, check the image size;
     // if the width is greater than 140px wide (1/2 minimum supported
@@ -102,20 +99,26 @@ function sc_photo($attr, $content) {
     // was manually removed from the shortcode for some reason), force
     // the image to be fluid at mobile sizes.
 	$width = $attr['width'];
-	if ( empty( $position ) && !isset( $width ) ) {
+	if ( !isset( $width ) ) {
 		$width = '100%';
 	}
-	if ( !empty( $position ) || ( !isset( $width ) ) || ( isset( $width ) && $width !== '100%' ) ) {
-		if ( isset( $width ) ) {
+
+	if ( !empty( $position ) || $width !== '100%' ) {
+		if ( $width !== '100%' ) {
+			// Only add position class to img/figure elements if width
+			// doesn't fall back to 100%:
+			$css_classes .= $position.' ';
+
 			$width_px = intval( str_replace( 'px', '', $width ) );
 			if ( $width_px > 140 ) {
 				$css_classes .= 'mobile-img-fluid ';
 			}
 		}
 		else {
-			$css_classes .= 'mobile-img-fluid';
+			$css_classes .= 'mobile-img-fluid ';
 		}
 	}
+
 
 	$url = null;
 	$html = '';
