@@ -375,7 +375,7 @@ Config::$theme_settings = array(
 			'name'        => 'Enable Google Search',
 			'id'          => THEME_OPTIONS_NAME.'[enable_google]',
 			'description' => 'Enable to use the google search appliance to power the search functionality.',
-			'default'     => 1,
+			'default'     => 'On',
 			'choices'     => array(
 				'On'  => 1,
 				'Off' => 0,
@@ -402,7 +402,7 @@ Config::$theme_settings = array(
 			'name'        => 'Enable OpenGraph',
 			'id'          => THEME_OPTIONS_NAME.'[enable_og]',
 			'description' => 'Turn on the opengraph meta information used by Facebook.',
-			'default'     => 1,
+			'default'     => 'On',
 			'choices'     => array(
 				'On'  => 1,
 				'Off' => 0,
@@ -506,7 +506,7 @@ Orlando, FL 32816',
 			'id'          => THEME_OPTIONS_NAME.'[dev_mode]',
 			'description' => 'Turn on Developer Mode, which enables direct editing from the theme\'s dev/ directory. <strong>Never enable this
 								setting in a production environment.</strong>',
-			'default'     => 0,
+			'default'     => 'Off',
 			'choices'     => array(
 				'On'  => 1,
 				'Off' => 0,

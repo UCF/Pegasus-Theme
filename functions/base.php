@@ -184,9 +184,17 @@ abstract class Field{
  * @author Jared Lang
  **/
 abstract class ChoicesField extends Field{
+	// Ensure 'default' value is added to choices if it isn't already
+	protected function add_default_to_choices() {
+		if ( isset( $this->default ) && !array_key_exists( $this->default, $this->choices ) ) {
+			$this->choices = array( $this->default => '' ) + $this->choices;
+		}
+	}
+
 	function __construct($attr){
 		$this->choices = @$attr['choices'];
 		parent::__construct($attr);
+		$this->add_default_to_choices();
 	}
 }
 
@@ -232,8 +240,38 @@ class TextareaField extends Field{
 	function input_html(){
 		ob_start();
 		?>
-		<textarea id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
+		<textarea cols="60" rows="4" id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
 		<?php
+		return ob_get_clean();
+	}
+}
+
+
+/**
+ * Textarea field with simple WYSIWYG editor capabilities.
+ **/
+class WysiwygField extends Field {
+	function input_html() {
+		ob_start();
+	?>
+	    <div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
+	        <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+	        <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+	        <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
+
+	      <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
+	        <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
+	        <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
+	            <label>
+	                Link:
+	                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
+	            </label>
+	            <a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
+	        </div>
+	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
+	    </div>
+		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlentities( $this->value ); ?></textarea>
+	<?php
 		return ob_get_clean();
 	}
 }
@@ -306,6 +344,7 @@ class CheckboxField extends ChoicesField{
 		return ob_get_clean();
 	}
 }
+
 
 
 /**
@@ -1512,17 +1551,22 @@ function show_meta_boxes($post){
 	return _show_meta_boxes($post, $meta_box);
 }
 
-function save_file($post_id, $field){
-	$file_uploaded = @!empty($_FILES[$field['id']]);
-	if ($file_uploaded){
-		require_once(ABSPATH.'wp-admin/includes/file.php');
+function save_file( $post_id, $field ) {
+	if ( !$post_id ) {
+		$post_id = 0;
+	}
+
+	$file_uploaded = @!empty( $_FILES[$field['id']] );
+	if ( $file_uploaded ){
+		require_once( ABSPATH.'wp-admin/includes/file.php' );
 		$override['action'] = 'editpost';
 		$file               = $_FILES[$field['id']];
 		$uploaded_file      = wp_handle_upload($file, $override);
 
 		# TODO: Pass reason for error back to frontend
-		if ($uploaded_file['error']){return;}
+		if ( $uploaded_file['error'] ){ return; }
 
+		// Array of data about the new attachment post being created.
 		$attachment = array(
 			'post_title'     => $file['name'],
 			'post_content'   => '',
@@ -1531,12 +1575,18 @@ function save_file($post_id, $field){
 			'post_mime_type' => $file['type'],
 			'guid'           => $uploaded_file['url'],
 		);
-		$id = wp_insert_attachment($attachment, $file['file'], $post_id);
+
+		// Create (and return) an attachment post
+		$id = wp_insert_attachment( $attachment, $uploaded_file['file'], $post_id );
+
+		// Set the new attachment's metadata
 		wp_update_attachment_metadata(
 			$id,
-			wp_generate_attachment_metadata($id, $file['file'])
+			wp_generate_attachment_metadata( $id, $uploaded_file['file'] )
 		);
-		update_post_meta($post_id, $field['id'], $id);
+
+		// Update the parent post's meta field value
+		update_post_meta( $post_id, $field['id'], $id );
 	}
 }
 
@@ -1629,83 +1679,117 @@ function _save_meta_data($post_id, $meta_box){
 
 
 /**
+ * Displays meta box fields with current or default values.
+ **/
+function display_meta_box_field( $post_id, $field ) {
+	$field_obj = null;
+	$field['value'] = get_post_meta( $post_id, $field['id'], true );
+
+	// Fix inconsistencies between CPT field array keys and Field obj property names
+	// TODO: why are these different anyway?
+	if ( isset( $field['desc'] ) ) {
+		$field['description'] = $field['desc'];
+		unset( $field['desc'] );
+	}
+	if ( isset( $field['options'] ) ) {
+		$field['choices'] = $field['options'];
+		unset( $field['options'] );
+	}
+
+	switch ( $field['type'] ) {
+		case 'text':
+			$field_obj = new TextField( $field );
+			break;
+		case 'textarea':
+			$field_obj = new TextareaField( $field );
+			break;
+		case 'wysiwyg':
+			$field_obj = new WysiwygField( $field );
+			break;
+		case 'select':
+			$field_obj = new SelectField( $field );
+			break;
+		case 'radio':
+			$field_obj = new RadioField( $field );
+			break;
+		case 'checkbox':
+			$field_obj = new CheckboxField( $field );
+			break;
+		case 'file':
+		default:
+			break;
+	}
+
+	$markup = '';
+
+	if ( $field_obj ) {
+		ob_start();
+	?>
+		<tr>
+			<th><?php echo $field_obj->label_html(); ?></th>
+			<td>
+				<?php echo $field_obj->description_html(); ?>
+				<?php echo $field_obj->input_html(); ?>
+			</td>
+		</tr>
+	<?php
+		$markup = ob_get_clean();
+	}
+	else if ( $field['type'] == 'file' ) {
+		$document_id = get_post_meta( $post_id, $field['id'], True );
+		$document = null;
+
+		if ( $document_id ){
+			$document = get_post( $document_id );
+			$url = wp_get_attachment_url( $document_id );
+		}
+
+		ob_start();
+	?>
+		<tr>
+			<th><label for="<?php echo $field['id']; ?>"><?php echo $field['name']; ?></label></th>
+			<td>
+				<?php if ( $document ): ?>
+					<a target="_blank" href="<?php echo $url; ?>">
+						<?php if ( wp_attachment_is_image( $document_id ) ): ?>
+						<img src="<?php echo $url; ?>" style="max-width:400px; height:auto"; /><br/>
+						<?php endif; ?>
+						<?php echo $document->post_title; ?>
+					</a>
+					<br><br>
+				<?php endif;?>
+				<input type="file" id="file_<?php echo $post_id; ?>" name="<?php echo $field['id']; ?>">
+				<br>
+			</td>
+		</tr>
+	<?php
+		$markup = ob_get_clean();
+	}
+	else {
+		$markup = '<tr><th></th><td>Don\'t know how to handle field of type '. $field_type .'</td></tr>';
+	}
+
+	echo $markup;
+}
+
+
+/**
  * Outputs the html for the fields defined for a given post and metabox.
  *
  * @return void
  * @author Jared Lang
  **/
-function _show_meta_boxes($post, $meta_box){
+function _show_meta_boxes( $post, $meta_box ) {
 	?>
 	<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce(basename(__FILE__))?>"/>
 	<table class="form-table">
-	<?php foreach($meta_box['fields'] as $field):
-		$current_value = get_post_meta($post->ID, $field['id'], true);?>
-		<tr>
-			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
-			<td>
-			<?php if($field['desc']):?>
-				<div class="description">
-					<?=$field['desc']?>
-				</div>
-			<?php endif;?>
-
-			<?php switch ($field['type']):
-				case 'text':?>
-				<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
-
-			<?php break; case 'textarea':?>
-				<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
-
-			<?php break; case 'select':?>
-				<select name="<?=$field['id']?>" id="<?=$field['id']?>">
-					<option value=""><?=($field['default']) ? $field['default'] : '--'?></option>
-				<?php foreach ($field['options'] as $k=>$v):?>
-					<option <?=($current_value == $v) ? ' selected="selected"' : ''?> value="<?=$v?>"><?=$k?></option>
-				<?php endforeach;?>
-				</select>
-
-			<?php break; case 'radio':?>
-				<?php foreach ($field['options'] as $k=>$v):?>
-				<label for="<?=$field['id']?>_<?=slug($k, '_')?>"><?=$k?></label>
-				<input type="radio" name="<?=$field['id']?>" id="<?=$field['id']?>_<?=slug($k, '_')?>" value="<?=$v?>"<?=($current_value == $v) ? ' checked="checked"' : ''?> />
-				<?php endforeach;?>
-
-			<?php break; case 'checkbox':?>
-				<input type="checkbox" name="<?=$field['id']?>" id="<?=$field['id']?>"<?=($current_value) ? ' checked="checked"' : ''?> />
-
-			<?php break; case 'file':?>
-				<?php
-					$document_id = get_post_meta($post->ID, $field['id'], True);
-					if ($document_id){
-						$document = get_post($document_id);
-						$url      = wp_get_attachment_url($document->ID);
-					}else{
-						$document = null;
-					}
-				?>
-				<?php if($document):?>
-					<a target="_blank" href="<?=$url?>">
-						<?php if (wp_attachment_is_image($document->ID)): ?>
-						<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
-						<?php endif; ?>
-						<?=$document->post_title?>
-					</a><br /><br />
-				<?php endif;?>
-				<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
-
-			<?php break; case 'help':?><!-- Do nothing for help -->
-			<?php break; default:?>
-				<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
-			<?php break; endswitch;?>
-			<td>
-		</tr>
-	<?php endforeach;?>
+		<?php
+		foreach ( $meta_box['fields'] as $field ) {
+			display_meta_box_field( $post->ID, $field );
+		}
+		?>
 	</table>
-
-	<?php if($meta_box['helptxt']):?>
-	<p><?=$meta_box['helptxt']?></p>
-	<?php endif;?>
-	<?php
+<?php
 }
 
 ?>
