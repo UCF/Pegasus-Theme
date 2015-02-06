@@ -60,6 +60,7 @@ function add_shortcode_interface_modal() {
 			'image'            => null,
 			'issue-list'       => null,
 			'media'            => null,
+			'playlist'         => null,
 			'photo'            => null,
 			'post-type-search' => null,
 			'print_link'       => null,
