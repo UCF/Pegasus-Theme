@@ -1757,6 +1757,9 @@ function display_meta_box_field( $post_id, $field ) {
 					</a>
 					<br><br>
 				<?php endif;?>
+				<?php if ( $field['description'] ): ?>
+				<p class="description"><?php echo $field['description']; ?></p>
+				<?php endif; ?>
 				<input type="file" id="file_<?php echo $post_id; ?>" name="<?php echo $field['id']; ?>">
 				<br>
 			</td>
