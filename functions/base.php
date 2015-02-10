@@ -1748,6 +1748,9 @@ function display_meta_box_field( $post_id, $field ) {
 		<tr>
 			<th><label for="<?php echo $field['id']; ?>"><?php echo $field['name']; ?></label></th>
 			<td>
+				<?php if ( $field['description'] ): ?>
+				<p class="description"><?php echo $field['description']; ?></p>
+				<?php endif; ?>
 				<?php if ( $document ): ?>
 					<a target="_blank" href="<?php echo $url; ?>">
 						<?php if ( wp_attachment_is_image( $document_id ) ): ?>
@@ -1757,9 +1760,6 @@ function display_meta_box_field( $post_id, $field ) {
 					</a>
 					<br><br>
 				<?php endif;?>
-				<?php if ( $field['description'] ): ?>
-				<p class="description"><?php echo $field['description']; ?></p>
-				<?php endif; ?>
 				<input type="file" id="file_<?php echo $post_id; ?>" name="<?php echo $field['id']; ?>">
 				<br>
 			</td>
