@@ -2,7 +2,7 @@
 <html lang="en-US">
 	<head>
 		<?="\n".header_()."\n"?>
-		<!--[if IE]>
+		<!--[if lte IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 

@@ -1686,7 +1686,6 @@ function display_meta_box_field( $post_id, $field ) {
 	$field['value'] = get_post_meta( $post_id, $field['id'], true );
 
 	// Fix inconsistencies between CPT field array keys and Field obj property names
-	// TODO: why are these different anyway?
 	if ( isset( $field['desc'] ) ) {
 		$field['description'] = $field['desc'];
 		unset( $field['desc'] );
