@@ -530,9 +530,14 @@ class Issue extends CustomPostType {
 			'orderby' => 'title',
 			'order' => 'ASC'
 		);
-		foreach(get_issue_stories($post, $args) as $story) {
-			$story_options[$story->post_title] = $story->ID;
+
+		$issue_stories = get_issue_stories( $post, $args );
+		if ( $issue_stories ) {
+			foreach( get_issue_stories( $post, $args ) as $story ) {
+				$story_options[$story->post_title] = $story->ID;
+			}
 		}
+
 		$font_options = array();
 		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
 			$font_options[$key] = $key;

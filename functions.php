@@ -461,6 +461,7 @@ function get_issue_stories( $issue, $options=array() ) {
 
 		return get_posts($options);
 	}
+	return null;
 }
 
 
