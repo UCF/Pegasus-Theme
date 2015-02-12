@@ -25,14 +25,14 @@
 						of content creation for Pegasus.
 					</p>
 					<p>
-						Keep in mind that this help section assumes a basic working knowledge of the WordPress admin interface.  
-						If you are unfamiliar with WordPress, please 
-						<a href="http://code.tutsplus.com/series/wp101-basix-training--wp-20968" target="_blank">check out a few tutorials</a> 
+						Keep in mind that this help section assumes a basic working knowledge of the WordPress admin interface.
+						If you are unfamiliar with WordPress, please
+						<a href="http://code.tutsplus.com/series/wp101-basix-training--wp-20968" target="_blank">check out a few tutorials</a>
 						before getting started.
 					</p>
 					<br/>
 					<p>
-						The primary types of content that can be created in this site are <strong>Issues</strong>, <strong>Stories</strong>, and 
+						The primary types of content that can be created in this site are <strong>Issues</strong>, <strong>Stories</strong>, and
 						<strong>Photo Essays</strong>.
 					<p>
 						<strong>Issues</strong> are a means of categorizing a group of Stories much like the physical magazine.  Issues
@@ -43,13 +43,13 @@
 						live on the website are hand picked from the physical magazine.
 					</p>
 					<p>
-						The <strong>Photo Essay</strong> is a type of content used to create a slideshow of images with captions in a Story 
+						The <strong>Photo Essay</strong> is a type of content used to create a slideshow of images with captions in a Story
 						or Issues.  Photo Essays can be embedded onto Stories or Issues using a <strong>Shortcode</strong>.
 					</p>
 					<br/>
 					<p>
-						<strong>Shortcodes</strong> are small snippets of code, wrapped in square brackets [], that do some function or add some 
-						predefined content to your story content.  On this site, we use them to add blockquotes, callout boxes, sidebars, and 
+						<strong>Shortcodes</strong> are small snippets of code, wrapped in square brackets [], that do some function or add some
+						predefined content to your story content.  On this site, we use them to add blockquotes, callout boxes, sidebars, and
 						more to Story and Issue content.
 					</p>
 				</li>
@@ -63,7 +63,7 @@
 						(a means of grouping content, like categories or tags) and as a type of post, which serves as the landing page/cover for the website
 						when that issue is active.
 					</p>
-					
+
 					<p><strong>Navigation:</strong></p>
 					<ul class="section-nav">
 						<li>
@@ -104,7 +104,7 @@
 						<li>The "Slug", "Parent" and "Description" fields should be left blank.</li>
 					</ul>
 					<p>
-						Click the "Add New Issue" button to create the new term.  You should see the term appear in the list on the 
+						Click the "Add New Issue" button to create the new term.  You should see the term appear in the list on the
 						right after a second or two.
 					</p>
 					<p>
@@ -134,7 +134,7 @@
 					<div class="well">
 						<p>
 							<strong>Important:</strong> The issue taxonomy term and issue cover names must match <strong>exactly</strong>
-							for the term and cover post to relate to each other correctly.  If you change the title (or slug) of an 
+							for the term and cover post to relate to each other correctly.  If you change the title (or slug) of an
 							issue at any time, make sure that both the taxonomy term and issue cover title and slug are updated.
 						</p>
 					</div>
@@ -143,8 +143,8 @@
 					<p>
 						The Issue's Featured Image should be a screenshot of the print magazine's cover for that issue.  The Issue's
 						thumbnail is used on the site's homepage on newer issues and in the site archives.  To set the Featured Image,
-						click the “Set featured image” link in the Featured Image metabox on the right side of the screen. Upload or 
-						select an image as usual and click the “Set featured image” button. 
+						click the “Set featured image” link in the Featured Image metabox on the right side of the screen. Upload or
+						select an image as usual and click the “Set featured image” button.
 					</p>
 					<div class="well">
 						<p><strong>Thumbnail Specs/Guidelines:</strong></p>
@@ -152,7 +152,7 @@
 							<li>Issue thumbnails should be <strong>190x248px</strong></li>
 							<li>Thumbnails can be <strong>.jpg or .png’s</strong>.  Adding transparency is not recommended.</li>
 							<li>
-								Running thumbnails through an image compression service like 
+								Running thumbnails through an image compression service like
 								<a href="http://imageoptim.com/" target="_blank">ImageOptim</a> is recommended.
 							</li>
 						</ul>
@@ -166,8 +166,8 @@
 
 					<h5>Issue Customization</h5>
 					<p>
-						The Issue Fields metabox, located under the issue content editor, contains set of extra fields that add custom 
-						settings to the issue cover.  Most of these fields are straightforward and provide descriptions. 
+						The Issue Fields metabox, located under the issue content editor, contains set of extra fields that add custom
+						settings to the issue cover.  Most of these fields are straightforward and provide descriptions.
 					</p>
 					<p>
 						Generally, you will only need to add a Cover Story and set the 3 Featured Stories.  The Issue Template value
@@ -220,7 +220,7 @@
 				<li class="section" id="stories">
 					<h2>Stories</h2>
 					<p>
-						<strong>Stories</strong> are a type of post. They are similar to standard WordPress posts, except they are 
+						<strong>Stories</strong> are a type of post. They are similar to standard WordPress posts, except they are
 						customized to display story-specific information.
 					</p>
 
@@ -263,23 +263,23 @@
 
 					<h4 id="stories-add-title">Add a Title</h4>
 					<p>
-						Enter the title of the story in the title field at the top of the screen.  Keep in mind that custom font sizes,
-						colors, or colors cannot be applied to the story title.
+						Enter the title of the story in the title field at the top of the screen.  Keep in mind that custom font sizes
+						or colors cannot be applied to the story title.
 					</p>
 
 					<h4 id="stories-issue-tags">Assign an Issue, Tags</h4>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-tags-issue.jpg" />
 					<p>
-						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
-						Fall/Spring/Summer, and the year) and add any appropriate tags in the Tags metabox.  When picking 
+						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e.
+						Fall/Spring/Summer, and the year) and add any appropriate tags in the Tags metabox.  When picking
 						tags, think about words or phrases that you would use if you were to search for this story on Google.
 					</p>
 
 					<h4 id="stories-add-thumbnail">Add a Thumbnail</h4>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-featured-image.jpg" />
 					<p>
-						The story’s thumbnail should be uploaded as the story’s Featured Image.  To do so, click the “Set featured 
-						image” link in the Featured Image metabox on the right side of the screen.  Upload or select an image as 
+						The story’s thumbnail should be uploaded as the story’s Featured Image.  To do so, click the “Set featured
+						image” link in the Featured Image metabox on the right side of the screen.  Upload or select an image as
 						usual and click the “Set featured image” button.
 					</p>
 
@@ -289,42 +289,40 @@
 							<li>Story thumbnails should be <strong>220x230px</strong></li>
 							<li>Thumbnails can be <strong>.jpg or .png’s</strong>.  Adding transparency is not recommended.</li>
 							<li>
-								Keep in mind that thumbnails are shrunk down to as low as 140px wide on some sections of the Pegasus 
+								Keep in mind that thumbnails are shrunk down to as low as 140px wide on some sections of the Pegasus
 								website; make sure that any text on the thumbnails is legible at small sizes.
 							</li>
 							<li>
-								Running thumbnails through an image compression service like 
+								Running thumbnails through an image compression service like
 								<a href="http://imageoptim.com/" target="_blank">ImageOptim</a> is recommended.
 							</li>
 						</ul>
 					</div>
 
 					<h3 id="stories-adding-story-content">Adding Story Content:</h3>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-content-editor.jpg" />
 					<p>
-						To add content to a story, use the large text editor directly below the title field to type and paste content.  
-						Only body copy needs to be added here; the title, story description, and header image are handled separately.  
-						When pasting content from Microsoft Word, be sure to click the "Paste from Word" icon to avoid pasting in
-						non-web-friendly text formatting.
+						To add content to a story, use the large text editor directly below the title field to type and paste content.
+						Only body copy needs to be added here; the title, story description, and header image are handled separately.
+						As of Wordpress 4.0, content can be copied directly from Microsoft Word into the text editor.
 					</p>
 					<p>
-						Most text is directly editable through the Visual editor.  Make sure that you are in Visual editor mode when 
+						Most text is directly editable through the Visual editor.  Make sure that you are in Visual editor mode when
 						you’re adding content—if you don’t see a set of menu buttons above the editor that look like Microsoft Word
-						text editor buttons, make sure the “Visual” tab (NOT the “Text” tab) on the top right of the editor is selected.  
+						text editor buttons, make sure the “Visual” tab (NOT the “Text” tab) on the top right of the editor is selected.
 						The Visual editor lets you add and manipulate content similarly to how Microsoft Word does.
 					</p>
 
 					<h4 id="stories-about-headings">About Headings and Structuring Content</h4>
 					<div class="well">
 						<p><strong><em>
-							Please read all of the guidelines below—they are very important and help us create content that is semantic, 
+							Please read all of the guidelines below—they are very important and help us create content that is semantic,
 							accessible and SEO-friendly!
 						</em></strong></p>
 					</div>
 					<p>
-						On the web, titles and subtitles for any article and its sections are structured in a hierarchical way.  These 
-						titles are known as <strong>headings</strong>, and the code behind them allows for up to 6 different tiers of 
-						headings—<strong>heading 1 (h1) through heading 6 (h6)</strong>.  This system allows us to define a "table of 
+						On the web, titles and subtitles for any article and its sections are structured in a hierarchical way.  These
+						titles are known as <strong>headings</strong>, and the code behind them allows for up to 6 different tiers of
+						headings—<strong>heading 1 (h1) through heading 6 (h6)</strong>.  This system allows us to define a "table of
 						contents" for our story, so that screenreaders and search engines can understand the structure of our
 						content.  View the screenshot below for an example of what these headings are.
 					</p>
@@ -335,13 +333,13 @@
 					</p>
 
 					<p>
-						A <strong>h1</strong> is considered the most important title on the page—i.e., the title of the article.  There 
-						should only ever be one h1 on a page at any given time—in our story templates, the h1 is automatically set as 
+						A <strong>h1</strong> is considered the most important title on the page—i.e., the title of the article.  There
+						should only ever be one h1 on a page at any given time—in our story templates, the h1 is automatically set as
 						the story title, so you should <strong>never set any text in your body copy as an h1</strong>.
 					</p>
 					<p>
 						<strong>h2's</strong> would be the next most important titles or section headings.  h2's will be the first type of
-						heading you use when declaring headings in your story content.  h2's, as well as all other headings, should always 
+						heading you use when declaring headings in your story content.  h2's, as well as all other headings, should always
 						describe the section of content that immediately follows after it.
 					</p>
 					<p>
@@ -352,18 +350,18 @@
 						<p><strong>Notes on Headings:</strong></p>
 						<ul>
 							<li>
-								<strong>Headings should always be assigned in order</strong>—i.e., do not place a h2 under a h3 unless you are 
-								defining a new, separate section of content.  Do not skip headings either— i.e., don't jump from a h2 straight 
+								<strong>Headings should always be assigned in order</strong>—i.e., do not place a h2 under a h3 unless you are
+								defining a new, separate section of content.  Do not skip headings either— i.e., don't jump from a h2 straight
 								to a h4.  <strong>Note: Your story should never use h3-6 without declaring a h2 first.</strong>
 							</li>
 							<li>
-								Do NOT assign text a heading designation if it is not a heading!  <strong>Headings should NOT be 
+								Do NOT assign text a heading designation if it is not a heading!  <strong>Headings should NOT be
 								assigned to force a particular font size or style on a line of text.</strong>  Style non-heading text with the
-								"Styles" dropdown instead.
+								"Formats" dropdown instead.
 							</li>
 							<li>
-								Most of the time, you’ll probably not use h5's or h6's, but they are available if necessary.  You might not use 
-								any headings beyond h2 in a story—that is okay, as long as the structure of the story makes sense with the 
+								Most of the time, you’ll probably not use h5's or h6's, but they are available if necessary.  You might not use
+								any headings beyond h2 in a story—that is okay, as long as the structure of the story makes sense with the
 								headings you’ve used.
 							</li>
 						</ul>
@@ -372,16 +370,16 @@
 					<h4 id="stories-add-headings">Adding Headings</h4>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-add-heading.jpg" />
 					<p>
-						To add a heading or make an existing line of text a heading, highlight the text you want to modify in the editor, 
-						and from the “Paragraph” dropdown in the Kitchen Sink, select from the Heading 2 through Heading 6 options.  This 
-						text will be styled using the font family and color selected in the Default Template Header Font Family/Color 
+						To add a heading or make an existing line of text a heading, highlight the text you want to modify in the editor,
+						and from the “Paragraph” dropdown in the Kitchen Sink, select from the Heading 2 through Heading 6 options.  This
+						text will be styled using the font family and color selected in the Default Template Header Font Family/Color
 						fields.
 					</p>
 
 					<h4 id="stories-manipulating-text">Manipulating and Styling Text</h4>
 					<p>
-						The WordPress content editor (the "WYSIWYG" editor) provides a "Kitchen Sink" of tools that allow you to modify text styles.  
-						Most of these tools are pretty straightforward and should look similar to Microsoft Word.  Below is a brief overview of 
+						The WordPress content editor (the "WYSIWYG" editor) provides a "Kitchen Sink" of tools that allow you to modify text styles.
+						Most of these tools are pretty straightforward and should look similar to Microsoft Word.  Below is a brief overview of
 						how to achieve various effects with these tools:
 					</p>
 
@@ -389,7 +387,7 @@
 
 					<p><strong>Font Family</strong></p>
 					<p>
-						To modify the font family for a small chunk of text, use the "Styles" dropdown in the
+						To modify the font family for a small chunk of text, use the "Formats" dropdown in the
 						2nd row of the Kitchen Sink.  Here, you can pick from some of the most commonly used fonts in the print magazine, as well as
 						fonts used in previous online editions.  Highlight the text you want to modify and pick the font to apply your changes.
 					</p>
@@ -441,7 +439,7 @@
 
 					<p><strong>Font Color</strong></p>
 					<p>
-						To modify the font color for a small chunk of text, use the font color selector in the Kitchen Sink (to the right of the 
+						To modify the font color for a small chunk of text, use the font color selector in the Kitchen Sink (to the right of the
 						"Paragraph" dropdown.)  To specify a custom hex value, click the "More Colors" button at the bottom of the box that appears.
 					</p>
 
@@ -466,14 +464,14 @@
 
 					<h4 id="stories-add-media">Adding Media</h4>
 					<p>
-						Media (images, videos, and audio) can be uploaded to WordPress’s media library so that they are self-hosted.  
-						Generally, this is necessary for photos and video or audio that cannot be uploaded to an external service like 
+						Media (images, videos, and audio) can be uploaded to WordPress’s media library so that they are self-hosted.
+						Generally, this is necessary for photos and video or audio that cannot be uploaded to an external service like
 						Youtube.
 					</p>
 					<div class="well">
 						<p>
-							<strong>Note: if you need to add a Youtube, Vimeo, or other hosted video player, you do not 
-							need to upload any files;</strong> simply paste the URL of the video into the editor content on its own line, and WordPress 
+							<strong>Note: if you need to add a Youtube, Vimeo, or other hosted video player, you do not
+							need to upload any files;</strong> simply paste the URL of the video into the editor content on its own line, and WordPress
 							will figure out the rest for you.
 						</p>
 					</div>
@@ -483,19 +481,19 @@
 					</p>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-media-modal.jpg" />
 					<p>
-						In the window that appears, you can either browse existing media or upload a new file.  Click on a file’s thumbnail 
+						In the window that appears, you can either browse existing media or upload a new file.  Click on a file’s thumbnail
 						to select it (if you just uploaded the file, it’ll be selected for you.)
 					</p>
 					<p>
-						The media’s details can then be modified on the right, under Attachment Details and Attachment Display Settings.  
-						For images, you will need to add a caption (optional) and alt text.  The caption will be displayed below the image; 
-						alt text will appear when you hover over the image, and provides additional information about the image to 
-						screenreaders and search engines.  Adjust the image’s position under the Alignment dropdown and the size of the 
-						image if necessary (note some images may not provide an image size option.)  Keep in mind that if no image position 
+						The media’s details can then be modified on the right, under Attachment Details and Attachment Display Settings.
+						For images, you will need to add a caption (optional) and alt text.  The caption will be displayed below the image;
+						alt text will appear when you hover over the image, and provides additional information about the image to
+						screenreaders and search engines.  Adjust the image’s position under the Alignment dropdown and the size of the
+						image if necessary (note some images may not provide an image size option.)  Keep in mind that if no image position
 						is selected, the image will automatically be stretched to the full width of the post content column.
 					</p>
 					<p>
-						Once you have filled out all the information, click the Insert into Post button.  The media’s respective shortcode 
+						Once you have filled out all the information, click the Insert into Post button.  The media’s respective shortcode
 						will then be placed where your cursor was last at in the editor.
 					</p>
 
@@ -506,26 +504,26 @@
 							<li>Images should be saved in RGB format (not CMYK)</li>
 							<li>Image resolution should always be 72 dpi</li>
 							<li>
-								Images should never be larger than absolutely necessary—scale down/crop your images BEFORE uploading them to 
+								Images should never be larger than absolutely necessary—scale down/crop your images BEFORE uploading them to
 								WordPress!  Images that are too large slow down the website, which is bad for both the user experience and SEO.
 							</li>
 							<li>
-								Choose a file format that best suits your image—generally, photographs are better suited as .jpg's; illustrations, 
+								Choose a file format that best suits your image—generally, photographs are better suited as .jpg's; illustrations,
 								logos, etc. are best suited as .png's.
 							</li>
 							<li>
-								When saving out images in PhotoShop, use the Save for Web and Devices tool to compare compression rates and file 
-								types.  When saving out .jpg's, try to apply some level of quality compression to reduce the size of the file.  
-								A quality of 65 for .jpg's is usually adequate.  Transparent .png's should be saved out as PNG-24 with transparency 
+								When saving out images in PhotoShop, use the Save for Web and Devices tool to compare compression rates and file
+								types.  When saving out .jpg's, try to apply some level of quality compression to reduce the size of the file.
+								A quality of 65 for .jpg's is usually adequate.  Transparent .png's should be saved out as PNG-24 with transparency
 								enabled.
 							</li>
 							<li>
-								Running images through an image compression tool such as 
+								Running images through an image compression tool such as
 								<a href="http://imageoptim.com/" target="_blank">ImageOptim</a> is recommended, but not required.
 							</li>
 							<li>
-								Keep in mind that images will be scaled down on small window sizes if they do not fit the width of the screen.  
-								Images with overlaid text should be tested for legibility by resizing your browser window on the live view of 
+								Keep in mind that images will be scaled down on small window sizes if they do not fit the width of the screen.
+								Images with overlaid text should be tested for legibility by resizing your browser window on the live view of
 								the story.
 							</li>
 						</ul>
@@ -533,13 +531,13 @@
 						<p><em>Video</em></p>
 						<ul>
 							<li>
-								Videos should be saved as <strong>.mp4</strong> for the best compatibility among desktop browsers and mobile 
+								Videos should be saved as <strong>.mp4</strong> for the best compatibility among desktop browsers and mobile
 								devices.
 							</li>
 							<li>
-								Extra file formats for backward compatibility with old browsers can be added to the shortcode after it is 
-								inserted into the post; see the 
-								<a href="https://codex.wordpress.org/Video_Shortcode" target="_blank">WordPress video shortcode documentation</a> 
+								Extra file formats for backward compatibility with old browsers can be added to the shortcode after it is
+								inserted into the post; see the
+								<a href="https://codex.wordpress.org/Video_Shortcode" target="_blank">WordPress video shortcode documentation</a>
 								for details.
 							</li>
 						</ul>
@@ -547,13 +545,13 @@
 						<p><em>Audio</em></p>
 						<ul>
 							<li>
-								Audio files should be saved as <strong>.mp3</strong> for the best compatibility among desktop browsers and 
+								Audio files should be saved as <strong>.mp3</strong> for the best compatibility among desktop browsers and
 								mobile devices.
 							</li>
 							<li>
-								Extra file formats for backward compatibility with old browsers can be added to the shortcode after it is 
-								inserted into the post; see the 
-								<a href="https://codex.wordpress.org/Audio_Shortcode" target="_blank">WordPress audio shortcode documentation</a> 
+								Extra file formats for backward compatibility with old browsers can be added to the shortcode after it is
+								inserted into the post; see the
+								<a href="https://codex.wordpress.org/Audio_Shortcode" target="_blank">WordPress audio shortcode documentation</a>
 								for details.
 							</li>
 						</ul>
@@ -561,12 +559,12 @@
 
 					<h4 id="stories-add-shortcodes">Adding Content via Shortcodes</h4>
 					<p>
-						Shortcodes are small snippets of code, wrapped in square brackets [], that do some function or add some 
+						Shortcodes are small snippets of code, wrapped in square brackets [], that do some function or add some
 						predefined content to your story.
 					</p>
 					<p>
-						On this site, custom shortcodes are available to create blockquotes, callout boxes, sidebars, slideshows, and 
-						other stylized content.  Please visit the <a href="#shortcodes">Shortcodes documentation section</a> for 
+						On this site, custom shortcodes are available to create blockquotes, callout boxes, sidebars, slideshows, and
+						other stylized content.  Please visit the <a href="#shortcodes">Shortcodes documentation section</a> for
 						information about what shortcodes are available and what options they provide.
 					</p>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-add-shortcode.jpg" />
@@ -575,22 +573,22 @@
 					</p>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-shortcode-modal.jpg" />
 					<p>
-						In the window that appears, select a shortcode, and update any available options if necessary.  Click the “Insert into 
+						In the window that appears, select a shortcode, and update any available options if necessary.  Click the “Insert into
 						Post” button to insert the shortcode where your cursor was last at in the editor.
 					</p>
 
 					<h4 id="stories-add-slideshow">Adding a Slideshow</h4>
 					<p>
-						A slideshow is a rotating set of images with optional captions.  All slideshows use photos from an existing 
+						A slideshow is a rotating set of images with optional captions.  All slideshows use photos from an existing
 						Photo Essay; make sure you’ve created a photo essay with your photos before trying to insert a slideshow shortcode.
 					</p>
 					<p>
-						Slideshows are added by using the [slideshow] shortcode.  See the documentation above on 
-						<a href="#stories-add-shortcodes">Adding Content via Shortcodes</a>, and the 
+						Slideshows are added by using the [slideshow] shortcode.  See the documentation above on
+						<a href="#stories-add-shortcodes">Adding Content via Shortcodes</a>, and the
 						<a href="#shortcodes">Shortcodes documentation section</a> for more details.
 					</p>
 					<p>
-						Slideshows can be added to story content in two ways—the entire story can be a full-screen slideshow, or a small 
+						Slideshows can be added to story content in two ways—the entire story can be a full-screen slideshow, or a small
 						slideshow (an "embedded" slideshow) can be added between other content.
 					</p>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-photoessay-comparison.jpg" />
@@ -599,15 +597,15 @@
 						Photo Essay stories, the Story Template field must be set to "Photo essay".
 					</p>
 					<p>
-						<strong>If you’re creating a full-screen slideshow</strong>, the only content in the story editor should be the 
-						slideshow shortcode.  After the shortcode is inserted in the story content, make sure to update the Story Template 
+						<strong>If you’re creating a full-screen slideshow</strong>, the only content in the story editor should be the
+						slideshow shortcode.  After the shortcode is inserted in the story content, make sure to update the Story Template
 						dropdown (in the Story Fields box, under the content editor) to use the Photo essay template.
 					</p>
 
 					<h3 id="stories-customization">Story Subtitle, Description, and Customization:</h3>
 					<img src="<?=THEME_HELP_IMG_URL?>/story-fields.jpg" />
 					<p>
-						The Story Fields metabox, located underneath the story content editor, contains set of extra fields that add custom 
+						The Story Fields metabox, located underneath the story content editor, contains set of extra fields that add custom
 						settings to your story.  Most of these fields are straightforward and provide descriptions.
 					</p>
 					<div class="well">
@@ -615,22 +613,22 @@
 						<ul>
 							<li>Stories that are not created by a developer should never use a “Custom” Story Template.</li>
 							<li>
-								The Default Template Header Font Family uses a pre-defined set of font sizes, line heights, and weights that 
-								best suit headings at all sizes.  These pre-defined settings cannot be modified and cannot be set for other 
-								lines of text besides headings.  Please do not use headings to style lines of text that are not actually headings; 
-								read the <a href="#stories-about-headings">About Headings and Structuring Content documentation section</a> for 
+								The Default Template Header Font Family uses a pre-defined set of font sizes, line heights, and weights that
+								best suit headings at all sizes.  These pre-defined settings cannot be modified and cannot be set for other
+								lines of text besides headings.  Please do not use headings to style lines of text that are not actually headings;
+								read the <a href="#stories-about-headings">About Headings and Structuring Content documentation section</a> for
 								more information.
 							</li>
 							<li>
-								The Default Template Header Image’s recommended dimensions (1600x900px) are relatively large for the web—please 
-								make sure your image is optimized for the web BEFORE uploading it to WordPress.  See the 
+								The Default Template Header Image’s recommended dimensions (1600x900px) are relatively large for the web—please
+								make sure your image is optimized for the web BEFORE uploading it to WordPress.  See the
 								<a href="#stories-add-media">Adding Media documentation section</a> for more information.
 							</li>
 							<li>
-								The Default Template Header Image will be stretched and cropped at different window sizes.  Please keep the 
-								composition of the image in mind when designing it—the top and bottom edges of the image will be cropped at some 
-								sizes, particularly mobile device size.  Try to center the focus of the composition to the middle of the image.  
-								Before publishing your story, upload the Header Image and test what it looks like in Preview mode by resizing your 
+								The Default Template Header Image will be stretched and cropped at different window sizes.  Please keep the
+								composition of the image in mind when designing it—the top and bottom edges of the image will be cropped at some
+								sizes, particularly mobile device size.  Try to center the focus of the composition to the middle of the image.
+								Before publishing your story, upload the Header Image and test what it looks like in Preview mode by resizing your
 								browser window on the front-facing story.
 							</li>
 						</ul>
@@ -654,7 +652,7 @@
 					</p>
 					<p>
 						When modifying a story, you'll be presented with the same screen that you originally created the post with.  Modify any content
-						as necessary and click the "Update" button in the Publish metabox to finish.  <strong>Make sure you click the "Update" 
+						as necessary and click the "Update" button in the Publish metabox to finish.  <strong>Make sure you click the "Update"
 						button to save your changes!</strong>
 					</p>
 
@@ -698,14 +696,14 @@
 
 					<h4 id="photo-essays-add-title">Add a Title</h4>
 					<p>
-						Enter the title of the entire photo essay in the title field at the top of the screen.  Note that individual slides 
+						Enter the title of the entire photo essay in the title field at the top of the screen.  Note that individual slides
 						also have their own titles.
 					</p>
 
 					<h4 id="photo-essays-issue">Assign an Issue</h4>
 					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-issue.jpg" />
 					<p>
-						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e. 
+						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e.
 						Fall/Spring/Summer, AND the year.)
 					</p>
 
@@ -723,8 +721,8 @@
 					</p>
 					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-modal-select.jpg" />
 					<p>
-						To select more than one image from the Media Library for slide creation, click the first thumbnail in the set you want to select, 
-						then hold the Shift key and click the last thumbnail in the set.  All the thumbnails between the first and last thumbnail will 
+						To select more than one image from the Media Library for slide creation, click the first thumbnail in the set you want to select,
+						then hold the Shift key and click the last thumbnail in the set.  All the thumbnails between the first and last thumbnail will
 						have a checkbox icon next to them in the top-right hand corner.
 					</p>
 					<p>
@@ -740,7 +738,7 @@
 					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-title-caption.jpg" />
 					<p>
 						When a slide is created from an image in the Media Library, whatever title and caption were set for that image are pulled
-						automatically as the default title and caption for that slide.  To override these without modifying the title/caption of the 
+						automatically as the default title and caption for that slide.  To override these without modifying the title/caption of the
 						image in the Media Library, just change the Title and Caption fields for the slide after it's been created.
 					</p>
 					<p>
@@ -755,15 +753,15 @@
 						<h4 id="photo-essays-requirements">Requirements</h4>
 						<ul>
 							<li>
-								<strong>Each photo essay slide requires a title and image.</strong>  If both of these are not set for any slide, that 
+								<strong>Each photo essay slide requires a title and image.</strong>  If both of these are not set for any slide, that
 								slide will not be saved when the photo essay is saved/published.
 							</li>
 							<li>
-								All images uploaded to photo essays should be <strong>web-optimized</strong>!  Please see the Media Specs/Guidelines 
+								All images uploaded to photo essays should be <strong>web-optimized</strong>!  Please see the Media Specs/Guidelines
 								section of the <a href="#stories">Story documentation</a> for basic image optimization requirements.
 							</li>
 							<li>
-								<strong>All images uploaded to a single photo essay must be the same height</strong>.  Widths can vary, but the height 
+								<strong>All images uploaded to a single photo essay must be the same height</strong>.  Widths can vary, but the height
 								must be consistent throughout all images.
 							</li>
 						</ul>
@@ -813,7 +811,7 @@
 				<li class="section" id="shortcodes">
 					<h2>Shortcodes</h2>
 					<p>
-						<strong>Shortcodes</strong>, in a nutshell, are <em>shortcuts</em> for displaying or doing various things.  They look like small snippets of code, 
+						<strong>Shortcodes</strong>, in a nutshell, are <em>shortcuts</em> for displaying or doing various things.  They look like small snippets of code,
 						wrapped in square brackets [], but using them requires no knowledge of HTML, CSS, or other code languages.
 					</p>
 
@@ -845,11 +843,11 @@
 					<h3 id="shortcodes-basics">Shortcode Basics</h3>
 
 					<p>
-						When a shortcode is added to post content, it will be displayed in the editor as a code snippet, but when you view the post as a preview or live post, 
+						When a shortcode is added to post content, it will be displayed in the editor as a code snippet, but when you view the post as a preview or live post,
 						you will see the output of what the shortcode is programmed to do, with the <strong>content</strong> and <strong>attributes</strong> you provide.
 					</p>
 					<p>
-						The shortcodes listed below have a <strong>starting tag</strong> ([my-shortcode]) and an <strong>ending tag</strong> ([/my-shortcode]).  Depending on 
+						The shortcodes listed below have a <strong>starting tag</strong> ([my-shortcode]) and an <strong>ending tag</strong> ([/my-shortcode]).  Depending on
 						the shortcode used, such as the [lead] and [blockquote] shortcodes, <strong>content</strong> between the starting and ending tags is used.  Other
 						shortcodes, like the [slideshow] shortcode, do not use any content between the starting and ending tags.
 					</p>
@@ -859,7 +857,7 @@
 					</p>
 
 					<p>
-						The custom available shortcodes for this site, as well as their available attributes and examples, are listed below.  For information about adding 
+						The custom available shortcodes for this site, as well as their available attributes and examples, are listed below.  For information about adding
 						shortcodes to post content, please visit the Adding Content via Shortcodes section of the <a href="#stories">Story documentation</a>.
 					</p>
 
@@ -971,7 +969,7 @@
 					<p>
 						Creates a slightly-enlarged paragraph with a stylized dropcap.  Intended for use at the beginning of a story or a section of a story.
 					</p>
-					
+
 					<h4>Content</h4>
 					<p>
 						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
@@ -991,7 +989,7 @@
 
 					<h3 id="shortcodes-sidebar">sidebar</h3>
 					<p>
-						Creates a floating block that other content wraps around.  Used for text or media that is related to a group of text, but doesn't fit within 
+						Creates a floating block that other content wraps around.  Used for text or media that is related to a group of text, but doesn't fit within
 						the normal paragraph form of the content.
 					</p>
 
@@ -1030,7 +1028,7 @@
 
 					<h3 id="shortcodes-slideshow">slideshow</h3>
 					<p>
-						Creates a javascript slideshow of a selected Photo Essay.  The Photo Essay will need to be created before placing the slideshow shortcode.  
+						Creates a javascript slideshow of a selected Photo Essay.  The Photo Essay will need to be created before placing the slideshow shortcode.
 						Refer to the <a href="#photo-essays">Photo Essay Help section</a> for more information.
 					</p>
 

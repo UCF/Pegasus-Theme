@@ -199,11 +199,13 @@ addBodyClasses = function($) {
     if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
             var ieversion = new Number(RegExp.$1) // capture x.x portion and store as a number
 
-            if (ieversion >= 10)     { bodyClass = 'ie'; }
+            if (ieversion >= 10)     { bodyClass = 'ie ie10'; }
             else if (ieversion >= 9) { bodyClass = 'ie ie9'; }
             else if (ieversion >= 8) { bodyClass = 'ie ie8'; }
             else if (ieversion >= 7) { bodyClass = 'ie ie7'; }
     }
+     // IE11+:
+    else if (navigator.appName === 'Netscape' && !!navigator.userAgent.match(/Trident\/7.0/)) { bodyClass = 'ie ie11'; }
     // iOS:
     else if (navigator.userAgent.match(/iPhone/i)) { bodyClass = 'iphone'; }
     else if (navigator.userAgent.match(/iPad/i))   { bodyClass = 'ipad'; }

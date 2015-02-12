@@ -85,13 +85,43 @@ add_shortcode('media', 'sc_get_media');
  * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
+	$css_classes = '';
 	$content = $content ? $content : '';
 	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
 	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
 
 	$alt = $attr['alt'] ? $attr['alt'] : $content;
 	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
-	$width = $attr['width'] ? $attr['width'] : '100%';
+
+	// Set a fallback width if none is provided. Only add position
+	// class to img/figure elements if width doesn't fall back to 100%:
+	$width = $attr['width'];
+	if ( !isset( $width ) ) {
+		$width = '100%';
+	}
+	else {
+		if ( !empty( $position ) ) {
+			$css_classes .= $position.' ';
+		}
+	}
+
+	// For images with a fixed width/position, check the image size;
+	// if the width is greater than 140px wide (1/2 minimum supported
+	// mobile screen width), or if we have no idea what the width is (it
+	// was manually removed from the shortcode for some reason), force
+	// the image to be fluid at mobile sizes.
+	if ( !empty( $position ) || $width !== '100%' ) {
+		if ( $width !== '100%' ) {
+			$width_px = intval( str_replace( 'px', '', $width ) );
+			if ( $width_px > 140 ) {
+				$css_classes .= 'mobile-img-fluid ';
+			}
+		}
+		else {
+			$css_classes .= 'mobile-img-fluid ';
+		}
+	}
+
 
 	$url = null;
 	$html = '';
@@ -106,13 +136,25 @@ function sc_photo($attr, $content) {
 	}
 	if ($url) {
 		if ($content) {
-			$html .= '<figure class="'.$position.'" style="max-width: '.$width.'; height: auto;">';
-			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="max-width: '.$width.'; height: auto;" />';
+			$html .= '<figure class="'.$css_classes.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' max-width: '.$width.';';
+			}
+			$html .= '">';
+			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' width: '.$width.';';
+			}
+			$html .= '" />';
 			$html .= '<p class="caption">'.$content.'</p>';
 			$html .= '</figure>';
 		}
 		else {
-			$html .= '<img class="'.$position.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="width: '.$width.'; height: auto;" />';
+			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			if ( $width ) {
+				$html .= ' width: '.$width.';';
+			}
+			$html .= '" />';
 		}
 
 	}
@@ -146,29 +188,29 @@ add_shortcode('lead', 'sc_lead');
 function sc_blockquote($attr, $content='') {
 	$source = $attr['source'] ? $attr['source'] : null;
 	$cite = $attr['cite'] ? $attr['cite'] : null;
-    $color = $attr['color'] ? $attr['color'] : null;
+	$color = $attr['color'] ? $attr['color'] : null;
 
 	$html = '<blockquote';
 	if ($source) {
 		$html .= ' class="quote"';
 	}
 
-    if ($color) {
-        $html .= ' style="color: ' . $color . '"';
-    }
+	if ($color) {
+		$html .= ' style="color: ' . $color . '"';
+	}
 
 	$html .= '><p';
-    if ($color) {
-        $html .= ' style="color: ' . $color . '"';
-    }
-    $html .= '>'.$content.'</p>';
+	if ($color) {
+		$html .= ' style="color: ' . $color . '"';
+	}
+	$html .= '>'.$content.'</p>';
 
 	if ($source || $cite) {
 		$html .= '<small';
-        if ($color) {
-            $html .= ' style="color: ' . $color . '"';
-        }
-        $html .= '>';
+		if ($color) {
+			$html .= ' style="color: ' . $color . '"';
+		}
+		$html .= '>';
 
 		if ($source) {
 			$html .= $source;
@@ -465,16 +507,16 @@ function sc_archive_search($params=array(), $content='') {
 		'default_search_text'	 => 'Search all stories...',
 	);
 
-    // Add user-set params
+	// Add user-set params
 	$params = ($params === '') ? $defaults : array_merge($defaults, $params);
 
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
-	    'taxonomy' => 'issues',
-	    'column_width' => 'span10 offset1',
-	    'column_count' => '1',
-	    'order_by' => 'title',
-	    'order' => 'ASC',
+		'taxonomy' => 'issues',
+		'column_width' => 'span10 offset1',
+		'column_count' => '1',
+		'order_by' => 'title',
+		'order' => 'ASC',
 	));
 
 	// Register if the search data with the JS PostTypeSearchDataManager
@@ -656,7 +698,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	if( $essay ) {
 
 		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
-        // Get rid of blank array entries
+		// Get rid of blank array entries
 		$slide_order	= array_filter(explode(",", $slide_order), 'strlen' );
 		$slide_title 	= get_post_meta($essay->ID, 'ss_slide_title', TRUE);
 		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
@@ -665,106 +707,106 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 		<section class="ss-content" id="<?=$slug?>">
 			<div class="ss-nav-wrapper">
-		        <div class="ss-arrow-wrapper ss-arrow-wrapper-left">
-		            <a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
-		        </div>
-		        <div class="ss-arrow-wrapper ss-arrow-wrapper-right">
-		            <a class="ss-arrow ss-arrow-next" href="#2"><div>&rsaquo;</div></a>
-		        </div>
-
-	        	<div class="ss-slides-wrapper">
-			    <?php
-
-                $slide_count = count($slide_order);
-                $ss_half = floor($slide_count/2) + 1;
-                $end = false;
-                $i = $ss_half;
-                if ($is_fullscreen) {
-                    $photo_essay_offset = 1;
-                }
-                while ($end == false) {
-                    if ($i == $slide_count) {
-                        $i = 0;
-                    }
-
-                    if ($i == $ss_half - 1) {
-                        $end = true;
-                    }
-
-                    if ($is_fullscreen && $i == 0) {
-                    ?>
-                        <div class="ss-slide-wrapper">
-                            <?php
-                                if (!empty($slide_order)):
-                                    $s = $slide_order[0];
-                                    $image = wp_get_attachment_image_src($slide_image[$s], 'full');
-                            ?>
-                            <div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-
-                                <img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
-
-                                <div class="ss-essay-intro">
-                                    <div class="title-wrap">
-                                        <h1><?=$post->post_title?></h1>
-                                    </div>
-                                    <div class="description-wrap">
-                                        <span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
-                                        <a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
-                                        <?=display_social(get_permalink($post), $post->post_title)?>
-                                    </div>
-                                </div>
-                            </div>
-                            <?php
-                                endif;
-                            ?>
-                        </div>
-                        <?php
-                    }
-
-                    $s = $slide_order[$i];
-                    $image = wp_get_attachment_image_src($slide_image[$s], 'full');
-                    ?>
-                    <div class="ss-slide-wrapper">
-                        <div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-                            <img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
-                        </div>
-                    </div>
-                <?php
-                    $i++;
-                }
-                ?>
-			    </div>
-
-			    <div class="ss-captions-wrapper">
-			    <?php
-			    $data_id = 0;
-			    if ($is_fullscreen) {
-			    	$data_id++;
-			    ?>
-			    	<div class="ss-caption ss-current" data-id="<?=$data_id?>"></div>
-			    <?php
-			    }
-			    foreach ($slide_order as $s) {
-			        if ($s !== '') {
-			            $data_id++;
-			    ?>
-		            <div class="ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?=$data_id?>">
-		                <p class="caption"<?php if ($caption_color) { ?> style="color: <?=$caption_color?>;"<?php } ?>><?=$slide_caption[$s]; ?></p>
-		            </div>
-			    <?php
-			        }
-			    }
-			    ?>
+				<div class="ss-arrow-wrapper ss-arrow-wrapper-left">
+					<a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
+				</div>
+				<div class="ss-arrow-wrapper ss-arrow-wrapper-right">
+					<a class="ss-arrow ss-arrow-next" href="#2"><div>&rsaquo;</div></a>
 				</div>
 
-                <div class="ss-closing-overlay" style="display: none;">
-                    <div class="ss-slide" data-id="restart-slide">
-                        <a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
-                        <? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
-                    </div>
-                </div>
+				<div class="ss-slides-wrapper">
+				<?php
+
+				$slide_count = count($slide_order);
+				$ss_half = floor($slide_count/2) + 1;
+				$end = false;
+				$i = $ss_half;
+				if ($is_fullscreen) {
+					$photo_essay_offset = 1;
+				}
+				while ($end == false) {
+					if ($i == $slide_count) {
+						$i = 0;
+					}
+
+					if ($i == $ss_half - 1) {
+						$end = true;
+					}
+
+					if ($is_fullscreen && $i == 0) {
+					?>
+						<div class="ss-slide-wrapper">
+							<?php
+								if (!empty($slide_order)):
+									$s = $slide_order[0];
+									$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+							?>
+							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+
+								<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+
+								<div class="ss-essay-intro">
+									<div class="title-wrap">
+										<h1><?=$post->post_title?></h1>
+									</div>
+									<div class="description-wrap">
+										<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+										<a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
+										<?=display_social(get_permalink($post), $post->post_title)?>
+									</div>
+								</div>
+							</div>
+							<?php
+								endif;
+							?>
+						</div>
+						<?php
+					}
+
+					$s = $slide_order[$i];
+					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+					?>
+					<div class="ss-slide-wrapper">
+						<div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+							<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+						</div>
+					</div>
+				<?php
+					$i++;
+				}
+				?>
+				</div>
+
+				<div class="ss-captions-wrapper">
+				<?php
+				$data_id = 0;
+				if ($is_fullscreen) {
+					$data_id++;
+				?>
+					<div class="ss-caption ss-current" data-id="<?=$data_id?>"></div>
+				<?php
+				}
+				foreach ($slide_order as $s) {
+					if ($s !== '') {
+						$data_id++;
+				?>
+					<div class="ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?=$data_id?>">
+						<p class="caption"<?php if ($caption_color) { ?> style="color: <?=$caption_color?>;"<?php } ?>><?=$slide_caption[$s]; ?></p>
+					</div>
+				<?php
+					}
+				}
+				?>
+				</div>
+
+				<div class="ss-closing-overlay" style="display: none;">
+					<div class="ss-slide" data-id="restart-slide">
+						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
+						<? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
+					</div>
+				</div>
 			</div>
-	    </section>
+		</section>
 
 		<?php
 	}

@@ -329,66 +329,83 @@ function get_issue_feed_url($object) {
 function enqueue_issue_story_scripts() {
 	global $post;
 
-	if (!is_404() && !is_search()) {
+	if ( !is_404() && !is_search() ) {
 		// add home page script(s)
-		if($post->post_type == 'issue' || is_home()) {
+		if( $post->post_type == 'issue' || is_home() ) {
+
 			// issue-wide
-			$dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE);
-			$issue_javascript_url = Issue::get_issue_javascript_url($post);
-			if (!empty($issue_javascript_url)) {
-				Config::add_script($issue_javascript_url);
+			$dev_issue_directory = get_post_meta( $post->ID, 'issue_dev_issue_asset_directory', TRUE );
+			$issue_javascript_url = Issue::get_issue_javascript_url( $post );
+
+			if ( !empty( $issue_javascript_url ) ) {
+				Config::add_script( $issue_javascript_url );
 			}
-			elseif (DEV_MODE == 1 && !empty($dev_issue_directory)) {
+			elseif ( DEV_MODE == 1 && !empty( $dev_issue_directory ) ) {
 				$dev_issue_javascript_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.js';
-				if (curl_exists($dev_issue_javascript_url)) {
-					Config::add_script($dev_issue_javascript_url);
+
+				if ( curl_exists( $dev_issue_javascript_url ) ) {
+					Config::add_script( $dev_issue_javascript_url );
 				}
 			}
+
 			// home page specific
-			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-			$home_javascript_url = Issue::get_home_javascript_url($post);
-			if (!empty($home_javascript_url)) {
-				Config::add_script($home_javascript_url);
+			$dev_issue_home_directory = get_post_meta( $post->ID, 'issue_dev_home_asset_directory', TRUE );
+			$home_javascript_url = Issue::get_home_javascript_url( $post );
+
+			if ( !empty( $home_javascript_url ) ) {
+				Config::add_script( $home_javascript_url );
 			}
-			elseif (DEV_MODE == 1 && !empty($dev_issue_home_directory)) {
+			elseif ( DEV_MODE == 1 && !empty( $dev_issue_home_directory ) ) {
 				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.js';
-				if (curl_exists($dev_home_javascript_url)) {
-					Config::add_script($dev_home_javascript_url);
+
+				if ( curl_exists( $dev_home_javascript_url ) ) {
+					Config::add_script( $dev_home_javascript_url );
 				}
 			}
+
 		// add story script(s)
-		} else if($post->post_type == 'story') {
+		} else if( $post->post_type == 'story' ) {
+			$story_issue = get_story_issue( $post );
+
 			// issue-wide
-			$issue_javascript_url = Issue::get_issue_javascript_url($story_issue);
-			$dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE);
-			if( ($story_issue = get_story_issue($post)) !== False && !empty($issue_javascript_url) ) {
-				Config::add_script($issue_javascript_url);
+			$issue_javascript_url = null;
+			$dev_issue_directory = null;
+			if ( $story_issue ) {
+				$issue_javascript_url = Issue::get_issue_javascript_url( $story_issue );
+				$dev_issue_directory = get_post_meta( $story_issue->ID, 'issue_dev_issue_asset_directory', TRUE );
+			}
+
+			if( $story_issue !== False && !empty( $issue_javascript_url ) ) {
+				Config::add_script( $issue_javascript_url );
 			}
 			elseif (
-				($story_issue = get_story_issue($post)) !== False &&
+				$story_issue !== False &&
 				DEV_MODE == 1 &&
-				!empty($dev_issue_directory))
+				!empty( $dev_issue_directory ) )
 				{
 					$dev_issue_javascript_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.js';
-					if (curl_exists($dev_issue_javascript_url)) {
-						Config::add_script($dev_issue_javascript_url);
+					if ( curl_exists( $dev_issue_javascript_url ) ) {
+						Config::add_script( $dev_issue_javascript_url );
 					}
 			}
+
 			// story specific
-			$javascript_url = Story::get_javascript_url($post);
-			$dev_story_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
-			if ( !empty($javascript_url) ) {
-				Config::add_script($javascript_url);
+			$javascript_url = Story::get_javascript_url( $post );
+			$dev_story_directory = get_post_meta( $post->ID, 'story_dev_directory', TRUE );
+
+			if ( !empty( $javascript_url ) ) {
+				Config::add_script( $javascript_url );
 			}
 			elseif (
 				DEV_MODE == 1 &&
-				!empty($dev_story_directory))
+				!empty( $dev_story_directory ) )
 				{
 					$dev_story_javascript_url = THEME_DEV_URL.'/'.$dev_story_directory.$post->post_name.'.js';
-					if (curl_exists($dev_story_javascript_url)) {
-						Config::add_script($dev_story_javascript_url);
+					if ( curl_exists( $dev_story_javascript_url ) ) {
+						Config::add_script( $dev_story_javascript_url );
 					}
 			}
+
 		}
 	}
 }
@@ -421,27 +438,30 @@ function get_story_issue($story) {
 /*
  * Get the stories associated with an issue
  */
-function get_issue_stories($issue, $options=array()) {
+function get_issue_stories( $issue, $options=array() ) {
 	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
 	# to MATCH issue POST slugs!
-	$issue_term_slug = $issue->post_name;
+	if ( $issue ) {
+		$issue_term_slug = $issue->post_name;
 
-	$default_options = array(
-		'post_type'   => 'story',
-		'exclude'     => array(),
-		'numberposts' => -1,
-		'orderby'     => 'rand',
-		'tax_query'   => array(
-			array(
-				'taxonomy' => 'issues',
-				'field'    => 'slug',
-				'terms'    => $issue_term_slug
-			)
-		),
-	);
-	$options = array_merge($default_options, $options);
+		$default_options = array(
+			'post_type'   => 'story',
+			'exclude'     => array(),
+			'numberposts' => -1,
+			'orderby'     => 'rand',
+			'tax_query'   => array(
+				array(
+					'taxonomy' => 'issues',
+					'field'    => 'slug',
+					'terms'    => $issue_term_slug
+				)
+			),
+		);
+		$options = array_merge($default_options, $options);
 
-	return get_posts($options);
+		return get_posts($options);
+	}
+	return null;
 }
 
 
@@ -561,9 +581,9 @@ function output_header_markup($post) {
 						font-size: '.$font['size-desktop'].';
 					}
                     article.story .ss-closing-overlay {
-                        font-family: '.$font['family'].';
-                        font-weight: '.$font['weight'].';
-                        text-transform: '.$font['texttransform'].';
+                        font-family: '.$font['font-family'].';
+                        font-weight: '.$font['font-weight'].';
+                        text-transform: '.$font['text-transform'].';
                     }
 					@media (max-width: 979px) {
 						article.story h1 {
@@ -712,7 +732,10 @@ function is_fall_2013_or_older($post) {
 		$slug = $post->post_name;
 	}
 	else if ($post->post_type == 'story') {
-		$slug = get_story_issue($post)->post_name;
+		$issue = get_story_issue($post);
+		if ( $issue ) {
+			$slug = $issue->post_name;
+		}
 	}
 
 	if (is_404() || is_search()) { $slug = null; }
@@ -756,7 +779,7 @@ function get_heading_styles($font_name) {
 
 
 /**
- * Get a non-custom story or issue's title font styling specs, based on 
+ * Get a non-custom story or issue's title font styling specs, based on
  * the story/issue's selected title font family and color.
  *
  * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
@@ -948,12 +971,12 @@ add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
 
 /**
- * Generate font-specific classes used in default story templates and 
+ * Generate font-specific classes used in default story templates and
  * in formatting.css (static/css/formatting.php) for all registered font
  * families in TEMPLATE_FONT_STYLES (see functions/config.php)
  *
  * Font classes are assigned in this manner, instead of using TinyMCE's
- * default inline font-family selection, to ensure consistency in font 
+ * default inline font-family selection, to ensure consistency in font
  * formatting across stories.
  *
  * Set $style_tag arg to true to wrap returned CSS in a <style> tag.
@@ -1019,5 +1042,15 @@ function get_webfont_css_styles($font, $selector=null, $extra=null, $important=f
 
 	return $output;
 }
+
+
+/**
+ * Allow SVGs in the Media Library.
+ **/
+function allow_svgs( $mimes ) {
+	$mimes['svg'] = 'image/svg+xml';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'allow_svgs' );
 
 ?>

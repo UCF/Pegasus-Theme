@@ -23,6 +23,7 @@ abstract class CustomPostType{
 		                         # (see also objectsToHTML and toHTML methods)
 		$taxonomies     = array('post_tag'),
 		$built_in       = False,
+		$menu_icon      = 'dashicons-admin-post',
 
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
@@ -188,6 +189,7 @@ abstract class CustomPostType{
 			'public'          => $this->options('public'),
 			'taxonomies'      => $this->options('taxonomies'),
 			'_builtin'        => $this->options('built_in'),
+			'menu_icon'       => $this->options('menu_icon'),
 		);
 
 		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
@@ -363,6 +365,7 @@ class Story extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
+		$menu_icon      = 'dashicons-media-document',
 		$taxonomies     = array('issues', 'post_tag');
 
 	static function get_javascript_url($story) {
@@ -409,7 +412,7 @@ class Story extends CustomPostType {
 				'name' => '<strong>Default Templates:</strong> Story Description',
 				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
 				'id'   => $prefix.'description',
-				'type' => 'textarea',
+				'type' => 'wysiwyg',
 			),
 			array(
 				'name' => '<strong>Default Templates:</strong> Header Font Family',
@@ -430,12 +433,6 @@ class Story extends CustomPostType {
 				'id'   => $prefix.'default_header_img',
 				'type' => 'file',
 			),
-			// array(
-			// 	'name' => '<strong>Default Templates:</strong> Header Image Background Color',
-			// 	'desc' => 'The background color for the header image. This will be seen if the size of the window expands past the max size of the image. Hex values preferred.',
-			// 	'id'   => $prefix.'default_header_img_background_color',
-			// 	'type' => 'text',
-			// ),
 			array(
 				'name' => '<strong>Custom Story Template:</strong> HTML File',
 				'desc' => '',
@@ -503,6 +500,7 @@ class Issue extends CustomPostType {
 		$use_metabox    = True,
 		$use_thumbnails = True,
 		$use_order      = False,
+		$menu_icon      = 'dashicons-book',
 		$taxonomies     = array();
 
 	static function get_home_javascript_url($issue) {
@@ -532,9 +530,14 @@ class Issue extends CustomPostType {
 			'orderby' => 'title',
 			'order' => 'ASC'
 		);
-		foreach(get_issue_stories($post, $args) as $story) {
-			$story_options[$story->post_title] = $story->ID;
+
+		$issue_stories = get_issue_stories( $post, $args );
+		if ( $issue_stories ) {
+			foreach( get_issue_stories( $post, $args ) as $story ) {
+				$story_options[$story->post_title] = $story->ID;
+			}
 		}
+
 		$font_options = array();
 		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
 			$font_options[$key] = $key;
@@ -581,50 +584,6 @@ class Issue extends CustomPostType {
 				'type' => 'select',
 				'options' => $story_options,
 			),
-/*
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Family',
-				'desc' => 'The font family to use for primary title lines in this issue cover.',
-				'id'   => $prefix.'default_font',
-				'type' => 'select',
-				'options' => $font_options,
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Color',
-				'desc' => 'Color for h1 title.  Hex values preferred.',
-				'id'   => $prefix.'default_color',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Desktop)',
-				'desc' => 'Font size for h1 title at desktop sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_d',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Tablet)',
-				'desc' => 'Font size for h1 title at tablet sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_t',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Size (Mobile)',
-				'desc' => 'Font size for h1 title at mobile sizes.  Specify "px", "em", etc. in this value (e.g. "20px")',
-				'id'   => $prefix.'default_fontsize_m',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Header Font Text Align',
-				'desc' => 'Alignment of the h1 title within its container.',
-				'id'   => $prefix.'default_textalign',
-				'type' => 'select',
-				'options' => array(
-					'Left' => 'left',
-					'Center' => 'center',
-					'Right' => 'right',
-				),
-			),
-*/
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Home Page HTML File',
 				'desc' => 'HTML markup specifically for the issue cover/home page.',
@@ -750,6 +709,7 @@ class PhotoEssay extends CustomPostType {
 		$use_title      = True,
 		$use_metabox    = True,
 		$use_revisions	= False,
+		$menu_icon      = 'dashicons-images-alt2',
 		$taxonomies     = array('issues'),
 		$cloneable_fields = True;
 
@@ -829,49 +789,6 @@ class PhotoEssay extends CustomPostType {
 
 
 	/**
-	  * Show meta box fields for Slider post type (generic field loop-through)
-	  * Copied from _show_meta_boxes (functions/base.php)
-	 **/
-	public static function display_meta_fields($post, $field) {
-		$current_value = get_post_meta($post->ID, $field['id'], true);
-	?>
-		<tr>
-			<th><label for="<?=$field['id']?>"><?=$field['name']?></label></th>
-				<td>
-				<?php switch ($field['type']):
-					case 'text':?>
-					<input type="text" name="<?=$field['id']?>" id="<?=$field['id']?>" value="<?=($current_value) ? htmlentities($current_value) : $field['std']?>" />
-				<?php break; case 'textarea':?>
-					<textarea name="<?=$field['id']?>" id="<?=$field['id']?>" cols="60" rows="4"><?=($current_value) ? htmlentities($current_value) : $field['std']?></textarea>
-
-				<?php break; case 'file':?>
-					<?php
-						$document_id = get_post_meta($post->ID, $field['id'], True);
-						if ($document_id){
-							$document = get_post($document_id);
-							$url      = wp_get_attachment_url($document->ID);
-						}else{
-							$document = null;
-						}
-					?>
-					<?php if($document):?>
-						<a target="_blank" href="<?=$url?>">
-							<img src="<?=$url?>" style="max-width:400px; height:auto"; /><br/>
-							<?=$document->post_title?>
-						</a><br /><br />
-					<?php endif;?>
-					<input type="file" id="file_<?=$post->ID?>" name="<?=$field['id']?>"><br />
-
-				<?php break; default:?>
-					<p class="error">Don't know how to handle field of type '<?=$field['type']?>'</p>
-				<?php break; endswitch;?>
-				</td>
-			</tr>
-	<?php
-	}
-
-
-	/**
 	 * Generate markup for a cloneable set of meta fields
 	 **/
 	public static function display_cloneable_fieldset($fields, $id=null) {
@@ -891,7 +808,7 @@ class PhotoEssay extends CustomPostType {
 				<tr>
 					<th><label for="ss_slide_title[<?=$id?>]">Title</label></th>
 					<td>
-						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" cols="60" rows="4" value="<?=$slide_title?>" />
+						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" value="<?=$slide_title?>" />
 					</td>
 				</tr>
 				<tr>
@@ -902,7 +819,7 @@ class PhotoEssay extends CustomPostType {
                             <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
                             <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
-                          <!-- Some wysihtml5 commands like 'createLink' require extra paramaters specified by the user (eg. href) -->
+                          <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
                             <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
                             <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
                                 <label>
@@ -998,10 +915,12 @@ class PhotoEssay extends CustomPostType {
 		<table class="form-table">
 		<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
 		<?php
-			foreach($meta_box['fields'] as $field):
-				$this->display_meta_fields($post, $field);
-			endforeach;
-		print "</table>";
+			foreach( $meta_box['fields'] as $field ) {
+				display_meta_box_field( $post->ID, $field );
+			}
+		?>
+		</table>
+	<?php
 	}
 
 

@@ -2,7 +2,7 @@
 Theme Name: Pegasus Theme
 Author: UCF Web Communications
 Github Theme URI: https://github.com/UCF/Pegasus-Theme
-Version: v2.2.7
+Version: v2.2.9
 */
 
 
@@ -615,6 +615,10 @@ article.story h6 { font-size: 16px; }
 }
 
 article.story .description { font-size: 22px; line-height: 32px; font-style: italic; white-space: normal;}
+article.story .description em,
+article.story .description i {
+  font-style: normal;
+}
 article.story .lead { font-size: 20px; line-height: 28px; margin-bottom: 30px; }
 article.story .lead::first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
 article.story .lead:first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
@@ -719,7 +723,15 @@ article.story img { margin-top: 15px; margin-bottom: 15px; }
 article.story img.pull-left { margin-right: 15px; }
 article.story img.pull-right { margin-left: 15px; }
 
-article.story figure { margin: 15px 0; }
+article.story figure {
+  margin-top: 15px;
+  margin-right: 0; /* force reset */
+  margin-bottom: 15px;
+  margin-left: 0; /* force reset */
+}
+article.story figure.pull-left { margin-right: 15px; }
+article.story figure.pull-right { margin-left: 15px; }
+article.story figure.pull-center { margin-left: auto; margin-right: auto; } /* override reset */
 article.story figure img { margin-top: 0; margin-bottom: 0; }
 
 

@@ -151,6 +151,48 @@ WebcomAdmin.themeOptions = function($){
 };
 
 
+WebcomAdmin.wysiwygFields = function($) {
+  var $toolbars = $('.wysihtml5-editor');
+
+  // White list of tags to allow
+  var wysihtml5ParserRules = {
+      tags: {
+          br:     {},
+          strong: {},
+          b:      {},
+          i:      {},
+          em:     {},
+          u:      {},
+          a:      {
+              set_attributes: {
+                  target: "_blank"
+              },
+              check_attributes: {
+                  href:   "url" // important to avoid XSS
+              }
+          }
+      }
+  };
+
+  $toolbars.each(function() {
+      var $toolbar = $(this);
+      var toolbarID = $toolbar.attr('id');
+      // Theme Option field IDs contain brackets, which are invalid markup;
+      // getting the textarea via vanilla js and passing the whole node to
+      // wysihtml5 is easier than trying to pass its ID:
+      var textarea = document.getElementById($toolbar.attr('data-textarea-id'));
+
+      // Initialize the wysihtml5 editor
+      if ($(textarea).length > 0) {
+          var editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
+              toolbar:     toolbarID, // id of toolbar element
+              parserRules: wysihtml5ParserRules, // defined in parser rules set
+          });
+      }
+  });
+};
+
+
 WebcomAdmin.sliderMetaBoxes = function($) {
     // Slider Meta Box Updates:
     // (only run this code if we're on a screen with #slider-slides-settings-basic;
@@ -559,7 +601,8 @@ WebcomAdmin.issueFieldToggle = function($) {
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
 	WebcomAdmin.shortcodeInterfaceTool($);
-    WebcomAdmin.sliderMetaBoxes($);
-    WebcomAdmin.storyFieldToggle($);
-    WebcomAdmin.issueFieldToggle($);
+  WebcomAdmin.wysiwygFields($);
+  WebcomAdmin.sliderMetaBoxes($);
+  WebcomAdmin.storyFieldToggle($);
+  WebcomAdmin.issueFieldToggle($);
 })(jQuery);

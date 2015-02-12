@@ -2,13 +2,16 @@
 <html lang="en-US">
 	<head>
 		<?="\n".header_()."\n"?>
-		<meta name="viewport" content="width=device-width">
+		<!--[if lte IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+
 		<?php if(GA_ACCOUNT or CB_UID):?>
 
 		<script type="text/javascript">
 			var _sf_startpt = (new Date()).getTime();
 			<?php if(GA_ACCOUNT):?>
-			
+
 			var GA_ACCOUNT = '<?=GA_ACCOUNT?>';
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', GA_ACCOUNT]);
@@ -17,17 +20,13 @@
 			_gaq.push(['_trackPageview']);
 			<?php endif;?>
 			<?php if(CB_UID):?>
-	
+
 			var CB_UID = '<?=CB_UID?>';
 			var CB_DOMAIN = '<?=CB_DOMAIN?>';
 			<?php endif?>
 		</script>
 		<?php endif;?>
 
-		<!--[if IE]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-		
 		<script type="text/javascript">
 			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
 			var PROTOCOL = '<?=is_ssl() ? "https://" : "http://"?>';
@@ -47,11 +46,10 @@
 		</script>
 
 		<?=output_header_markup($post);?>
-		
+
 	</head>
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
-	<? //extract(get_navigation_stories()); ?>
 
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal">

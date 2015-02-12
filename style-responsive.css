@@ -305,6 +305,12 @@
 		width: 100%;
 	}
 
+  article.story .mobile-img-fluid,
+  article.story .mobile-img-fluid img {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
 
 	/**************************
 	 * Story - Default Template
