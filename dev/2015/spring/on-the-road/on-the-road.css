@@ -1,0 +1,121 @@
+main article.story h1 {
+	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+	font-size: 72px;
+}
+
+main article.story #desktop-content {
+	width: 100%;
+}
+
+main article.story .carousel-caption {
+	position: absolute;
+	top: 25px;
+	left: 25px;
+	width: 400px;
+	height: 100px;
+}
+
+main article.story .stop-image {
+	margin-bottom: 0 !important;
+}
+
+main article.story .carousel {
+	margin-bottom: 0 !important;
+}
+
+main article.story .stop-header-container {
+	margin: 25px 0 0 25px;
+	background-color: #000;
+	background-color: rgba(0, 0, 0, 0.75);
+	padding: 10px;
+	color: #fff;
+}
+
+main article.story h4.stop-title {
+	color: #fff;
+	font-size: 32px;
+	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+}
+
+main article.story h4.stop-title span {
+	font-size: 22px;
+}
+
+main article.story #stop-content-container {
+	background-color: #444;
+}
+
+main article.story #stop-content-description-container {
+	padding: 15px;
+}
+
+main article.story #stop-subtitle {
+	font-size: 28px;
+	margin-bottom: 15px;
+	font-style: italic;
+	color: #bbc8af;
+}
+
+main article.story #stop-content {
+	color: #fff;
+}
+
+main article.story #stop-controls {
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+
+main article.story .stop-control {
+	min-height: 28px;
+	min-width: 28px;
+	border-radius: 25px;
+	background-color: #f1b052;
+	display:inline-block;
+}
+
+main article.story .stop-control.pull-left {
+	margin-right: 12px;
+}
+
+main article.story .stop-control.pull-right {
+	margin-left: 12px;
+}
+
+main article.story .stop-control i {
+	margin-top: 6px;
+	margin-left: 6px;
+}
+
+main article.story .control-text {
+	font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+	margin-top: 2px;
+	font-size: 22px;
+	font-weight: 800;
+}
+
+main article.story .control-stop-title {
+	font-family: Georgia, serif;
+	font-size: 16px !important;
+	font-style: italic !important;
+}
+
+#btn-previous,
+#btn-next {
+	color: #fff;
+	font-size: 24px;
+}
+
+#btn-previous:hover,
+#btn-previous:focus,
+#btn-next:hover,
+#btn-next:focus {
+	text-decoration: none;
+}
+
+#btn-next {
+	float: right;
+}
+
+#btn-previous {
+	float: left;
+}
