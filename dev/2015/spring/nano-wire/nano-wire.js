@@ -28,7 +28,7 @@
         tootlTipCloseAnime($('.' + $toolTipClass + ':visible'));
         $toolTipElement.show().animate({
           top: "+=15",
-          opacity: 1.0
+          opacity: 0.85
         });
       }
     }
@@ -43,7 +43,7 @@
     }
 
     function positionToolTip() {
-      $toolTipElement.offset({ top: $triggerElement.offset().top - 80 });
+      $toolTipElement.offset({ top: $triggerElement.offset().top - 250 });
     }
 
     plugin.init = function() {

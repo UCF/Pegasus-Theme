@@ -20,19 +20,34 @@ main .story .fade-in-tool-tip-trigger {
   z-index: 100;
 }
 
-main .story .point-one, main .story .point-one.sonar {
-  left: 66%;
-  top: 27%;
+main .story .tool-tip-cover {
+  left: 74%;
+  top: 49%;
 }
 
-main .story .point-two, main .story .point-two.sonar {
-  left: 47%;
-  top: 48%;
+main .story .tool-tip-outer-electrode {
+  left: 68%;
+  top: 54%;
 }
 
-main .story .point-three, main .story .point-three.sonar {
-  left: 47.6%;
-  top: 36%;
+main .story .tool-tip-separator {
+  left: 54%;
+  top: 57%;
+}
+
+main .story .tool-tip-coating {
+  left: 49%;
+  top: 66%;
+}
+
+main .story .tool-tip-nanowhiskers {
+  left: 43%;
+  top: 72%;
+}
+
+main .story .tool-tip-wire-core {
+  left: 23.8%;
+  top: 71.7%;
 }
 
 /* Tool Tip */
@@ -49,17 +64,17 @@ main .story .fade-in-tool-tip {
 
 main .story .fade-in-tool-tip header {
   background-color: #ffcc00;
-  padding: 8px 10px 5px;
+  padding: 10px 10px 3px;
 }
 
 main .story .fade-in-tool-tip header .close {
   padding-top: 1px;
 }
 
-main .story .fade-in-tool-tip h4 {
+main .story .fade-in-tool-tip h3 {
   color: #575757;
+  font-size: 18px;
   font-weight: normal;
-  margin-bottom: 0;
 }
 
 main .story .fade-in-tool-tip .close {
@@ -71,22 +86,12 @@ main .story .fade-in-tool-tip .content {
   padding: 15px;
 }
 
-main .story .fade-in {
-  transition: .5s ease-in-out;
-  opacity: 1.0;
-}
-
-main .story .fade-out {
-  transition: .5s ease-in-out;
-  opacity: 0;
-}
-
-.slide-in {
+main .story .slide-in {
   transition: .5s ease-in-out;
   margin-top: 0 !important;
 }
 
-.slide-out {
+main .story .slide-out {
   transition: .5s ease-in-out;
   margin-top: -10px !important;
 }
