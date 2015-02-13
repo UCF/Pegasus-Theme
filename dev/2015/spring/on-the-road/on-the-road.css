@@ -3,20 +3,38 @@ main article.story h1 {
 	font-size: 72px;
 }
 
-main article.story #desktop-content {
-	width: 100%;
+main article.story #stop-slider {
+	margin-bottom: 30px;
+}
+
+main article.story .stop-thumbnail {
+	margin-right: 4px;
+	display: inline-block;
+	height: 100px;
+	width: 100px;
+}
+
+main article.story .stop-thumbnail:first-child {
+	margin-left: 4px;
 }
 
 main article.story .carousel-caption {
-	position: absolute;
+	position: absolute !important;
 	top: 25px;
 	left: 25px;
-	width: 400px;
-	height: 100px;
+	padding: 25px;
+	right: auto;
+	bottom:auto;
+}
+
+main article.story .carousel-caption h2 {
+	color: #fff;
+	margin-bottom: 0;
 }
 
 main article.story .stop-image {
-	margin-bottom: 0 !important;
+	margin-bottom: 0;
+	margin-top: 0;
 }
 
 main article.story .carousel {
@@ -37,7 +55,7 @@ main article.story h4.stop-title {
 	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
 }
 
-main article.story h4.stop-title span {
+main article.story h2.stop-title span {
 	font-size: 22px;
 }
 
@@ -52,6 +70,7 @@ main article.story #stop-content-description-container {
 main article.story #stop-subtitle {
 	font-size: 28px;
 	margin-bottom: 15px;
+	font-weight: normal;
 	font-style: italic;
 	color: #bbc8af;
 }
@@ -63,6 +82,7 @@ main article.story #stop-content {
 main article.story #stop-controls {
 	padding-top: 4px;
 	padding-bottom: 4px;
+	min-height: 30px;
 }
 
 main article.story .stop-control {
@@ -71,6 +91,8 @@ main article.story .stop-control {
 	border-radius: 25px;
 	background-color: #f1b052;
 	display:inline-block;
+	height: 100%;
+	vertical-align: middle;
 }
 
 main article.story .stop-control.pull-left {
@@ -79,18 +101,20 @@ main article.story .stop-control.pull-left {
 
 main article.story .stop-control.pull-right {
 	margin-left: 12px;
+	margin-right: 12px;
 }
 
 main article.story .stop-control i {
-	margin-top: 6px;
+	margin-top: 1px;
 	margin-left: 6px;
+	vertical-align: middle;
 }
 
 main article.story .control-text {
 	font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-	margin-top: 2px;
 	font-size: 22px;
 	font-weight: 800;
+	vertical-align: middle;
 }
 
 main article.story .control-stop-title {
@@ -118,4 +142,9 @@ main article.story .control-stop-title {
 
 #btn-previous {
 	float: left;
+}
+
+/* Google Map overrides to work with bootstrap. */
+.gm-style img {
+	max-width: none;
 }
