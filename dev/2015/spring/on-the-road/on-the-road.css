@@ -49,10 +49,13 @@ main article.story .stop-header-container {
 	color: #fff;
 }
 
-main article.story h4.stop-title {
-	color: #fff;
+main article.story h2.stop-header {
 	font-size: 32px;
 	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+}
+
+main article.story h3.stop-subtitle {
+	font-style: italic;
 }
 
 main article.story h2.stop-title span {

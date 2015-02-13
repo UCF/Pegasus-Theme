@@ -229,8 +229,10 @@ $(window).resize(function() {
 function updateNavigation() {
   if (currentIndex == 0) {
     $('#btn-previous').hide();
+    $('#btn-next').show();
   } else if (currentIndex == stops.length - 1) {
     $('#btn-next').hide();
+    $('#btn-previous').show();
   } else {
     
     if ($('#btn-next').is(':hidden')) {
