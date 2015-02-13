@@ -1,0 +1,113 @@
+main .story * {
+  font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+}
+
+main .story .responive-container {
+  position: relative;
+}
+
+/* tool tip triggers */
+
+main .story .fade-in-tool-tip-trigger {
+  background-color: #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  position: absolute;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  width: 20px;
+  z-index: 100;
+}
+
+main .story .point-one, main .story .point-one.sonar {
+  left: 66%;
+  top: 27%;
+}
+
+main .story .point-two, main .story .point-two.sonar {
+  left: 47%;
+  top: 48%;
+}
+
+main .story .point-three, main .story .point-three.sonar {
+  left: 47.6%;
+  top: 36%;
+}
+
+/* Tool Tip */
+
+main .story .fade-in-tool-tip {
+  background: #fff;
+  display: none;
+  left: 10%;
+  opacity: 0;
+  position: absolute;
+  width: 80%;
+  z-index: 1000;
+}
+
+main .story .fade-in-tool-tip header {
+  background-color: #ffcc00;
+  padding: 8px 10px 5px;
+}
+
+main .story .fade-in-tool-tip header .close {
+  padding-top: 1px;
+}
+
+main .story .fade-in-tool-tip h4 {
+  color: #575757;
+  font-weight: normal;
+  margin-bottom: 0;
+}
+
+main .story .fade-in-tool-tip .close {
+  font-weight: normal;
+}
+
+main .story .fade-in-tool-tip .content {
+  font-size: 14px;
+  padding: 15px;
+}
+
+main .story .fade-in {
+  transition: .5s ease-in-out;
+  opacity: 1.0;
+}
+
+main .story .fade-out {
+  transition: .5s ease-in-out;
+  opacity: 0;
+}
+
+.slide-in {
+  transition: .5s ease-in-out;
+  margin-top: 0 !important;
+}
+
+.slide-out {
+  transition: .5s ease-in-out;
+  margin-top: -10px !important;
+}
+
+/* sonar animation */
+
+main .story .sonar {
+  border: solid 1px #fff;
+  border-radius: 50%;
+  display: inline-block;
+  height: 18px;
+  position: absolute;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+  width: 18px;
+  z-index: 10;
+}
+
+main .story .sonar-anime {
+  transition: 1s ease-in-out;
+  -webkit-transform: scale(2);
+  transform: scale(2);
+  opacity: 0;
+}
