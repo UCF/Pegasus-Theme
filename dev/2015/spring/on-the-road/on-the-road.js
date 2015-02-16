@@ -161,7 +161,7 @@ function setupMap(){
 }
 
 function addMarker(i) {
-  var content = stops[i].title;
+  var content = '<span class="map-stop-content">' + stops[i].title + '</span>';
 
   var infoWindow = new google.maps.InfoWindow({
     content: content,
