@@ -60,6 +60,7 @@
     return this.each(function() {
       if (undefined === $(this).data('fadeInToolTip')) {
         var plugin = new $.fadeInToolTip(this);
+
         $(this).data('fadeInToolTip', plugin);
       }
     });
@@ -82,10 +83,21 @@ function animateSonar($sonar) {
 // Init
 
 function wireArticleInit() {
-  var $sonar = $('.sonar');
-  setInterval(animateSonar, 3000, $sonar);
-  // Tool tips must have a common class otherwise multiple tool tips will be visible
-  $('.fade-in-tool-tip-trigger').fadeInToolTip();
+
+  // add waypoint trigger to animate in dots
+  var waypoint = new Waypoint({
+    element: $('.nano-wire-img'),
+    handler: function(direction) {
+      if(direction === "down") {
+        $('.sonar').show();
+        setInterval(animateSonar, 3000, $('.sonar'));
+        // Tool tips must have a common class otherwise multiple tool tips will be visible
+        $('.fade-in-tool-tip-trigger').addClass('show').fadeInToolTip();
+        this.destroy();
+      }
+    },
+    offset: 10
+  });
 }
 
 $(wireArticleInit);
