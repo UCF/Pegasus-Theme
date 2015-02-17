@@ -41,9 +41,12 @@
       $triggerElement.on('click', toggleToolTip);
       $toolTipElement.on('click', '.close', closeToolTip);
     }
-
     function positionToolTip() {
-      $toolTipElement.offset({ top: $triggerElement.offset().top - 250 });
+      var toolTipOffset = $('.nano-wire-img').height() * 0.15;
+      if($('.nano-wire-img').width() < 500) {
+        toolTipOffset = 0;
+      }
+      $toolTipElement.offset({ top: toolTipOffset});
     }
 
     plugin.init = function() {

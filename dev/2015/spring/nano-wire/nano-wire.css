@@ -1,5 +1,16 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+
 main .story *, main .story p {
+  font-family: 'Open Sans', sans-serif;
+}
+
+main .story h1 {
   font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+}
+
+main .story h3, main .story h4 {
+  font-family: 'OpenSansCondensedBold', sans-serif;
+  font-weight: 400;
 }
 
 /*
@@ -18,11 +29,17 @@ main .story .lead h1 {
   margin: 60px 0 45px;
 }
 
-main .story .lead h2 {
+main .story .lead p {
   color: #e0db86;
-  font-size: 25px;
-  font-weight: 300;
+  font-family: 'OpenSansCondensedLight', sans-serif;
+  font-size: 35px;
+  line-height: 38px;
   margin-bottom: 40px;
+}
+
+main .story .social-container {
+  display: inline-block;
+  margin-bottom: 35px;
 }
 
 main .story .container-wide.content {
@@ -33,7 +50,7 @@ main .story .container-wide.content {
  * nano wire graphic
  */
 
-main .story .nano-wire-img {
+main .story .img-container {
   position: relative;
 }
 
@@ -52,7 +69,7 @@ main .story .content .nano-wire-img p.intro {
   margin-top: 50px;
 }
 
-main .story .content h3 {
+main .story .content h2 {
   color: #e0db86;
   font-size: 32px;
   margin-top: 40px;
@@ -143,32 +160,32 @@ main .story .fade-in-tool-tip-trigger {
 
 main .story .tool-tip-cover {
   left: 74%;
-  top: 63%;
+  top: 49%;
 }
 
 main .story .tool-tip-outer-electrode {
   left: 62%;
-  top: 64%;
+  top: 50%;
 }
 
 main .story .tool-tip-separator {
   left: 54%;
-  top: 68%;
+  top: 57%;
 }
 
 main .story .tool-tip-coating {
-  left: 62%;
-  top: 80%;
+  left: 65%;
+  top: 74%;
 }
 
 main .story .tool-tip-nanowhiskers {
   left: 51%;
-  top: 80%;
+  top: 74%;
 }
 
 main .story .tool-tip-wire-core {
-  left: 36.8%;
-  top: 79.7%;
+  left: 34%;
+  top: 75%;
 }
 
 /* Tool Tip */
@@ -183,9 +200,16 @@ main .story .fade-in-tool-tip {
   z-index: 1000;
 }
 
+@media (max-width: 480px) {
+  main .story .fade-in-tool-tip {
+    left: 0;
+    width: 100%;
+  }
+}
+
 main .story .fade-in-tool-tip header {
   background-color: #ffcc00;
-  padding: 10px 10px 3px;
+  padding: 10px 15px 3px;
 }
 
 main .story .fade-in-tool-tip header .close {
@@ -259,13 +283,12 @@ main .story .bat-vs-cap .intro {
   margin-top: 50px;
 }
 
-main .story .bat-vs-cap h4, main .story .bat-vs-cap h5 {
+main .story .bat-vs-cap h3, main .story .bat-vs-cap h4 {
   color: #fff;
   text-transform: uppercase;
 }
 
-main .story .bat-vs-cap h5 {
-  font-size: 16px;
+main .story .bat-vs-cap h4 {
   margin-bottom: 8px;
 }
 
@@ -293,7 +316,7 @@ main .story .nanowhiskers-size {
  * Endless Possibilities
  */
 
-main .story .nano-wire-uses, main .story .nano-wire-uses h6 {
+main .story .nano-wire-uses, main .story .nano-wire-uses h3 {
   color: white;
 }
 
@@ -301,7 +324,7 @@ main .story .nano-wire-uses {
   padding-bottom: 60px;
 }
 
-main .story .nano-wire-uses h6 {
+main .story .nano-wire-uses h3 {
   font-size: 14px;
   margin-bottom: 8px;
 }
