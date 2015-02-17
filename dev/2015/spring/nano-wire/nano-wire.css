@@ -274,6 +274,13 @@ main .story .bat-vs-cap {
   margin-top: 25px;
 }
 
+@media (max-width: 768px) {
+  main .story .bat-vs-cap {
+    padding-left: 8%;
+    padding-right: 8%;
+  }
+}
+
 main .story .bat-vs-cap .caption {
   font-size: 12px;
 }
@@ -325,8 +332,9 @@ main .story .nano-wire-uses {
 }
 
 main .story .nano-wire-uses h3 {
-  font-size: 14px;
+  font-size: 16px;
   margin-bottom: 8px;
+  text-transform: uppercase;
 }
 
 main .story .nano-wire-uses p {
