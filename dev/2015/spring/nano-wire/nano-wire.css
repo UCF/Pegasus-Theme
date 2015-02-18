@@ -4,13 +4,14 @@ main .story *, main .story p {
   font-family: 'Open Sans', sans-serif;
 }
 
-main .story h1 {
-  font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-}
-
-main .story h3, main .story h4 {
+main .story h2, main .story h3, main .story h4 {
   font-family: 'OpenSansCondensedBold', sans-serif;
   font-weight: 400;
+}
+
+article.story img {
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /*
@@ -23,10 +24,17 @@ main .story .container-wide.lead {
   text-align: center;
 }
 
-main .story .lead h1 {
+main .story h1 {
+  font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   color: #fff;
   font-size: 70px;
   margin: 60px 0 45px;
+}
+
+@media (max-width: 480px) {
+  main .story h1 {
+    font-size: 44px;
+  }
 }
 
 main .story .lead p {
@@ -35,6 +43,13 @@ main .story .lead p {
   font-size: 35px;
   line-height: 38px;
   margin-bottom: 40px;
+}
+
+@media (max-width: 480px) {
+  main .story .lead p {
+    font-size: 28px;
+    line-height: 32px;
+  }
 }
 
 main .story .social-container {
@@ -54,22 +69,22 @@ main .story .img-container {
   position: relative;
 }
 
-main .story .content .nano-wire-img p {
+main .story .nano-wire-img p {
   color: #fff;
   font-size: 18px;
 }
 
-main .story .content .nano-wire-img p.caption {
+main .story .nano-wire-img p.caption {
   font-size: 14px;
   text-align: center;
   margin-top: -30px;
 }
 
-main .story .content .nano-wire-img p.intro {
+main .story .nano-wire-img p.intro {
   margin-top: 50px;
 }
 
-main .story .content h2 {
+main .story h2 {
   color: #e0db86;
   font-size: 32px;
   margin-top: 40px;
@@ -281,6 +296,10 @@ main .story .bat-vs-cap {
   }
 }
 
+@media (max-width: 480px) {
+  margin-top: 30px;
+}
+
 main .story .bat-vs-cap .caption {
   font-size: 12px;
 }
@@ -338,5 +357,5 @@ main .story .nano-wire-uses h3 {
 }
 
 main .story .nano-wire-uses p {
-  font-size: 12px;
+  font-size: 14px;
 }
