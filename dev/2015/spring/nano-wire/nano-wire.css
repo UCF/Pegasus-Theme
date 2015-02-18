@@ -1,4 +1,4 @@
-@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
 main .story *, main .story p {
   font-family: 'Open Sans', sans-serif;
@@ -65,22 +65,49 @@ main .story .container-wide.content {
  * nano wire graphic
  */
 
-main .story .img-container {
+main .story .img-copy-container {
   position: relative;
 }
 
-main .story .nano-wire-img p {
+@media (max-width: 480px) {
+  main .story .img-copy-container {
+    position: static;
+  }
+}
+
+main .story .img-copy-container .copy {
+  position: relative;
+  z-index: 2;
+}
+
+main .story .nano-wire-img-container {
+  margin-top: -250px;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 480px) {
+  main .story .nano-wire-img-container {
+    margin-top: 0;
+  }
+
+  main .story .img-copy-container .copy {
+    position: static;
+  }
+}
+
+main .story .img-copy-container p {
   color: #fff;
   font-size: 18px;
 }
 
-main .story .nano-wire-img p.caption {
+main .story .img-copy-container p.caption {
   font-size: 14px;
   text-align: center;
   margin-top: -30px;
 }
 
-main .story .nano-wire-img p.intro {
+main .story .img-copy-container p.intro {
   margin-top: 50px;
 }
 
@@ -217,8 +244,8 @@ main .story .fade-in-tool-tip {
 
 @media (max-width: 480px) {
   main .story .fade-in-tool-tip {
-    left: 0;
-    width: 100%;
+    /*left: 0;
+    width: 100%;*/
   }
 }
 

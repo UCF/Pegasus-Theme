@@ -7,8 +7,8 @@
 
     var plugin = this,
         $triggerElement = $(element),
-        $toolTipElement = $triggerElement.parent().next(),
-        $toolTipClass = $toolTipElement.attr('class');
+        $toolTipElement = $('.' + $triggerElement.attr('data-tool-tip-content')),
+        $toolTipClass = 'fade-in-tool-tip';
 
     function tootlTipCloseAnime($element) {
       $element.animate({
@@ -28,7 +28,7 @@
         tootlTipCloseAnime($('.' + $toolTipClass + ':visible'));
         $toolTipElement.show().animate({
           top: "+=15",
-          opacity: 0.85
+          opacity: 1.0
         });
       }
     }
@@ -42,9 +42,9 @@
       $toolTipElement.on('click', '.close', closeToolTip);
     }
     function positionToolTip() {
-      var toolTipOffset = $('.nano-wire-img').height() * 0.15;
-      if($('.nano-wire-img').width() < 500) {
-        toolTipOffset = 0;
+      var toolTipOffset = $('.nano-wire-img').offset().top;
+      if($( window ).width() > 480) {
+        toolTipOffset = toolTipOffset - 250;
       }
       $toolTipElement.offset({ top: toolTipOffset});
     }
@@ -99,7 +99,7 @@ function wireArticleInit() {
         this.destroy();
       }
     },
-    offset: 10
+    offset: 100
   });
 }
 
