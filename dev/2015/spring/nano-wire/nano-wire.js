@@ -43,6 +43,7 @@
     }
 
     function positionToolTip() {
+      // nano-wire-img class shouldn't be hard coded
       var toolTipOffset = $('.nano-wire-img').offset().top;
       if($( window ).width() > 480) {
         toolTipOffset = toolTipOffset - 250;
@@ -101,6 +102,7 @@ function setupWayPoint($fadeInToolTipTrigger) {
   });
 }
 
+// This should be part of the plugin, but running out of time
 function setupClickToClose() {
   $(document).on('click', function(event) {
     if ($('.fade-in-tool-tip').is(':visible') && !$(event.target).hasClass('fade-in-tool-tip-trigger') && !$(event.target).closest('.fade-in-tool-tip').length) {

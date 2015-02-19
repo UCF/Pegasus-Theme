@@ -31,6 +31,36 @@ main .story h1 {
   margin: 60px 0 45px;
 }
 
+/*glow for webkit*/
+@-webkit-keyframes glow-effect {
+  from {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
+  }
+
+  to {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 1px #A1A1A1, 0 0 2px #A1A1A1, 0 0 3px #A1A1A1, 0 0 4px #A1A1A1, 0 0 5px #A1A1A1;
+  }
+}
+
+
+/*glow for mozilla*/
+@-moz-keyframes glow-effect {
+  from {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
+  }
+
+  to {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 1px #A1A1A1, 0 0 2px #A1A1A1, 0 0 3px #A1A1A1, 0 0 4px #A1A1A1, 0 0 5px #A1A1A1;
+  }
+}
+
+
+main .story h1 {
+  -webkit-animation: glow-effect 1.5s ease-in-out infinite alternate;
+  -moz-animation: glow-effect 1.5s ease-in-out infinite alternate;
+  animation: glow-effect 1.5s ease-in-out infinite alternate;
+}
+
 @media (max-width: 480px) {
   main .story h1 {
     font-size: 44px;
