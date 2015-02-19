@@ -41,6 +41,7 @@
       $triggerElement.on('click', toggleToolTip);
       $toolTipElement.on('click', '.close', closeToolTip);
     }
+
     function positionToolTip() {
       var toolTipOffset = $('.nano-wire-img').offset().top;
       if($( window ).width() > 480) {
@@ -83,14 +84,7 @@ function animateSonar($sonar) {
   $sonar.toggleClass('sonar-anime');
 }
 
-// Init
-
-function wireArticleInit() {
-
-  var $fadeInToolTipTrigger = $('.fade-in-tool-tip-trigger')
-
-  $fadeInToolTipTrigger.fadeInToolTip();
-
+function setupWayPoint($fadeInToolTipTrigger) {
   // add waypoint trigger to animate in dots
   var waypoint = new Waypoint({
     element: $('.nano-wire-img'),
@@ -105,6 +99,26 @@ function wireArticleInit() {
     },
     offset: 100
   });
+}
+
+function setupClickToClose() {
+  $(document).on('click', function(event) {
+    if ($('.fade-in-tool-tip').is(':visible') && !$(event.target).hasClass('fade-in-tool-tip-trigger') && !$(event.target).closest('.fade-in-tool-tip').length) {
+      $('.fade-in-tool-tip:visible').hide();
+    }
+  });
+}
+
+// Init
+
+function wireArticleInit() {
+
+  var $fadeInToolTipTrigger = $('.fade-in-tool-tip-trigger');
+
+  $fadeInToolTipTrigger.fadeInToolTip();
+  setupWayPoint($fadeInToolTipTrigger);
+  setupClickToClose();
+
 }
 
 $(wireArticleInit);
