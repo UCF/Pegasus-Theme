@@ -27,7 +27,7 @@ main .story .container-wide.lead {
 main .story h1 {
   font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   color: #fff;
-  font-size: 70px;
+  font-size: 80px;
   margin: 60px 0 45px;
 }
 
@@ -55,13 +55,25 @@ main .story h1 {
 }
 
 
+/*glow for mozilla*/
+@keyframes glow-effect {
+  from {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
+  }
+
+  to {
+    text-shadow: 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 1px #A1A1A1, 0 0 2px #A1A1A1, 0 0 3px #A1A1A1, 0 0 4px #A1A1A1, 0 0 5px #A1A1A1;
+  }
+}
+
+
 main .story h1 {
   -webkit-animation: glow-effect 1.5s ease-in-out infinite alternate;
   -moz-animation: glow-effect 1.5s ease-in-out infinite alternate;
   animation: glow-effect 1.5s ease-in-out infinite alternate;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
   main .story h1 {
     font-size: 44px;
   }
@@ -75,7 +87,7 @@ main .story .lead p {
   margin-bottom: 40px;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 575px) {
   main .story .lead p {
     font-size: 28px;
     line-height: 32px;
@@ -179,6 +191,24 @@ main .story .fade-in-tool-tip-trigger {
 }
 
 
+@-moz-keyframes show {
+  0% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+
+  50% {
+    -webkit-transform: scale(2);
+    transform: scale(2);
+  }
+
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+
 @keyframes show {
   0% {
     -webkit-transform: scale(1);
@@ -199,6 +229,7 @@ main .story .fade-in-tool-tip-trigger {
 
 .show {
   -webkit-animation: show 0.8s ease-in;
+  -moz-animation: show 0.8s ease-in;
   animation: show 0.8s ease-in;
 }
 

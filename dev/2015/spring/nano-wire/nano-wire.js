@@ -45,10 +45,13 @@
     function positionToolTip() {
       // nano-wire-img class shouldn't be hard coded
       var toolTipOffset = $('.nano-wire-img').offset().top;
-      if($( window ).width() > 480) {
+
+      if($( window ).width() > 980) {
+        toolTipOffset = toolTipOffset - 100;
+      } else if($( window ).width() > 480) {
         toolTipOffset = toolTipOffset - 250;
       }
-      $toolTipElement.offset({ top: toolTipOffset});
+      $toolTipElement.offset({ top: toolTipOffset - 75});
     }
 
     plugin.init = function() {
@@ -77,7 +80,7 @@
 // Sonar Animation
 
 function animateSonar($sonar) {
-  if($sonar.hasClass('sonar-anime')) {
+  if($sonar && $sonar.hasClass('sonar-anime')) {
     // hide element because the animation reverses when the sonar-anime class is removed
     $sonar.hide();
     setTimeout(function() { $sonar.show(); }, 2000);
