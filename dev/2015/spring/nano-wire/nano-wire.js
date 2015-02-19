@@ -87,6 +87,10 @@ function animateSonar($sonar) {
 
 function wireArticleInit() {
 
+  var $fadeInToolTipTrigger = $('.fade-in-tool-tip-trigger')
+
+  $fadeInToolTipTrigger.fadeInToolTip();
+
   // add waypoint trigger to animate in dots
   var waypoint = new Waypoint({
     element: $('.nano-wire-img'),
@@ -95,7 +99,7 @@ function wireArticleInit() {
         $('.sonar').show();
         setInterval(animateSonar, 3000, $('.sonar'));
         // Tool tips must have a common class otherwise multiple tool tips will be visible
-        $('.fade-in-tool-tip-trigger').addClass('show').fadeInToolTip();
+        $fadeInToolTipTrigger.addClass('show');
         this.destroy();
       }
     },

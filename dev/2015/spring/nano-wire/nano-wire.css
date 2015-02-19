@@ -133,44 +133,17 @@ main .story .fade-in-tool-tip-trigger {
 
 @-webkit-keyframes show {
   0% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
+    -webkit-transform: scale(2);
     transform: scale(2);
   }
 
   100% {
-    transform: scale(1);
-  }
-}
-
-
-@-moz-keyframes show {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(2);
-  }
-
-  100% {
-    transform: scale(1);
-  }
-}
-
-
-@-o-keyframes show {
-  0% {
-    transform: scale(1);
-  }
-
-  50% {
-    transform: scale(2);
-  }
-
-  100% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -178,14 +151,17 @@ main .story .fade-in-tool-tip-trigger {
 
 @keyframes show {
   0% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 
   50% {
+    -webkit-transform: scale(2);
     transform: scale(2);
   }
 
   100% {
+    -webkit-transform: scale(1);
     transform: scale(1);
   }
 }
@@ -193,8 +169,6 @@ main .story .fade-in-tool-tip-trigger {
 
 .show {
   -webkit-animation: show 0.8s ease-in;
-  -moz-animation: show 0.8s ease-in;
-  -o-animation: show 0.8s ease-in;
   animation: show 0.8s ease-in;
 }
 
@@ -228,6 +202,70 @@ main .story .tool-tip-nanowhiskers {
 main .story .tool-tip-wire-core {
   left: 34%;
   top: 75%;
+}
+
+@media (max-width: 617px) {
+  main .story .tool-tip-cover {
+    left: 74%;
+    top: 45%;
+  }
+
+  main .story .tool-tip-outer-electrode {
+    left: 62%;
+    top: 48%;
+  }
+
+  main .story .tool-tip-separator {
+    left: 54%;
+    top: 55%;
+  }
+
+  main .story .tool-tip-coating {
+    left: 65%;
+    top: 70%;
+  }
+
+  main .story .tool-tip-nanowhiskers {
+    left: 51%;
+    top: 70%;
+  }
+
+  main .story .tool-tip-wire-core {
+    left: 34%;
+    top: 73%;
+  }
+}
+
+@media (max-width: 343px) {
+  main .story .tool-tip-cover {
+    left: 74%;
+    top: 40%;
+  }
+
+  main .story .tool-tip-outer-electrode {
+    left: 62%;
+    top: 45%;
+  }
+
+  main .story .tool-tip-separator {
+    left: 54%;
+    top: 52%;
+  }
+
+  main .story .tool-tip-coating {
+    left: 59%;
+    top: 70%;
+  }
+
+  main .story .tool-tip-nanowhiskers {
+    left: 50%;
+    top: 63%;
+  }
+
+  main .story .tool-tip-wire-core {
+    left: 32%;
+    top: 66%;
+  }
 }
 
 /* Tool Tip */
