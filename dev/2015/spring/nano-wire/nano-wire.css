@@ -111,12 +111,6 @@ main .story .img-copy-container {
   position: relative;
 }
 
-@media (max-width: 480px) {
-  main .story .img-copy-container {
-    position: static;
-  }
-}
-
 main .story .img-copy-container .copy {
   position: relative;
   z-index: 2;
@@ -331,58 +325,37 @@ main .story .tool-tip-wire-core {
 
 /* Tool Tip */
 
-main .story .fade-in-tool-tip {
-  background: #fff;
+/*
+<div class="popover fade top in" style="top: 899px; left: 672.6875px; display: block;">
+  <div class="arrow"></div>
+  <div class="popover-inner">
+    <h3 class="popover-title">Separator</h3>
+    <div class="popover-content">
+      <p>Porous plastic is wrapped around the core wire and coated with an electrolyte gel that acts as glue and allows ions to trasfer between layers.</p>
+    </div>
+  </div>
+</div>
+*/
+.popover {
+  background: transparent;
+  border: none !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+}
+
+.popover .arrow {
   display: none;
-  left: 10%;
-  opacity: 0;
-  position: absolute;
-  width: 80%;
-  z-index: 1000;
 }
 
-@media (max-width: 480px) {
-  main .story .fade-in-tool-tip {
-    /*left: 0;
-    width: 100%;*/
-  }
-}
-
-main .story .fade-in-tool-tip header {
+.popover h3 {
   background-color: #ffcc00;
-  padding: 10px 15px 3px;
 }
 
-main .story .fade-in-tool-tip header .close {
-  padding-top: 1px;
-}
-
-main .story .fade-in-tool-tip h3 {
-  color: #575757;
-  font-size: 18px;
-  font-weight: normal;
-  margin-top: 0;
-}
-
-main .story .fade-in-tool-tip .close {
-  font-weight: normal;
-}
-
-main .story .fade-in-tool-tip .content {
-  font-size: 14px;
-  padding: 15px;
-}
-
-/* tool tip animation */
-
-main .story .slide-in {
-  transition: .5s ease-in-out;
-  margin-top: 0 !important;
-}
-
-main .story .slide-out {
-  transition: .5s ease-in-out;
-  margin-top: -10px !important;
+.popover-inner {
+  background: none;
+  border: none !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
 }
 
 /* sonar animation */
