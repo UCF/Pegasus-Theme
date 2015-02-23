@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-main .story *, main .story p {
+main .story *, main .story p, .popover * {
   font-family: 'Open Sans', sans-serif;
 }
 
-main .story h2, main .story h3, main .story h4 {
+main .story h2, main .story h3, main .story h4, .popover h3 {
   font-family: 'OpenSansCondensedBold', sans-serif;
   font-weight: 400;
 }
@@ -34,7 +34,7 @@ main .story h1 {
 /*glow for webkit*/
 @-webkit-keyframes glow-effect {
   from {
-    text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
+    text-shadow: 0 0 0px #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px  #A1A1A1, 0 0 30px  #A1A1A1, 0 0 40px  #A1A1A1, 0 0 50px #A1A1A1, 0 0 60px #A1A1A1;
   }
 
   to {
@@ -44,16 +44,6 @@ main .story h1 {
 
 
 /*glow for mozilla*/
-@-moz-keyframes glow-effect {
-  from {
-    text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
-  }
-
-  to {
-    text-shadow: 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 0px #A1A1A1, 0 0 1px #A1A1A1, 0 0 2px #A1A1A1, 0 0 3px #A1A1A1, 0 0 4px #A1A1A1, 0 0 5px #A1A1A1;
-  }
-}
-
 
 /*glow for mozilla*/
 @keyframes glow-effect {
@@ -69,7 +59,6 @@ main .story h1 {
 
 main .story h1 {
   -webkit-animation: glow-effect 1.5s ease-in-out infinite alternate;
-  -moz-animation: glow-effect 1.5s ease-in-out infinite alternate;
   animation: glow-effect 1.5s ease-in-out infinite alternate;
 }
 
@@ -185,24 +174,6 @@ main .story .fade-in-tool-tip-trigger {
 }
 
 
-@-moz-keyframes show {
-  0% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-
-  50% {
-    -webkit-transform: scale(2);
-    transform: scale(2);
-  }
-
-  100% {
-    -webkit-transform: scale(1);
-    transform: scale(1);
-  }
-}
-
-
 @keyframes show {
   0% {
     -webkit-transform: scale(1);
@@ -223,7 +194,6 @@ main .story .fade-in-tool-tip-trigger {
 
 .show {
   -webkit-animation: show 0.8s ease-in;
-  -moz-animation: show 0.8s ease-in;
   animation: show 0.8s ease-in;
 }
 
@@ -323,24 +293,17 @@ main .story .tool-tip-wire-core {
   }
 }
 
-/* Tool Tip */
+/* Bootstrap Popover overrides */
 
-/*
-<div class="popover fade top in" style="top: 899px; left: 672.6875px; display: block;">
-  <div class="arrow"></div>
-  <div class="popover-inner">
-    <h3 class="popover-title">Separator</h3>
-    <div class="popover-content">
-      <p>Porous plastic is wrapped around the core wire and coated with an electrolyte gel that acts as glue and allows ions to trasfer between layers.</p>
-    </div>
-  </div>
-</div>
-*/
 .popover {
-  background: transparent;
-  border: none !important;
-  border-radius: 0 !important;
-  text-shadow: none !important;
+  text-shadow: none;
+}
+
+@media (max-width: 480px) {
+  .popover {
+    left: 50% !important;
+    margin-left: -148px;
+  }
 }
 
 .popover .arrow {
@@ -348,14 +311,19 @@ main .story .tool-tip-wire-core {
 }
 
 .popover h3 {
+  color: #444;
   background-color: #ffcc00;
+  margin-bottom: 0;
 }
 
-.popover-inner {
+.popover .popover-inner {
   background: none;
-  border: none !important;
-  border-radius: 0 !important;
-  text-shadow: none !important;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.popover .popover-content {
+  padding-top: 3px;
 }
 
 /* sonar animation */

@@ -30,12 +30,9 @@ function setupWayPoint($fadeInToolTipTrigger) {
 // Init
 
 function wireArticleInit() {
-
   var $fadeInToolTipTrigger = $('.fade-in-tool-tip-trigger');
-
   setupWayPoint($fadeInToolTipTrigger);
   $fadeInToolTipTrigger.popover();
-
 }
 
 $(wireArticleInit);
