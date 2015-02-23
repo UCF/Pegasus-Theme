@@ -1,10 +1,15 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:400,700);
 
-main .story *, main .story p, .popover * {
+main .story *,
+main .story p,
+.popover * {
   font-family: 'Open Sans', sans-serif;
 }
 
-main .story h2, main .story h3, main .story h4, .popover h3 {
+main .story h2,
+main .story h3,
+main .story h4,
+.popover h3 {
   font-family: 'OpenSansCondensedBold', sans-serif;
   font-weight: 400;
 }
@@ -32,6 +37,7 @@ main .story h1 {
 }
 
 /*glow for webkit*/
+
 @-webkit-keyframes glow-effect {
   from {
     text-shadow: 0 0 0px #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px  #A1A1A1, 0 0 30px  #A1A1A1, 0 0 40px  #A1A1A1, 0 0 50px #A1A1A1, 0 0 60px #A1A1A1;
@@ -45,7 +51,6 @@ main .story h1 {
 
 /*glow for mozilla*/
 
-/*glow for mozilla*/
 @keyframes glow-effect {
   from {
     text-shadow: 0 0 0px #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 0px  #A1A1A1, 0 0 5px  #A1A1A1, 0 0 10px  #A1A1A1, 0 0 20px #A1A1A1, 0 0 30px #A1A1A1;
@@ -376,7 +381,8 @@ main .story .bat-vs-cap .intro {
   margin-top: 50px;
 }
 
-main .story .bat-vs-cap h3, main .story .bat-vs-cap h4 {
+main .story .bat-vs-cap h3,
+main .story .bat-vs-cap h4 {
   color: #fff;
   text-transform: uppercase;
 }
@@ -409,7 +415,8 @@ main .story .nanowhiskers-size {
  * Endless Possibilities
  */
 
-main .story .nano-wire-uses, main .story .nano-wire-uses h3 {
+main .story .nano-wire-uses,
+main .story .nano-wire-uses h3 {
   color: white;
 }
 
