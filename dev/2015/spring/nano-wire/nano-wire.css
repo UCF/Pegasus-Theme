@@ -356,7 +356,7 @@ main .story .bat-vs-cap {
   margin-top: 25px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   main .story .bat-vs-cap {
     padding-left: 8%;
     padding-right: 8%;

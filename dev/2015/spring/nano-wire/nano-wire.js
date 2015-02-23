@@ -31,8 +31,10 @@ function setupWayPoint($fadeInToolTipTrigger) {
 
 function wireArticleInit() {
   var $fadeInToolTipTrigger = $('.fade-in-tool-tip-trigger');
-  setupWayPoint($fadeInToolTipTrigger);
   $fadeInToolTipTrigger.popover();
+  $.getScript(THEME_JS_URL + '/jquery.waypoints.min.js').done(function() {
+    setupWayPoint($fadeInToolTipTrigger);
+  });
 }
 
 $(wireArticleInit);
