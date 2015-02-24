@@ -30,6 +30,35 @@
     });
   }
 
+  // Legend Click Handlers
+
+  function setupLegendClickHandlers() {
+    $('.nano-wire-img-container').on('click', 'a', function() {
+      var $triggerElement = $(this);
+      $(this).popover('show');
+    });
+
+    $('.legend').on('click', 'a', function() {
+      var $triggerElement = $(this);
+      $('.fade-in-tool-tip-trigger').each(function() {
+        if(!$(this).hasClass($triggerElement.attr('data-trigger-click'))) {
+          $(this).popover('hide');
+        }
+      });
+      $('.' + $triggerElement.attr('data-trigger-click')).popover('show');
+    });
+
+    $(document).on('click', function(event) {
+      if (!$(event.target).closest('.legend').length && !$(event.target).is($(this))) {
+        $('.fade-in-tool-tip-trigger').each(function() {
+          if(!$(this).hasClass($(event.target).attr('data-trigger-click')) && $(event.target).attr('class') !== $(this).attr('class')) {
+            $(this).popover('hide');
+          }
+        });
+      }
+    });
+  }
+
   // Init
 
   function wireArticleInit() {
@@ -38,6 +67,7 @@
     $.getScript(THEME_JS_URL + '/jquery.waypoints.min.js').done(function() {
       setupWayPoint($fadeInToolTipTrigger, $('.sonar'));
     });
+    setupLegendClickHandlers();
   }
 
   $(wireArticleInit);

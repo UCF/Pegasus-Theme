@@ -135,10 +135,34 @@ main .story .img-copy-container p {
   font-size: 18px;
 }
 
-main .story .img-copy-container p.caption {
-  font-size: 14px;
+main .story .legend-caption {
+  width: 100%;
+  z-index: 10;
+}
+
+main .story p.legend,
+main .story p.caption {
+  color: #fff;
+  margin-bottom: 0;
+  margin-top: 5px;
   text-align: center;
-  margin-top: -30px;
+}
+
+main .story p.legend span {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+main .story p.legend a,
+main .story p.legend a:hover {
+  color: #000;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+main .story p.caption {
+  text-align: center;
 }
 
 main .story .img-copy-container p.intro {
@@ -157,10 +181,13 @@ main .story .fade-in-tool-tip-trigger {
   background-color: #fff;
   border-radius: 50%;
   display: inline-block;
-  height: 20px;
+  height: 23px;
   position: absolute;
-  width: 20px;
+  width: 23px;
   z-index: 100;
+  padding: 2px;
+  text-align: center;
+  font-size: 14px;
 }
 
 /* tool tip trigger init animation */
@@ -265,8 +292,8 @@ main .story .tool-tip-wire-core {
   }
 
   main .story .tool-tip-wire-core {
-    left: 34%;
-    top: 73%;
+    left: 32%;
+    top: 71%;
   }
 }
 
@@ -341,11 +368,12 @@ main .story .sonar {
   border: solid 1px #fff;
   border-radius: 50%;
   display: none;
-  height: 18px;
+  height: 21px;
+  padding: 2px;
   position: absolute;
   transition: all .2s ease-in-out;
   -webkit-transition: all .2s ease-in-out;
-  width: 18px;
+  width: 21px;
   z-index: 10;
 }
 
