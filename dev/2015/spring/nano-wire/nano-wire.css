@@ -29,6 +29,10 @@ main .story .container-wide.lead {
   text-align: center;
 }
 
+main .story .charged-up-img {
+  max-width: 420px;
+}
+
 main .story h1 {
   font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
   color: #fff;
