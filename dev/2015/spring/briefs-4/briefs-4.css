@@ -156,6 +156,10 @@ main article.story .briefs-heading h2 {
   color: #fff;
 }
 
+#airtime img {
+  margin-top: 0px;
+}
+
 #library {
   margin-top: 30px;
 }
@@ -220,16 +224,8 @@ main article.story .briefs-heading h2 {
   }
 
   /* Story-specific */
-  #img-camp-chef-1 {
-    margin-top: 15px;
-  }
-
-  #img-jazz {
-    margin-bottom: 10px;
-  }
-
-  h3#us-news {
-    margin-top: 0;
+  #airtime img {
+    margin-top: 20px;
   }
 
   #library img {
