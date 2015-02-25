@@ -145,40 +145,11 @@ main article.story .briefs-heading h2 {
 }
 
 /* Story-specific */
-#img-camp-chef-1 {
-    margin-top: 5px;
-}
-
-#img-wu {
-    margin-top: 0;
-}
-
-#img-jazz {
-    margin-bottom: 0;
-}
-
-h3#us-news {
-    margin-top: 40px;
-}
-
-
-/* ADDITIONSSSssssssssssssssss */
 #airtime-wrap, #maya-wrap {
   background-color: #000;
   color: #fff;
   padding: 20px;
   margin-bottom: 30px;
-}
-
-#airtime-graph {
-  background: #1e5799; /* Old browsers */
-  background: -moz-linear-gradient(top, #1e5799 0%, #8badc9 51%, #69afe5 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1e5799), color-stop(51%,#8badc9), color-stop(100%,#69afe5)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(top, #1e5799 0%,#8badc9 51%,#69afe5 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(top, #1e5799 0%,#8badc9 51%,#69afe5 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(top, #1e5799 0%,#8badc9 51%,#69afe5 100%); /* IE10+ */
-  background: linear-gradient(to bottom, #1e5799 0%,#8badc9 51%,#69afe5 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1e5799', endColorstr='#69afe5',GradientType=0 ); /* IE6-9 */
 }
 
 #airtime-wrap h3, #maya-wrap h3 {
@@ -214,50 +185,54 @@ h3#us-news {
 }
 
 @media (max-width: 979px) and (min-width: 768px) {
-    /* Header */
-    .social-wrap {
-        width: auto !important;
-        margin-left: 82px;
-        padding-top: 55px;
-    }
+  /* Header */
+  .social-wrap {
+    width: auto !important;
+    margin-left: 82px;
+    padding-top: 55px;
+  }
 
-    /* Story-specific */
+  /* Story-specific */
 }
 
 @media (max-width: 767px) {
-    /* General */
-    main article {
-        margin-top: 30px;
-    }
+  /* General */
+  main article {
+    margin-top: 30px;
+  }
 
-    main article.story p {
-       margin-bottom: 0;
-    }
+  main article.story p {
+    margin-bottom: 0;
+  }
 
-    .briefs-heading {
-        margin-bottom: 0;
-    }
+  .briefs-heading {
+    margin-bottom: 0;
+  }
 
-    /* Header */
-    .social-wrap {
-        padding-top: 10px;
-    }
+  /* Header */
+  .social-wrap {
+    padding-top: 10px;
+  }
 
-    #briefs-header h1 {
-        font-size: 50px;
-        line-height: 1em;
-    }
+  #briefs-header h1 {
+    font-size: 50px;
+    line-height: 1em;
+  }
 
-    /* Story-specific */
-    #img-camp-chef-1 {
-        margin-top: 15px;
-    }
+  /* Story-specific */
+  #img-camp-chef-1 {
+    margin-top: 15px;
+  }
 
-    #img-jazz {
-        margin-bottom: 10px;
-    }
+  #img-jazz {
+    margin-bottom: 10px;
+  }
 
-    h3#us-news {
-        margin-top: 0;
-    }
+  h3#us-news {
+    margin-top: 0;
+  }
+
+  #library img {
+    margin-top: 20px;
+  }
 }
