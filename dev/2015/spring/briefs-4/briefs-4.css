@@ -105,6 +105,10 @@ main article.story .story-header-image {
     background-color: #161919;
 }
 
+#briefs-header-img-wrap {
+  background-position: 50% 60%;
+}
+
 #briefs-header-wrap {
     position: relative;
     height: 100%;
