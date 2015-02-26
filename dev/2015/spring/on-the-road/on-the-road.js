@@ -302,7 +302,7 @@ function setupDesktopContent() {
       content += ' active';
     }
     content += '"><div class="carousel-caption"><h2 class="stop-title">' + stops[i].title + '</h2></div>' +
-      '<img src="' + stops[i].image + '" class="stop-image img-responsive" /></div>';
+      '<img src="' + stops[i].image + '" class="stop-image" /></div>';
 
       $('#stop-carousel-inner').append(content);
   }
