@@ -20,9 +20,10 @@ main article.story .stop-thumbnail:first-child {
 
 main article.story .carousel-caption {
 	position: absolute !important;
-	top: 25px;
-	left: 25px;
-	padding: 25px;
+	background-color: rgba(0, 0, 0, 0.45);
+	top: 15px;
+	left: 15px;
+	padding: 15px;
 	right: auto;
 	bottom:auto;
 }
@@ -44,8 +45,6 @@ main article.story .carousel {
 
 main article.story .stop-header-container {
 	margin: 25px 0 0 25px;
-	background-color: #000;
-	background-color: rgba(0, 0, 0, 0.75);
 	padding: 10px;
 	color: #fff;
 }
