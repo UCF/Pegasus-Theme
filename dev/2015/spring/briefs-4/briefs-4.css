@@ -145,14 +145,23 @@ main article.story .briefs-heading h2 {
 }
 
 /* Story-specific */
-#airtime-wrap, #maya-wrap {
+.maya-wrap {
+  background-color: #000;
+  color: #fff;
+}
+
+article .maya-wrap img {
+  margin-top: 0;
+}
+
+#airtime-wrap, #maya-text {
   background-color: #000;
   color: #fff;
   padding: 20px;
-  margin-bottom: 30px;
+  margin-bottom: 40px;
 }
 
-#airtime-wrap h3, #maya-wrap h3 {
+#airtime-wrap h3, #maya-text h3 {
   color: #fff;
 }
 
