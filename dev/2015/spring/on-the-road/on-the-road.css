@@ -180,8 +180,10 @@ main article.story .map-stop-content {
 
 main article.story .map-stop-content .smaller-title {
 	font-size: 12px;
+	line-height: 1em;
+	margin-top: 5px;
 }
 
 #map-canvas {
-	height: 275px;
+	height: 275px !important;
 }
