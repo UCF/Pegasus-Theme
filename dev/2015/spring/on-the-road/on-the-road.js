@@ -282,8 +282,6 @@ function openinfoWindow(index){
     $('#stop-carousel').carousel(index);
     setDescriptionText(index);
   }
-
-  $('#stop-carousel').carousel('pause');
 }
 
 function closeAllinfoWindows(){
