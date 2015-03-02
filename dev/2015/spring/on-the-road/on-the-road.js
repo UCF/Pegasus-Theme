@@ -93,7 +93,6 @@ $(document).ready(function() {
     });
   });
 
-  $('#stop-carousel').carousel('pause');
 });
 
 function initialize() {
@@ -130,7 +129,6 @@ function initialize() {
   });
 
   setupMap();
-  setupDesktopContent();
 }
 
 function setupMap(){
@@ -182,7 +180,7 @@ function setupMap(){
 
   setMapHeight();
   updateNavigation();
-  openinfoWindow(0);
+  infoWindows[index].open(map, markers[index]);
 }
 
 function addMarker(i) {
@@ -278,40 +276,26 @@ function openinfoWindow(index){
   if ( ! infoWindows[index].visible ) {
     closeAllinfoWindows();
     updateNavigation();
+    transitionSlide(index);
     infoWindows[index].open(map, markers[index]);
-    $('#stop-carousel').carousel(index);
-    setDescriptionText(index);
   }
+}
+
+function transitionSlide(index) {
+  $('.item.active, #stop-subtitle, #stop-content').fadeTo(300, 0, function(){
+    $('.item.active').removeClass('active');
+    var $newImage = $('.item[data-index="' + index + '"]').addClass('active');
+    var $subtitle = $('#stop-subtitle').text(stops[index].subtitle);
+    var $content = $('#stop-content').html(stops[index].content);
+    $newImage.fadeTo(300, 1);
+    $subtitle.fadeTo(300, 1);
+    $content.fadeTo(300, 1);
+  });
 }
 
 function closeAllinfoWindows(){
   for(var i = 0; i < infoWindows.length; i++) {
     infoWindows[i].close();
   }
-}
-
-// Non Map Functions
-
-function setupDesktopContent() {
-  for ( var i = 0; i < stops.length; i++ ) {
-
-    var content = '<div class="item';
-    if (i == 0) {
-      content += ' active';
-    }
-    content += '"><div class="carousel-caption"><h2 class="stop-title">' + stops[i].title + '</h2></div>' +
-      '<img src="' + stops[i].image + '" class="stop-image" /></div>';
-
-      $('#stop-carousel-inner').append(content);
-  }
-}
-
-function setDescriptionText(index) {
-  $('#stop-subtitle, #stop-content').fadeTo(300, 0, function() {
-    $('#stop-subtitle').text(stops[index].subtitle);
-    $('#stop-content').html(stops[index].content);
-    $('#stop-subtitle').fadeTo(275, 1);
-    $('#stop-content').fadeTo(275, 1);
-  });
 }
 
