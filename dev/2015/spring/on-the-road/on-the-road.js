@@ -135,28 +135,42 @@ function setupMap(){
   var center = new google.maps.LatLng(37.6, -96.665);
 
   var styles = [
-    {
-      "featureType": "administrative.country",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "administrative.locality",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "administrative.neighborhood",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    },{
-      "featureType": "administrative.land_parcel",
-      "stylers": [
-        { "visibility": "off" }
-      ]
-    }
-  ];
+  {
+    "featureType": "administrative.country",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "administrative.locality",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "administrative.neighborhood",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "administrative.land_parcel",
+    "elementType": "labels",
+    "stylers": [
+      { "visibility": "off" }
+    ]
+  },{
+    "featureType": "landscape",
+    "stylers": [
+      { "color": "#94DF7B" }
+    ]
+  },{
+    "featureType": "water",
+    "stylers": [
+      { "color": "#ffffff" }
+    ]
+  }
+];
 
   var mapOptions = {
     mapTypeId: google.maps.MapTypeId.TERRAIN,
@@ -180,7 +194,7 @@ function setupMap(){
 
   setMapHeight();
   updateNavigation();
-  infoWindows[index].open(map, markers[index]);
+  infoWindows[0].open(map, markers[0]);
 }
 
 function addMarker(i) {
@@ -199,9 +213,9 @@ function addMarker(i) {
     position: stops[i].path,
     icon: {
       path: google.maps.SymbolPath.CIRCLE,
-      strokeColor: '#CC9900',
+      strokeColor: '#444',
       strokeWeight: 2,
-      fillColor: '#000',
+      fillColor: '#fff',
       fillOpacity: 0.75,
       scale: 6
     }
@@ -213,7 +227,7 @@ function addMarker(i) {
     var line = new google.maps.Polyline({
       path : [ stops[i - 1].path, stops[i].path ],
       geodesic : true,
-      strokeColor: '#CC9900',
+      strokeColor: '#444',
       strokeOpacity: 1.0,
       strokeWeight: 2
     });
