@@ -4,6 +4,11 @@ main article.story h1 {
 	font-size: 72px;
 }
 
+main article.story p.lead::first-letter{
+	font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+	font-weight: bold;
+}
+
 @media (max-width:  768px) {
 	main article.story h1 {
 		font-size: 40px;
@@ -67,6 +72,7 @@ main article.story h2.stop-header {
 
 main article.story h3.stop-subtitle {
 	font-size: 26px;
+	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
 	margin-bottom: 12px;
 	font-weight: normal;
 	font-style: italic;
@@ -79,7 +85,7 @@ main article.story .smaller-title {
 }
 
 main article.story #stop-content-container {
-	background-color: #444;
+	background-color: #eee;
 }
 
 main article.story #stop-content-description-container {
@@ -88,17 +94,17 @@ main article.story #stop-content-description-container {
 
 main article.story #stop-subtitle {
 	font-size: 26px;
+	letter-spacing: -.03em;
 	margin-bottom: 15px;
 	font-weight: normal;
-	font-style: italic;
-	color: #bbc8af;
+	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+	color: #445E2B;
 }
 
 main article.story #stop-content {
-	color: #fff;
+	color: #000;
 	line-height: 1.7;
-	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-	font-size: 14px;
+	font-size: 15px;
 	font-weight: 500;
 	-moz-osx-font-smoothing: auto;
 	-webkit-font-smoothing: initial;
@@ -149,7 +155,7 @@ main article.story .control-stop-title {
 
 #btn-previous,
 #btn-next {
-	color: #fff;
+	color: #000;
 	font-size: 24px;
 }
 
