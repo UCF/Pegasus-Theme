@@ -152,6 +152,24 @@ main article.story .briefs-heading h2 {
 
 article .maya-wrap img {
   margin-top: 0;
+  margin-bottom: 10px;
+}
+
+article .maya-wrap .credit {
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+
+.maya-wrap .credit {
+  background-color: #000;
+}
+
+#airtime {
+  margin-top: 30px;
+}
+
+#airtime img {
+  margin-top: 0px;
 }
 
 #airtime-wrap, #maya-text {
@@ -163,10 +181,6 @@ article .maya-wrap img {
 
 #airtime-wrap h3, #maya-text h3 {
   color: #fff;
-}
-
-#airtime img {
-  margin-top: 0px;
 }
 
 #library {
@@ -183,6 +197,10 @@ article .maya-wrap img {
 
 #terabits-wrap img {
   height: 240px;
+}
+
+#top-honor-wrap blockquote {
+  margin-bottom: 0;
 }
 
 #top-honor-wrap blockquote,
@@ -235,6 +253,18 @@ article .maya-wrap img {
   /* Story-specific */
   #airtime img {
     margin-top: 20px;
+  }
+
+  #airtime-wrap, #maya-text {
+    margin-bottom: 0;
+  }
+
+  #top-honor {
+    margin-top: 0;
+  }
+
+  #toy-for-tots {
+    margin-top: 0;
   }
 
   #library img {
