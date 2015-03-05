@@ -199,8 +199,8 @@ article .maya-wrap .credit {
   height: 240px;
 }
 
-#top-honor {
-  margin-top: 30px;
+#top-honor-wrap blockquote {
+  margin-bottom: 0;
 }
 
 #top-honor-wrap blockquote,
@@ -259,8 +259,12 @@ article .maya-wrap .credit {
     margin-bottom: 0;
   }
 
-  #top-honor blockquote {
-    margin-bottom: 0;
+  #top-honor {
+    margin-top: 0;
+  }
+
+  #toy-for-tots {
+    margin-top: 0;
   }
 
   #library img {
