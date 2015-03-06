@@ -214,12 +214,14 @@ main article.story .control-stop-title {
 main article.story .map-stop-content {
 	font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
 	font-weight: 600;
+	overflow-y: hidden;
 }
 
 main article.story .map-stop-content .smaller-title {
 	font-size: 12px;
 	line-height: 1em;
 	margin-top: 5px;
+	overflow-y: hidden;
 }
 
 #map-canvas {
