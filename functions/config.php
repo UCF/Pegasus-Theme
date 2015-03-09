@@ -26,7 +26,7 @@ function __init__(){
 	wp_deregister_script('l10n');
 	set_defaults_for_options();
 }
-add_action('after_setup_theme', '__init__');
+add_action( 'after_setup_theme', '__init__', 4 );
 
 
 
@@ -62,8 +62,13 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
 define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
 
 
-define( 'LATEST_VERSION', 3 ); // The most up-to-date major version of the theme
-define( 'EARLIEST_VERSION', 1 );
+$versions = array(
+	3,
+	2,
+	1
+);
+define( 'VERSIONS', serialize( $versions ) );
+define( 'LATEST_VERSION', $versions[0] ); // The most up-to-date major version of the theme
 define( 'VERSIONS_PATH', 'versions/' );
 
 

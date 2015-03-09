@@ -1,4 +1,24 @@
 <?php
+
+/**
+ * READ ME, PLEASE:
+ *
+ * Various functions for this theme MUST execute in a specific order and
+ * depend on WordPress hooks to be executed with specific priority values.
+ * These functions hook into 'after_setup_theme' (the earliest available
+ * hook for themes) with priority values set.
+ * This order should NOT be modified unless you want bad things to happen.
+ *
+ * 1) Register Taxonomies
+ * 2) Register CPT's
+ * 3) Determine the current requested post's relevant version
+ * 4) Require version-specific functions/config.php and shortcodes.php files
+ * 5) Register Config::$styles, Config::$scripts (MUST occur after version-
+ *    specific functions/config.php is loaded so that extra styles, scripts can
+ *    be appended per version)
+ **/
+
+
 require_once( 'functions/base.php' );    # Base theme functions
 require_once( 'functions/admin.php' );   # Admin/login functions
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
@@ -16,18 +36,39 @@ require_once( 'functions/config.php' );  # Where site-level configuration settin
  * Function that determines which version should be considered active, based
  * on the current global $post's post_type.
  **/
-function get_relevant_version() {
-	global $post;
-	$relevant_issue = get_relevant_issue( $post );
+function get_relevant_version( $the_post=null ) {
+	if ( !$the_post ) {
+		global $post;
+		// global $post might not be available when this is called.  If it's not,
+		// check url for a slug we can use.
+		if ( !$post ) {
+			$basename = basename( untrailingslashit( $_SERVER['REQUEST_URI'] ) );
+			$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
+			$post_story = get_page_by_path( $basename , OBJECT, 'story');
+
+			if ( $post_issue ) {
+				$the_post = $post_issue;
+			}
+			else if ( $post_story ) {
+				$the_post = $post_story;
+			}
+			else {
+				// We really have no idea what this is :(
+				$the_post = null;
+			}
+		}
+		else {
+			$the_post = $post;
+		}
+	}
+
+	$relevant_issue = get_relevant_issue( $the_post );
 	$relevant_version = get_post_meta( $relevant_issue->ID, 'issue_version', true );
 	if ( empty( $relevant_version ) ) {
 		$relevant_version = LATEST_VERSION;
 	}
 	return intval( $relevant_version );
 }
-
-define( 'RELEVANT_VERSION_DIR', get_stylesheet_directory() . '/' . VERSIONS_PATH . 'v' . get_relevant_version() );
-define( 'RELEVANT_VERSION_URL', get_stylesheet_directory_uri() . '/' . VERSIONS_PATH . 'v' . get_relevant_version() );
 
 /**
  * Returns a relative path to a file by version.
@@ -44,11 +85,15 @@ function get_version_file_path( $filename, $version=null ) {
  * Must hook into init so that get_relevant_version() has access to global
  * $post.
  **/
-function require_version_files() {
+function setup_version_files() {
+	define( 'THE_POST_VERSION', get_relevant_version() ); // The version for the story/issue loaded in a given request, or the latest version if a story or issue is not available
+	define( 'THE_POST_VERSION_DIR', get_stylesheet_directory() . '/' . VERSIONS_PATH . 'v' . THE_POST_VERSION );
+	define( 'THE_POST_VERSION_URL', get_stylesheet_directory_uri() . '/' . VERSIONS_PATH . 'v' . THE_POST_VERSION );
+
 	require_once( get_version_file_path( 'functions/config.php' ) );  # Where version-level configuration settings are defined
 	require_once( get_version_file_path( 'shortcodes.php' ) );        # Per version shortcodes
 }
-add_action( 'after_setup_theme', 'require_version_files', 1 );
+add_action( 'after_setup_theme', 'setup_version_files', 3 );
 
 
 /**
@@ -71,7 +116,7 @@ function by_version_template( $template ) {
 		$new_template = locate_template( array( get_version_file_path( 'single-photo_essay.php' ) ) );
 	}
 
-	if ( '' !== $new_template ) {
+	if ( isset( $new_template ) && '' !== $new_template ) {
 		return $new_template ;
 	}
 	return $template;
@@ -80,33 +125,32 @@ add_filter( 'template_include', 'by_version_template', 99 );
 
 
 /**
- * Loads version-specific header template instead of template from the theme's
- * root directory.
+ * Loads version-specific header template.  Should be used in place of
+ * get_header() for this theme.
+ *
+ * Note: this (and get_version_footer()) cannot hook into get_header/get_footer
+ * without requiring that a header.php/footer.php file exists in the theme
+ * root, so we opt to use a separate function instead to avoid excessive file
+ * includes.
  **/
-function header_template( $name ) {
+function get_version_header() {
 	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
 	if ( '' !== $new_template ) {
-		return load_template( RELEVANT_VERSION_DIR . '/header.php' );
+		return load_template( THE_POST_VERSION_DIR . '/header.php' );
 	}
-
-	return $name;
 }
-add_filter( 'get_header', 'header_template' );
 
 
 /**
- * Loads version-specific footer template instead of template from the theme's
- * root directory.
+ * Loads version-specific footer template.  Should be used in place of
+ * get_footer() for this theme.
  **/
-function footer_template( $name ) {
+function get_version_footer() {
 	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
 	if ( '' !== $new_template ) {
-		return load_template( RELEVANT_VERSION_DIR . '/footer.php' );
+		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
 	}
-
-	return $name;
 }
-add_filter( 'get_footer', 'header_template' );
 
 
 
@@ -149,21 +193,6 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 
 
 /*
- * Returns featured image URL of a specified post ID
- */
-function get_featured_image_url($id, $size=null) {
-	$size = !$size ? 'single-post-thumbnail' : $size;
-    $url = '';
-    if(has_post_thumbnail($id)
-        && ($thumb_id = get_post_thumbnail_id($id)) !== False
-        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
-            return $image[0];
-    }
-    return $url;
-}
-
-
-/*
  * Returns a relevant issue post object depending on the page being viewed.
  * i.e., if the $post obj passed is the front page or subpage, get the current issue;
  * otherwise, get the current story issue
@@ -180,6 +209,21 @@ function get_relevant_issue($post) {
 	}
 
 	return $issue;
+}
+
+
+/*
+ * Returns featured image URL of a specified post ID
+ */
+function get_featured_image_url($id, $size=null) {
+	$size = !$size ? 'single-post-thumbnail' : $size;
+    $url = '';
+    if(has_post_thumbnail($id)
+        && ($thumb_id = get_post_thumbnail_id($id)) !== False
+        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
+            return $image[0];
+    }
+    return $url;
 }
 
 
@@ -656,6 +700,7 @@ function output_header_markup($post) {
 		}
 		// DEPRECATED:  Issue-wide stylesheet (on story)
 		if( $post->post_type == 'story' && is_fall_2013_or_older($post) ) {
+			$story_issue = get_story_issue( $post );
 			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue);
 			$dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE);
 			if ( ($story_issue = get_story_issue($post)) !== False && !empty($issue_stylesheet_url)) {
@@ -867,15 +912,19 @@ function display_markup_or_template($post) {
 					}
 					break;
 				default:
-					require_once('templates/'.$post->post_type.'/'.$post_template.'.php');
+					$filename = 'templates/' . $post->post_type . '/' . $post_template . '.php';
+					$template = get_version_file_path( $filename, get_relevant_version( $post ) );
+					require_once( $template );
 					break;
 			}
 		}
 		else {
 			if (!is_fall_2013_or_older($post)) {
 				// Newer stories without a value should assume 'default' template
-				add_filter('the_content', 'kill_empty_p_tags', 999);
-				require_once('templates/'.$post->post_type.'/default.php');
+				add_filter( 'the_content', 'kill_empty_p_tags', 999 );
+				$filename = 'templates/' . $post->post_type . '/default.php';
+				$template = get_version_file_path( $filename, get_relevant_version( $post ) );
+				require_once( $template );
 			}
 			else {
 				// Use WYSIWYG editor contents for old stories that don't have a

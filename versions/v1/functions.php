@@ -1,7 +1,5 @@
 <?php
 
-var_dump('test');
-
 /**
  * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
  *

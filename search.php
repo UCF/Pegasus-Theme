@@ -6,14 +6,14 @@
 	$start   = (is_numeric($_GET['start'])) ? (int)$_GET['start'] : 0;
 	$results = get_search_results($_GET['s'], $start, $limit, $domain);
 ?>
-<?php get_header(); ?>
+<?php get_version_header(); ?>
 
 <section class="container" id="search-results">
 	<div class="row">
 		<div class="span10 offset1">
 			<h1>Search Results</h1>
 			<?=get_search_form()?>
-			
+
 			<?php if(count($results['items'])):?>
 			<ul class="result-list">
 				<?php foreach($results['items'] as $result):?>
@@ -34,22 +34,22 @@
 				</li>
 			<?php endforeach;?>
 			</ul>
-		
+
 			<?php if($start + $limit < $results['number']):?>
 			<a class="button more" href="./?s=<?=$_GET['s']?>&amp;start=<?=$start + $limit?>">More Results</a>
 			<?php endif;?>
-			
+
 			<?php else:?>
-				
+
 			<p>No results found for "<?=htmlentities($_GET['s'])?>".</p>
-			
+
 			<?php endif;?>
 		</div>
 	</div>
 </section>
 
 <?php else:?>
-<?php get_header(); ?>
+<?php get_version_header(); ?>
 <?php
 	// Our Loop gets screwy here probably because a global $post is set.  Redo the Loop.
 	$search = new WP_Query(array(
@@ -77,12 +77,12 @@
 					</li>
 				<?php endwhile;?>
 				</ul>
-			<?php else:?>		
+			<?php else:?>
 				<p>No results found for "<?=htmlentities($_GET['s'])?>".</p>
 			<?php endif;?>
 		</div>
 	</div>
 </section>
 
-<?php get_footer();?>
+<?php get_version_footer();?>
 <?php endif;?>

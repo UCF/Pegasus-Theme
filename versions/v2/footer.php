@@ -1,98 +1,17 @@
-	<?php
-	// Determine if this post requires pre-Spring 2014 footer markup
-	// and apply it if necessary.
+		</main>
 
-	if (is_fall_2013_or_older($post)) {
-	?>
-
-		</div><!-- close #body_content or last .container -->
-
-		<?php $issue = get_relevant_issue($post); ?>
-		<div id="footer">
-			<div class="container wide">
-				<div class="row">
-	                <div class="span12">
-	                	<div id="issue-carousel" class="carousel">
-							<div class="carousel-inner">
-								<div class="item active">
-									<div class="row footer_stories">
-										<div class="span12">
-										    <h3 class="issue-title"><?php echo $issue->post_title; ?></h3>
-										</div>
-										<div class="span12">
-						                    <ul class="thumbnails">
-						                    <?
-						                    extract(get_navigation_stories());
-						                    foreach($top_stories as $story) {
-						                    ?>
-						                        <li class="span3">
-						                            <a href="<?=get_permalink($story->ID)?>">
-						                                <div class="thumbnail">
-						                                    <img src="<?=get_featured_image_url($story->ID)?>" />
-						                                </div>
-						                                <div class="title">
-						                                    <span class="title_text">
-						                                    <?=apply_filters('the_title', $story->post_title)?>
-						                                    <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-						                                            <span class="title_colon">:</span> </span>
-						                                            <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-						                                    <?php } else { ?></span><?php } ?>
-						                                </div>
-						                            </a>
-						                        </li>
-						                    <? } ?>
-						                    </ul>
-						                </div>
-						            </div>
-			            	        <div class="row footer_stories bottom">
-			                            <div class="span12">
-			                                <ul class="thumbnails">
-			                                <?
-			                                foreach($bottom_stories as $story) {
-			                                ?>
-			                                    <li class="span2">
-			                                        <a href="<?=get_permalink($story->ID)?>">
-			                                            <div class="thumbnail">
-			                                                <img src="<?=get_featured_image_url($story->ID)?>" />
-			                                            </div>
-			                                            <div class="title">
-			                                                <span class="title_text">
-			                                                    <?=apply_filters('the_title', $story->post_title)?>
-			                                                    <?php if (get_post_meta($story->ID, 'story_subtitle', True)) { ?>
-			                                                        <span class="title_colon">:</span> </span>
-			                                                        <span class="subtitle_text"><?=get_post_meta($story->ID, 'story_subtitle', True)?></span>
-			                                                    <?php } else { ?></span><?php } ?>
-			                                            </div>
-			                                        </a>
-			                                    </li>
-			                                <? } ?>
-			                                </ul>
-			                            </div>        
-			            	        </div>
-						        </div>
-			                </div>
-		                </div>        
-			        </div>
-			    </div>
-			</div>
-		</div>
-
-	<?php } else { 
+		<?php
 		$issue = get_relevant_issue($post);
 		$args = array();
-		/*if ($post->post_type == 'issue') {
-			$args['exclude'] = intval(get_post_meta($post->ID, 'issue_cover_story', TRUE));
-		}
-		else */if ($post->post_type == 'story') {
+
+		if ($post->post_type == 'story') {
 			$args['exclude'] = $post->ID;
 		}
+
 		$stories = get_issue_stories($issue, $args);
 		$perrow = 3; // .span4's
-	?>
 
-		</main>
-		<?php
-		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home()) {
+		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home()):
 		?>
 		<aside class="container-wide" id="more-stories">
 			<div class="container">
@@ -112,7 +31,7 @@
 							print '</div><div class="row">';
 						}
 						$count++;
-						
+
 						$title = $story->post_title;
 						$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
 						$thumb = get_featured_image_url($story->ID);
@@ -140,9 +59,7 @@
 				<a class="forward icon-caret-right" href="#">Forward</a>
 			</div>
 		</aside>
-		<?php
-		}
-		?>
+		<?php endif; ?>
 
 		<?php
 		$fb_url = get_theme_option('fb_url');
@@ -156,8 +73,8 @@
 			!empty($googleplus_url) ||
 			!empty($flickr_url) ||
 			!empty($youtube_url)
-		) {
-		?>	
+		):
+		?>
 		<aside class="container-wide" id="footer-social">
 			<div class="container">
 				<div class="row">
@@ -189,10 +106,7 @@
 				</div>
 			</div>
 		</aside>
-	<?php
-		}
-	}
-	?>
+		<?php endif; ?>
 
 		<footer class="container-wide" id="footer-navigation">
 			<div class="container">
@@ -211,7 +125,7 @@
 							</a>
 						</span>
                         <?}?>
-						
+
 						<?php
 						$defaults = array(
 							'theme_location'  => 'footer-menu',

@@ -538,13 +538,17 @@ class Issue extends CustomPostType {
 			}
 		}
 
-		// TODO: remove?
-		$font_options = array();
-		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
-			$font_options[$key] = $key;
-		}
+		$versions = unserialize( VERSIONS );
+		$versions = array_combine( $versions, $versions ); // Force identical key/val pairs
 
 		$fields = array(
+			array(
+				'name'    => 'Issue Version',
+				'desc'    => 'The theme version to use for this issue and its stories.',
+				'id'      => $prefix.'version',
+				'type'    => 'select',
+				'options' => $versions
+			),
 			array(
 				'name'    => 'Cover Story',
 				'desc'    => 'The story featured on the front cover of the print magazine.  This is listed as the "featured story" for the issue in the site archives,

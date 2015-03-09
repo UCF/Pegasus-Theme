@@ -1477,7 +1477,7 @@ function register_custom_taxonomies(){
 		$custom_taxonomy->register();
 	}
 }
-add_action('init', 'register_custom_taxonomies');
+add_action( 'after_setup_theme', 'register_custom_taxonomies', 1 );
 
 /**
  * Registers all installed custom post types
@@ -1494,7 +1494,7 @@ function register_custom_post_types(){
 	#This ensures that the permalinks for custom posts work
 	flush_rewrite_rules_if_necessary();
 }
-add_action('init', 'register_custom_post_types');
+add_action( 'after_setup_theme', 'register_custom_post_types', 2 );
 
 /**
  * Registers all metaboxes for install custom post types

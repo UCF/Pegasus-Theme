@@ -115,8 +115,4 @@
 			</div>
 		</header>
 
-		<?php if (is_fall_2013_or_older($post)) { ?>
-		<div class="container" id="body_content">
-		<?php } else { ?>
 		<main>
-		<?php } ?>
