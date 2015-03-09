@@ -1,34 +1,136 @@
 <?php
-require_once('functions/base.php');   			# Base theme functions
-require_once('custom-taxonomies.php');  		# Where per theme taxonomies are defined
-require_once('custom-post-types.php');  		# Where per theme post types are defined
-require_once('functions/admin.php');  			# Admin/login functions
-require_once('functions/config.php');			# Where per theme settings are registered
-require_once('shortcodes.php');         		# Per theme shortcodes
+require_once( 'functions/base.php' );    # Base theme functions
+require_once( 'functions/admin.php' );   # Admin/login functions
+require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
+require_once( 'custom-post-types.php' ); # Where post types are defined
+require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
 
-//Add theme-specific functions here.
+
+/****************************************************************************
+ *
+ * START version configuration functions here
+ *
+ ****************************************************************************/
+
+/**
+ * Function that determines which version should be considered active, based
+ * on the current global $post's post_type.
+ **/
+function get_relevant_version() {
+	global $post;
+	$relevant_issue = get_relevant_issue( $post );
+	$relevant_version = get_post_meta( $relevant_issue->ID, 'issue_version', true );
+	if ( empty( $relevant_version ) ) {
+		$relevant_version = LATEST_VERSION;
+	}
+	return intval( $relevant_version );
+}
+
+define( 'RELEVANT_VERSION_DIR', get_stylesheet_directory() . '/' . VERSIONS_PATH . 'v' . get_relevant_version() );
+define( 'RELEVANT_VERSION_URL', get_stylesheet_directory_uri() . '/' . VERSIONS_PATH . 'v' . get_relevant_version() );
+
+/**
+ * Returns a relative path to a file by version.
+ **/
+function get_version_file_path( $filename, $version=null ) {
+	if ( !$version ) {
+		$version = get_relevant_version();
+	}
+	return VERSIONS_PATH . 'v' . $version . '/' . $filename;
+}
+
+/**
+ * Based on the current relevant version, require necessary files.
+ * Must hook into init so that get_relevant_version() has access to global
+ * $post.
+ **/
+function require_version_files() {
+	require_once( get_version_file_path( 'functions/config.php' ) );  # Where version-level configuration settings are defined
+	require_once( get_version_file_path( 'shortcodes.php' ) );        # Per version shortcodes
+}
+add_action( 'after_setup_theme', 'require_version_files', 1 );
 
 
 /**
- * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
+ * Loads version-specific CPT templates instead of templates from the theme's
+ * root directory.
  *
- * Note that the new input select name and id values must match the name and id of the empty dropdown within the
- * form that this function is replacing
+ * Note: Pages and Posts should always use templates from the root directory
+ * (they are not modified per-version).
+ **/
+function by_version_template( $template ) {
+	global $post;
+
+	if ( $post->post_type == 'story' ) {
+		$new_template = locate_template( array( get_version_file_path( 'single-story.php' ) ) );
+	}
+	else if ( $post->post_type == 'issue' ) {
+		$new_template = locate_template( array( get_version_file_path( 'single-issue.php' ) ) );
+	}
+	else if ( $post->post_type == 'photo_essay' ) {
+		$new_template = locate_template( array( get_version_file_path( 'single-photo_essay.php' ) ) );
+	}
+
+	if ( '' !== $new_template ) {
+		return $new_template ;
+	}
+	return $template;
+}
+add_filter( 'template_include', 'by_version_template', 99 );
+
+
+/**
+ * Loads version-specific header template instead of template from the theme's
+ * root directory.
+ **/
+function header_template( $name ) {
+	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
+	if ( '' !== $new_template ) {
+		return load_template( RELEVANT_VERSION_DIR . '/header.php' );
+	}
+
+	return $name;
+}
+add_filter( 'get_header', 'header_template' );
+
+
+/**
+ * Loads version-specific footer template instead of template from the theme's
+ * root directory.
+ **/
+function footer_template( $name ) {
+	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
+	if ( '' !== $new_template ) {
+		return load_template( RELEVANT_VERSION_DIR . '/footer.php' );
+	}
+
+	return $name;
+}
+add_filter( 'get_footer', 'header_template' );
+
+
+
+/****************************************************************************
  *
- * @author Jo Greybill
+ * START site-level functions here
  *
-**/
-add_action("gform_field_input", "class_year_input", 10, 5);
-function class_year_input($input, $field, $value, $lead_id, $form_id){
-    if($field["cssClass"] == "alumninotes_class_year"){
-        $input = '<div class="ginput_container"><select multiple="multiple" id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
-		$current_year = date('Y');
-		foreach ( range($current_year, 1968) as $year ) {
-			$input .= '<option value='.$year.'>'.$year.'</option>';
-		}
-		$input .= '</select></div>';
-    }
-    return $input;
+ ****************************************************************************/
+
+/*
+ * Returns current issue post based on the Current Issue Cover
+ * value in Theme Options
+ */
+function get_current_issue() {
+	$posts = get_posts(array(
+		'post_type' => 'issue',
+		'name'      => get_theme_option('current_issue_cover')
+	));
+
+	if(count($posts) == 0) {
+		die('Error: No Issue post matches the post assigned to the "Current Issue Cover" Theme Options setting.');
+	} else {
+		return $posts[0];
+	}
 }
 
 
@@ -82,90 +184,6 @@ function get_relevant_issue($post) {
 
 
 /*
- * DEPRECATED.  USE get_issue_stories()/display_story_list() instead.
- *
- * Retrieve a list of stories for navigation. Exclude a story if we are on
- * its page otherwise pick 4 at random.
- */
-function get_navigation_stories($issue=null) {
-	global $post;
-
-	$exclude = array();
-
-	if(is_null($issue)) {
-		$issue = get_relevant_issue($post);
-	}
-
-	if(is_front_page() || $post->post_type == 'issue') {
-		$current_issue  = (is_front_page()) ? get_current_issue() : $post;
-		$cover_story_id = get_post_meta($current_issue->ID, 'issue_cover_story', True);
-		if($cover_story_id !== False && $cover_story_id != '') {
-			if( ($cover_story = get_post($cover_story_id)) !== False) {
-				$exclude[] = $cover_story->ID;
-			}
-		}
-	} if($post->post_type == 'story') {
-		$exclude[] = $post->ID;
-	}
-
-	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'numberposts' => 4));
-	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
-	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'numberposts' => 6));
-	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
-}
-
-
-/*
- * Displays a list of stories in the current relevant issue.
- * List is swipe/touch friendly and spans the full width of the screen.
- */
-function display_story_list($issue, $class=null) {
-	$class = !empty($class) ? $class : '';
-	if ($issue) {
-		$stories = get_issue_stories($issue);
-		ob_start();
-
-		if ($stories) { ?>
-			<div class="story-list <?=$class?>">
-			<?php
-			$count = 0;
-			foreach ($stories as $story) {
-				$count++;
-
-				$title = $story->post_title;
-				$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
-				$thumb = get_featured_image_url($story->ID);
-			?>
-				<article<?php if ($count == count($stories)) { ?> class="last-child"<?php } ?>>
-					<a href="<?=get_permalink($story)?>">
-						<?php if ($thumb) { ?>
-						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
-						<?php } ?>
-						<h3 class="story-title"><?=$title?></h3>
-						<?php if (!empty($subtitle)) { ?>
-						<span class="subtitle"><?=$subtitle?></span>
-						<?php } ?>
-					</a>
-				</article>
-			<?php
-			}
-			?>
-			</div>
-		<?php
-		}
-		else {
-		?>
-			<p>No stories found.</p>
-		<?php
-		}
-
-		return ob_get_clean();
-	}
-	else { return null; }
-}
-
-
-/*
  * Returns a theme option value or NULL if it doesn't exist
  */
 function get_theme_option($key) {
@@ -180,24 +198,6 @@ function get_theme_option($key) {
 function ipad_deployed() {
 	$ipad_app_url = get_theme_option('ipad_app_url');
 	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
-}
-
-
-/*
- * Returns current issue post based on the Current Issue Cover
- * value in Theme Options
- */
-function get_current_issue() {
-	$posts = get_posts(array(
-		'post_type' => 'issue',
-		'name'      => get_theme_option('current_issue_cover')
-	));
-
-	if(count($posts) == 0) {
-		die('Error: No Issue post matches the post assigned to the "Current Issue Cover" Theme Options setting.');
-	} else {
-		return $posts[0];
-	}
 }
 
 
@@ -317,13 +317,14 @@ function get_issue_feed_url($object) {
 	if ($slug !== null) {
 		$url = home_url('/issues/'.$slug.'/feed/?post_type=story');
 	}
-	return $url;
 
+	return $url;
 }
 
 
 /*
  * Enqueue Issue or Story post type specific scripts
+ * TODO: cleanup
  */
 function enqueue_issue_story_scripts() {
 	global $post;
@@ -481,6 +482,7 @@ function curl_exists($url) {
 
 /*
  * Get home page/story stylesheet markup for the header
+ * TODO: cleanup
  *
  * @return string
  * @author Jo Greybill
@@ -718,6 +720,13 @@ function protocol_relative_attachment_url($url) {
 add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 
+/**
+ * Prevent WordPress from wrapping images with captions with a
+ * [caption] shortcode.
+ **/
+add_filter('disable_captions', create_function('$a', 'return true;'));
+
+
 /*
  * Whether or not the current story or issue is from
  * Fall 2013 or earlier (whether it requires deprecated markup
@@ -766,87 +775,25 @@ function uses_custom_template($post) {
 
 
 /**
- * Returns a full set of heading styles for the specified font.
+ * Set a 'story_template' meta field value for stories with an issue
+ * slug in the FALL_2013_OR_OLDER constant so that they are 'custom'
+ * if they have no value.
  *
- * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
+ * Runs only as necessary (when a given post is selected to be edited
+ * in the WP admin.)
+ *
+ * This function exists primarily to help toggle necessary meta fields.
+ * single-story.php will still handle old stories that do not have a set
+ * 'story_template' value appropriately.
  **/
-function get_heading_styles($font_name) {
-	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
-	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
-	return array_merge($template_fonts_base, $template_fonts[$font_name]);
-}
-
-
-/**
- * Get a non-custom story or issue's title font styling specs, based on
- * the story/issue's selected title font family and color.
- *
- * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
- *
- * @return array
- **/
-function get_template_heading_styles($post) {
-	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
-	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
-
-	// Capture any available inputted values
-	$post_meta = array(
-		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
-		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) ? get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) : '#222',
-	);
-	if ($post->post_type == 'issue') {
-		$post_meta['size-desktop'] = get_post_meta($post->ID, 'issue_default_fontsize_d', TRUE);
-		$post_meta['size-tablet'] = get_post_meta($post->ID, 'issue_default_fontsize_t', TRUE);
-		$post_meta['size-mobile'] = get_post_meta($post->ID, 'issue_default_fontsize_m', TRUE);
-		$post_meta['textalign'] = get_post_meta($post->ID, 'issue_default_textalign', TRUE);
-	}
-
-	// Set base font styles.
-	$styles = $template_fonts_base;
-	// Override base styles with per-font defaults.
-	if (!empty($post_meta['font-family']) && isset($template_fonts[$post_meta['font-family']])) {
-		foreach ($template_fonts[$post_meta['font-family']] as $key => $val) {
-			$styles[$key] = $val;
+function set_template_for_fall_2013_or_earlier($post) {
+	if ($post->post_type == 'story' && is_fall_2013_or_older($post)) {
+		if (get_post_meta($post->ID, 'story_template', TRUE) == '') {
+			update_post_meta($post->ID, 'story_template', 'custom');
 		}
 	}
-
-	// Override any default values with set post meta values.
-	// Don't override 'font-family' option; it does not contain a valid CSS font-family
-	// value (this is handled in the base style override loop above.)
-	foreach ($post_meta as $key => $val) {
-		if (!empty($val) && $key !== 'font-family') {
-			$styles[$key] = $val;
-		}
-	}
-
-	return $styles;
 }
-
-
-/**
-* Displays social buttons (Facebook, Twitter, G+) for a post.
-* Accepts a post URL and title as arguments.
-*
-* @return string
-* @author Jo Dickson
-**/
-function display_social($url, $title) {
-    $tweet_title = urlencode('Pegasus Magazine: '.$title);
-    ob_start(); ?>
-    <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-            Like "<?=$title?>" on Facebook
-        </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-            Tweet "<?=$title?>" on Twitter
-        </a>
-        <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
-            Share "<?=$title?>" on Google+
-        </a>
-    </aside>
-    <?php
-    return ob_get_clean();
-}
+add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
 
 /**
@@ -941,32 +888,64 @@ function display_markup_or_template($post) {
 
 
 /**
- * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * Returns a full set of heading styles for the specified font.
+ *
+ * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
+ *
+ * TODO: better function name
  **/
-add_filter('disable_captions', create_function('$a', 'return true;'));
+function get_heading_styles($font_name) {
+	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
+	return array_merge($template_fonts_base, $template_fonts[$font_name]);
+}
 
 
 /**
- * Set a 'story_template' meta field value for stories with an issue
- * slug in the FALL_2013_OR_OLDER constant so that they are 'custom'
- * if they have no value.
+ * Get a non-custom story or issue's title font styling specs, based on
+ * the story/issue's selected title font family and color.
  *
- * Runs only as necessary (when a given post is selected to be edited
- * in the WP admin.)
+ * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
  *
- * This function exists primarily to help toggle necessary meta fields.
- * single-story.php will still handle old stories that do not have a set
- * 'story_template' value appropriately.
+ * @return array
  **/
-function set_template_for_fall_2013_or_earlier($post) {
-	if ($post->post_type == 'story' && is_fall_2013_or_older($post)) {
-		if (get_post_meta($post->ID, 'story_template', TRUE) == '') {
-			update_post_meta($post->ID, 'story_template', 'custom');
+function get_template_heading_styles($post) {
+	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
+
+	// Capture any available inputted values
+	$post_meta = array(
+		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
+		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) ? get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) : '#222',
+	);
+	// TODO: is this necessary anymore? these values no longer exist for Issues
+	if ($post->post_type == 'issue') {
+		$post_meta['size-desktop'] = get_post_meta($post->ID, 'issue_default_fontsize_d', TRUE);
+		$post_meta['size-tablet'] = get_post_meta($post->ID, 'issue_default_fontsize_t', TRUE);
+		$post_meta['size-mobile'] = get_post_meta($post->ID, 'issue_default_fontsize_m', TRUE);
+		$post_meta['textalign'] = get_post_meta($post->ID, 'issue_default_textalign', TRUE);
+	}
+
+	// Set base font styles.
+	$styles = $template_fonts_base;
+	// Override base styles with per-font defaults.
+	if (!empty($post_meta['font-family']) && isset($template_fonts[$post_meta['font-family']])) {
+		foreach ($template_fonts[$post_meta['font-family']] as $key => $val) {
+			$styles[$key] = $val;
 		}
 	}
+
+	// Override any default values with set post meta values.
+	// Don't override 'font-family' option; it does not contain a valid CSS font-family
+	// value (this is handled in the base style override loop above.)
+	foreach ($post_meta as $key => $val) {
+		if (!empty($val) && $key !== 'font-family') {
+			$styles[$key] = $val;
+		}
+	}
+
+	return $styles;
 }
-add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
 
 /**
@@ -1051,5 +1030,20 @@ function allow_svgs( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'allow_svgs' );
+
+
+
+/****************************************************************************
+ *
+ * END site-level functions.  Don't add anything else below this line.
+ *
+ * START version-level functions here
+ *
+ ****************************************************************************/
+
+function require_version_functions() {
+	require_once( get_version_file_path( 'functions.php' ) );
+}
+add_action( 'after_setup_theme', 'require_version_functions' );
 
 ?>

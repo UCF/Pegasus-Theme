@@ -30,7 +30,12 @@ add_action('after_setup_theme', '__init__');
 
 
 
-# Set theme constants
+/****************************************************************************
+ *
+ * START theme constants here
+ *
+ ****************************************************************************/
+
 #define('DEBUG', True);                  # Always on
 #define('DEBUG', False);                 # Always off
 define('DEBUG', isset($_GET['debug'])); # Enable via get parameter
@@ -55,6 +60,11 @@ define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
 
 define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
+
+
+define( 'LATEST_VERSION', 3 ); // The most up-to-date major version of the theme
+define( 'EARLIEST_VERSION', 1 );
+define( 'VERSIONS_PATH', 'versions/' );
 
 
 /**
@@ -148,6 +158,8 @@ define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array))
  * or if the font is loaded in via the Cloud.Typography stylesheet, leave the 'url'
  * option as null.
  **/
+
+// TODO: remove $template_fonts_array, this is confusing
 $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
@@ -291,6 +303,13 @@ $template_font_styles_array = array(
 define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
 
 
+
+/****************************************************************************
+ *
+ * START site-wide Config settings here
+ *
+ ****************************************************************************/
+
 /**
  * Set config values including meta tags, registered custom post types, styles,
  * scripts, and any other statically defined assets that belong in the Config
@@ -307,8 +326,6 @@ Config::$custom_post_types = array(
 Config::$custom_taxonomies = array(
 	'Issues'
 );
-
-Config::$body_classes = array();
 
 
 /**
@@ -519,6 +536,7 @@ Orlando, FL 32816',
 	),
 );
 
+
 Config::$links = array(
 	array('rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico',),
 	array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'),),
@@ -530,11 +548,6 @@ Config::$styles = array(
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
-	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
-	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
-	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
-	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
-	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
 foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
@@ -545,36 +558,10 @@ if (!empty($theme_options['cloud_font_key'])) {
 	array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
 }
 
+
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_JS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
-	THEME_STATIC_URL.'/js/jquery.cookie.js',
+	THEME_JS_URL.'/jquery.cookie.js',
 	array('name' => 'placeholders', 'src' => THEME_JS_URL.'/placeholders.js',),
-	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
-	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
-	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
-	array('name' => 'lazyload', 'src' => THEME_JS_URL.'/jquery.lazyload.min.js',),
 );
-
-Config::$metas = array(
-	array('charset' => 'utf-8',),
-	array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=Edge'),
-	array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'),
-);
-if ($theme_options['gw_verify']){
-	Config::$metas[] = array(
-		'name'    => 'google-site-verification',
-		'content' => htmlentities($theme_options['gw_verify']),
-	);
-}
-
-
-
-function jquery_in_header() {
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', '//code.jquery.com/jquery-1.7.1.min.js');
-    wp_enqueue_script( 'jquery' );
-}
-
-add_action('wp_enqueue_scripts', 'jquery_in_header');

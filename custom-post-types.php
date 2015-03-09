@@ -538,6 +538,7 @@ class Issue extends CustomPostType {
 			}
 		}
 
+		// TODO: remove?
 		$font_options = array();
 		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
 			$font_options[$key] = $key;

@@ -437,12 +437,15 @@ function dump(){
  * @return void
  * @author Jared Lang
  **/
-if (DEBUG){
-	function debug($string){ /*
+if ( defined( 'DEBUG' ) ) {
+	function debug( $string ) { /*
 		print "<!-- DEBUG: {$string} -->\n"; */
 	}
-}else{
-	function debug($string){return;}
+}
+else {
+	function debug( $string ) {
+		return;
+	}
 }
 
 
@@ -454,12 +457,15 @@ if (DEBUG){
  * @return mixed
  * @author Jared Lang
  **/
-if (DEBUG){
-	function debug_callfunc($func, $args){
-		return call_user_func_array($func, $args);
+if ( defined( 'DEBUG' ) ) {
+	function debug_callfunc( $func, $args ) {
+		return call_user_func_array( $func, $args );
 	}
-}else{
-	function debug_callfunc($func, $args){return;}
+}
+else {
+	function debug_callfunc( $func, $args ) {
+		return;
+	}
 }
 
 
