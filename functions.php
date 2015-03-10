@@ -239,8 +239,9 @@ function set_templates_for_v1() {
 			'post_type' => 'issue',
 			'name' => $slug
 		) );
-		if ( $issue ) {
-			$issues[] = $issue;
+		if ( $issue[0] ) {
+			$issue = $issue[0];
+			$issues[] = $issue->ID;
 		}
 	}
 
@@ -256,9 +257,9 @@ function set_templates_for_v1() {
 			}
 		}
 	}
-	foreach ( $issues as $issue ) {
-		if ( get_post_meta( $issue->ID, 'issue_template', true ) !== 'custom' ) {
-			$success = update_post_meta( $issue->ID, 'issue_template', 'custom' );
+	foreach ( $issues as $issue_id ) {
+		if ( get_post_meta( $issue_id, 'issue_template', true ) !== 'custom' ) {
+			$success = update_post_meta( $issue_id, 'issue_template', 'custom' );
 			if ( $success !== true ) {
 				return false;
 			}
