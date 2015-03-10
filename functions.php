@@ -153,6 +153,9 @@ function get_version_footer() {
  * for maintaining backward compatibility have already been performed.
  * Functions with theme option flags below should only run once, assuming they
  * ran successfully the first time.
+ *
+ * TODO: manual post update required to trigger template updates when
+ * check_backward_compatibility() runs
  **/
 function check_backward_compatibility() {
 	// Attempts to set versions on Issue posts, based on Issue slugs set
@@ -167,12 +170,12 @@ function check_backward_compatibility() {
 	// Set a 'story_template' meta field value for stories with an issue slug
 	// in the V1_ISSUES constant so that they are 'custom' if they have no
 	// value.
-	// if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
+	if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
 		$success = set_templates_for_v1();
 		if ( $success == true ) {
 			add_option( 'theme_bc_v1_templates_set', true );
 		}
-	// }
+	}
 }
 add_action( 'init', 'check_backward_compatibility' );
 
