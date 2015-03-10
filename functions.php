@@ -167,12 +167,12 @@ function check_backward_compatibility() {
 	// Set a 'story_template' meta field value for stories with an issue slug
 	// in the V1_ISSUES constant so that they are 'custom' if they have no
 	// value.
-	if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
+	// if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
 		$success = set_templates_for_v1();
 		if ( $success == true ) {
 			add_option( 'theme_bc_v1_templates_set', true );
 		}
-	}
+	// }
 }
 add_action( 'init', 'check_backward_compatibility' );
 
