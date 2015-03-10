@@ -359,7 +359,7 @@ function custom_font_styles() {
 			';
 	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
 		$selector = 'select[id*="_default_font"] option[value="'.$font.'"],	#menu_content_content_fontselect_menu_tbl .mceText[title="'.$font.'"], #menu_content_content_styleselect_menu_tbl .mceText[title="'.$font.'"]';
-		$html .= get_webfont_css_styles($font, $selector, null, true);
+		$html .= get_font_class($font, $selector, null, true);
 	}
 	$html .= '</style>';
 
@@ -466,7 +466,7 @@ function add_webfonts_to_tinymce($settings) {
 	$content_css = array();
 
 	foreach ($fonts as $font=>$styles) {
-		$styles = get_heading_styles($font);
+		$styles = get_font_styles($font);
 /*
 		$str = $font.'='.str_replace('"', "'", $styles['font-family']).';';
 		$theme_advanced_fonts .= $str;

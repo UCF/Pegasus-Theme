@@ -11,4 +11,4 @@ ul {
 }
 
 <?php require('../../../../../wp-load.php'); ?>
-<?=get_webfont_css_classes()?>
+<?=get_all_font_classes()?>

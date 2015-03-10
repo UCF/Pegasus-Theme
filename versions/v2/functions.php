@@ -97,4 +97,72 @@ function display_social($url, $title) {
     return ob_get_clean();
 }
 
+
+/**
+ * Used in output_header_markup() to print default story template
+ * style declarations.  $font is expected to be a value returned from
+ * get_default_template_font_styles().
+ **/
+function get_default_template_font_css( $font ) {
+	$output .= '
+		article.story h1,
+		article.story h2,
+		article.story h3,
+		article.story h4,
+		article.story h5,
+		article.story h6 {
+			font-family: '.$font['font-family'].';
+			font-weight: '.$font['font-weight'].';
+			text-transform: '.$font['text-transform'].';
+			font-style: '.$font['font-style'].';
+			letter-spacing: '.$font['letter-spacing'].';
+		}
+		article.story .lead::first-letter {
+			font-family: '.$font['font-family'].';
+			font-weight: '.$font['font-weight'].';
+			text-transform: '.$font['text-transform'].';
+			font-style: '.$font['font-style'].';
+			letter-spacing: '.$font['letter-spacing'].';
+		}
+		article.story .lead:first-letter {
+			font-family: '.$font['font-family'].';
+			font-weight: '.$font['font-weight'].';
+			text-transform: '.$font['text-transform'].';
+			font-style: '.$font['font-style'].';
+			letter-spacing: '.$font['letter-spacing'].';
+		}
+		article.story h1,
+		article.story h2,
+		article.story h3,
+		article.story h4,
+		article.story h5,
+		article.story h6,
+		article.story blockquote,
+		article.story blockquote p {
+			color: '.$font['color'].';
+		}
+		article.story .lead::first-letter { color: '.$font['color'].'; }
+		article.story .lead:first-letter { color: '.$font['color'].'; }
+		article.story h1 {
+			font-size: '.$font['size-desktop'].';
+		}
+        article.story .ss-closing-overlay {
+            font-family: '.$font['font-family'].';
+            font-weight: '.$font['font-weight'].';
+            text-transform: '.$font['text-transform'].';
+        }
+		@media (max-width: 979px) {
+			article.story h1 {
+				font-size: '.$font['size-tablet'].';
+			}
+		}
+		@media (max-width: 767px) {
+			article.story h1 {
+				font-size: '.$font['size-mobile'].';
+			}
+		}
+	';
+	return $output;
+}
+
 ?>

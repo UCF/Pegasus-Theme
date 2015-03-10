@@ -130,4 +130,257 @@ function display_social($url, $title) {
     return ob_get_clean();
 }
 
+
+/*
+ * Get home page/story stylesheet markup for the header
+ *
+ * @return string
+ * @author Jo Greybill
+ */
+function output_header_markup_v1($post) {
+	$output = '';
+
+	// Page stylesheet
+	if ( $post->post_type == 'page' && !empty( $page_stylesheet_url ) ) {
+		$page_stylesheet_url = Page::get_stylesheet_url( $post );
+		if ( !empty( $page_stylesheet_url ) ) {
+			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
+		}
+	}
+
+	if (!is_search() && !is_404()) {
+		// Story font declarations (default and custom templates)
+		if ($post->post_type == 'story') {
+			// Custom stories
+			if (uses_custom_template($post)) {
+				$story_fonts = get_post_meta($post->ID, 'story_fonts', TRUE);
+				if (!empty($story_fonts)) {
+					$fonts = explode(',', $story_fonts);
+					$available_fonts = unserialize(CUSTOM_AVAILABLE_FONTS);
+					foreach ($fonts as $font) {
+						trim($font);
+						if (array_key_exists($font, $available_fonts)) {
+							$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
+						}
+					}
+				}
+			// Default template stories
+			} else {
+				$font = get_default_template_font_styles( $post );
+
+				if ($font['url']) {
+					$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
+				}
+
+				$output .= '<style type="text/css">';
+				$output .= '
+					article.story h1,
+					article.story h2,
+					article.story h3,
+					article.story h4,
+					article.story h5,
+					article.story h6 {
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
+					}
+					article.story .lead::first-letter {
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
+					}
+					article.story .lead:first-letter {
+						font-family: '.$font['font-family'].';
+						font-weight: '.$font['font-weight'].';
+						text-transform: '.$font['text-transform'].';
+						font-style: '.$font['font-style'].';
+						letter-spacing: '.$font['letter-spacing'].';
+					}
+					article.story h1,
+					article.story h2,
+					article.story h3,
+					article.story h4,
+					article.story h5,
+					article.story h6,
+					article.story blockquote,
+					article.story blockquote p {
+						color: '.$font['color'].';
+					}
+					article.story .lead::first-letter { color: '.$font['color'].'; }
+					article.story .lead:first-letter { color: '.$font['color'].'; }
+					article.story h1 {
+						font-size: '.$font['size-desktop'].';
+					}
+			        article.story .ss-closing-overlay {
+			            font-family: '.$font['font-family'].';
+			            font-weight: '.$font['font-weight'].';
+			            text-transform: '.$font['text-transform'].';
+			        }
+					@media (max-width: 979px) {
+						article.story h1 {
+							font-size: '.$font['size-tablet'].';
+						}
+					}
+					@media (max-width: 767px) {
+						article.story h1 {
+							font-size: '.$font['size-mobile'].';
+						}
+					}
+				';
+				$output .= get_all_font_classes();
+				$output .= '</style>';
+			}
+		}
+
+		// DEPRECATED:  Issue-wide stylesheet (on home/issue cover page)
+		if( (is_home() || $post->post_type == 'issue') ) {
+			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($post);
+			$dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE);
+			if ( !empty($issue_stylesheet_url) ) {
+				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
+			}
+			elseif ( DEV_MODE == 1 && !empty($dev_issue_directory) ) {
+				$dev_issue_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+				if (curl_exists($dev_issue_stylesheet_url)) {
+					$output .= '<link rel="stylesheet" href="'.$dev_issue_stylesheet_url.'" type="text/css" media="all" />';
+				}
+			}
+		}
+		// DEPRECATED:  Issue-wide stylesheet (on story)
+		if( $post->post_type == 'story' ) {
+			$story_issue = get_story_issue( $post );
+			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue);
+			$dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE);
+			if ( ($story_issue = get_story_issue($post)) !== False && !empty($issue_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
+			}
+			elseif (
+				($story_issue = get_story_issue($post)) !== False &&
+				DEV_MODE == 1 &&
+				!empty($dev_issue_directory))
+				{
+					$dev_issue_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.css';
+					if (curl_exists($dev_issue_home_stylesheet_url)) {
+						$output .= '<link rel="stylesheet" href="'.$dev_issue_home_stylesheet_url.'" type="text/css" media="all" />';
+					}
+			}
+		}
+
+		// Custom issue page-specific stylesheet
+		if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
+			$home_stylesheet_url = Issue::get_home_stylesheet_url($post);
+			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
+			if (!empty($home_stylesheet_url)) {
+				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
+			}
+			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
+				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+				if (curl_exists($dev_home_stylesheet_url)) {
+					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
+				}
+			}
+		}
+
+		// Custom story stylesheet
+		if( $post->post_type == 'story' && uses_custom_template($post) ) {
+			$story_stylesheet_url = Story::get_stylesheet_url($post);
+			$dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
+			if ( !empty($story_stylesheet_url) ) {
+				$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
+			}
+			elseif ( (DEV_MODE == 1) && !empty($dev_issue_directory) ) {
+				$dev_story_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+				if (curl_exists($dev_story_stylesheet_url)) {
+					$output .= '<link rel="stylesheet" href="'.$dev_story_stylesheet_url.'" type="text/css" media="all" />';
+				}
+			}
+		}
+	}
+
+	return $output;
+}
+
+
+/**
+ * Displays an issue cover or story contents.  Accounts for whether or
+ * not Developer Mode is on/off and what story/issue template is set.
+ *
+ * Note: as of v3, check_backward_compatibility() should set all v1 story template
+ * values to 'custom' if they are not already set.
+ *
+ * Note: files pulled via file_get_contents() here should be requested over http.
+ *
+ * Markup priority: Uploaded HTML File -> WYSIWYG editor content -> dev directory content
+ **/
+function display_markup_or_template_v1($post) {
+	if ($post->post_type == 'issue') {
+		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
+	}
+	else {
+		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.$post->post_name.'.html');
+	}
+	$post_template     = get_post_meta($post->ID, $post->post_type.'_template', TRUE);
+	$uploaded_html     = get_post_meta($post->ID, $post->post_type.'_html', TRUE);
+	$uploaded_html_url = wp_get_attachment_url($uploaded_html);
+	if ($uploaded_html_url) {
+		$uploaded_html_url = str_replace('https', 'http', $uploaded_html_url);
+	}
+
+	// If developer mode is on and this story/issue is custom,
+	// try to use dev directory contents:
+	if (
+		DEV_MODE == 1 &&
+		empty($post->post_content) &&
+		$dev_directory !== False &&
+		uses_custom_template($post)
+	) {
+		add_filter('the_content', 'kill_empty_p_tags', 999);
+
+		// Uploaded HTML file should always take priority over dev directory contents
+		if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
+			print apply_filters('the_content', file_get_contents($uploaded_html_url));
+		}
+		else {
+			if (curl_exists($dev_directory_html_url)) {
+				$content = file_get_contents($dev_directory_html_url);
+				print apply_filters('the_content', $content);
+			}
+		}
+	}
+	else {
+		// Check the set post template.  Note that if this value is set to 'default'
+		// it is saved in the database as an empty value.
+		if (!empty($post_template)) {
+			switch ($post_template) {
+				case 'custom':
+					// If an uploaded HTML file is present, use it.  Otherwise, use
+					// any content available in the WYSIWYG editor
+					if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
+						print apply_filters('the_content', file_get_contents($uploaded_html_url));
+					}
+					else {
+						the_content();
+					}
+					break;
+				default:
+					$filename = 'templates/' . $post->post_type . '/' . $post_template . '.php';
+					$template = get_version_file_path( $filename, get_relevant_version( $post ) );
+					require_once( $template );
+					break;
+			}
+		}
+		else {
+			// Use WYSIWYG editor contents for old stories that don't have a
+			// field value set
+			the_content();
+		}
+	}
+}
+
 ?>

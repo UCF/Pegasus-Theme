@@ -45,7 +45,7 @@
             }
 		</script>
 
-		<?=output_header_markup($post);?>
+		<?=output_header_markup_v1($post);?>
 
 	</head>
 

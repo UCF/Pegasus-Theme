@@ -62,26 +62,35 @@ define('CB_DOMAIN', $theme_options['cb_domain']);
 define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
 
 
-$versions = array(
-	3,
-	2,
-	1
-);
-define( 'VERSIONS', serialize( $versions ) );
-define( 'LATEST_VERSION', $versions[0] ); // The most up-to-date major version of the theme
+/**
+ * Version definitions.  Versions should always be whole numbers (no decimals).
+ **/
+define( 'LATEST_VERSION', 3 ); // The most up-to-date major version of the theme
+define( 'EARLIEST_VERSION', 1 ); // the very first version
+define( 'VERSIONS', serialize( range( EARLIEST_VERSION, LATEST_VERSION ) ) );
 define( 'VERSIONS_PATH', 'versions/' );
 
 
 /**
- * List of issue slugs that are from Fall 2013 or prior.
+ * Group all issues by version.  Intended as a replacement for (now-removed)
+ * FALL_2013_OR_OLDER constant and is_fall_2013_or_older(), and should exist
+ * solely for running backward compatibility-related functions.
+ *
+ * Don't create new constants for versions above v2; they are not necessary.
  **/
-define('FALL_2013_OR_OLDER', serialize(array(
+define( 'V1_ISSUES', serialize( array(
 	'fall-2013',
 	'summer-2013',
 	'spring-2013',
 	'fall-2012',
 	'summer-2012'
-)));
+) ) );
+define( 'V2_ISSUES', serialize( array(
+	'spring-2014',
+	'summer-2014',
+	'fall-2014',
+	'spring-2015'
+) ) );
 
 
 /**
@@ -112,7 +121,7 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * $template_font_styles_array, then by per-post meta values (for headings), if
  * available.
  *
- * See output_header_markup() and get_webfont_css_styles() in functions.php for
+ * See output_header_markup() and get_font_class() in functions.php for
  * usage.
  *
  * Options:
