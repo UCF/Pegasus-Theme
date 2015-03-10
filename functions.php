@@ -464,13 +464,12 @@ function get_issue_feed_url($object) {
 
 /*
  * Enqueue Issue or Story post type specific scripts
- * TODO: cleanup
  */
 function enqueue_issue_story_scripts() {
 	global $post;
 
 	if ( !is_404() && !is_search() ) {
-		// add home page script(s)
+		// 1. add home page script(s)
 		if( $post->post_type == 'issue' || is_home() ) {
 
 			// issue-wide
@@ -503,7 +502,7 @@ function enqueue_issue_story_scripts() {
 				}
 			}
 
-		// add story script(s)
+		// 2. add story script(s)
 		} else if( $post->post_type == 'story' ) {
 			$story_issue = get_story_issue( $post );
 
@@ -559,11 +558,7 @@ function get_story_issue($story) {
 	$issue_terms = wp_get_object_terms($story->ID, 'issues');
 	$issue_posts = get_posts(array('post_type'=>'issue', 'numberposts'=>-1));
 
-	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
-	# to MATCH issue POST slugs!
 	foreach($issue_terms as $term) {
-		# reverse the term slug
-		#$post_slug = implode('-', array_reverse(explode('-', $term->slug)));
 		$post_slug = $term->slug;
 		foreach($issue_posts as $issue) {
 			if($post_slug == $issue->post_name) {
@@ -579,8 +574,6 @@ function get_story_issue($story) {
  * Get the stories associated with an issue
  */
 function get_issue_stories( $issue, $options=array() ) {
-	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
-	# to MATCH issue POST slugs!
 	if ( $issue ) {
 		$issue_term_slug = $issue->post_name;
 
