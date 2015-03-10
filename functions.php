@@ -249,7 +249,7 @@ function set_templates_for_v1() {
 	}
 
 	foreach ( $stories as $story ) {
-		if ( get_post_meta( $story->ID, 'story_template', true ) == '' ) {
+		if ( get_post_meta( $story->ID, 'story_template', true ) !== 'custom' ) {
 			$success = update_post_meta( $story->ID, 'story_template', 'custom' );
 			if ( $success !== true ) {
 				return false;
@@ -257,7 +257,7 @@ function set_templates_for_v1() {
 		}
 	}
 	foreach ( $issues as $issue ) {
-		if ( get_post_meta( $issue->ID, 'issue_template', true ) == '' ) {
+		if ( get_post_meta( $issue->ID, 'issue_template', true ) !== 'custom' ) {
 			$success = update_post_meta( $issue->ID, 'issue_template', 'custom' );
 			if ( $success !== true ) {
 				return false;
