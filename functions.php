@@ -168,7 +168,7 @@ function check_backward_compatibility() {
 	// in the V1_ISSUES constant so that they are 'custom' if they have no
 	// value.
 	if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
-		$success = set_template_for_v1_stories();
+		$success = set_templates_for_v1();
 		if ( $success == true ) {
 			add_option( 'theme_bc_v1_templates_set', true );
 		}
@@ -217,9 +217,10 @@ function set_initial_issue_versions() {
 /**
  * Set a 'story_template' meta field value for stories with an issue
  * slug in the V1_ISSUES constant so that they are 'custom'
- * if they have no value.
+ * if they have no value.  Also updates v1 'issue_template' values.
  **/
-function set_template_for_v1_stories() {
+function set_templates_for_v1() {
+	$issue_slugs = unserialize( V1_ISSUES );
 	$stories = get_posts( array(
 		'numberposts' => -1,
 		'post_type' => 'story',
@@ -227,18 +228,37 @@ function set_template_for_v1_stories() {
 			array(
 				'taxonomy' => 'issues',
 				'field' => 'slug',
-				'terms' => unserialize( V1_ISSUES )
+				'terms' => $issue_slugs
 			)
 		)
 	) );
+	$issues = array();
+	foreach ( $issue_slugs as $slug ) {
+		$issue = get_posts( array(
+			'numberposts' => 1,
+			'post_type' => 'issue',
+			'name' => $slug
+		) );
+		if ( $issue ) {
+			$issues[] = $issue;
+		}
+	}
 
-	if ( !$stories || !is_array( $stories ) ) {
+	if ( !$stories || !is_array( $stories ) || !$issues || !is_array( $issues ) ) {
 		return false;
 	}
 
 	foreach ( $stories as $story ) {
 		if ( get_post_meta( $story->ID, 'story_template', true ) == '' ) {
 			$success = update_post_meta( $story->ID, 'story_template', 'custom' );
+			if ( $success !== true ) {
+				return false;
+			}
+		}
+	}
+	foreach ( $issues as $issue ) {
+		if ( get_post_meta( $issue->ID, 'issue_template', true ) == '' ) {
+			$success = update_post_meta( $issue->ID, 'issue_template', 'custom' );
 			if ( $success !== true ) {
 				return false;
 			}
