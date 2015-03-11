@@ -83,11 +83,11 @@ $(document).ready(function() {
   document.body.appendChild(mapScript);
 
   $.getScript(THEME_JS_URL + '/jquery.touchSwipe.min.js').done(function() {
-    $('.carousel-inner').swipe( {
+    $('#stop-carousel').swipe( {
       swipeLeft:function(event, direction, distance, duration, fingerCount) {
         nextStop();
       },
-      swipeRight: function() {
+      swipeRight: function(event, direction, distance, duration, fingerCount) {
         previousStop();
       }
     });
@@ -119,10 +119,20 @@ function initialize() {
     previousStop();
   });
 
+  $('#btn-previous-carousel').click(function(event){
+    event.preventDefault();
+    previousStop();
+  });
+
   $('#btn-next').click(function(event){
     event.preventDefault();
     nextStop();
   });
+
+  $('#btn-next-carousel').click(function(event){
+    event.preventDefault();
+    nextStop();
+  })
 
   $(window).resize(function() {
     setMapHeight();
@@ -250,18 +260,18 @@ function setMapHeight(){
 
 function updateNavigation() {
   if (currentIndex == 0) {
-    $('#btn-previous').hide();
-    $('#btn-next').show();
+    $('#btn-previous-carousel').hide();
+    $('#btn-next-carousel').show();
   } else if (currentIndex == stops.length - 1) {
-    $('#btn-next').hide();
-    $('#btn-previous').show();
+    $('#btn-next-carousel').hide();
+    $('#btn-previous-carousel').show();
   } else {
     
-    if ($('#btn-next').is(':hidden')) {
-      $('#btn-next').show();
+    if ($('#btn-next-carousel').is(':hidden')) {
+      $('#btn-next-carousel').show();
     }
-    if ($('#btn-previous').is(':hidden')) {
-      $('#btn-previous').show();
+    if ($('#btn-previous-carousel').is(':hidden')) {
+      $('#btn-previous-carousel').show();
     }
   }
 }

@@ -33,6 +33,15 @@ main article.story #stop-carousel {
 	margin-top: 1.0em;
 }
 
+main article.story #stop-carousel .carousel-controls {
+	margin: 0;
+	line-height: 0;
+}
+
+main article.story #stop-carousel .carousel-control {
+	top: 50%;
+}
+
 main article.story #stop-carousel-inner {
 	position: relative;
 	width: 100%;
@@ -226,5 +235,6 @@ main article.story .map-stop-content .smaller-title {
 
 #map-canvas {
 	height: 275px !important;
+	margin-top: 1.0em;
 	margin-bottom: 1.0em;
 }
