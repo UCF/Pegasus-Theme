@@ -261,17 +261,23 @@ function setMapHeight(){
 function updateNavigation() {
   if (currentIndex == 0) {
     $('#btn-previous-carousel').hide();
+	$('#btn-previous').hide();
     $('#btn-next-carousel').show();
+	$('#btn-next').show();
   } else if (currentIndex == stops.length - 1) {
     $('#btn-next-carousel').hide();
+	$('#btn-next').hide();
     $('#btn-previous-carousel').show();
+	$('#btn-previous').show();
   } else {
     
     if ($('#btn-next-carousel').is(':hidden')) {
       $('#btn-next-carousel').show();
+	  $('#btn-next').show();
     }
     if ($('#btn-previous-carousel').is(':hidden')) {
       $('#btn-previous-carousel').show();
+	  $('#btn-previous').show();
     }
   }
 }
