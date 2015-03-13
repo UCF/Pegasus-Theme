@@ -39,7 +39,52 @@ main article.story #stop-carousel .carousel-controls {
 }
 
 main article.story #stop-carousel .carousel-control {
-	top: 50%;
+	position: absolute;
+	top: 200px;
+	bottom: 200px;
+	left: 0;
+	margin-top: 0;
+	height: auto;
+	line-height: 0;
+	width: 7%;
+	font-size: 20px;
+	color: #fff;
+	border: none;
+	background: rgba(0, 0, 0, .25);
+	text-align: center;
+	text-shadow: 0 1px 2px rgba(0,0,0,.6);
+	opacity: 0.75;
+}
+
+main article.story #stop-carousel .carousel-control:hover {
+	opacity: 1;
+}
+
+main article.story #stop-carousel .carousel-control.right {
+	right: 0;
+	left: auto;
+	border-radius: 150px 0 0 150px;
+}
+
+main article.story #stop-carousel .carousel-control.left {
+	border-radius: 0 150px 150px 0;
+}
+
+main article.story #stop-carousel .carousel-control.right span {
+	right: 20%;
+}
+
+main article.story #stop-carousel .carousel-control.left span {
+	left: 20%;
+}
+
+main article.story #stop-carousel .carousel-control span {
+	width: 24px;
+	height: 24px;
+	margin-top: -20px;
+	font-size: 72px;
+	position: absolute;
+	top: 60%;
 }
 
 main article.story #stop-carousel-inner {
