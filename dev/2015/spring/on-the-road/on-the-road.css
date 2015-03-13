@@ -289,3 +289,8 @@ main article.story .video-intro-text {
 	margin-bottom: 30px;
 	margin-top: 30px;
 }
+
+main article.story #roadtrip-trailer {
+	background: #000;
+	width: 100%;
+}
