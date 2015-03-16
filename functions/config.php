@@ -50,6 +50,7 @@ define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
 define('THEME_DEV_URL', THEME_URL.'/dev');
+define('THEME_COMPONENTS_URL', THEME_STATIC_URL.'/components');
 define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
@@ -574,8 +575,8 @@ if (!empty($theme_options['cloud_font_key'])) {
 
 
 Config::$scripts = array(
-    array('admin' => True, 'src' => THEME_JS_URL.'/wysihtml5-0.3.0.min.js',),
+    array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	THEME_JS_URL.'/jquery.cookie.js',
-	array('name' => 'placeholders', 'src' => THEME_JS_URL.'/placeholders.js',),
+	THEME_COMPONENTS_URL.'/jquery.cookie.js',
+	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
 );
