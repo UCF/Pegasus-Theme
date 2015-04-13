@@ -66,7 +66,7 @@
 <div class="container-wide" id="home">
 	<section class="container home-hero">
 		<div class="row">
-			<div class="span8">
+			<div class="col-md-8 col-sm-8">
 				<article class="home-article-1">
 				<?php if ( $story_1 ): ?>
 					<a href="<?php echo get_permalink( $story_1->ID ); ?>"></a>
@@ -79,7 +79,7 @@
 				<?php endif; ?>
 				</article>
 			</div>
-			<div class="span4">
+			<div class="col-md-4 col-sm-4">
 				<article class="home-article-2 thumb featured">
 				<?php if ( $story_2 ): ?>
 					<a href="<?php echo get_permalink( $story_2->ID ); ?>"></a>
@@ -107,7 +107,7 @@
 	</section>
 	<section class="container home-stories">
 		<div class="row">
-			<div class="span12 heading-wrap">
+			<div class="col-md-12 col-sm-12 heading-wrap">
 				<h2>More in this Issue</h2>
 			</div>
 		</div>
@@ -136,7 +136,7 @@
 	</section>
 	<section class="container home-past-issues">
 		<div class="row">
-			<div class="span12 heading-wrap">
+			<div class="col-md-12 col-sm-12 heading-wrap">
 				<h2>Recent Issues of Pegasus Magazine</h2>
 			</div>
 		</div>
@@ -160,7 +160,7 @@
 		endif;
 		?>
 		<div class="row">
-			<div class="span12">
+			<div class="col-md-12 col-sm-12">
 				<span class="pull-right archives-link">
 					<a href="<?php echo get_permalink( get_page_by_title('Archives') ); ?>">View Archives &raquo;</a>
 				</span>

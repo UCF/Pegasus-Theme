@@ -1,7 +1,26 @@
-.unstyled {
-  @include unstyled-list();
+p {
+  font-size: 14px;
+  line-height: 1.38em;
+  margin-bottom: 1.5em;
+  margin-top: 1em;
+
+  .excerpt {
+    font-size: 23px;
+    font-style: italic;
+  }
+
+  .caption {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+  }
 }
 
-.horizontal {
-  @include horizontal-list();
+.section-title {
+  @include font-smoothing();
+  color: #222;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 90px;
 }

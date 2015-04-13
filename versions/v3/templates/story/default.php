@@ -19,12 +19,12 @@
 	<?php } ?>
 	<div class="container">
 		<div class="row title-wrap">
-			<div class="span10 offset1">
+			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 				<h1><?=$post->post_title?></h1>
 			</div>
 		</div>
 		<div class="row description-wrap">
-			<div class="span10 offset1">
+			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 				<span class="description">
 					<?=get_post_meta($post->ID, 'story_description', TRUE);?>
 				</span>
@@ -35,7 +35,7 @@
 		</div>
 
 		<div class="row content-wrap">
-			<div class="span10 offset1">
+			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 				<?=the_content()?>
 			</div>
 		</div>

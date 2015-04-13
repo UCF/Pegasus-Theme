@@ -237,11 +237,11 @@ function sc_callout($attr, $content) {
 	// Close out our existing .span, .row and .container
 	$html = '</div></div></div>';
 	$html .= '<div class="container-wide callout" style="background-color: '.$bgcolor.';">';
-	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1 callout-inner">';
+	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner">';
 	$html .= $content;
 	$html .= '</div></div></div></div>';
 	// Reopen standard .container, .row and .span
-	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1">';
+	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
 
 	return $html;
 }
@@ -269,7 +269,7 @@ function sc_sidebar($attr, $content) {
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content = do_shortcode($content);
 
-	$html = '<div class="span4 '.$pull.' sidebar">';
+	$html = '<div class="col-md-4 col-sm-4 '.$pull.' sidebar">';
 	$html .= '<section class="sidebar-inner" style="background-color: '.$bgcolor.';">'.$content.'</section>';
 	$html .= '</div>';
 
@@ -314,7 +314,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'taxonomy'               => 'category',
 		'show_empty_sections'    => false,
 		'non_alpha_section_name' => 'Other',
-		'column_width'           => 'span4',
+		'column_width'           => 'col-md-4 col-sm-4',
 		'column_count'           => '3',
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
@@ -426,14 +426,14 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="col-md-3 col-sm-3" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
 		<? if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
-			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
+			<button class="btn btn-default<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
+			<button class="btn btn-default<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
 		</div>
 		<? } ?>
 	<?
@@ -513,7 +513,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
 		'taxonomy' => 'issues',
-		'column_width' => 'span10 offset1',
+		'column_width' => 'col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1',
 		'column_count' => '1',
 		'order_by' => 'title',
 		'order' => 'ASC',
@@ -589,14 +589,14 @@ function sc_archive_search($params=array(), $content='') {
 	ob_start();
 	?>
 	<div class="row post-type-search" id="archives">
-		<div class="span8 offset2 post-type-search-header">
+		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
 				<label for="s">Search</label>
 				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
-		<div class="span12 post-type-search-results"></div>
-		<div class="span10 offset1 post-type-search-term">
+		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
+		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
 		<?
 		foreach($issues_sorted as $key => $posts) {
 			$issue = get_page_by_title($key, 'OBJECT', 'issue');
@@ -606,7 +606,7 @@ function sc_archive_search($params=array(), $content='') {
 			if ($posts) {
 		?>
 			<div class="row issue">
-				<div class="span4">
+				<div class="col-md-4 col-sm-4">
 					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
 
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
@@ -627,7 +627,7 @@ function sc_archive_search($params=array(), $content='') {
 						</a>
 					<?php } ?>
 				</div>
-				<div class="span6">
+				<div class="col-md-6 col-sm-6">
 					<h3>More in This Issue</h3>
 					<ul>
 					<? foreach($posts as $post) { ?>
@@ -645,7 +645,7 @@ function sc_archive_search($params=array(), $content='') {
 					<? } ?>
 					</ul>
 				</div>
-				<hr class="span10" />
+				<hr class="col-md-10 col-sm-10" />
 			</div>
 			<?
 			}
@@ -751,7 +751,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 									</div>
 									<div class="description-wrap">
 										<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
-										<a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
+										<a class="ss-control ss-play" href="#2"><i class="icon icon-caret-right"></i>
 										<?=display_social(get_permalink($post), $post->post_title)?>
 									</div>
 								</div>

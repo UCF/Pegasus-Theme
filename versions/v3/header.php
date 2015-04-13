@@ -68,7 +68,7 @@
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
-						<div class="span12">
+						<div class="col-md-12 col-sm-12">
 							<h2 class="section-title">In This Issue</h2>
 						</div>
 					</div>
@@ -76,8 +76,8 @@
 				<?=display_story_list($relevant_issue)?>
 				<div class="controls">
 					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
-					<a class="backward icon-caret-left" href="#">Back</a>
-					<a class="forward icon-caret-right" href="#">Forward</a>
+					<a class="backward icon icon-caret-left" href="#">Back</a>
+					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>
 			</div>
 		</aside>
@@ -85,7 +85,7 @@
 		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
-					<nav class="span12" role="navigation">
+					<nav class="col-md-12 col-sm-12" role="navigation">
 						<?php if ($post->post_type == 'issue') { ?>
 						<h1 class="sprite header-logo">
 							<a href="<?=get_site_url()?>">Pegasus</a>

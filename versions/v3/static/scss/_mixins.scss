@@ -13,28 +13,6 @@
   }
 }
 
-// Generates styling for an unstyled unordered list (unsets
-// padding-left; removes bullets.)
-@mixin unstyled-list() {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-// Generates a horizontal unordered list.  Can be combined with
-// unstyled-list() to create generic nav menus.
-@mixin horizontal-list($gutter: 10px) {
-  > li {
-    display: inline-block;
-    margin-right: $gutter;
-
-    &:last-child,
-    &.last-child,
-    &.last {
-      margin-right: 0;
-    }
-  }
-}
-
 // Adds font smoothing to an element
 @mixin font-smoothing() {
   -moz-osx-font-smoothing: grayscale;

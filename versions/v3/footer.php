@@ -9,14 +9,14 @@
 			}
 
 			$stories = get_issue_stories($issue, $args);
-			$perrow = 3; // .span4's
+			$perrow = 3; // .col-md-4 col-sm-4's
 
 			if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home()):
 			?>
 			<aside class="container-wide" id="more-stories">
 				<div class="container">
 					<div class="row">
-						<div class="span12">
+						<div class="col-md-12 col-sm-12">
 							<h2 class="section-title">More UCF Stories</h2>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 							$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
 							$thumb = get_featured_image_url($story->ID);
 					?>
-						<article class="span4">
+						<article class="col-md-4 col-sm-4">
 							<a href="<?=get_permalink($story)?>">
 								<?php if ($thumb) { ?>
 								<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
@@ -55,8 +55,8 @@
 				</div>
 				<?=display_story_list($issue, 'hidden-desktop')?>
 				<div class="controls hidden-desktop">
-					<a class="backward icon-caret-left" href="#">Back</a>
-					<a class="forward icon-caret-right" href="#">Forward</a>
+					<a class="backward icon icon-caret-left" href="#">Back</a>
+					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>
 			</aside>
 			<?php endif; ?>
@@ -78,7 +78,7 @@
 			<aside class="container-wide" id="footer-social">
 				<div class="container">
 					<div class="row">
-						<div class="span10 offset1 border-top">
+						<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 border-top">
 							<ul>
 								<?php if (!empty($fb_url)) { ?>
 								<li>
@@ -111,7 +111,7 @@
 			<footer class="container-wide" id="footer-navigation">
 				<div class="container">
 					<div class="row">
-						<div class="span12">
+						<div class="col-md-12 col-sm-12">
 							<span class="footer-logo <?php if(ipad_deployed()) { ?>pull-left<?php } ?>">
 								<a class="sprite logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?=get_site_url()?>">
 									Pegasus Magazine

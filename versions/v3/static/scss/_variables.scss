@@ -2,7 +2,20 @@
 
 
 // Bootstrap overrides
-$grid-gutter-width:          20px !default;
 
-$icon-font-path:             '../../../../static/components/bootstrap-sass-3.3.4/assets/fonts/bootstrap';
-$fa-font-path:               '../../../../static/components/font-awesome/fonts';
+$screen-xs-min:              480px !default;
+$screen-sm-min:              768px !default;
+$screen-md-min:              992px !default;
+$screen-lg-min:              $screen-md-min !default;
+
+$grid-gutter-width: 20px !default;
+
+$container-tablet:             (720px + $grid-gutter-width) !default;
+$container-sm:                 $container-tablet !default;
+$container-desktop:            (940px + $grid-gutter-width) !default;
+$container-md:                 $container-desktop !default;
+$container-large-desktop:      $container-desktop !default;
+$container-lg:                 $container-large-desktop !default;
+
+$icon-font-path:    '../../../../static/components/bootstrap-sass-3.3.4/assets/fonts/bootstrap';
+$fa-font-path:      '../../../../static/components/font-awesome/fonts';
