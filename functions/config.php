@@ -9,24 +9,29 @@
  * @author Jared Lang
  **/
 function __init__(){
-	add_theme_support('menus');
-	add_theme_support('post-thumbnails');
-	add_image_size('homepage', 620);
-	add_image_size('single-post-thumbnail', 220, 230, true);
-	add_image_size('issue-thumbnail', 190, 248);
-	add_image_size('issue-cover-feature', 768, 432, true);
-	register_nav_menu('footer-menu', __('Footer Menu'));
+	add_theme_support( 'menus' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	add_image_size( 'homepage', 620 );
+	add_image_size( 'single-post-thumbnail', 220, 230, true );
+	add_image_size( 'issue-thumbnail', 190, 248 );
+	add_image_size( 'issue-cover-feature', 768, 432, true );
+	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
 
-	foreach(Config::$styles as $style){Config::add_css($style);}
-	foreach(Config::$scripts as $script){Config::add_script($script);}
+	foreach( Config::$styles as $style ) {
+		Config::add_css( $style );
+	}
+	foreach( Config::$scripts as $script ) {
+		Config::add_script( $script );
+	}
 
 	global $timer;
 	$timer = Timer::start();
 
-	wp_deregister_script('l10n');
+	wp_deregister_script( 'l10n' );
 	set_defaults_for_options();
 }
-add_action('after_setup_theme', '__init__');
+add_action( 'after_setup_theme', '__init__' );
 
 
 

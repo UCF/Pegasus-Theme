@@ -2,6 +2,9 @@
 
 Theme for the online version of Pegasus Magazine.
 
+## Requirements
+* WordPress 4.1+
+
 ## Notes
 
 This theme has a built-in Developer Mode that should be activated while stories and issue covers are in development.  Update the Developer Mode setting in Theme Options to activate or deactivate Developer Mode.
@@ -20,7 +23,7 @@ Note that Developer Mode should be turned off for non-development environments.
 
 ## Custom Taxonomies
 
-* Issue - grouping mechanism for stories.  Note that the slugs for these are reverse of the Issue post type slugs and need to be entered manually upon creation.
+* Issue - grouping mechanism for stories.  Note that the slugs for these must match their equivalent Issue post slug exactly.
 
 ## Short Codes
 

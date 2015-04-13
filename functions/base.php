@@ -1177,23 +1177,21 @@ function slug($s, $spaces='-'){
  * @return string
  * @author Jared Lang
  **/
-function header_($tabs=2){
+function header_( $tabs=2 ) {
 	opengraph_setup();
-	remove_action('wp_head', 'adjacent_posts_rel_link_wp_head');
-	remove_action('wp_head', 'index_rel_link');
-	remove_action('wp_head', 'rel_canonical');
-	remove_action('wp_head', 'wp_generator');
-	remove_action('wp_head', 'wlwmanifest_link');
-	remove_action('wp_head', 'rsd_link');
+	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
+	remove_action( 'wp_head', 'index_rel_link' );
+	remove_action( 'wp_head', 'rel_canonical' );
+	remove_action( 'wp_head', 'wp_generator' );
+	remove_action( 'wp_head', 'wlwmanifest_link' );
+	remove_action( 'wp_head', 'rsd_link' );
+
+	add_action( 'wp_head', 'header_meta', 1 );
+	add_action( 'wp_head', 'header_links', 10 );
 
 	ob_start();
-	print header_title()."\n";
-	print header_meta()."\n";
 	wp_head();
-	print header_links()."\n";
-
-
-	return indent(ob_get_clean(), $tabs);
+	return indent( ob_get_clean(), $tabs );
 }
 
 
@@ -1296,12 +1294,12 @@ function header_meta(){
 	$meta_html = array();
 	$defaults  = array();
 
-	foreach($metas as $meta){
-		$meta        = array_merge($defaults, $meta);
-		$meta_html[] = create_html_element('meta', $meta);
+	foreach( $metas as $meta ) {
+		$meta        = array_merge( $defaults, $meta );
+		$meta_html[] = create_html_element( 'meta', $meta );
 	}
-	$meta_html = implode("\n", $meta_html);
-	return $meta_html;
+	$meta_html = implode( "\n", $meta_html );
+	echo $meta_html;
 }
 
 
@@ -1316,56 +1314,55 @@ function header_links(){
 	$links_html = array();
 	$defaults   = array();
 
-	foreach($links as $link){
-		$link         = array_merge($defaults, $link);
-		$links_html[] = create_html_element('link', $link, null, True);
+	foreach( $links as $link ) {
+		$link         = array_merge( $defaults, $link );
+		$links_html[] = create_html_element( 'link', $link, null, True );
 	}
 
-	$links_html = implode("\n", $links_html);
-	return $links_html;
+	$links_html = implode( "\n", $links_html );
+	echo $links_html;
 }
 
 
 /**
  * Generates a title based on context page is viewed.  Stolen from Thematic
  **/
-function header_title(){
+function header_title( $title, $separator ) {
 	$site_name = get_bloginfo('name');
-	$separator = '|';
 
 	if ( is_single() ) {
-		$content = single_post_title('', FALSE);
+		$content = single_post_title( '', FALSE );
 	}
 	elseif ( is_home() || is_front_page() ) {
-		$content = get_bloginfo('description');
+		$content = get_bloginfo( 'description' );
 	}
 	elseif ( is_page() ) {
-		$content = single_post_title('', FALSE);
+		$content = single_post_title( '', FALSE );
 	}
 	elseif ( is_search() ) {
 		$content = __('Search Results for:');
-		$content .= ' ' . esc_html(stripslashes(get_search_query()));
+		$content .= ' ' . esc_html( stripslashes( get_search_query() ) );
 	}
 	elseif ( is_category() ) {
-		$content = __('Category Archives:');
-		$content .= ' ' . single_cat_title("", false);;
+		$content = __( 'Category Archives:' );
+		$content .= ' ' . single_cat_title( '', false );
 	}
 	elseif ( is_404() ) {
-		$content = __('Not Found');
+		$content = __( 'Not Found' );
 	}
 	else {
-		$content = get_bloginfo('description');
+		$content = get_bloginfo( 'description' );
 	}
 
-	if (get_query_var('paged')) {
+	if ( get_query_var( 'paged' ) ) {
 		$content .= ' ' .$separator. ' ';
 		$content .= 'Page';
 		$content .= ' ';
-		$content .= get_query_var('paged');
+		$content .= get_query_var( 'paged' );
 	}
 
-	if($content) {
-		if (is_home() || is_front_page()) {
+	if( $content ) {
+		if ( is_home() || is_front_page() ) {
 			$elements = array(
 				'site_name' => $site_name,
 				'separator' => $separator,
@@ -1383,17 +1380,16 @@ function header_title(){
 	}
 
 	// But if they don't, it won't try to implode
-	if(is_array($elements)) {
-	$doctitle = implode(' ', $elements);
+	if( is_array( $elements ) ) {
+		$doctitle = implode( ' ', $elements );
 	}
 	else {
-	$doctitle = $elements;
+		$doctitle = $elements;
 	}
-
-	$doctitle = "<title>". $doctitle ."</title>";
 
 	return $doctitle;
 }
+add_filter( 'wp_title', 'header_title', 10, 2 );
 
 
 /**
