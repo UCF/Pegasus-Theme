@@ -1,153 +1,295 @@
-/**************************
- * Stories - General
- **************************/
+// Stories - General
 article.story {
+  @include font-smoothing();
   color: #000;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-article.story,
-article.story p,
-article.story ol,
-article.story ul {
-  font-family: Georgia, serif;
-  font-size: 16px;
-  line-height: 1.38em;
-  margin-top: 0;
-}
-article.story p { margin-bottom: 16px; }
-article.story p:empty { display: none; }
 
-article.story .story-header-image {
-  position: relative;
-  height: 600px;
-  margin: 0 auto 35px auto;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-article.story .story-header-image img {
-  position: absolute;
-  clip: rect(1px, 1px, 1px, 1px);
-  top: 0;
-  left: 0;
-  height: 1px;
-  width: 1px;
-}
+  &,
+  p,
+  ol,
+  ul {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.38em;
+    margin-top: 0;
+  }
 
-article.story .title-wrap { padding-top: 30px; }
-article.story .story-header-image + .container .title-wrap { padding-top: 0; }
-article.story h1,
-article.story h2,
-article.story h3,
-article.story h4,
-article.story h5,
-article.story h6 {
-  line-height: 1em;
-  color: #222;
-}
-article.story h2 { font-size: 36px; margin-bottom: 15px; }
-article.story h3 { font-size: 26px; margin-bottom: 6px; }
-article.story h4 { font-size: 20px; margin-bottom: 6px; }
-article.story h5 { font-size: 18px; }
-article.story h6 { font-size: 16px; }
-.ie8 article.story h1,
-.ie8 article.story h2,
-.ie8 article.story h3,
-.ie8 article.story h4,
-.ie8 article.story h5,
-.ie8 article.story h6 {
-  font-weight: normal !important;
-}
+  p {
+    margin-bottom: 16px;
 
-article.story .description { font-size: 22px; line-height: 32px; font-style: italic; white-space: normal;}
-article.story .description em,
-article.story .description i {
-  font-style: normal;
-}
-article.story .lead { font-size: 20px; line-height: 28px; margin-bottom: 30px; }
-article.story .lead::first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
-article.story .lead:first-letter { display: block; float: left; margin: 8px 8px 0 0; font-size: 60px; line-height: 36px; }
+    &:empty {
+      display: none;
+    }
+  }
 
-article.story .caption {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 14px;
-  line-height: 20px;
-  margin-top: 15px;
-  margin-bottom: 0;
-  text-align: left;
-}
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: #222;
+    line-height: 1em;
 
-article.story blockquote { padding-left: 0; border-left: 0; margin-bottom: 25px; clear: both; }
-article.story blockquote,
-article.story blockquote p {
-  font-size: 33px;
-  line-height: 43px;
-  font-style: italic;
+    @include body-prefix('.ie8') {
+      font-weight: normal !important;
+    }
+  }
+
+  h2 {
+    font-size: 36px;
+    margin-bottom: 15px;
+  }
+
+  h3 {
+    font-size: 26px;
+    margin-bottom: 6px;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin-bottom: 6px;
+  }
+
+  h5 {
+    font-size: 18px;
+  }
+
+  h6 {
+    font-size: 16px;
+  }
+
+  blockquote {
+    border-left: 0;
+    clear: both;
+    margin-bottom: 25px;
+    padding-left: 0;
+
+    &,
+    p {
+      font-size: 33px;
+      font-style: italic;
+      line-height: 43px;
+      text-align: left;
+    }
+
+    small {
+      color: #444;
+      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      line-height: 24px;
+      margin-top: 18px;
+    }
+
+    &.quote {
+      padding-left: 60px;
+      position: relative;
+
+      &:before {
+        content: '“';
+        font-size: 128px;
+        font-style: none;
+        left: -10px;
+        line-height: 102px;
+        position: absolute;
+        top: 0;
+      }
+
+      p:after {
+        content: '”';
+      }
+    }
+  }
+
+  iframe {
+    height: 360px;
+  }
+
+  img {
+    margin-bottom: 15px;
+    margin-top: 15px;
+
+    &.pull-left {
+      margin-right: 15px;
+    }
+
+    &.pull-right {
+      margin-left: 15px;
+    }
+  }
+
+  figure {
+    margin-bottom: 15px;
+    margin-left: 0; // force reset
+    margin-right: 0; // force reset
+    margin-top: 15px;
+
+    &.pull-left {
+      margin-right: 15px;
+    }
+
+    &.pull-right {
+      margin-left: 15px;
+    }
+
+    &.pull-center {
+      // override reset
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    img {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+  }
+
+  .story-header-image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 600px;
+    margin: 0 auto 35px;
+    position: relative;
+
+    img {
+      clip: rect(1px, 1px, 1px, 1px);
+      height: 1px;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 1px;
+    }
+  }
+
+  .title-wrap {
+    padding-top: 30px;
+
+    .story-header-image + .container & {
+      padding-top: 0;
+    }
+  }
+
+  .description {
+    font-size: 22px;
+    font-style: italic;
+    line-height: 32px;
+    white-space: normal;
+
+    em,
+    i {
+      font-style: normal;
+    }
+  }
+
+  .lead {
+    font-size: 20px;
+    line-height: 28px;
+    margin-bottom: 30px;
+
+    // These must be declared separately to work properly.
+    &::first-letter {
+      display: block;
+      float: left;
+      font-size: 60px;
+      line-height: 36px;
+      margin: 8px 8px 0 0;
+    }
+
+    &:first-letter {
+      display: block;
+      float: left;
+      font-size: 60px;
+      line-height: 36px;
+      margin: 8px 8px 0 0;
+    }
+  }
+
+  .caption {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+    margin-bottom: 0;
+    margin-top: 15px;
     text-align: left;
-}
-article.story blockquote small {
-  font-family: "Helvetica Neue", Helvetica, sans-serif;
-  font-size: 18px;
-  line-height: 24px;
-  color: #444;
-  margin-top: 18px;
-  font-style: normal;
-}
-article.story blockquote.quote { padding-left: 60px; position: relative; }
-article.story blockquote.quote:before {
-  content: "“";
-  font-size: 128px;
-  line-height: 102px;
-  font-style: none;
-  position: absolute;
-  top: 0;
-  left: -10px;
-}
-article.story blockquote.quote p:after {
-  content: "”";
+  }
+
+  .sidebar-inner {
+    blockquote {
+      &.quote {
+        padding-left: 0;
+
+        &:before {
+          font-size: 28px;
+          left: -12px;
+          line-height: 38px;
+        }
+      }
+
+      &,
+      p {
+        font-size: 28px;
+        line-height: 38px;
+      }
+
+      small {
+        font-size: 16px;
+        line-height: 22px;
+        margin-top: 14px;
+      }
+    }
+  }
+
+  .callout {
+    margin-bottom: 40px;
+    margin-top: 30px;
+  }
+
+  .callout-inner {
+    padding: 30px 0;
+    text-align: center;
+
+    > div {
+      // Force centering of wrapper divs by default
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .callout-inner,
+  .sidebar-inner {
+    blockquote p {
+      margin-bottom: 0;
+    }
+
+    > p:empty {
+      // kill_empty_p_tags won't work for these shortcodes :(
+      display: none;
+    }
+
+    > * {
+      // Try to eliminate excess spacing between callout/sidebar and inner element
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+
+  .sidebar {
+    margin-bottom: 20px;
+
+    &.pull-left {
+      margin-left: 0;
+      margin-right: 20px;
+    }
+  }
+
+  .sidebar-inner {
+    padding: 30px;
+  }
 }
 
-article.story .sidebar-inner blockquote.quote:before {
-    font-size: 28px;
-    line-height: 38px;
-    left: -12px;
-}
 
-article.story .sidebar-inner blockquote,
-article.story .sidebar-inner blockquote p {
-  font-size: 28px;
-  line-height: 38px;
-}
-article.story .sidebar-inner blockquote small {
-  font-size: 16px;
-  line-height: 22px;
-  margin-top: 14px;
-}
-article.story .sidebar-inner blockquote.quote { padding-left: 0; }
-
-article.story .callout { margin-top: 30px; margin-bottom: 40px; }
-article.story .callout-inner { padding: 30px 0; text-align: center; }
-article.story .callout-inner > p:empty,
-article.story .sidebar-inner > p:empty {
-  /* kill_empty_p_tags won't work for these shortcodes :( */
-  display: none;
-}
-body article.story .callout-inner > div {
-  /* Force centering of wrapper divs by default */
-  margin-left: auto;
-  margin-right: auto;
-}
-body article.story .callout-inner > *,
-body article.story .sidebar-inner > * {
-  /* Try to eliminate excess spacing between callout/sidebar and inner element */
-  margin-top: 0;
-  margin-bottom: 0;
-}
-article.story .callout-inner blockquote p,
-article.story .sidebar-inner blockquote p {
-  margin-bottom: 0;
-}
+// Make videos behave
 body:not(.ie8) article.story .callout-inner > div:not([class]),
 body:not(.ie8) article.story .wp-video-shortcode,
 body:not(.ie8) article.story .mejs-shim,
@@ -155,101 +297,114 @@ body:not(.ie8) article.story .mejs-overlay,
 body:not(.ie8) article.story .mejs-poster,
 article.story .me-plugin,
 article.story iframe {
-  /* Make videos behave */
   width: 100% !important;
 }
-article.story iframe { height: 360px; }
-
-article.story .sidebar { margin-bottom: 20px; }
-article.story .sidebar.pull-right { float: right; }
-article.story .sidebar.pull-left { float: left; margin-left: 0; margin-right: 20px; }
-article.story .sidebar-inner { padding: 30px; }
-
-article.story img { margin-top: 15px; margin-bottom: 15px; }
-article.story img.pull-left { margin-right: 15px; }
-article.story img.pull-right { margin-left: 15px; }
-
-article.story figure {
-  margin-top: 15px;
-  margin-right: 0; /* force reset */
-  margin-bottom: 15px;
-  margin-left: 0; /* force reset */
-}
-article.story figure.pull-left { margin-right: 15px; }
-article.story figure.pull-right { margin-left: 15px; }
-article.story figure.pull-center { margin-left: auto; margin-right: auto; } /* override reset */
-article.story figure img { margin-top: 0; margin-bottom: 0; }
 
 
-/**************************
- * Story - Default Template
- **************************/
-article.story-default .title-wrap { margin-bottom: 20px; }
-article.story-default .description-wrap { margin-bottom: 50px; }
-article.story-default .description,
-article.story-default .social-wrap { display: inline-block; }
-article.story-default .description { width: 62%; padding-right: 4%; }
-article.story-default .social-wrap { width: 33%; }
-article.story-default .social { float: right; }
+// Story - Default Template
+article.story-default {
+  .title-wrap {
+    margin-bottom: 20px;
+  }
 
+  .description-wrap {
+    margin-bottom: 50px;
+  }
 
-/**************************
- * Story - Photo Essay Template
- **************************/
-article.story.ss-photo-essay h1 { color: #fff; padding-bottom: 30px; }
-article.story.ss-photo-essay .ss-essay-intro-wrapper img {
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";
-  filter: alpha(opacity=20);
-  -moz-opacity: 0.2;
-  -khtml-opacity: 0.2;
-     opacity: 0.2;
-}
-article.story.ss-photo-essay .ss-essay-intro { position: absolute; margin: auto; top: 0; right: 0; bottom: 0; left: 0; height: 75%; }
-
-article.story.ss-photo-essay .description { color: #fff; }
-
-article.story.ss-photo-essay .ss-slide-wrapper { width: 85%; }
-
-article.story.ss-photo-essay .ss-essay-intro h1,
-article.story.ss-photo-essay .ss-essay-intro span.description {
-  padding-left: 20px;
-  padding-right: 20px;
-}
-
-article.story.ss-photo-essay .ss-essay-intro h1 {
-  text-align: center;
-}
-
-article.story.ss-photo-essay .ss-essay-intro .description-wrap {
-    text-align: center;
-}
-
-article.story.ss-photo-essay .ss-essay-intro span.description {
-  display: block;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-article.story.ss-photo-essay .ss-essay-intro .social {
-  z-index: 999;
-  position: relative;
-  left: 0;
-  right: 0;
-  text-align: center;
-}
-
-article.story.ss-photo-essay .ss-slide.ss-current .social {
-  display: block;
-}
-article.story.ss-photo-essay .ss-slide .social {
-  display: none;
-}
-
-article.story.ss-photo-essay .ss-essay-intro .social .share-twitter,
-article.story.ss-photo-essay .ss-essay-intro .social .share-facebook,
-article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
-    float: none;
-    margin-right: 0;
+  .description,
+  .social-wrap {
     display: inline-block;
-    white-space: nowrap;
+  }
+
+  .description {
+    padding-right: 4%;
+    width: 62%;
+  }
+
+  .social-wrap {
+    width: 33%;
+  }
+
+  .social {
+    float: right;
+  }
+}
+
+
+// Story - Photo Essay Template
+article.ss-photo-essay {
+  h1 {
+    color: #fff;
+    padding-bottom: 30px;
+  }
+
+  .ss-essay-intro-wrapper img {
+    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=20)';
+    filter: alpha(opacity=20);
+    -khtml-opacity: .2;
+    -moz-opacity: .2;
+    opacity: .2;
+  }
+
+  .ss-essay-intro {
+    bottom: 0;
+    height: 75%;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    h1,
+    .description {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    h1,
+    .description-wrap {
+      text-align: center;
+    }
+
+    .description {
+      display: block;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .social {
+      left: 0;
+      position: relative;
+      right: 0;
+      text-align: center;
+      z-index: 999;
+
+      .share-twitter,
+      .share-facebook,
+      .share-googleplus {
+        display: inline-block;
+        float: none;
+        margin-right: 0;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .description {
+    color: #fff;
+  }
+
+  .ss-slide-wrapper {
+    width: 85%;
+  }
+
+  .ss-slide {
+    .social {
+      display: block;
+    }
+
+    &.ss-current .social {
+      display: none;
+    }
+  }
 }

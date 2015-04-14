@@ -6,7 +6,6 @@
 
 // Base styles for typography, tables, forms, and images
 @import 'type';
-@import 'tables';
 @import 'forms';
 
 // Styles for components and Bootstrap component overrides
@@ -14,7 +13,6 @@
 
 // Styles for our base header/footer templates and specific, per-view templates
 @import 'layout';
-@import 'views-home';
 @import 'views-page';
 @import 'views-issue';
 @import 'views-story';

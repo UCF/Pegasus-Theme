@@ -244,8 +244,8 @@
 
 
 // General - Mobile nav, Issue, Archives list items
-#nav-issue,
-#nav-archives {
+li#nav-issue,
+li#nav-archives {
   display: inline-block;
 
   a:before {
@@ -255,7 +255,7 @@
   }
 }
 
-#nav-mobile {
+li#nav-mobile {
   display: none;
   float: left;
   height: 40px;
@@ -291,7 +291,7 @@
   }
 }
 
-#nav-issue {
+li#nav-issue {
   margin-right: 20px;
 
   a {
@@ -305,7 +305,7 @@
   }
 }
 
-#nav-archives {
+li#nav-archives {
   a {
     &:before {
       content: '\e601';
@@ -317,9 +317,9 @@
   }
 }
 
-#nav-mobile a,
-#nav-issue a,
-#nav-archives a {
+li#nav-mobile a,
+li#nav-issue a,
+li#nav-archives a {
   @include font-smoothing();
   color: #222;
   font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;

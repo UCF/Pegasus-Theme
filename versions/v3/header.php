@@ -87,11 +87,11 @@
 				<div class="row">
 					<nav class="col-md-12 col-sm-12" role="navigation">
 						<?php if ($post->post_type == 'issue') { ?>
-						<h1 class="sprite header-logo">
+						<h1 class="header-logo">
 							<a href="<?=get_site_url()?>">Pegasus</a>
 						</h1>
 						<?php } else { ?>
-						<span class="sprite header-logo">
+						<span class="header-logo">
 							<a href="<?=get_site_url()?>">Pegasus</a>
 						</span>
 						<?php } ?>
