@@ -4,6 +4,21 @@
 }
 
 
+// Pegasus logos
+.logo-large-white {
+  @include sprite();
+  background-position: 0 -40px;
+  height: 31px;
+  width: 193px;
+
+  @media (max-width: $screen-sm-max) {
+    background-position: 0 -16px;
+    height: 23px;
+    width: 147px;
+  }
+}
+
+
 // iPad App button
 .ipad-app-btn {
   @include sprite();
@@ -90,12 +105,32 @@
   top: 0;
   white-space: nowrap;
 
+  @media (max-width: $screen-sm-max) {
+    height: 65%;
+  }
+
   .ss-photo-essay & {
     height: 80%;
+
+    @media (max-width: $screen-xs-max) {
+      height: 50%;
+    }
+
+    @media (max-width: 320px) {
+      height: 40%;
+    }
   }
 
   .ss-embed & {
     height: 360px;
+
+    @media (max-width: $screen-xs-max) {
+      height: 280px;
+    }
+
+    @media (max-width: 320px) {
+      height: 140px;
+    }
   }
 }
 
@@ -125,15 +160,37 @@
     -moz-opacity: 1;
     opacity: 1;
     text-align: center;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 25px;
+    }
+
+    @media (max-width: 480px) {
+      margin-top: 50px;
+    }
+
+    @media (max-width: 320px) {
+      margin-top: 25px;
+    }
   }
 
   > .ss-slide {
     width: 500px;
 
+    @media (max-width: $screen-xs-max) {
+      width: 80%;
+    }
+
     .ss-title {
       font-size: 30px;
       line-height: 30px;
       margin-top: 20px;
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 16px;
+        line-height: 16px;
+        margin-top: 10px;
+      }
     }
   }
 }
@@ -141,6 +198,10 @@
 .ss-control {
   color: #fff;
   font-size: 16px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 11px;
+  }
 
   &:hover {
     color: #fff;
@@ -158,6 +219,13 @@
     margin-bottom: 20px;
     padding: 20px;
 
+    @media (max-width: $screen-xs-max) {
+      background-color: #000;
+      font-size: 30px;
+      margin-bottom: 10px;
+      padding: 10px;
+    }
+
     &:hover {
       background-color: #900;
     }
@@ -165,10 +233,21 @@
 
   &.ss-play i {
     line-height: 15px;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 35px;
+      line-height: 13px;
+      margin-bottom: 0;
+      padding: 12px;
+    }
   }
 
   &.ss-restart i {
     line-height: 50px;
+
+    @media (max-width: $screen-xs-max) {
+      line-height: 30px;
+    }
   }
 }
 
@@ -258,6 +337,10 @@
     position: absolute;
     top: 40%;
 
+    @media (max-width: $screen-sm-max) {
+      top: 20%;
+    }
+
     .ss-arrow-wrapper-left & {
       left: 0;
       margin-left: 10px;
@@ -270,6 +353,20 @@
 
     .ss-embed & {
       top: 180px;
+
+      @media (max-width: $screen-xs-max) {
+        top: 140px;
+      }
+
+      @media (max-width: 320px) {
+        top: 50px;
+      }
+    }
+
+    .ss-photo-essay & {
+      @media (max-width: 320px) {
+        height: 60%;
+      }
     }
   }
 
@@ -295,6 +392,10 @@
   position: relative;
   width: 56%;
 
+  @media (max-width: $screen-sm-max) {
+    height: 30%;
+  }
+
   .ss-embed & {
     height: 300px;
   }
@@ -304,6 +405,10 @@
     height: 20%;
     padding-top: 0;
     position: absolute;
+
+    @media (max-width: $screen-xs-max) {
+      height: 50%;
+    }
   }
 }
 

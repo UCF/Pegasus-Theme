@@ -1,4 +1,4 @@
-// Subpages
+// Subpages - General
 .subpage {
   main {
     display: block;
@@ -20,6 +20,7 @@
 }
 
 
+// Archives
 #archives {
   h2,
   h3,
@@ -103,6 +104,10 @@
   .issue {
     margin-bottom: 30px;
 
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 0;
+    }
+
     h3 {
       margin-top: 10px;
     }
@@ -170,6 +175,10 @@
         right: -20px; // Account for .row margins
         top: -15px;
         width: 0;
+
+        @media (max-width: $screen-xs-max) {
+          right: 0;
+        }
       }
     }
 
@@ -203,9 +212,34 @@
       float: left;
       width: 45%;
 
+      @media (max-width: $screen-xs-max) {
+        clear: both;
+        margin-bottom: 20px;
+        margin-left: 20px;
+        width: auto;
+      }
+
+      a {
+        @media (max-width: $screen-xs-max) {
+          display: block;
+          padding-right: 20px;
+        }
+      }
+
       &:nth-child(2n) {
         clear: right;
         float: right;
+
+        @media (max-width: $screen-xs-max) {
+          clear: left;
+          float: left;
+        }
+      }
+
+      &.featured-story {
+        @media (max-width: $screen-xs-max) {
+          display: block;
+        }
       }
     }
   }

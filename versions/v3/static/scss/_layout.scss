@@ -42,6 +42,11 @@
   white-space: nowrap;
   width: 100%;
 
+  @media (max-width: $screen-xs-max) {
+    margin-left: -20px;
+    padding-right: 40px;
+  }
+
   article {
     display: inline-block;
     margin-bottom: 25px;
@@ -49,6 +54,12 @@
     vertical-align: top;
     white-space: normal;
     width: 140px;
+
+    &.last-child {
+      @media (max-width: $screen-xs-max) {
+        margin-left: 20px;
+      }
+    }
 
     img {
       // Fixed width/height required for lazyload
@@ -76,6 +87,10 @@
     top: 0;
     width: 60px;
     z-index: 6;
+
+    @media (max-width: $screen-xs-max) {
+      display: none !important;
+    }
 
     a {
       background-image: none !important;
@@ -133,6 +148,16 @@
 
 .pulldown-stories .story-list article {
   width: 180px;
+
+  @media (max-width: $screen-sm-max) {
+    width: 140px;
+
+    img {
+      // Fixed width/height required for lazyload
+      height: 146px;
+      width: 140px;
+    }
+  }
 }
 
 .story-list-grid {
@@ -208,6 +233,10 @@
   ul {
     height: 100%;
     text-align: right;
+
+    @media (max-width: $screen-xs-max) {
+      text-align: center;
+    }
   }
 
   li {
@@ -234,6 +263,15 @@
     top: 12.5px;
     width: 97px;
 
+    @media (max-width: $screen-xs-max) {
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 12.5px;
+      z-index: 2;
+    }
+
     a {
       display: block;
       height: 100%;
@@ -248,10 +286,33 @@ li#nav-issue,
 li#nav-archives {
   display: inline-block;
 
-  a:before {
-    margin-right: 5px;
-    position: relative;
-    top: 1px;
+  #header-navigation ul.mobile-nav-visible & {
+    @media (max-width: $screen-xs-max) {
+      display: inline-block;
+      float: none;
+    }
+  }
+
+  a {
+    &:before {
+      margin-right: 5px;
+      position: relative;
+      top: 1px;
+    }
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 13px;
+      line-height: 13px;
+    }
+  }
+}
+
+li#nav-about,
+li#nav-issue,
+li#nav-archives,
+#header-navigation .header-logo.mobile-nav-visible {
+  @media (max-width: $screen-xs-max) {
+    display: none;
   }
 }
 
@@ -261,6 +322,10 @@ li#nav-mobile {
   height: 40px;
   text-align: left;
   width: 40px;
+
+  @media (max-width: $screen-xs-max) {
+    display: block;
+  }
 
   a {
     display: block;
@@ -293,6 +358,10 @@ li#nav-mobile {
 
 li#nav-issue {
   margin-right: 20px;
+
+  @media (max-width: $screen-xs-max) {
+    margin-left: -30px;
+  }
 
   a {
     &:before {
@@ -357,7 +426,7 @@ li#nav-archives a {
 
 
 // About Pegasus Magazine link
-#nav-about {
+li#nav-about {
   float: left;
 
   a {
@@ -365,6 +434,10 @@ li#nav-archives a {
     font-family: Georgia, serif;
     font-size: 12px;
     font-style: italic;
+
+    @media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
+      font-size: 11px;
+    }
   }
 }
 
@@ -374,6 +447,10 @@ li#nav-archives a {
   margin-bottom: 80px;
   margin-top: 50px;
   position: relative;
+
+  @media (max-width: $screen-sm-max) {
+    margin-bottom: 40px;
+  }
 
   article {
     a {
@@ -454,6 +531,11 @@ li#nav-archives a {
   padding-bottom: 60px;
   padding-top: 60px;
 
+  @media (max-width: $screen-xs-max) {
+    padding-bottom: 25px;
+    padding-top: 40px;
+  }
+
   &,
   & p,
   & a {
@@ -470,7 +552,12 @@ li#nav-archives a {
 
   a {
     font-size: 18px;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 14px;
+    }
   }
+
 
   // Footer logo positioning
   .footer-logo {
@@ -479,8 +566,29 @@ li#nav-archives a {
     padding-bottom: 60px;
     width: 100%;
 
+    @media (max-width: $screen-sm-max) {
+      margin-top: 8px;
+    }
+
     a {
       margin: auto;
+    }
+
+    &,
+    &.pull-left {
+      @media (max-width: $screen-xs-max) {
+        padding-bottom: 20px;
+        width: 100%;
+      }
+    }
+
+    &,
+    &.pull-left,
+    a {
+      @media (max-width: $screen-xs-max) {
+        clear: both;
+        float: left;
+      }
     }
   }
 
@@ -491,20 +599,56 @@ li#nav-archives a {
     width: 48%;
   }
 
+  .footer-logo,
+  .footer-ipad-app {
+    @media (max-width: $screen-sm-max) {
+      padding-bottom: 30px;
+    }
+  }
+
+  .footer-ipad-app {
+    &,
+    &.pull-right {
+      @media (max-width: $screen-xs-max) {
+        clear: both;
+        float: left;
+      }
+    }
+  }
+
+
   // Footer navigation
   ul {
     clear: both;
     text-align: center;
+
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+    }
   }
 
   li {
     display: inline-block;
+
+    @media (max-width: $screen-xs-max) {
+      line-height: 32px;
+      width: 100%;
+    }
 
     &:before {
       color: #5c5c5c;
       content: '|';
       font-size: 18px;
       padding: 0 8px 0 4px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 16px;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        content: '';
+        padding: 0;
+      }
     }
 
     &:first-child:before {
@@ -517,10 +661,22 @@ li#nav-archives a {
   .address {
     margin: 0;
     text-align: center;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 13px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+    }
   }
 
   .copyright {
     padding-top: 60px;
+
+    @media (max-width: $screen-xs-max) {
+      padding-top: 30px;
+    }
   }
 }
 

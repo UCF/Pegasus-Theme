@@ -17,8 +17,41 @@
   }
 }
 
+
+// Remove necessity for -lg utility classes for showing/hiding
+// elements by screen size.  Also overrides broken generated
+// media queries (due to $screen-lg-min being overridden)
+.visible-md-block {
+  @media (min-width: $screen-md-min) {
+    display: block !important;
+  }
+}
+
+.visible-md-inline {
+  @media (min-width: $screen-md-min) {
+    display: inline !important;
+  }
+}
+
+.visible-md-inline-block {
+  @media (min-width: $screen-md-min) {
+    display: inline-block !important;
+  }
+}
+
+@media (min-width: $screen-md-min) {
+  @include responsive-invisibility('.hidden-md');
+}
+
+
 .container-wide {
   width: 100%;
+
+  @media (max-width: $screen-xs-max) {
+    margin-left: -20px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 }
 
 .container-tall {

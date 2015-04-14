@@ -23,4 +23,8 @@ p {
   font-style: italic;
   font-weight: normal;
   line-height: 90px;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 30px;
+  }
 }

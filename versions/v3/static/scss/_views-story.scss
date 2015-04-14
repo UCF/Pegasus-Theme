@@ -11,10 +11,18 @@ article.story {
     font-size: 16px;
     line-height: 1.38em;
     margin-top: 0;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 15px;
+    }
   }
 
   p {
     margin-bottom: 16px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 20px;
+    }
 
     &:empty {
       display: none;
@@ -35,9 +43,22 @@ article.story {
     }
   }
 
+  h1,
+  h2 {
+    @media (max-width: $screen-xs-max) {
+      overflow: visible;
+    }
+  }
+
   h2 {
     font-size: 36px;
     margin-bottom: 15px;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 30px;
+      line-height: 30px;
+      margin-bottom: 10px;
+    }
   }
 
   h3 {
@@ -70,6 +91,11 @@ article.story {
       font-style: italic;
       line-height: 43px;
       text-align: left;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 28px;
+        line-height: 34px;
+      }
     }
 
     small {
@@ -79,11 +105,35 @@ article.story {
       font-style: normal;
       line-height: 24px;
       margin-top: 18px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 16px;
+        line-height: 20px;
+      }
     }
 
     &.quote {
       padding-left: 60px;
       position: relative;
+
+      @media (max-width: $screen-sm-max) {
+        padding-left: 42px;
+
+        &:before {
+          font-size: 95px;
+          line-height: 92px;
+        }
+      }
+
+      @media (max-width: $screen-sm-max) {
+        padding-left: 36px;
+
+        &:before {
+          font-size: 76px;
+          left: -7px;
+          line-height: 74px;
+        }
+      }
 
       &:before {
         content: '“';
@@ -152,6 +202,18 @@ article.story {
     margin: 0 auto 35px;
     position: relative;
 
+    @media (max-width: $screen-sm-max) {
+      height: 490px;
+      max-width: 980px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      background-size: 100% auto;
+      height: auto;
+      margin-bottom: 25px;
+      margin-left: -20px;
+    }
+
     img {
       clip: rect(1px, 1px, 1px, 1px);
       height: 1px;
@@ -159,6 +221,16 @@ article.story {
       position: absolute;
       top: 0;
       width: 1px;
+
+      @media (max-width: $screen-xs-max) {
+        height: auto;
+        margin: 0;
+        padding-bottom: 10px;
+        padding-top: 10px;
+        position: static;
+        visibility: hidden;
+        width: auto;
+      }
     }
   }
 
@@ -170,11 +242,23 @@ article.story {
     }
   }
 
+  .description-wrap {
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 35px;
+    }
+  }
+
   .description {
     font-size: 22px;
     font-style: italic;
     line-height: 32px;
     white-space: normal;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 25px;
+    }
 
     em,
     i {
@@ -186,6 +270,12 @@ article.story {
     font-size: 20px;
     line-height: 28px;
     margin-bottom: 30px;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 17px;
+      line-height: 27px;
+      margin-bottom: 30px;
+    }
 
     // These must be declared separately to work properly.
     &::first-letter {
@@ -214,7 +304,28 @@ article.story {
     text-align: left;
   }
 
+  .sidebar {
+    margin-bottom: 20px;
+
+    &.pull-left,
+    &.pull-right {
+      @media (max-width: $screen-xs-max) {
+        float: left;
+        margin-left: 0;
+        margin-right: 0;
+        width: 100%;
+      }
+    }
+
+    &.pull-left {
+      margin-left: 0;
+      margin-right: 20px;
+    }
+  }
+
   .sidebar-inner {
+    padding: 30px;
+
     blockquote {
       &.quote {
         padding-left: 0;
@@ -223,6 +334,11 @@ article.story {
           font-size: 28px;
           left: -12px;
           line-height: 38px;
+
+          @media (max-width: $screen-sm-max) {
+            font-size: 26px;
+            line-height: 36px;
+          }
         }
       }
 
@@ -230,6 +346,11 @@ article.story {
       p {
         font-size: 28px;
         line-height: 38px;
+
+        @media (max-width: $screen-sm-max) {
+          font-size: 26px;
+          line-height: 36px;
+        }
       }
 
       small {
@@ -274,17 +395,12 @@ article.story {
     }
   }
 
-  .sidebar {
-    margin-bottom: 20px;
-
-    &.pull-left {
-      margin-left: 0;
-      margin-right: 20px;
+  .mobile-img-fluid,
+  .mobile-img-fluid img {
+    @media (max-width: $screen-xs-max) {
+      max-width: 100% !important;
+      width: 100% !important;
     }
-  }
-
-  .sidebar-inner {
-    padding: 30px;
   }
 }
 
@@ -300,11 +416,29 @@ article.story iframe {
   width: 100% !important;
 }
 
+body:not(.ie8) article.story .callout-inner > div:not([class]),
+body:not(.ie8) article.story .wp-video-shortcode,
+body:not(.ie8) article.story .mejs-overlay,
+body:not(.ie8) article.story .mejs-poster,
+article.story iframe {
+  @media (max-width: $screen-sm-max) {
+    height: 280px !important;
+  }
+
+  @media (max-width: 480px) {
+    height: 220px !important;
+  }
+}
+
 
 // Story - Default Template
 article.story-default {
   .title-wrap {
     margin-bottom: 20px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 15px;
+    }
   }
 
   .description-wrap {
@@ -314,11 +448,20 @@ article.story-default {
   .description,
   .social-wrap {
     display: inline-block;
+
+    @media (max-width: $screen-sm-max) {
+      width: 100%;
+    }
   }
 
   .description {
     padding-right: 4%;
     width: 62%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-bottom: 20px;
+      padding-right: 0;
+    }
   }
 
   .social-wrap {
@@ -327,12 +470,30 @@ article.story-default {
 
   .social {
     float: right;
+
+    @media (max-width: $screen-sm-max) {
+      float: left;
+    }
   }
 }
 
 
 // Story - Photo Essay Template
+main.ss-photo-essay {
+  @media (max-width: $screen-sm-max) {
+    height: 500px;
+  }
+
+  @media (max-width: 320px) {
+    height: 400px;
+  }
+}
+
 article.ss-photo-essay {
+  @media (max-width: $screen-sm-max) {
+    padding-top: 5%;
+  }
+
   h1 {
     color: #fff;
     padding-bottom: 30px;
@@ -355,10 +516,20 @@ article.ss-photo-essay {
     right: 0;
     top: 0;
 
+    @media (max-width: $screen-sm-max) {
+      height: 100%;
+    }
+
     h1,
     .description {
       padding-left: 20px;
       padding-right: 20px;
+
+      @media (max-width: $screen-xs-max) {
+        padding-left: 0;
+        padding-right: 0;
+        white-space: pre-wrap;
+      }
     }
 
     h1,
@@ -366,10 +537,24 @@ article.ss-photo-essay {
       text-align: center;
     }
 
+    h1 {
+      @media (max-width: $screen-xs-max) {
+        font-size: 28px;
+        line-height: 32px;
+        padding-bottom: 15px;
+      }
+    }
+
     .description {
       display: block;
       margin-bottom: 20px;
       text-align: center;
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 16px;
+        line-height: 20px;
+        margin-bottom: 5px;
+      }
     }
 
     .social {
@@ -378,6 +563,10 @@ article.ss-photo-essay {
       right: 0;
       text-align: center;
       z-index: 999;
+
+      @media (max-width: 320px) {
+        left: -20px;
+      }
 
       .share-twitter,
       .share-facebook,
@@ -394,8 +583,18 @@ article.ss-photo-essay {
     color: #fff;
   }
 
+  .social {
+    @media (max-width: $screen-xs-max) {
+      padding-top: 10px;
+    }
+  }
+
   .ss-slide-wrapper {
     width: 85%;
+
+    @media (max-width: $screen-xs-max) {
+      width: 100%;
+    }
   }
 
   .ss-slide {

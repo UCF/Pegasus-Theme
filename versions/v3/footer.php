@@ -21,7 +21,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container story-list-grid hidden-tablet hidden-phone">
+				<div class="container story-list-grid hidden-sm hidden-xs">
 					<div class="row">
 					<?php
 					$count = 0;
@@ -53,8 +53,8 @@
 					?>
 					</div>
 				</div>
-				<?=display_story_list($issue, 'hidden-desktop')?>
-				<div class="controls hidden-desktop">
+				<?=display_story_list($issue, 'hidden-md')?>
+				<div class="controls hidden-md hidden-lg">
 					<a class="backward icon icon-caret-left" href="#">Back</a>
 					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>
@@ -113,14 +113,14 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
 							<span class="footer-logo <?php if(ipad_deployed()) { ?>pull-left<?php } ?>">
-								<a class="sprite logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?=get_site_url()?>">
+								<a class="logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?=get_site_url()?>">
 									Pegasus Magazine
 								</a>
 							</span>
 
 							<? if(ipad_deployed()) {?>
 							<span class="footer-ipad-app pull-right">
-								<a class="sprite ipad-app-btn pull-left" href="<?=get_theme_option('ipad_app_url')?>">
+								<a class="ipad-app-btn pull-left" href="<?=get_theme_option('ipad_app_url')?>">
 									Download on the App Store
 								</a>
 							</span>
