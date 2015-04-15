@@ -66,41 +66,47 @@
 <div class="container-wide" id="home">
 	<section class="container home-hero">
 		<div class="row">
-			<div class="col-md-8 col-sm-8">
-				<article class="home-article-1">
-				<?php if ( $story_1 ): ?>
-					<a href="<?php echo get_permalink( $story_1->ID ); ?>"></a>
-					<?php if ( $story_1->thumb ) { ?>
-					<img src="<?php echo $story_1->thumb; ?>" alt="<?php echo $story_1->post_title; ?>" title="<?php echo $story_1->post_title; ?>" />
-					<?php } ?>
-					<div class="description">
-						<h2><?php echo $story_1->post_title; ?></h2>
+			<div class="col-md-8 col-sm-8 col-xs-12">
+				<article>
+					<div class="home-article-1 thumb">
+					<?php if ( $story_1 ): ?>
+						<a href="<?php echo get_permalink( $story_1->ID ); ?>"></a>
+						<?php if ( $story_1->thumb ) { ?>
+						<img class="img-responsive" src="<?php echo $story_1->thumb; ?>" alt="<?php echo $story_1->post_title; ?>" title="<?php echo $story_1->post_title; ?>" />
+						<?php } ?>
+						<div class="description">
+							<h2><?php echo $story_1->post_title; ?></h2>
+						</div>
+					<?php endif; ?>
 					</div>
-				<?php endif; ?>
 				</article>
 			</div>
-			<div class="col-md-4 col-sm-4">
-				<article class="home-article-2 thumb featured">
-				<?php if ( $story_2 ): ?>
-					<a href="<?php echo get_permalink( $story_2->ID ); ?>"></a>
-					<?php if ( $story_2->thumb ) { ?>
-					<img src="<?php echo $story_2->thumb; ?>" alt="<?php echo $story_2->post_title; ?>" title="<?php echo $story_2->post_title; ?>" />
-					<?php } ?>
-					<div class="description">
-						<h2><?php echo $story_2->post_title; ?></h2>
+			<div class="col-md-4 col-sm-4 col-xs-12">
+				<article>
+					<div class="home-article-2 thumb featured">
+					<?php if ( $story_2 ): ?>
+						<a href="<?php echo get_permalink( $story_2->ID ); ?>"></a>
+						<?php if ( $story_2->thumb ) { ?>
+						<img class="img-responsive" src="<?php echo $story_2->thumb; ?>" alt="<?php echo $story_2->post_title; ?>" title="<?php echo $story_2->post_title; ?>" />
+						<?php } ?>
+						<div class="description">
+							<h2><?php echo $story_2->post_title; ?></h2>
+						</div>
+					<?php endif; ?>
 					</div>
-				<?php endif; ?>
 				</article>
-				<article class="home-article-3 thumb featured">
-				<?php if ( $story_3 ): ?>
-					<a href="<?php echo get_permalink( $story_3->ID ); ?>"></a>
-					<?php if ( $story_3->thumb ) { ?>
-					<img src="<?php echo $story_3->thumb; ?>" alt="<?php echo $story_3->post_title; ?>" title="<?php echo $story_3->post_title; ?>" />
-					<?php } ?>
-					<div class="description">
-						<h2><?php echo $story_3->post_title; ?></h2>
+				<article>
+					<div class="home-article-3 thumb featured">
+					<?php if ( $story_3 ): ?>
+						<a href="<?php echo get_permalink( $story_3->ID ); ?>"></a>
+						<?php if ( $story_3->thumb ) { ?>
+						<img class="img-responsive" src="<?php echo $story_3->thumb; ?>" alt="<?php echo $story_3->post_title; ?>" title="<?php echo $story_3->post_title; ?>" />
+						<?php } ?>
+						<div class="description">
+							<h2><?php echo $story_3->post_title; ?></h2>
+						</div>
+					<?php endif; ?>
 					</div>
-				<?php endif; ?>
 				</article>
 			</div>
 		</div>
@@ -108,9 +114,10 @@
 	<section class="container home-stories">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2>More in this Issue</h2>
+				<h2><span>More in this Issue</span></h2>
 			</div>
 		</div>
+		<div class="row">
 		<?php
 		$count = 0;
 		if ( $other_stories ):
@@ -121,11 +128,13 @@
 				if ($count % $per_row_xs == 0) { $classes .= ' thumb-1-xs'; }
 				if ($count % $per_row_xss == 0) { $classes .= ' thumb-1-xss'; }
 			?>
-			<article class="thumb <?php echo $classes; ?>">
-				<a href="<?php echo get_permalink( $story->ID ); ?>"></a>
-				<img src="<?php echo get_featured_image_url( $story->ID ); ?>" alt="<?php echo $story->post_title; ?>" title="<?php echo $story->post_title; ?>" />
-				<div class="description">
-					<h3><?php echo $story->post_title; ?></h3>
+			<article class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4 <?php // echo $classes; ?>">
+				<div class="thumb">
+					<a href="<?php echo get_permalink( $story->ID ); ?>"></a>
+					<img src="<?php echo get_featured_image_url( $story->ID ); ?>" alt="<?php echo $story->post_title; ?>" title="<?php echo $story->post_title; ?>" />
+					<div class="description">
+						<h3><?php echo $story->post_title; ?></h3>
+					</div>
 				</div>
 			</article>
 			<?php
@@ -133,13 +142,15 @@
 			endforeach;
 		endif;
 		?>
+		</div>
 	</section>
 	<section class="container home-past-issues">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2>Recent Issues of Pegasus Magazine</h2>
+				<h2><span>Recent Issues of Pegasus Magazine</span></h2>
 			</div>
 		</div>
+		<div class="row">
 		<?php
 		$count = 0;
 		$per_row = 5;
@@ -151,14 +162,17 @@
 				if ($count % $per_row_xs == 0) { $classes .= ' thumb-1-xs'; }
 				if ($count % $per_row_xss == 0) { $classes .= ' thumb-1-xss'; }
 			?>
-			<div class="thumb <?php echo $classes; ?>">
-				<a href="<?php echo get_permalink( $issue->ID ); ?>"><img src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="<?php echo $issue->post_title; ?>" title="<?php echo $issue->post_title; ?>" /></a>
+			<div class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4 <?php // echo $classes; ?>">
+				<div class="thumb">
+					<a href="<?php echo get_permalink( $issue->ID ); ?>"><img src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="<?php echo $issue->post_title; ?>" title="<?php echo $issue->post_title; ?>" /></a>
+				</div>
 			</div>
 			<?php
 				$count++;
 			endforeach;
 		endif;
 		?>
+		</div>
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<span class="pull-right archives-link">

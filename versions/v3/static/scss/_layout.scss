@@ -32,6 +32,34 @@
 
 
 // Header Pulldown Menu: Story lists (also used for subfooter nav)
+.story-list,
+.story-list-grid {
+  article {
+    .story-title {
+      @include font-smoothing();
+      color: #333;
+      font-family: "AleoBold", serif;
+      font-size: 16px;
+      font-weight: normal;
+      line-height: 18px;
+      margin-top: 0;
+    }
+
+    &:hover .story-title,
+    &:active .story-title {
+      text-decoration: underline;
+    }
+  }
+
+  .subtitle {
+    color: #222;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    line-height: 18px;
+  }
+}
+
 .story-list {
   @include list-unstyled();
   display: block;
@@ -42,11 +70,6 @@
   white-space: nowrap;
   width: 100%;
 
-  @media (max-width: $screen-xs-max) {
-    margin-left: -20px;
-    padding-right: 40px;
-  }
-
   article {
     display: inline-block;
     margin-bottom: 25px;
@@ -56,15 +79,22 @@
     width: 140px;
 
     &.last-child {
+      margin-right: 80px;
+
       @media (max-width: $screen-xs-max) {
-        margin-left: 20px;
+        margin-right: 20px;
       }
     }
 
     img {
       // Fixed width/height required for lazyload
-      height: 146px;
-      width: 140px;
+      height: 188px;
+      width: 180px;
+
+      @media (max-width: $screen-sm-max) {
+        height: 146px;
+        width: 140px;
+      }
     }
 
     .story-title,
@@ -73,6 +103,11 @@
       display: block;
       float: left;
       width: 100%;
+    }
+
+    .story-title {
+      margin-bottom: 4px;
+      margin-top: 15px;
     }
   }
 
@@ -97,7 +132,7 @@
       color: #696969;
       display: block;
       font-size: 28px;
-      height: 30px;
+      // height: 30px;
       left: 0;
       overflow: hidden;
       position: absolute;
@@ -179,39 +214,10 @@
       padding-left: 100px;
     }
 
-    .story-title {
-      padding-top: 0;
-    }
+    // .story-title {
+    //   margin-top: 15px;
+    // }
 
-  }
-}
-
-.story-list,
-.story-grid-list {
-  article {
-    .story-title {
-      @include font-smoothing();
-      color: #333;
-      font-family: "AleoBold", serif;
-      font-size: 16px;
-      font-weight: normal;
-      line-height: 18px;
-      padding-top: 15px;
-    }
-
-    &:hover .story-title,
-    &:active .story-title {
-      text-decoration: underline;
-    }
-  }
-
-  .subtitle {
-    color: #222;
-    font-family: Georgia, serif;
-    font-size: 13px;
-    font-style: italic;
-    line-height: 18px;
-    padding-top: 4px;
   }
 }
 
@@ -231,6 +237,7 @@
   }
 
   ul {
+    @include list-unstyled();
     height: 100%;
     text-align: right;
 
@@ -328,17 +335,24 @@ li#nav-mobile {
   }
 
   a {
+    @include font-smoothing();
+    color: #222;
     display: block;
     filter: alpha(opacity=100);
+    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-size: 18px;
     height: 100%;
     line-height: 40px;
     opacity: 1;
+    text-decoration: none;
     width: 100%;
 
     &:before {
+      @include font-smoothing();
       content: '\e602';
       display: block;
+      font-family: 'icomoon';
+      font-weight: normal;
     }
 
     &.active:before {
@@ -386,7 +400,6 @@ li#nav-archives {
   }
 }
 
-li#nav-mobile a,
 li#nav-issue a,
 li#nav-archives a {
   @include font-smoothing();
@@ -487,8 +500,8 @@ li#nav-about {
   }
 
   ul {
-    list-style-type: none;
-    margin: 0;
+    @include list-unstyled();
+    margin-bottom: 0;
     text-align: center;
   }
 
@@ -560,6 +573,20 @@ li#nav-about {
 
 
   // Footer logo positioning
+  .footer-logo.pull-left,
+  .footer-ipad-app {
+    display: block;
+    padding-bottom: 60px;
+    width: 48%;
+  }
+
+  .footer-logo,
+  .footer-ipad-app {
+    @media (max-width: $screen-sm-max) {
+      padding-bottom: 30px;
+    }
+  }
+
   .footer-logo {
     display: block;
     margin-top: 5px;
@@ -587,22 +614,8 @@ li#nav-about {
     a {
       @media (max-width: $screen-xs-max) {
         clear: both;
-        float: left;
+        float: left !important;
       }
-    }
-  }
-
-  .footer-logo.pull-left,
-  .footer-ipad-app {
-    display: block;
-    padding-bottom: 60px;
-    width: 48%;
-  }
-
-  .footer-logo,
-  .footer-ipad-app {
-    @media (max-width: $screen-sm-max) {
-      padding-bottom: 30px;
     }
   }
 
@@ -611,7 +624,7 @@ li#nav-about {
     &.pull-right {
       @media (max-width: $screen-xs-max) {
         clear: both;
-        float: left;
+        float: left !important;
       }
     }
   }
@@ -619,7 +632,9 @@ li#nav-about {
 
   // Footer navigation
   ul {
+    @include list-unstyled();
     clear: both;
+    margin-bottom: 0;
     text-align: center;
 
     @media (max-width: $screen-xs-max) {
@@ -639,7 +654,7 @@ li#nav-about {
       color: #5c5c5c;
       content: '|';
       font-size: 18px;
-      padding: 0 8px 0 4px;
+      padding: 0 6px;
 
       @media (max-width: $screen-sm-max) {
         font-size: 16px;

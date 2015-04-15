@@ -44,14 +44,26 @@
 }
 
 
+// Creates columns that are 20% wide
+.col-lg-20percent {
+  @include make-lg-column(2.4);
+}
+
+.col-md-20percent {
+  @include make-md-column(2.4);
+}
+
+.col-sm-20percent {
+  @include make-sm-column(2.4);
+}
+
+.col-xs-20percent {
+  @include make-xs-column(2.4);
+}
+
+
 .container-wide {
   width: 100%;
-
-  @media (max-width: $screen-xs-max) {
-    margin-left: -20px;
-    padding-left: 20px;
-    padding-right: 20px;
-  }
 }
 
 .container-tall {
