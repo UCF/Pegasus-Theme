@@ -20,23 +20,29 @@
 	<div class="container">
 		<div class="row title-wrap">
 			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-				<h1><?=$post->post_title?></h1>
+				<h1><?php echo $post->post_title; ?></h1>
 			</div>
 		</div>
 		<div class="row description-wrap">
 			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-				<span class="description">
-					<?=get_post_meta($post->ID, 'story_description', TRUE);?>
-				</span>
-				<div class="social-wrap">
-					<?=display_social(get_permalink($post->ID), $post->post_title)?>
+				<div class="row">
+					<div class="col-md-8 description-col">
+						<span class="description">
+							<?php echo get_post_meta($post->ID, 'story_description', TRUE); ?>
+						</span>
+					</div>
+					<div class="col-md-4 description-col">
+						<div class="social-wrap">
+							<?php echo display_social(get_permalink($post->ID), $post->post_title); ?>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
 
 		<div class="row content-wrap">
 			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-				<?=the_content()?>
+				<?php echo the_content(); ?>
 			</div>
 		</div>
 	</div>

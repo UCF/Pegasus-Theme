@@ -40,6 +40,7 @@
   background-image: url('../img/social-share.png');
   background-repeat: no-repeat;
   display: block;
+  float: left;
   height: 31px;
   margin-right: 4px;
   overflow: hidden;
@@ -388,7 +389,7 @@
 .ss-captions-wrapper {
   margin-left: 22%;
   margin-right: 22%;
-  padding-top: 20px;
+  margin-top: 20px;
   position: relative;
   width: 56%;
 

@@ -269,7 +269,7 @@ function sc_sidebar($attr, $content) {
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content = do_shortcode($content);
 
-	$html = '<div class="col-md-4 col-sm-4 '.$pull.' sidebar">';
+	$html = '<div class="col-md-5 col-sm-6 '.$pull.' sidebar">';
 	$html .= '<section class="sidebar-inner" style="background-color: '.$bgcolor.';">'.$content.'</section>';
 	$html .= '</div>';
 

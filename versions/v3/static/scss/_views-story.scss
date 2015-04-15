@@ -9,8 +9,8 @@ article.story {
   ul {
     font-family: Georgia, serif;
     font-size: 16px;
-    line-height: 1.38em;
-    margin-top: 0;
+    // line-height: 1.38em;
+    // margin-top: 0;
 
     @media (max-width: $screen-xs-max) {
       font-size: 15px;
@@ -18,15 +18,25 @@ article.story {
   }
 
   p {
-    margin-bottom: 16px;
+    // margin-bottom: 16px;
 
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 20px;
-    }
+    // @media (max-width: $screen-xs-max) {
+    //   margin-bottom: 20px;
+    // }
 
     &:empty {
       display: none;
     }
+  }
+
+  ol,
+  ul {
+    line-height: 1.2;
+    margin-bottom: 20px;
+  }
+
+  li {
+    margin-bottom: 8px;
   }
 
   h1,
@@ -36,7 +46,6 @@ article.story {
   h5,
   h6 {
     color: #222;
-    line-height: 1em;
 
     @include body-prefix('.ie8') {
       font-weight: normal !important;
@@ -52,23 +61,22 @@ article.story {
 
   h2 {
     font-size: 36px;
-    margin-bottom: 15px;
 
     @media (max-width: $screen-xs-max) {
       font-size: 30px;
-      line-height: 30px;
-      margin-bottom: 10px;
     }
   }
 
   h3 {
     font-size: 26px;
-    margin-bottom: 6px;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 25px;
+    }
   }
 
   h4 {
     font-size: 20px;
-    margin-bottom: 6px;
   }
 
   h5 {
@@ -98,6 +106,10 @@ article.story {
       }
     }
 
+    p {
+      margin-top: 0;
+    }
+
     small {
       color: #444;
       font-family: "Helvetica Neue", Helvetica, sans-serif;
@@ -112,37 +124,41 @@ article.story {
       }
     }
 
+    cite {
+      margin-left: 10px;
+    }
+
     &.quote {
-      padding-left: 60px;
+      padding-left: 48px;
       position: relative;
 
       @media (max-width: $screen-sm-max) {
         padding-left: 42px;
-
-        &:before {
-          font-size: 95px;
-          line-height: 92px;
-        }
       }
 
-      @media (max-width: $screen-sm-max) {
+      @media (max-width: $screen-xs-max) {
         padding-left: 36px;
-
-        &:before {
-          font-size: 76px;
-          left: -7px;
-          line-height: 74px;
-        }
       }
 
       &:before {
         content: '“';
-        font-size: 128px;
+        font-size: 100px;
         font-style: none;
         left: -10px;
         line-height: 102px;
         position: absolute;
         top: 0;
+
+        @media (max-width: $screen-sm-max) {
+          font-size: 95px;
+          line-height: 92px;
+        }
+
+        @media (max-width: $screen-xs-max) {
+          font-size: 76px;
+          left: -7px;
+          line-height: 74px;
+        }
       }
 
       p:after {
@@ -199,19 +215,18 @@ article.story {
     background-repeat: no-repeat;
     background-size: cover;
     height: 600px;
-    margin: 0 auto 35px;
+    margin: 0 auto 10px;
     position: relative;
 
     @media (max-width: $screen-sm-max) {
       height: 490px;
-      max-width: 980px;
+      // max-width: 980px;
     }
 
     @media (max-width: $screen-xs-max) {
       background-size: 100% auto;
       height: auto;
-      margin-bottom: 25px;
-      margin-left: -20px;
+      margin-bottom: 5px;
     }
 
     img {
@@ -225,26 +240,14 @@ article.story {
       @media (max-width: $screen-xs-max) {
         height: auto;
         margin: 0;
-        padding-bottom: 10px;
-        padding-top: 10px;
         position: static;
         visibility: hidden;
-        width: auto;
+        width: 100%;
       }
     }
-  }
 
-  .title-wrap {
-    padding-top: 30px;
-
-    .story-header-image + .container & {
-      padding-top: 0;
-    }
-  }
-
-  .description-wrap {
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 35px;
+    + .container .title-wrap {
+      margin-top: 0;
     }
   }
 
@@ -257,7 +260,6 @@ article.story {
     @media (max-width: $screen-xs-max) {
       font-size: 18px;
       line-height: 28px;
-      margin-bottom: 25px;
     }
 
     em,
@@ -274,7 +276,6 @@ article.story {
     @media (max-width: $screen-xs-max) {
       font-size: 17px;
       line-height: 27px;
-      margin-bottom: 30px;
     }
 
     // These must be declared separately to work properly.
@@ -299,32 +300,35 @@ article.story {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     line-height: 20px;
-    margin-bottom: 0;
-    margin-top: 15px;
     text-align: left;
   }
 
   .sidebar {
     margin-bottom: 20px;
 
+    &.pull-left {
+      padding-left: 0;
+      padding-right: $grid-gutter-width;
+    }
+
+    &.pull-right {
+      padding-left: $grid-gutter-width;
+      padding-right: 0;
+    }
+
     &.pull-left,
     &.pull-right {
       @media (max-width: $screen-xs-max) {
         float: left;
-        margin-left: 0;
-        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
         width: 100%;
       }
-    }
-
-    &.pull-left {
-      margin-left: 0;
-      margin-right: 20px;
     }
   }
 
   .sidebar-inner {
-    padding: 30px;
+    padding: 10px 30px;
 
     blockquote {
       &.quote {
@@ -378,20 +382,10 @@ article.story {
   }
 
   .callout-inner,
-  .sidebar-inner {
-    blockquote p {
-      margin-bottom: 0;
-    }
-
+  & {
     > p:empty {
       // kill_empty_p_tags won't work for these shortcodes :(
       display: none;
-    }
-
-    > * {
-      // Try to eliminate excess spacing between callout/sidebar and inner element
-      margin-top: 0;
-      margin-bottom: 0;
     }
   }
 
@@ -434,38 +428,47 @@ article.story iframe {
 // Story - Default Template
 article.story-default {
   .title-wrap {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
+    margin-top: 10px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+  }
+
+  .description-wrap {
+    display: inline-block;
+    margin-bottom: 45px;
+    white-space: nowrap;
+
+    @media (max-width: $screen-sm-max) {
+      display: block;
+      white-space: auto;
+    }
 
     @media (max-width: $screen-xs-max) {
       margin-bottom: 15px;
     }
   }
 
-  .description-wrap {
-    margin-bottom: 50px;
-  }
-
-  .description,
-  .social-wrap {
+  // Allows social btns to be bottom-right aligned
+  .description-col {
     display: inline-block;
+    float: none;
 
     @media (max-width: $screen-sm-max) {
-      width: 100%;
+      display: block;
+      float: left;
     }
   }
 
   .description {
-    padding-right: 4%;
-    width: 62%;
+    display: block;
 
     @media (max-width: $screen-sm-max) {
       margin-bottom: 20px;
-      padding-right: 0;
     }
-  }
-
-  .social-wrap {
-    width: 33%;
   }
 
   .social {
@@ -553,7 +556,6 @@ article.ss-photo-essay {
       @media (max-width: $screen-xs-max) {
         font-size: 16px;
         line-height: 20px;
-        margin-bottom: 5px;
       }
     }
 
