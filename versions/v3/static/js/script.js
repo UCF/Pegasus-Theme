@@ -617,6 +617,11 @@ var socialButtonTracking = function($) {
 };
 
 
+var removeEmptyPTags = function($) {
+  $('p:empty').remove();
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -632,6 +637,7 @@ if (typeof jQuery !== 'undefined'){
       slideshow.init();
       lazyLoadAssets($);
       socialButtonTracking($);
+      removeEmptyPTags($);
     });
   })(jQuery);
 }

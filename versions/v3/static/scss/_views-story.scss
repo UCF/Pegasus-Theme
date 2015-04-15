@@ -27,6 +27,13 @@ article.story {
     &:empty {
       display: none;
     }
+
+    // Attempt to "reset" stacked margins from images within <p> tags.
+    // Will not work in IE8.
+    > img:only-child {
+      margin-bottom: 5px;
+      margin-top: 0;
+    }
   }
 
   ol,
@@ -37,6 +44,10 @@ article.story {
 
   li {
     margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   h1,
@@ -49,6 +60,12 @@ article.story {
 
     @include body-prefix('.ie8') {
       font-weight: normal !important;
+    }
+
+    > span {
+      // allow line-height to reset properly
+      display: block;
+      letter-spacing: initial;
     }
   }
 
@@ -90,7 +107,6 @@ article.story {
   blockquote {
     border-left: 0;
     clear: both;
-    margin-bottom: 25px;
     padding-left: 0;
 
     &,
@@ -161,7 +177,8 @@ article.story {
         }
       }
 
-      p:after {
+      // note: does not work in IE8
+      > p:last-of-type:after {
         content: '”';
       }
     }
@@ -205,7 +222,6 @@ article.story {
     }
 
     img {
-      margin-bottom: 0;
       margin-top: 0;
     }
   }
@@ -300,6 +316,7 @@ article.story {
     font-family: "Helvetica Neue", Helvetica, sans-serif;
     font-size: 14px;
     line-height: 20px;
+    margin-bottom: 20px;
     text-align: left;
   }
 
@@ -335,9 +352,13 @@ article.story {
         padding-left: 0;
 
         &:before {
+          display: block;
+          float: left;
           font-size: 28px;
-          left: -12px;
+          left: -5px;
           line-height: 38px;
+          position: relative;
+          top: 0;
 
           @media (max-width: $screen-sm-max) {
             font-size: 26px;
@@ -360,13 +381,13 @@ article.story {
       small {
         font-size: 16px;
         line-height: 22px;
-        margin-top: 14px;
+        margin-top: 10px;
       }
     }
   }
 
   .callout {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     margin-top: 30px;
   }
 
@@ -378,6 +399,11 @@ article.story {
       // Force centering of wrapper divs by default
       margin-left: auto;
       margin-right: auto;
+    }
+
+    // will not work in IE8
+    > *:last-child {
+      margin-bottom: 0;
     }
   }
 
@@ -448,7 +474,7 @@ article.story-default {
     }
 
     @media (max-width: $screen-xs-max) {
-      margin-bottom: 15px;
+      margin-bottom: 30px;
     }
   }
 
