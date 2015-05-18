@@ -465,13 +465,12 @@ article.story-default {
   }
 
   .description-wrap {
-    display: inline-block;
     margin-bottom: 45px;
     white-space: nowrap;
 
     @media (max-width: $screen-sm-max) {
       display: block;
-      white-space: auto;
+      white-space: normal;
     }
 
     @media (max-width: $screen-xs-max) {
@@ -483,6 +482,7 @@ article.story-default {
   .description-col {
     display: inline-block;
     float: none;
+    vertical-align: bottom;
 
     @media (max-width: $screen-sm-max) {
       display: block;
@@ -500,9 +500,11 @@ article.story-default {
 
   .social {
     float: right;
+    margin-bottom: 8px;
 
     @media (max-width: $screen-sm-max) {
       float: left;
+      margin-bottom: 0;
     }
   }
 }

@@ -606,7 +606,7 @@ function sc_archive_search($params=array(), $content='') {
 			if ($posts) {
 		?>
 			<div class="row issue">
-				<div class="col-md-4 col-sm-4">
+				<div class="col-md-5 col-sm-5">
 					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
 
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
@@ -627,7 +627,7 @@ function sc_archive_search($params=array(), $content='') {
 						</a>
 					<?php } ?>
 				</div>
-				<div class="col-md-6 col-sm-6">
+				<div class="col-md-7 col-sm-7">
 					<h3>More in This Issue</h3>
 					<ul>
 					<? foreach($posts as $post) { ?>
@@ -645,7 +645,9 @@ function sc_archive_search($params=array(), $content='') {
 					<? } ?>
 					</ul>
 				</div>
-				<hr class="col-md-10 col-sm-10" />
+				<div class="col-md-12 col-sm-12">
+					<hr>
+				</div>
 			</div>
 			<?
 			}

@@ -26,12 +26,12 @@
 		<div class="row description-wrap">
 			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 				<div class="row">
-					<div class="col-md-8 description-col">
+					<div class="col-md-8 col-sm-12 col-xs-12 description-col">
 						<span class="description">
 							<?php echo get_post_meta($post->ID, 'story_description', TRUE); ?>
 						</span>
 					</div>
-					<div class="col-md-4 description-col">
+					<div class="col-md-4 col-sm-12 col-xs-12 description-col">
 						<div class="social-wrap">
 							<?php echo display_social(get_permalink($post->ID), $post->post_title); ?>
 						</div>

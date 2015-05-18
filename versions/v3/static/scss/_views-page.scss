@@ -31,6 +31,12 @@
     font-weight: normal;
   }
 
+  h2,
+  h3,
+  h4 {
+    margin-top: 0;
+  }
+
   h2 {
     font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-size: 36px;
@@ -57,6 +63,7 @@
     font-family: 'AleoBold', serif;
     font-size: 17px;
     line-height: 18px;
+    margin-bottom: 2px;
     padding-right: 10px;
   }
 
@@ -191,6 +198,7 @@
     }
 
     ul {
+      margin-bottom: 0;
       overflow: auto;
       padding: 80px 0 30px;
       position: relative;
