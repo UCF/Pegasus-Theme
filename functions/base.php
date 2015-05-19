@@ -240,7 +240,7 @@ class TextareaField extends Field{
 	function input_html(){
 		ob_start();
 		?>
-		<textarea cols="60" rows="4" id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
+		<textarea cols="60" rows="4" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>"><?php echo htmlspecialchars_decode( $this->value ); ?></textarea>
 		<?php
 		return ob_get_clean();
 	}
@@ -270,7 +270,7 @@ class WysiwygField extends Field {
 	        </div>
 	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
 	    </div>
-		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlentities( $this->value ); ?></textarea>
+		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlspecialchars_decode( $this->value ); ?></textarea>
 	<?php
 		return ob_get_clean();
 	}
@@ -1596,6 +1596,22 @@ function save_file( $post_id, $field ) {
 	}
 }
 
+function save_textarea( $post_id, $field ) {
+	$old = htmlspecialchars( get_post_meta( $post_id, $field['id'], true ) );
+	$new = htmlspecialchars( $_POST[$field['id']] );
+
+	# Update if new is not empty and is not the same value as old
+	if ( $new !== '' and $new !== null and $new != $old ) {
+		update_post_meta( $post_id, $field['id'], $new );
+	}
+	# Delete if we're sending a new null value and there was an old value
+	elseif ( ( $new === '' or is_null( $new ) ) and $old ) {
+		delete_post_meta( $post_id, $field['id'], $old );
+	}
+	# Otherwise we do nothing, field stays the same
+	return;
+}
+
 function save_default($post_id, $field){
 	$old = get_post_meta($post_id, $field['id'], true);
 	$new = $_POST[$field['id']];
@@ -1675,6 +1691,10 @@ function _save_meta_data($post_id, $meta_box){
 		switch ($field['type']){
 			case 'file':
 				save_file($post_id, $field);
+				break;
+			case 'textarea':
+			case 'wysiwyg':
+				save_textarea( $post_id, $field );
 				break;
 			default:
 				save_default($post_id, $field);
