@@ -607,22 +607,26 @@ function sc_archive_search($params=array(), $content='') {
 		?>
 			<div class="row issue">
 				<div class="col-md-5 col-sm-5">
-					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
+					<h2 id="<?php echo $issue->post_name; ?>">
+						<a href="<?php echo get_permalink( $issue->ID ); ?>">
+							<?php echo $issue->post_title; ?>
+						</a>
+					</h2>
 
-					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
-						<a href="<?=get_permalink($issue->ID)?>">
-							<?=$thumbnail?>
+					<?php if ( $thumbnail = get_the_post_thumbnail( $issue->ID, 'issue-thumbnail' ) ) { ?>
+						<a href="<?php echo get_permalink( $issue->ID ); ?>">
+							<?php echo $thumbnail; ?>
 						</a>
 					<?php } ?>
 
-					<?php if ($featured_article_id) { ?>
+					<?php if ( $featured_article_id ) { ?>
 						<h3>Featured Story</h3>
-						<a class="featured-story" href="<?=get_permalink($featured_article->ID)?>">
-							<h4><?=$featured_article->post_title?></h4>
-							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
-								<span class="description"><?=$f_desc?></span>
-							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
-								<span class="description"><?=$f_subtitle?></span>
+						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
+							<h4><?php echo $featured_article->post_title; ?></h4>
+							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
+								<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
+							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
+								<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
 							<?php } ?>
 						</a>
 					<?php } ?>
@@ -630,15 +634,15 @@ function sc_archive_search($params=array(), $content='') {
 				<div class="col-md-7 col-sm-7">
 					<h3>More in This Issue</h3>
 					<ul>
-					<? foreach($posts as $post) { ?>
-						<li data-post-id="<?=$post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
-							<a href="<?=get_permalink($post->ID)?>">
-								<h4><?=$post->post_title?></h4>
-								<span class="results-story-issue"><?=$issue->post_title?></span>
-								<?php if ($desc = get_post_meta($post->ID, 'story_description', TRUE)) { ?>
-									<span class="description"><?=$desc?></span>
-								<?php } else if ($subtitle = get_post_meta($post->ID, 'story_subtitle', TRUE)) { ?>
-									<span class="description"><?=$subtitle?></span>
+					<?php foreach( $posts as $post ) { ?>
+						<li data-post-id="<?php echo $post->ID; ?>"<?php if ( $post->ID == $featured_article_id ) { ?> class="featured-story"<?php } ?>>
+							<a href="<?php echo get_permalink( $post->ID ); ?>">
+								<h4><?php echo $post->post_title; ?></h4>
+								<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
+								<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
+									<span class="description"><?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?></span>
+								<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
+									<span class="description"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
 								<?php } ?>
 							</a>
 						</li>
