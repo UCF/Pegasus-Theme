@@ -56,3 +56,5 @@ by Cloud.Typography in the CSS Key URL field in the Theme Options admin area.
 This site's production environment should have its own Cloud.Typography project, configured identically to the Development
 Mode equivalent project.  **The webfont archive name (usually six-digit number) provided by Cloud.Typography MUST match the
 name of the directory for Cloud.Typography webfonts in this repository!**
+
+Install the https://github.com/UCF/WP-Allowed-Hosts wordpress plugin if media import fails. After installing the plugin update the Allowed Hosts under the admin Settings menu. Use the following regex \.ucf\.edu$ and check the regex checkbox.
