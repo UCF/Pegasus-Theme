@@ -240,7 +240,7 @@ class TextareaField extends Field{
 	function input_html(){
 		ob_start();
 		?>
-		<textarea cols="60" rows="4" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>"><?php echo htmlspecialchars_decode( $this->value ); ?></textarea>
+		<textarea cols="60" rows="4" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>"><?php echo html_entity_decode( $this->value ); ?></textarea>
 		<?php
 		return ob_get_clean();
 	}
@@ -270,7 +270,7 @@ class WysiwygField extends Field {
 	        </div>
 	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
 	    </div>
-		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlspecialchars_decode( $this->value ); ?></textarea>
+		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo html_entity_decode( $this->value ); ?></textarea>
 	<?php
 		return ob_get_clean();
 	}
@@ -1597,8 +1597,8 @@ function save_file( $post_id, $field ) {
 }
 
 function save_textarea( $post_id, $field ) {
-	$old = htmlspecialchars( get_post_meta( $post_id, $field['id'], true ) );
-	$new = htmlspecialchars( $_POST[$field['id']] );
+	$old = htmlentities( get_post_meta( $post_id, $field['id'], true ), ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' );
+	$new = htmlentities( $_POST[$field['id']], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8' );
 
 	# Update if new is not empty and is not the same value as old
 	if ( $new !== '' and $new !== null and $new != $old ) {
