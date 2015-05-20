@@ -27,7 +27,7 @@ function display_story_list($issue, $class=null) {
 						<?php } ?>
 						<h3 class="story-title"><?=$title?></h3>
 						<?php if ( !empty( $subtitle ) ) { ?>
-						<span class="subtitle"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
+						<span class="subtitle"><?php echo strip_tags( $subtitle, '<b><em><i><u><strong>'); ?></span>
 						<?php } ?>
 					</a>
 				</article>

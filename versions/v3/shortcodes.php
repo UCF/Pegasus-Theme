@@ -624,9 +624,9 @@ function sc_archive_search($params=array(), $content='') {
 						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
 							<h4><?php echo $featured_article->post_title; ?></h4>
 							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
-								<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
+								<span class="description"><?php echo strip_tags( $f_desc, '<b><em><i><u><strong>' ); ?></span>
 							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
-								<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
+								<span class="description"><?php echo strip_tags( $f_subtitle, '<b><em><i><u><strong>' ); ?></span>
 							<?php } ?>
 						</a>
 					<?php } ?>
@@ -640,9 +640,9 @@ function sc_archive_search($params=array(), $content='') {
 								<h4><?php echo $post->post_title; ?></h4>
 								<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
 								<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
-									<span class="description"><?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?></span>
+									<span class="description"><?php echo strip_tags( $desc, '<b><em><i><u><strong>' ); ?></span>
 								<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
-									<span class="description"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
+									<span class="description"><?php echo strip_tags( $subtitle, '<b><em><i><u><strong>' ); ?></span>
 								<?php } ?>
 							</a>
 						</li>
