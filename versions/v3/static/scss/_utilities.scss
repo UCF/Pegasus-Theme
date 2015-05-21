@@ -51,6 +51,11 @@
 
 .col-md-20percent {
   @include make-md-column(2.4);
+
+  @include body-prefix('.ie8') {
+    // Call -xs here to generate width value not wrapped in a media query
+    @extend .col-xs-20percent;
+  }
 }
 
 .col-sm-20percent {
