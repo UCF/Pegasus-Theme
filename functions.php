@@ -153,9 +153,6 @@ function get_version_footer() {
  * for maintaining backward compatibility have already been performed.
  * Functions with theme option flags below should only run once, assuming they
  * ran successfully the first time.
- *
- * TODO: manual post update required to trigger template updates when
- * check_backward_compatibility() runs
  **/
 function check_backward_compatibility() {
 	// Attempts to set versions on Issue posts, based on Issue slugs set
@@ -204,12 +201,16 @@ function set_initial_issue_versions() {
 			if ( $success !== true ) {
 				return false;
 			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $issue );
 		}
 		else if ( in_array( $issue->post_name, unserialize( V2_ISSUES ) ) ) {
 			$success = update_post_meta( $issue->ID, 'issue_version', 2 );
 			if ( $success !== true ) {
 				return false;
 			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $issue );
 		}
 	}
 
@@ -258,6 +259,8 @@ function set_templates_for_v1() {
 			if ( $success !== true ) {
 				return false;
 			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $story );
 		}
 	}
 	foreach ( $issues as $issue_id ) {
@@ -266,6 +269,8 @@ function set_templates_for_v1() {
 			if ( $success !== true ) {
 				return false;
 			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( get_post( $issue_id ) );
 		}
 	}
 
