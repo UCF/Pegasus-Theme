@@ -437,7 +437,10 @@
 		width: 100%;
 	}
 
-	#footer-navigation ul { text-align: left; }
+	#footer-navigation ul {
+    margin-left: 0;
+    text-align: left;
+  }
 	#footer-navigation li { width: 100%; line-height: 32px; }
 	#footer-navigation li:before { content: ""; padding: 0; }
 
