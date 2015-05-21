@@ -92,7 +92,7 @@ function add_shortcode_interface_modal() {
 					"Insert into Post" button.
 					<br/>
 					For more information about shortcodes and what they do, please see the
-					<a target="_blank" href="<?=get_admin_url()?>admin.php?page=theme-help#shortcodes">help
+					<a target="_blank" href="<?php echo get_admin_url() ?>admin.php?page=theme-help#shortcodes">help
 					documentation for shortcodes</a>.
 				</p>
 
@@ -103,7 +103,7 @@ function add_shortcode_interface_modal() {
 							<?php
 							foreach($shortcodes as $name=>$callback):
 							?>
-								<option class="shortcode" value="<?=$name?>" <?php if (isset($enclosing[$name])) { ?>data-enclosing="<?=$enclosing[$name]?>"<?php } ?>><?=$name?></option>
+								<option class="shortcode" value="<?php echo $name ?>" <?php if (isset($enclosing[$name])) { ?>data-enclosing="<?php echo $enclosing[$name] ?>"<?php } ?>><?php echo $name ?></option>
 							<?php
 							endforeach;
 							?>
@@ -195,7 +195,7 @@ function add_shortcode_interface_modal() {
 							foreach($photo_essays as $photo_essay):
 							?>
 
-							<option class="shortcode" value="<?=$photo_essay->post_name?>"><?=$photo_essay->post_title?></option>
+							<option class="shortcode" value="<?php echo $photo_essay->post_name ?>"><?php echo $photo_essay->post_title ?></option>
 
 							<?php
 							endforeach;
@@ -228,7 +228,7 @@ add_action('admin_footer', 'add_shortcode_interface_modal');
  **/
 function login_scripts(){
 	ob_start();?>
-	<link rel="stylesheet" href="<?=THEME_CSS_URL?>/admin.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="<?php echo THEME_CSS_URL ?>/admin.css" type="text/css" media="screen" charset="utf-8" />
 	<?php
 	$out = ob_get_clean();
 	print $out;
@@ -458,35 +458,49 @@ add_filter('mce_buttons_2', 'add_options_to_tinymce');
 /**
  * Add webfont options and their stylesheets to TinyMCE editor.
  **/
-function add_webfonts_to_tinymce($settings) {
-	$fonts = unserialize(TEMPLATE_FONT_STYLES);
-	$cloud_font_key = get_theme_option('cloud_font_key');
+function add_webfonts_to_tinymce( $settings ) {
+	$fonts = unserialize( TEMPLATE_FONT_STYLES );
+	$cloud_font_key = get_theme_option( 'cloud_font_key' );
 	//$theme_advanced_fonts = '';
 	$style_formats = array();
-	$content_css = array();
+	$content_css = array();	
+	
+	$style_formats[] = array(
+		'title' => 'UPPERCASE',
+		'inline' => 'span',
+		'classes' => 'text-uppercase'
+	);
+	
+	$style_formats[] = array(
+		'title' => 'lowercase',
+		'inline' => 'span',
+		'classes' => 'text-lowercase'
+	);
+	
+	$style_formats[] = array(
+		'title' => 'Title Case',
+		'inline' => 'span',
+		'classes' => 'text-capitalize'
+	);
 
-	foreach ($fonts as $font=>$styles) {
-		$styles = get_heading_styles($font);
-/*
-		$str = $font.'='.str_replace('"', "'", $styles['font-family']).';';
-		$theme_advanced_fonts .= $str;
-*/
+	foreach ( $fonts as $font=>$styles ) {
+		$styles = get_heading_styles( $font );
 
 		$style_formats[] = array(
 			'title' => $font,
 			'inline' => 'span',
-			'classes' => sanitize_title($font)
+			'classes' => sanitize_title( $font )
 		);
 
-		if ($styles['url'] !== null) {
+		if ( $styles['url'] !== null ) {
 			$content_css[] = $styles['url'];
 		}
 	}
 
-	if (!empty($cloud_font_key)) {
+	if ( !empty( $cloud_font_key ) ) {
 		$content_css[] .= $cloud_font_key;
 	}
-	$content_css = implode(',', array_unique($content_css));
+	$content_css = implode(',', array_unique( $content_css ) );
 
 	//$settings['theme_advanced_fonts'] = $theme_advanced_fonts;
 	$settings['content_css'] = $settings['content_css'].','.$content_css;
@@ -496,6 +510,6 @@ function add_webfonts_to_tinymce($settings) {
 
 	return $settings;
 }
-add_filter('tiny_mce_before_init', 'add_webfonts_to_tinymce' );
+add_filter( 'tiny_mce_before_init', 'add_webfonts_to_tinymce' );
 
 ?>

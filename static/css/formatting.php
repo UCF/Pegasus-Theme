@@ -10,5 +10,17 @@ ul {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-lowercase {
+	text-transform: lowercase;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
+}
+
 <?php require('../../../../../wp-load.php'); ?>
-<?=get_webfont_css_classes()?>
+<?php echo get_webfont_css_classes() ?>

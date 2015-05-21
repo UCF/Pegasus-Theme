@@ -1,7 +1,7 @@
 <?php disallow_direct_load('single.php');?>
 <?php get_header(); the_post();?>
 	
-	<div class="row page-content" id="<?=$post->post_name?>">
+	<div class="row page-content" id="<?php echo $post->post_name ?>">
 		<div class="span9">
 			<article>
 				<? if(!is_front_page())	{ ?>
@@ -12,7 +12,7 @@
 		</div>
 		
 		<div id="sidebar" class="span3">
-			<?=get_sidebar();?>
+			<?php echo get_sidebar(); ?>
 		</div>
 	</div>
 

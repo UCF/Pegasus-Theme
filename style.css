@@ -1528,3 +1528,15 @@ h2#footer_logo {
 .footer_stories.bottom a .title_colon {display:none;}
 
 .footer_stories.bottom li { height: 202px; overflow: hidden; }
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-lowercase {
+	text-transform: lowercase;
+}
+
+.text-capitalize {
+	text-transform: capitalize;
+}
