@@ -1,11 +1,11 @@
 <?php disallow_direct_load('single.php');?>
 <?php get_header(); the_post();?>
 	
-	<div class="row page-content" id="<?php echo $post->post_name ?>">
+	<div class="row page-content" id="<?php echo $post->post_name; ?>">
 		<div class="span9">
 			<article>
 				<? if(!is_front_page())	{ ?>
-						<h1><?php the_title();?></h1>
+						<h1><?php the_title(); ?></h1>
 				<? } ?>
 				<?php the_content();?>
 			</article>

@@ -1536,7 +1536,3 @@ h2#footer_logo {
 .text-lowercase {
 	text-transform: lowercase;
 }
-
-.text-capitalize {
-	text-transform: capitalize;
-}

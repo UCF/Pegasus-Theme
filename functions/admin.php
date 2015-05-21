@@ -92,7 +92,7 @@ function add_shortcode_interface_modal() {
 					"Insert into Post" button.
 					<br/>
 					For more information about shortcodes and what they do, please see the
-					<a target="_blank" href="<?php echo get_admin_url() ?>admin.php?page=theme-help#shortcodes">help
+					<a target="_blank" href="<?php echo get_admin_url(); ?>admin.php?page=theme-help#shortcodes">help
 					documentation for shortcodes</a>.
 				</p>
 
@@ -103,7 +103,7 @@ function add_shortcode_interface_modal() {
 							<?php
 							foreach($shortcodes as $name=>$callback):
 							?>
-								<option class="shortcode" value="<?php echo $name ?>" <?php if (isset($enclosing[$name])) { ?>data-enclosing="<?php echo $enclosing[$name] ?>"<?php } ?>><?php echo $name ?></option>
+								<option class="shortcode" value="<?php echo $name; ?>" <?php if (isset($enclosing[$name])) { ?>data-enclosing="<?php echo $enclosing[$name]; ?>"<?php } ?>><?php echo $name; ?></option>
 							<?php
 							endforeach;
 							?>
@@ -195,7 +195,7 @@ function add_shortcode_interface_modal() {
 							foreach($photo_essays as $photo_essay):
 							?>
 
-							<option class="shortcode" value="<?php echo $photo_essay->post_name ?>"><?php echo $photo_essay->post_title ?></option>
+							<option class="shortcode" value="<?php echo $photo_essay->post_name; ?>"><?php echo $photo_essay->post_title; ?></option>
 
 							<?php
 							endforeach;
@@ -228,7 +228,7 @@ add_action('admin_footer', 'add_shortcode_interface_modal');
  **/
 function login_scripts(){
 	ob_start();?>
-	<link rel="stylesheet" href="<?php echo THEME_CSS_URL ?>/admin.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="<?php echo THEME_CSS_URL; ?>/admin.css" type="text/css" media="screen" charset="utf-8" />
 	<?php
 	$out = ob_get_clean();
 	print $out;
@@ -475,12 +475,6 @@ function add_webfonts_to_tinymce( $settings ) {
 		'title' => 'lowercase',
 		'inline' => 'span',
 		'classes' => 'text-lowercase'
-	);
-	
-	$style_formats[] = array(
-		'title' => 'Title Case',
-		'inline' => 'span',
-		'classes' => 'text-capitalize'
 	);
 
 	foreach ( $fonts as $font=>$styles ) {

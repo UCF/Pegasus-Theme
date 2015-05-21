@@ -18,9 +18,5 @@ ul {
 	text-transform: lowercase;
 }
 
-.text-capitalize {
-	text-transform: capitalize;
-}
-
 <?php require('../../../../../wp-load.php'); ?>
-<?php echo get_webfont_css_classes() ?>
+<?php echo get_webfont_css_classes(); ?>
