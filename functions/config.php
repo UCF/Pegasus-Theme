@@ -173,8 +173,6 @@ define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array))
  * or if the font is loaded in via the Cloud.Typography stylesheet, leave the 'url'
  * option as null.
  **/
-
-// TODO: remove $template_fonts_array, this is confusing
 $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
