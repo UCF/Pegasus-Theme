@@ -239,7 +239,8 @@ function sc_callout($attr, $content) {
 	// Close out our existing .span, .row and .container
 	$html = '</div></div></div>';
 	$html .= '<div class="container-wide callout" style="background-color: '.$bgcolor.';">';
-	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1 callout-inner content-align-'.$content_align.' header-align-'.$header_align.'">';
+	$html .= '<div class="container"><div class="row content-wrap">';
+	$html .= '<div class="span10 offset1 callout-inner content-align-'.$content_align.' header-align-'.$header_align.'">';
 	$html .= $content;
 	$html .= '</div></div></div></div>';
 	// Reopen standard .container, .row and .span
