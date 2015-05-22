@@ -2,7 +2,7 @@
 Theme Name: Pegasus Theme
 Author: UCF Web Communications
 Github Theme URI: https://github.com/UCF/Pegasus-Theme
-Version: v2.2.12
+Version: v2.2.13
 */
 
 
@@ -1528,3 +1528,11 @@ h2#footer_logo {
 .footer_stories.bottom a .title_colon {display:none;}
 
 .footer_stories.bottom li { height: 202px; overflow: hidden; }
+
+.text-uppercase {
+	text-transform: uppercase;
+}
+
+.text-lowercase {
+	text-transform: lowercase;
+}
