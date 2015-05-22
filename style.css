@@ -681,7 +681,31 @@ article.story .sidebar-inner blockquote small {
 article.story .sidebar-inner blockquote.quote { padding-left: 0; }
 
 article.story .callout { margin-top: 30px; margin-bottom: 40px; }
-article.story .callout-inner { padding: 30px 0; text-align: center; }
+article.story .callout-inner { 
+	padding: 30px 0; 
+	text-align: center;
+}
+article.story .callout-inner.content-align-left {
+	text-align: left;
+}
+article.story .callout-inner.content-align-right {
+	text-align: right;
+}
+article.story .callout-inner.header-align-left h2, 
+article.story .callout-inner.header-align-left h3, 
+article.story .callout-inner.header-align-left h4 {
+	text-align: left;
+}
+article.story .callout-inner.header-align-right h2, 
+article.story .callout-inner.header-align-right h3, 
+article.story .callout-inner.header-align-right h4 {
+	text-align: right;
+}
+article.story .callout-inner.header-align-center h2, 
+article.story .callout-inner.header-align-center h3, 
+article.story .callout-inner.header-align-center h4 {
+	text-align: center;
+}
 article.story .callout-inner > p:empty,
 article.story .sidebar-inner > p:empty {
 	/* kill_empty_p_tags won't work for these shortcodes :( */
