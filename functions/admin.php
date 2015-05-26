@@ -477,6 +477,12 @@ function add_webfonts_to_tinymce( $settings ) {
 		'inline' => 'span',
 		'classes' => 'text-lowercase'
 	);
+	
+	$style_formats[] = array(
+		'title' => 'Inline Bulleted List',
+		'selector' => 'ul',
+		'classes' => 'inline-bulleted-list'
+	);	
 
 	foreach ($fonts as $font=>$styles) {
 		$styles = get_font_styles( $font );
