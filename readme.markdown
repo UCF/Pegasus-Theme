@@ -1,9 +1,19 @@
-# Pegasus Theme
+Pegasus-Theme
+=============
 
-Theme for the online version of Pegasus Magazine.
+Wordpress theme for Pegasus Magazine.  Built off of UCF's Generic Theme.
+
 
 ## Requirements
 * WordPress 4.1+
+
+## Required Plugins
+- Map Cap (see notes)
+- Gravity Forms
+
+## Installation Requirements
+- Set user capabilities for custom post types via Map Cap.  See notes below.
+- Configure Cloud.Typography projects for Development and Production environments.
 
 ## Notes
 
@@ -14,6 +24,47 @@ Developer Mode allows for a streamlined development process; instead of uploadin
 HTML markup is also updateable with this method; if the WYSIWYG editor is blank and a dev directory is specified, you can work off of a file of schema 'post-slug.html' in that directory instead of copy+pasting the markup with each update.
 
 Note that Developer Mode should be turned off for non-development environments.
+
+This theme uses the Map Cap plugin to set user capabilities for custom post types.  See recommended schema below.
+
+**For custom post types in this theme to be usable for users that are not super admins, this step MUST be performed
+upon theme activation.**
+
+### Stories, Issues, Photo Essays Capabilities
+
+#### Publish
+- Administrator
+- (Photo Essay ONLY:) Editor
+
+#### Edit Own
+- Administrator
+- Editor
+- Author
+- Contributor
+
+#### Edit Others'
+- Administrator
+- Editor
+- Author
+
+#### View Private
+- Administrator
+- Editor
+- Author
+
+### Using Cloud.Typography
+This theme is configured to work with the Cloud.Typography web font service.  To deliver the web fonts specified in
+this theme, a project must be set up in Cloud.Typography that references the domain on which this repository will live.
+
+Development environments should be set up in a separate, Development Mode project in Cloud.Typography to prevent pageviews
+from development environments counting toward the Cloud.Typography monthly pageview limit.  Paste the CSS Key URL provided 
+by Cloud.Typography in the CSS Key URL field in the Theme Options admin area.
+
+This site's production environment should have its own Cloud.Typography project, configured identically to the Development
+Mode equivalent project.  **The webfont archive name (usually six-digit number) provided by Cloud.Typography MUST match the
+name of the directory for Cloud.Typography webfonts in this repository!**
+
+Install the https://github.com/UCF/WP-Allowed-Hosts wordpress plugin if media import fails. After installing the plugin update the Allowed Hosts under the admin Settings menu. Use the following regex \.ucf\.edu$ and check the regex checkbox.
 
 ## Custom Post Types
 
