@@ -680,8 +680,15 @@ article.story .sidebar-inner blockquote small {
 }
 article.story .sidebar-inner blockquote.quote { padding-left: 0; }
 
-article.story .callout { margin-top: 30px; margin-bottom: 40px; }
-article.story .callout-inner { padding: 30px 0; text-align: center; }
+article.story .callout { 
+	margin-top: 30px; 
+	margin-bottom: 40px;
+}
+.callout-inner {
+	/* Removed specificity so text-left & text-right classes can overwrite */
+	padding: 30px 0; 
+	text-align: center;
+}
 article.story .callout-inner > p:empty,
 article.story .sidebar-inner > p:empty {
 	/* kill_empty_p_tags won't work for these shortcodes :( */
