@@ -1019,10 +1019,17 @@
 							<td>Horizontal position of the box (left or right).</td>
 							<td>right</td>
 						</tr>
+						<tr>
+							<td>Content Alignment</td>
+							<td>content_align</td>
+							<td>Align content left, right or center.</td>
+							<td>left</td>
+						</tr>
 					</table>
 
 					<h4>Examples</h4>
 					<pre><code>[sidebar background="#e1e1e1" position="left"]This is related content but does not fit inside the main paragraph.[/sidebar]</code></pre>
+					<pre><code>[sidebar background="#e1e1e1" content_align="center"]This is centered content.[/sidebar]</code></pre>
 
 					<hr/>
 

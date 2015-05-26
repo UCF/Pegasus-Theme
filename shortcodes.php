@@ -266,11 +266,12 @@ add_shortcode('caption', 'sc_caption');
  **/
 function sc_sidebar($attr, $content) {
 	$pull = ($attr['position'] == ('left' || 'right')) ? 'pull-'.$attr['position'] : 'pull-right';
-	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';	
+	$content_align = $attr['content_align'] ? ' text-'.$attr['content_align'] : '';
 	$content = do_shortcode($content);
 
 	$html = '<div class="span4 '.$pull.' sidebar">';
-	$html .= '<section class="sidebar-inner" style="background-color: '.$bgcolor.';">'.$content.'</section>';
+	$html .= '<section class="sidebar-inner'.$content_align.'" style="background-color: '.$bgcolor.';">'.$content.'</section>';
 	$html .= '</div>';
 
 	return $html;
