@@ -1,9 +1,23 @@
 // Subpages - General
 .subpage {
   main {
+    @include font-smoothing();
+    color: #000;
     display: block;
     margin-bottom: 40px;
     margin-top: 40px;
+
+    &,
+    p,
+    ol,
+    ul {
+      font-family: Georgia, serif;
+      font-size: 16px;
+
+      @media (max-width: $screen-xs-max) {
+        font-size: 15px;
+      }
+    }
   }
 
   h1 {

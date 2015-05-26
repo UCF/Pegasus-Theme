@@ -4,6 +4,12 @@
 }
 
 
+// Buttons
+.btn {
+  font-family: $font-family-sans-serif;
+}
+
+
 // Pegasus logos
 .logo-large-white {
   @include sprite();
