@@ -18,23 +18,23 @@ ul {
 	text-transform: lowercase;
 }
 
-ul.inline-bulleted-list {
-	text-align: center;	
+ul.list-inline-styled {
+	text-align: center;
 	margin: 0 0 16px;
 	padding: 0;
 }
 
-ul.inline-bulleted-list li {
+ul.list-inline-styled li {
 	display: inline-block;
 	margin: 0 0.2em;
 }
 
-ul.inline-bulleted-list li:before {
+ul.list-inline-styled li:before {
 	content: '\2022';
 	margin-right: 0.4em;
 }
 
-ul.inline-bulleted-list > :first-child:before {
+ul.list-inline-styled > :first-child:before {
 	content: '';
 	margin: 0;
 }
