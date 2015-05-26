@@ -10,7 +10,7 @@
 
 <section class="container" id="search-results">
 	<div class="row">
-		<div class="span10 offset1">
+		<div class="col-md-10 col-md-offset-1">
 			<h1>Search Results</h1>
 			<?=get_search_form()?>
 
@@ -61,7 +61,7 @@
 
 <section class="container" id="search-results">
 	<div class="row">
-		<div class="span10 offset1">
+		<div class="col-md-10 col-md-offset-1">
 			<h1>Search Results</h1>
 			<?=get_search_form()?>
 

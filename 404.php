@@ -5,7 +5,7 @@
 
 <section class="container" id="search-results">
 	<div class="row">
-		<div class="span12">
+		<div class="col-md-12">
 			<h1>Page Not Found</h1>
 			<p><big>
 				The page you were looking for was not found. Please check the address and try again. If you believe you reached
