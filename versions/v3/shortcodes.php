@@ -237,11 +237,11 @@ function sc_callout($attr, $content) {
 	// Close out our existing .span, .row and .container
 	$html = '</div></div></div>';
 	$html .= '<div class="container-wide callout" style="background-color: '.$bgcolor.';">';
-	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner">';
+	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1 callout-inner">';
 	$html .= $content;
 	$html .= '</div></div></div></div>';
 	// Reopen standard .container, .row and .span
-	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+	$html .= '<div class="container"><div class="row content-wrap"><div class="span10 offset1">';
 
 	return $html;
 }
@@ -267,10 +267,11 @@ add_shortcode('caption', 'sc_caption');
 function sc_sidebar($attr, $content) {
 	$pull = ($attr['position'] == ('left' || 'right')) ? 'pull-'.$attr['position'] : 'pull-right';
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+	$content_align = $attr['content_align'] ? ' text-'.$attr['content_align'] : '';
 	$content = do_shortcode($content);
 
-	$html = '<div class="col-md-5 col-sm-6 '.$pull.' sidebar">';
-	$html .= '<section class="sidebar-inner" style="background-color: '.$bgcolor.';">'.$content.'</section>';
+	$html = '<div class="span4 '.$pull.' sidebar">';
+	$html .= '<section class="sidebar-inner'.$content_align.'" style="background-color: '.$bgcolor.';">'.$content.'</section>';
 	$html .= '</div>';
 
 	return $html;
@@ -314,7 +315,7 @@ function sc_post_type_search($params=array(), $content='') {
 		'taxonomy'               => 'category',
 		'show_empty_sections'    => false,
 		'non_alpha_section_name' => 'Other',
-		'column_width'           => 'col-md-4 col-sm-4',
+		'column_width'           => 'span4',
 		'column_count'           => '3',
 		'order_by'               => 'title',
 		'order'                  => 'ASC',
@@ -426,14 +427,14 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="col-md-3 col-sm-3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
 		<? if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn btn-default<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
-			<button class="btn btn-default<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
+			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
+			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
 		<? } ?>
 	<?
@@ -513,7 +514,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
 		'taxonomy' => 'issues',
-		'column_width' => 'col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1',
+		'column_width' => 'span10 offset1',
 		'column_count' => '1',
 		'order_by' => 'title',
 		'order' => 'ASC',
@@ -589,14 +590,14 @@ function sc_archive_search($params=array(), $content='') {
 	ob_start();
 	?>
 	<div class="row post-type-search" id="archives">
-		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
+		<div class="span8 offset2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
 				<label for="s">Search</label>
 				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
 			</form>
 		</div>
-		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
-		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
+		<div class="span12 post-type-search-results"></div>
+		<div class="span10 offset1 post-type-search-term">
 		<?
 		foreach($issues_sorted as $key => $posts) {
 			$issue = get_page_by_title($key, 'OBJECT', 'issue');
@@ -606,52 +607,46 @@ function sc_archive_search($params=array(), $content='') {
 			if ($posts) {
 		?>
 			<div class="row issue">
-				<div class="col-md-5 col-sm-5">
-					<h2 id="<?php echo $issue->post_name; ?>">
-						<a href="<?php echo get_permalink( $issue->ID ); ?>">
-							<?php echo $issue->post_title; ?>
-						</a>
-					</h2>
+				<div class="span4">
+					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
 
-					<?php if ( $thumbnail = get_the_post_thumbnail( $issue->ID, 'issue-thumbnail' ) ) { ?>
-						<a href="<?php echo get_permalink( $issue->ID ); ?>">
-							<?php echo $thumbnail; ?>
+					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
+						<a href="<?=get_permalink($issue->ID)?>">
+							<?=$thumbnail?>
 						</a>
 					<?php } ?>
 
-					<?php if ( $featured_article_id ) { ?>
+					<?php if ($featured_article_id) { ?>
 						<h3>Featured Story</h3>
-						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
-							<h4><?php echo $featured_article->post_title; ?></h4>
-							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
-								<span class="description"><?php echo strip_tags( $f_desc, '<b><em><i><u><strong>' ); ?></span>
-							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
-								<span class="description"><?php echo strip_tags( $f_subtitle, '<b><em><i><u><strong>' ); ?></span>
+						<a class="featured-story" href="<?=get_permalink($featured_article->ID)?>">
+							<h4><?=$featured_article->post_title?></h4>
+							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
+								<span class="description"><?=$f_desc?></span>
+							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
+								<span class="description"><?=$f_subtitle?></span>
 							<?php } ?>
 						</a>
 					<?php } ?>
 				</div>
-				<div class="col-md-7 col-sm-7">
+				<div class="span6">
 					<h3>More in This Issue</h3>
 					<ul>
-					<?php foreach( $posts as $post ) { ?>
-						<li data-post-id="<?php echo $post->ID; ?>"<?php if ( $post->ID == $featured_article_id ) { ?> class="featured-story"<?php } ?>>
-							<a href="<?php echo get_permalink( $post->ID ); ?>">
-								<h4><?php echo $post->post_title; ?></h4>
-								<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
-								<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
-									<span class="description"><?php echo strip_tags( $desc, '<b><em><i><u><strong>' ); ?></span>
-								<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
-									<span class="description"><?php echo strip_tags( $subtitle, '<b><em><i><u><strong>' ); ?></span>
+					<? foreach($posts as $post) { ?>
+						<li data-post-id="<?=$post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
+							<a href="<?=get_permalink($post->ID)?>">
+								<h4><?=$post->post_title?></h4>
+								<span class="results-story-issue"><?=$issue->post_title?></span>
+								<?php if ($desc = get_post_meta($post->ID, 'story_description', TRUE)) { ?>
+									<span class="description"><?=$desc?></span>
+								<?php } else if ($subtitle = get_post_meta($post->ID, 'story_subtitle', TRUE)) { ?>
+									<span class="description"><?=$subtitle?></span>
 								<?php } ?>
 							</a>
 						</li>
 					<? } ?>
 					</ul>
 				</div>
-				<div class="col-md-12 col-sm-12">
-					<hr>
-				</div>
+				<hr class="span10" />
 			</div>
 			<?
 			}
@@ -757,7 +752,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 									</div>
 									<div class="description-wrap">
 										<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
-										<a class="ss-control ss-play" href="#2"><i class="icon icon-caret-right"></i>
+										<a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
 										<?=display_social(get_permalink($post), $post->post_title)?>
 									</div>
 								</div>

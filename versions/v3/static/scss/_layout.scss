@@ -53,7 +53,7 @@
 
   .subtitle {
     color: #222;
-    font-family: Georgia, serif;
+    font-family: $font-family-serif;
     font-size: 13px;
     font-style: italic;
     line-height: 18px;
@@ -357,7 +357,7 @@ li#nav-mobile {
 
     &.active:before {
       content: '×';
-      font-family: Helvetica, sans-serif;
+      font-family: $font-family-sans-serif;
       font-size: 24px;
       font-weight: bold;
       position: relative;
@@ -444,7 +444,7 @@ li#nav-about {
 
   a {
     color: #222;
-    font-family: Georgia, serif;
+    font-family: $font-family-serif;
     font-size: 12px;
     font-style: italic;
 

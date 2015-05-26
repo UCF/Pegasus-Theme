@@ -11,7 +11,7 @@
     p,
     ol,
     ul {
-      font-family: Georgia, serif;
+      font-family: $font-family-serif;
       font-size: 16px;
 
       @media (max-width: $screen-xs-max) {
@@ -23,7 +23,7 @@
   h1 {
     @include font-smoothing();
     color: #222;
-    font-family: Georgia, serif;
+    font-family: $font-family-serif;
     font-size: 36px;
     font-style: italic;
     font-weight: normal;
@@ -111,7 +111,7 @@
     clear: both;
     display: block;
     float: left;
-    font-family: Georgia, serif;
+    font-family: $font-family-serif;
     font-size: 13px;
     font-style: italic;
     line-height: 18px;

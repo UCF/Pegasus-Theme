@@ -7,7 +7,7 @@ article.story {
   p,
   ol,
   ul {
-    font-family: Georgia, serif;
+    font-family: $font-family-serif;
     font-size: 16px;
     // line-height: 1.38em;
     // margin-top: 0;
@@ -130,7 +130,7 @@ article.story {
 
     small {
       color: #444;
-      font-family: "Helvetica Neue", Helvetica, sans-serif;
+      font-family: $font-family-sans-serif;
       font-size: 18px;
       font-style: normal;
       line-height: 24px;
@@ -315,7 +315,7 @@ article.story {
   }
 
   .caption {
-    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-family: $font-family-sans-serif;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 20px;
