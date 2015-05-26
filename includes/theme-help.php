@@ -939,12 +939,6 @@
 							<td>#f0f0f0</td>
 						</tr>
 						<tr>
-							<td>Header Alignment</td>
-							<td>header_align</td>
-							<td>Header text can be aligned left, right or center.</td>
-							<td>center</td>
-						</tr>
-						<tr>
 							<td>Content Alignment</td>
 							<td>content_align</td>
 							<td>Content text can be aligned left, right or center.</td>
@@ -954,7 +948,6 @@
 
 					<h4>Examples</h4>
 					<pre><code>[callout background="#e1e1e1"][blockquote]Very very powerful quote![/blockquote][/callout]</code></pre>
-					<pre><code>[callout header_align="left"]&lt;h2&gt;Go UCF Knights&lt;/h2&gt;[/callout]</code></pre>
 					<pre><code>[callout content_align="right"]&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;[/callout]</code></pre>
 
 					<hr/>
