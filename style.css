@@ -1536,6 +1536,20 @@ h2#footer_logo {
 	text-transform: lowercase;
 }
 
+
+/* Can be removed after bootstrap upgrade */
+.text-left {
+	text-align: left;
+}
+
+.text-right {
+	text-align: right;
+}
+
+.text-center {
+	text-align: center;
+}
+
 ul.inline-bulleted-list {
 	text-align: center;	
 	margin: 0 0 16px;

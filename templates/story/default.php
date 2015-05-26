@@ -36,7 +36,7 @@
 
 		<div class="row content-wrap">
 			<div class="span10 offset1">
-				<?php echo the_content(); ?>
+				<?php the_content(); ?>
 			</div>
 		</div>
 	</div>
