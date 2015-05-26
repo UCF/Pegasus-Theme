@@ -1537,13 +1537,37 @@ h2#footer_logo {
 	text-transform: lowercase;
 }
 
+
 /* Can be removed after bootstrap upgrade */
 .text-left {
 	text-align: left;
 }
+
 .text-right {
 	text-align: right;
 }
+
 .text-center {
 	text-align: center;
+}
+
+ul.inline-bulleted-list {
+	text-align: center;	
+	margin: 0 0 16px;
+	padding: 0;
+}
+
+ul.inline-bulleted-list li {
+	display: inline-block;
+	margin: 0 0.1em;
+}
+
+ul.inline-bulleted-list li:before {
+	content: '\2022';
+	margin-right: 0.5em;
+}
+
+ul.inline-bulleted-list > :first-child:before {
+	content: '';
+	margin: 0;
 }
