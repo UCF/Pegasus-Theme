@@ -19,4 +19,4 @@ ul {
 }
 
 <?php require('../../../../../wp-load.php'); ?>
-<?php echo get_webfont_css_classes(); ?>
+<?php echo get_all_font_classes(); ?>

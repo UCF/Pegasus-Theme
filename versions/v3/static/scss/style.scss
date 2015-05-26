@@ -1,0 +1,6 @@
+// Variable overrides
+@import 'variables';
+
+// Combine vendor assets and our theme:
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap';
+@import 'base';

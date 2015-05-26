@@ -1,0 +1,28 @@
+p {
+  font-size: 14px;
+
+  .excerpt {
+    font-size: 23px;
+    font-style: italic;
+  }
+
+  .caption {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 12px;
+  }
+}
+
+.section-title {
+  @include font-smoothing();
+  color: #222;
+  font-family: Georgia, serif;
+  font-size: 32px;
+  font-style: italic;
+  font-weight: normal;
+  line-height: 90px;
+  margin: 0;
+
+  @media (max-width: $screen-xs-max) {
+    font-size: 30px;
+  }
+}

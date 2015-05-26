@@ -359,7 +359,7 @@ function custom_font_styles() {
 			';
 	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
 		$selector = 'select[id*="_default_font"] option[value="'.$font.'"],	#menu_content_content_fontselect_menu_tbl .mceText[title="'.$font.'"], #menu_content_content_styleselect_menu_tbl .mceText[title="'.$font.'"]';
-		$html .= get_webfont_css_styles($font, $selector, null, true);
+		$html .= get_font_class($font, $selector, null, true);
 	}
 	$html .= '</style>';
 
@@ -463,22 +463,23 @@ function add_webfonts_to_tinymce( $settings ) {
 	$cloud_font_key = get_theme_option( 'cloud_font_key' );
 	//$theme_advanced_fonts = '';
 	$style_formats = array();
-	$content_css = array();	
-	
+	$content_css = array();
+
+	// TODO: move to separate function/wysiwyg button assignment
 	$style_formats[] = array(
 		'title' => 'UPPERCASE',
 		'inline' => 'span',
 		'classes' => 'text-uppercase'
 	);
-	
+
 	$style_formats[] = array(
 		'title' => 'lowercase',
 		'inline' => 'span',
 		'classes' => 'text-lowercase'
 	);
 
-	foreach ( $fonts as $font=>$styles ) {
-		$styles = get_heading_styles( $font );
+	foreach ($fonts as $font=>$styles) {
+		$styles = get_font_styles( $font );
 
 		$style_formats[] = array(
 			'title' => $font,
@@ -496,7 +497,6 @@ function add_webfonts_to_tinymce( $settings ) {
 	}
 	$content_css = implode(',', array_unique( $content_css ) );
 
-	//$settings['theme_advanced_fonts'] = $theme_advanced_fonts;
 	$settings['content_css'] = $settings['content_css'].','.$content_css;
 	$settings['style_formats'] = json_encode($style_formats);
 	$settings['theme_advanced_buttons2_add_before'] = 'styleselect';

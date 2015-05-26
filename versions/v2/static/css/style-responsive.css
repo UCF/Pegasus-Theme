@@ -1,0 +1,599 @@
+@media (max-width: 979px) {
+	/**************************
+	 * General
+	 **************************/
+
+	.logo-large-white {
+		background-position: 0 -16px;
+		width: 147px;
+		height: 23px;
+	}
+
+
+	/**************************
+	 * Header Pulldown Menu
+	 **************************/
+
+	.pulldown-stories .story-list article { width: 140px; }
+	.pulldown-stories .story-list article img {
+		/* Fixed width/height required for lazyload */
+		width: 140px;
+		height: 146px;
+	}
+
+
+	/**************************
+	 * Header
+	 **************************/
+
+	/* Issue, Archives links */
+	li#nav-issue a,
+	li#nav-archives a { font-size: 13px; line-height: 13px;	}
+
+
+	/**************************
+	 * Issue Cover - Default Template
+	 **************************/
+
+	/* Story Thumbnails */
+	#home .thumb {
+		width: 129.6px;
+		margin-left: 15px;
+	}
+	#home .thumb.featured { margin-bottom: 12px; }
+
+	#home .thumb .description { display: none; }
+
+
+	/**************************
+	 * Stories - General
+	 **************************/
+	article.story .story-header-image { height: 490px; max-width: 980px; }
+
+	article.story blockquote.quote { padding-left: 42px; }
+	article.story blockquote.quote:before {	font-size: 95px; line-height: 92px;	}
+
+    article.story .sidebar-inner blockquote.quote:before {
+        font-size: 26px;
+        line-height: 36px;
+    }
+
+	article.story .sidebar-inner blockquote,
+	article.story .sidebar-inner blockquote p {
+		font-size: 26px;
+		line-height: 36px;
+	}
+
+	article.story .callout-inner > div:not([class]),
+	article.story .callout-inner .wp-video-shortcode,
+	article.story .callout-inner .mejs-overlay,
+	article.story .callout-inner .mejs-poster,
+	article.story iframe {
+		height: 280px !important;
+	}
+
+
+	/**************************
+	 * Story - Default Template
+	 **************************/
+	article.story-default .description,
+	article.story-default .social-wrap {
+		width: 100%;
+	}
+	article.story-default .description { padding-right: 0; margin-bottom: 20px; }
+	article.story-default .social { float: left; }
+
+
+	/**************************
+	 * Story - Slideshow
+	 **************************/
+	main.ss-photo-essay { height: 500px; }
+	article.story.ss-photo-essay { padding-top: 5%; }
+	article.story.ss-photo-essay .ss-essay-intro { height: 100%; }
+	.ss-photo-essay .ss-slides-wrapper { height: 65%; }
+    .ss-photo-essay .ss-arrow-wrapper .ss-arrow > div { top: 20%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 30%; }
+
+
+	/**************************
+	 * Subfooter - More Stories
+	 **************************/
+	#more-stories { margin-bottom: 40px; }
+
+
+	/**************************
+	 * Footer
+	 **************************/
+
+	#footer-navigation a { font-size: 14px; }
+
+	#footer-navigation .footer-logo,
+	#footer-navigation .footer-ipad-app { padding-bottom: 30px; }
+	#footer-navigation .footer-logo { margin-top: 8px; }
+
+	#footer-navigation li:before { font-size: 16px; }
+
+	#footer-navigation .copyright,
+	#footer-navigation .address {
+		font-size: 13px;
+	}
+
+
+	/**************************
+	 * DEPRECATED - DO NOT USE
+	 **************************/
+
+	.container.wide > .row { width: 768px; }
+
+	/* Footer */
+    #footer #footer_hr { width: 768px; }
+
+    #footer_stories>div, #footer_navigation>div { margin-left: 15px; }
+    #footer_stories { padding-top: 10px; }
+}
+
+
+@media (max-width: 979px) and (min-width: 768px) {
+	/**************************
+	 * Header
+	 **************************/
+
+	/* About Pegasus Magazine link */
+	li#nav-about a { font-size: 11px; }
+
+
+	/**************************
+	 * DEPRECATED - DO NOT USE
+	 **************************/
+
+	.footer_stories.bottom li { height: 170px; }
+    #footer_navigation ul li {margin-left:14px;}
+    #footer_navigation ul li a {font-size:13px;}
+}
+
+
+@media (max-width: 767px) {
+	/**************************
+	 * Utility
+	 **************************/
+
+	.container-wide { margin-left: -20px; padding-left: 20px; padding-right: 20px; }
+
+
+	/**************************
+	 * General
+	 **************************/
+	.section-title { font-size: 30px; }
+
+
+	/**************************
+	 * Header Pulldown Menu
+	 **************************/
+
+	/* Story lists */
+	.story-list { margin-left: -20px; padding-right: 40px; }
+	.story-list article.last-child { margin-right: 20px; }
+
+	/* Pulldown controls */
+	.story-list + .controls { display: none !important; }
+
+
+	/**************************
+	 * Header
+	 **************************/
+
+	/* General - nav, nav ul */
+	#header-navigation ul { text-align: center; }
+
+	/* Peg logo, Mobile nav, Issue, Archives list items */
+	#header-navigation .header-logo {
+		position: absolute;
+		z-index: 2;
+		top: 12.5px;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
+	li#nav-about,
+	li#nav-issue,
+	li#nav-archives,
+	#header-navigation .header-logo.mobile-nav-visible {
+		display: none;
+	}
+
+	li#nav-mobile { display: block; }
+	#header-navigation ul.mobile-nav-visible li#nav-issue,
+	#header-navigation ul.mobile-nav-visible li#nav-archives {
+		display: inline-block;
+		float: none;
+	}
+	#header-navigation ul li#nav-issue { margin-left: -30px; }
+
+
+	/**************************
+	 * Issue Cover - Default Template
+	 **************************/
+
+	/* General */
+	#home .heading-wrap {
+		overflow: hidden;
+		height: auto;
+		margin-bottom: 15px;
+	}
+	#home .heading-wrap h2 {
+		top: 0;
+		line-height: 1.2em;
+		padding-bottom: 4px;
+	}
+
+	/* Story Thumbnails */
+	#home .home-article-1 .description {
+		position: static;
+		padding: 0;
+		margin-top: 6px;
+		color: #000;
+	}
+	#home .home-article-1 .description h2 { font-size: 18px; line-height: 1.25em; }
+	#home .thumb.featured { width: 48%; }
+	#home .home-article-1 { margin-bottom: 20px; }
+	#home .home-article-2 { float: left; }
+	#home .home-article-3 { float: right; }
+
+	#home .thumb,
+	#home .thumb.thumb-1-m,
+	#home .thumb.thumb-1-s {
+		width: 31%;
+		margin-left: 2.35%;
+	}
+	#home .thumb.thumb-1-xs { margin-left: 0; }
+
+
+	/**************************
+	 * Stories - General
+	 **************************/
+	article.story,
+	article.story p,
+	article.story ol,
+	article.story ul {
+		font-size: 15px;
+	}
+	article.story .story-header-image {
+		margin-left: -20px;
+		margin-bottom: 25px;
+		height: auto;
+		background-size: 100% auto;
+	}
+	article.story .story-header-image img {
+		position: static;
+		visibility: hidden;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		height: auto;
+		width: auto;
+		margin: 0;
+	}
+	article.story .description-wrap { margin-bottom: 35px; }
+
+	article.story h1,
+	article.story h2 {
+		overflow: visible;
+	}
+
+	article.story h2 { font-size: 30px; line-height: 30px; margin-bottom: 10px; }
+	article.story p { margin-bottom: 20px; }
+
+	article.story .description { font-size: 18px; line-height: 28px; margin-bottom: 25px; }
+	article.story .lead { font-size: 17px; line-height: 27px; margin-bottom: 30px; }
+	article.story blockquote,
+	article.story blockquote p {
+		font-size: 28px;
+		line-height: 34px;
+	}
+	article.story blockquote small { font-size: 16px; line-height: 20px; }
+	article.story blockquote.quote { padding-left: 36px; }
+	article.story blockquote.quote:before {
+		font-size: 76px;
+		line-height: 74px;
+		left: -7px;
+	}
+
+	article.story .sidebar.pull-right,
+	article.story .sidebar.pull-left {
+		float: left;
+		margin-left: 0;
+		margin-right: 0;
+		width: 100%;
+	}
+
+  article.story .mobile-img-fluid,
+  article.story .mobile-img-fluid img {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+
+	/**************************
+	 * Story - Default Template
+	 **************************/
+	article.story-default .title-wrap { margin-bottom: 15px; }
+
+
+	/**************************
+	 * Story - Photo Essay Template
+	 **************************/
+	article.story.ss-photo-essay h1,
+	article.story.ss-photo-essay .description {
+		white-space: pre-wrap;
+	}
+	article.story.ss-photo-essay h1 { padding-bottom: 10px; }
+	article.story.ss-photo-essay .social { padding-top: 10px; }
+	article.story.ss-photo-essay .ss-essay-intro { height: 100%; }
+
+	article.story.ss-photo-essay .ss-slide-wrapper { width: 100%; }
+
+
+	/**************************
+	 * Archives
+	 **************************/
+	#archives .issue { margin-bottom: 0; }
+
+	#archives .post-type-search-results > div:before,
+	#archives .post-type-search-results > p:before {
+		right: 0;
+	}
+	#archives .post-type-search-results ul li {
+		width: auto;
+		margin-left: 20px;
+		margin-bottom: 20px;
+		clear: both;
+	}
+	#archives .post-type-search-results ul li.featured-story { display: block; }
+	#archives .post-type-search-results ul li:nth-child(2n) { float: left; clear: both; }
+	#archives .post-type-search-results ul li a {
+		display: block;
+		padding-right: 20px;
+	}
+
+
+	/**************************
+	 * Story - Slideshow
+	 **************************/
+	.ss-embed .ss-slides-wrapper { height: 280px; }
+	.ss-embed .ss-arrow-wrapper .ss-arrow > div { top: 140px; }
+
+	.ss-photo-essay .ss-slides-wrapper { height: 50%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 50%; }
+
+	article.story.ss-photo-essay .ss-essay-intro h1,
+	article.story.ss-photo-essay .ss-essay-intro span.description {
+		padding-left: 0;
+		padding-right: 0;
+	}
+
+	article.story.ss-photo-essay .ss-essay-intro h1 {
+		font-size: 28px;
+		line-height: 32px;
+	}
+	article.story.ss-photo-essay .ss-essay-intro span.description {
+		font-size: 16px;
+		line-height: 20px;
+		margin-bottom: 5px;
+	}
+
+    .ss-closing-overlay .ss-slide {
+        margin-top: 25px;
+    }
+
+    .ss-closing-overlay > .ss-slide {
+        width: 80%;
+    }
+
+    .ss-closing-overlay > .ss-slide .ss-title {
+        font-size: 16px;
+        line-height: 16px;
+        margin-top: 10px;
+    }
+
+    a.ss-control {
+        font-size: 11px;
+    }
+
+    a.ss-control i {
+        padding: 10px;
+        background-color: #000;
+        margin-bottom: 10px;
+        font-size: 30px;
+    }
+
+    a.ss-control.ss-restart i {
+        line-height: 30px;
+    }
+
+
+    a.ss-control.ss-play i {
+        padding: 12px;
+        margin-bottom: 0;
+        font-size: 35px;
+        line-height: 13px;
+    }
+
+
+	/**************************
+	 * Footer
+	 **************************/
+
+	#footer-navigation { padding-top: 40px; padding-bottom: 25px; }
+	#footer-navigation .footer-logo,
+	#footer-navigation .footer-logo.pull-left,
+	#footer-navigation .footer-logo a,
+	#footer-navigation .footer-ipad-app,
+	#footer-navigation .footer-ipad-app.pull-right {
+		float: left;
+		clear: both;
+	}
+	#footer-navigation .footer-logo,
+	#footer-navigation .footer-logo.pull-left {
+		padding-bottom: 20px;
+		width: 100%;
+	}
+
+	#footer-navigation ul {
+    margin-left: 0;
+    text-align: left;
+  }
+	#footer-navigation li { width: 100%; line-height: 32px; }
+	#footer-navigation li:before { content: ""; padding: 0; }
+
+	#footer-navigation .copyright,
+	#footer-navigation .address {
+		text-align: left;
+	}
+	#footer-navigation .copyright { padding-top: 30px; }
+
+
+	/**************************
+	 * Shrinkable bootstrap tables for tablets/phones.
+	 * Responsive table guide via css-tricks.com/responsive-data-tables/
+	 **************************/
+	table.table.table-striped,
+	.table.table-striped thead,
+	.table.table-striped tbody,
+	.table.table-striped th,
+	.table.table-striped td,
+	.table.table-striped tr {
+		display: block;
+	}
+	.table.table-striped tbody {
+		width: 100%;
+	}
+	.table.table-striped thead tr {
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	.table.table-striped tr {
+		margin: 10px 0 0 0;
+		border-right: 1px solid #ddd;
+		border-bottom: 1px solid #ddd;
+		border-left: 1px solid #ddd;
+	}
+	.table.table-striped tbody tr td:empty {
+		display: none;
+	}
+	.table.table-striped td,
+	.table.table-striped td.name,
+	.table.table-striped td.email,
+	.table.table-striped td.job_title,
+	.table.table-striped td.phones {
+		width: auto;
+	}
+	.table.table-striped td.name {
+		font-size: 14px;
+	}
+	.table.table-striped td.job_title {
+		border-top: 0;
+	}
+	.table.table-striped tbody tr td ul {
+		margin-bottom: 0;
+	}
+	.table.table-striped td.phones ul li {
+		line-height: 16px;
+	}
+	.table.table-bordered {
+		border: 0;
+	}
+	.table.table-bordered tbody tr td {
+		border-left: 0;
+	}
+
+
+	/**************************
+	 * DEPRECATED - DO NOT USE
+	 **************************/
+
+	.container.wide > .row { width: 100%; }
+
+	/* Footer story thumbnails */
+    .footer_stories { padding: 30px 0 0 0; }
+    .footer_stories .thumbnails { margin-left: -20px; }
+    .footer_stories .span3,
+    .footer_stories .span2,
+    .header_stories .span3 { width: 130px; height: 200px; overflow: hidden; margin-bottom: 5px; }
+    .footer_stories .title { margin-left: 0 !important; font-size: 13px !important; line-height: 15px !important; }
+    .footer_stories a span.subtitle_text { padding-top: 5px; }
+    .footer_stories a span.subtitle_text,
+    .footer_stories a span.title_colon { display: none; }
+
+    /* Footer */
+    #footer #footer_hr { margin-left: 20px; width: 100%; }
+	#footer { margin-left: -20px; padding-right: 40px; }
+	#footer > .container > .row { margin-left: 20px; }
+
+	#issue-carousel .item .issue-title { font-size: 18px; }
+	#issue-carousel .carousel-control { font-size: 12px; }
+	#issue-carousel .carousel-control,
+	#issue-carousel .carousel-control.left .arrow,
+	#issue-carousel .carousel-control.right .arrow { line-height: 30px; }
+
+	#footer_navigation ul { padding-top: 10px; }
+	#footer_navigation ul li { display: inline; width: 100%; margin-left: 0; }
+
+}
+
+
+@media (max-width: 480px) {
+	/**************************
+	 * Stories - General
+	 **************************/
+	article.story .callout-inner > div:not([class]),
+	article.story .callout-inner .wp-video-shortcode,
+	article.story .callout-inner .mejs-overlay,
+	article.story .callout-inner .mejs-poster,
+	article.story iframe {
+		height: 220px !important;
+	}
+
+    .ss-closing-overlay .ss-slide {
+        margin-top: 50px;
+    }
+
+
+    /**************************
+     * Issue Cover - Default Template
+     **************************/
+
+    /* Story Thumbnails */
+    #home .thumb,
+    #home .thumb.thumb-1-m,
+    #home .thumb.thumb-1-s,
+    #home .thumb.thumb-1-xs {
+    	width: 47.75%;
+    	margin-left: 3%;
+    }
+    #home .thumb.thumb-1-xss { margin-left: 0; }
+
+    #home .thumb.featured {
+    	width: 100%;
+    	float: none;
+    }
+}
+
+
+@media (max-width: 320px) {
+	/**************************
+	 * Story - Slideshow
+	 **************************/
+	.ss-embed .ss-slides-wrapper { height: 140px; }
+	.ss-embed .ss-arrow-wrapper .ss-arrow > div { top: 50px; }
+
+	main.ss-photo-essay { height: 400px; }
+	.ss-photo-essay .ss-slides-wrapper { height: 40%; }
+	.ss-photo-essay .ss-arrow-wrapper .ss-arrow > div { top: 15%; }
+	.ss-photo-essay .ss-captions-wrapper { height: 60%; }
+
+	article.story.ss-photo-essay .ss-essay-intro .social { left: -20px; }
+
+    .ss-closing-overlay .ss-slide {
+        margin-top: 25px;
+    }
+}

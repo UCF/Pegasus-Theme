@@ -240,7 +240,7 @@ class TextareaField extends Field{
 	function input_html(){
 		ob_start();
 		?>
-		<textarea cols="60" rows="4" id="<?=htmlentities($this->id)?>" name="<?=htmlentities($this->id)?>"><?=htmlentities($this->value)?></textarea>
+		<textarea cols="60" rows="4" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>"><?php echo $this->value; ?></textarea>
 		<?php
 		return ob_get_clean();
 	}
@@ -270,7 +270,7 @@ class WysiwygField extends Field {
 	        </div>
 	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
 	    </div>
-		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo htmlentities( $this->value ); ?></textarea>
+		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo $this->value; ?></textarea>
 	<?php
 		return ob_get_clean();
 	}
@@ -437,12 +437,15 @@ function dump(){
  * @return void
  * @author Jared Lang
  **/
-if (DEBUG){
-	function debug($string){ /*
+if ( defined( 'DEBUG' ) ) {
+	function debug( $string ) { /*
 		print "<!-- DEBUG: {$string} -->\n"; */
 	}
-}else{
-	function debug($string){return;}
+}
+else {
+	function debug( $string ) {
+		return;
+	}
 }
 
 
@@ -454,12 +457,15 @@ if (DEBUG){
  * @return mixed
  * @author Jared Lang
  **/
-if (DEBUG){
-	function debug_callfunc($func, $args){
-		return call_user_func_array($func, $args);
+if ( defined( 'DEBUG' ) ) {
+	function debug_callfunc( $func, $args ) {
+		return call_user_func_array( $func, $args );
 	}
-}else{
-	function debug_callfunc($func, $args){return;}
+}
+else {
+	function debug_callfunc( $func, $args ) {
+		return;
+	}
 }
 
 
@@ -1467,7 +1473,7 @@ function register_custom_taxonomies(){
 		$custom_taxonomy->register();
 	}
 }
-add_action('init', 'register_custom_taxonomies');
+add_action( 'after_setup_theme', 'register_custom_taxonomies', 1 );
 
 /**
  * Registers all installed custom post types
@@ -1484,7 +1490,7 @@ function register_custom_post_types(){
 	#This ensures that the permalinks for custom posts work
 	flush_rewrite_rules_if_necessary();
 }
-add_action('init', 'register_custom_post_types');
+add_action( 'after_setup_theme', 'register_custom_post_types', 2 );
 
 /**
  * Registers all metaboxes for install custom post types
@@ -1586,6 +1592,24 @@ function save_file( $post_id, $field ) {
 	}
 }
 
+function save_textarea( $post_id, $field ) {
+	$old = get_post_meta( $post_id, $field['id'], true );
+	# Make sure new value doesn't contain special chars that mysql doesn't
+	# like.  Also convert single/double primes to curly quotes if we can
+	$new = wptexturize( iconv( 'UTF-8', 'ISO-8859-1//IGNORE', $_POST[$field['id']] ) );
+
+	# Update if new is not empty and is not the same value as old
+	if ( $new !== '' and $new !== null and $new != $old ) {
+		update_post_meta( $post_id, $field['id'], $new );
+	}
+	# Delete if we're sending a new null value and there was an old value
+	elseif ( ( $new === '' or is_null( $new ) ) and $old ) {
+		delete_post_meta( $post_id, $field['id'], $old );
+	}
+	# Otherwise we do nothing, field stays the same
+	return;
+}
+
 function save_default($post_id, $field){
 	$old = get_post_meta($post_id, $field['id'], true);
 	$new = $_POST[$field['id']];
@@ -1665,6 +1689,10 @@ function _save_meta_data($post_id, $meta_box){
 		switch ($field['type']){
 			case 'file':
 				save_file($post_id, $field);
+				break;
+			case 'textarea':
+			case 'wysiwyg':
+				save_textarea( $post_id, $field );
 				break;
 			default:
 				save_default($post_id, $field);

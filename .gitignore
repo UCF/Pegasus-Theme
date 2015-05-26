@@ -22,3 +22,6 @@ CVS
 .DS_Store
 Thumbs.db
 .fuse_*
+
+# codekit
+**/.sass-cache/

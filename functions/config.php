@@ -31,11 +31,16 @@ function __init__(){
 	wp_deregister_script( 'l10n' );
 	set_defaults_for_options();
 }
-add_action( 'after_setup_theme', '__init__' );
+add_action( 'after_setup_theme', '__init__', 4 );
 
 
 
-# Set theme constants
+/****************************************************************************
+ *
+ * START theme constants here
+ *
+ ****************************************************************************/
+
 #define('DEBUG', True);                  # Always on
 #define('DEBUG', False);                 # Always off
 define('DEBUG', isset($_GET['debug'])); # Enable via get parameter
@@ -50,6 +55,7 @@ define('THEME_JS_URL', THEME_STATIC_URL.'/js');
 define('THEME_CSS_URL', THEME_STATIC_URL.'/css');
 define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
 define('THEME_DEV_URL', THEME_URL.'/dev');
+define('THEME_COMPONENTS_URL', THEME_STATIC_URL.'/components');
 define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
@@ -63,15 +69,34 @@ define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activ
 
 
 /**
- * List of issue slugs that are from Fall 2013 or prior.
+ * Version definitions.  Versions should always be whole numbers (no decimals).
  **/
-define('FALL_2013_OR_OLDER', serialize(array(
+define( 'LATEST_VERSION', 3 ); // The most up-to-date major version of the theme
+define( 'EARLIEST_VERSION', 1 ); // the very first version
+define( 'VERSIONS', serialize( range( EARLIEST_VERSION, LATEST_VERSION ) ) );
+define( 'VERSIONS_PATH', 'versions/' );
+
+
+/**
+ * Group all issues by version.  Intended as a replacement for (now-removed)
+ * FALL_2013_OR_OLDER constant and is_fall_2013_or_older(), and should exist
+ * solely for running backward compatibility-related functions.
+ *
+ * Don't create new constants for versions above v2; they are not necessary.
+ **/
+define( 'V1_ISSUES', serialize( array(
 	'fall-2013',
 	'summer-2013',
 	'spring-2013',
 	'fall-2012',
 	'summer-2012'
-)));
+) ) );
+define( 'V2_ISSUES', serialize( array(
+	'spring-2014',
+	'summer-2014',
+	'fall-2014',
+	'spring-2015'
+) ) );
 
 
 /**
@@ -102,7 +127,7 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * $template_font_styles_array, then by per-post meta values (for headings), if
  * available.
  *
- * See output_header_markup() and get_webfont_css_styles() in functions.php for
+ * See output_header_markup() and get_font_class() in functions.php for
  * usage.
  *
  * Options:
@@ -133,7 +158,7 @@ $template_font_styles_base_array = array(
 	'text-align' => 'left',
 	'text-transform' => 'none',
 	'font-style' => 'normal',
-	'letter-spacing' => '-0.03em',
+	'letter-spacing' => '-0.012em',
 	'size-desktop' => '60px',
 	'size-tablet' => '60px',
 	'size-mobile' => '40px',
@@ -296,6 +321,13 @@ $template_font_styles_array = array(
 define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
 
 
+
+/****************************************************************************
+ *
+ * START site-wide Config settings here
+ *
+ ****************************************************************************/
+
 /**
  * Set config values including meta tags, registered custom post types, styles,
  * scripts, and any other statically defined assets that belong in the Config
@@ -312,8 +344,6 @@ Config::$custom_post_types = array(
 Config::$custom_taxonomies = array(
 	'Issues'
 );
-
-Config::$body_classes = array();
 
 
 /**
@@ -524,6 +554,7 @@ Orlando, FL 32816',
 	),
 );
 
+
 Config::$links = array(
 	array('rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico',),
 	array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'),),
@@ -535,11 +566,6 @@ Config::$styles = array(
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
-	array('name' => 'bootstrap-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap.css'),
-	array('name' => 'bootstrap-responsive-css', 'src' => THEME_STATIC_URL.'/bootstrap/css/bootstrap-responsive.css'),
-	array('name' => 'gf-css', 'src' => plugins_url('gravityforms/css/forms.css')),
-	array('name' => 'style-css', 'src' => get_bloginfo('stylesheet_url')),
-	array('name' => 'style-responsive-css', 'src' => THEME_URL.'/style-responsive.css')
 );
 foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
@@ -550,36 +576,10 @@ if (!empty($theme_options['cloud_font_key'])) {
 	array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
 }
 
+
 Config::$scripts = array(
-    array('admin' => True, 'src' => THEME_JS_URL.'/wysihtml5-0.3.0.min.js',),
+    array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
-	THEME_STATIC_URL.'/bootstrap/js/bootstrap.js',
-	THEME_STATIC_URL.'/js/jquery.cookie.js',
-	array('name' => 'placeholders', 'src' => THEME_JS_URL.'/placeholders.js',),
-	array('name' => 'base-script',  'src' => THEME_JS_URL.'/webcom-base.js',),
-	array('name' => 'theme-script', 'src' => THEME_JS_URL.'/script.js',),
-	array('name' => 'inview', 'src' => THEME_JS_URL.'/inview.js',),
-	array('name' => 'lazyload', 'src' => THEME_JS_URL.'/jquery.lazyload.min.js',),
+	THEME_COMPONENTS_URL.'/jquery.cookie.js',
+	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
 );
-
-Config::$metas = array(
-	array('charset' => 'utf-8',),
-	array('http-equiv' => 'X-UA-Compatible', 'content' => 'IE=Edge'),
-	array('name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0'),
-);
-if ($theme_options['gw_verify']){
-	Config::$metas[] = array(
-		'name'    => 'google-site-verification',
-		'content' => htmlentities($theme_options['gw_verify']),
-	);
-}
-
-
-
-function jquery_in_header() {
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', '//code.jquery.com/jquery-1.7.1.min.js');
-    wp_enqueue_script( 'jquery' );
-}
-
-add_action('wp_enqueue_scripts', 'jquery_in_header');

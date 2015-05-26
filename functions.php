@@ -1,35 +1,305 @@
 <?php
-require_once('functions/base.php');   			# Base theme functions
-require_once('functions/feeds.php');			# Where functions related to feed data live
-require_once('custom-taxonomies.php');  		# Where per theme taxonomies are defined
-require_once('custom-post-types.php');  		# Where per theme post types are defined
-require_once('functions/admin.php');  			# Admin/login functions
-require_once('functions/config.php');			# Where per theme settings are registered
-require_once('shortcodes.php');         		# Per theme shortcodes
 
-//Add theme-specific functions here.
+/**
+ * READ ME, PLEASE:
+ *
+ * Various functions for this theme MUST execute in a specific order and
+ * depend on WordPress hooks to be executed with specific priority values.
+ * These functions hook into 'after_setup_theme' (the earliest available
+ * hook for themes) with priority values set.
+ * This order should NOT be modified unless you want bad things to happen.
+ *
+ * 1) Register Taxonomies
+ * 2) Register CPT's
+ * 3) Determine the current requested post's relevant version
+ * 4) Require version-specific functions/config.php and shortcodes.php files
+ * 5) Register Config::$styles, Config::$scripts (MUST occur after version-
+ *    specific functions/config.php is loaded so that extra styles, scripts can
+ *    be appended per version)
+ **/
+
+
+require_once( 'functions/base.php' );    # Base theme functions
+require_once( 'functions/admin.php' );   # Admin/login functions
+require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
+require_once( 'custom-post-types.php' ); # Where post types are defined
+require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
+
+
+/****************************************************************************
+ *
+ * START version configuration, backward compatibility functions here
+ *
+ ****************************************************************************/
+
+/**
+ * Function that determines which version should be considered active, based
+ * on the current global $post's post_type.
+ **/
+function get_relevant_version( $the_post=null ) {
+	if ( !$the_post ) {
+		global $post;
+		// global $post might not be available when this is called.  If it's not,
+		// check url for a slug we can use.
+		if ( !$post ) {
+			$basename = basename( untrailingslashit( $_SERVER['REQUEST_URI'] ) );
+			$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
+			$post_story = get_page_by_path( $basename , OBJECT, 'story');
+
+			if ( $post_issue ) {
+				$the_post = $post_issue;
+			}
+			else if ( $post_story ) {
+				$the_post = $post_story;
+			}
+			else {
+				// Shouldn't ever reach this point, but if we do, we really
+				// have no clue what it is we're loading :(
+				$the_post = null;
+			}
+		}
+		else {
+			$the_post = $post;
+		}
+	}
+
+	$relevant_issue = get_relevant_issue( $the_post );
+	$relevant_version = get_post_meta( $relevant_issue->ID, 'issue_version', true );
+	if ( empty( $relevant_version ) ) {
+		$relevant_version = LATEST_VERSION;
+	}
+	return intval( $relevant_version );
+}
+
+/**
+ * Returns a relative path to a file by version.
+ **/
+function get_version_file_path( $filename, $version=null ) {
+	if ( !$version ) {
+		$version = get_relevant_version();
+	}
+	return VERSIONS_PATH . 'v' . $version . '/' . $filename;
+}
+
+/**
+ * Based on the current relevant version, require necessary files.
+ * Must hook into init so that get_relevant_version() has access to global
+ * $post.
+ **/
+function setup_version_files() {
+	define( 'THE_POST_VERSION', get_relevant_version() ); // The version for the story/issue loaded in a given request, or the latest version if a story or issue is not available
+	define( 'THE_POST_VERSION_DIR', get_stylesheet_directory() . '/' . VERSIONS_PATH . 'v' . THE_POST_VERSION );
+	define( 'THE_POST_VERSION_URL', get_stylesheet_directory_uri() . '/' . VERSIONS_PATH . 'v' . THE_POST_VERSION );
+
+	require_once( get_version_file_path( 'functions/config.php' ) );  # Where version-level configuration settings are defined
+	require_once( get_version_file_path( 'shortcodes.php' ) );        # Per version shortcodes
+}
+add_action( 'after_setup_theme', 'setup_version_files', 3 );
 
 
 /**
- * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
+ * Loads version-specific CPT templates instead of templates from the theme's
+ * root directory.
  *
- * Note that the new input select name and id values must match the name and id of the empty dropdown within the
- * form that this function is replacing
+ * Note: Pages and Posts should always use templates from the root directory
+ * (they are not modified per-version).
+ **/
+function by_version_template( $template ) {
+	global $post;
+
+	if ( in_array( $post->post_type, array( 'story', 'issue', 'photo_essay' ) ) ) {
+		$new_template = locate_template( array( get_version_file_path( 'single-' . $post->post_type . '.php' ) ) );
+	}
+
+	if ( isset( $new_template ) && '' !== $new_template ) {
+		return $new_template ;
+	}
+	return $template;
+}
+add_filter( 'template_include', 'by_version_template', 99 );
+
+
+/**
+ * Loads version-specific header template.  Should be used in place of
+ * get_header() for this theme.
  *
- * @author Jo Greybill
- *
-**/
-add_action("gform_field_input", "class_year_input", 10, 5);
-function class_year_input($input, $field, $value, $lead_id, $form_id){
-    if($field["cssClass"] == "alumninotes_class_year"){
-        $input = '<div class="ginput_container"><select multiple="multiple" id="input_2_4" class="small gfield_select" tabindex="5" name="input_4">';
-		$current_year = date('Y');
-		foreach ( range($current_year, 1968) as $year ) {
-			$input .= '<option value='.$year.'>'.$year.'</option>';
+ * Note: this (and get_version_footer()) cannot hook into get_header/get_footer
+ * without requiring that a header.php/footer.php file exists in the theme
+ * root, so we opt to use a separate function instead to avoid excessive file
+ * includes.
+ **/
+function get_version_header() {
+	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
+	if ( '' !== $new_template ) {
+		return load_template( THE_POST_VERSION_DIR . '/header.php' );
+	}
+}
+
+
+/**
+ * Loads version-specific footer template.  Should be used in place of
+ * get_footer() for this theme.
+ **/
+function get_version_footer() {
+	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
+	if ( '' !== $new_template ) {
+		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
+	}
+}
+
+
+/**
+ * Check/create hidden theme options which store flags that tell us if methods
+ * for maintaining backward compatibility have already been performed.
+ * Functions with theme option flags below should only run once, assuming they
+ * ran successfully the first time.
+ **/
+function check_backward_compatibility() {
+	// Attempts to set versions on Issue posts, based on Issue slugs set
+	// in V1_ISSUES and V2_ISSUES.
+	if ( get_option( 'theme_bc_versions_set' ) == false ) {
+		$success = set_initial_issue_versions();
+		if ( $success == true ) {
+			add_option( 'theme_bc_versions_set', true );
 		}
-		$input .= '</select></div>';
-    }
-    return $input;
+	}
+
+	// Set a 'story_template' meta field value for stories with an issue slug
+	// in the V1_ISSUES constant so that they are 'custom' if they have no
+	// value.
+	if ( get_option( 'theme_bc_v1_templates_set' ) == false ) {
+		$success = set_templates_for_v1();
+		if ( $success == true ) {
+			add_option( 'theme_bc_v1_templates_set', true );
+		}
+	}
+}
+add_action( 'init', 'check_backward_compatibility' );
+
+
+/**
+ * Set version value on Issues in V1_ISSUES and V2_ISSUES.
+ * Returns true on success, false on failure.
+ **/
+function set_initial_issue_versions() {
+	$issues = get_posts( array(
+		'numberposts' => -1,
+		'post_type' => 'issue',
+		'orderby' => 'post_date',
+		'order' => 'DESC',
+	) );
+
+	if ( !$issues || !is_array( $issues ) ) {
+		return false;
+	}
+
+	foreach ( $issues as $issue ) {
+		$success = null;
+
+		if ( in_array( $issue->post_name, unserialize( V1_ISSUES ) ) ) {
+			$success = update_post_meta( $issue->ID, 'issue_version', 1 );
+			if ( $success !== true ) {
+				return false;
+			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $issue );
+		}
+		else if ( in_array( $issue->post_name, unserialize( V2_ISSUES ) ) ) {
+			$success = update_post_meta( $issue->ID, 'issue_version', 2 );
+			if ( $success !== true ) {
+				return false;
+			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $issue );
+		}
+	}
+
+	return true;
+}
+
+
+/**
+ * Set a 'story_template' meta field value for stories with an issue
+ * slug in the V1_ISSUES constant so that they are 'custom'
+ * if they have no value.  Also updates v1 'issue_template' values.
+ **/
+function set_templates_for_v1() {
+	$issue_slugs = unserialize( V1_ISSUES );
+	$stories = get_posts( array(
+		'numberposts' => -1,
+		'post_type' => 'story',
+		'tax_query' => array(
+			array(
+				'taxonomy' => 'issues',
+				'field' => 'slug',
+				'terms' => $issue_slugs
+			)
+		)
+	) );
+	$issues = array();
+	foreach ( $issue_slugs as $slug ) {
+		$issue = get_posts( array(
+			'numberposts' => 1,
+			'post_type' => 'issue',
+			'name' => $slug
+		) );
+		if ( $issue[0] ) {
+			$issue = $issue[0];
+			$issues[] = $issue->ID;
+		}
+	}
+
+	if ( !$stories || !is_array( $stories ) || !$issues || !is_array( $issues ) ) {
+		return false;
+	}
+
+	foreach ( $stories as $story ) {
+		if ( get_post_meta( $story->ID, 'story_template', true ) !== 'custom' ) {
+			$success = update_post_meta( $story->ID, 'story_template', 'custom' );
+			if ( $success !== true ) {
+				return false;
+			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( $story );
+		}
+	}
+	foreach ( $issues as $issue_id ) {
+		if ( get_post_meta( $issue_id, 'issue_template', true ) !== 'custom' ) {
+			$success = update_post_meta( $issue_id, 'issue_template', 'custom' );
+			if ( $success !== true ) {
+				return false;
+			}
+			// Trigger a post update to make sure VDP ban is run
+			wp_update_post( get_post( $issue_id ) );
+		}
+	}
+
+	return true;
+}
+
+
+
+/****************************************************************************
+ *
+ * START site-level functions here
+ *
+ ****************************************************************************/
+
+/*
+ * Returns current issue post based on the Current Issue Cover
+ * value in Theme Options
+ */
+function get_current_issue() {
+	$posts = get_posts(array(
+		'post_type' => 'issue',
+		'name'      => get_theme_option('current_issue_cover')
+	));
+
+	if(count($posts) == 0) {
+		die('Error: No Issue post matches the post assigned to the "Current Issue Cover" Theme Options setting.');
+	} else {
+		return $posts[0];
+	}
 }
 
 
@@ -44,21 +314,6 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
 	} else {
 		return get_issue_stories($current_issue, array('exclude'=>$exclude, 'numberposts'=>$limit));
 	}
-}
-
-
-/*
- * Returns featured image URL of a specified post ID
- */
-function get_featured_image_url($id, $size=null) {
-	$size = !$size ? 'single-post-thumbnail' : $size;
-    $url = '';
-    if(has_post_thumbnail($id)
-        && ($thumb_id = get_post_thumbnail_id($id)) !== False
-        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
-            return $image[0];
-    }
-    return $url;
 }
 
 
@@ -83,86 +338,17 @@ function get_relevant_issue($post) {
 
 
 /*
- * DEPRECATED.  USE get_issue_stories()/display_story_list() instead.
- *
- * Retrieve a list of stories for navigation. Exclude a story if we are on
- * its page otherwise pick 4 at random.
+ * Returns featured image URL of a specified post ID
  */
-function get_navigation_stories($issue=null) {
-	global $post;
-
-	$exclude = array();
-
-	if(is_null($issue)) {
-		$issue = get_relevant_issue($post);
-	}
-
-	if(is_front_page() || $post->post_type == 'issue') {
-		$current_issue  = (is_front_page()) ? get_current_issue() : $post;
-		$cover_story_id = get_post_meta($current_issue->ID, 'issue_cover_story', True);
-		if($cover_story_id !== False && $cover_story_id != '') {
-			if( ($cover_story = get_post($cover_story_id)) !== False) {
-				$exclude[] = $cover_story->ID;
-			}
-		}
-	} if($post->post_type == 'story') {
-		$exclude[] = $post->ID;
-	}
-
-	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'numberposts' => 4));
-	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
-	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'numberposts' => 6));
-	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
-}
-
-
-/*
- * Displays a list of stories in the current relevant issue.
- * List is swipe/touch friendly and spans the full width of the screen.
- */
-function display_story_list($issue, $class=null) {
-	$class = !empty($class) ? $class : '';
-	if ($issue) {
-		$stories = get_issue_stories($issue);
-		ob_start();
-
-		if ($stories) { ?>
-			<div class="story-list <?=$class?>">
-			<?php
-			$count = 0;
-			foreach ($stories as $story) {
-				$count++;
-
-				$title = $story->post_title;
-				$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
-				$thumb = get_featured_image_url($story->ID);
-			?>
-				<article<?php if ($count == count($stories)) { ?> class="last-child"<?php } ?>>
-					<a href="<?=get_permalink($story)?>">
-						<?php if ($thumb) { ?>
-						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
-						<?php } ?>
-						<h3 class="story-title"><?=$title?></h3>
-						<?php if (!empty($subtitle)) { ?>
-						<span class="subtitle"><?=$subtitle?></span>
-						<?php } ?>
-					</a>
-				</article>
-			<?php
-			}
-			?>
-			</div>
-		<?php
-		}
-		else {
-		?>
-			<p>No stories found.</p>
-		<?php
-		}
-
-		return ob_get_clean();
-	}
-	else { return null; }
+function get_featured_image_url($id, $size=null) {
+	$size = !$size ? 'single-post-thumbnail' : $size;
+    $url = '';
+    if(has_post_thumbnail($id)
+        && ($thumb_id = get_post_thumbnail_id($id)) !== False
+        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
+            return $image[0];
+    }
+    return $url;
 }
 
 
@@ -181,24 +367,6 @@ function get_theme_option($key) {
 function ipad_deployed() {
 	$ipad_app_url = get_theme_option('ipad_app_url');
 	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
-}
-
-
-/*
- * Returns current issue post based on the Current Issue Cover
- * value in Theme Options
- */
-function get_current_issue() {
-	$posts = get_posts(array(
-		'post_type' => 'issue',
-		'name'      => get_theme_option('current_issue_cover')
-	));
-
-	if(count($posts) == 0) {
-		die('Error: No Issue post matches the post assigned to the "Current Issue Cover" Theme Options setting.');
-	} else {
-		return $posts[0];
-	}
 }
 
 
@@ -318,8 +486,8 @@ function get_issue_feed_url($object) {
 	if ($slug !== null) {
 		$url = home_url('/issues/'.$slug.'/feed/?post_type=story');
 	}
-	return $url;
 
+	return $url;
 }
 
 
@@ -330,7 +498,7 @@ function enqueue_issue_story_scripts() {
 	global $post;
 
 	if ( !is_404() && !is_search() ) {
-		// add home page script(s)
+		// 1. add home page script(s)
 		if( $post->post_type == 'issue' || is_home() ) {
 
 			// issue-wide
@@ -363,7 +531,7 @@ function enqueue_issue_story_scripts() {
 				}
 			}
 
-		// add story script(s)
+		// 2. add story script(s)
 		} else if( $post->post_type == 'story' ) {
 			$story_issue = get_story_issue( $post );
 
@@ -419,11 +587,7 @@ function get_story_issue($story) {
 	$issue_terms = wp_get_object_terms($story->ID, 'issues');
 	$issue_posts = get_posts(array('post_type'=>'issue', 'numberposts'=>-1));
 
-	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
-	# to MATCH issue POST slugs!
 	foreach($issue_terms as $term) {
-		# reverse the term slug
-		#$post_slug = implode('-', array_reverse(explode('-', $term->slug)));
 		$post_slug = $term->slug;
 		foreach($issue_posts as $issue) {
 			if($post_slug == $issue->post_name) {
@@ -439,8 +603,6 @@ function get_story_issue($story) {
  * Get the stories associated with an issue
  */
 function get_issue_stories( $issue, $options=array() ) {
-	# UPDATED as of Spring 2014 -- issue TERM slugs should be created
-	# to MATCH issue POST slugs!
 	if ( $issue ) {
 		$issue_term_slug = $issue->post_name;
 
@@ -490,31 +652,30 @@ function output_header_markup($post) {
 	$output = '';
 
 	// Page stylesheet
-	$page_stylesheet_url = Page::get_stylesheet_url($post);
-	if($post->post_type == 'page' && !empty($page_stylesheet_url)) {
-		$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
+	if ( $post->post_type == 'page' && !empty( $page_stylesheet_url ) ) {
+		$page_stylesheet_url = Page::get_stylesheet_url( $post );
+		if ( !empty( $page_stylesheet_url ) ) {
+			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
+		}
 	}
 
 	if (!is_search() && !is_404()) {
-		// Set necessary html, body element width+height for stories,
-		// issues if they are not from fall 2013 or earlier
-		if (!is_fall_2013_or_older($post)) {
-			$output .= '<style type="text/css">';
-			$output .= '
+		// 1. Set necessary html, body element width+height for stories, issues
+		$output .= '<style type="text/css">';
+		$output .= '
+			html, body {
+			    height: 100%;
+			    width: 100%;
+			}
+			@media (max-width: 767px) {
 				html, body {
-				    height: 100%;
-				    width: 100%;
+				    width: auto;
 				}
-				@media (max-width: 767px) {
-					html, body {
-					    width: auto;
-					}
-				}
-			';
-			$output .= '</style>';
-		}
+			}
+		';
+		$output .= '</style>';
 
-		// Story font declarations (default and custom templates)
+		// 2. Story font declarations (default and custom templates)
 		if ($post->post_type == 'story') {
 			// Custom stories
 			if (uses_custom_template($post)) {
@@ -531,148 +692,22 @@ function output_header_markup($post) {
 				}
 			// Default template stories
 			} else {
-				$font = get_template_heading_styles($post);
+				$font = get_default_template_font_styles( $post );
 
 				if ($font['url']) {
 					$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
 				}
 
 				$output .= '<style type="text/css">';
-				$output .= '
-					article.story h1,
-					article.story h2,
-					article.story h3,
-					article.story h4,
-					article.story h5,
-					article.story h6 {
-						font-family: '.$font['font-family'].';
-						font-weight: '.$font['font-weight'].';
-						text-transform: '.$font['text-transform'].';
-						font-style: '.$font['font-style'].';
-						letter-spacing: '.$font['letter-spacing'].';
-					}
-					article.story .lead::first-letter {
-						font-family: '.$font['font-family'].';
-						font-weight: '.$font['font-weight'].';
-						text-transform: '.$font['text-transform'].';
-						font-style: '.$font['font-style'].';
-						letter-spacing: '.$font['letter-spacing'].';
-					}
-					article.story .lead:first-letter {
-						font-family: '.$font['font-family'].';
-						font-weight: '.$font['font-weight'].';
-						text-transform: '.$font['text-transform'].';
-						font-style: '.$font['font-style'].';
-						letter-spacing: '.$font['letter-spacing'].';
-					}
-					article.story h1,
-					article.story h2,
-					article.story h3,
-					article.story h4,
-					article.story h5,
-					article.story h6,
-					article.story blockquote,
-					article.story blockquote p {
-						color: '.$font['color'].';
-					}
-					article.story .lead::first-letter { color: '.$font['color'].'; }
-					article.story .lead:first-letter { color: '.$font['color'].'; }
-					article.story h1 {
-						font-size: '.$font['size-desktop'].';
-					}
-                    article.story .ss-closing-overlay {
-                        font-family: '.$font['font-family'].';
-                        font-weight: '.$font['font-weight'].';
-                        text-transform: '.$font['text-transform'].';
-                    }
-					@media (max-width: 979px) {
-						article.story h1 {
-							font-size: '.$font['size-tablet'].';
-						}
-					}
-					@media (max-width: 767px) {
-						article.story h1 {
-							font-size: '.$font['size-mobile'].';
-						}
-					}
-				';
-				$output .= get_webfont_css_classes();
+				if ( function_exists( 'get_default_template_font_css' ) ) {
+					$output .= get_default_template_font_css( $font ); // override per version
+				}
+				$output .= get_all_font_classes();
 				$output .= '</style>';
 			}
 		}
 
-		// Issue font declarations (custom templates)
-		if ($post->post_type == 'issue' && uses_custom_template($post)) {
-			$font = get_template_heading_styles($post);
-
-			if ($font['url']) {
-				$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
-			}
-
-			$output .= '<style type="text/css">';
-			$output .= '
-				main h2 {
-					color: '.$font['color'].';
-					font-size: '.$font['size-desktop'].';
-					text-align: '.$font['text-align'].';
-				}
-				main h2,
-				main h3 {
-					font-family: '.$font['font-family'].';
-					font-weight: '.$font['font-weight'].';
-					text-transform: '.$font['text-transform'].';
-					font-style: '.$font['font-style'].';
-					letter-spacing: '.$font['letter-spacing'].';
-				}
-				@media (max-width: 979px) {
-					main h2 {
-						font-size: '.$font['size-tablet'].';
-					}
-				}
-				@media (max-width: 767px) {
-					main h2 {
-						font-size: '.$font['size-mobile'].';
-					}
-				}
-			';
-			$output .= get_webfont_css_classes();
-			$output .= '</style>';
-		}
-
-		// DEPRECATED:  Issue-wide stylesheet (on home/issue cover page)
-		if( (is_home() || $post->post_type == 'issue') && (is_fall_2013_or_older($post)) ) {
-			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($post);
-			$dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE);
-			if ( !empty($issue_stylesheet_url) ) {
-				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
-			}
-			elseif ( DEV_MODE == 1 && !empty($dev_issue_directory) ) {
-				$dev_issue_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
-				if (curl_exists($dev_issue_stylesheet_url)) {
-					$output .= '<link rel="stylesheet" href="'.$dev_issue_stylesheet_url.'" type="text/css" media="all" />';
-				}
-			}
-		}
-		// DEPRECATED:  Issue-wide stylesheet (on story)
-		if( $post->post_type == 'story' && is_fall_2013_or_older($post) ) {
-			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($story_issue);
-			$dev_issue_directory = get_post_meta($story_issue->ID, 'issue_dev_issue_asset_directory', TRUE);
-			if ( ($story_issue = get_story_issue($post)) !== False && !empty($issue_stylesheet_url)) {
-				$output .= '<link rel="stylesheet" href="'.$issue_stylesheet_url.'" type="text/css" media="all" />';
-			}
-			elseif (
-				($story_issue = get_story_issue($post)) !== False &&
-				DEV_MODE == 1 &&
-				!empty($dev_issue_directory))
-				{
-					$dev_issue_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$story_issue->post_name.'.css';
-					if (curl_exists($dev_issue_home_stylesheet_url)) {
-						$output .= '<link rel="stylesheet" href="'.$dev_issue_home_stylesheet_url.'" type="text/css" media="all" />';
-					}
-			}
-		}
-
-		// Custom issue page-specific stylesheet
+		// 3. Custom issue page-specific stylesheet
 		if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
 			$home_stylesheet_url = Issue::get_home_stylesheet_url($post);
 			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
@@ -687,7 +722,7 @@ function output_header_markup($post) {
 			}
 		}
 
-		// Custom story stylesheet
+		// 4. Custom story stylesheet
 		if( $post->post_type == 'story' && uses_custom_template($post) ) {
 			$story_stylesheet_url = Story::get_stylesheet_url($post);
 			$dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
@@ -719,134 +754,24 @@ function protocol_relative_attachment_url($url) {
 add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 
-/*
- * Whether or not the current story or issue is from
- * Fall 2013 or earlier (whether it requires deprecated markup
- * for backwards compatibility.)
- */
-function is_fall_2013_or_older($post) {
-	$old_issues = unserialize(FALL_2013_OR_OLDER);
-	$slug = null;
-
-	if ($post->post_type == 'issue') {
-		$slug = $post->post_name;
-	}
-	else if ($post->post_type == 'story') {
-		$issue = get_story_issue($post);
-		if ( $issue ) {
-			$slug = $issue->post_name;
-		}
-	}
-
-	if (is_404() || is_search()) { $slug = null; }
-
-	if ($slug !== null && in_array($slug, $old_issues)) {
-		return true;
-	}
-	return false;
-}
+/**
+ * Prevent WordPress from wrapping images with captions with a
+ * [caption] shortcode.
+ **/
+add_filter('disable_captions', create_function('$a', 'return true;'));
 
 
 /**
- * Whether or not the current story or issue requires
- * a custom template (is from Fall 2013 or before, or
- * has specifically designated a custom template)
+ * Whether or not the current story or issue requires a custom template.
  **/
 function uses_custom_template($post) {
 	$meta_field = $post->post_type.'_template';
 	$template = get_post_meta($post->ID, $meta_field, TRUE);
 
-	if (
-		($template && !empty($template) && $template == 'custom') ||
-		(empty($template) && is_fall_2013_or_older($post))
-	) {
+	if ( $template && !empty($template) && $template == 'custom') {
 		return true;
 	}
 	return false;
-}
-
-
-/**
- * Returns a full set of heading styles for the specified font.
- *
- * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
- **/
-function get_heading_styles($font_name) {
-	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
-	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
-	return array_merge($template_fonts_base, $template_fonts[$font_name]);
-}
-
-
-/**
- * Get a non-custom story or issue's title font styling specs, based on
- * the story/issue's selected title font family and color.
- *
- * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
- *
- * @return array
- **/
-function get_template_heading_styles($post) {
-	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
-	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
-
-	// Capture any available inputted values
-	$post_meta = array(
-		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
-		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) ? get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) : '#222',
-	);
-	if ($post->post_type == 'issue') {
-		$post_meta['size-desktop'] = get_post_meta($post->ID, 'issue_default_fontsize_d', TRUE);
-		$post_meta['size-tablet'] = get_post_meta($post->ID, 'issue_default_fontsize_t', TRUE);
-		$post_meta['size-mobile'] = get_post_meta($post->ID, 'issue_default_fontsize_m', TRUE);
-		$post_meta['textalign'] = get_post_meta($post->ID, 'issue_default_textalign', TRUE);
-	}
-
-	// Set base font styles.
-	$styles = $template_fonts_base;
-	// Override base styles with per-font defaults.
-	if (!empty($post_meta['font-family']) && isset($template_fonts[$post_meta['font-family']])) {
-		foreach ($template_fonts[$post_meta['font-family']] as $key => $val) {
-			$styles[$key] = $val;
-		}
-	}
-
-	// Override any default values with set post meta values.
-	// Don't override 'font-family' option; it does not contain a valid CSS font-family
-	// value (this is handled in the base style override loop above.)
-	foreach ($post_meta as $key => $val) {
-		if (!empty($val) && $key !== 'font-family') {
-			$styles[$key] = $val;
-		}
-	}
-
-	return $styles;
-}
-
-
-/**
-* Displays social buttons (Facebook, Twitter, G+) for a post.
-* Accepts a post URL and title as arguments.
-*
-* @return string
-* @author Jo Dickson
-**/
-function display_social($url, $title) {
-    $tweet_title = urlencode('Pegasus Magazine: '.$title);
-    ob_start(); ?>
-    <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-            Like "<?=$title?>" on Facebook
-        </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-            Tweet "<?=$title?>" on Twitter
-        </a>
-        <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
-            Share "<?=$title?>" on Google+
-        </a>
-    </aside>
-    <?php
-    return ob_get_clean();
 }
 
 
@@ -901,115 +826,93 @@ function display_markup_or_template($post) {
 		if (!empty($post_template)) {
 			switch ($post_template) {
 				case 'custom':
-					if (!is_fall_2013_or_older($post)) {
-						// Kill automatic <p> tag insertion if this isn't an old story.
-						// Don't want to accidentally screw up an old story that worked
-						// around the <p> tag issue.
-						add_filter('the_content', 'kill_empty_p_tags', 999);
+					// Kill automatic <p> tag insertion if this isn't an old story.
+					// Don't want to accidentally screw up an old story that worked
+					// around the <p> tag issue.
+					add_filter('the_content', 'kill_empty_p_tags', 999);
 
-						// If an uploaded HTML file is present, use it.  Otherwise, use
-						// any content available in the WYSIWYG editor
-						if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
-							print apply_filters('the_content', file_get_contents($uploaded_html_url));
-						}
-						else {
-							the_content();
-						}
+					// If an uploaded HTML file is present, use it.  Otherwise, use
+					// any content available in the WYSIWYG editor
+					if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
+						print apply_filters('the_content', file_get_contents($uploaded_html_url));
 					}
 					else {
 						the_content();
 					}
 					break;
 				default:
-					require_once('templates/'.$post->post_type.'/'.$post_template.'.php');
+					$filename = 'templates/' . $post->post_type . '/' . $post_template . '.php';
+					$template = get_version_file_path( $filename, get_relevant_version( $post ) );
+					require_once( $template );
 					break;
 			}
 		}
 		else {
-			if (!is_fall_2013_or_older($post)) {
-				// Newer stories without a value should assume 'default' template
-				add_filter('the_content', 'kill_empty_p_tags', 999);
-				require_once('templates/'.$post->post_type.'/default.php');
-			}
-			else {
-				// Use WYSIWYG editor contents for old stories that don't have a
-				// field value set
-				the_content();
-			}
+			// Newer stories without a value should assume 'default' template
+			add_filter( 'the_content', 'kill_empty_p_tags', 999 );
+			$filename = 'templates/' . $post->post_type . '/default.php';
+			$template = get_version_file_path( $filename, get_relevant_version( $post ) );
+			require_once( $template );
 		}
 	}
 }
 
 
 /**
- * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * Returns an array of font style declarations and settings by font name.
+ *
+ * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
  **/
-add_filter('disable_captions', create_function('$a', 'return true;'));
+function get_font_styles($font_name) {
+	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
+	return array_merge($template_fonts_base, $template_fonts[$font_name]);
+}
 
 
 /**
- * Set a 'story_template' meta field value for stories with an issue
- * slug in the FALL_2013_OR_OLDER constant so that they are 'custom'
- * if they have no value.
+ * Returns an array of a default story's font styling specs,
+ * based on the story's selected title font family and color.
  *
- * Runs only as necessary (when a given post is selected to be edited
- * in the WP admin.)
+ * See TEMPLATE_FONT_STYLES_BASE (functions/config.php) for options.
  *
- * This function exists primarily to help toggle necessary meta fields.
- * single-story.php will still handle old stories that do not have a set
- * 'story_template' value appropriately.
+ * @return array
  **/
-function set_template_for_fall_2013_or_earlier($post) {
-	if ($post->post_type == 'story' && is_fall_2013_or_older($post)) {
-		if (get_post_meta($post->ID, 'story_template', TRUE) == '') {
-			update_post_meta($post->ID, 'story_template', 'custom');
+function get_default_template_font_styles($post) {
+	$template_fonts = unserialize(TEMPLATE_FONT_STYLES);
+	$template_fonts_base = unserialize(TEMPLATE_FONT_STYLES_BASE);
+
+	// Capture any available inputted values
+	$post_meta = array(
+		'font-family' => get_post_meta($post->ID, $post->post_type.'_default_font', TRUE),
+		'color' => get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) ? get_post_meta($post->ID, $post->post_type.'_default_color', TRUE) : '#222',
+	);
+
+	// Set base font styles.
+	$styles = $template_fonts_base;
+	// Override base styles with per-font defaults.
+	if (!empty($post_meta['font-family']) && isset($template_fonts[$post_meta['font-family']])) {
+		foreach ($template_fonts[$post_meta['font-family']] as $key => $val) {
+			$styles[$key] = $val;
 		}
 	}
-}
-add_action('edit_form_after_editor', 'set_template_for_fall_2013_or_earlier');
 
-
-/**
- * Generate font-specific classes used in default story templates and
- * in formatting.css (static/css/formatting.php) for all registered font
- * families in TEMPLATE_FONT_STYLES (see functions/config.php)
- *
- * Font classes are assigned in this manner, instead of using TinyMCE's
- * default inline font-family selection, to ensure consistency in font
- * formatting across stories.
- *
- * Set $style_tag arg to true to wrap returned CSS in a <style> tag.
- **/
-function get_webfont_css_classes($style_tag=false) {
-	$fonts = unserialize(TEMPLATE_FONT_STYLES);
-
-	$output = '';
-	if ($style_tag) {
-		$output .= '<style type="text/css">';
+	// Override any default values with set post meta values.
+	// Don't override 'font-family' option; it does not contain a valid CSS font-family
+	// value (this is handled in the base style override loop above.)
+	foreach ($post_meta as $key => $val) {
+		if (!empty($val) && $key !== 'font-family') {
+			$styles[$key] = $val;
+		}
 	}
 
-	foreach ($fonts as $font=>$styles) {
-		$ie8_selector = '.ie8 .'.sanitize_title($font);
-		$ie8_args = array(
-			'font-weight' => 'normal',
-			'font-style' => 'normal',
-			'line-height' => '1em'
-		);
-		$output .= get_webfont_css_styles($font, null, array('line-height'=>'1em'));
-		$output .= get_webfont_css_styles($font, $ie8_selector, $ie8_args, true);
-	}
-
-	if ($style_tag) {
-		$output .= '</style>';
-	}
-
-	return $output;
+	return $styles;
 }
 
 
 /**
- * Returns a base set of CSS styles for a particular web font.
+ * Returns a string containing a CSS class declaration and rules,
+ * using $selector or the font name as the class name.
  *
  * Specify the font name by $font (should match a font name registered
  * in TEMPLATE_FONT_STYLES).
@@ -1017,10 +920,10 @@ function get_webfont_css_classes($style_tag=false) {
  * Add extra styles or override existing styles with $extra[].
  * Add !important to all base styles returned by setting $important to true.
  **/
-function get_webfont_css_styles($font, $selector=null, $extra=null, $important=false) {
+function get_font_class($font, $selector=null, $extra=null, $important=false) {
 	if (!$font) { return null; }
 
-	$styles 	= get_heading_styles($font);
+	$styles 	= get_font_styles($font);
 	$selector 	= $selector !== null ? $selector : '.'.sanitize_title($font);
 	$extra 		= is_array($extra) ? $extra : array();
 	$important 	= $important == false ? '' : ' !important';
@@ -1045,6 +948,44 @@ function get_webfont_css_styles($font, $selector=null, $extra=null, $important=f
 
 
 /**
+ * Generate font-specific classes used in default story templates and
+ * in formatting.css (static/css/formatting.php) for all registered font
+ * families in TEMPLATE_FONT_STYLES (see functions/config.php)
+ *
+ * Font classes are assigned in this manner, instead of using TinyMCE's
+ * default inline font-family selection, to ensure consistency in font
+ * formatting across stories.
+ *
+ * Set $style_tag arg to true to wrap returned CSS in a <style> tag.
+ **/
+function get_all_font_classes($style_tag=false) {
+	$fonts = unserialize(TEMPLATE_FONT_STYLES);
+
+	$output = '';
+	if ($style_tag) {
+		$output .= '<style type="text/css">';
+	}
+
+	foreach ($fonts as $font=>$styles) {
+		$ie8_selector = '.ie8 .'.sanitize_title($font);
+		$ie8_args = array(
+			'font-weight' => 'normal',
+			'font-style' => 'normal',
+			'line-height' => '1em'
+		);
+		$output .= get_font_class($font, null, array('line-height'=>'1em'));
+		$output .= get_font_class($font, $ie8_selector, $ie8_args, true);
+	}
+
+	if ($style_tag) {
+		$output .= '</style>';
+	}
+
+	return $output;
+}
+
+
+/**
  * Allow SVGs in the Media Library.
  **/
 function allow_svgs( $mimes ) {
@@ -1052,5 +993,20 @@ function allow_svgs( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'allow_svgs' );
+
+
+
+/****************************************************************************
+ *
+ * END site-level functions.  Don't add anything else below this line.
+ *
+ * START version-level functions here
+ *
+ ****************************************************************************/
+
+function require_version_functions() {
+	require_once( get_version_file_path( 'functions.php' ) );
+}
+add_action( 'after_setup_theme', 'require_version_functions' );
 
 ?>

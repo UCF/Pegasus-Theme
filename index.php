@@ -1,6 +1,6 @@
 <?php if (function_exists('disallow_direct_load')):?>
 <?php disallow_direct_load('index.php');?>
-<?php get_header();?>
+<?php get_version_header();?>
 <div class="page-content" id="post-list">
 	<div class="span9">
 		<?php while(have_posts()): the_post();?>
@@ -17,5 +17,5 @@
 		<?php endwhile;?>
 	</div>
 </div>
-<?php get_footer();?>
+<?php get_version_footer();?>
 <?php endif;?>
