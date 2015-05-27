@@ -1,18 +1,18 @@
 <?php
 
 /**
- * Abstract class for defining custom taxonomies.  
- * 
+ * Abstract class for defining custom taxonomies.
+ *
  **/
 abstract class CustomTaxonomy {
 	public
 		$name			= 'custom_taxonomy',
-		
+
 		// Do not register the taxonomy with the post type here.
 		// Register it on the `taxonomies` attribute of the post type in
 		// custom-post-types.php
-		$object_type	= Array(), 
-		
+		$object_type	= Array(),
+
 		$general_name               = 'Post Tags',
 		$singular_name              = 'Post Tag',
 		$search_items               = 'Search Tags',
@@ -28,7 +28,7 @@ abstract class CustomTaxonomy {
 		$add_or_remove_items        = 'Add or Remove Tag',
 		$choose_from_most_used      = 'Choose from Most Used Tag',
 		$menu_name                  = NULL,
-		
+
 		$public                = True,
 		$show_in_nav_menus     = True,
 		$show_in_name_menus    = NULL,
@@ -40,19 +40,19 @@ abstract class CustomTaxonomy {
 		$query_var             = NULL,
 		$capabilities          = Array(),
 		$show_admin_column     = False;
-	
+
 	function __construct() {
 		if(is_null($this->show_in_name_menus)) $this->show_in_name_menus = $this->public;
 		if(is_null($this->show_ui)) $this->show_ui = $this->public;
 		if(is_null($this->show_tagcloud)) $this->show_tagcloud = $this->show_ui;
 		if(is_null($this->menu_name)) $this->menu_name = $this->general_name;
 	}
-	
+
 	public function options($key){
 		$vars = get_object_vars($this);
 		return $vars[$key];
 	}
-	
+
 	public function labels() {
 		return Array(
 				'name'                       => _x($this->options('general_name'), 'taxonomy general name'),
@@ -72,7 +72,7 @@ abstract class CustomTaxonomy {
 				'menu_name'                  => __($this->options('menu_name'))
 				);
 	}
-	
+
 	public function register() {
 		$args = Array(
 				'labels'                => $this->labels(),
@@ -91,30 +91,6 @@ abstract class CustomTaxonomy {
 	}
 }
 
-
-/**
- * Describes organizational groups
- *
- * @author Chris Conover
- **/
-class OrganizationalGroups extends CustomTaxonomy
-{
-	public
-		$name               = 'org_groups',
-		$general_name       = 'Organizational Groups',
-		$singular_name      = 'Organizational Group',
-		$search_items       = 'Search Organizational Groups',
-		$popular_items      = 'Popular Organizational Groups',
-		$all_times          = 'All Organizational Groups',
-		$parent_item        = 'Parent Organizational Group',
-		$parent_item_colon  = 'Parent Organizational Group:',
-		$edit_item          = 'Edit Organizational Group',
-		$update_item        = 'Update Organizational Group',
-		$add_new_item       = 'Add New Organizational Group',
-		$new_item_name      = 'New Tag Organizational Group',
-		
-		$hierarchical = True;
-} // END class 
 
 /**
  * Describes an issues of Pegasus Magazine
@@ -136,10 +112,10 @@ class Issues extends CustomTaxonomy
 		$update_item        = 'Update Issue',
 		$add_new_item       = 'Add New Issue',
 		$new_item_name      = 'New Tag Issue',
-		
+
 		$hierarchical 		= True,
 		$query_var 			= 'issues',
 
 		$show_admin_column  = True;
-} // END class 
+} // END class
 ?>
