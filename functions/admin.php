@@ -456,60 +456,84 @@ add_filter('mce_buttons_2', 'add_options_to_tinymce');
 
 
 /**
- * Add webfont options and their stylesheets to TinyMCE editor.
+ * Add custom formats, including webfont options and their stylesheets,
+ * to the TinyMCE editor.
+ *
+ * NOTE: Webfonts are added as "Formats" options (NOT in "Font Family"
+ * dropdown) to allow us to use class-based font styling, which prevents a mess
+ * of inline styles and lets us apply IE8-specific overrides per-font when
+ * necessary.
  **/
-function add_webfonts_to_tinymce( $settings ) {
+function add_formats_to_tinymce( $settings ) {
 	$fonts = unserialize( TEMPLATE_FONT_STYLES );
 	$cloud_font_key = get_theme_option( 'cloud_font_key' );
-	//$theme_advanced_fonts = '';
 	$style_formats = array();
+	$font_families = array();
 	$content_css = array();
 
-	// TODO: move to separate function/wysiwyg button assignment
-	$style_formats[] = array(
-		'title' => 'UPPERCASE',
-		'inline' => 'span',
-		'classes' => 'text-uppercase'
+	// Text, list formatting options
+	$style_formats = array(
+		array(
+			'title' => 'Text Formatting',
+			'items' => array(
+				array(
+					'title' => 'UPPERCASE',
+					'inline' => 'span',
+					'classes' => 'text-uppercase'
+				),
+				array(
+					'title' => 'lowercase',
+					'inline' => 'span',
+					'classes' => 'text-lowercase'
+				),
+			),
+		),
+		array(
+			'title' => 'List Style',
+			'items' => array(
+				array(
+					'title' => 'Inline Bulleted List',
+					'selector' => 'ul',
+					'classes' => 'list-inline-styled'
+				),
+			),
+		),
 	);
 
-	$style_formats[] = array(
-		'title' => 'lowercase',
-		'inline' => 'span',
-		'classes' => 'text-lowercase'
-	);
+	// Webfont family list
+	if ( $fonts ) {
+		foreach ( $fonts as $font=>$styles ) {
+			$styles = get_font_styles( $font );
 
-	$style_formats[] = array(
-		'title' => 'Inline Bulleted List',
-		'selector' => 'ul',
-		'classes' => 'list-inline-styled'
-	);
+			$font_families[] = array(
+				'title' => $font,
+				'inline' => 'span',
+				'classes' => sanitize_title( $font )
+			);
 
-	foreach ($fonts as $font=>$styles) {
-		$styles = get_font_styles( $font );
+			if ( $styles['url'] !== null ) {
+				$content_css[] = $styles['url'];
+			}
+		}
 
 		$style_formats[] = array(
-			'title' => $font,
-			'inline' => 'span',
-			'classes' => sanitize_title( $font )
+			'title' => 'Font Family',
+			'items' => $font_families,
 		);
-
-		if ( $styles['url'] !== null ) {
-			$content_css[] = $styles['url'];
-		}
 	}
 
 	if ( !empty( $cloud_font_key ) ) {
 		$content_css[] .= $cloud_font_key;
 	}
-	$content_css = implode(',', array_unique( $content_css ) );
+	$content_css = implode( ',', array_unique( $content_css ) );
 
-	$settings['content_css'] = $settings['content_css'].','.$content_css;
-	$settings['style_formats'] = json_encode($style_formats);
-	$settings['theme_advanced_buttons2_add_before'] = 'styleselect';
+	$settings['content_css'] = $settings['content_css'].','.$content_css; // Append font stylesheets to list of loaded stylesheets for tinymce
+	$settings['style_formats'] = json_encode( $style_formats );
+	$settings['theme_advanced_buttons2_add_before'] = 'styleselect'; // Add 'Format' button at beginning of 2nd row of btns
 	$settings['fontsize_formats'] = '10px 11px 12px 13px 14px 15px 16px 17px 18px 19px 20px 21px 22px 23px 24px 25px 26px 27px 28px 29px 30px 32px 36px 42px 48px 52px 58px 62px';
 
 	return $settings;
 }
-add_filter( 'tiny_mce_before_init', 'add_webfonts_to_tinymce' );
+add_filter( 'tiny_mce_before_init', 'add_formats_to_tinymce' );
 
 ?>

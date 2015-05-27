@@ -137,8 +137,6 @@ define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
  * - font-weight:    Used on all Story template headings, Story template dropcaps, Issue template
  *                     h2-h3's, and all tags with class '.font-name'.
  * - text-align:     Used on Issue template h2's.
- * - text-transform: Used on all Story template headings, Story template dropcaps, Issue template
- *                     h2-h3's, and all tags with class '.font-name'.
  * - font-style:     Used on all Story template headings, Story template dropcaps, Issue template
  *                     h2-h3's, and all tags with class '.font-name'.
  * - letter-spacing: 'letter-spacing' property of default Story template h1-h6 tags and dropcaps,
@@ -156,7 +154,6 @@ $template_font_styles_base_array = array(
 	'font-family' => '"Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif',
 	'font-weight' => '700',
 	'text-align' => 'left',
-	'text-transform' => 'none',
 	'font-style' => 'normal',
 	'letter-spacing' => '-0.012em',
 	'size-desktop' => '60px',
@@ -315,7 +312,6 @@ $template_font_styles_array = array(
 		'letter-spacing' => 'normal',
 		'size-desktop' => '60px',
 		'size-tablet' => '60px',
-		//'text-transform' => 'uppercase',
 	),
 );
 define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
