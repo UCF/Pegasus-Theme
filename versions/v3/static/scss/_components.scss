@@ -497,6 +497,14 @@
   top: 0;
   width: 100%;
 
+  .wysiwyg-text-align-left {
+    text-align: left;
+  }
+  
+  .wysiwyg-text-align-center {
+    text-align: center;
+  }
+
   > p {
     color: #fff;
     filter: alpha(opacity=0);

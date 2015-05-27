@@ -185,7 +185,7 @@ WebcomAdmin.wysiwygFields = function($) {
       // Initialize the wysihtml5 editor
       if ($(textarea).length > 0) {
           var editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
-              toolbar:     toolbarID, // id of toolbar element
+              toolbar: toolbarID, // id of toolbar element
               parserRules: wysihtml5ParserRules, // defined in parser rules set
           });
       }
@@ -316,6 +316,10 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
         // White list of tags to allow
         var wysihtml5ParserRules = {
+          classes: {
+              "wysiwyg-text-align-left": {},
+              "wysiwyg-text-align-center": {}
+          },
             tags: {
                 br:     {},
                 strong: {},
@@ -323,6 +327,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 i:      {},
                 em:     {},
                 u:      {},
+                div:    {},
                 a:      {
                     set_attributes: {
                         target: "_blank"
@@ -345,7 +350,8 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
 
                 var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-                    toolbar:     toolbar.attr('id'), // id of toolbar element
+                    toolbar: toolbar.attr('id'), // id of toolbar element
+                    stylesheets: [THEME_CSS_URL + "/editor.css"],
                     parserRules: wysihtml5ParserRules, // defined in parser rules set
                 });
             }
@@ -368,7 +374,8 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
                 toolbar.hide();
                 var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-                    toolbar:     toolbar.attr('id'), // id of toolbar element
+                    toolbar: toolbar.attr('id'), // id of toolbar element                    
+                    stylesheets: [THEME_CSS_URL + "editor.css"],
                     parserRules: wysihtml5ParserRules, // defined in parser rules set
                 });
             },
@@ -442,6 +449,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
             var editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
               toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
+              stylesheets:  [THEME_CSS_URL + "editor.css"],
               parserRules:  wysihtml5ParserRules, // defined in parser rules set
             });
 

@@ -579,6 +579,7 @@ if (!empty($theme_options['cloud_font_key'])) {
 
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
+	array('admin' => True, 'src' => THEME_JS_URL.'/css_path.php?THEME_CSS_URL='.urlencode(THEME_CSS_URL)),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
