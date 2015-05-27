@@ -627,11 +627,11 @@ article.ss-photo-essay {
 
   .ss-slide {
     .social {
-      display: block;
+      display: none;
     }
 
     &.ss-current .social {
-      display: none;
+      display: block;
     }
   }
 }
