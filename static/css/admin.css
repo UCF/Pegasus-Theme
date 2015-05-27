@@ -227,15 +227,6 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-u.wysihtml5-command-active {
 	background-position: -279px 1px;
 }
 
-div[id^="wysihtml5-toolbar"] a.wysihtml5-align-left {
-	background-position: -99px -19px;
-}
-div[id^="wysihtml5-toolbar"] a.wysihtml5-align-left:hover,
-div[id^="wysihtml5-toolbar"] a.wysihtml5-align-left:active,
-div[id^="wysihtml5-toolbar"] a.wysihtml5-align-left.wysihtml5-command-active {
-	background-position: -99px 1px;
-}
-
 div[id^="wysihtml5-toolbar"] a.wysihtml5-align-center {
 	background-position: -119px -19px;
 }

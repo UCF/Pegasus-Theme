@@ -317,7 +317,6 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         // White list of tags to allow
         var wysihtml5ParserRules = {
           classes: {
-              "wysiwyg-text-align-left": {},
               "wysiwyg-text-align-center": {}
           },
             tags: {

@@ -823,7 +823,6 @@ class PhotoEssay extends CustomPostType {
                             <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
                             <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
                             <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
-                            <a class="wysihtml5-align-left" data-wysihtml5-command="justifyLeft" data-wysihtml5-command-value="jl">align left</a>
                             <a class="wysihtml5-align-center" data-wysihtml5-command="justifyCenter" data-wysihtml5-command-value="jc">center</a>								
 
                           <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
