@@ -111,8 +111,8 @@ function by_version_template( $template ) {
 		$new_template = locate_template( array( get_version_file_path( 'single-' . $post->post_type . '.php' ) ) );
 	}
 
-	if ( isset( $new_template ) && '' !== $new_template ) {
-		return $new_template ;
+	if ( !empty( $new_template ) ) {
+		return $new_template;
 	}
 	return $template;
 }
@@ -130,7 +130,7 @@ add_filter( 'template_include', 'by_version_template', 99 );
  **/
 function get_version_header() {
 	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
-	if ( '' !== $new_template ) {
+	if ( !empty( $new_template ) ) {
 		return load_template( THE_POST_VERSION_DIR . '/header.php' );
 	}
 }
@@ -142,7 +142,7 @@ function get_version_header() {
  **/
 function get_version_footer() {
 	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
-	if ( '' !== $new_template ) {
+	if ( !empty( $new_template ) ) {
 		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
 	}
 }
