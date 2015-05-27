@@ -129,7 +129,7 @@ class Config{
  **/
 abstract class Field{
 	protected function check_for_default(){
-		if ($this->value === null){
+		if ( ( $this->value === null || $this->value === '' ) && isset( $this->default ) ) {
 			$this->value = $this->default;
 		}
 	}
@@ -1595,8 +1595,8 @@ function save_file( $post_id, $field ) {
 function save_textarea( $post_id, $field ) {
 	$old = get_post_meta( $post_id, $field['id'], true );
 	# Make sure new value doesn't contain special chars that mysql doesn't
-	# like.  Also convert single/double primes to curly quotes if we can
-	$new = wptexturize( iconv( 'UTF-8', 'ISO-8859-1//IGNORE', $_POST[$field['id']] ) );
+	# like.
+	$new = iconv( 'UTF-8', 'ISO-8859-1//IGNORE', $_POST[$field['id']] );
 
 	# Update if new is not empty and is not the same value as old
 	if ( $new !== '' and $new !== null and $new != $old ) {

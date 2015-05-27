@@ -568,6 +568,7 @@ article.ss-photo-essay {
 
     h1,
     .description-wrap {
+      color: #fff;
       text-align: center;
     }
 
@@ -597,6 +598,10 @@ article.ss-photo-essay {
       text-align: center;
       z-index: 999;
 
+      @media (max-width: $screen-xs-max) {
+        padding-top: 10px;
+      }
+
       @media (max-width: 320px) {
         left: -20px;
       }
@@ -612,16 +617,6 @@ article.ss-photo-essay {
     }
   }
 
-  .description {
-    color: #fff;
-  }
-
-  .social {
-    @media (max-width: $screen-xs-max) {
-      padding-top: 10px;
-    }
-  }
-
   .ss-slide-wrapper {
     width: 85%;
 
@@ -632,11 +627,11 @@ article.ss-photo-essay {
 
   .ss-slide {
     .social {
-      display: block;
+      display: none;
     }
 
     &.ss-current .social {
-      display: none;
+      display: block;
     }
   }
 }

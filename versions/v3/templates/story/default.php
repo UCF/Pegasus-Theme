@@ -20,7 +20,7 @@
 	<div class="container">
 		<div class="row title-wrap">
 			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
-				<h1><?php echo $post->post_title; ?></h1>
+				<h1><?php echo wptexturize( $post->post_title ); ?></h1>
 			</div>
 		</div>
 		<div class="row description-wrap">
@@ -28,7 +28,7 @@
 				<div class="row">
 					<div class="col-md-8 col-sm-12 col-xs-12 description-col">
 						<span class="description">
-							<?php echo get_post_meta($post->ID, 'story_description', TRUE); ?>
+							<?php echo wptexturize( get_post_meta( $post->ID, 'story_description', TRUE ) ); ?>
 						</span>
 					</div>
 					<div class="col-md-4 col-sm-12 col-xs-12 description-col">
