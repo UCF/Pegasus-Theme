@@ -547,7 +547,8 @@ class Issue extends CustomPostType {
 				'desc'    => 'The theme version to use for this issue and its stories.',
 				'id'      => $prefix.'version',
 				'type'    => 'select',
-				'options' => $versions
+				'options' => $versions,
+				'default' => strval( $versions[LATEST_VERSION] ) // int is converted to str when saved as post meta, so compare against str here
 			),
 			array(
 				'name'    => 'Cover Story',

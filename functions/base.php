@@ -129,7 +129,7 @@ class Config{
  **/
 abstract class Field{
 	protected function check_for_default(){
-		if ($this->value === null){
+		if ( ( $this->value === null || $this->value === '' ) && isset( $this->default ) ) {
 			$this->value = $this->default;
 		}
 	}
