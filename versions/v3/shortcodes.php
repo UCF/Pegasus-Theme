@@ -612,7 +612,7 @@ function sc_archive_search($params=array(), $content='') {
 				<div class="col-md-5 col-sm-5">
 					<h2 id="<?php echo $issue->post_name; ?>">
 						<a href="<?php echo get_permalink( $issue->ID ); ?>">
-							<?php echo $issue->post_title; ?>
+							<?php echo wptexturize( $issue->post_title ); ?>
 						</a>
 					</h2>
 
@@ -625,11 +625,11 @@ function sc_archive_search($params=array(), $content='') {
 					<?php if ( $featured_article_id ) { ?>
 						<h3>Featured Story</h3>
 						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
-							<h4><?php echo $featured_article->post_title; ?></h4>
+							<h4><?php echo wptexturize( $featured_article->post_title ); ?></h4>
 							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
-								<span class="description"><?php echo strip_tags( $f_desc, '<b><em><i><u><strong>' ); ?></span>
+								<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
 							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
-								<span class="description"><?php echo strip_tags( $f_subtitle, '<b><em><i><u><strong>' ); ?></span>
+								<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
 							<?php } ?>
 						</a>
 					<?php } ?>
@@ -640,12 +640,12 @@ function sc_archive_search($params=array(), $content='') {
 					<?php foreach( $posts as $post ) { ?>
 						<li data-post-id="<?php echo $post->ID; ?>"<?php if ( $post->ID == $featured_article_id ) { ?> class="featured-story"<?php } ?>>
 							<a href="<?php echo get_permalink( $post->ID ); ?>">
-								<h4><?php echo $post->post_title; ?></h4>
+								<h4><?php echo wptexturize( $post->post_title ); ?></h4>
 								<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
 								<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
-									<span class="description"><?php echo strip_tags( $desc, '<b><em><i><u><strong>' ); ?></span>
+									<span class="description"><?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?></span>
 								<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
-									<span class="description"><?php echo strip_tags( $subtitle, '<b><em><i><u><strong>' ); ?></span>
+									<span class="description"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
 								<?php } ?>
 							</a>
 						</li>
@@ -750,18 +750,18 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 									$s = $slide_order[0];
 									$image = wp_get_attachment_image_src($slide_image[$s], 'full');
 							?>
-							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
 
-								<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+								<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 
 								<div class="ss-essay-intro">
 									<div class="title-wrap">
-										<h1><?=$post->post_title?></h1>
+										<h1><?php echo wptexturize( $post->post_title ); ?></h1>
 									</div>
 									<div class="description-wrap">
-										<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+										<span class="description"><?php echo wptexturize( get_post_meta( $post->ID, 'story_description', TRUE ) ); ?></span>
 										<a class="ss-control ss-play" href="#2"><i class="icon icon-caret-right"></i>
-										<?=display_social(get_permalink($post), $post->post_title)?>
+										<?php echo display_social( get_permalink( $post ), $post->post_title ); ?>
 									</div>
 								</div>
 							</div>
@@ -776,8 +776,8 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
 					?>
 					<div class="ss-slide-wrapper">
-						<div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-							<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+						<div class="ss-slide<?php echo $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : ''; ?><?php echo $i == $slide_count - 1 ? ' ss-last-slide' : ''; ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
+							<img src="<?php echo $image[0]; ?>" alt="<?php echo wptexturize( $slide_title[$s] ); ?>" />
 						</div>
 					</div>
 				<?php
@@ -789,18 +789,18 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				<div class="ss-captions-wrapper">
 				<?php
 				$data_id = 0;
-				if ($is_fullscreen) {
+				if ( $is_fullscreen ) {
 					$data_id++;
 				?>
-					<div class="ss-caption ss-current" data-id="<?=$data_id?>"></div>
+					<div class="ss-caption ss-current" data-id="<?php echo $data_id; ?>"></div>
 				<?php
 				}
-				foreach ($slide_order as $s) {
-					if ($s !== '') {
+				foreach ( $slide_order as $s ) {
+					if ( $s !== '' ) {
 						$data_id++;
 				?>
-					<div class="ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?=$data_id?>">
-						<p class="caption"<?php if ($caption_color) { ?> style="color: <?=$caption_color?>;"<?php } ?>><?=$slide_caption[$s]; ?></p>
+					<div class="ss-caption <?php echo $data_id == 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
+						<p class="caption"<?php if ( $caption_color ) { ?> style="color: <?php echo $caption_color; ?>;"<?php } ?>><?php echo wptexturize( $slide_caption[$s] ); ?></p>
 					</div>
 				<?php
 					}
@@ -810,8 +810,8 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 				<div class="ss-closing-overlay" style="display: none;">
 					<div class="ss-slide" data-id="restart-slide">
-						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
-						<? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
+						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?php echo $is_fullscreen ? ':' : ''; ?></div></a>
+						<?php if ( $is_fullscreen ): ?><div class="ss-title"><?php echo wptexturize( $post->post_title ); ?></div><?php endif; ?>
 					</div>
 				</div>
 			</div>
@@ -823,7 +823,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	return ob_get_clean();
 
 }
-add_shortcode('slideshow', 'sc_photo_essay_slider');
+add_shortcode( 'slideshow', 'sc_photo_essay_slider' );
 
 
 ?>

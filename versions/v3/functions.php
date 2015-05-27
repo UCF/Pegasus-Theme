@@ -3,31 +3,31 @@
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
-function display_story_list($issue, $class=null) {
-	$class = !empty($class) ? $class : '';
-	if ($issue) {
-		$stories = get_issue_stories($issue);
+function display_story_list( $issue, $class=null ) {
+	$class = !empty( $class ) ? $class : '';
+	if ( $issue ) {
+		$stories = get_issue_stories( $issue );
 		ob_start();
 
-		if ($stories) { ?>
-			<div class="story-list <?=$class?>">
+		if ( $stories ) { ?>
+			<div class="story-list <?php echo $class; ?>">
 			<?php
 			$count = 0;
-			foreach ($stories as $story) {
+			foreach ( $stories as $story ) {
 				$count++;
 
-				$title = $story->post_title;
-				$subtitle = get_post_meta($story->ID, 'story_subtitle', TRUE);
-				$thumb = get_featured_image_url($story->ID);
+				$title = wptexturize( $story->post_title );
+				$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
+				$thumb = get_featured_image_url( $story->ID );
 			?>
-				<article<?php if ($count == count($stories)) { ?> class="last-child"<?php } ?>>
-					<a href="<?=get_permalink($story)?>">
-						<?php if ($thumb) { ?>
-						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+				<article<?php if ( $count == count( $stories ) ) { ?> class="last-child"<?php } ?>>
+					<a href="<?php echo get_permalink( $story ); ?>">
+						<?php if ( $thumb ) { ?>
+						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
 						<?php } ?>
-						<h3 class="story-title"><?=$title?></h3>
+						<h3 class="story-title"><?php echo $title; ?></h3>
 						<?php if ( !empty( $subtitle ) ) { ?>
-						<span class="subtitle"><?php echo strip_tags( $subtitle, '<b><em><i><u><strong>'); ?></span>
+						<span class="subtitle"><?php echo $subtitle; ?></span>
 						<?php } ?>
 					</a>
 				</article>
