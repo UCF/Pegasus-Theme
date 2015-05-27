@@ -568,6 +568,7 @@ article.ss-photo-essay {
 
     h1,
     .description-wrap {
+      color: #fff;
       text-align: center;
     }
 
@@ -597,6 +598,10 @@ article.ss-photo-essay {
       text-align: center;
       z-index: 999;
 
+      @media (max-width: $screen-xs-max) {
+        padding-top: 10px;
+      }
+
       @media (max-width: 320px) {
         left: -20px;
       }
@@ -609,16 +614,6 @@ article.ss-photo-essay {
         margin-right: 0;
         white-space: nowrap;
       }
-    }
-  }
-
-  .description {
-    color: #fff;
-  }
-
-  .social {
-    @media (max-width: $screen-xs-max) {
-      padding-top: 10px;
     }
   }
 
