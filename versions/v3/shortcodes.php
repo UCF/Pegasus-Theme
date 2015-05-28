@@ -674,22 +674,22 @@ add_shortcode('archive-search', 'sc_archive_search');
 function sc_photo_essay_slider( $atts, $content = null ) {
 	$slug 		   = @$atts['slug'];
 	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : null;
-	$recent 	   = get_posts(array(
+	$recent 	   = get_posts( array(
 		'numberposts' => 1,
 		'post_type' => 'photo_essay',
 		'post_status' => 'publish',
-	));
+	) );
 
 	$mostrecent = $recent[0];
 
-	if (is_string($slug)) {
-		$essays = get_posts(array(
+	if ( is_string( $slug ) ) {
+		$essays = get_posts( array(
 			'name' => $slug,
 			'post_type' => 'photo_essay',
 			'post_status' => 'publish',
 			'posts_per_page' => 1
 		));
-		if ($essays) {
+		if ( $essays ) {
 			$essay = $essays[0];
 		}
 	} else {
@@ -698,7 +698,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	global $post;
 	$is_fullscreen = false;
-	if ($post->post_type == 'story' && get_post_meta($post->ID, 'story_template', TRUE) == 'photo_essay') {
+	if ( $post->post_type == 'story' && get_post_meta( $post->ID, 'story_template', TRUE ) == 'photo_essay' ) {
 		$is_fullscreen = true;
 	}
 
@@ -706,15 +706,15 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	if( $essay ) {
 
-		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order 	= get_post_meta( $essay->ID, 'ss_slider_slideorder', TRUE );
 		// Get rid of blank array entries
-		$slide_order	= array_filter(explode(",", $slide_order), 'strlen' );
-		$slide_title 	= get_post_meta($essay->ID, 'ss_slide_title', TRUE);
-		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
-		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
+		$slide_order	= array_filter( explode( ',', $slide_order ), 'strlen' );
+		$slide_title 	= get_post_meta( $essay->ID, 'ss_slide_title', TRUE );
+		$slide_caption 	= get_post_meta( $essay->ID, 'ss_slide_caption', TRUE );
+		$slide_image	= get_post_meta( $essay->ID, 'ss_slide_image', TRUE );
 		?>
 
-		<section class="ss-content" id="<?=$slug?>">
+		<section class="ss-content" id="<?php echo $slug; ?>">
 			<div class="ss-nav-wrapper">
 				<div class="ss-arrow-wrapper ss-arrow-wrapper-left">
 					<a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
@@ -726,29 +726,29 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				<div class="ss-slides-wrapper">
 				<?php
 
-				$slide_count = count($slide_order);
-				$ss_half = floor($slide_count/2) + 1;
+				$slide_count = count( $slide_order );
+				$ss_half = floor( $slide_count / 2 ) + 1;
 				$end = false;
 				$i = $ss_half;
-				if ($is_fullscreen) {
+				if ( $is_fullscreen ) {
 					$photo_essay_offset = 1;
 				}
-				while ($end == false) {
-					if ($i == $slide_count) {
+				while ( $end == false ) {
+					if ( $i == $slide_count ) {
 						$i = 0;
 					}
 
-					if ($i == $ss_half - 1) {
+					if ( $i == $ss_half - 1 ) {
 						$end = true;
 					}
 
-					if ($is_fullscreen && $i == 0) {
+					if ( $is_fullscreen && $i == 0 ) {
 					?>
 						<div class="ss-slide-wrapper">
 							<?php
-								if (!empty($slide_order)):
+								if ( !empty( $slide_order ) ):
 									$s = $slide_order[0];
-									$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+									$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
 							?>
 							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
 
@@ -773,11 +773,11 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					}
 
 					$s = $slide_order[$i];
-					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+					$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
 					?>
 					<div class="ss-slide-wrapper">
 						<div class="ss-slide<?php echo $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : ''; ?><?php echo $i == $slide_count - 1 ? ' ss-last-slide' : ''; ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-							<img src="<?php echo $image[0]; ?>" alt="<?php echo wptexturize( $slide_title[$s] ); ?>" />
+							<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 						</div>
 					</div>
 				<?php

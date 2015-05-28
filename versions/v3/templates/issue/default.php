@@ -1,12 +1,12 @@
-<?php disallow_direct_load('default.php');?>
-<?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
+<?php disallow_direct_load( 'default.php' );?>
+<?php add_filter( 'the_content', 'kill_empty_p_tags', 999 ); ?>
 <?php
-	$fallback_featured_stories = get_issue_stories($post, array('numberposts'=>3));
-	$story_1_id = intval(get_post_meta($post->ID, 'issue_story_1', TRUE));
-	$story_2_id = intval(get_post_meta($post->ID, 'issue_story_2', TRUE));
-	$story_3_id = intval(get_post_meta($post->ID, 'issue_story_3', TRUE));
-	$featured_stories = array($story_1_id, $story_2_id, $story_3_id);
-	$past_issues = get_posts(array(
+	$fallback_featured_stories = get_issue_stories( $post, array( 'numberposts' => 3 ) );
+	$story_1_id = intval( get_post_meta( $post->ID, 'issue_story_1', TRUE ) );
+	$story_2_id = intval( get_post_meta( $post->ID, 'issue_story_2', TRUE ) );
+	$story_3_id = intval( get_post_meta( $post->ID, 'issue_story_3', TRUE ) );
+	$featured_stories = array( $story_1_id, $story_2_id, $story_3_id );
+	$past_issues = get_posts( array(
 		'post_type' => 'issue',
 		'numberposts' => 5,
 		'order' => 'DESC',
@@ -23,10 +23,10 @@
 	// NOTE: IDs set previously are replaced with post objects here.
 	$count = 0;
 	if ( !empty( $featured_stories ) ) {
-		foreach ($featured_stories as $key=>$val) {
+		foreach ( $featured_stories as $key=>$val ) {
 			if ( $val !== 0 ) {
-				$story = get_post($val);
-				$story->thumb = wp_get_attachment_url(get_post_meta($story->ID, 'story_issue_featured_thumb', TRUE), 'issue-cover-feature');
+				$story = get_post( $val );
+				$story->thumb = wp_get_attachment_url( get_post_meta( $story->ID, 'story_issue_featured_thumb', TRUE ), 'issue-cover-feature' );
 				$featured_stories[$key] = $story;
 			}
 			else {
@@ -55,12 +55,6 @@
 	$story_3_id = $story_3 ? $story_3->ID : 0;
 
 	$other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_id, $story_2_id, $story_3_id ) ) );
-
-	// Number of story/issue thumbnails per 'faux' row.
-	$per_row_m = 5;   // 980px+
-	$per_row_s = 5;   // 768-979px
-	$per_row_xs = 3;  // 481-767px
-	$per_row_xss = 2; // >480px
 ?>
 
 <div class="container-wide" id="home">
@@ -75,7 +69,7 @@
 						<img class="img-responsive" src="<?php echo $story_1->thumb; ?>" alt="<?php echo $story_1->post_title; ?>" title="<?php echo $story_1->post_title; ?>" />
 						<?php } ?>
 						<div class="description">
-							<h2><?php echo $story_1->post_title; ?></h2>
+							<h2><?php echo wptexturize( $story_1->post_title ); ?></h2>
 						</div>
 					<?php endif; ?>
 					</div>
@@ -90,7 +84,7 @@
 						<img class="img-responsive" src="<?php echo $story_2->thumb; ?>" alt="<?php echo $story_2->post_title; ?>" title="<?php echo $story_2->post_title; ?>" />
 						<?php } ?>
 						<div class="description">
-							<h2><?php echo $story_2->post_title; ?></h2>
+							<h2><?php echo wptexturize( $story_2->post_title ); ?></h2>
 						</div>
 					<?php endif; ?>
 					</div>
@@ -103,7 +97,7 @@
 						<img class="img-responsive" src="<?php echo $story_3->thumb; ?>" alt="<?php echo $story_3->post_title; ?>" title="<?php echo $story_3->post_title; ?>" />
 						<?php } ?>
 						<div class="description">
-							<h2><?php echo $story_3->post_title; ?></h2>
+							<h2><?php echo wptexturize( $story_3->post_title ); ?></h2>
 						</div>
 					<?php endif; ?>
 					</div>
@@ -121,23 +115,18 @@
 		<?php
 		$count = 0;
 		if ( $other_stories ):
-			foreach ($other_stories as $story):
-				$classes = '';
-				if ($count % $per_row_m == 0) { $classes .= ' thumb-1-m'; }
-				if ($count % $per_row_s == 0) { $classes .= ' thumb-1-s'; }
-				if ($count % $per_row_xs == 0) { $classes .= ' thumb-1-xs'; }
-				if ($count % $per_row_xss == 0) { $classes .= ' thumb-1-xss'; }
-			?>
-			<article class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4 <?php // echo $classes; ?>">
+			foreach ( $other_stories as $story ):
+		?>
+			<article class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4">
 				<div class="thumb">
 					<a href="<?php echo get_permalink( $story->ID ); ?>"></a>
 					<img src="<?php echo get_featured_image_url( $story->ID ); ?>" alt="<?php echo $story->post_title; ?>" title="<?php echo $story->post_title; ?>" />
 					<div class="description">
-						<h3><?php echo $story->post_title; ?></h3>
+						<h3><?php echo wptexturize( $story->post_title ); ?></h3>
 					</div>
 				</div>
 			</article>
-			<?php
+		<?php
 				$count++;
 			endforeach;
 		endif;
@@ -155,19 +144,14 @@
 		$count = 0;
 		$per_row = 5;
 		if ( $past_issues ):
-			foreach ($past_issues as $issue):
-				$classes = '';
-				if ($count % $per_row_m == 0) { $classes .= ' thumb-1-m'; }
-				if ($count % $per_row_s == 0) { $classes .= ' thumb-1-s'; }
-				if ($count % $per_row_xs == 0) { $classes .= ' thumb-1-xs'; }
-				if ($count % $per_row_xss == 0) { $classes .= ' thumb-1-xss'; }
-			?>
-			<div class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4 <?php // echo $classes; ?>">
+			foreach ( $past_issues as $issue ):
+		?>
+			<div class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4">
 				<div class="thumb">
 					<a href="<?php echo get_permalink( $issue->ID ); ?>"><img src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="<?php echo $issue->post_title; ?>" title="<?php echo $issue->post_title; ?>" /></a>
 				</div>
 			</div>
-			<?php
+		<?php
 				$count++;
 			endforeach;
 		endif;
@@ -176,7 +160,7 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12">
 				<span class="pull-right archives-link">
-					<a href="<?php echo get_permalink( get_page_by_title('Archives') ); ?>">View Archives &raquo;</a>
+					<a href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">View Archives &raquo;</a>
 				</span>
 			</div>
 		</div>
