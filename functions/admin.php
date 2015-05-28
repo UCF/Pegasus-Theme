@@ -1,5 +1,5 @@
 <?php
-	
+
 function js_css_path() {
 	echo '<script>var THEME_CSS_URL = "' . THEME_CSS_URL . '";</script>';
 }
@@ -49,45 +49,27 @@ function add_shortcode_interface() {
 add_action('media_buttons', 'add_shortcode_interface', 11);
 
 function add_shortcode_interface_modal() {
-	$page = basename($_SERVER['PHP_SELF']);
-	if (in_array($page, array('post.php', 'page.php', 'page-new.php', 'post-new.php'))) {
-		global $shortcode_tags;
-		$shortcodes = $shortcode_tags;
-		$ignore     = array(
-			'wp_caption'       => null,
-			//'caption'          => null,
-			'gallery'          => null,
-			'embed'            => null,
-			'archive-search'   => null,
-			'donotprint'       => null,
-			'gravityform'      => null,
-			'gravityforms'     => null,
-			'image'            => null,
-			'issue-list'       => null,
-			'media'            => null,
-			'playlist'         => null,
-			'photo'            => null,
-			'post-type-search' => null,
-			'print_link'       => null,
-			'search_form'      => null,
-			'static-image'     => null,
-			'story-list'       => null,
-			'audio'            => null,
-			'video'            => null,
-			'site-url'         => null,
-			'social_buttons'   => null,
-		);
-		// Dummy text to place between shortcodes that are enclosing.
-		$enclosing = array(
-			'blockquote' 	=> 'Your blockquote text here...',
-			'callout' 		=> 'Your callout text or shortcode content here...',
-			'caption' 		=> 'Your caption text here...',
-			'lead' 			=> 'Your lead text here...',
-			'sidebar' 		=> 'Your sidebar text or shortcode content here...'
+	$page = basename( $_SERVER['PHP_SELF'] );
+	if ( in_array( $page, array( 'post.php', 'page.php', 'page-new.php', 'post-new.php' ) ) ) {
+		$shortcodes = array(
+			'blockquote',
+			'callout',
+			'caption',
+			'clearfix',
+			'divider',
+			'lead',
+			'sidebar',
+			'slideshow'
 		);
 
-		$shortcodes = array_diff_key($shortcodes, $ignore);
-		ksort($shortcodes);
+		// Dummy text to place between shortcodes that are enclosing.
+		$enclosing = array(
+			'blockquote' => 'Your blockquote text here...',
+			'callout'    => 'Your callout text or shortcode content here...',
+			'caption'    => 'Your caption text here...',
+			'lead'       => 'Your lead text here...',
+			'sidebar'    => 'Your sidebar text or shortcode content here...'
+		);
 	?>
 		<div id="select-shortcode-form" style="display:none;">
 			<div id="select-shortcode-form-inner">
@@ -106,9 +88,9 @@ function add_shortcode_interface_modal() {
 						<select name="shortcode-select" id="shortcode-select">
 							<option value="">--Choose Shortcode--</option>
 							<?php
-							foreach($shortcodes as $name=>$callback):
+							foreach( $shortcodes as $name ):
 							?>
-								<option class="shortcode" value="<?php echo $name; ?>" <?php if (isset($enclosing[$name])) { ?>data-enclosing="<?php echo $enclosing[$name]; ?>"<?php } ?>><?php echo $name; ?></option>
+								<option class="shortcode" value="<?php echo $name; ?>" <?php if ( isset( $enclosing[$name] ) ) { ?>data-enclosing="<?php echo $enclosing[$name]; ?>"<?php } ?>><?php echo $name; ?></option>
 							<?php
 							endforeach;
 							?>
@@ -124,6 +106,10 @@ function add_shortcode_interface_modal() {
 							</li>
 							<li class="shortcode-caption">
 								Styles a line of text as a caption for a photo, video or other media.
+							</li>
+							<li class="shortcode-clearfix">
+								Forces hanging floats to clear above and below the shortcode.  Useful when a long sidebar
+								hangs past the desired end point of the story content.
 							</li>
 							<li class="shortcode-divider">
 								Adds a full-width divider line between content.
