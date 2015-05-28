@@ -40,10 +40,10 @@ p {
       content: '\2022';
       margin-right: .4em;
     }
+  }
 
-    > &:first-child:before {
-      content: '';
-      margin: 0;
-    }
+  > *:first-child:before {
+    content: '';
+    margin: 0;
   }
 }
