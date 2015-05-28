@@ -2,7 +2,7 @@
  * Custom admin styles go here.
  **/
 
- .i-am-a-fancy-admin h1 { margin: 20px 0 30px 0; }
+.i-am-a-fancy-admin h1 { margin: 20px 0 30px 0; }
 .i-am-a-fancy-admin .updated{margin: 0 0 20px 0;}
 .i-am-a-fancy-admin .container{margin: 0 19px 0 0; padding: 0;}
 .i-am-a-fancy-admin .block{display: block;}
@@ -227,6 +227,15 @@ div[id^="wysihtml5-toolbar"] a.wysihtml5-u.wysihtml5-command-active {
 	background-position: -279px 1px;
 }
 
+div[id^="wysihtml5-toolbar"] a.wysihtml5-align-center {
+	background-position: -119px -19px;
+}
+div[id^="wysihtml5-toolbar"] a.wysihtml5-align-center:hover,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-align-center:active,
+div[id^="wysihtml5-toolbar"] a.wysihtml5-align-center.wysihtml5-command-active {
+	background-position: -119px 1px;
+}
+
 div[id^="wysihtml5-toolbar"] a.wysihtml5-createlink {
 	background-position: -159px -19px;
 }
@@ -349,7 +358,7 @@ div[id^="wysihtml5-toolbar"] + textarea {
 	margin: 0 !important;
 	border-radius: 0 0 3px 3px !important;
 	border-top: 0 !important;
-  box-shadow: 0 0 0 transparent !important;
+	box-shadow: 0 0 0 transparent !important;
 	padding: 8px !important;
 	width: 425px !important;
 	height: 150px !important;
