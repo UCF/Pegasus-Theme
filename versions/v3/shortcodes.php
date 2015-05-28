@@ -593,20 +593,22 @@ function sc_archive_search($params=array(), $content='') {
 	?>
 	<div class="row post-type-search" id="archives">
 		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
-			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
+			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<label for="s">Search</label>
-				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" name="s" class="search-field" id="s" placeholder="<?php echo $params['default_search_text']; ?>" />
 			</form>
 		</div>
 		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
 		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
-		<?
-		foreach($issues_sorted as $key => $posts) {
-			$issue = get_page_by_title($key, 'OBJECT', 'issue');
-			$featured_article_id = intval(get_post_meta($issue->ID, 'issue_cover_story', TRUE));
-			$featured_article = get_post($featured_article_id);
+		<?php
+		$issue_count = 0;
+		foreach( $issues_sorted as $key => $posts ) {
+			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
+			$featured_article_id = intval( get_post_meta( $issue->ID, 'issue_cover_story', TRUE ) );
+			$featured_article = get_post( $featured_article_id );
+			$issue_count++;
 
-			if ($posts) {
+			if ( $posts ) {
 		?>
 			<div class="row issue">
 				<div class="col-md-5 col-sm-5">
@@ -652,9 +654,11 @@ function sc_archive_search($params=array(), $content='') {
 					<? } ?>
 					</ul>
 				</div>
+				<?php if ( $issue_count < count( $issues_sorted ) ): ?>
 				<div class="col-md-12 col-sm-12">
 					<hr>
 				</div>
+				<?php endif; ?>
 			</div>
 			<?
 			}

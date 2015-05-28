@@ -1,7 +1,24 @@
 // Disable responsiveness in IE8:
-// Create grid for IE8 because it doesn't understand media queries
 .ie8 {
+  // Create grid for IE8 because it doesn't understand media queries
   @include make-grid(md);
+
+  // Fix .visible-, .hidden- classes
+  .hidden-md {
+    @include responsive-invisibility('.hidden-md');
+  }
+
+  .visible-md-block {
+    display: block !important;
+  }
+
+  .visible-md-inline {
+    display: inline !important;
+  }
+
+  .visible-md-inline-block {
+    display: inline-block !important;
+  }
 }
 
 .container {
