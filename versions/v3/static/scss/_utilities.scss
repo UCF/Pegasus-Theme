@@ -5,7 +5,7 @@
 
   // Fix .visible-, .hidden- classes
   .hidden-md {
-    @include responsive-invisibility('.hidden-md');
+    display: none !important;
   }
 
   .visible-md-block {
