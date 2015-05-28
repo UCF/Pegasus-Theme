@@ -1127,6 +1127,7 @@ article.story.ss-photo-essay {
     height: 100%;
     margin: 0;
     display: inline-block;
+	z-index: 5;
 }
 
 .ss-closing-overlay {
