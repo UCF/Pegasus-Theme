@@ -11006,13 +11006,13 @@
 		},
 	"\/static\/js\/admin.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/static\/js\/admin.js",
-		"outputAbbreviatedPath": "\/static\/js\/min\/admin-min.js",
+		"outputAbbreviatedPath": "\/static\/js\/admin.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
 	"\/style.css": {

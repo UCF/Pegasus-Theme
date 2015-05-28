@@ -387,8 +387,8 @@
 
 					<p><strong>Font Family</strong></p>
 					<p>
-						To modify the font family for a small chunk of text, use the "Formats" dropdown in the
-						2nd row of the Kitchen Sink.  Here, you can pick from some of the most commonly used fonts in the print magazine, as well as
+						To modify the font family for a small chunk of text, click the "Formats" dropdown in the 2nd row of the Kitchen Sink,
+						and hover over "Font Family".  Here, you can pick from some of the most commonly used fonts in the print magazine, as well as
 						fonts used in previous online editions.  Highlight the text you want to modify and pick the font to apply your changes.
 					</p>
 					<p>
@@ -401,7 +401,7 @@
 						<p><strong>Notes About Using Different Font Families:</strong></p>
 						<ul>
 							<li>
-								<strong>Note: DO NOT use this tool to create your story's titles and subtitles!  Use
+								<strong>Note: DO NOT use this tool to <em>create</em> your story's titles and subtitles!  Use
 								<a href="#stories-about-headings">headings</a> instead.</strong>
 							</li>
 							<li>
@@ -427,7 +427,7 @@
 						<p><strong>Notes About Using Different Font Sizes:</strong></p>
 						<ul>
 							<li>
-								<strong>Note: DO NOT use this tool to create your story's titles and subtitles!  Use
+								<strong>Note: DO NOT use this tool to <em>create</em> your story's titles and subtitles!  Use
 								<a href="#stories-about-headings">headings</a> instead.</strong>
 							</li>
 							<li>
@@ -443,6 +443,13 @@
 						"Paragraph" dropdown.)  To specify a custom hex value, click the "More Colors" button at the bottom of the box that appears.
 					</p>
 
+					<p><strong>Other Text Formatting Options</strong></p>
+					<p>
+						Various other text formatting options are available under the "Formats" dropdown in the 2nd row of the Kitchen Sink.
+						These options are grouped by function; e.g. "Text Formatting" options can be applied to lines of text, while "List Style"
+						options can be applied to bulleted lists.
+					</p>
+
 					<div class="well">
 						<p><strong>Other Font Styles/Text Formatting Notes:</strong></p>
 						<p>
@@ -451,13 +458,17 @@
 						<ul>
 							<li>
 								<strong>Do not write text in all-caps anywhere in your story's copy, including headings</strong> (i.e. "MY HEADING TEXT").
-								This is considered a style adjustment, which should be handled by a developer.
+								ALL-CAPS text should be typed in normal-case and formatted using the "UPPERCASE" option in the "Formats" dropdown, under
+								"Text Formatting".  A "lowercase" option is also available for all-lowercase text.
 							</li>
 							<li>
 								When creating bulleted list items, please use the bulleted list tool (next to the line-through button in the kitchen sink.)
 								For ordered/numbered lists, use the numbered list tool (next to the bulleted list tool, to the left of the left-align button.)
 								Lists created using these tools are interpreted differently by screenreaders than copy+pasted bullets and lines of text, so it's
 								important to utilize these whenever necessary.
+							</li>
+							<li>
+								Bulleted lists can be styled using the "List Style" options in the "Formats" dropdown in the Kitchen Sink.
 							</li>
 						</ul>
 					</div>
