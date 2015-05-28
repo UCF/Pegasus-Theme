@@ -1,4 +1,9 @@
 <?php
+	
+function js_css_path() {
+	echo '<script>var THEME_CSS_URL = "' . THEME_CSS_URL . '";</script>';
+}
+add_action( 'admin_head', 'js_css_path' );
 
 if (is_login()){
 	add_action('login_head', 'login_scripts', 0);

@@ -554,12 +554,10 @@ Orlando, FL 32816',
 	),
 );
 
-
 Config::$links = array(
 	array('rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico',),
 	array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'),),
 );
-
 
 Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
@@ -567,19 +565,19 @@ Config::$styles = array(
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
 );
+
 foreach ($template_fonts_array as $key => $val) {
 	$name = 'admin-font-'.sanitize_title($key);
 	array_push(Config::$styles, array('name' => $name, 'admin' => True, 'src' => $val));
 }
+
 if (!empty($theme_options['cloud_font_key'])) {
 	array_push(Config::$styles, array('name' => 'font-cloudtypography', 'src' => $theme_options['cloud_font_key']));
 	array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
 }
 
-
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
-	array('admin' => True, 'src' => THEME_JS_URL.'/css_path.php?THEME_CSS_URL='.urlencode(THEME_CSS_URL)),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
