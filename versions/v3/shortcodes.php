@@ -185,32 +185,26 @@ add_shortcode('lead', 'sc_lead');
 /**
  * Wrap arbitrary text in <blockquote>
  **/
-function sc_blockquote($attr, $content='') {
+function sc_blockquote( $attr, $content = '' ) {
 	$source = $attr['source'] ? $attr['source'] : null;
 	$cite = $attr['cite'] ? $attr['cite'] : null;
 	$color = $attr['color'] ? $attr['color'] : null;
 
 	$html = '<blockquote';
-	if ($source) {
+	if ( $source ) {
 		$html .= ' class="quote"';
 	}
 
-	if ($color) {
-		$html .= ' style="color: ' . $color . '"';
+	if ( $color ) {
+		$html .= ' style="color: ' . $color . ';"';
 	}
+	$html .= '>';
 
-	$html .= '><p';
-	if ($color) {
-		$html .= ' style="color: ' . $color . '"';
-	}
-	$html .= '>'.$content.'</p>';
+	$html .= $content;
 
-	if ($source || $cite) {
-		$html .= '<small';
-		if ($color) {
-			$html .= ' style="color: ' . $color . '"';
-		}
-		$html .= '>';
+	if ( $source || $cite ) {
+		// Wrap small in div to prevent wpautop from wrapping it in a p tag
+		$html .= '<div><small>';
 
 		if ($source) {
 			$html .= $source;
@@ -218,13 +212,14 @@ function sc_blockquote($attr, $content='') {
 		if ($cite) {
 			$html .= '<cite title="'.$cite.'">'.$cite.'</cite>';
 		}
-		$html .= '</small>';
+
+		$html .= '</small></div>';
 	}
 	$html .= '</blockquote>';
 
 	return $html;
 }
-add_shortcode('blockquote', 'sc_blockquote');
+add_shortcode( 'blockquote', 'sc_blockquote' );
 
 
 /**
@@ -570,10 +565,11 @@ function sc_archive_search($params=array(), $content='') {
 		)
 	));
 
-	foreach ($issues_all as $issue) {
-		//$featured_article = get_post_meta($issue->ID, 'issue_cover_story', TRUE);
-
-		$issues_sorted[$issue->post_title] = get_posts(array(
+	foreach ( $issues_all as $issue ) {
+		// Do not exclude the featured story here!  It needs to be in the
+		// "More in this issue" list to show up in search results.  Hide the
+		// featured story in the list with css.
+		$issues_sorted[$issue->post_title] = get_posts( array(
 			'numberposts' => -1,
 			'post_type'   => $params['post_type_name'],
 			'tax_query'   => array(
@@ -585,7 +581,6 @@ function sc_archive_search($params=array(), $content='') {
 			),
 			'orderby'	=> $params['order_by'],
 			'order'     => $params['order'],
-			//'exclude' 	=> array(intval($featured_article)),
 		));
 	}
 

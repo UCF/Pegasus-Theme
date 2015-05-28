@@ -114,8 +114,7 @@ function get_default_template_font_css( $font ) {
 		article.story h4,
 		article.story h5,
 		article.story h6,
-		article.story blockquote,
-		article.story blockquote p {
+		article.story blockquote {
 			color: '.$font['color'].';
 		}
 		article.story .lead::first-letter { color: '.$font['color'].'; }

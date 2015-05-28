@@ -9,8 +9,6 @@ article.story {
   ul {
     font-family: $font-family-serif;
     font-size: 16px;
-    // line-height: 1.38em;
-    // margin-top: 0;
 
     @media (max-width: $screen-xs-max) {
       font-size: 15px;
@@ -18,12 +16,6 @@ article.story {
   }
 
   p {
-    // margin-bottom: 16px;
-
-    // @media (max-width: $screen-xs-max) {
-    //   margin-bottom: 20px;
-    // }
-
     &:empty {
       display: none;
     }
@@ -129,7 +121,7 @@ article.story {
     }
 
     small {
-      color: #444;
+      color: inherit;
       font-family: $font-family-sans-serif;
       font-size: 18px;
       font-style: normal;
