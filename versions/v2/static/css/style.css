@@ -1347,6 +1347,10 @@ a.ss-control.ss-restart i {
     width: 100%;
 }
 
+.ss-caption .wysiwyg-text-align-center {
+  text-align: center;
+}
+
 .ss-caption.ss-current {
     z-index: 11;
 }

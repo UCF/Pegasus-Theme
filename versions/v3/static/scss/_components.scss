@@ -496,6 +496,10 @@ article.ss-photo-essay {
   position: absolute;
   top: 0;
   width: 100%;
+  
+  .wysiwyg-text-align-center {
+    text-align: center;
+  }
 
   > p {
     color: #fff;

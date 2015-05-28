@@ -206,13 +206,13 @@ WebcomAdmin.wysiwygFields = function($) {
     // wysihtml5 is easier than trying to pass its ID:
     var textarea = document.getElementById($toolbar.attr('data-textarea-id'));
 
-    // Initialize the wysihtml5 editor
-    if ($(textarea).length > 0) {
-      editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
-        toolbar:     toolbarID, // id of toolbar element
-        parserRules: wysihtml5ParserRules, // defined in parser rules set
-      });
-    }
+      // Initialize the wysihtml5 editor
+      if ($(textarea).length > 0) {
+          var editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
+              toolbar: toolbarID, // id of toolbar element
+              parserRules: wysihtml5ParserRules, // defined in parser rules set
+          });
+      }
   });
 };
 
@@ -338,25 +338,29 @@ WebcomAdmin.sliderMetaBoxes = function($) {
           updateSliderSortOrder();
         });
 
-    // White list of tags to allow
-    var wysihtml5ParserRules = {
-      tags: {
-        br:     {},
-        strong: {},
-        b:      {},
-        i:      {},
-        em:     {},
-        u:      {},
-        a:      {
-          set_attributes: {
-            target: "_blank"
-          },
-          check_attributes: {
-            href:   "url" // important to avoid XSS
-          }
-        }
-      }
-    };
+        // White list of tags to allow
+        var wysihtml5ParserRules = {
+            classes: {
+                "wysiwyg-text-align-center": {}
+            },
+            tags: {
+                br:     {},
+                strong: {},
+                b:      {},
+                i:      {},
+                em:     {},
+                u:      {},
+                div:    {},
+                a:      {
+                    set_attributes: {
+                        target: "_blank"
+                    },
+                    check_attributes: {
+                        href:   "url" // important to avoid XSS
+                    }
+                }
+            }
+        };
 
     $(getAllSlides()).each(function() {
       var slideContent = $(this);
@@ -367,11 +371,10 @@ WebcomAdmin.sliderMetaBoxes = function($) {
       if (slideContent.find('div[id^="wysihtml5-toolbar["]').attr('id').indexOf("xxxxxx") === -1) {
         var toolbar = slideContent.find('div[id^="wysihtml5-toolbar["]');
         var textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
-
-        var editor;
-        editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-          toolbar:     toolbar.attr('id'), // id of toolbar element
-          parserRules: wysihtml5ParserRules, // defined in parser rules set
+        var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+            toolbar: toolbar.attr('id'), // id of toolbar element
+            stylesheets: [THEME_CSS_URL + "/editor.css"],
+            parserRules: wysihtml5ParserRules, // defined in parser rules set
         });
       }
     });
@@ -390,16 +393,16 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
         textarea.show();
         html5iframe.remove();
-
         toolbar.hide();
-        var editor;
-        editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-          toolbar:     toolbar.attr('id'), // id of toolbar element
-          parserRules: wysihtml5ParserRules, // defined in parser rules set
+        
+        var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+            toolbar: toolbar.attr('id'), // id of toolbar element                    
+            stylesheets: [THEME_CSS_URL + "editor.css"],
+            parserRules: wysihtml5ParserRules, // defined in parser rules set
         });
       },
-      update : function() {
-        updateSliderSortOrder();
+      update : function( event, ui ) {
+          updateSliderSortOrder();
       },
       tolerance :'pointer'
     });
@@ -466,11 +469,11 @@ WebcomAdmin.sliderMetaBoxes = function($) {
       $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
       newSlide.insertAfter(newSlideSibling).show();
 
-      var editor;
-      editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
-        toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
-        parserRules:  wysihtml5ParserRules, // defined in parser rules set
-      });
+            var editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
+              toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
+              stylesheets:  [THEME_CSS_URL + "editor.css"],
+              parserRules:  wysihtml5ParserRules, // defined in parser rules set
+            });
 
       // Update slide count, order
       updateSlideCount();
