@@ -108,6 +108,7 @@
   }
 
   .description {
+    @include no-font-smoothing();
     clear: both;
     display: block;
     float: left;
