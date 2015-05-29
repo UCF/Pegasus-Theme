@@ -331,7 +331,6 @@ define('TEMPLATE_FONT_STYLES', serialize($template_font_styles_array));
  **/
 Config::$custom_post_types = array(
 	'Page',
-	'AlumniNote',
 	'Story',
 	'Issue',
 	'PhotoEssay'

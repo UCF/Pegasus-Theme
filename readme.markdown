@@ -78,7 +78,6 @@ Install the https://github.com/UCF/WP-Allowed-Hosts wordpress plugin if media im
 
 * Issue - a post reference to an overall group of stories.  Acts as the home page for Pegasus when a particular issue is active (via Theme Options.)
 * Story - a single story, categorized by the issue taxonomy.
-* Alumni Note - (not used)
 
 ## Custom Taxonomies
 

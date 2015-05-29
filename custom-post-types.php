@@ -298,56 +298,6 @@ class Page extends CustomPostType {
 
 
 /**
- * Describes an Alumni Note
- *
- * @author Jo Greybill
- *
-**/
-class AlumniNote extends CustomPostType{
-	public
-		$name           = 'alumninote',
-		$plural_name    = 'Alumni Notes',
-		$singular_name  = 'Alumni Note',
-		$add_new_item   = 'Add New Alumni Note',
-		$edit_item      = 'Edit Alumni Note',
-		$new_item       = 'New Alumni Note',
-		$public         = True,
-		$use_editor     = True,
-		$use_thumbnails = True,
-		$use_order      = True,
-		$use_title      = True,
-		$use_metabox    = True;
-
-	public function toHTML($alumninote){
-		return sc_alumninote(array('alumninote' => $alumninote));
-	}
-
-	public function fields(){
-		$prefix = $this->options('name').'_';
-		return array(
-			array(
-				'name'  => 'Author',
-				'desc' => 'The note\'s author(\'s) name',
-				'id'   => $prefix.'author',
-				'type' => 'text',
-			),
-			array(
-				'name'  => 'Email',
-				'desc' => 'The author\'s email address',
-				'id'   => $prefix.'email',
-				'type' => 'text',
-			),
-			array(
-				'name' => 'Class Year',
-				'desc' => 'The year(s) in which the author graduated from UCF',
-				'id'   => $prefix.'class_year',
-				'type' => 'text',
-			),
-		);
-	}
-}
-
-/**
  * Describes a story
  *
  * @author Chris Conover
@@ -824,7 +774,7 @@ class PhotoEssay extends CustomPostType {
                             <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
                             <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
                             <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
-                            <a class="wysihtml5-align-center" data-wysihtml5-command="justifyCenter" data-wysihtml5-command-value="jc">center</a>								
+                            <a class="wysihtml5-align-center" data-wysihtml5-command="justifyCenter" data-wysihtml5-command-value="jc">center</a>
 
                           <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
                             <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
