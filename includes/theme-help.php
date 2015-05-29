@@ -838,6 +838,9 @@
 							<a href="#shortcodes-callout">Callout</a>
 						</li>
 						<li>
+							<a href="#shortcodes-clearfix">Clearfix</a>
+						</li>
+						<li>
 							<a href="#shortcodes-divider">Divider</a>
 						</li>
 						<li>
@@ -960,6 +963,38 @@
 					<h4>Examples</h4>
 					<pre><code>[callout background="#e1e1e1"][blockquote]Very very powerful quote![/blockquote][/callout]</code></pre>
 					<pre><code>[callout content_align="right"]&lt;p&gt;Lorem ipsum dolor sit amet.&lt;/p&gt;[/callout]</code></pre>
+
+					<hr/>
+
+					<h3 id="shortcodes-clearfix">clearfix</h3>
+					<p>
+						Inserts a hidden element which clears floats above and below where the shortcode is inserted.
+					</p>
+					<p>
+						Use this shortcode to force a chunk of story contents to fall underneath an aligned photo or
+						sidebar (instead of being aligned to the left/right of the photo or sidebar).
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>uses no content</strong> between its starting and ending tags.
+					</p>
+
+					<h4>Attributes</h4>
+					<p>
+						This shortcode has no available attributes.
+					</p>
+
+					<h4>Examples</h4>
+					<pre><code>[sidebar position="right"]Long sidebar contents here...[/sidebar]
+
+Contents that are shorter than the sidebar here.  This text is aligned next to the sidebar.
+
+[clearfix][/clearfix]
+
+The contents under this shortcode will now span the full width of the story's available space,
+and fall *under* the sidebar, instead of next to it.
+</code></pre>
 
 					<hr/>
 

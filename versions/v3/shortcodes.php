@@ -825,4 +825,12 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 add_shortcode( 'slideshow', 'sc_photo_essay_slider' );
 
 
+/**
+ * Inserts an empty clearfix div.
+ **/
+function sc_clearfix( $attr ) {
+	return '<div class="clearfix"></div>';
+}
+add_shortcode( 'clearfix', 'sc_clearfix' );
+
 ?>
