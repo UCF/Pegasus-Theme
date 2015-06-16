@@ -12,7 +12,7 @@ array_push( Config::$styles,
 
 
 array_push( Config::$scripts,
-	THEME_COMPONENTS_URL . '/bootstrap-2.0.3/js/bootstrap.js',
+	array('name' => 'bootstrap-js', 'src' => THEME_COMPONENTS_URL . '/bootstrap-2.0.3/js/bootstrap.js' ,),
 	array('name' => 'base-script',  'src' => THE_POST_VERSION_URL . '/static/js/webcom-base.js',),
 	array('name' => 'version-script', 'src' => THE_POST_VERSION_URL . '/static/js/script.js',),
 	array('name' => 'inview', 'src' => THEME_COMPONENTS_URL . '/inview.js',),
