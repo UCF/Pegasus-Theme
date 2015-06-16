@@ -39,9 +39,15 @@ require_once( 'functions/config.php' );  # Where site-level configuration settin
 function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
 		global $post;
-		// global $post might not be available when this is called.  If it's not,
-		// check url for a slug we can use.
-		if ( !$post ) {
+
+		if ( is_home() ) {
+			// The home page will always display the current issue; go ahead
+			// and grab it here
+			$the_post = get_current_issue();
+		}
+		else if ( !$post ) {
+			// global $post might not be available when this is called.  If it's not,
+			// check url for a slug we can use.
 			$basename = basename( untrailingslashit( $_SERVER['REQUEST_URI'] ) );
 			$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
 			$post_story = get_page_by_path( $basename , OBJECT, 'story');
