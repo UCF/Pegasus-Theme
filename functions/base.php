@@ -1348,10 +1348,13 @@ function get_canonical_href( $link ) {
 		// site url before the relative path to create the full canonical url for
 		// this post
 		$new_link = $home_url . $link_path;
+		if ( substr( $new_link, -1 ) !== '/' ) {
+			$new_link = $new_link . '/'; // just for consistency
+		}
 	}
 	else {
 		// $link did not contain the site url; it must have been a custom off-site
-		// url set by via Yoast, so just return it
+		// url set via Yoast, so just return it
 		$new_link = $link;
 	}
 
