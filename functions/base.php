@@ -1306,6 +1306,7 @@ function opengraph_setup(){
  * do this correctly with domain mapping turned on.
  **/
 function get_canonical_href( $link ) {
+	// If $link isn't passed in, assign it
 	if ( !isset( $link ) || empty( $link ) ) {
 		// Logic copied from rel_canonical()
 		if ( !is_singular() ) {
@@ -1324,18 +1325,37 @@ function get_canonical_href( $link ) {
 		}
 	}
 
-	if ( is_home() ) {
-		// Check if WordPress MU Domain Mapping plugin is turned on.
-		// get_site_url() will NOT return a canonical home url if it is.
-		if ( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
-			$link = get_original_url( 'siteurl' );
-		}
-		else {
-			$link = get_site_url();
-		}
+	// Check if WordPress MU Domain Mapping plugin is turned on.
+	// get_site_url() will NOT return a canonical home url if it is turned on.
+	// The Domain Mapping plugin will overwrite get_site_url() with the mapped
+	// domain.
+	if ( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
+		$home_url = get_original_url( 'siteurl' );
+	}
+	else {
+		$home_url = get_site_url();
 	}
 
-	return $link;
+	// Get the relative path of $link.  Strips out the root path, presuming that
+	// $link is a permalink generated with a base of whatever get_site_url()
+	// returns.
+	$link_path = str_replace( get_site_url(), '', $link );
+
+	$new_link = '';
+
+	if ( $link_path !== $link ) {
+		// The site url was removed as a substring of $link; prepend our canonical
+		// site url before the relative path to create the full canonical url for
+		// this post
+		$new_link = $home_url . $link_path;
+	}
+	else {
+		// $link did not contain the site url; it must have been a custom off-site
+		// url set by via Yoast, so just return it
+		$new_link = $link;
+	}
+
+	return $new_link;
 }
 
 
