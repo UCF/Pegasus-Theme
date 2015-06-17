@@ -1306,7 +1306,7 @@ function opengraph_setup(){
  * plugin being activated and returns the original domain instead of
  * the mapped domain in the url.
  **/
-function get_canonical_href( $link ) {
+function get_canonical_href( $link=null ) {
 	// If $link isn't passed in, assign it
 	if ( !isset( $link ) || empty( $link ) ) {
 		// Logic copied from rel_canonical()
@@ -1390,16 +1390,16 @@ function header_meta(){
  * @author Jared Lang
  **/
 function header_links(){
-	$links      = Config::$links;
-	$links_html = array();
-	$defaults   = array();
-
 	// If Yoast SEO is NOT activated, we will need to handle canonicals ourselves.
 	// (The canonical is modified thru a Yoast hook in header_() otherwise.)
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 		array_push( Config::$links, array( 'rel' => 'canonical', 'href' => get_canonical_href() ) );
 	}
+
+	$links      = Config::$links;
+	$links_html = array();
+	$defaults   = array();
 
 	foreach( $links as $link ) {
 		$link         = array_merge( $defaults, $link );
