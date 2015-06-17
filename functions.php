@@ -40,12 +40,7 @@ function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
 		global $post;
 
-		if ( is_home() ) {
-			// The home page will always display the current issue; go ahead
-			// and grab it here
-			$the_post = get_current_issue();
-		}
-		else if ( !$post ) {
+		if ( !$post ) {
 			// global $post might not be available when this is called.  If it's not,
 			// check url for a slug we can use.
 			$basename = basename( untrailingslashit( $_SERVER['REQUEST_URI'] ) );
