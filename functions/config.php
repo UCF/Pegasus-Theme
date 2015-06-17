@@ -561,8 +561,9 @@ if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 }
 
 Config::$links = array(
-	array('rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico',),
-	array('rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'),),
+	// NOTE: canonical is handled in functions/base.php
+	array( 'rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico', ),
+	array( 'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'), )
 );
 
 Config::$styles = array(

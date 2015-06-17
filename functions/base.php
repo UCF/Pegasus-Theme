@@ -254,22 +254,22 @@ class WysiwygField extends Field {
 	function input_html() {
 		ob_start();
 	?>
-	    <div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
-	        <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
-	        <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
-	        <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
+		<div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
+			<a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+			<a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+			<a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
-	      <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
-	        <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
-	        <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
-	            <label>
-	                Link:
-	                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-	            </label>
-	            <a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
-	        </div>
-	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
-	    </div>
+		  <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
+			<a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
+			<div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
+				<label>
+					Link:
+					<input data-wysihtml5-dialog-field="href" value="http://" class="text">
+				</label>
+				<a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
+			</div>
+			<a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
+		</div>
 		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo $this->value; ?></textarea>
 	<?php
 		return ob_get_clean();
@@ -1191,6 +1191,8 @@ function header_( $tabs=2 ) {
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	remove_action( 'wp_head', 'rsd_link' );
 
+	add_action( 'wp_head', 'header_links', 10 );
+
 	// If Yoast SEO is activated, assume we're handling ALL SEO/meta-related
 	// modifications with it.  Don't use header_meta().
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -1198,8 +1200,11 @@ function header_( $tabs=2 ) {
 		opengraph_setup();
 		add_action( 'wp_head', 'header_meta', 1 );
 	}
-
-	add_action( 'wp_head', 'header_links', 10 );
+	else {
+		// When Yoast is activated, modify the default Yoast canonical function
+		// (instead of pushing a new link tag to Config::$links.)
+		add_filter( 'wpseo_canonical', 'get_canonical_href' );
+	}
 
 	ob_start();
 	wp_head();
@@ -1296,6 +1301,45 @@ function opengraph_setup(){
 
 
 /**
+ * Get the canonical url for the current post.
+ * Returns the site url for the home page, since Yoast apparently can't
+ * do this correctly with domain mapping turned on.
+ **/
+function get_canonical_href( $link ) {
+	if ( !isset( $link ) || empty( $link ) ) {
+		// Logic copied from rel_canonical()
+		if ( !is_singular() ) {
+			return;
+		}
+
+		global $wp_the_query;
+		if ( !$id = $wp_the_query->get_queried_object_id() ) {
+			return;
+		}
+
+		$link = get_permalink( $id );
+
+		if ( $page = get_query_var( 'cpage' ) ) {
+			$link = get_comments_pagenum_link( $page );
+		}
+	}
+
+	if ( is_home() ) {
+		// Check if WordPress MU Domain Mapping plugin is turned on.
+		// get_site_url() will NOT return a canonical home url if it is.
+		if ( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
+			$link = get_original_url( 'siteurl' );
+		}
+		else {
+			$link = get_site_url();
+		}
+	}
+
+	return $link;
+}
+
+
+/**
  * Handles generating the meta tags configured for this theme.
  *
  * @return string
@@ -1325,6 +1369,13 @@ function header_links(){
 	$links      = Config::$links;
 	$links_html = array();
 	$defaults   = array();
+
+	// If Yoast SEO is NOT activated, we will need to handle canonicals ourselves.
+	// (The canonical is modified thru a Yoast hook in header_() otherwise.)
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+		array_push( Config::$links, array( 'rel' => 'canonical', 'href' => get_canonical_href() ) );
+	}
 
 	foreach( $links as $link ) {
 		$link         = array_merge( $defaults, $link );
