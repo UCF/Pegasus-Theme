@@ -38,29 +38,34 @@ require_once( 'functions/config.php' );  # Where site-level configuration settin
  **/
 function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
-		global $post;
+		$request_uri = untrailingslashit( $_SERVER['REQUEST_URI'] );
 
-		if ( !$post ) {
-			// global $post might not be available when this is called.  If it's not,
-			// check url for a slug we can use.
-			$basename = basename( untrailingslashit( $_SERVER['REQUEST_URI'] ) );
-			$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
-			$post_story = get_page_by_path( $basename , OBJECT, 'story');
-
-			if ( $post_issue ) {
-				$the_post = $post_issue;
-			}
-			else if ( $post_story ) {
-				$the_post = $post_story;
-			}
-			else {
-				// Shouldn't ever reach this point, but if we do, we really
-				// have no clue what it is we're loading :(
-				$the_post = null;
-			}
+		if ( $request_uri === get_site_url( get_current_blog_id(), '', 'relative' ) ) {
+			$the_post = get_current_issue();
 		}
 		else {
-			$the_post = $post;
+			global $post;
+
+			if ( !$post ) {
+				$basename = basename( $request_uri );
+				$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
+				$post_story = get_page_by_path( $basename , OBJECT, 'story');
+
+				if ( $post_issue ) {
+					$the_post = $post_issue;
+				}
+				else if ( $post_story ) {
+					$the_post = $post_story;
+				}
+				else {
+					// Shouldn't ever reach this point, but if we do, we really
+					// have no clue what it is we're loading :(
+					$the_post = null;
+				}
+			}
+			else {
+				$the_post = $post;
+			}
 		}
 	}
 
@@ -992,7 +997,6 @@ function allow_svgs( $mimes ) {
 	return $mimes;
 }
 add_filter( 'upload_mimes', 'allow_svgs' );
-
 
 
 /****************************************************************************
