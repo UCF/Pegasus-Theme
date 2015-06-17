@@ -84,8 +84,6 @@ function get_version_file_path( $filename, $version=null ) {
 
 /**
  * Based on the current relevant version, require necessary files.
- * Must hook into init so that get_relevant_version() has access to global
- * $post.
  **/
 function setup_version_files() {
 	define( 'THE_POST_VERSION', get_relevant_version() ); // The version for the story/issue loaded in a given request, or the latest version if a story or issue is not available
