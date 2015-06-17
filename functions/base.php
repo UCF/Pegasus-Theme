@@ -1302,8 +1302,9 @@ function opengraph_setup(){
 
 /**
  * Get the canonical url for the current post.
- * Returns the site url for the home page, since Yoast apparently can't
- * do this correctly with domain mapping turned on.
+ * Returns a url that accounts for the WordPress MU Domain Mapping
+ * plugin being activated and returns the original domain instead of
+ * the mapped domain in the url.
  **/
 function get_canonical_href( $link ) {
 	// If $link isn't passed in, assign it
