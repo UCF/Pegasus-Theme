@@ -1,40 +1,218 @@
-.sonar {
-  border: solid 1px #000;
-  border-radius: 50%;
-  display: none;
-  height: 21px;
-  position: absolute;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  width: 21px;
-  z-index: 10;
+/* General */
+.ie8 main {
+    margin-top: -20px; /* wat */
 }
 
-.sonar-anime {
-  transition: 1s ease-in-out;
-  -webkit-transform: scale(2);
-  transform: scale(2);
-  opacity: 0;
+main article {
+     h1,
+     h2,
+     .h2 {
+        font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+        font-weight: 800;
+        font-style: normal;
+        text-transform: none;
+        letter-spacing: -0.055em;
+    }
+     h3,
+     .h3,
+     h4,
+     .h4,
+     h5,
+     .h5,
+     h6,
+     .h6 {
+        font-family: 'OpenSansCondensedBold', sans-serif;
+        font-weight: normal;
+    }
+    
+     a {
+        font-weight: bold;
+        color: #000;
+    }
+     a:hover,
+     a:active {
+        text-decoration: underline;
+    }
+    
+     .caps {
+        text-transform: uppercase;
+    }
+    
+     h2,
+     .h2 {
+        font-size: 38px;
+        line-height: 38px;
+    }
+    
+     h3,
+     .h3 {
+        font-size: 30px;
+        line-height: 1em;
+        margin-bottom: 4px;
+    }
+     h2.caps,
+     .h2.caps {
+        font-size: 24px;
+        line-height: 1em;
+        letter-spacing: -0.045em;
+        margin-bottom: 6px;
+    }
+    
+     h4,
+     .h4 {
+        font-size: 16px;
+        line-height: 1em;
+    }
 }
 
-main .story {
-  .sonar {    
-    border-color: #000;
-    position: absolute;
-  }
-  .sonar1 {
-    left: 10%;
-  }
-  .sonar2 {
-    left: 20%;
-  }
-  .sonar3 {
-    left: 30%;
-  }
-  .sonar4 {
-    left: 40%;
-  }
-  .sonar5 {
-    left: 50%;
-  }
+/* Header */
+main article {
+    .story-header-image {
+        background-position: top;
+        margin-bottom: 0;
+        background-color: #161919;
+    }
+
+    #briefs-header-img-wrap {
+      background-position: 50% 60%;
+    }
+    
+    #briefs-header-wrap {
+        position: relative;
+        height: 100%;
+    }
+    #briefs-header {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+    }
+    .ie8 #briefs-header {
+        bottom: -20px;
+    }
+    
+    #briefs-header h1 {
+        color: #fff;
+        font-size: 120px;
+        line-height: 100px;
+    }
+    
+    .social-wrap {
+        padding-top: 60px;
+    }
+}
+
+/* Sports */
+main article.story {
+    #sports {
+        margin-top: 18px;
+        
+        h2 {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: normal;
+            line-height: normal;
+        }
+        h3 {            
+            font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        li {
+            font-size: 14px;
+        }
+    }
+}  
+
+/* Leaders */
+main article.story {
+    #leaders {    
+        * {
+            color: #fff;
+        }
+        .leaders-wrap {
+            margin-top: 15px;
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+        h2 {
+            font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-weight: 700;
+            font-style: normal;
+            text-transform: none;
+            letter-spacing: -0.055em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }     
+        div [class^="col-"] {
+            background-color: #000;
+        }
+        img {
+            margin-top: 0;
+        }
+        
+        p {            
+            font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+        }
+    }
+}
+
+/* Leaders */
+main article.story {
+    #kudos {
+        img {
+           margin-top: 34px;
+        }
+        p {
+           font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+           font-style: italic;
+           font-size: 22px;
+        }
+        hr {
+            border-top: 2px solid #000;
+        }
+    }
+}
+
+/* Leaders */
+main article.story {
+    #bottom {
+        h3 {
+            font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+            font-weight: 800;
+            font-style: normal;
+            margin-bottom: 8px;
+        }
+        p {
+            font-size: 14px;
+        }
+        blockquote {
+            margin-bottom: 0;
+            
+            p {
+                font-size: 22px;
+                line-height: 33px;
+            }
+        }
+        p.source {
+            font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;  
+            font-size: 12px;
+            font-weight: 600;          
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    main article {
+        #briefs-header h1 {
+            font-size: 50px;
+            line-height: 1em;
+        }
+        .social-wrap {
+            padding-top: 10px;
+        }      
+    }
 }
