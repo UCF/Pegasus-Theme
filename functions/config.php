@@ -31,7 +31,7 @@ function __init__(){
 	wp_deregister_script( 'l10n' );
 	set_defaults_for_options();
 }
-add_action( 'after_setup_theme', '__init__', 4 );
+add_action( 'init', '__init__', 4 );
 
 
 

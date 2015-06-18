@@ -5,8 +5,7 @@
  *
  * Various functions for this theme MUST execute in a specific order and
  * depend on WordPress hooks to be executed with specific priority values.
- * These functions hook into 'after_setup_theme' (the earliest available
- * hook for themes) with priority values set.
+ * These functions hook into 'init' with priority values set.
  * This order should NOT be modified unless you want bad things to happen.
  *
  * 1) Register Taxonomies
@@ -98,7 +97,7 @@ function setup_version_files() {
 	require_once( get_version_file_path( 'functions/config.php' ) );  # Where version-level configuration settings are defined
 	require_once( get_version_file_path( 'shortcodes.php' ) );        # Per version shortcodes
 }
-add_action( 'after_setup_theme', 'setup_version_files', 3 );
+add_action( 'init', 'setup_version_files', 3 );
 
 
 /**
@@ -1010,6 +1009,6 @@ add_filter( 'upload_mimes', 'allow_svgs' );
 function require_version_functions() {
 	require_once( get_version_file_path( 'functions.php' ) );
 }
-add_action( 'after_setup_theme', 'require_version_functions' );
+add_action( 'init', 'require_version_functions' );
 
 ?>
