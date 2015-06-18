@@ -254,22 +254,22 @@ class WysiwygField extends Field {
 	function input_html() {
 		ob_start();
 	?>
-	    <div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
-	        <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
-	        <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
-	        <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
+		<div class="wysihtml5-editor" id="wysihtml5-toolbar-<?php echo htmlentities( $this->id ); ?>" data-textarea-id="<?php echo htmlentities( $this->id ); ?>" style="display: none;">
+			<a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
+			<a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
+			<a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
 
-	      <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
-	        <a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
-	        <div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
-	            <label>
-	                Link:
-	                <input data-wysihtml5-dialog-field="href" value="http://" class="text">
-	            </label>
-	            <a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
-	        </div>
-	        <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
-	    </div>
+		  <!-- Some wysihtml5 commands like 'createLink' require extra parameters specified by the user (eg. href) -->
+			<a class="wysihtml5-createlink" data-wysihtml5-command="createLink">insert link</a>
+			<div class="wysihtml5-createlink-form" data-wysihtml5-dialog="createLink" style="display: none;">
+				<label>
+					Link:
+					<input data-wysihtml5-dialog-field="href" value="http://" class="text">
+				</label>
+				<a class="wysihtml5-createlink-save" data-wysihtml5-dialog-action="save">OK</a> <a class="wysihtml5-createlink-cancel" data-wysihtml5-dialog-action="cancel">Cancel</a>
+			</div>
+			<a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
+		</div>
 		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo $this->value; ?></textarea>
 	<?php
 		return ob_get_clean();
@@ -1184,7 +1184,6 @@ function slug($s, $spaces='-'){
  * @author Jared Lang
  **/
 function header_( $tabs=2 ) {
-	opengraph_setup();
 	remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head' );
 	remove_action( 'wp_head', 'index_rel_link' );
 	remove_action( 'wp_head', 'rel_canonical' );
@@ -1192,8 +1191,20 @@ function header_( $tabs=2 ) {
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	remove_action( 'wp_head', 'rsd_link' );
 
-	add_action( 'wp_head', 'header_meta', 1 );
 	add_action( 'wp_head', 'header_links', 10 );
+
+	// If Yoast SEO is activated, assume we're handling ALL SEO/meta-related
+	// modifications with it.  Don't use header_meta().
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+		opengraph_setup();
+		add_action( 'wp_head', 'header_meta', 1 );
+	}
+	else {
+		// When Yoast is activated, modify the default Yoast canonical function
+		// (instead of pushing a new link tag to Config::$links.)
+		add_filter( 'wpseo_canonical', 'get_canonical_href' );
+	}
 
 	ob_start();
 	wp_head();
@@ -1290,6 +1301,69 @@ function opengraph_setup(){
 
 
 /**
+ * Get the canonical url for the current post.
+ * Returns a url that accounts for the WordPress MU Domain Mapping
+ * plugin being activated and returns the original domain instead of
+ * the mapped domain in the url.
+ **/
+function get_canonical_href( $link=null ) {
+	// If $link isn't passed in, assign it
+	if ( !isset( $link ) || empty( $link ) ) {
+		// Logic copied from rel_canonical()
+		if ( !is_singular() ) {
+			return;
+		}
+
+		global $wp_the_query;
+		if ( !$id = $wp_the_query->get_queried_object_id() ) {
+			return;
+		}
+
+		$link = get_permalink( $id );
+
+		if ( $page = get_query_var( 'cpage' ) ) {
+			$link = get_comments_pagenum_link( $page );
+		}
+	}
+
+	// Check if WordPress MU Domain Mapping plugin is turned on.
+	// get_site_url() will NOT return a canonical home url if it is turned on.
+	// The Domain Mapping plugin will overwrite get_site_url() with the mapped
+	// domain.
+	if ( defined( 'DOMAIN_MAPPING' ) && function_exists( 'get_original_url' ) ) {
+		$home_url = get_original_url( 'siteurl' );
+	}
+	else {
+		$home_url = get_site_url();
+	}
+
+	// Get the relative path of $link.  Strips out the root path, presuming that
+	// $link is a permalink generated with a base of whatever get_site_url()
+	// returns.
+	$link_path = str_replace( get_site_url(), '', $link );
+
+	$new_link = '';
+
+	if ( $link_path !== $link ) {
+		// The site url was removed as a substring of $link; prepend our canonical
+		// site url before the relative path to create the full canonical url for
+		// this post
+		$new_link = $home_url . $link_path;
+		if ( substr( $new_link, -1 ) !== '/' ) {
+			$new_link = $new_link . '/'; // just for consistency
+		}
+	}
+	else {
+		// $link did not contain the site url; it must have been a custom off-site
+		// url set via Yoast, so just return it
+		$new_link = $link;
+	}
+
+	return $new_link;
+}
+
+
+/**
  * Handles generating the meta tags configured for this theme.
  *
  * @return string
@@ -1316,6 +1390,13 @@ function header_meta(){
  * @author Jared Lang
  **/
 function header_links(){
+	// If Yoast SEO is NOT activated, we will need to handle canonicals ourselves.
+	// (The canonical is modified thru a Yoast hook in header_() otherwise.)
+	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
+		array_push( Config::$links, array( 'rel' => 'canonical', 'href' => get_canonical_href() ) );
+	}
+
 	$links      = Config::$links;
 	$links_html = array();
 	$defaults   = array();
@@ -1473,7 +1554,7 @@ function register_custom_taxonomies(){
 		$custom_taxonomy->register();
 	}
 }
-add_action( 'after_setup_theme', 'register_custom_taxonomies', 1 );
+add_action( 'init', 'register_custom_taxonomies', 1 );
 
 /**
  * Registers all installed custom post types
@@ -1490,7 +1571,7 @@ function register_custom_post_types(){
 	#This ensures that the permalinks for custom posts work
 	flush_rewrite_rules_if_necessary();
 }
-add_action( 'after_setup_theme', 'register_custom_post_types', 2 );
+add_action( 'init', 'register_custom_post_types', 2 );
 
 /**
  * Registers all metaboxes for install custom post types
