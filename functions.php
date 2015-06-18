@@ -33,7 +33,7 @@ require_once( 'functions/config.php' );  # Where site-level configuration settin
 
 /**
  * Function that determines which version should be considered active, based
- * on the current global $post's post_type.
+ * on the passed in $post object or what post data is being loaded.
  **/
 function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
