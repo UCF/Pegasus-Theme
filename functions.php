@@ -33,33 +33,63 @@ require_once( 'functions/config.php' );  # Where site-level configuration settin
 
 /**
  * Function that determines which version should be considered active, based
- * on the passed in $post object or what post data is being loaded.
+ * on the passed in post object or what post data is being loaded.
  **/
 function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
 		$request_uri = untrailingslashit( $_SERVER['REQUEST_URI'] );
 
+		// If the home page has been requested, always return the current issue
 		if ( $request_uri === get_site_url( get_current_blog_id(), '', 'relative' ) ) {
 			$the_post = get_current_issue();
 		}
 		else {
 			global $post;
 
+			// If global $post hasn't been set yet, try fishing the requested url for
+			// post information
 			if ( !$post ) {
-				$basename = basename( $request_uri );
-				$post_issue = get_page_by_path( $basename , OBJECT, 'issue');
-				$post_story = get_page_by_path( $basename , OBJECT, 'story');
+				$url_query_array = array();
+				$url_query = parse_url( $request_uri, PHP_URL_QUERY );
+				parse_str( $url_query, $url_query_array );
 
-				if ( $post_issue ) {
-					$the_post = $post_issue;
+				// Get the relative path of the url, accounting for potential
+				// subdirectory WordPress installs
+				$url_path = str_replace( get_site_url( get_current_blog_id(), '', 'relative' ), '', $request_uri );
+				if ( substr( $url_path, 0, 1 ) === '?' ) {
+					$url_path = '/' . $url_path; // If path only contains a query str, make sure it is prepended with /
 				}
-				else if ( $post_story ) {
-					$the_post = $post_story;
+
+				// Check if url structure follows WP's default permalink pattern
+				// (<root url>/?params).  Post ID is stored in 'p' param.
+				// Should catch draft post previews here.
+				if ( $url_path === '/?' . $url_query && isset( $url_query_array['p'] ) ) {
+					$the_post = get_post( $url_query_array['p'] );
 				}
 				else {
-					// Shouldn't ever reach this point, but if we do, we really
-					// have no clue what it is we're loading :(
-					$the_post = null;
+					// URL follows custom permalink structure.  Try using
+					// get_page_by_path() per each post type we want to enforce
+					// version-specific assets on.
+
+					// Make sure $url_path has no query params before passing to get_page_by_path()
+					$url_path = explode( '/?', $url_path );
+					$url_path = $url_path[0];
+
+					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
+					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
+
+					if ( $post_issue ) {
+						$the_post = $post_issue;
+					}
+					else if ( $post_story ) {
+						$the_post = $post_story;
+					}
+					else {
+						// The requested content isn't a story or issue.  Set $the_post to
+						// null here so that get_relevant_issue() will return a fallback value
+						// (the latest issue).
+						$the_post = null;
+					}
 				}
 			}
 			else {
@@ -73,6 +103,7 @@ function get_relevant_version( $the_post=null ) {
 	if ( empty( $relevant_version ) ) {
 		$relevant_version = LATEST_VERSION;
 	}
+
 	return intval( $relevant_version );
 }
 
@@ -325,14 +356,18 @@ function get_current_issue_stories($exclude=array(), $limit=-1) {
  * i.e., if the $post obj passed is the front page or subpage, get the current issue;
  * otherwise, get the current story issue
  */
-function get_relevant_issue($post) {
-	if (is_preview()) {
-		$issue = get_current_issue();
-	} else if($post && $post->post_type == 'story' && !is_404() && !is_search()) {
-		$issue = get_story_issue($post);
-	} else if ($post && $post->post_type == 'issue' && !is_404() && !is_search()) {
+function get_relevant_issue( $post ) {
+	$issue = null;
+
+	if ( $post && $post->post_type == 'story' && !is_404() && !is_search() ) {
+		$issue = get_story_issue( $post );
+	}
+	else if ( $post && $post->post_type == 'issue' && !is_404() && !is_search() ) {
 		$issue = $post;
-	} else {
+	}
+
+	// Fallback, or if get_story_issue() returned false
+	if ( !$issue ) {
 		$issue = get_current_issue();
 	}
 
@@ -586,19 +621,35 @@ add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
 /*
  * Get the issue post associated with a story
  */
-function get_story_issue($story) {
-	$issue_terms = wp_get_object_terms($story->ID, 'issues');
-	$issue_posts = get_posts(array('post_type'=>'issue', 'numberposts'=>-1));
+function get_story_issue( $story ) {
+	$issue_terms = wp_get_object_terms( $story->ID, 'issues' );
+	// Make sure to grab issues that may not be published, but aren't trash
+	$issue_posts = get_posts( array(
+		'post_type' => 'issue',
+		'numberposts' => -1,
+		'post_status' => array(
+			'publish',
+			'pending',
+			'draft',
+			'auto-draft',
+			'future',
+			'private'
+		)
+	) );
 
-	foreach($issue_terms as $term) {
-		$post_slug = $term->slug;
-		foreach($issue_posts as $issue) {
-			if($post_slug == $issue->post_name) {
-				return $issue;
+	if ( $issue_terms ) {
+		foreach( $issue_terms as $term ) {
+			$post_slug = $term->slug;
+			if ( $issue_posts ) {
+				foreach( $issue_posts as $issue ) {
+					if( $post_slug == $issue->post_name ) {
+						return $issue;
+					}
+				}
 			}
 		}
 	}
-	return False;
+	return false;
 }
 
 
