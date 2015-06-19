@@ -323,14 +323,21 @@ function set_templates_for_v1() {
  * Returns current issue post based on the Current Issue Cover
  * value in Theme Options
  */
-function get_current_issue() {
-	$posts = get_posts(array(
-		'post_type' => 'issue',
-		'name'      => get_theme_option('current_issue_cover')
-	));
+function no_current_issue_notice() {
+	echo '<div class="error"><p><strong>ERROR:</strong> Could not find current issue cover.  <strong>The home page and other portions of the website <u>will not display correctly</u> until this is fixed.</strong>  Make sure the "Current Issue Cover" Theme Options value is set to a <strong>published</strong> Issue post.</p></div>';
+}
 
-	if(count($posts) == 0) {
-		die('Error: No Issue post matches the post assigned to the "Current Issue Cover" Theme Options setting.');
+function get_current_issue() {
+	$posts = get_posts( array(
+		'post_type' => 'issue',
+		'name' => get_theme_option( 'current_issue_cover' )
+	) );
+
+	if( count( $posts ) == 0 ) {
+		// Couldn't find an issue with name saved in current_issue_cover
+		// theme option
+		add_action( 'admin_notices', 'no_current_issue_notice' );
+		return false;
 	} else {
 		return $posts[0];
 	}
