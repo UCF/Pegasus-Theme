@@ -72,7 +72,8 @@ function get_relevant_version( $the_post=null ) {
 					// version-specific assets on.
 
 					// Make sure $url_path has no query params before passing to get_page_by_path()
-					$url_path = explode( '/?', $url_path )[0];
+					$url_path = explode( '/?', $url_path );
+					$url_path = $url_path[0];
 
 					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
 					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
