@@ -37,18 +37,22 @@ main {
               }
           }
                     
-          .first-block {          
-            p.lead {
+          .first-block {       
+            p.lead,
+            p.copy {    
                 color: $light;
                 font-size: 15px;
                 line-height: 19px;
-                
+            }
+            
+            p.lead {                
                 &:first-letter {
+                  color: $lightest;
                   font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
                   font-size: 50px;
-                  color: $lightest;
+                  line-height: 30px;
                 }
-            }
+            }   
                       
             blockquote p {
               color: $lightest;
@@ -85,6 +89,24 @@ main {
           font-family: 'OpenSansCondensedBold', sans-serif;
         }
       }
+      
+      .diagram-copy { 
+        margin-bottom: 60px;
+        h2,
+        p {
+          color: #fff;
+          font-family: 'OpenSansCondensedBold', sans-serif;
+          text-align: center;
+        }
+        
+        h2 {
+          font-size: 16px;
+          font-weight: 800;
+          margin-bottom: 3px;
+          margin-top: 45px;
+          text-transform: uppercase;
+        }
+      }
   }
 }
 
@@ -110,7 +132,8 @@ main {
 
 main .story {
   .sonar {    
-    border-color: #000;
+    border-color: $light;
+    margin: 30px 0;
     position: absolute;
   }
   .sonar1 {
