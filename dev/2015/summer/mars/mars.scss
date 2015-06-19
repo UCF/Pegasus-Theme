@@ -10,65 +10,63 @@ main {
   background-color: $dark;
 
   article {
-      .story-header-image {
-          background-position: top;
-          margin-bottom: 0;
-      }
   
       #header-img-wrap {
-        background-position: 50% 60%;
+        background-position: 50% 0;
+        background-repeat: no-repeat;
+        background-position: top;
+        height: 780px;
       }
-      
-      #header-wrap {
-          height: 100%;
-      }
-      #header {
-          color: $lightest;
-          width: 100%;
           
-          .intro {
-              margin-bottom: 80px;
-              
-              span {
-                font-family: 'OpenSansCondensedBold', sans-serif;
-                font-weight: 700;
-                color: $light;
-                text-transform: uppercase;
-              }
+      .intro {
+          color: $lightest;
+          margin-top: 535px;
+          margin-bottom: 80px;
+          text-align: justify;
+          
+          span {
+            font-family: 'OpenSansCondensedBold', sans-serif;
+            font-weight: 700;
+            color: $light;
+            text-transform: uppercase;
           }
+      }
                     
-          .first-block {       
-            p.lead,
-            p.copy {    
-                color: $light;
-                font-size: 15px;
-                line-height: 19px;
-            }
-            
-            p.lead {                
-                &:first-letter {
-                  color: $lightest;
-                  font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-                  font-size: 50px;
-                  line-height: 30px;
-                }
-            }   
-                      
-            blockquote p {
+      .first-block { 
+        margin-top: 50px;
+              
+        p.lead,
+        p.copy {    
+            color: $light;
+            font-size: 15px;
+            line-height: 19px;
+        }
+        
+        p.lead {                
+            &:first-letter {
               color: $lightest;
-              font-size: 26px;
-              line-height: 32px;
-              margin-bottom: 55px;
-              padding-top: 0;
+              font-family: 'OpenSansCondensedBold', sans-serif;
+              font-weight: 700;
+              font-size: 40px;
+              line-height: 30px;
+              margin: 5px 2px 0 0;
             }
-          }
+        }   
+                  
+        blockquote p {
+          color: $lightest;
+          font-size: 26px;
+          line-height: 32px;
+          margin-bottom: 55px;
+          padding-top: 0;
+        }
       }
       .ie8 #header {
           bottom: -20px;
       }
       
       .social-wrap {
-          padding-top: 60px;
+          padding-top: 495px;
       }
       
       .competition {
@@ -87,6 +85,27 @@ main {
         p {          
           color: $dark;
           font-family: 'OpenSansCondensedBold', sans-serif;
+        }
+      }
+      
+      .elevations {
+        h3,
+        div {
+          color: #fff;
+          font-family: 'OpenSansCondensedBold', sans-serif;
+          font-size: 14px;
+        }
+        h3,
+        .sub-heading {
+          text-align: center;
+          margin-bottom: 2px;
+        }
+        h3 {
+          font-size: 34px;
+          text-transform: uppercase;
+          margin-bottom: 0;
+          margin-top: 35px;
+          font-weight: 800;
         }
       }
       
