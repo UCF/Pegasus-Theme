@@ -623,19 +623,33 @@ add_action('wp_enqueue_scripts', 'enqueue_issue_story_scripts', 10);
  */
 function get_story_issue( $story ) {
 	$issue_terms = wp_get_object_terms( $story->ID, 'issues' );
-	$issue_posts = get_posts( array( 'post_type' => 'issue', 'numberposts' => -1 ) );
+	// Make sure to grab issues that may not be published, but aren't trash
+	$issue_posts = get_posts( array(
+		'post_type' => 'issue',
+		'numberposts' => -1,
+		'post_status' => array(
+			'publish',
+			'pending',
+			'draft',
+			'auto-draft',
+			'future',
+			'private'
+		)
+	) );
 
 	if ( $issue_terms ) {
 		foreach( $issue_terms as $term ) {
 			$post_slug = $term->slug;
-			foreach( $issue_posts as $issue ) {
-				if( $post_slug == $issue->post_name ) {
-					return $issue;
+			if ( $issue_posts ) {
+				foreach( $issue_posts as $issue ) {
+					if( $post_slug == $issue->post_name ) {
+						return $issue;
+					}
 				}
 			}
 		}
 	}
-	return False;
+	return false;
 }
 
 
