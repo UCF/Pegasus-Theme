@@ -1,5 +1,118 @@
+/* Color variables */
+
+$lightest: #efdfae;
+$light:    #f3a97c;
+$medium:   #e88f71;
+$dark:     #23150d;
+
+/* Header */
+main {
+  background-color: $dark;
+
+  article {
+      .story-header-image {
+          background-position: top;
+          margin-bottom: 0;
+      }
+  
+      #header-img-wrap {
+        background-position: 50% 60%;
+      }
+      
+      #header-wrap {
+          height: 100%;
+      }
+      #header {
+          color: $lightest;
+          width: 100%;
+          
+          .intro {
+              margin-bottom: 80px;
+              
+              span {
+                font-family: 'OpenSansCondensedBold', sans-serif;
+                font-weight: 700;
+                color: $light;
+                text-transform: uppercase;
+              }
+          }
+                    
+          .first-block {       
+            p.lead,
+            p.copy {    
+                color: $light;
+                font-size: 15px;
+                line-height: 19px;
+            }
+            
+            p.lead {                
+                &:first-letter {
+                  color: $lightest;
+                  font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+                  font-size: 50px;
+                  line-height: 30px;
+                }
+            }   
+                      
+            blockquote p {
+              color: $lightest;
+              font-size: 26px;
+              line-height: 32px;
+              margin-bottom: 55px;
+              padding-top: 0;
+            }
+          }
+      }
+      .ie8 #header {
+          bottom: -20px;
+      }
+      
+      .social-wrap {
+          padding-top: 60px;
+      }
+      
+      .competition {
+        background-color: $lightest;
+        font-family: 'OpenSansCondensedBold', sans-serif;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        
+        h2 {
+          color: $dark;
+          font-size: 16px;
+          font-weight: 700;
+          margin-bottom: 3px;
+          text-transform: uppercase;
+        }
+        p {          
+          color: $dark;
+          font-family: 'OpenSansCondensedBold', sans-serif;
+        }
+      }
+      
+      .diagram-copy { 
+        margin-bottom: 60px;
+        h2,
+        p {
+          color: #fff;
+          font-family: 'OpenSansCondensedBold', sans-serif;
+          text-align: center;
+        }
+        
+        h2 {
+          font-size: 16px;
+          font-weight: 800;
+          margin-bottom: 3px;
+          margin-top: 45px;
+          text-transform: uppercase;
+        }
+      }
+  }
+}
+
+/* Sonar */
 .sonar {
-  border: solid 1px #000;
+  border: solid 1px #fff;
   border-radius: 50%;
   display: none;
   height: 21px;
@@ -19,7 +132,8 @@
 
 main .story {
   .sonar {    
-    border-color: #000;
+    border-color: $light;
+    margin: 30px 0;
     position: absolute;
   }
   .sonar1 {
