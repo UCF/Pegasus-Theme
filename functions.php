@@ -56,8 +56,8 @@ function get_relevant_version( $the_post=null ) {
 				// Get the relative path of the url, accounting for potential
 				// subdirectory WordPress installs
 				$url_path = str_replace( get_site_url( get_current_blog_id(), '', 'relative' ), '', $request_uri );
-				if ( substr( $url_path, -1 ) !== '/' ) {
-					$url_path = $url_path . '/'; // Force trailing slash, just in case
+				if ( substr( $url_path, 0, 1 ) === '?' ) {
+					$url_path = '/' . $url_path; // If path only contains a query str, make sure it is prepended with /
 				}
 
 				// Check if url structure follows WP's default permalink pattern
