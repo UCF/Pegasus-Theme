@@ -532,7 +532,7 @@ Orlando, FL 32816',
 );
 
 /**
- * If Yoast SEO is activated, assume we're handling ALL SEO/meta-related
+ * If Yoast SEO is activated, assume we're handling ALL SEO-related
  * modifications with it.  Don't add Facebook Opengraph theme options.
  **/
 include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
@@ -589,3 +589,15 @@ Config::$scripts = array(
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
 );
+
+Config::$metas = array(
+	array( 'charset' => 'utf-8', ),
+	array( 'http-equiv' => 'X-UA-Compatible', 'content' => 'IE=Edge' ),
+	array( 'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0' ),
+);
+if ( $theme_options['gw_verify'] ) {
+	Config::$metas[] = array(
+		'name'    => 'google-site-verification',
+		'content' => htmlentities( $theme_options['gw_verify'] ),
+	);
+}

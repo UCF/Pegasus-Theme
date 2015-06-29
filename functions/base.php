@@ -1191,20 +1191,20 @@ function header_( $tabs=2 ) {
 	remove_action( 'wp_head', 'wlwmanifest_link' );
 	remove_action( 'wp_head', 'rsd_link' );
 
-	add_action( 'wp_head', 'header_links', 10 );
-
-	// If Yoast SEO is activated, assume we're handling ALL SEO/meta-related
-	// modifications with it.  Don't use header_meta().
+	// If Yoast SEO is activated, assume we're handling ALL SEO
+	// modifications with it.  Don't use opengraph_setup().
 	include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 		opengraph_setup();
-		add_action( 'wp_head', 'header_meta', 1 );
 	}
 	else {
 		// When Yoast is activated, modify the default Yoast canonical function
 		// (instead of pushing a new link tag to Config::$links.)
 		add_filter( 'wpseo_canonical', 'get_canonical_href' );
 	}
+
+	add_action( 'wp_head', 'header_meta', 1 );
+	add_action( 'wp_head', 'header_links', 10 );
 
 	ob_start();
 	wp_head();
