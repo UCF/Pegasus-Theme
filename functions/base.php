@@ -1309,17 +1309,20 @@ function opengraph_setup(){
 function get_canonical_href( $link=null ) {
 	// If $link isn't passed in, assign it
 	if ( !isset( $link ) || empty( $link ) ) {
-		// Logic copied from rel_canonical()
-		if ( !is_singular() ) {
+		// Logic sort of copied from rel_canonical()
+		if ( is_home() ) {
+			$link = get_site_url();
+		}
+		else if ( !is_singular() ) {
 			return;
 		}
-
-		global $wp_the_query;
-		if ( !$id = $wp_the_query->get_queried_object_id() ) {
-			return;
+		else {
+			global $wp_the_query;
+			if ( !$id = $wp_the_query->get_queried_object_id() ) {
+				return;
+			}
+			$link = get_permalink( $id );
 		}
-
-		$link = get_permalink( $id );
 
 		if ( $page = get_query_var( 'cpage' ) ) {
 			$link = get_comments_pagenum_link( $page );
