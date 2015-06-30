@@ -109,6 +109,27 @@ main {
         }
       }
       
+      #side-elevation {
+        img {
+          margin: 0 auto;
+        }
+        &.affix {
+          background-color: $dark;
+          left: 0;
+          top: 0;
+          z-index: 10;
+          
+          + #side-elevation-placeholder {
+            display: block;
+            visibility: hidden;
+          }          
+        }
+      } 
+      
+      #side-elevation-placeholder {
+        display: none;
+      }
+           
       .diagram-copy { 
         margin-bottom: 60px;
         h2,

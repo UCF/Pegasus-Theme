@@ -25,3 +25,6 @@ Thumbs.db
 
 # codekit
 **/.sass-cache/
+
+# visual studio code
+**/typings
