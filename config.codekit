@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "19033",
+"creatorBuild": "18902",
 "files": {
 	"\/404.php": {
 		"fileType": 8192,
@@ -7214,6 +7214,116 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2015\/summer\/mars\/imageMapResizer.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/imageMapResizer.min.js",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/imageMapResizer.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation0.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 45009,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 36250,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation1.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 33345,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation2.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation3.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 35557,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation3.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation3.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation4.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 35714,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation4.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation4.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation5.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 34274,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation5.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation5.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/elevation6.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 33479,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation6.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation6.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/Mining-Header.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 111933,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/Mining-Header.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/Mining-Header.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/summer\/mars\/img\/Robot-wire-elevations.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 11195,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/Robot-wire-elevations.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/Robot-wire-elevations.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2015\/summer\/mars\/mars.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -12385,7 +12495,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Work",
+"lastSavedByUser": "RJ Bruneel",
 "manualImportLinks": {
 	},
 "projectAttributes": {

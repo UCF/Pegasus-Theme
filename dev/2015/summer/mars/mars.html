@@ -27,7 +27,7 @@
         </div>
       </div>
     </div>
-    <div class="container">
+    <div class="container elevations-header">
       <div class="row">
         <div class="col-sm-4 col-sm-offset-2 elevations">
           <h3>"xKadrill"</h3>
@@ -59,17 +59,19 @@
         </div>
       </div> 
     </div>
-    <div class="container" id="side-elevation"> 
-      <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <img src="[image filename='Robot-wire-elevations-no-Bkgrnd-basic.png']" alt="XKADRILL - Robot Wire Elevations Side" class="img-responsive" usemap="#RobotMap">
+    <div id="side-elevation">
+      <div class="container"> 
+        <div class="row">
+          <div class="col-sm-6 col-sm-offset-3">
+              <img src="[image filename='elevation0.png']" alt="XKADRILL - Robot Wire Elevations Side" class="img-responsive" usemap="#RobotMap">
+          </div>
         </div>
       </div>
     </div>
     <div class="container" id="side-elevation-placeholder"> 
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-            <img src="[image filename='Robot-wire-elevations-no-Bkgrnd-basic.png']" alt="XKADRILL - Robot Wire Elevations Side" class="img-responsive">
+        <div class="col-sm-6 col-sm-offset-3">
+            <img src="[image filename='elevation0.png']" alt="XKADRILL - Robot Wire Elevations Side" class="img-responsive">
         </div>
       </div>
     </div>
@@ -85,19 +87,19 @@
       </div>
       <div class="row">
         <div class="col-sm-6 col-sm-offset-3 diagram-copy">              
-          <h2>Control</h2>
+          <h2 data-elevation-image="[image filename='elevation0.png']">Control</h2>
           <p>The pilot uses a laptop computer to drive the robot and activate drilling and dumping mechanisms via a Wi-Fi connection.</p>
-          <h2>1 Power source</h2>
+          <h2 data-elevation-image="[image filename='elevation1.png']">1 Power source</h2>
           <p>A lithium iron phosphate motorcycle battery — routed through a distribution board that uses fuses to feed appropriate voltage to each motor — provides enough power to run all electrical systems.</p>
-          <h2>2 Electronics housing</h2>
+          <h2 data-elevation-image="[image filename='elevation2.png']">2 Electronics housing</h2>
           <p>A polycarbonate box sealed with a rubber gasket protects sensitive electronics from penetrating ash that can foul the delicate instruments. Inside, a BeagleBone Black circuit board uses microcontrollers to run all systems.</p>
-          <h2>3 Actuator system</h2>
+          <h2 data-elevation-image="[image filename='elevation3.png']">3 Actuator system</h2>
           <p>A scissor jack system powered by a linear actuator moves the drill and hopper assembly up and down to control ground clearance, drilling depth and dumping into the collection bin.</p>
-          <h2>4 Wheels</h2>
+          <h2 data-elevation-image="[image filename='elevation4.png']">4 Wheels</h2>
           <p>At 8 inches in diameter and 2 inches wide, the rubber-treaded VEX Robotics wheels create enough traction to move the robot through soft ash. Each wheel is powered independently by a dedicated CIM motor, allowing the pilot to maneuver the fixed wheel with a skid-steering technique.</p>
-          <h2>5 Drill</h2>
+          <h2 data-elevation-image="[image filename='elevation5.png']">5 Drill</h2>
           <p>Powered by an electric motor, a rotating, 4-inch diameter steel auger used commercially to drill postholes penetrates the layer of ash to mine the high-value gravel beneath. A PVC housing helps to carry the material up and into the collection hopper.</p>
-          <h2>6 Hopper</h2>
+          <h2 data-elevation-image="[image filename='elevation6.png']">6 Hopper</h2>
           <p>Made from aluminum sheet metal with a polycarbonate lid and sides, this triangular collection bin uses gravity to assist the removal of excavated material through a rear dump door operated by a remote-controlled motor. An LED light array signals green while mining until a red light indicates full capacity.</p>
         </div>
       </div>
@@ -112,6 +114,3 @@
   <area shape="rect" coords="533,132,577,178" href="#five">
   <area shape="rect" coords="103,122,147,168" href="#six">
 </map>
-
-<!-- TODO: get the JS path dynamically -->
-<script src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/summer/mars/imageMapResizer.min.js"></script>

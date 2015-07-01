@@ -1,5 +1,6 @@
 /* Color variables */
 
+$font: 'OpenSansCondensedBold', sans-serif;
 $lightest: #efdfae;
 $light:    #f3a97c;
 $medium:   #e88f71;
@@ -11,184 +12,152 @@ main {
 
   article {
   
-      #header-img-wrap {
-        background-position: 50% 0;
-        background-repeat: no-repeat;
-        background-position: top;
-        height: 780px;
-      }
-          
-      .intro {
-          color: $lightest;
-          margin-top: 535px;
-          margin-bottom: 80px;
-          text-align: justify;
-          
-          span {
-            font-family: 'OpenSansCondensedBold', sans-serif;
-            font-weight: 700;
-            color: $light;
-            text-transform: uppercase;
-          }
-      }
-                    
-      .first-block { 
-        margin-top: 50px;
-              
-        p.lead,
-        p.copy {    
-            color: $light;
-            font-size: 15px;
-            line-height: 19px;
-        }
+    #header-img-wrap {
+      background-position: 50% 0;
+      background-repeat: no-repeat;
+      background-position: top;
+      height: 780px;
+    }
         
-        p.lead {                
-            &:first-letter {
-              color: $lightest;
-              font-family: 'OpenSansCondensedBold', sans-serif;
-              font-weight: 700;
-              font-size: 40px;
-              line-height: 30px;
-              margin: 5px 2px 0 0;
-            }
-        }   
-                  
-        blockquote p {
-          color: $lightest;
-          font-size: 26px;
-          line-height: 32px;
-          margin-bottom: 55px;
-          padding-top: 0;
-        }
-      }
-      .ie8 #header {
-          bottom: -20px;
-      }
-      
-      .social-wrap {
-          padding-top: 495px;
-      }
-      
-      .competition {
-        background-color: $lightest;
-        font-family: 'OpenSansCondensedBold', sans-serif;
-        padding-top: 15px;
-        padding-bottom: 15px;
+    .intro {
+        color: $lightest;
+        margin-top: 535px;
+        margin-bottom: 80px;
+        text-align: justify;
         
-        h2 {
-          color: $dark;
-          font-size: 16px;
+        span {
+          font-family: $font;
           font-weight: 700;
-          margin-bottom: 3px;
+          color: $light;
           text-transform: uppercase;
         }
-        p {          
-          color: $dark;
-          font-family: 'OpenSansCondensedBold', sans-serif;
-        }
+    }
+                  
+    .first-block { 
+      margin-top: 50px;
+            
+      p.lead,
+      p.copy {    
+          color: $light;
+          font-size: 15px;
+          line-height: 19px;
       }
       
-      .elevations {
-        h3,
-        div {
-          color: #fff;
-          font-family: 'OpenSansCondensedBold', sans-serif;
-          font-size: 14px;
-        }
-        h3,
-        .sub-heading {
-          text-align: center;
-          margin-bottom: 2px;
-        }
-        h3 {
-          font-size: 34px;
-          text-transform: uppercase;
-          margin-bottom: 0;
-          margin-top: 35px;
-          font-weight: 800;
-        }
+      p.lead {                
+          &:first-letter {
+            color: $lightest;
+            font-family: $font;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 30px;
+            margin: 5px 2px 0 0;
+          }
+      }   
+                
+      blockquote p {
+        color: $lightest;
+        font-size: 26px;
+        line-height: 32px;
+        margin-bottom: 55px;
+        padding-top: 0;
       }
+    }
+    
+    .ie8 #header {
+        bottom: -20px;
+    }
+    
+    .social-wrap {
+        padding-top: 495px;
+    }
+    
+    .competition {
+      background-color: $lightest;
+      font-family: $font;
+      padding-top: 15px;
+      padding-bottom: 15px;
       
-      #side-elevation {
-        img {
-          margin: 0 auto;
-        }
-        &.affix {
-          background-color: $dark;
-          left: 0;
-          top: 0;
-          z-index: 10;
-          
-          + #side-elevation-placeholder {
-            display: block;
-            visibility: hidden;
-          }          
-        }
-      } 
-      
-      #side-elevation-placeholder {
-        display: none;
+      h2 {
+        color: $dark;
+        font-size: 16px;
+        font-weight: 700;
+        margin-bottom: 3px;
+        text-transform: uppercase;
       }
-           
-      .diagram-copy { 
-        margin-bottom: 60px;
-        h2,
-        p {
-          color: #fff;
-          font-family: 'OpenSansCondensedBold', sans-serif;
-          text-align: center;
-        }
+      p {          
+        color: $dark;
+        font-family: $font;
+      }
+    }
+    
+    .elevations-header {
+      margin-bottom: 40px;
+    }
+    
+    .elevations {
+      h3,
+      div {
+        color: #fff;
+        font-family: $font;
+        font-size: 14px;
+      }
+      h3,
+      .sub-heading {
+        text-align: center;
+        margin-bottom: 2px;
+      }
+      h3 {
+        font-size: 34px;
+        text-transform: uppercase;
+        margin-bottom: 0;
+        margin-top: 15px;
+        font-weight: 800;
+      }
+    } 
+    
+    #side-elevation {
+      img {
+        margin: 0 auto;
+      }
+      &.affix {
+        background-color: $dark;
+        left: 0;
+        top: 0;
+        width: 100%;
+        z-index: 10;
         
-        h2 {
-          font-size: 16px;
-          font-weight: 800;
-          margin-bottom: 3px;
-          margin-top: 45px;
-          text-transform: uppercase;
-        }
+        + #side-elevation-placeholder {
+          display: block;
+          visibility: hidden;
+        }          
       }
+    } 
+    
+    #side-elevation-placeholder {
+      display: none;
+    }
+         
+    .diagram-copy { 
+      margin-bottom: 60px;
+      h2,
+      p {
+        color: #fff;
+        font-family: $font;
+        text-align: center;
+      }
+      
+      h2 {
+        font-size: 16px;
+        font-weight: 800;
+        margin-bottom: 3px;
+        margin-top: 45px;
+        text-transform: uppercase;
+      }
+    }
+  } // End article
+        
+  img[usemap], map area{
+    outline: none;
   }
-}
 
-/* Sonar */
-.sonar {
-  border: solid 1px #fff;
-  border-radius: 50%;
-  display: none;
-  height: 21px;
-  position: absolute;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-  width: 21px;
-  z-index: 10;
-}
-
-.sonar-anime {
-  transition: 1s ease-in-out;
-  -webkit-transform: scale(2);
-  transform: scale(2);
-  opacity: 0;
-}
-
-main .story {
-  .sonar {    
-    border-color: $light;
-    margin: 30px 0;
-    position: absolute;
-  }
-  .sonar1 {
-    left: 10%;
-  }
-  .sonar2 {
-    left: 20%;
-  }
-  .sonar3 {
-    left: 30%;
-  }
-  .sonar4 {
-    left: 40%;
-  }
-  .sonar5 {
-    left: 50%;
-  }
-}
+} // End main
