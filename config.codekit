@@ -7214,17 +7214,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/mars\/imageMapResizer.min.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/imageMapResizer.min.js",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/imageMapResizer.min.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
 	"\/dev\/2015\/summer\/mars\/img\/elevation0.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -9694,6 +9683,17 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/static\/components\/imageMapResizer.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static\/components\/imageMapResizer.min.js",
+		"outputAbbreviatedPath": "\/static\/components\/imageMapResizer.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
 	"\/static\/components\/inview.js": {
 		"fileType": 64,
 		"ignore": 0,
@@ -11278,15 +11278,6 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
-		},
-	"\/style.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/style.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
 		},
 	"\/versions\/v1\/footer.php": {
 		"fileType": 8192,

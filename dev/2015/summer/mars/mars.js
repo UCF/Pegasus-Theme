@@ -4,6 +4,7 @@
 (function () {
     var $sideElevation,
         $elevationImage,
+        $diagramCounter,
         diagramHeadingArray,
         diagramContainerHeight,
         diagramAffixBottom,
@@ -38,7 +39,8 @@
 
     function setupScrollEventHandlers() {
         $(window).on('scroll', function () {
-            var scrollPosition = window.pageYOffset;
+            var scrollPosition = window.pageYOffset + 20,
+                index = 0;
 
             if (scrollPosition > diagramAffixBottom) {
                 $sideElevation.attr('style', 'position: absolute; top: ' + diagramAffixBottom + 'px');
@@ -47,20 +49,21 @@
             }
 
             if (scrollPosition >= diagramArray[6].position) {
-                setImage(diagramArray[6].image);
+                index = 6;
             } else if (scrollPosition >= diagramArray[5].position) {
-                setImage(diagramArray[5].image);
+                index = 5;
             } else if (scrollPosition >= diagramArray[4].position) {
-                setImage(diagramArray[4].image);
+                index = 4;
             } else if (scrollPosition >= diagramArray[3].position) {
-                setImage(diagramArray[3].image);
+                index = 3;
             } else if (scrollPosition >= diagramArray[2].position) {
-                setImage(diagramArray[2].image);
+                index = 2;
             } else if (scrollPosition >= diagramArray[1].position) {
-                setImage(diagramArray[1].image);
-            } else if (scrollPosition < diagramArray[0].position) {
-                setImage(diagramArray[0].image);
+                index = 1;
             }
+            
+            setImage(diagramArray[index].image);
+            $diagramCounter.text(index);
         });
     }
 
@@ -77,6 +80,7 @@
         function init() {
             $sideElevation = $sideElevation = $('#side-elevation');
             $elevationImage = $sideElevation.find('img');
+            $diagramCounter = $('.diagramCounter');
             diagramHeadingArray = $('.diagram-copy').find('h2');
             diagramContainerHeight = $sideElevation.outerHeight();
             diagramAffixBottom = ($('main').outerHeight() + $('header').outerHeight()) - diagramContainerHeight;
@@ -94,4 +98,6 @@
         $(init);
     });
 })();
+
+
 
