@@ -26,7 +26,6 @@ main {
     .intro {
       color: $lightest;
       margin: 535px auto 0;
-      text-align: justify;
       width: 290px;        
       
       @media (max-width: $sm-max) {
@@ -177,6 +176,7 @@ main {
          
     .diagram-copy { 
       margin-bottom: 60px;
+      
       h2,
       p {
         color: #fff;
@@ -190,6 +190,11 @@ main {
         margin-bottom: 3px;
         margin-top: 45px;
         text-transform: uppercase;
+      }
+      
+      hr {
+        border-color: grey;
+        margin-top: 35px;
       }
     }
   } // End article

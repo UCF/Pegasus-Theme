@@ -46,7 +46,7 @@
                     
                 if (direction === 'up') {
                     index--;
-                    $elevationImage.attr('src', $that.prev().prev().attr('data-elevation-image'));
+                    $elevationImage.attr('src', $that.prev().prev().prev().attr('data-elevation-image'));
                 } else {
                     $elevationImage.attr('src', $that.attr('data-elevation-image'));
                 }
@@ -75,5 +75,4 @@
     }
     $(init);
 })();
-
 
