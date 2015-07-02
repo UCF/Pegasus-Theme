@@ -26,7 +26,6 @@ main {
     .intro {
       color: $lightest;
       margin: 535px auto 0;
-      text-align: justify;
       width: 290px;        
       
       @media (max-width: $sm-max) {
@@ -107,6 +106,8 @@ main {
     }
     
     .elevations {
+      margin-top: 40px;
+      
       h3,
       div {
         color: #fff;
@@ -115,6 +116,7 @@ main {
       }
       h3,
       .sub-heading {
+        text-transform: uppercase;
         text-align: center;
         margin-bottom: 2px;
       }
@@ -145,9 +147,10 @@ main {
         font-size: 30px;
         font-weight: 700;
         height:  45px;
-        margin: 0 auto 10px;
+        margin: 0 auto 25px;
         padding-top: 2px;
         text-align: center;
+        visibility: hidden;
         width: 45px;
       }
     }
@@ -173,6 +176,7 @@ main {
          
     .diagram-copy { 
       margin-bottom: 60px;
+      
       h2,
       p {
         color: #fff;
@@ -186,6 +190,11 @@ main {
         margin-bottom: 3px;
         margin-top: 45px;
         text-transform: uppercase;
+      }
+      
+      hr {
+        border-color: grey;
+        margin-top: 35px;
       }
     }
   } // End article

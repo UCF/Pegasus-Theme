@@ -6,9 +6,7 @@
         $elevationImage,
         $diagramCounter,
         diagramHeadingArray,
-        diagramContainerHeight,
-        diagramAffixBottom,
-        diagramArray = [];
+        diagramContainerHeight;
 
     function affixDiagram() {
         var affixTop = $sideElevation.offset().top;
@@ -20,14 +18,10 @@
     }
 
     function scrollToDesc(index) {
-        var scrollTo = diagramHeadingArray.eq(index).offset().top - (diagramContainerHeight + 20);
+        var scrollTo = diagramHeadingArray.eq(index).offset().top - (diagramContainerHeight);
         $('html,body').animate({
-            scrollTop: scrollTo
+            scrollTop: scrollTo - 25
         }, 500);
-    }
-
-    function setImage(imgSrc) {
-        $elevationImage.attr('src', imgSrc);
     }
 
     function setupDiagramEventHandlers() {
@@ -36,68 +30,49 @@
             scrollToDesc(index);
         });
     }
-
-    function setupScrollEventHandlers() {
-        $(window).on('scroll', function () {
-            var scrollPosition = window.pageYOffset + 20,
-                index = 0;
-
-            if (scrollPosition > diagramAffixBottom) {
-                $sideElevation.attr('style', 'position: absolute; top: ' + diagramAffixBottom + 'px');
-            } else {
-                $sideElevation.attr('style', '');
-            }
-
-            if (scrollPosition >= diagramArray[6].position) {
-                index = 6;
-            } else if (scrollPosition >= diagramArray[5].position) {
-                index = 5;
-            } else if (scrollPosition >= diagramArray[4].position) {
-                index = 4;
-            } else if (scrollPosition >= diagramArray[3].position) {
-                index = 3;
-            } else if (scrollPosition >= diagramArray[2].position) {
-                index = 2;
-            } else if (scrollPosition >= diagramArray[1].position) {
-                index = 1;
-            }
-            
-            setImage(diagramArray[index].image);
-            $diagramCounter.text(index);
+    
+    function setupResponsiveImageMap() {        
+        // make the image map responsive
+        $.getScript(THEME_COMPONENTS_URL + '/imageMapResizer.min.js').done(function () {
+            $('map').imageMapResize();
         });
     }
-
-    function setDiagramCopyArray() {
-        $.each(diagramHeadingArray, function (i) {
-            var diagramObj = {};
-            diagramObj.position = diagramHeadingArray.eq(i).offset().top - diagramContainerHeight;
-            diagramObj.image = diagramHeadingArray.eq(i).attr('data-elevation-image');
-            diagramArray.push(diagramObj);
-        });
-    }
-
-    $(function () {
-        function init() {
-            $sideElevation = $sideElevation = $('#side-elevation');
-            $elevationImage = $sideElevation.find('img');
-            $diagramCounter = $('.diagramCounter');
-            diagramHeadingArray = $('.diagram-copy').find('h2');
-            diagramContainerHeight = $sideElevation.outerHeight();
-            diagramAffixBottom = ($('main').outerHeight() + $('header').outerHeight()) - diagramContainerHeight;
-
-            setDiagramCopyArray();
-            affixDiagram();
-            setupDiagramEventHandlers();
-            setupScrollEventHandlers();
-        
-            // make the image map responsive
-            $.getScript(THEME_COMPONENTS_URL + '/imageMapResizer.min.js').done(function () {
-                $('map').imageMapResize();
+    
+    function setupWayPoints() {        
+        $.getScript(THEME_COMPONENTS_URL + '/waypoints.min.js').done(function () {
+            diagramHeadingArray.waypoint(function (direction) {
+                var $that = $(this),
+                    index = diagramHeadingArray.index($that);
+                    
+                if (direction === 'up') {
+                    index--;
+                    $elevationImage.attr('src', $that.prev().prev().prev().attr('data-elevation-image'));
+                } else {
+                    $elevationImage.attr('src', $that.attr('data-elevation-image'));
+                }
+                if (index > 0) {
+                    $diagramCounter.css('visibility', 'visible').text(index);
+                } else {
+                    $diagramCounter.css('visibility', 'hidden');
+                }
+            }, {
+                offset: diagramContainerHeight + 30
             });
-        }
-        $(init);
-    });
+        });
+    }
+
+    function init() {
+        $sideElevation = $sideElevation = $('#side-elevation');
+        $elevationImage = $sideElevation.find('img');
+        $diagramCounter = $('.diagramCounter');
+        diagramHeadingArray = $('.diagram-copy').find('h2');
+        diagramContainerHeight = $sideElevation.outerHeight();
+
+        affixDiagram();
+        setupDiagramEventHandlers();
+        setupResponsiveImageMap();
+        setupWayPoints();            
+    }
+    $(init);
 })();
-
-
 
