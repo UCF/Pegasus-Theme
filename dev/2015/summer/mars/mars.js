@@ -39,23 +39,24 @@
     }
     
     function setupWayPoints() {        
-        $.getScript(THEME_COMPONENTS_URL + '/waypoints.min.js').done(function () {
-            diagramHeadingArray.waypoint(function (direction) {
-                var $that = $(this),
-                    index = diagramHeadingArray.index($that);
-                    
-                if (direction === 'up') {
-                    index--;
-                    $elevationImage.attr('src', $that.prev().prev().prev().attr('data-elevation-image'));
-                } else {
-                    $elevationImage.attr('src', $that.attr('data-elevation-image'));
-                }
-                if (index > 0) {
-                    $diagramCounter.css('visibility', 'visible').text(index);
-                } else {
-                    $diagramCounter.css('visibility', 'hidden');
-                }
-            }, {
+        $.getScript(THEME_COMPONENTS_URL + '/jquery.waypoints.min.js').done(function () {
+            diagramHeadingArray.waypoint({
+                handler: function (direction) {
+                    var $that = $(this.element),
+                        index = diagramHeadingArray.index($that);
+
+                    if (direction === 'up') {
+                        index--;
+                        $elevationImage.attr('src', $that.prev().prev().prev().attr('data-elevation-image'));
+                    } else {
+                        $elevationImage.attr('src', $that.attr('data-elevation-image'));
+                    }
+                    if (index > 0) {
+                        $diagramCounter.css('visibility', 'visible').text(index);
+                    } else {
+                        $diagramCounter.css('visibility', 'hidden');
+                    }
+                },
                 offset: diagramContainerHeight + 30
             });
         });
@@ -75,4 +76,5 @@
     }
     $(init);
 })();
+
 
