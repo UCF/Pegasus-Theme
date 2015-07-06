@@ -122,8 +122,7 @@ var options = {
 	scaleShowGridLines: false,
 	pointHitDetectionRadius: 3,
 	responsive: true,
-	tooltipPadding: 10,
-	tooltipTemplate: "<%= label %>: <%= value %> Grads"
+	tooltipPadding: 10
 };
 
 var canvas = document.createElement('canvas');
