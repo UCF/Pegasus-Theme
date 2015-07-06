@@ -40,10 +40,14 @@
     
     function setupWayPoints() {        
         $.getScript(THEME_COMPONENTS_URL + '/jquery.waypoints.min.js').done(function () {
+            
             diagramHeadingArray.waypoint({
                 handler: function (direction) {
                     var $that = $(this.element),
                         index = diagramHeadingArray.index($that);
+                        
+                    console.log($that);
+                    console.log(direction);
 
                     if (direction === 'up') {
                         index--;
@@ -66,7 +70,7 @@
         $sideElevation = $sideElevation = $('#side-elevation');
         $elevationImage = $sideElevation.find('img');
         $diagramCounter = $('.diagramCounter');
-        diagramHeadingArray = $('.diagram-copy').find('h2');
+        diagramHeadingArray = $('.diagram-copy').find('h3');
         diagramContainerHeight = $sideElevation.outerHeight();
 
         affixDiagram();
@@ -76,5 +80,9 @@
     }
     $(init);
 })();
+
+
+
+
 
 
