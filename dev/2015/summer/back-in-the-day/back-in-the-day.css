@@ -1,0 +1,15 @@
+article.story h1,
+article.story h2,
+article.story h3 {
+	font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+}
+
+article.story h1 {
+	font-size: 60px;
+	font-weight: 700;
+	color: #767674;
+}
+
+article.story #grad-chart {
+	margin: 0 50px;
+}
