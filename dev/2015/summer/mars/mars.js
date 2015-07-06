@@ -45,9 +45,6 @@
                 handler: function (direction) {
                     var $that = $(this.element),
                         index = diagramHeadingArray.index($that);
-                        
-                    console.log($that);
-                    console.log(direction);
 
                     if (direction === 'up') {
                         index--;
