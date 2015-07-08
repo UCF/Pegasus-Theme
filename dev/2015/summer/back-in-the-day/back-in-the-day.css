@@ -27,3 +27,7 @@ article.story #grad-chart {
 article.story hr {
 	border-top: 1px solid #a3a55d;
 }
+
+#chartjs-tooltip {
+	color: #fc0;
+}
