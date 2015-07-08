@@ -8,199 +8,197 @@ $dark:     #23150d;
 $sm-max: '768px';
 
 /* Header */
-main {
+main article.story {
   background-color: $dark;
 
-  article {
+  #header-img-wrap {
+    background-position: top;
+    background-repeat: no-repeat;
+    height: 780px;
 
-    #header-img-wrap {
-      background-position: top;
-      background-repeat: no-repeat;
-      height: 780px;
+    @media (max-width: $sm-max) {
+      background-position: 50% -80px;
+    }
+  }
 
-      @media (max-width: $sm-max) {
-        background-position: 50% -80px;
-      }
+  .intro {
+    color: $lightest;
+    margin: 535px auto 0;
+    width: 290px;
+
+    @media (max-width: $sm-max) {
+      margin-top: 465px;
     }
 
-    .intro {
-      color: $lightest;
-      margin: 535px auto 0;
-      width: 290px;
-
-      @media (max-width: $sm-max) {
-        margin-top: 465px;
-      }
-
-      span {
-        font-family: $font;
-        font-weight: 700;
-        color: $light;
-        text-transform: uppercase;
-      }
-    }
-
-    .first-block {
-      margin-top: 50px;
-
-      @media (max-width: $sm-max) {
-        margin-top: -60px;
-      }
-
-      p.lead,
-      p.copy {
-          color: $light;
-          font-size: 15px;
-          line-height: 19px;
-      }
-
-      p.lead {
-          &:first-letter {
-            color: $lightest;
-            font-family: $font;
-            font-weight: 700;
-            font-size: 40px;
-            line-height: 30px;
-            margin: 5px 2px 0 0;
-          }
-      }
-
-      blockquote p {
-        color: $lightest;
-        font-size: 26px;
-        line-height: 32px;
-        margin-bottom: 55px;
-        padding-top: 0;
-      }
-    }
-
-    .ie8 #header {
-        bottom: -20px;
-    }
-
-    .social-wrap {
-        padding-top: 495px;
-    }
-
-    .competition {
-      background-color: $lightest;
+    span {
       font-family: $font;
-      padding-top: 15px;
-      padding-bottom: 15px;
+      font-weight: 700;
+      color: $light;
+      text-transform: uppercase;
+    }
+  }
 
-      h2 {
-        color: $dark;
-        font-size: 16px;
-        font-weight: 700;
-        margin-bottom: 3px;
-        text-transform: uppercase;
-      }
-      p {
-        color: $dark;
-        font-family: $font;
-      }
+  .first-block {
+    margin-top: 50px;
+
+    @media (max-width: $sm-max) {
+      margin-top: -60px;
     }
 
-    .elevations-header {
-      margin-bottom: 40px;
+    p.lead,
+    p.copy {
+        color: $light;
+        font-size: 15px;
+        line-height: 19px;
     }
 
-    .elevations {
-      margin-top: 40px;
-
-      h2,
-      div {
-        color: #fff;
-        font-family: $font;
-        font-size: 14px;
-      }
-      h2,
-      .sub-heading {
-        text-transform: uppercase;
-        text-align: center;
-        margin-bottom: 2px;
-      }
-      h2 {
-        font-size: 34px;
-        text-transform: uppercase;
-        margin-bottom: 0;
-        margin-top: 15px;
-        font-weight: 800;
-      }
-    }
-
-    .front-back-elevations img {
-      margin: 50px auto;
-    }
-
-    #side-elevation,
-    #side-elevation-placeholder {
-
-      img {
-        margin: 0 auto;
-      }
-      .diagramCounter {
-        background-color: $medium;
-        border-radius: 50%;
-        color: $dark;
-        font-family: $font;
-        font-size: 30px;
-        font-weight: 700;
-        height:  45px;
-        margin: 0 auto 25px;
-        padding-top: 2px;
-        text-align: center;
-        visibility: hidden;
-        width: 45px;
-      }
-    }
-
-    #side-elevation {
-      &.affix {
-        background-color: $dark;
-        left: 0;
-        top: 0;
-        width: 100%;
-        z-index: 10;
-
-        + #side-elevation-placeholder {
-          display: block;
-          visibility: hidden;
+    p.lead {
+        &:first-letter {
+          color: $lightest;
+          font-family: $font;
+          font-weight: 700;
+          font-size: 40px;
+          line-height: 30px;
+          margin: 5px 2px 0 0;
         }
-      }
     }
 
-    #side-elevation-placeholder {
-      display: none;
+    blockquote p {
+      color: $lightest;
+      font-size: 26px;
+      line-height: 32px;
+      margin-bottom: 55px;
+      padding-top: 0;
+    }
+  }
+
+  .ie8 #header {
+      bottom: -20px;
+  }
+
+  .social-wrap {
+      padding-top: 495px;
+  }
+
+  .competition {
+    background-color: $lightest;
+    font-family: $font;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    h2 {
+      color: $dark;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 3px;
+      text-transform: uppercase;
+    }
+    p {
+      color: $dark;
+      font-family: $font;
+    }
+  }
+
+  .elevations-header {
+    margin-bottom: 40px;
+  }
+
+  .elevations {
+    margin-top: 40px;
+
+    h2,
+    div {
+      color: #fff;
+      font-family: $font;
+      font-size: 14px;
+    }
+    h2,
+    .sub-heading {
+      text-transform: uppercase;
+      text-align: center;
+      margin-bottom: 2px;
+    }
+    h2 {
+      font-size: 34px;
+      text-transform: uppercase;
+      margin-bottom: 0;
+      margin-top: 15px;
+      font-weight: 800;
+    }
+  }
+
+  .front-back-elevations img {
+    margin: 50px auto;
+  }
+
+  #side-elevation,
+  #side-elevation-placeholder {
+
+    img {
+      margin: 0 auto;
+    }
+    .diagramCounter {
+      background-color: $medium;
+      border-radius: 50%;
+      color: $dark;
+      font-family: $font;
+      font-size: 30px;
+      font-weight: 700;
+      height:  45px;
+      margin: 0 auto 25px;
+      padding-top: 2px;
+      text-align: center;
+      visibility: hidden;
+      width: 45px;
+    }
+  }
+
+  #side-elevation {
+    &.affix {
+      background-color: $dark;
+      left: 0;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+
+      + #side-elevation-placeholder {
+        display: block;
+        visibility: hidden;
+      }
+    }
+  }
+
+  #side-elevation-placeholder {
+    display: none;
+  }
+
+  .diagram-copy {
+    margin-bottom: 60px;
+
+    h3,
+    p {
+      color: #fff;
+      font-family: $font;
+      text-align: center;
     }
 
-    .diagram-copy {
-      margin-bottom: 60px;
-
-      h3,
-      p {
-        color: #fff;
-        font-family: $font;
-        text-align: center;
-      }
-
-      h3 {
-        font-size: 16px;
-        font-weight: 800;
-        margin-bottom: 3px;
-        margin-top: 45px;
-        text-transform: uppercase;
-      }
-
-      hr {
-        border-color: grey;
-        margin-top: 35px;
-      }
+    h3 {
+      font-size: 16px;
+      font-weight: 800;
+      margin-bottom: 3px;
+      margin-top: 45px;
+      text-transform: uppercase;
     }
-  } // End article
 
-  img[usemap], map area{
+    hr {
+      border-color: grey;
+      margin-top: 35px;
+    }
+  }
+
+  img[usemap],
+  map area {
     outline: none;
   }
 
-} // End main
+} // End article
