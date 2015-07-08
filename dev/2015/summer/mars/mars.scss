@@ -12,7 +12,7 @@ main {
   background-color: $dark;
 
   article {
-  
+
     #header-img-wrap {
       background-position: top;
       background-repeat: no-repeat;
@@ -22,16 +22,16 @@ main {
         background-position: 50% -80px;
       }
     }
-            
+
     .intro {
       color: $lightest;
       margin: 535px auto 0;
-      width: 290px;        
-      
+      width: 290px;
+
       @media (max-width: $sm-max) {
         margin-top: 465px;
       }
-      
+
       span {
         font-family: $font;
         font-weight: 700;
@@ -39,22 +39,22 @@ main {
         text-transform: uppercase;
       }
     }
-                  
-    .first-block { 
-      margin-top: 50px;        
-        
+
+    .first-block {
+      margin-top: 50px;
+
       @media (max-width: $sm-max) {
         margin-top: -60px;
       }
-            
+
       p.lead,
-      p.copy {    
+      p.copy {
           color: $light;
           font-size: 15px;
           line-height: 19px;
       }
-      
-      p.lead {                
+
+      p.lead {
           &:first-letter {
             color: $lightest;
             font-family: $font;
@@ -63,8 +63,8 @@ main {
             line-height: 30px;
             margin: 5px 2px 0 0;
           }
-      }   
-                
+      }
+
       blockquote p {
         color: $lightest;
         font-size: 26px;
@@ -73,21 +73,21 @@ main {
         padding-top: 0;
       }
     }
-    
+
     .ie8 #header {
         bottom: -20px;
     }
-    
+
     .social-wrap {
         padding-top: 495px;
     }
-    
+
     .competition {
       background-color: $lightest;
       font-family: $font;
       padding-top: 15px;
       padding-bottom: 15px;
-      
+
       h2 {
         color: $dark;
         font-size: 16px;
@@ -95,47 +95,47 @@ main {
         margin-bottom: 3px;
         text-transform: uppercase;
       }
-      p {          
+      p {
         color: $dark;
         font-family: $font;
       }
     }
-    
+
     .elevations-header {
       margin-bottom: 40px;
     }
-    
+
     .elevations {
       margin-top: 40px;
-      
-      h3,
+
+      h2,
       div {
         color: #fff;
         font-family: $font;
         font-size: 14px;
       }
-      h3,
+      h2,
       .sub-heading {
         text-transform: uppercase;
         text-align: center;
         margin-bottom: 2px;
       }
-      h3 {
+      h2 {
         font-size: 34px;
         text-transform: uppercase;
         margin-bottom: 0;
         margin-top: 15px;
         font-weight: 800;
       }
-    } 
-    
+    }
+
     .front-back-elevations img {
       margin: 50px auto;
     }
-    
+
     #side-elevation,
     #side-elevation-placeholder {
-      
+
       img {
         margin: 0 auto;
       }
@@ -154,7 +154,7 @@ main {
         width: 45px;
       }
     }
-    
+
     #side-elevation {
       &.affix {
         background-color: $dark;
@@ -162,28 +162,28 @@ main {
         top: 0;
         width: 100%;
         z-index: 10;
-        
+
         + #side-elevation-placeholder {
           display: block;
           visibility: hidden;
-        }          
+        }
       }
-    } 
-    
+    }
+
     #side-elevation-placeholder {
       display: none;
     }
-         
-    .diagram-copy { 
+
+    .diagram-copy {
       margin-bottom: 60px;
-      
+
       h3,
       p {
         color: #fff;
         font-family: $font;
         text-align: center;
       }
-      
+
       h3 {
         font-size: 16px;
         font-weight: 800;
@@ -191,14 +191,14 @@ main {
         margin-top: 45px;
         text-transform: uppercase;
       }
-      
+
       hr {
         border-color: grey;
         margin-top: 35px;
       }
     }
   } // End article
-        
+
   img[usemap], map area{
     outline: none;
   }
