@@ -7114,35 +7114,6 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js": {
-		"fileType": 64,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
 	"\/dev\/2015\/summer\/briefs\/briefs.css": {
 		"fileType": 16,
 		"ignore": 1,
