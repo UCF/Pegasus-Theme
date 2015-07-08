@@ -1,12 +1,12 @@
 /* global THEME_COMPONENTS_URL */
-/// <reference path="../../../../typings/jquery/jquery.d.ts"/>
 
 (function () {
     var $sideElevation,
         $elevationImage,
         $diagramCounter,
         diagramHeadingArray,
-        diagramContainerHeight;
+        diagramContainerHeight,
+        diagramAffixBottom;
 
     function affixDiagram() {
         var affixTop = $sideElevation.offset().top;
@@ -30,17 +30,17 @@
             scrollToDesc(index);
         });
     }
-    
-    function setupResponsiveImageMap() {        
+
+    function setupResponsiveImageMap() {
         // make the image map responsive
         $.getScript(THEME_COMPONENTS_URL + '/imageMapResizer.min.js').done(function () {
             $('map').imageMapResize();
         });
     }
-    
-    function setupWayPoints() {        
+
+    function setupWayPoints() {
         $.getScript(THEME_COMPONENTS_URL + '/jquery.waypoints.min.js').done(function () {
-            
+
             diagramHeadingArray.waypoint({
                 handler: function (direction) {
                     var $that = $(this.element),
@@ -60,6 +60,18 @@
                 },
                 offset: diagramContainerHeight + 30
             });
+
+            $('#more-stories').waypoint({
+                handler: function (direction) {
+                    if (direction === 'down') {
+                        $sideElevation.attr('style', 'position: absolute; top: ' + diagramAffixBottom + 'px');
+                    } else {
+                        $sideElevation.attr('style', '');
+                    }
+                },
+                offset: diagramContainerHeight + 50
+            });
+
         });
     }
 
@@ -69,17 +81,13 @@
         $diagramCounter = $('.diagramCounter');
         diagramHeadingArray = $('.diagram-copy').find('h3');
         diagramContainerHeight = $sideElevation.outerHeight();
+        diagramAffixBottom = ($('main').outerHeight(true) + $('header').outerHeight(true)) - diagramContainerHeight;
 
         affixDiagram();
         setupDiagramEventHandlers();
         setupResponsiveImageMap();
-        setupWayPoints();            
+        setupWayPoints();
     }
+
     $(init);
 })();
-
-
-
-
-
-

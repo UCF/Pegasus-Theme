@@ -27,4 +27,5 @@ Thumbs.db
 **/.sass-cache/
 
 # visual studio code
+jsconfig.json
 **/typings

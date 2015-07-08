@@ -7114,6 +7114,35 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
+	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/back-in-the-day\/back-in-the-day.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
 	"\/dev\/2015\/summer\/briefs\/briefs.css": {
 		"fileType": 16,
 		"ignore": 1,
@@ -7331,6 +7360,17 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/dev\/2015\/summer\/mars\/mars.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/mars.js",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/mars.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
 	"\/dev\/2015\/summer\/mars\/mars.scss": {
 		"createSourceMap": 1,
 		"debugStyle": 0,
@@ -7418,6 +7458,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/jsconfig.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/jsconfig.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/jsconfig-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
 		},
 	"\/page.php": {
 		"fileType": 8192,
