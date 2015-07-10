@@ -12,7 +12,7 @@ article.story h1 {
 
 @media (max-width: 767px) {
 	article.story h1 {
-		font-size: 40px;
+		font-size: 32px;
 	}
 }
 
