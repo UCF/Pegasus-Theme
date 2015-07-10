@@ -61,12 +61,16 @@
                 offset: diagramContainerHeight + 30
             });
 
+            diagramAffixBottom = ($('main').outerHeight(true) + $('header').outerHeight(true)) - diagramContainerHeight;
+
             $('#more-stories').waypoint({
                 handler: function (direction) {
                     if (direction === 'down') {
                         $sideElevation.attr('style', 'position: absolute; top: ' + diagramAffixBottom + 'px');
+                        $diagramCounter.css('visibility', 'hidden');
                     } else {
                         $sideElevation.attr('style', '');
+                        $diagramCounter.css('visibility', 'visible');
                     }
                 },
                 offset: diagramContainerHeight + 50
@@ -81,12 +85,15 @@
         $diagramCounter = $('.diagramCounter');
         diagramHeadingArray = $('.diagram-copy').find('h3');
         diagramContainerHeight = $sideElevation.outerHeight();
-        diagramAffixBottom = ($('main').outerHeight(true) + $('header').outerHeight(true)) - diagramContainerHeight;
 
         affixDiagram();
-        setupDiagramEventHandlers();
-        setupResponsiveImageMap();
-        setupWayPoints();
+
+        // Wait for image heights to set before setting up way points
+        setTimeout(function () {
+            setupResponsiveImageMap();
+            setupDiagramEventHandlers();
+            setupWayPoints();
+        }, 500);
     }
 
     $(init);

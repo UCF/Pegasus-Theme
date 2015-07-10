@@ -48,8 +48,8 @@ main article.story {
     p.lead,
     p.copy {
         color: $light;
-        font-size: 15px;
-        line-height: 19px;
+        font-size: 16px;
+        line-height: 22px;
     }
 
     p.lead {
@@ -57,8 +57,8 @@ main article.story {
           color: $lightest;
           font-family: $font;
           font-weight: 700;
-          font-size: 40px;
-          line-height: 30px;
+          font-size: 42px;
+          line-height: 38px;
           margin: 5px 2px 0 0;
         }
     }
