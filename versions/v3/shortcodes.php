@@ -39,6 +39,24 @@ function sc_image($attr) {
 add_shortcode('image', 'sc_image');
 
 
+/**
+ * Same as [image], but returns markup safe to use within an element as
+ * a background image
+ **/
+function sc_background_image( $attr ) {
+	$attr = shortcode_atts( array(
+		'filename' => false,
+		'inline_css' => ''
+	), $attr, 'sc_background_image' );
+
+	if ( $attr['filename'] ) {
+		return sprintf( 'style="background-image: url(%s); %s"', sc_image( $attr ), $attr['inline_css'] );
+	}
+	return '';
+}
+add_shortcode( 'background-image', 'sc_background_image' );
+
+
 /*
  * Link to a static image. Requires extension
  */
