@@ -383,4 +383,34 @@ function display_markup_or_template_v1($post) {
 	}
 }
 
+
+/**
+ * Adds various allowed tags to WP's allowed tags list.
+ *
+ * Add elements and attributes to this list if WordPress' filters refuse to
+ * parse those elems/attributes, or shortcodes within them, as expected.
+ *
+ * NOTE - use add_kses_whitelisted_attributes() in the root functions.php
+ * instead to apply elem/attr changes on all versions.
+ **/
+global $allowedposttags;
+
+function v1_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
+	if ( $context == 'post' ) {
+		$allowedposttags['div'] = array(
+			'data-background-url' => true,
+			'data-bg-large' => true,
+			'data-bg-small' => true,
+			'data-body-bg' => true,
+			'data-img-url' => true,
+		);
+		$allowedposttags['li'] = array(
+			'data-mobile-img' => true,
+			'data-normal-img' => true
+		);
+	}
+	return $allowedposttags;
+}
+add_filter( 'wp_kses_allowed_html', 'v1_add_kses_whitelisted_attributes', 11, 2 );
+
 ?>

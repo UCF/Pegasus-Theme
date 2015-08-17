@@ -1057,14 +1057,25 @@ add_filter( 'upload_mimes', 'allow_svgs' );
 
 
 /**
- * Allow shortcodes to be parsed within <source> tag 'src' attribute.
- * Fixes usage of <source src="[media...]"> after WP 4.2.3 Shortcode API change
+ * Adds various allowed tags to WP's allowed tags list.
+ *
+ * Add elements and attributes to this list if WordPress' filters refuse to
+ * parse those elems/attributes, or shortcodes within them, as expected.
+ *
+ * Adding 'source' and its 'src' attr fixes usage of <source src="[media...]">
+ * after the WP 4.2.3 Shortcode API change.
  **/
 global $allowedposttags;
 
 function add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	if ( $context == 'post' ) {
-		$allowedposttags['source']['src'] = 1;
+		$allowedposttags['source'] = array(
+			'sizes' => true,
+			'src' => true,
+			'srcset' => true,
+			'type' => true,
+			'media' => true
+		);
 	}
 	return $allowedposttags;
 }
