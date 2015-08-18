@@ -18,15 +18,15 @@ if (is_admin()){
 // Used to import the color picker for the shortcode_callout_html
 add_action( 'admin_enqueue_scripts', 'callout_enqueue_color_picker' );
 function callout_enqueue_color_picker( $hook_suffix ) {
-    // first check that $hook_suffix is appropriate for your admin page
-    wp_enqueue_style( 'wp-color-picker' );
-    wp_enqueue_script(
-        'iris',
-        admin_url( 'js/iris.min.js' ),
-        array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
-        false,
-        1
-    );
+	// first check that $hook_suffix is appropriate for your admin page
+	wp_enqueue_style( 'wp-color-picker' );
+	wp_enqueue_script(
+		'iris',
+		admin_url( 'js/iris.min.js' ),
+		array( 'jquery-ui-draggable', 'jquery-ui-slider', 'jquery-touch-punch' ),
+		false,
+		1
+	);
 }
 
 function add_shortcode_interface() {
@@ -141,9 +141,9 @@ function add_shortcode_interface_modal() {
 						<p class="help">(Optional) If this quote originated from some publication, specify it here.</p>
 						<input type="text" name="blockquote-cite" value="" data-default-value="" data-parameter="cite">
 
-                        <h3>Text Color:</h3>
-                        <p class="help">(Optional) This will change the text color of the quote, source and cite. If it is left blank then the default text color will be used.</p>
-                        <input type="text" name="blockquote-color" class="shortcode-color" data-default-color="#ffffff" data-parameter="color">
+						<h3>Text Color:</h3>
+						<p class="help">(Optional) This will change the text color of the quote, source and cite. If it is left blank then the default text color will be used.</p>
+						<input type="text" name="blockquote-color" class="shortcode-color" data-default-color="#ffffff" data-parameter="color">
 					</li>
 					<li class="shortcode-callout">
 						<h2>Callout Options</h2>
@@ -342,10 +342,10 @@ function custom_font_styles() {
 	$html .= 'select[id*="_default_font"] option,
 			#menu_content_content_fontselect_menu_tbl .mceText:not([title="Font family"]),
 			#menu_content_content_styleselect_menu_tbl .mceText:not([title="Styles"]) {
-			 	font-size: 20px;
-			 	padding: 5px 0;
-			 	-webkit-font-smoothing: antialiased;
-			 	-moz-osx-font-smoothing: grayscale;
+				font-size: 20px;
+				padding: 5px 0;
+				-webkit-font-smoothing: antialiased;
+				-moz-osx-font-smoothing: grayscale;
 			 }
 			';
 	foreach (unserialize(TEMPLATE_FONT_STYLES) as $font => $val) {
@@ -364,39 +364,39 @@ function custom_font_styles() {
  * markup to generate a [photo] shortcode.
  **/
 function editor_insert_image_as_shortcode($html, $id, $caption, $title, $align, $url, $size, $alt) {
-    $s_id = $id;
-    $s_title = '';
-    $s_alt = $alt;
-    $s_position = null;
-    $s_width = '100%';
-    $s_caption = '';
+	$s_id = $id;
+	$s_title = '';
+	$s_alt = $alt;
+	$s_position = null;
+	$s_width = '100%';
+	$s_caption = '';
 
-    $attachment = get_post($id);
+	$attachment = get_post($id);
 
-    // Get usable image position
-    if ($align && $align !== 'none') {
-    	$s_position = $align;
-    }
-    // Get usable image width.
-    // Force aligned images to have a fixed width.
-    $attachment_src = wp_get_attachment_image_src($id, $size);
-    if ( $s_position || $size !== 'full' ) {
-    	$s_width = $attachment_src[1].'px';
-    }
+	// Get usable image position
+	if ($align && $align !== 'none') {
+		$s_position = $align;
+	}
+	// Get usable image width.
+	// Force aligned images to have a fixed width.
+	$attachment_src = wp_get_attachment_image_src($id, $size);
+	if ( $s_position || $size !== 'full' ) {
+		$s_width = $attachment_src[1].'px';
+	}
 
-    // Get usable image title (passed $title doesn't always work here?)
-    $s_title = $attachment->post_title;
-    // Get usable image caption
-    $s_caption = $attachment->post_excerpt;
+	// Get usable image title (passed $title doesn't always work here?)
+	$s_title = $attachment->post_title;
+	// Get usable image caption
+	$s_caption = $attachment->post_excerpt;
 
-    // Create markup
-    $html = '[photo id="'.$s_id.'" title="'.$s_title.'" alt="'.$s_alt.'" ';
-    if ($s_position) {
-    	$html .= 'position="'.$s_position.'" ';
-    }
-    $html .= 'width="'.$s_width.'"]'.$s_caption.'[/photo]';
+	// Create markup
+	$html = '[photo id="'.$s_id.'" title="'.$s_title.'" alt="'.$s_alt.'" ';
+	if ($s_position) {
+		$html .= 'position="'.$s_position.'" ';
+	}
+	$html .= 'width="'.$s_width.'"]'.$s_caption.'[/photo]';
 
-    return $html;
+	return $html;
 }
 add_filter('image_send_to_editor', 'editor_insert_image_as_shortcode', 10, 8);
 
@@ -526,5 +526,37 @@ function add_formats_to_tinymce( $settings ) {
 	return $settings;
 }
 add_filter( 'tiny_mce_before_init', 'add_formats_to_tinymce' );
+
+
+/**
+ * Add "template" column to Stories admin tables to easily distinguish custom
+ * stories from those with non-custom templates.
+ **/
+function add_story_columns( $columns ) {
+	return array_merge( $columns, array(
+		'template' => __( 'Template' ),
+	) );
+}
+add_filter( 'manage_story_posts_columns' , 'add_story_columns' );
+
+function add_story_column_content( $column, $post_id ) {
+	switch ( $column ) {
+		case 'template':
+			$template = get_post_meta( $post_id, 'story_template', true );
+			switch ( $template ) {
+				case 'photo_essay':
+					echo 'Photo essay';
+					break;
+				case 'custom':
+					echo 'Custom';
+					break;
+				default:
+					echo 'Default';
+					break;
+			}
+			break;
+	}
+}
+add_action( 'manage_story_posts_custom_column', 'add_story_column_content', 10, 2 );
 
 ?>
