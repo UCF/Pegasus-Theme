@@ -1,0 +1,296 @@
+/*
+COLORS:
+
+green, dark: #646c39
+green, light: #729170
+teal, dark: #056765
+teal, light: #00b2ac
+*/
+
+/* CSS3 Animations */
+.floating-y {
+    animation-name: FloatingY;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: FloatingY;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: FloatingY;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    animation-duration: 7s;
+    -webkit-animation-duration: 7s;
+    -moz-animation-duration: 7s;
+}
+.floating-x {
+    animation-name: FloatingX;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    -webkit-animation-name: FloatingX;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -moz-animation-name: FloatingX;
+    -moz-animation-iteration-count: infinite;
+    -moz-animation-timing-function: ease-in-out;
+    animation-duration: 4s;
+    -webkit-animation-duration: 4s;
+    -moz-animation-duration: 4s;
+}
+@keyframes FloatingY {
+    from {transform: translate(0, 0);}
+    65% {transform: translate(0, 6px);}
+    to {transform: translate(0, 0);}
+}
+@-webkit-keyframes FloatingY {
+    from {-webkit-transform: translate(0, 0);}
+    65% {-webkit-transform: translate(0, 6px);}
+    to {-webkit-transform: translate(0, 0);}
+}
+@-moz-keyframes FloatingY {
+    from {-moz-transform: translate(0, 0);}
+    65% {-moz-transform: translate(0, 6px);}
+    to {-moz-transform: translate(0, 0);}
+}
+@keyframes FloatingX {
+    from {transform: translate(0, 0);}
+    65% {transform: translate(7px, 0);}
+    to {transform: translate(0, 0);}
+}
+@-webkit-keyframes FloatingX {
+    from {-webkit-transform: translate(0, 0);}
+    65% {-webkit-transform: translate(7px, 0);}
+    to {-webkit-transform: translate(0, 0);}
+}
+@-moz-keyframes FloatingX {
+    from {-moz-transform: translate(0, 0);}
+    65% {-moz-transform: translate(7px, 0);}
+    to {-moz-transform: translate(0, 0);}
+}
+
+
+/* General */
+article.story {
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+article.story a,
+article.story a:hover {
+    color: #056765;
+    font-weight: bold;
+}
+article.story h2,
+article.story h3 {
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    line-height: 1em;
+    font-weight: 800;
+    font-style: normal;
+    text-transform: uppercase;
+    color: #729170;
+    letter-spacing: 0.02em;
+    margin-bottom: 3px;
+}
+article.story h2 {
+    font-size: 14px;
+}
+article.story h3 {
+    font-size: 11px;
+}
+article.story p,
+article.story li {
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 11px;
+    line-height: 1.5em;
+    font-weight: 400;
+    font-style: normal;
+}
+article.story ul {
+    margin-left: 12px;
+}
+article.story li {
+    margin-bottom: 3px;
+}
+article.story table {
+    margin-bottom: 20px;
+}
+article.story table th,
+article.story table td {
+    font-family: "OpenSansCondensedBold", sans-serif;
+    font-size: 15px;
+    font-weight: normal;
+    line-height: 1.1em;
+    letter-spacing: 0.01em;
+    text-align: left;
+    padding: 6px;
+    background-color: #e9f6f6;
+}
+article.story table td {
+    border-left: 2px solid #fff;
+    width: 60%;
+}
+article.story table th.alt,
+article.story table td.alt {
+    background-color: #dbefea;
+}
+article.story .turtle-callout {
+    margin: 0;
+    padding: 20px;
+    background-color: #98dfda;
+    background-color: rgba(152,223,218,0.8);
+}
+.ie article.story svg {
+    display: none;
+}
+_:-ms-fullscreen, :root article.story svg {
+    display: none; /* hack to catch ie11 */
+}
+
+
+/* Story-specific */
+#turtle-title {
+    margin-top: 80px;
+}
+
+#turtle-title h1 {
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 44px;
+    font-weight: 800;
+    font-style: normal;
+    line-height: 1em;
+    letter-spacing: 0.03em;
+    color: #646c39;
+    margin-bottom: 15px;
+}
+#turtle-title h1 .alt {
+    font-family: Georgia, serif;
+    font-weight: normal;
+    color: #056765;
+}
+.ie8 #turtle-title h1,
+.ie8 #turtle-title h1 .alt {
+    font-weight: normal;
+}
+
+#turtle-title .turtle-lead {
+    font-family: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 1.5em;
+    letter-spacing: 0.03em;
+    margin-bottom: 0;
+}
+
+#turtle-species-data h2 {
+    font-family: "OpenSansCondensedBold", sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    color: #00b2ac;
+    text-shadow: 0 1px 1px #fff;
+    margin-bottom: 5px;
+}
+
+
+/* Infographic */
+#travel-time-img {
+    display: none;
+}
+.ie #travel-time-img {
+    display: block;
+}
+_:-ms-fullscreen, :root #travel-time-img {
+    display: block; /* hack to catch ie11 */
+}
+.ie #travel-time-interactive {
+    display: none;
+}
+_:-ms-fullscreen, :root #travel-time-interactive {
+    display: none;
+}
+#travel-time-interactive {
+    display: block;
+    position: relative;
+    width: 940px;
+    height: 646px;
+    overflow: hidden;
+}
+#travel-time-interactive .tt-layer {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 0;
+}
+#travel-time-interactive #tt-ocean { z-index: 1; }
+#travel-time-interactive #tt-seaweed1 { z-index: 2; }
+#travel-time-interactive #tt-seaweed2 { z-index: 3; }
+#travel-time-interactive svg { z-index: 4; }
+#travel-time-interactive #tt-maplabels { z-index: 5; }
+#travel-time-interactive #tt-turtles { z-index: 6; }
+
+
+/* Below infographic */
+#turtle-nursery {
+    margin-top: 40px;
+}
+
+#turtle-gyre {
+    margin-bottom: 40px;
+}
+
+#turtle-summary {
+    margin-bottom: 40px;
+}
+#turtle-summary h2 {
+    font-size: 17px;
+    text-transform: none;
+    color: #056765;
+}
+#turtle-summary p {
+    font-size: 12px;
+    line-height: 1.6em;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+#turtle-summary a {
+    font-size: 14px;
+}
+
+
+
+@media (max-width: 979px) {
+    #turtle-title {
+        margin-top: 60px;
+    }
+    #turtle-title h1 {
+        font-size: 34px;
+    }
+
+    #travel-time-interactive {
+        width: 724px;
+        height: 497px;
+    }
+}
+
+@media (max-width: 767px) {
+    #turtle-title {
+        margin-top: 25px;
+    }
+
+    #travel-time-img {
+        display: block;
+        margin: 0;
+    }
+    #travel-time-interactive {
+        display: none;
+    }
+
+    #turtle-gyre,
+    #turtle-summary {
+        margin-bottom: 20px;
+    }
+
+    #turtle-nursery {
+        margin-top: 20px;
+    }
+}
