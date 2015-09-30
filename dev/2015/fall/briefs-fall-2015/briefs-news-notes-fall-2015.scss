@@ -1,0 +1,530 @@
+/* Variables */
+// $font-sans-serif-black: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+// $font-sans-serif-bold: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+// $font-sans-serif-book: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+// $font-sans-serif-light: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+// $font-sans-serif-light: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-sans-serif-condensed: 'Whitney Cond A', 'Whitney Cond B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-serif: 'Georgia', 'Times New Roman' , 'Times', serif;
+
+/* General */
+.ie8 main {
+    margin-top: -20px; /* wat */
+}
+
+main article {
+
+     h1,
+     h2,
+     .h2 {
+        font-family: $font-sans-serif;
+        font-weight: 800;
+        font-style: normal;
+        text-transform: none;
+        letter-spacing: -0.055em;
+    }
+     h3,
+     .h3,
+     h4,
+     .h4,
+     h5,
+     .h5,
+     h6,
+     .h6 {
+        font-family: $font-sans-serif;
+        font-weight: normal;
+    }
+
+     a {
+        font-weight: bold;
+        color: #000;
+    }
+     a:hover,
+     a:active {
+        text-decoration: underline;
+    }
+
+     .caps {
+        text-transform: uppercase;
+    }
+
+     h2,
+     .h2 {
+        font-size: 38px;
+        line-height: 38px;
+    }
+
+     h3,
+     .h3 {
+        font-size: 30px;
+        line-height: 1em;
+        margin-bottom: 4px;
+    }
+     h2.caps,
+     .h2.caps {
+        font-size: 24px;
+        line-height: 1em;
+        letter-spacing: -0.045em;
+        margin-bottom: 6px;
+    }
+
+     h4,
+     .h4 {
+        font-size: 16px;
+        line-height: 1em;
+    }
+
+    .source {
+        font-family: $font-sans-serif;
+        font-size: 11px;
+        font-weight: 700;
+        text-transform: uppercase;
+    }
+
+    img.rounded {
+        border-radius: 50%;
+    }
+}
+
+main article #briefs-header h1 {
+    margin-left: -10px;
+}
+
+main article.story,
+main article.story p {
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+main article.story h2 {
+    line-height: 1;
+}
+
+main article > .container {
+    margin-bottom: -160px;
+}
+
+/* Header */
+main article {
+    .story-header-image {
+        background-position: top;
+        margin-bottom: 0;
+        background-color: #161919;
+    }
+
+    #briefs-header-img-wrap {
+      background-position: 50% 60%;
+    }
+
+    #briefs-header-wrap {
+        position: relative;
+        height: 100%;
+    }
+    #briefs-header {
+        position: absolute;
+        bottom: 20px;
+        left: 0;
+        width: 100%;
+    }
+    .ie8 #briefs-header {
+        bottom: -20px;
+    }
+
+    #briefs-header h1 {
+        color: #fff;
+        font-size: 120px;
+        line-height: 100px;
+    }
+
+    .social-wrap {
+        padding-top: 60px;
+    }
+}
+
+/* Tivoli */
+main article.story {
+    #tivoli {
+        margin-top: 18px;
+
+        h2 {
+            font-family: Georgia, serif;
+            font-size: 30px;
+            font-style: italic;
+            font-weight: normal;
+            line-height: normal;
+        }
+        h3 {
+            font-family: $font-sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        li {
+            font-size: 14px;
+        }
+
+        .source {
+            font-size: 11px;
+            padding-top: 25px;
+            padding-bottom: 10px;
+        }
+    }
+}
+
+/* Great Company */
+main article.story {
+    #great_company {
+        h2 {
+            font-family: $font-sans-serif-condensed;
+            color: #fff;
+            font-size: 44px;
+            background: #000;
+            color: #fff;
+        }
+        p {
+            background: #000;
+            color: #fff;
+        }
+
+
+        .content.inverse {
+            img {
+                margin-top: 0;
+                margin-left: 0;
+                margin-bottom: 5px;
+            }
+
+            color: #fff;
+            background: #000;
+
+            h2 {
+                padding: 0 20px;
+            }
+
+            p {
+                padding: 10px 20px 30px 20px;
+            }
+
+
+        }
+
+    }
+}
+
+/* Meet Justice */
+main article.story {
+    #meet_justice {
+        h2 {
+            font-family: $font-sans-serif-condensed;
+            font-size: 44px;
+        }
+
+        .subheading {
+            font-style: italic;
+            font-size: 28px;
+            line-height: 1;
+            margin-top: -8px;
+        }
+
+        dl {
+            dt {
+                color: #00a2e3;
+                font-family: $font-sans-serif;
+                font-size: 23px;
+                font-weight: 600;
+                text-transform: uppercase;
+            }
+            dd {
+                padding-bottom: 7px;
+            }
+        }
+    }
+}
+
+/* Artistic Nature w/Egret */
+main article.story {
+    #stats {
+        margin-bottom: 20px;
+        margin-top: 0;
+        padding-top: 0;
+
+        p {
+            font-family: $font-sans-serif;
+            font-weight: 200;
+            font-size: 19px;
+            font-style: italic;
+            padding-right: 30px;
+            padding-left: 0;
+        }
+
+        hr {
+            border: 1px solid #000;
+            width: 760px;
+            margin-top: 8px;
+        }
+
+        .bigtext {
+            font-family: $font-sans-serif;
+            text-transform: uppercase;
+            font-size: 95px;
+            font-weight: 800;
+            text-align: left;
+            line-height: .65;
+            margin-bottom: 20px;
+            margin-top: 6px;
+            letter-spacing: -4px;
+            color: #0d7b88;
+
+
+            .smaller {
+                font-size: 50px;
+                font-weight: 600;
+                letter-spacing: 1px;
+            }
+        }
+        .col-md-5 {
+            padding: 0px;
+        }
+        .col-md-offset-1 {
+            border-right: solid 1px #000;
+            margin-right: 25px;
+            padding-right: 25px;
+
+            p {
+                padding-right: 0;
+                padding-left: 10px;
+                padding-bottom: 30px;
+            }
+
+            .bigtext {
+                color: #ffc904;
+                text-align: right;
+
+                .smaller {
+                    letter-spacing: 4px;
+                }
+            }
+        }
+    }
+}
+
+/* Artistic Nature w/Egret */
+main article.story {
+    #artistic_nature {
+        .content.inverse {
+            color: #fff;
+            background: #000;
+            position: relative;
+            padding: 5px 20px 20px;
+            height: 430px;
+            margin-top: 0;
+            width: 280px;
+            margin-left: -7px;
+
+            p {
+                width: 180px;
+            }
+        }
+
+        h2 {
+            font-family: $font-sans-serif-condensed;
+            letter-spacing: -1px;
+            line-height: 45px;
+            font-weight: 600;
+            color: #fff;
+            font-size: 53px;
+        }
+
+        .row {
+            padding-left: 20px;
+            padding-bottom: 0;
+            height: 432px;
+        }
+
+        img {
+            left: -93px;
+            position: absolute;
+            top: -15px;
+        }
+
+        .source {
+            position: absolute;
+            top: 375px;
+            left: 20px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .col-md-4 {
+            padding-left: 0;
+        }
+    }
+}
+
+/* Bottom Three articles */
+main article.story {
+    #bottom {
+        h2 {
+            font-family: $font-sans-serif-condensed;
+            font-size: 71px;
+            letter-spacing: 0px;
+
+            em {
+                color: #e98f71;
+                font-style: normal;
+            }
+        }
+
+        blockquote p {
+            font-size: 22px;
+            line-height: 1.6;
+        }
+
+
+        .data {
+            h2 {
+                font-size: 52px;
+                line-height: 1;
+            }
+        }
+
+        .fiea {
+            padding-left: 0;
+            border-bottom: 2px solid #000;
+        }
+
+        .new-leader {
+            position: relative;
+            top: -160px;
+
+            h2 {
+                font-family: $font-sans-serif-condensed;
+                font-size: 26px;
+                white-space: nowrap;
+            }
+            h3 {
+                font-family: $font-serif;
+                font-size: 14px;
+                font-weight: bold;
+                margin-top: 0;
+            }
+            ul {
+                padding: 0;
+                margin: 0;
+                font-size: 14px;
+
+                li {
+                    list-style-type: none;
+                    margin: 0;
+                }
+            }
+
+            .col-md-2 img {
+                margin-left: -8px;
+            }
+
+            .col-md-4 {
+                padding-left: 10px;
+            }
+        }
+
+        .source {
+            text-transform: capitalize;
+            font-size: 12px;
+        }
+
+        .row {
+            margin-left: 0;
+        }
+    }
+}
+
+/* Responsive */
+@media (max-width: 767px) {
+    main article {
+
+        &> .container {
+            margin-bottom: 0;
+        }
+
+        #briefs-header h1 {
+            font-size: 50px;
+            line-height: 1em;
+        }
+        .social-wrap {
+            padding-top: 10px;
+        }
+
+        &.story #stats {
+            hr {
+                width: 100%;
+            }
+
+                .col-xs-12 {
+                    padding-right: 0;
+                    .bigtext {
+                        letter-spacing: 0;
+                        text-align: center;
+
+                        .smaller {
+                            letter-spacing: 0;
+                            text-align: center;
+                        }
+                    }
+                    p {
+                        padding-right: 0;
+                        padding-left: 10px;
+                        padding-bottom: 30px;
+                        text-align: center;
+                    }
+                }
+
+            .col-md-offset-1 {
+                margin-right: auto;
+                padding-right: 0;
+                border-right: 0;
+            }
+        }
+
+        &.story #bottom .new-leader {
+            top: 0;
+            position: static;
+        }
+
+        &.story #artistic_nature {
+            .row {
+                padding-left: 10px;
+                height: auto;
+                padding-right: 0px;
+            }
+            .content.inverse {
+                width: auto;
+                margin: 0;
+                padding: 5px 15px;
+                height: auto;
+
+                p {
+                    width: 100%;
+                }
+
+                .source {
+                    position: static;
+                    top: auto;
+                    left: auto;
+                }
+            }
+            img {
+                left: auto;
+                position:static;
+                width: 100%;
+                top: auto;
+                margin: 0;
+            }
+            .col-md-5 {
+                padding-left: 0;
+            }
+        }
+
+    }
+}
