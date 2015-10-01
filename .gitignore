@@ -26,6 +26,9 @@ Thumbs.db
 # codekit
 **/.sass-cache/
 
+#gulp
+**/node_modules
+
 # visual studio code
 jsconfig.json
 **/typings

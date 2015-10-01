@@ -1,0 +1,123 @@
+$font-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+
+#wild-world-of-sports {
+
+	#header-img {
+		width: 100%;
+	}
+
+	h1 {
+		text-align: center;
+	}
+
+	h2 {
+		color: #898989;
+		font-family: $font-sans-serif;
+		font-size: 24px;
+		margin-top: 10px;
+		text-align: center;
+	}
+
+	.nav-tabs {
+			border: 0;
+		margin-top: 20px;
+
+		>li {
+			float: left;
+			text-align: center;
+
+			&.active {
+
+				a {
+					background-color: #a0dc16;
+					color: #000;
+				}
+			}
+
+			 a {
+				 background-color: #f4f4f4;
+				 color: #666;
+				 font-family: $font-sans-serif;
+				 font-size: 12px;
+				 text-transform: uppercase;
+
+				 &:hover {
+					background-color: darken(#f4f4f4, 10%);
+				 }
+			 }
+		}
+	}
+
+	.tab-content {
+		margin-bottom: 40px;
+
+		dt {
+			clear: left;
+			float: left;
+			font-family: $font-sans-serif;
+			text-transform: uppercase;
+			width: 180px;
+		}
+
+		dt:after {
+			content: ":";
+		}
+
+		dd {
+			margin: 0 0 0 180px;
+			padding: 0 0 1em 0;
+		}
+	}
+
+	#unusual-sports {
+		background-color: #a0dc16;
+		padding: 40px 0;
+
+		h3 {
+			font-family: $font-sans-serif;
+			font-size: 32px;
+			font-weight: 700;
+			margin: 0 0 25px;
+		}
+
+		h4 {
+			font-family: $font-sans-serif;
+			font-size: 20px;
+			font-weight: 700;
+			text-transform: uppercase;
+
+			&:not(:first-child) {
+				margin-top: 30px;
+			}
+		}
+
+		p {
+			font-family: $font-sans-serif;
+			font-size: 14px;
+		}
+
+		#img-container {
+			position: relative;
+
+			.img-title {
+				background-color: #000;
+				color: #fff;
+				font-family: $font-sans-serif;
+				font-size: 18px;
+				font-weight: 900;
+				left: 4%;
+				opacity: .8;
+				padding: 10px 13px;
+				position: absolute;
+				text-transform: uppercase;
+				top: 3%;
+			}
+		}
+
+		.img-caption {
+			font-size: 12px;
+		}
+
+	}
+
+}
