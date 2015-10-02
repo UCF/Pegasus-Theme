@@ -131,30 +131,8 @@ $sm-max: '768px';
       font-size: 14px;
     }
 
-    #img-container {
-      position: relative;
-
-      @media (max-width: $sm-max) {
-        margin-top: 30px;
-      }
-
-      .img-title {
-        background-color: #000;
-        color: #fff;
-        font-family: $font-sans-serif;
-        font-size: 18px;
-        font-weight: 900;
-        left: 4%;
-        opacity: .8;
-        padding: 10px 13px;
-        position: absolute;
-        text-transform: uppercase;
-        top: 3%;
-      }
-    }
-
-    .img-caption {
-      font-size: 12px;
+    .carousel-control {
+      background-image: none !important;
     }
   }
 }
