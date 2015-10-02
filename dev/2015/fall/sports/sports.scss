@@ -1,123 +1,160 @@
-$font-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-sans-serif: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
+$font-serif: 'Georgia', 'Times New Roman' , 'Times', serif;
+$sm-max: '768px';
 
 #wild-world-of-sports {
+  #header-img {
+    margin-top: 0;
+    width: 100%;
+  }
 
-	#header-img {
-		width: 100%;
-	}
+  h1 {
+    text-align: center;
+  }
 
-	h1 {
-		text-align: center;
-	}
+  h2 {
+    color: #898989;
+    font-family: $font-sans-serif;
+    font-size: 24px;
+    margin-top: 10px;
+    text-align: center;
 
-	h2 {
-		color: #898989;
-		font-family: $font-sans-serif;
-		font-size: 24px;
-		margin-top: 10px;
-		text-align: center;
-	}
+    @media (max-width: $sm-max) {
+      font-size: 18px;
+    }
 
-	.nav-tabs {
-			border: 0;
-		margin-top: 20px;
+  }
 
-		>li {
-			float: left;
-			text-align: center;
+  .nav-tabs {
+    border: 0;
+    margin-top: 20px;
 
-			&.active {
+    > li {
+      float: left;
+      text-align: center;
 
-				a {
-					background-color: #a0dc16;
-					color: #000;
-				}
-			}
+      &.active {
+        a,
+        :hover {
+          background-color: #a0dc16;
+          color: #000;
+        }
+      }
 
-			 a {
-				 background-color: #f4f4f4;
-				 color: #666;
-				 font-family: $font-sans-serif;
-				 font-size: 12px;
-				 text-transform: uppercase;
+      a {
+        background-color: #f4f4f4;
+        color: #666;
+        font-family: $font-sans-serif;
+        font-size: 12px;
+        text-transform: uppercase;
 
-				 &:hover {
-					background-color: darken(#f4f4f4, 10%);
-				 }
-			 }
-		}
-	}
+        &:hover {
+          background-color: darken(#f4f4f4, 10%);
+        }
+      }
+    }
+  }
 
-	.tab-content {
-		margin-bottom: 40px;
+  .tab-content {
+    margin-bottom: 40px;
 
-		dt {
-			clear: left;
-			float: left;
-			font-family: $font-sans-serif;
-			text-transform: uppercase;
-			width: 180px;
-		}
+    dt {
+      clear: left;
+      float: left;
+      font-family: $font-sans-serif;
+      text-transform: uppercase;
+      width: 180px;
+    }
 
-		dt:after {
-			content: ":";
-		}
+    dd {
+      font-family: $font-serif;
+      margin: 0 0 0 180px;
+      padding: 0 0 1em;
+    }
+  }
 
-		dd {
-			margin: 0 0 0 180px;
-			padding: 0 0 1em 0;
-		}
-	}
+  .panel-group {
 
-	#unusual-sports {
-		background-color: #a0dc16;
-		padding: 40px 0;
+    a {
+      display: inline-block;
+      width: 100%;
 
-		h3 {
-			font-family: $font-sans-serif;
-			font-size: 32px;
-			font-weight: 700;
-			margin: 0 0 25px;
-		}
+      &:hover,
+      &:focus {
+        text-decoration: none;
+      }
+    }
 
-		h4 {
-			font-family: $font-sans-serif;
-			font-size: 20px;
-			font-weight: 700;
-			text-transform: uppercase;
+    dl {
+      margin-bottom: 0;
+    }
 
-			&:not(:first-child) {
-				margin-top: 30px;
-			}
-		}
+    dd {
+      margin: 0 0 20px;
+      padding: 0;
+    }
+  }
 
-		p {
-			font-family: $font-sans-serif;
-			font-size: 14px;
-		}
+  #unusual-sports {
+    background-color: #a0dc16;
+    padding: 40px 0;
 
-		#img-container {
-			position: relative;
+    h3 {
+      font-family: $font-sans-serif;
+      font-size: 32px;
+      font-weight: 700;
+      margin: 0 0 25px;
 
-			.img-title {
-				background-color: #000;
-				color: #fff;
-				font-family: $font-sans-serif;
-				font-size: 18px;
-				font-weight: 900;
-				left: 4%;
-				opacity: .8;
-				padding: 10px 13px;
-				position: absolute;
-				text-transform: uppercase;
-				top: 3%;
-			}
-		}
+      @media (max-width: $sm-max) {
+        font-size: 26px;
+      }
 
-		.img-caption {
-			font-size: 12px;
-		}
+    }
 
-	}
+    h4 {
+      font-family: $font-sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
 
+      @media (max-width: $sm-max) {
+        font-size: 18px;
+      }
+
+      &:not(:first-child) {
+        margin-top: 30px;
+      }
+    }
+
+    p {
+      font-family: $font-sans-serif;
+      font-size: 14px;
+    }
+
+    #img-container {
+      position: relative;
+
+      @media (max-width: $sm-max) {
+        margin-top: 30px;
+      }
+
+      .img-title {
+        background-color: #000;
+        color: #fff;
+        font-family: $font-sans-serif;
+        font-size: 18px;
+        font-weight: 900;
+        left: 4%;
+        opacity: .8;
+        padding: 10px 13px;
+        position: absolute;
+        text-transform: uppercase;
+        top: 3%;
+      }
+    }
+
+    .img-caption {
+      font-size: 12px;
+    }
+  }
 }
