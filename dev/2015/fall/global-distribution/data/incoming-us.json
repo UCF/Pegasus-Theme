@@ -1,12 +1,12 @@
 {
-    "maxValue": 250,
-    "focus": {
-      "lat": 38.738565, 
-      "lng": -98.737915
-    },
-    "zoom": 4,
-    "data": [
-  {
+  "maxValue": 250,
+  "focus": {
+    "lat": 38.738565, 
+    "lng": -98.737915
+  },
+  "zoom": 4,
+  "data": [
+    {
     "name": "California",
     "geometry": {
       "type": "MultiPolygon",

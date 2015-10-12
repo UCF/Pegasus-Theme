@@ -1,24 +1,34 @@
-#map {
-	width: 100%;
+
+.global-distribution {
+	background: #5f7a88;
+	color: #fff !important;
 }
 
-h1 {
+.global-distribution h1 {
+	color: #fff !important;
+	font-size: 36px;
+	font-style: italic;
 	font-weight: 700;
 }
 
-#info-window.active {
+.global-distribution #info-window.active {
 	background: #efefef;
 	padding: 10px 25px;
 }
 
-#name { 
+.global-distribution #map {
+	margin-bottom: 40px;
+	width: 100%;
+}
+
+.global-distribution #name { 
 	color: #000;
 	font-weight: 700;
 	font-size: 24px;
 	text-align: center;
 }
 
-#count {
+.global-distribution #count {
 	color: #c90;
 	font-weight: 700;
 	font-size: 36px;

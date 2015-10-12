@@ -27,6 +27,11 @@ function InformationControl(controlDiv, map) {
 	controlDiv.appendChild(infoWindow);
 }
 
+function InformationList(controlDiv, map) {
+	var infoWindow = document.createElement('div');
+	infoWindow.id = 'info-list';
+}
+
 var main = function() {
 	var mapScript = document.createElement('script');
   mapScript.type = "text/javascript"; 
@@ -38,11 +43,11 @@ var main = function() {
 };
 
 var setMapSize = function() {
+	container.style.width = '1024px';
 	container.style.height = container.offsetWidth / 16 * 9 + "px";
 };
 
 var initialize = function() {
-	orlando = { lat: 28.601919, lng: -81.200103 };
 
 	var $container = $('#map');
 	var incWorldPath = $container.attr('data-inc-world');
@@ -75,15 +80,27 @@ var initialize = function() {
 };
 
 var preparePolys = function(data) {
-	var lineSymbol = {
-    path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
-  };
 
   var maxValue = data.maxValue;
-
   var focus = data.focus;
-	console.log(focus);
 	data.focus = new google.maps.LatLng(focus.lat, focus.lng);
+
+	// Sort by count and reverse
+	data.data.sort(function(a,b) {
+		return a.count - b.count
+	});
+
+	data.data.reverse();
+
+	data.topten = [];
+
+	for (var r = 0; r < 10; r++) {
+		if (data.data[r].name !== 'Florida' && data.data[r].name !== 'United States') {
+			data.topten.push(data.data[r]);
+		}
+	}
+
+	createTables(data.topten);
 
 	for(var r in data.data) {
 		var record = data.data[r];
@@ -141,8 +158,15 @@ var preparePolys = function(data) {
 	return data;
 };
 
-var polyMouseOver = function(data) {
-	console.log(data);
+var createTables = function(data) {
+	var $list = $('<dl class="dl-horizontal"></dl>');
+
+	for(var d in data) {
+		var record = data[d];
+		$list.append('<dt>' + record.name + '</dt><dd>' + record.count + '</dd>');
+	}
+
+	$('#data-list').append($list);
 };
 
 // Thanks jfriend00 and AngryHacker
@@ -193,7 +217,7 @@ var setupMap = function() {
 	  },{
 	    "featureType": "water",
 	    "stylers": [
-	      { "color": "#ffffff" }
+	      { "color": "#4a6e7e" }
 	    ]
 	  }
 	];
