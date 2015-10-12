@@ -1055,6 +1055,15 @@ function allow_svgs( $mimes ) {
 }
 add_filter( 'upload_mimes', 'allow_svgs' );
 
+/**
+ * Allow JSON files in the Media Library
+ **/
+function allow_json( $mines ) {
+	$mimes['json'] = 'application/json';
+	return $mimes;
+}
+add_filter( 'upload_mimes', 'allow_json' );
+
 
 /**
  * Adds various allowed tags to WP's allowed tags list.

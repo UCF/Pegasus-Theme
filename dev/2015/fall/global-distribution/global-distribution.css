@@ -1,0 +1,26 @@
+#map {
+	width: 100%;
+}
+
+h1 {
+	font-weight: 700;
+}
+
+#info-window.active {
+	background: #efefef;
+	padding: 10px 25px;
+}
+
+#name { 
+	color: #000;
+	font-weight: 700;
+	font-size: 24px;
+	text-align: center;
+}
+
+#count {
+	color: #c90;
+	font-weight: 700;
+	font-size: 36px;
+	text-align: center;
+}
