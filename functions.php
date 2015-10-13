@@ -1058,7 +1058,7 @@ add_filter( 'upload_mimes', 'allow_svgs' );
 /**
  * Allow JSON files in the Media Library
  **/
-function allow_json( $mines ) {
+function allow_json( $mimes ) {
 	$mimes['json'] = 'application/json';
 	return $mimes;
 }
