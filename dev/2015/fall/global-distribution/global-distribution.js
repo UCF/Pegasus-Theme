@@ -3,14 +3,10 @@ var map,
 		outWorldData,
 		incUSData,
 		outUSData,
-		container;
-
-var activeLayer;
-
-var minColor = {r: 255, g: 255, b: 255};
-var maxColor = {r: 255, g: 204, b: 0};
-
-var orlando;
+		container,
+		activeLayer,
+		minColor = {r: 255, g: 255, b: 255},
+		maxColor = {r: 255, g: 204, b: 0};
 
 function InformationControl(controlDiv, map) {
 	var infoWindow = document.createElement('div');
@@ -27,11 +23,6 @@ function InformationControl(controlDiv, map) {
 	controlDiv.appendChild(infoWindow);
 }
 
-function InformationList(controlDiv, map) {
-	var infoWindow = document.createElement('div');
-	infoWindow.id = 'info-list';
-}
-
 var main = function() {
 	var mapScript = document.createElement('script');
   mapScript.type = "text/javascript"; 
@@ -43,7 +34,6 @@ var main = function() {
 };
 
 var setMapSize = function() {
-	container.style.width = '1024px';
 	container.style.height = container.offsetWidth / 16 * 9 + "px";
 };
 
@@ -58,28 +48,27 @@ var initialize = function() {
 	$.when(
 		$.getJSON(incWorldPath, function(data) {
 			incWorldData = data;
-			incWorldData = preparePolys(incWorldData);
+			incWorldData = preparePolys(incWorldData, 'incoming-world');
 		}),
 		$.getJSON(outWorldPath, function(data) {
 			outWorldData = data;
-			outWorldData = preparePolys(outWorldData);
+			outWorldData = preparePolys(outWorldData, 'outgoing-world');
 		}),
 		$.getJSON(incUSPath, function(data) {
 			incUSData = data;
-			incUSData = preparePolys(incUSData);
+			incUSData = preparePolys(incUSData, 'incoming-us');
 		}),
 		$.getJSON(outUSPath, function(data) {
 			outUSData = data;
-			outUSData = preparePolys(outUSData);
+			outUSData = preparePolys(outUSData, 'outgoing-us');
 		})
 	).then( function() {
 		activeLayer = outWorldData;
 		setupMap();
-		setupControls();
 	});
 };
 
-var preparePolys = function(data) {
+var preparePolys = function(data, dataset) {
 
   var maxValue = data.maxValue;
   var focus = data.focus;
@@ -100,7 +89,7 @@ var preparePolys = function(data) {
 		}
 	}
 
-	createTables(data.topten);
+	createTables(data.topten, dataset);
 
 	for(var r in data.data) {
 		var record = data.data[r];
@@ -145,8 +134,6 @@ var preparePolys = function(data) {
 				});
 
 				google.maps.event.addListener(poly, 'mouseout', function(e) {
-					$('#name').text('');
-					$('#count').text('');
 					$('#info-window').removeClass('active');
 				});
 
@@ -158,15 +145,13 @@ var preparePolys = function(data) {
 	return data;
 };
 
-var createTables = function(data) {
-	var $list = $('<dl class="dl-horizontal"></dl>');
+var createTables = function(data, dataset) {
+	var $list = $('#' + dataset + '-data');
 
-	for(var d in data) {
-		var record = data[d];
-		$list.append('<dt>' + record.name + '</dt><dd>' + record.count + '</dd>');
+	for (var i in data) {
+		$list.append('<dt>' + data[i].name + '</dt><dd>' + data[i].count + '</dd>');
 	}
 
-	$('#data-list').append($list);
 };
 
 // Thanks jfriend00 and AngryHacker
@@ -217,7 +202,7 @@ var setupMap = function() {
 	  },{
 	    "featureType": "water",
 	    "stylers": [
-	      { "color": "#4a6e7e" }
+	      { "color": "#5f7a88" }
 	    ]
 	  }
 	];
@@ -238,44 +223,59 @@ var setupMap = function() {
   map = new google.maps.Map(container,
           mapOptions);
 
- 	var infoControlDiv = document.createElement('div');
- 	var infoControl = new InformationControl(infoControlDiv, map);
-
- 	infoControlDiv.index = 1;
- 	map.controls[google.maps.ControlPosition.TOP_RIGHT].push(infoControlDiv);
+  setupControls();
 
   activeLayerDraw();
 
 };
 
 var setupControls = function() {
-	$('#map-navigation li').click(function(e) {
-		$('#map-navigation li').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-		var $nav = $(e.target);
-		var newMap = $nav.attr('data-map');
 
-		activeLayerDispose();
-		switch(newMap) {
-			case 'incoming-world':
-				activeLayer = incWorldData;
-				break;
-			case 'outgoing-world':
-				activeLayer = outWorldData;
-				break;
-			case 'incoming-us':
-				activeLayer = incUSData;
-				break;
-			case 'outgoing-us':
-				activeLayer = outUSData;
-				break;
-			default:
-				activeLayer = incWorldData;
-				break;
-		}
-		activeLayerDraw();
-	});
+	var infoControlDiv = document.createElement('div'),
+ 			infoControl = new InformationControl(infoControlDiv, map);
+
+ 	infoControlDiv.index = 1;
+ 	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(infoControlDiv);
+
+ 	$('#outgoing-world').click(toggleClickHandler);
+	$('#outgoing-us').click(toggleClickHandler);
+	$('#incoming-world').click(toggleClickHandler);
+	$('#incoming-us').click(toggleClickHandler);
+
+};
+
+var toggleClickHandler = function(e) {
+	e.preventDefault();
+
+	activeLayerDispose();
+	$('#data-list').children().hide();
+
+	var toggle = $(e.target).attr('data-map');
+	switch(toggle) {
+		case 'outgoing-world':
+		activeLayer = outWorldData;
+			$('#title-window').text('UCF Alumni Around the World');
+			$('#outgoing-world-data').show();
+			break;
+		case 'outgoing-us':
+			activeLayer = outUSData;
+			$('#title-window').text('UCF Alumni Around the USA');
+			$('#outgoing-us-data').show();
+			break;
+		case 'incoming-world':
+			activeLayer = incWorldData;
+			$('#title-window').text('Where our Future Alumni Come From');
+			$('#incoming-world-data').show();
+			break;
+		case 'incoming-us':
+			activeLayer = incUSData;
+			$('#title-window').text('Where our Future Alumni Come From');
+			$('#incoming-us-data').show();
+			break;
+	}
+
+	activeLayerDraw();
+
 };
 
 var activeLayerDraw = function() {
