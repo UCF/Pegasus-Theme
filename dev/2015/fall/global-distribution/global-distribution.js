@@ -7,7 +7,6 @@ var map,
 		outUSData,
 		container,
 		activeLayer,
-		orlando = { lat: 28.601756, lng: -81.200130 },
 		minColor = {r: 255, g: 255, b: 255},
 		maxColor = {r: 255, g: 204, b: 0};
 
@@ -19,9 +18,15 @@ var incoming = true,
 		us = false;
 
 var main = function() {
+
+	var scriptTag = document.createElement('script');
+	scriptTag.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=falsev=3.exp&callback=initialize';
+	scriptTag.type = 'text/javascript';
+
+	document.body.appendChild(scriptTag);
+
   container = document.getElementById('map');
   setMapSize();
-  initialize();
 };
 
 var setMapSize = function() {
@@ -334,25 +339,9 @@ var draw = function(marker, infoWindow) {
 	infoWindow.open(map, marker);
 };
 
-var svgtest = function() {
-	$('#ig1').load('http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/Pegasus%20Infographic%20v3.svg', function() {
-		var elements = document.getElementsByTagNameNS('*', 'svg');
-		var $element = $(elements[0]);
-		$element.find('#country-labels g').hover(function(event) {
-			console.log(this);
-		});
-	});
-	$('#ig2').load('http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/Pegasus%20Infographic%20USA%20v3.svg');
-
-	$('svg').find('#country-labels').hover(function(e) {
-		console.log("Click!");
-	});
-};
-
 if (typeof jQuery !== 'undefined') {
 	$(document).ready(function($) {
 		main();
-		//svgtest($);
 	});
 } else {
 	console.log("No jQuery!");
