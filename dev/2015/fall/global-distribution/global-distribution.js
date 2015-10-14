@@ -7,6 +7,7 @@ var map,
 		outUSData,
 		container,
 		activeLayer,
+		orlando = { lat: 28.601756, lng: -81.200130 },
 		minColor = {r: 255, g: 255, b: 255},
 		maxColor = {r: 255, g: 204, b: 0};
 
@@ -18,13 +19,9 @@ var incoming = true,
 		us = false;
 
 var main = function() {
-	var mapScript = document.createElement('script');
-  mapScript.type = "text/javascript"; 
-  mapScript.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDY0kkJiTPVd2U7aTOAwhc9ySH6oHxOIYM&sensor=falsev=3.exp&callback=initialize";
-
-  document.body.appendChild(mapScript);
   container = document.getElementById('map');
   setMapSize();
+  initialize();
 };
 
 var setMapSize = function() {
@@ -85,18 +82,19 @@ var preparePolys = function(data, dataset) {
 		// Get the color of the record's polyshape.
 		var color = getFillColor(0, data.maxValue, record.count)
 
-		var iWindow = new google.maps.InfoWindow({
-			content: '<div class="name">' + record.name + '</div><div class="count">' + record.count + '</div>'
-		});
-
+		// Create marker and info window.
 		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(record.position.lat, record.position.lng),
+			position: record.position,
+			icon: 'http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/marker.png',
 			map: map,
-			icon: 'http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/marker.png'
 		});
 
-		record.infoWindow = iWindow;
+		var infoWindow = new google.maps.InfoWindow({
+			content: '<div class="name">' + record.name + '</div><div class="count">' + record.count + "</div>"
+		});
+
 		record.marker = marker;
+		record.infoWindow = infoWindow;
 
 		record.shapes = [];
 		var coords = record.geometry.coordinates;
@@ -115,17 +113,17 @@ var preparePolys = function(data, dataset) {
 			    strokeWeight: 1,
 			    fillColor: color.hex,
 			    fillOpacity: 1,
-			    infoWindow: iWindow,
-			    marker: marker
+			    marker: marker,
+			    infoWindow: infoWindow
 				});
 
 				google.maps.event.addListener(poly, 'mouseover', function(e) {
+					for(var r in activeLayer.data) {
+						activeLayer.data[r].infoWindow.close();
+					}
 					this.infoWindow.open(map, this.marker);
 				});
 
-				google.maps.event.addListener(poly, 'mouseout', function(e) {
-					this.infoWindow.close();
-				});
 
 				record.shapes.push(poly);
 			}
@@ -305,12 +303,17 @@ var activeLayerDraw = function() {
 
 
 	for(var r in activeLayer.data) {
-		console.log("Drawing");
+		if (topten) {
+			var marker = activeLayer.data[r].marker;
+			var infoWindow = activeLayer.data[r].infoWindow;
+
+			var time = (r + 1) * 15;
+			console.log(time);
+			setTimeout(draw, time, marker, infoWindow);
+		}
+
 		for (var s in activeLayer.data[r].shapes) {
 			activeLayer.data[r].shapes[s].setMap(map);
-			if (topten) {
-				activeLayer.data[r].infoWindow.open(map, activeLayer.data[r].marker);
-			}
 		}
 	}
 
@@ -327,9 +330,29 @@ var activeLayerDispose = function() {
 	}
 };
 
+var draw = function(marker, infoWindow) {
+	infoWindow.open(map, marker);
+};
+
+var svgtest = function() {
+	$('#ig1').load('http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/Pegasus%20Infographic%20v3.svg', function() {
+		var elements = document.getElementsByTagNameNS('*', 'svg');
+		var $element = $(elements[0]);
+		$element.find('#country-labels g').hover(function(event) {
+			console.log(this);
+		});
+	});
+	$('#ig2').load('http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/Pegasus%20Infographic%20USA%20v3.svg');
+
+	$('svg').find('#country-labels').hover(function(e) {
+		console.log("Click!");
+	});
+};
+
 if (typeof jQuery !== 'undefined') {
 	$(document).ready(function($) {
 		main();
+		//svgtest($);
 	});
 } else {
 	console.log("No jQuery!");
