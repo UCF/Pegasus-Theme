@@ -9,46 +9,25 @@
         <p>Based on data from the UCF Alumni Association and Insitutional Knowledge Management, these graphics depict the number of students that come from the United States and abroad to attend UCF and then settle in or around the world after graduation.</p>
         <div class="btn-group btn-group-justified">
         	<div class="btn-group">
-        		<a id="outgoing-world" href="#" class="btn btn-primary" data-map="outgoing-world">International Alumni</a>
+        		<a href="#" class="btn btn-primary active map-control" data-toggle="incoming">Where Knights Come From</a>
         	</div>
         	<div class="btn-group">
-        		<a id="outgoing-us" href="#" class="btn btn-primary" data-map="outgoing-us">U.S. Alumni</a>
-        	</div>
-        	<div class="btn-group">
-        		<a id="incoming-world" href="#" class="btn btn-primary" data-map="incoming-world">Incoming International Students</a>
-        	</div>
-        	<div class="btn-group">
-        		<a id="incoming-us" href="#" class="btn btn-primary" data-map="incoming-us">Incoming U.S. Students</a>
+        		<a href="#" class="btn btn-primary map-control" data-toggle="outgoing">Where Knights Go</a>
         	</div>
         </div>
+        <div class="btn-group btn-group-justified">
+            <div class="btn-group">
+                <a href="#" class="btn btn-success active map-control" data-toggle="topten">Top Ten</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-success map-control" data-toggle="world">International</a>
+            </div>
+            <div class="btn-group">
+                <a href="#" class="btn btn-success map-control" data-toggle="us">U.S.A.</a>
+            </div>
+        </div>
         <h2 id="title-window">UCF Alumni Around the World</h2>
-		<div id="map" data-inc-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-us.json" data-out-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-us.json" data-inc-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-world.json" data-out-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-world.json">
-		</div>
-		<div class="row">
-            <div class="col-md-3">
-                <h3>International Alumni</h3>
-    			<dl id="outgoing-world-data" class="dl-horizontal">
-
-    			</dl>
-            </div>
-            <div class="col-md-3">
-                <h3>U.S. Alumni</h3>
-    			<dl id="outgoing-us-data" class="dl-horizontal">
-
-    			</dl>
-            </div>
-            <div class="col-md-3">
-                <h3>Incoming International Students</h3>
-    			<dl id="incoming-world-data" class="dl-horizontal">
-
-    			</dl>
-            </div>
-            <div class="col-md-3">
-                <h3>Incoming U.S. Students</h3>
-    			<dl id="incoming-us-data" class="dl-horizontal">
-
-    			</dl>
-            </div>
+		<div id="map" data-inc-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-us.json" data-out-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-us.json" data-inc-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-world.json" data-out-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-world.json" data-marker-img="[image filename='marker']">
 		</div>
 	</div>
 </article>

@@ -1,4 +1,6 @@
 var map,
+		incTopTen,
+		outTopTen,
 		incWorldData,
 		outWorldData,
 		incUSData,
@@ -8,20 +10,12 @@ var map,
 		minColor = {r: 255, g: 255, b: 255},
 		maxColor = {r: 255, g: 204, b: 0};
 
-function InformationControl(controlDiv, map) {
-	var infoWindow = document.createElement('div');
-	infoWindow.id = 'info-window';
-
-	var name = document.createElement('div');
-	name.id = 'name';
-
-	var count = document.createElement('div');
-	count.id = 'count';
-
-	infoWindow.appendChild(name);
-	infoWindow.appendChild(count);
-	controlDiv.appendChild(infoWindow);
-}
+// Global data set toggles
+var incoming = true,
+		outgoing = false,
+		topten = true,
+		world = false,
+		us = false;
 
 var main = function() {
 	var mapScript = document.createElement('script');
@@ -45,6 +39,8 @@ var initialize = function() {
 	var incUSPath = $container.attr('data-inc-us');
 	var outUSPath = $container.attr('data-out-us');
 
+	setupMap();
+
 	$.when(
 		$.getJSON(incWorldPath, function(data) {
 			incWorldData = data;
@@ -63,16 +59,18 @@ var initialize = function() {
 			outUSData = preparePolys(outUSData, 'outgoing-us');
 		})
 	).then( function() {
-		activeLayer = outWorldData;
-		setupMap();
+
+		// Prepare top ten data sets
+		incTopTen = getTopTen($.extend(true, {}, incWorldData));
+		outTopTen = getTopTen($.extend(true, {}, outWorldData));
+
+		setupControls();
+		activeLayerDraw();
 	});
 };
 
 var preparePolys = function(data, dataset) {
-
-  var maxValue = data.maxValue;
-  var focus = data.focus;
-	data.focus = new google.maps.LatLng(focus.lat, focus.lng);
+	data.focus = new google.maps.LatLng(data.focus.lat, data.focus.lng);
 
 	// Sort by count and reverse
 	data.data.sort(function(a,b) {
@@ -81,30 +79,24 @@ var preparePolys = function(data, dataset) {
 
 	data.data.reverse();
 
-	data.topten = [];
-
-	for (var r = 0; r < 10; r++) {
-		if (data.data[r].name !== 'Florida' && data.data[r].name !== 'United States') {
-			data.topten.push(data.data[r]);
-		}
-	}
-
-	createTables(data.topten, dataset);
-
 	for(var r in data.data) {
 		var record = data.data[r];
 
-		var count = 0;
-		if (record.count < 0) {
-			count = 0;
-		} else if (record.count > maxValue) {
-			count = maxValue;
-		} else {
-			count = record.count;
-		}
+		// Get the color of the record's polyshape.
+		var color = getFillColor(0, data.maxValue, record.count)
 
-		var percent = count / maxValue * 100;
-		var colorTable = getFillColor(minColor, maxColor, percent);
+		var iWindow = new google.maps.InfoWindow({
+			content: '<div class="name">' + record.name + '</div><div class="count">' + record.count + '</div>'
+		});
+
+		var marker = new google.maps.Marker({
+			position: new google.maps.LatLng(record.position.lat, record.position.lng),
+			map: map,
+			icon: 'http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/marker.png'
+		});
+
+		record.infoWindow = iWindow;
+		record.marker = marker;
 
 		record.shapes = [];
 		var coords = record.geometry.coordinates;
@@ -121,20 +113,18 @@ var preparePolys = function(data, dataset) {
 					strokeColor: '#c90',
 			    strokeOpacity: 0.8,
 			    strokeWeight: 1,
-			    fillColor: colorTable.hex,
+			    fillColor: color.hex,
 			    fillOpacity: 1,
-			    name: record.name,
-			    count: record.count
+			    infoWindow: iWindow,
+			    marker: marker
 				});
 
 				google.maps.event.addListener(poly, 'mouseover', function(e) {
-					$('#name').text(this.name);
-					$('#count').text(this.count);
-					$('#info-window').addClass('active');
+					this.infoWindow.open(map, this.marker);
 				});
 
 				google.maps.event.addListener(poly, 'mouseout', function(e) {
-					$('#info-window').removeClass('active');
+					this.infoWindow.close();
 				});
 
 				record.shapes.push(poly);
@@ -145,23 +135,32 @@ var preparePolys = function(data, dataset) {
 	return data;
 };
 
-var createTables = function(data, dataset) {
-	var $list = $('#' + dataset + '-data');
-
-	for (var i in data) {
-		$list.append('<dt>' + data[i].name + '</dt><dd>' + data[i].count + '</dd>');
+var getTopTen = function(data) {
+	retval = [];
+	for(var i = 0; i < 10; i++) {
+		retval.push(data.data[i]);
 	}
 
+	data.data = retval;
+
+	return data;
 };
 
 // Thanks jfriend00 and AngryHacker
 // http://stackoverflow.com/questions/8732401/how-to-figure-out-all-colors-in-a-gradient
-var getFillColor = function(minColor, maxColor, value) {
+var getFillColor = function(minValue, maxValue, value) {
+	if (value < 0) {
+		value = 0;
+	} else if (value > maxValue) {
+		value = maxValue;
+	}
+
+	var percent = value / maxValue * 100;
 
 	var newColor = {};
 
 	function makeChannel(a, b) {
-		return (a + Math.round((b-a)*(value/100)));
+		return (a + Math.round((b-a)*(percent/100)));
 	}
 
 	function makeColorPiece(num) {
@@ -204,6 +203,13 @@ var setupMap = function() {
 	    "stylers": [
 	      { "color": "#5f7a88" }
 	    ]
+	  },
+	  {
+	  	"featureType": "administrative",
+	  	"elementType": "geometry.fill",
+	  	"stylers": [
+	  		{ "visibility": "off" }
+	  	]
 	  }
 	];
 
@@ -223,54 +229,48 @@ var setupMap = function() {
   map = new google.maps.Map(container,
           mapOptions);
 
-  setupControls();
-
-  activeLayerDraw();
-
 };
 
 var setupControls = function() {
-
-	var infoControlDiv = document.createElement('div'),
- 			infoControl = new InformationControl(infoControlDiv, map);
-
- 	infoControlDiv.index = 1;
- 	map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(infoControlDiv);
-
- 	$('#outgoing-world').click(toggleClickHandler);
-	$('#outgoing-us').click(toggleClickHandler);
-	$('#incoming-world').click(toggleClickHandler);
-	$('#incoming-us').click(toggleClickHandler);
-
+ 	$('.map-control').click(toggleClickHandler);
 };
 
 var toggleClickHandler = function(e) {
 	e.preventDefault();
-
 	activeLayerDispose();
-	$('#data-list').children().hide();
 
-	var toggle = $(e.target).attr('data-map');
+	var toggle = $(e.target).attr('data-toggle');
 	switch(toggle) {
-		case 'outgoing-world':
-		activeLayer = outWorldData;
+		case 'outgoing':
+			outgoing = true;
+			incoming = false;
+			activeLayer = outWorldData;
 			$('#title-window').text('UCF Alumni Around the World');
-			$('#outgoing-world-data').show();
 			break;
-		case 'outgoing-us':
+		case 'incoming':
+			outgoing = false;
+			incoming = true;
 			activeLayer = outUSData;
 			$('#title-window').text('UCF Alumni Around the USA');
-			$('#outgoing-us-data').show();
 			break;
-		case 'incoming-world':
+		case 'topten':
+			topten = true;
+			world = false;
+			us = false;
 			activeLayer = incWorldData;
 			$('#title-window').text('Where our Future Alumni Come From');
-			$('#incoming-world-data').show();
 			break;
-		case 'incoming-us':
+		case 'world':
+			topten = false;
+			world = true;
+			us = false;
 			activeLayer = incUSData;
 			$('#title-window').text('Where our Future Alumni Come From');
-			$('#incoming-us-data').show();
+			break;
+		case 'us':
+			topten = false;
+			world = false;
+			us = true;
 			break;
 	}
 
@@ -279,9 +279,38 @@ var toggleClickHandler = function(e) {
 };
 
 var activeLayerDraw = function() {
+	if (incoming) {
+		if (topten) {
+			activeLayer = incTopTen;
+		} else if (world) {
+			activeLayer = incWorldData;
+		} else if (us) {
+			activeLayer = incUSData;
+		} else {
+			activeLayer = incTopTen;
+		}
+	} else if (outgoing) {
+		if (topten) {
+			activeLayer = outTopTen;
+		} else if (world) {
+			activeLayer = outWorldData;
+		} else if (us) {
+			activeLayer = outUSData;
+		} else {
+			activeLayer = outTopTen;
+		}
+	} else {
+		activeLayer = incTopTen;
+	}
+
+
 	for(var r in activeLayer.data) {
+		console.log("Drawing");
 		for (var s in activeLayer.data[r].shapes) {
 			activeLayer.data[r].shapes[s].setMap(map);
+			if (topten) {
+				activeLayer.data[r].infoWindow.open(map, activeLayer.data[r].marker);
+			}
 		}
 	}
 
@@ -291,6 +320,7 @@ var activeLayerDraw = function() {
 
 var activeLayerDispose = function() {
 	for(var r in activeLayer.data) {
+		activeLayer.data[r].infoWindow.close();
 		for (var s in activeLayer.data[r].shapes) {
 			activeLayer.data[r].shapes[s].setMap(null);
 		}

@@ -42,7 +42,6 @@
 }
 
 #info-window.active {
-  
   opacity: 1;
 }
 
@@ -54,22 +53,23 @@
 }
 
 #map {
+  /*background-image: radial-gradient(rgba(230,230,230,1), rgba(230,230,230,0.01));*/
   margin-bottom: 40px;
   text-align: center;
   width: 100%;
 }
-#name { 
+.name { 
   color: #000;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 12px;
   text-align: center;
 }
 
-#count {
+.count {
   color: #c90;
   display: inline-block;
   font-weight: 700;
-  font-size: 36px;
+  font-size: 16px;
   text-align: center;
 }
 
