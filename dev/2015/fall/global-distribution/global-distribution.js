@@ -17,6 +17,9 @@ var incoming = true,
 		world = false,
 		us = false;
 
+// Variable for storing map styles.
+var styles = [];
+
 var main = function() {
 
 	var scriptTag = document.createElement('script');
@@ -129,6 +132,12 @@ var preparePolys = function(data, dataset) {
 					this.infoWindow.open(map, this.marker);
 				});
 
+				google.maps.event.addListener(poly, 'click', function(e) {
+					for(var r in activeLayer.data) {
+						activeLayer.data[r].infoWindow.close();
+					}
+					this.infoWindow.open(map, this.marker);
+				});
 
 				record.shapes.push(poly);
 			}
@@ -188,7 +197,13 @@ var getFillColor = function(minValue, maxValue, value) {
 var setupMap = function() {
 	var center = new google.maps.LatLng(0,0);
 
-	var styles = [
+	styles = [
+		{
+	    featureType: "water",
+	    stylers: [
+	      { color: "#5f7a88" }
+	    ]
+	  },
 	  {
 	    featureType: "all",
 	    elementType: "labels",
@@ -197,21 +212,16 @@ var setupMap = function() {
 	    ]
 	  },
 	  {
-	    "featureType": "landscape",
-	    "stylers": [
-	      { "color": "#efefef" }
-	    ]
-	  },{
-	    "featureType": "water",
-	    "stylers": [
-	      { "color": "#5f7a88" }
+	    featureType: "landscape",
+	    stylers: [
+	      { color: "#acacac" }
 	    ]
 	  },
 	  {
-	  	"featureType": "administrative",
-	  	"elementType": "geometry.fill",
-	  	"stylers": [
-	  		{ "visibility": "off" }
+	  	featureType: "administrative",
+	  	elementType: "geometry.fill",
+	  	stylers: [
+	  		{ visibility: "off" }
 	  	]
 	  }
 	];
@@ -245,32 +255,38 @@ var toggleClickHandler = function(e) {
 	var toggle = $(e.target).attr('data-toggle');
 	switch(toggle) {
 		case 'outgoing':
+			$('#bucket-controls-container').find('.map-control').removeClass('active');
+			$(e.target).addClass('active');
 			outgoing = true;
 			incoming = false;
 			activeLayer = outWorldData;
-			$('#title-window').text('UCF Alumni Around the World');
 			break;
 		case 'incoming':
+			$('#bucket-controls-container').find('.map-control').removeClass('active');
+			$(e.target).addClass('active');
 			outgoing = false;
 			incoming = true;
 			activeLayer = outUSData;
-			$('#title-window').text('UCF Alumni Around the USA');
 			break;
 		case 'topten':
+			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$(e.target).addClass('active');
 			topten = true;
 			world = false;
 			us = false;
 			activeLayer = incWorldData;
-			$('#title-window').text('Where our Future Alumni Come From');
 			break;
 		case 'world':
+			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$(e.target).addClass('active');
 			topten = false;
 			world = true;
 			us = false;
 			activeLayer = incUSData;
-			$('#title-window').text('Where our Future Alumni Come From');
 			break;
 		case 'us':
+			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$(e.target).addClass('active');
 			topten = false;
 			world = false;
 			us = true;
@@ -282,6 +298,7 @@ var toggleClickHandler = function(e) {
 };
 
 var activeLayerDraw = function() {
+	// Determine active layer.
 	if (incoming) {
 		if (topten) {
 			activeLayer = incTopTen;
@@ -306,6 +323,19 @@ var activeLayerDraw = function() {
 		activeLayer = incTopTen;
 	}
 
+	if (incoming) {
+		$('#map-container').addClass('incoming').removeClass('outgoing');
+		$('#bucket-controls-container').addClass('incoming').removeClass('outgoing');
+		$('#arrow-up').addClass('incoming').removeClass('outgoing');
+		styles[0].stylers[0].color = '#496e7e';
+	} else {
+		$('#map-container').removeClass('incoming').addClass('outgoing');
+		$('#bucket-controls-container').removeClass('incoming').addClass('outgoing');
+		$('#arrow-up').removeClass('incoming').addClass('outgoing');
+		styles[0].stylers[0].color = '#fef5ec';
+	}
+
+	map.setOptions({styles:styles});
 
 	for(var r in activeLayer.data) {
 		if (topten) {
@@ -313,7 +343,6 @@ var activeLayerDraw = function() {
 			var infoWindow = activeLayer.data[r].infoWindow;
 
 			var time = (r + 1) * 15;
-			console.log(time);
 			setTimeout(draw, time, marker, infoWindow);
 		}
 
