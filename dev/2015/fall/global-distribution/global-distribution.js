@@ -326,12 +326,12 @@ var activeLayerDraw = function() {
 	if (incoming) {
 		$('#map-container').addClass('incoming').removeClass('outgoing');
 		$('#bucket-controls-container').addClass('incoming').removeClass('outgoing');
-		$('#arrow-up').addClass('incoming').removeClass('outgoing');
+		$('.pointer').addClass('incoming').removeClass('outgoing');
 		styles[0].stylers[0].color = '#496e7e';
 	} else {
 		$('#map-container').removeClass('incoming').addClass('outgoing');
 		$('#bucket-controls-container').removeClass('incoming').addClass('outgoing');
-		$('#arrow-up').removeClass('incoming').addClass('outgoing');
+		$('.pointer').removeClass('incoming').addClass('outgoing');
 		styles[0].stylers[0].color = '#fef5ec';
 	}
 
