@@ -30,10 +30,19 @@ var main = function() {
 
   container = document.getElementById('map');
   setMapSize();
+
+  $(window).on('resize', function() {
+  	setMapSize();
+  });
 };
 
 var setMapSize = function() {
-	container.style.height = container.offsetWidth / 16 * 9 + "px";
+	var $width = $(window).width();
+	if ($width > 768) {
+		container.style.height = container.offsetWidth / 16 * 9 + "px";
+	} else {
+		container.style.height = container.offsetWidth / 4 * 3 + "px";
+	}
 };
 
 var initialize = function() {
@@ -205,16 +214,16 @@ var setupMap = function() {
 	    ]
 	  },
 	  {
+	    featureType: "landscape",
+	    stylers: [
+	      { color: "#acacac" }
+	    ]
+	  },
+	  {
 	    featureType: "all",
 	    elementType: "labels",
 	    stylers: [
 	      { visibility: "off" }
-	    ]
-	  },
-	  {
-	    featureType: "landscape",
-	    stylers: [
-	      { color: "#acacac" }
 	    ]
 	  },
 	  {
@@ -227,7 +236,7 @@ var setupMap = function() {
 	];
 
   var mapOptions = {
-    mapTypeId: google.maps.MapTypeId.TERRAIN,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
     scrollwheel: true,
     navigationControl: false,
     mapTypeControl: false,
@@ -253,6 +262,7 @@ var toggleClickHandler = function(e) {
 	activeLayerDispose();
 
 	var toggle = $(e.target).attr('data-toggle');
+	console.log(toggle);
 	switch(toggle) {
 		case 'outgoing':
 			$('#bucket-controls-container').find('.map-control').removeClass('active');
@@ -324,15 +334,13 @@ var activeLayerDraw = function() {
 	}
 
 	if (incoming) {
-		$('#map-container').addClass('incoming').removeClass('outgoing');
-		$('#bucket-controls-container').addClass('incoming').removeClass('outgoing');
-		$('.pointer').addClass('incoming').removeClass('outgoing');
+		$('#map-container, #bucket-controls-container, .pointer, .data-set-controls').addClass('incoming').removeClass('outgoing');
 		styles[0].stylers[0].color = '#496e7e';
+		styles[1].stylers[0].color = '#ffffff';
 	} else {
-		$('#map-container').removeClass('incoming').addClass('outgoing');
-		$('#bucket-controls-container').removeClass('incoming').addClass('outgoing');
-		$('.pointer').removeClass('incoming').addClass('outgoing');
+		$('#map-container, #bucket-controls-container, .pointer, .data-set-controls').removeClass('incoming').addClass('outgoing');
 		styles[0].stylers[0].color = '#fef5ec';
+		styles[1].stylers[0].color = '#1e4b68';
 	}
 
 	map.setOptions({styles:styles});
