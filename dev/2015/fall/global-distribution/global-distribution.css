@@ -15,6 +15,10 @@
   font-family: "Archer A","Archer B",serif !important;
 }
 
+.data-description {
+  font-size: 24px !important;
+}
+
 .infographics {
   position: relative;
   top: -60px;
