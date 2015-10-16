@@ -12,7 +12,7 @@ $sm-max: '768px';
     text-align: center;
   }
 
-  h2 {
+  .sub-heading {
     color: #898989;
     font-family: $font-sans-serif;
     font-size: 24px;
@@ -77,6 +77,7 @@ $sm-max: '768px';
 
     a {
       display: inline-block;
+      font-size: 20px;
       width: 100%;
 
       &:hover,
@@ -89,9 +90,12 @@ $sm-max: '768px';
       margin-bottom: 0;
     }
 
-    dd {
-      margin: 0 0 20px;
-      padding: 0;
+    dt:not(:first-child) {
+      margin: 20px 0 0;
+
+      dd {
+        padding: 0;
+      }
     }
   }
 
@@ -99,7 +103,7 @@ $sm-max: '768px';
     background-color: #a0dc16;
     padding: 40px 0;
 
-    h3 {
+    h2 {
       font-family: $font-sans-serif;
       font-size: 32px;
       font-weight: 700;
@@ -111,7 +115,7 @@ $sm-max: '768px';
 
     }
 
-    h4 {
+    h3 {
       font-family: $font-sans-serif;
       font-size: 20px;
       font-weight: 700;
@@ -129,6 +133,10 @@ $sm-max: '768px';
     p {
       font-family: $font-sans-serif;
       font-size: 14px;
+    }
+
+    a.carousel-control {
+      filter: none !important;
     }
 
     .carousel-control {
