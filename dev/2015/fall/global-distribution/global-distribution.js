@@ -258,6 +258,9 @@ var setupMap = function() {
 
 var setupControls = function() {
  	$('.map-control').click(toggleClickHandler);
+ 	$('.modal').click(function(e) {
+ 		$('.modal').modal('hide');
+ 	});
 };
 
 var toggleClickHandler = function(e) {
@@ -266,8 +269,10 @@ var toggleClickHandler = function(e) {
 
 	var toggle = $(e.target).attr('data-toggle');
 
-	var $bucketControls = $('#bucket-controls-container').find('.map-control');
-	var $dataSetControls = $('#data-set-control-container').find('.map-control');
+	var $bucketControls = $('.bucket-controls-container').find('.map-control');
+	var $dataSetControls = $('.data-set-controls').find('.map-control');
+
+	console.log($dataSetControls);
 
 	switch(toggle) {
 		case 'outgoing':

@@ -5,13 +5,23 @@ $primary: #496e7e;
 $primary-dark: #3f5058;
 $active-blue: #6bcbdb;
 $active-blue-dark: #124B54;
-$ucf-metal-gold: #fc0;
+$ucf-gold: #fc0;
+$ucf-metal-gold: #c90;
 $nav-focus: #3f5058;
 
 article.story {
   &.global-distribution {
     background: $primary;
     font-family: "Archer A","Archer B",serif;
+
+    .lead {
+      font-size: 28px;
+      line-height: 32px;
+
+      &::first-letter {
+        font-size: 88px;
+      }
+    }
 
     h1 {
       color: $white;
@@ -39,12 +49,13 @@ article.story {
     }
 
     .data-description {
-      font-size: 24px;
+      font-size: 20px;
+      line-height: 28px;
     }
 
     .infographics {
       position: relative;
-      top: -60px;
+      top: -74px;
 
       @media (max-width: 991px) {
         position: inherit;
@@ -89,7 +100,7 @@ article.story {
 
         .map-control {
           color: $off-white-dark;
-          font-size: 28px;
+          font-size: 24px;
           font-style: italic;
           margin: 8px 0;
           text-transform: uppercase;
@@ -155,6 +166,10 @@ article.story {
 
         .data-set-controls li a {
           color: $white;
+
+          &.active {
+            color: $ucf-gold;
+          }
         }
       }
 
@@ -169,6 +184,10 @@ article.story {
 
         .data-set-controls li a {
           color: $primary;
+
+          &.active {
+            color: $ucf-metal-gold;
+          }
         }
       }
     }
@@ -186,7 +205,7 @@ article.story {
       }
 
       .count {
-        color: $ucf-metal-gold;
+        color: $ucf-gold;
         display: inline-block;
         font-size: 16px;
         font-weight: 700;
