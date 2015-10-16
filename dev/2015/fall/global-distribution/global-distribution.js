@@ -40,7 +40,7 @@ var main = function() {
 var setMapSize = function() {
 	var width = $(window).width();
 	if (width > 768) {
-		container.style.height = container.offsetWidth / 16 * 9 + 'px';
+		container.style.height = container.offsetWidth / 16 * 10 + 'px';
 	} else {
 		container.style.height = container.offsetWidth / 4 * 3 + 'px';
 	}
@@ -207,7 +207,7 @@ var getFillColor = function(minValue, maxValue, value) {
 };
 
 var setupMap = function() {
-	var center = new google.maps.LatLng(0,0);
+	var center = new google.maps.LatLng(30,0);
 
 	styles = [
 		{
