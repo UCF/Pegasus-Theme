@@ -247,6 +247,10 @@
 }
 
 /* Nav Tabs */
+.nav.nav-tabs {
+  margin-bottom: 0;
+}
+
 .nav.nav-tabs>li>a {
   border-bottom: 1px solid #6bcbdb;
   color: #fff;
@@ -268,11 +272,15 @@
 .nav-tabs.nav-justified>.active>a:hover, 
 .nav-tabs.nav-justified>.active>a:focus {
   border: 1px solid #6bcbdb;
-  border-bottom: 1px solid #6bcbdb;
+  border-bottom: 0;
 }
 
 .nav-tabs.nav-justified>li.active>a {
-  border-bottom: 1px solid #6bcbdb;
+  border-bottom: 0;
+}
+
+.tab-content {
+  padding: 20px 24px;
 }
 
 /* .modal-fullscreen */
