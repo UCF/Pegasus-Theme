@@ -20,6 +20,13 @@
   top: -60px;
 }
 
+@media(max-width: 991px) {
+  .infographics {
+    position: inherit;
+    top: 0;
+  }
+}
+
 .infographic {
   cursor: pointer;
 }
@@ -27,21 +34,6 @@
 .image-caption {
   font-size: 12px !important;
   text-align: center;
-}
-
-.data-well {
-  background: #66878f; 
-  border: 1px solid #607b89;
-  box-shadow: 2px 2px 2px #92cabd;
-  padding: 12px 24px;
-  position: relative;
-  top: -24px;
-}
-
-.well-text {
-  color: #fff;
-  font-size: 18px !important;
-  margin-bottom: 0;
 }
 
 .pointer {
@@ -272,7 +264,8 @@
 
 .nav.nav-tabs>li>a:hover {
   background: #124B54;
-  border: 1px solid #6bcbdb;
+  border: 0;
+  border-bottom: 1px solid #6bcbdb;
 }
 
 .nav-tabs>li.active>a,
