@@ -158,6 +158,14 @@ function v3_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 		$allowedposttags['h3'] = array(
 			'data-elevation-image' => true
 		);
+
+		$allowedposttags['div'] = array(
+			'data-inc-us' => true,
+			'data-inc-world' => true,
+			'data-out-us' => true,
+			'data-out-world' => true,
+			'data-marker-img' => true
+		);
 	}
 	return $allowedposttags;
 }

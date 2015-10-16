@@ -982,26 +982,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2012\/fall\/not-simply-red\/not-simply-read.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-read.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2012\/fall\/not-simply-red\/not-simply-read.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-read.js",
-		"outputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-read.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
 	"\/dev\/2012\/fall\/not-simply-red\/not-simply-red.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -1010,6 +990,26 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2012\/fall\/not-simply-red\/not-simply-red.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-red.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2012\/fall\/not-simply-red\/not-simply-red.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-red.js",
+		"outputAbbreviatedPath": "\/dev\/2012\/fall\/not-simply-red\/not-simply-red.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
 		},
 	"\/dev\/2012\/fall\/red-state-blue-state\/img\/button-obama.png": {
 		"fileType": 32768,
@@ -2063,30 +2063,30 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/alumknights\/alumni-profiles.css": {
+	"\/dev\/2013\/fall\/alumknights\/alumknights.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumni-profiles.css",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumknights.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/alumknights\/alumni-profiles.html": {
+	"\/dev\/2013\/fall\/alumknights\/alumknights.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumni-profiles.html",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumknights.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/alumknights\/alumni-profiles.js": {
+	"\/dev\/2013\/fall\/alumknights\/alumknights.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumni-profiles.js",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumni-profiles.js",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumknights.js",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/alumknights\/alumknights.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -2268,53 +2268,53 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/back-in-the-day\/ftus-first-and-last-homecoming-queen.css": {
+	"\/dev\/2013\/fall\/back-in-the-day-fall2013\/back-in-the-day-fall2013.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/ftus-first-and-last-homecoming-queen.css",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/back-in-the-day-fall2013.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/back-in-the-day\/ftus-first-and-last-homecoming-queen.html": {
+	"\/dev\/2013\/fall\/back-in-the-day-fall2013\/back-in-the-day-fall2013.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/ftus-first-and-last-homecoming-queen.html",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/back-in-the-day-fall2013.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/back-in-the-day\/img\/circle.jpg": {
+	"\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 37760,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/circle.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/circle.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/back-in-the-day\/img\/circle.png": {
+	"\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 226280,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/circle.png",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/circle.png",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.png",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/circle.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/back-in-the-day\/img\/newspaper.jpg": {
+	"\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/newspaper.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 108047,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/newspaper.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day\/img\/newspaper.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/newspaper.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/back-in-the-day-fall2013\/img\/newspaper.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -2359,6 +2359,86 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2013\/fall\/is-student-debt-a-good-investment\/img\/cap.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 127343,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/img\/cap.png",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/img\/cap.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.js",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/is-student-debt-a-good-investment\/is-student-debt-a-good-investment.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2013\/fall\/is-the-ncaa-obsolete\/img\/marc_daniels.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 56947,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/img\/marc_daniels.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/img\/marc_daniels.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.js",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/is-the-ncaa-obsolete\/is-the-ncaa-obsolete.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
 	"\/dev\/2013\/fall\/letters-of-recommendation\/img\/wood.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -2388,121 +2468,41 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/opinion-med-city\/img\/header.jpg": {
+	"\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/img\/header.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 82228,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/img\/header.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/img\/header.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/img\/header.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/img\/header.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.css": {
+	"\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.css",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.html": {
+	"\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.html",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.js": {
+	"\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.js",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-med-city\/medical-city-and-orlandos-economy.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
-	"\/dev\/2013\/fall\/opinion-ncaa\/img\/marc_daniels.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 56947,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/img\/marc_daniels.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/img\/marc_daniels.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.js",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-ncaa\/is-the-ncaa-obsolete.js",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
-		},
-	"\/dev\/2013\/fall\/opinion-student-debt\/img\/cap.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 127343,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/img\/cap.png",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/img\/cap.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.html": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.html",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.js": {
-		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.js",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/opinion-student-debt\/is-student-debt-a-good-investment.js",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.js",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/medical-city-and-orlandos-economy\/medical-city-and-orlandos-economy.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -2757,184 +2757,184 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/africa-mountains.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/africa-mountains.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 314925,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/africa-mountains.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/africa-mountains.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/africa-mountains.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/africa-mountains.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/cheetah-lady.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/cheetah-lady.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 54468,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/cheetah-lady.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/cheetah-lady.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/cheetah-lady.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/cheetah-lady.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/movie3.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/movie3.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 2.28218e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/movie3.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/movie3.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/movie3.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/movie3.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/orphans1.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/orphans1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 2.16745e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/orphans1.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/orphans1.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/orphans1.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/orphans1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/Orphans2a.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/Orphans2a.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 5.03574e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Orphans2a.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Orphans2a.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Orphans2a.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Orphans2a.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/pomolong5.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/pomolong5.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 1.11501e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/pomolong5.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/pomolong5.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/pomolong5.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/pomolong5.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/solar1.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/solar1.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 619466,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/solar1.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/solar1.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/solar1.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/solar1.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/solar2.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/solar2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 8.94653e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/solar2.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/solar2.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/solar2.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/solar2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/Solar4.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/Solar4.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 2.8445e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Solar4.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Solar4.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Solar4.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Solar4.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/Students.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/Students.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 5.63626e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Students.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Students.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Students.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Students.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/Students2.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/Students2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 1.31662e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Students2.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/Students2.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Students2.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/Students2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/wind2.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/wind2.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 5.38519e+06,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/wind2.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/wind2.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/wind2.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/wind2.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/wind5.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/wind5.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 483391,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/wind5.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/wind5.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/wind5.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/wind5.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/img\/windmill.jpg": {
+	"\/dev\/2013\/fall\/powering-pomolong\/img\/windmill.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 81364,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/windmill.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/img\/windmill.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/windmill.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/img\/windmill.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.css": {
+	"\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.css",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.html": {
+	"\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.html",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.js": {
+	"\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.js",
-		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-promolong\/powering-pomolong.js",
+		"inputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.js",
+		"outputAbbreviatedPath": "\/dev\/2013\/fall\/powering-pomolong\/powering-pomolong.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -5232,42 +5232,51 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/summer\/back-in-the-day\/a-method-to-our-madness.css": {
-		"fileType": 16,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/a-method-to-our-madness.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
-	"\/dev\/2013\/summer\/back-in-the-day\/a-method-to-our-madness.html": {
+	"\/dev\/2013\/spring\/wedding-knights\/wedding-knights.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/a-method-to-our-madness.html",
+		"inputAbbreviatedPath": "\/dev\/2013\/spring\/wedding-knights\/wedding-knights.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare-thumbnail.png": {
+	"\/dev\/2013\/summer\/back-in-the-day-summer2013\/back-in-the-day-summer2013.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/back-in-the-day-summer2013.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/summer\/back-in-the-day-summer2013\/back-in-the-day-summer2013.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/back-in-the-day-summer2013.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare-thumbnail.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 32666,
-		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare-thumbnail.png",
-		"outputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare-thumbnail.png",
+		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare-thumbnail.png",
+		"outputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare-thumbnail.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare.jpg": {
+	"\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 145279,
-		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare.jpg",
-		"outputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day\/img\/UCF-Shakespeare.jpg",
+		"inputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare.jpg",
+		"outputAbbreviatedPath": "\/dev\/2013\/summer\/back-in-the-day-summer2013\/img\/UCF-Shakespeare.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -6622,20 +6631,20 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dev\/2014\/fall\/briefs-3\/briefs-3.css": {
+	"\/dev\/2014\/fall\/briefs-fall2014\/briefs-fall2014.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/fall\/briefs-3\/briefs-3.css",
+		"inputAbbreviatedPath": "\/dev\/2014\/fall\/briefs-fall2014\/briefs-fall2014.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2014\/fall\/briefs-3\/briefs-3.html": {
+	"\/dev\/2014\/fall\/briefs-fall2014\/briefs-fall2014.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/fall\/briefs-3\/briefs-3.html",
+		"inputAbbreviatedPath": "\/dev\/2014\/fall\/briefs-fall2014\/briefs-fall2014.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
@@ -6658,31 +6667,31 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2014\/spring\/briefs\/briefs.css": {
+	"\/dev\/2014\/spring\/briefs-spring2014\/briefs-spring2014.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs\/briefs.css",
+		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs-spring2014\/briefs-spring2014.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2014\/spring\/briefs\/briefs.html": {
+	"\/dev\/2014\/spring\/briefs-spring2014\/briefs-spring2014.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs\/briefs.html",
+		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs-spring2014\/briefs-spring2014.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2014\/spring\/briefs\/THUMBNAILS_SP14_Briefs.jpg": {
+	"\/dev\/2014\/spring\/briefs-spring2014\/THUMBNAILS_SP14_Briefs.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 17552,
-		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs\/THUMBNAILS_SP14_Briefs.jpg",
-		"outputAbbreviatedPath": "\/dev\/2014\/spring\/briefs\/THUMBNAILS_SP14_Briefs.jpg",
+		"inputAbbreviatedPath": "\/dev\/2014\/spring\/briefs-spring2014\/THUMBNAILS_SP14_Briefs.jpg",
+		"outputAbbreviatedPath": "\/dev\/2014\/spring\/briefs-spring2014\/THUMBNAILS_SP14_Briefs.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -7009,41 +7018,464 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dev\/2014\/summer\/briefs-2\/briefs-2.css": {
+	"\/dev\/2014\/summer\/briefs-summer2014\/briefs-summer2014.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/summer\/briefs-2\/briefs-2.css",
+		"inputAbbreviatedPath": "\/dev\/2014\/summer\/briefs-summer2014\/briefs-summer2014.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2014\/summer\/briefs-2\/briefs-2.html": {
+	"\/dev\/2014\/summer\/briefs-summer2014\/briefs-summer2014.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2014\/summer\/briefs-2\/briefs-2.html",
+		"inputAbbreviatedPath": "\/dev\/2014\/summer\/briefs-summer2014\/briefs-summer2014.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2015\/spring\/briefs-4\/briefs-4.css": {
+	"\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.css": {
 		"fileType": 16,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-4\/briefs-4.css",
+		"inputAbbreviatedPath": "\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2015\/spring\/briefs-4\/briefs-4.html": {
+	"\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-4\/briefs-4.html",
+		"inputAbbreviatedPath": "\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.js",
+		"outputAbbreviatedPath": "\/dev\/2014\/summer\/sea-turtles-the-lost-years\/sea-turtles-the-lost-years.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.scss",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/briefs-news-notes-fall-2015.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 31839,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 12543,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42871,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2806,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 154597,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_THUMBNAIL_briefs.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 9027,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_THUMBNAIL_briefs.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_THUMBNAIL_briefs.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/global-distribution\/data\/incoming-us.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/incoming-us.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/incoming-us-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/dev\/2015\/fall\/global-distribution\/data\/incoming-world.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/incoming-world.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/incoming-world-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/dev\/2015\/fall\/global-distribution\/data\/outgoing-us.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/outgoing-us.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/outgoing-us-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/dev\/2015\/fall\/global-distribution\/data\/outgoing-world.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/outgoing-world.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/data\/outgoing-world-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/dev\/2015\/fall\/global-distribution\/global-distribution.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/global-distribution.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/global-distribution\/global-distribution.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/global-distribution.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/global-distribution\/global-distribution.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/global-distribution.js",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/global-distribution.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2015\/fall\/global-distribution\/img\/marker.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 68,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/img\/marker.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/img\/marker.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/00-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 89976,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/00-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/00-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/00-HumanCurling.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 139141,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/00-HumanCurling.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/00-HumanCurling.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/01-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 122950,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/01-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/01-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/01-HumanCurling.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 135118,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/01-HumanCurling.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/01-HumanCurling.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/02-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 126926,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/02-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/02-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/02-HumanCurling.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 131425,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/02-HumanCurling.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/02-HumanCurling.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/03-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 125486,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/03-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/03-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/03-HumanCurling.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 139173,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/03-HumanCurling.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/03-HumanCurling.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/04-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 141438,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/04-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/04-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/05-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 130674,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/05-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/05-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/06-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 140683,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/06-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/06-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/07-Battleship.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 150310,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/07-Battleship.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/07-Battleship.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/curling.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 100719,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/curling.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/curling.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/h1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 17894,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/h1.png",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/h1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/img\/header.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 272772,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/header.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/img\/header.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/sports\/sports.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/sports\/sports.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/sports\/sports.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.scss",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.js",
+		"outputAbbreviatedPath": "\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
 		},
 	"\/dev\/2015\/spring\/nano-wire\/min\/nano-wire-min.js": {
 		"fileType": 64,
@@ -7143,33 +7575,33 @@
 		"outputStyle": 0,
 		"syntaxCheckerStyle": 1
 		},
-	"\/dev\/2015\/summer\/briefs\/briefs.css": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/briefs-summer2015.css": {
 		"fileType": 16,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/briefs.css",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/briefs-summer2015.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/briefs.html": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/briefs-summer2015.html": {
 		"fileType": 8192,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/briefs.html",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/briefs-summer2015.html",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/briefs.scss": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/briefs.scss": {
 		"createSourceMap": 1,
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"fileType": 4,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/briefs.scss",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/briefs.css",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/briefs.scss",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/briefs.css",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 3,
@@ -7177,68 +7609,68 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/13632.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/13632.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 28243,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/13632.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/13632.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/13632.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/13632.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/Jammin.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/Jammin.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 16401,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Jammin.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Jammin.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Jammin.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Jammin.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/Karen-Morrison.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/Karen-Morrison.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 12946,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Karen-Morrison.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Karen-Morrison.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Karen-Morrison.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Karen-Morrison.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/Michael-Morsberger.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/Michael-Morsberger.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 6702,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Michael-Morsberger.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Michael-Morsberger.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Michael-Morsberger.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Michael-Morsberger.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/Pamela-Carroll.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/Pamela-Carroll.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 9913,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Pamela-Carroll.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/Pamela-Carroll.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Pamela-Carroll.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/Pamela-Carroll.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2015\/summer\/briefs\/img\/sports.jpg": {
+	"\/dev\/2015\/summer\/briefs-summer2015\/img\/sports.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 150050,
-		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/sports.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs\/img\/sports.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/sports.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/summer\/briefs-summer2015\/img\/sports.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -7351,6 +7783,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/dev\/2015\/summer\/mars\/mars.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/mars.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/dev\/2015\/summer\/mars\/mars.js": {
 		"fileType": 64,
 		"ignore": 1,
@@ -7449,17 +7890,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/jsconfig.json": {
-		"fileType": 524288,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/jsconfig.json",
-		"orderOutput": 0,
-		"outputAbbreviatedPath": "\/jsconfig-min.json",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1
 		},
 	"\/page.php": {
 		"fileType": 8192,
@@ -7601,7 +8031,7 @@
 		},
 	"\/static\/components\/bootstrap-sass-3.3.4\/assets\/javascripts\/bootstrap.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static\/components\/bootstrap-sass-3.3.4\/assets\/javascripts\/bootstrap.js",
 		"outputAbbreviatedPath": "\/static\/components\/bootstrap-sass-3.3.4\/assets\/javascripts\/bootstrap.js",
@@ -9703,7 +10133,7 @@
 		"debugStyle": 0,
 		"decimalPrecision": 10,
 		"fileType": 4,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/static\/components\/font-awesome-4.3.0\/scss\/font-awesome.scss",
 		"outputAbbreviatedPath": "\/static\/components\/font-awesome-4.3.0\/scss\/font-awesome.css",
@@ -12262,7 +12692,7 @@
 		},
 	"\/versions\/v3\/static\/js\/generic-base.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/generic-base.js",
 		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/generic-base.js",
@@ -12295,7 +12725,7 @@
 		},
 	"\/versions\/v3\/static\/js\/webcom-base.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/webcom-base.js",
 		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/webcom-base.js",
@@ -12526,7 +12956,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "RJ Bruneel",
+"lastSavedByUser": "James Barnes",
 "manualImportLinks": {
 	},
 "projectAttributes": {

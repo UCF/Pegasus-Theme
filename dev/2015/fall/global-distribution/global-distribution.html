@@ -18,27 +18,27 @@
                     </ul>
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane fade in active" id="image-world-panel">
-                            <img src="[image filename='pegasus-infographic-world']" class="img-responsive infographic" width="100%" data-toggle="modal" data-target="#world-image-modal">
+                            <img src="[image filename='pegasus-infographic-world']" class="img-responsive infographic" data-toggle="modal" data-target="#world-image-modal">
                             <p class="image-caption">Click the image to enlarge</p>
                             <p>Asia, particularly China and India, contributes the most incoming students, but the majority of alumni have settled in North America and the Caribbean.</p>
-                            <div id="world-image-modal" class="modal modal-transparent modal-fullscreen fade">
+                            <div id="world-image-modal" class="modal modal-fullscreen fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         </div>
                                         <div class="modal-body">
-                                            <img src="[image filename='pegasus-infographic-world']" class="img-responsive infographic" width="100%">
+                                            <img src="[image filename='pegasus-infographic-world']" class="img-responsive infographic">
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div role="tabpanel" class="tab-pane fade" id="image-us-panel">
-                            <img src="[image filename='pegasus-infographic-us']" class="img-responsive" width="100%" data-toggle="modal" data-target="#us-image-modal">
+                            <img src="[image filename='pegasus-infographic-us']" class="img-responsive infographic" data-toggle="modal" data-target="#us-image-modal">
                             <p class="image-caption">Click the image to enlarge</p>
                             <p>While the majority of students come from the eastern states, a greater geographic dispersal occurs after graduation.</p>
-                            <div id="us-image-modal" class="modal modal-transparent modal-fullscreen fade">
+                            <div id="us-image-modal" class="modal modal-fullscreen fade">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -57,18 +57,18 @@
         </div>
     </div>
     <div id="map-container" class="incoming">
-        <div id="bucket-controls-container" class="incoming">
+        <div class="bucket-controls-container">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6">
-                        <a id="incoming-control" href="#" class="active map-control" data-toggle="incoming">Where Knights Come From</a>
+                        <a href="#" class="active map-control left" data-toggle="incoming">Where Knights Come From</a>
                     </div>
                     <div class="col-md-6">
-                        <a id="outgoing-control" href="#" class="map-control" data-toggle="outgoing">Where Knights Go</a>
+                        <a href="#" class="map-control right" data-toggle="outgoing">Where Knights Go</a>
                     </div>
                 </div>
             </div>
-            <div class="pointer incoming">
+            <div class="pointer">
                 <div class="container">
                     <div class="arrow-up"></div>
                 </div>
@@ -76,7 +76,7 @@
         </div>
         <div id="data-set-control-container">
             <div class="container">
-                <ul class="data-set-controls incoming">
+                <ul class="data-set-controls">
                     <li><a href="#" class="active map-control" data-toggle="topten">Top 10</a></li>
                     <li><a href="#" class="map-control" data-toggle="us">U.S.A.</a></li>
                     <li><a href="#" class="map-control" data-toggle="world">International</a></li>
@@ -84,7 +84,7 @@
             </div>
         </div>
         <div class="container">
-    		<div id="map" data-inc-us="/wordpress/pegasus/wp-content/uploads/sites/7/2015/09/outgoing-us.json" data-out-us="/wordpress/pegasus/wp-content/uploads/sites/7/2015/09/outgoing-us.json" data-inc-world="/wordpress/pegasus/wp-content/uploads/sites/7/2015/09/incoming-world.json" data-out-world="/wordpress/pegasus/wp-content/uploads/sites/7/2015/09/outgoing-world.json" data-marker-img="http://localhost/wordpress/pegasus/wp-content/uploads/sites/7/2015/09/marker.png">
+    		<div id="map" data-inc-us="[media filename='incoming-us']" data-out-us="[media filename='outgoing-us']" data-inc-world="[media filename='incoming-world']" data-out-world="[media filename='outgoing-world']" data-marker-img="[media filename='marker']">
     		</div>
         </div>
     </div>

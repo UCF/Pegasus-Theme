@@ -4,8 +4,7 @@ Config::$body_classes = array();
 
 
 array_push( Config::$styles,
-	array('name' => 'style-css', 'src' => THE_POST_VERSION_URL . '/static/css/style.min.css'),
-	array('name' => 'fa-css', 'src' => THEME_COMPONENTS_URL . '/font-awesome-4.3.0/css/font-awesome.min.css')
+	array('name' => 'style-css', 'src' => THE_POST_VERSION_URL . '/static/css/style.min.css')
 );
 
 

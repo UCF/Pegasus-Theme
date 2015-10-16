@@ -40,9 +40,9 @@ var main = function() {
 var setMapSize = function() {
 	var width = $(window).width();
 	if (width > 768) {
-		container.style.height = container.offsetWidth / 16 * 9 + "px";
+		container.style.height = container.offsetWidth / 16 * 9 + 'px';
 	} else {
-		container.style.height = container.offsetWidth / 4 * 3 + "px";
+		container.style.height = container.offsetWidth / 4 * 3 + 'px';
 	}
 };
 
@@ -110,7 +110,7 @@ var preparePolys = function(data, dataset) {
 		});
 
 		var infoWindow = new google.maps.InfoWindow({
-			content: '<div class="name">' + record.name + '</div><div class="count">' + record.count + "</div>"
+			content: '<div class="name">' + record.name + '</div><div class="count">' + record.count + '</div>'
 		});
 
 		record.marker = marker;
@@ -211,29 +211,29 @@ var setupMap = function() {
 
 	styles = [
 		{
-	    featureType: "water",
+	    featureType: 'water',
 	    stylers: [
-	      { color: "#5f7a88" }
+	      { color: '#5f7a88' }
 	    ]
 	  },
 	  {
-	    featureType: "landscape",
+	    featureType: 'landscape',
 	    stylers: [
-	      { color: "#acacac" }
+	      { color: '#acacac' }
 	    ]
 	  },
 	  {
-	    featureType: "all",
-	    elementType: "labels",
+	    featureType: 'all',
+	    elementType: 'labels',
 	    stylers: [
-	      { visibility: "off" }
+	      { visibility: 'off' }
 	    ]
 	  },
 	  {
-	  	featureType: "administrative",
-	  	elementType: "geometry.fill",
+	  	featureType: 'administrative',
+	  	elementType: 'geometry.fill',
 	  	stylers: [
-	  		{ visibility: "off" }
+	  		{ visibility: 'off' }
 	  	]
 	  }
 	];
@@ -340,11 +340,11 @@ var activeLayerDraw = function() {
 	}
 
 	if (incoming) {
-		$('#map-container, #bucket-controls-container, .pointer, .data-set-controls').addClass('incoming').removeClass('outgoing');
+		$('#map-container').addClass('incoming').removeClass('outgoing');
 		styles[0].stylers[0].color = '#496e7e';
 		styles[1].stylers[0].color = '#ffffff';
 	} else {
-		$('#map-container, #bucket-controls-container, .pointer, .data-set-controls').removeClass('incoming').addClass('outgoing');
+		$('#map-container').removeClass('incoming').addClass('outgoing');
 		styles[0].stylers[0].color = '#fef5ec';
 		styles[1].stylers[0].color = '#1e4b68';
 	}
@@ -388,18 +388,18 @@ var modalEvents = function() {
 
 	$modalTransparent.on('show.bs.modal', function() {
 		setTimeout(function() {
-			$(".modal-backdrop").addCssClass("modal-backdrop-transparent");
+			$(".modal-backdrop").addClass("modal-backdrop-transparent");
 		}, 0);
 	}).on('hidden.bs.modal', function() {
-		$('.modal-backdrop').addclass("modal-backdrop-transparent");
+		$('.modal-backdrop').addClass("modal-backdrop-transparent");
 	});
 
 	$modalFullscreen.on('show.bs.modal', function() {
 		setTimeout( function() {
-	    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+	    $('.modal-backdrop').addClass('modal-backdrop-fullscreen');
 	  }, 0);
 	}).on('hidden.bs.modal', function() {
-		$(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+		$('.modal-backdrop').addClass('modal-backdrop-fullscreen');
 	});
 };
 
@@ -409,5 +409,5 @@ if (typeof jQuery !== 'undefined') {
 		modalEvents();
 	});
 } else {
-	console.log("No jQuery!");
+	console.log('No jQuery!');
 }
