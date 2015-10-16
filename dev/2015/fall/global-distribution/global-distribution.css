@@ -15,6 +15,20 @@
   font-family: "Archer A","Archer B",serif !important;
 }
 
+.infographics {
+  position: relative;
+  top: -60px;
+}
+
+.infographic {
+  cursor: pointer;
+}
+
+.image-caption {
+  font-size: 12px !important;
+  text-align: center;
+}
+
 .data-well {
   background: #66878f; 
   border: 1px solid #607b89;
