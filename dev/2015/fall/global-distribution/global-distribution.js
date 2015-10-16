@@ -5,6 +5,7 @@ var map,
 		outWorldData,
 		incUSData,
 		outUSData,
+		markerPath,
 		container,
 		activeLayer,
 		minColor = {r: 255, g: 255, b: 255},
@@ -37,8 +38,8 @@ var main = function() {
 };
 
 var setMapSize = function() {
-	var $width = $(window).width();
-	if ($width > 768) {
+	var width = $(window).width();
+	if (width > 768) {
 		container.style.height = container.offsetWidth / 16 * 9 + "px";
 	} else {
 		container.style.height = container.offsetWidth / 4 * 3 + "px";
@@ -47,11 +48,13 @@ var setMapSize = function() {
 
 var initialize = function() {
 
-	var $container = $('#map');
-	var incWorldPath = $container.attr('data-inc-world');
-	var outWorldPath = $container.attr('data-out-world');
-	var incUSPath = $container.attr('data-inc-us');
-	var outUSPath = $container.attr('data-out-us');
+	var $container = $('#map'),
+			incWorldPath = $container.attr('data-inc-world'),
+			outWorldPath = $container.attr('data-out-world'),
+			incUSPath = $container.attr('data-inc-us'),
+			outUSPath = $container.attr('data-out-us');
+	
+	markerPath = $container.attr('data-marker-img');
 
 	setupMap();
 
@@ -88,7 +91,7 @@ var preparePolys = function(data, dataset) {
 
 	// Sort by count and reverse
 	data.data.sort(function(a,b) {
-		return a.count - b.count
+		return a.count - b.count;
 	});
 
 	data.data.reverse();
@@ -97,12 +100,12 @@ var preparePolys = function(data, dataset) {
 		var record = data.data[r];
 
 		// Get the color of the record's polyshape.
-		var color = getFillColor(0, data.maxValue, record.count)
+		var color = getFillColor(0, data.maxValue, record.count);
 
 		// Create marker and info window.
 		var marker = new google.maps.Marker({
 			position: record.position,
-			icon: 'http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/img/marker.png',
+			icon: markerPath,
 			map: map,
 		});
 
@@ -157,7 +160,7 @@ var preparePolys = function(data, dataset) {
 };
 
 var getTopTen = function(data) {
-	retval = [];
+	var retval = [];
 	for(var i = 0; i < 10; i++) {
 		retval.push(data.data[i]);
 	}
@@ -262,24 +265,27 @@ var toggleClickHandler = function(e) {
 	activeLayerDispose();
 
 	var toggle = $(e.target).attr('data-toggle');
-	console.log(toggle);
+
+	var $bucketControls = $('#bucket-controls-container').find('.map-control');
+	var $dataSetControls = $('#data-set-control-container').find('.map-control');
+
 	switch(toggle) {
 		case 'outgoing':
-			$('#bucket-controls-container').find('.map-control').removeClass('active');
+			$bucketControls.removeClass('active');
 			$(e.target).addClass('active');
 			outgoing = true;
 			incoming = false;
 			activeLayer = outWorldData;
 			break;
 		case 'incoming':
-			$('#bucket-controls-container').find('.map-control').removeClass('active');
+			$bucketControls.removeClass('active');
 			$(e.target).addClass('active');
 			outgoing = false;
 			incoming = true;
 			activeLayer = outUSData;
 			break;
 		case 'topten':
-			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$dataSetControls.removeClass('active');
 			$(e.target).addClass('active');
 			topten = true;
 			world = false;
@@ -287,7 +293,7 @@ var toggleClickHandler = function(e) {
 			activeLayer = incWorldData;
 			break;
 		case 'world':
-			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$dataSetControls.removeClass('active');
 			$(e.target).addClass('active');
 			topten = false;
 			world = true;
@@ -295,7 +301,7 @@ var toggleClickHandler = function(e) {
 			activeLayer = incUSData;
 			break;
 		case 'us':
-			$('#data-set-control-container').find('.map-control').removeClass('active');
+			$dataSetControls.removeClass('active');
 			$(e.target).addClass('active');
 			topten = false;
 			world = false;
@@ -376,34 +382,32 @@ var draw = function(marker, infoWindow) {
 	infoWindow.open(map, marker);
 };
 
+var modalEvents = function() {
+	var $modalTransparent = $('.modal-transparent'),
+			$modalFullscreen = $('.modal-fullscreen');
+
+	$modalTransparent.on('show.bs.modal', function() {
+		setTimeout(function() {
+			$(".modal-backdrop").addCssClass("modal-backdrop-transparent");
+		}, 0);
+	}).on('hidden.bs.modal', function() {
+		$('.modal-backdrop').addclass("modal-backdrop-transparent");
+	});
+
+	$modalFullscreen.on('show.bs.modal', function() {
+		setTimeout( function() {
+	    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+	  }, 0);
+	}).on('hidden.bs.modal', function() {
+		$(".modal-backdrop").addClass("modal-backdrop-fullscreen");
+	});
+};
+
 if (typeof jQuery !== 'undefined') {
 	$(document).ready(function($) {
 		main();
+		modalEvents();
 	});
 } else {
 	console.log("No jQuery!");
 }
-
-// .modal-backdrop classes
-$(".modal-transparent").on('show.bs.modal', function () {
-  setTimeout( function() {
-    $(".modal-backdrop").addClass("modal-backdrop-transparent");
-  }, 0);
-});
-$(".modal-transparent").on('hidden.bs.modal', function () {
-  $(".modal-backdrop").addClass("modal-backdrop-transparent");
-});
-
-$(".modal-fullscreen").on('show.bs.modal', function () {
-  setTimeout( function() {
-    $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
-  }, 0);
-});
-$(".modal-fullscreen").on('hidden.bs.modal', function () {
-  $(".modal-backdrop").addClass("modal-backdrop-fullscreen");
-});
-
-$('.nav-tabs a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-});
