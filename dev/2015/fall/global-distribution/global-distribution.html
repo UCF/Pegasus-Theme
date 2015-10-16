@@ -8,41 +8,43 @@
         <div class="row">
             <div class="col-md-5">
                 [lead]As a nexus for U.S. and international students, UCF draws Knights from 50 states and 151 countries and redistributes them across the globe.[/lead]
+                <p>Based on data from the UCF Alumni Association and Insitutional Knowledge Management, these graphics depict the number of students that come from the United States and abroad to attend UCF and then settle in or around the world after graduation.</p>
             </div>
             <div class="col-md-6 col-md-offset-1">
-                <div class="data-well">
-                    <p class="well-text">Based on data from the UCF Alumni Association and Insitutional Knowledge Management, these graphics depict the number of students that come from the United States and abroad to attend UCF and then settle in or around the world after graduation.</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-1">
-                <h3>Knights Around the World</h3>
-                <img src="[image filename='pegasus-infographic-world']" class="img-responsive" width="100%" data-toggle="modal" data-target="#world-image-modal">
-                <div id="world-image-modal" class="modal modal-transparent modal-fullscreen fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="[image filename='pegasus-infographic-world']" class="img-responsive" width="100%">
+                <ul class="nav nav-tabs nav-justified" role="tablist">
+                    <li role="presentation" class="active"><a href="#image-world-panel" aria-controls="image-world-panel" role="tab" data-toggle="tab">International</a></li>
+                    <li role="presentation"><a href="#image-us-panel" aria-controls="image-us-panel" role="tab" data-toggle="tab">U.S.A.</a></li>
+                </ul>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade in active" id="image-world-panel">
+                        <img src="[image filename='pegasus-infographic-world']" class="img-responsive" width="100%" data-toggle="modal" data-target="#world-image-modal">
+                        <p>Asia, particularly China and India, contributes the most incoming students, but the majority of alumni have settled in North America and the Caribbean.</p>
+                        <div id="world-image-modal" class="modal modal-transparent modal-fullscreen fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="[image filename='pegasus-infographic-world']" class="img-responsive" width="100%">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <div class="col-md-4 col-md-offset-2">
-                <h3>Knights Around the U.S.</h3>
-                <img src="[image filename='pegasus-infographic-us']" class="img-responsive" width="100%" data-toggle="modal" data-target="#us-image-modal">
-                <div id="us-image-modal" class="modal modal-transparent modal-fullscreen fade">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                            </div>
-                            <div class="modal-body">
-                                <img src="[image filename='pegasus-infographic-us']" class="img-responsive" width="100%">
+                    <div role="tabpanel" class="tab-pane fade" id="image-us-panel">
+                        <img src="[image filename='pegasus-infographic-us']" class="img-responsive" width="100%" data-toggle="modal" data-target="#us-image-modal">
+                        <p>While the majority of students come from the eastern states, a greater geographic dispersal occurs after graduation.</p>
+                        <div id="us-image-modal" class="modal modal-transparent modal-fullscreen fade">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <img src="[image filename='pegasus-infographic-us']" class="img-responsive" width="100%">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -78,7 +80,7 @@
             </div>
         </div>
         <div class="container">
-    		<div id="map" data-inc-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-us.json" data-out-us="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-us.json" data-inc-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/incoming-world.json" data-out-world="http://localhost/wordpress/pegasus/wp-content/themes/Pegasus-Theme/dev/2015/fall/global-distribution/data/outgoing-world.json" data-marker-img="[image filename='marker']">
+    		<div id="map" data-inc-us="//wwwqa.cc.ucf.edu/pegasus/files/2015/10/incoming-us.json" data-out-us="//wwwqa.cc.ucf.edu/pegasus/files/2015/10/outgoing-us.json" data-inc-world="//wwwqa.cc.ucf.edu/pegasus/files/2015/10/incoming-world.json" data-out-world="//wwwqa.cc.ucf.edu/pegasus/files/2015/10/outgoing-world.json" data-marker-img="[image filename='marker']">
     		</div>
         </div>
     </div>
