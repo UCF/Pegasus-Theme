@@ -240,14 +240,14 @@ var setupMap = function() {
 
   var mapOptions = {
     mapTypeId: google.maps.MapTypeId.ROADMAP,
-    scrollwheel: true,
-    navigationControl: false,
+    scrollwheel: false,
+    streetViewControl: false,
     mapTypeControl: false,
     scaleControl: false,
     draggable: true,
     zoom: 2,
     center: center,
-    disableDefaultUI: true,
+    disableDefaultUI: false,
     styles: styles
   };
 
