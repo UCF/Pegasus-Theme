@@ -62,6 +62,7 @@ $sm-max: '768px';
       clear: left;
       float: left;
       font-family: $font-sans-serif;
+      padding: 1em 0 0;
       text-transform: uppercase;
       width: 180px;
     }
@@ -69,7 +70,7 @@ $sm-max: '768px';
     dd {
       font-family: $font-serif;
       margin: 0 0 0 180px;
-      padding: 0 0 1em;
+      padding: 1em 0 0;
     }
   }
 
