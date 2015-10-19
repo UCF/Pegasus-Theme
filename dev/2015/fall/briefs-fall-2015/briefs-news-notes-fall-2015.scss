@@ -81,10 +81,6 @@ main article {
         font-weight: 700;
         text-transform: uppercase;
     }
-
-    img.rounded {
-        border-radius: 50%;
-    }
 }
 
 main article #briefs-header h1 {
@@ -364,7 +360,7 @@ main article.story {
 
 /* Bottom Three articles */
 main article.story {
-    #bottom {
+    .bottom {
         h2 {
             font-family: $font-sans-serif-condensed;
             font-size: 71px;
@@ -380,60 +376,6 @@ main article.story {
             font-size: 22px;
             line-height: 1.6;
         }
-
-
-        .data {
-            h2 {
-                font-size: 52px;
-                line-height: 1;
-            }
-        }
-
-        .fiea {
-            padding-left: 0;
-            border-bottom: 2px solid #000;
-        }
-
-        .new-leader {
-            position: relative;
-            top: -150px;
-
-            p {
-                margin-bottom: 3px;
-            }
-
-            h2 {
-                font-family: $font-sans-serif-condensed;
-                font-size: 25px;
-            }
-            h3 {
-                font-family: $font-serif;
-                font-size: 14px;
-                font-weight: bold;
-                margin-top: 0;
-                margin-bottom: 2px;
-            }
-            ul {
-                padding: 0;
-                margin: 0;
-                font-size: 14px;
-
-                li {
-                    list-style-type: none;
-                    margin: 0;
-                }
-            }
-
-            .col-md-2 img {
-                margin-left: -8px;
-                margin-top: 25px;
-            }
-
-            .col-md-4 {
-                padding-left: 10px;
-            }
-        }
-
         .source {
             text-transform: capitalize;
             font-size: 12px;
@@ -441,6 +383,58 @@ main article.story {
 
         .row {
             margin-left: 0;
+        }
+    }
+
+    #data {
+        h2 {
+            font-size: 52px;
+            line-height: 1;
+        }
+    }
+
+    #fiea {
+        padding-left: 0;
+        border-bottom: 2px solid #000;
+    }
+
+    #new-leader {
+        position: relative;
+        top: -150px;
+
+        p {
+            margin-bottom: 3px;
+        }
+
+        h2 {
+            font-family: $font-sans-serif-condensed;
+            font-size: 25px;
+        }
+        h3 {
+            font-family: $font-serif;
+            font-size: 14px;
+            font-weight: bold;
+            margin-top: 0;
+            margin-bottom: 2px;
+        }
+        ul {
+            padding: 0;
+            margin: 0;
+            font-size: 14px;
+
+            li {
+                list-style-type: none;
+                margin: 0;
+            }
+        }
+
+        .col-md-2 img {
+            margin-left: -8px;
+            margin-top: 25px;
+        }
+
+        .col-md-4 {
+            padding-left: 10px;
         }
     }
 }
@@ -492,7 +486,7 @@ main article.story {
             }
         }
 
-        &.story #bottom .new-leader {
+        &.story #new-leader {
             top: 0;
             position: static;
         }
