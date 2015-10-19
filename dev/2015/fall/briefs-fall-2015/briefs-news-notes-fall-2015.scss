@@ -398,6 +398,10 @@ main article.story {
             position: relative;
             top: -160px;
 
+            p {
+                margin-bottom: 3px;
+            }
+
             h2 {
                 font-family: $font-sans-serif-condensed;
                 font-size: 26px;
@@ -408,6 +412,7 @@ main article.story {
                 font-size: 14px;
                 font-weight: bold;
                 margin-top: 0;
+                margin-bottom: 2px;
             }
             ul {
                 padding: 0;
@@ -422,6 +427,7 @@ main article.story {
 
             .col-md-2 img {
                 margin-left: -8px;
+                margin-top: 25px;
             }
 
             .col-md-4 {
