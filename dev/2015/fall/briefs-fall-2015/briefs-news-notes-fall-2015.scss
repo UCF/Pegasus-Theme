@@ -5,7 +5,8 @@
 // $font-sans-serif-light: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
 // $font-sans-serif-light: 'Gotham SSm 3r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
 $font-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
-$font-sans-serif-condensed: 'Whitney Cond A', 'Whitney Cond B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+//$font-sans-serif-condensed: 'Whitney Cond A', 'Whitney Cond B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-sans-serif-condensed: 'Yanone Kaffeesatz', 'Helvetica Condensed', 'Helvetica', 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', sans-serif;
 $font-serif: 'Georgia', 'Times New Roman' , 'Times', serif;
 
 /* General */
@@ -20,7 +21,6 @@ main article {
     font-family: $font-sans-serif;
     font-style: normal;
     font-weight: 800;
-    letter-spacing: -.055em;
     text-transform: none;
   }
 
@@ -344,6 +344,7 @@ main article.story {
       font-weight: 600;
       letter-spacing: -1px;
       line-height: 45px;
+      width: 150px;
     }
 
     .row {
