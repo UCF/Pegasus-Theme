@@ -99,10 +99,6 @@ main article.story h2 {
   line-height: 1;
 }
 
-main article > .container {
-  margin-bottom: -160px;
-}
-
 /* Header */
 main article {
   .story-header-image {
@@ -357,6 +353,7 @@ main article.story {
       left: -93px;
       position: absolute;
       top: -15px;
+      max-width: inherit;
     }
 
     .source {
@@ -402,59 +399,56 @@ main article.story {
     }
   }
 
-    #data {
-      h2 {
-        font-size: 52px;
-        line-height: 1;
-      }
+  #data {
+    h2 {
+      font-size: 52px;
+      line-height: 1;
+    }
+  }
+
+  #fiea {
+    border-bottom: 2px solid #000;
+    padding-left: 0;
+  }
+
+  #new-leader {
+    p {
+      margin-bottom: 3px;
     }
 
-    #fiea {
-      border-bottom: 2px solid #000;
-      padding-left: 0;
+    h2 {
+      font-family: $font-sans-serif-condensed;
+      font-size: 25px;
     }
 
-    #new-leader {
-      position: relative;
-      top: -150px;
+    h3 {
+      font-family: $font-serif;
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 2px;
+      margin-top: 0;
+    }
 
-      p {
-        margin-bottom: 3px;
-      }
+    ul {
+      font-size: 14px;
+      margin: 0;
+      padding: 0;
 
-      h2 {
-        font-family: $font-sans-serif-condensed;
-        font-size: 25px;
-      }
-
-      h3 {
-        font-family: $font-serif;
-        font-size: 14px;
-        font-weight: bold;
-        margin-bottom: 2px;
-        margin-top: 0;
-      }
-
-      ul {
-        font-size: 14px;
+      li {
+        list-style-type: none;
         margin: 0;
-        padding: 0;
-
-        li {
-          list-style-type: none;
-          margin: 0;
-        }
-      }
-
-      .col-md-2 img {
-        margin-left: -8px;
-        margin-top: 25px;
-      }
-
-      .col-md-4 {
-        padding-left: 10px;
       }
     }
+
+    .col-md-3 img {
+      margin-left: -8px;
+      margin-top: 25px;
+    }
+
+    .col-md-8 {
+      padding-left: 10px;
+    }
+  }
 }
 
 /* Responsive */
@@ -492,8 +486,28 @@ main article.story {
         padding-right: 0;
       }
     }
-    &.story #artistic-nature h2 {
-      width: auto;
+    &.story #artistic-nature {
+
+       img {
+        width: 100%;
+        position: relative;
+        left: auto;
+        height: 430px;
+        top: -15px;
+        width: 540px;
+        max-width: 540px;
+        right: 0;
+        margin-left: -92px;
+        z-index: -10;
+      }
+
+      h2 {
+        width: auto;
+      }
+    }
+
+    &.story #meet-justice img.img-responsive {
+      width: 100%;
     }
   }
 }
@@ -546,13 +560,33 @@ main article.story {
       img {
         left: auto;
         margin: 0;
-        position: static;
+        position: relative;
         top: auto;
         width: 100%;
+        height: auto;
+        max-width: 100%;
       }
 
       .col-md-5 {
         padding-left: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 366px) {
+  main article {
+    &.story #stats .bigtext {
+
+      .larger {
+        font-size: .5em;
+        margin-bottom: .3em;
+        letter-spacing: 1;
+      }
+
+      .smaller {
+        font-size: .27em;
+        letter-spacing: 1;
       }
     }
   }
