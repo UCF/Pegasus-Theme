@@ -393,10 +393,6 @@ main article.story {
       font-size: 12px;
       text-transform: capitalize;
     }
-
-    .row {
-      margin-left: 0;
-    }
   }
 
   #data {
@@ -512,7 +508,7 @@ main article.story {
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   main article {
 
     &> .container {
@@ -531,6 +527,16 @@ main article.story {
     &.story #new-leader {
       top: 0;
       position: static;
+
+      .col-md-3 img {
+        margin-left: auto;
+      }
+    }
+
+    &.story #stats {
+      p, .col-xs-12 p {
+        padding-left: auto;
+      }
     }
 
     &.story #artistic-nature {
