@@ -57,6 +57,7 @@ function add_shortcode_interface_modal() {
 			'caption',
 			'clearfix',
 			'divider',
+			'google-remarketing',
 			'lead',
 			'sidebar',
 			'slideshow'
@@ -114,6 +115,9 @@ function add_shortcode_interface_modal() {
 							<li class="shortcode-divider">
 								Adds a full-width divider line between content.
 							</li>
+							<li class="shortcode-google-remarketing">
+								Inserts a Google Remarketing tag.  Ideally should be inserted at the bottom of post content.
+							</li>
 							<li class="shortcode-lead">
 								Styles a line of text intended for use as the lead paragraph of an entire story or a major
 								section of a story.  The first letter of this line will be styled as a dropcap.
@@ -154,6 +158,17 @@ function add_shortcode_interface_modal() {
 							within this shortcode and picking a color from the text editor's Font Color dropdown menu.
 						</p>
 						<input type="text" name="callout-color" class="shortcode-color" value="#eeeeee" data-default-color="#ffffff" data-parameter="background">
+					</li>
+					<li class="shortcode-google-remarketing">
+						<h2>Google-Remarketing Options</h2>
+
+						<h3>Conversion ID:</h3>
+						<p class="help">The conversion ID to be tracked.</p>
+						<input type="text" name="google-remarketing-conversion_id" value="" data-default-value="" data-parameter="conversion_id">
+
+						<h3>Fallback image source:</h3>
+						<p class="help">The image source to be used to track conversion if javascript is disabled.</p>
+						<input type="text" name="google-remarketing-img_src" value="" data-default-value="" data-parameter="img_src">
 					</li>
 					<li class="shortcode-sidebar">
 						<h2>Sidebar Options</h2>

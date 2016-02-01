@@ -844,6 +844,9 @@
 							<a href="#shortcodes-divider">Divider</a>
 						</li>
 						<li>
+							<a href="#shortcodes-remarketing">Google-Remarketing</a>
+						</li>
+						<li>
 							<a href="#shortcodes-lead">Lead</a>
 						</li>
 						<li>
@@ -1015,6 +1018,43 @@ and fall *under* the sidebar, instead of next to it.
 
 					<h4>Examples</h4>
 					<pre><code>[divider][/divider]</code></pre>
+
+					<hr/>
+
+					<h3 id="shortcodes-remarketing">google-remarketing</h3>
+					<p>
+						Inserts a Google Remarketing tag.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>uses no content</strong> between its starting and ending tags.
+					</p>
+
+					<h4>Atttributes</h4>
+					<table>
+						<tr>
+							<th scope="col">Name</th>
+							<th scrop="col">Attribute</th>
+							<th scope="col">Description</th>
+							<th scope="col">Default Value</th>
+						</tr>
+						<tr>
+							<td>Conversion ID</td>
+							<td>conversion_id</td>
+							<td>The conversion ID to be tracked.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Fallback image source</td>
+							<td>img_src</td>
+							<td>The image source to be used to track conversion if javascript is disabled.</td>
+							<td></td>
+						</tr>
+					</table>
+
+					<h4>Examples</h4>
+					<pre><code>[google-remarketing conversion_id="1234567890" img_src="//googleads.g.doubleclick.net/pagead/1234567890/?params=param"]</code></pre>
 
 					<hr/>
 
