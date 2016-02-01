@@ -75,6 +75,10 @@ function get_relevant_version( $the_post=null ) {
 					$url_path = explode( '/?', $url_path );
 					$url_path = $url_path[0];
 
+					// Remove '/story' and '/issue' url prefixes (get_page_by_path() will fail if
+					// URLs have these prefixes)
+					$url_path = preg_replace( '/^\/story\/|\/issue\//', '/', $url_path );
+
 					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
 					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
 
