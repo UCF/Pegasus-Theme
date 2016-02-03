@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18902",
+"creatorBuild": "19102",
 "files": {
 	"\/404.php": {
 		"fileType": 8192,
@@ -7099,57 +7099,57 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 31839,
-		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Great-Company-img.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 12543,
-		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/meet-justice-img.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 42871,
-		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/nature-egret.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg": {
-		"fileType": 16384,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 2806,
-		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/new-director.jpg",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg": {
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-briefs-header.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"initialSize": 154597,
-		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg",
-		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/Pegasus_HEADER_briefs.jpg",
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-briefs-header.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-briefs-header.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-great-company.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 31839,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-great-company.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-great-company.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-meet-justice.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 12543,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-meet-justice.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-meet-justice.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-nature-egret.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 42871,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-nature-egret.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-nature-egret.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-new-director.jpg": {
+		"fileType": 16384,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 2806,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-new-director.jpg",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/briefs-fall-2015\/img\/fall-2015-new-director.jpg",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -7430,6 +7430,40 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2015\/fall\/sports\/sports.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/sports\/sports.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2015\/fall\/sports\/sports.scss": {
+		"createSourceMap": 1,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.scss",
+		"outputAbbreviatedPath": "\/dev\/2015\/fall\/sports\/sports.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/dev\/2015\/spring\/briefs-spring2015\/briefs-spring2015.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -7661,7 +7695,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 45009,
+		"initialSize": 32042,
 		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
 		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
 		"outputPathIsOutsideProject": 0,
@@ -12938,7 +12972,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "James Barnes",
+"lastSavedByUser": "Work",
 "manualImportLinks": {
 	},
 "projectAttributes": {
@@ -13038,8 +13072,16 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_nested_string_interpolation": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"no_plusplus": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"no_private_function_fat_arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"no_stand_alone_at": {
@@ -13048,6 +13090,10 @@
 			},
 		"no_tabs": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_this": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_throwing_strings": {
@@ -13427,10 +13473,6 @@
 			}
 		},
 	"jsLintFlags2": {
-		"ass": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"bitwise": {
 			"active": 0,
 			"flagValue": -1
@@ -13439,15 +13481,7 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"closure": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"continue": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"debug": {
+		"couch": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -13455,75 +13489,27 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"eqeq": {
+		"es6": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"evil": {
+		"eval": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"forin": {
+		"for": {
 			"active": 0,
 			"flagValue": -1
-			},
-		"indent": {
-			"active": 0,
-			"flagValue": 4
 			},
 		"maxlen": {
 			"active": 0,
 			"flagValue": 150
 			},
-		"newcap": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"node": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"nomen": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"plusplus": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"properties": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"regexp": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"rhino": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sloppy": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"stupid": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sub": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"todo": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"unparam": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"vars": {
+		"this": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -13624,7 +13610,9 @@
 	"typescriptAutoOutputPathStyle": 2,
 	"typescriptCreateDeclarationFile": 0,
 	"typescriptCreateSourceMap": 0,
+	"typescriptJSXMode": 0,
 	"typescriptMinifyOutput": 0,
+	"typescriptModuleResolutionType": 0,
 	"typescriptModuleType": 0,
 	"typescriptNoImplicitAny": 0,
 	"typescriptPreserveConstEnums": 0,

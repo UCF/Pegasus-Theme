@@ -445,6 +445,11 @@ article.story iframe {
   }
 }
 
+article.story iframe[name="google_conversion_frame"] {
+  height: 0 !important;
+  width: 0 !important;
+}
+
 
 // Story - Default Template
 article.story-default {

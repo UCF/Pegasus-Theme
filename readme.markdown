@@ -88,3 +88,4 @@ Install the https://github.com/UCF/WP-Allowed-Hosts wordpress plugin if media im
 * image - returns the URL of an image uploaded as an attachment for the post.
 * static-image - link to an image in the theme's static directory.  (Requires extension)
 * media - if found, returns the URL of some arbitrary media in the media library that is an attachment of the current post.  Should only be used for media types that can't be returned via [image] or [static-image].
+* google-remarketing - outputs Google Remarketing javascript code.
