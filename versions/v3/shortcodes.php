@@ -690,7 +690,7 @@ add_shortcode('archive-search', 'sc_archive_search');
  **/
 function sc_photo_essay_slider( $atts, $content = null ) {
 	$slug 		   = @$atts['slug'];
-	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : null;
+	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : '#000';
 	$recent 	   = get_posts( array(
 		'numberposts' => 1,
 		'post_type' => 'photo_essay',
@@ -700,17 +700,17 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 	$mostrecent = $recent[0];
 
 	if ( is_string( $slug ) ) {
-		$essays = get_posts( array(
+		$photo_essays = get_posts( array(
 			'name' => $slug,
 			'post_type' => 'photo_essay',
 			'post_status' => 'publish',
 			'posts_per_page' => 1
 		));
-		if ( $essays ) {
-			$essay = $essays[0];
+		if ( $photo_essays ) {
+			$photo_essay = $photo_essays[0];
 		}
 	} else {
-		$essay = $mostrecent;
+		$photo_essay = $mostrecent;
 	}
 
 	global $post;
@@ -721,120 +721,14 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	ob_start();
 
-	if( $essay ) {
-
-		$slide_order 	= get_post_meta( $essay->ID, 'ss_slider_slideorder', TRUE );
-		// Get rid of blank array entries
-		$slide_order	= array_filter( explode( ',', $slide_order ), 'strlen' );
-		$slide_title 	= get_post_meta( $essay->ID, 'ss_slide_title', TRUE );
-		$slide_caption 	= get_post_meta( $essay->ID, 'ss_slide_caption', TRUE );
-		$slide_image	= get_post_meta( $essay->ID, 'ss_slide_image', TRUE );
-		?>
-
-		<section class="ss-content" id="<?php echo $slug; ?>">
-			<div class="ss-nav-wrapper">
-				<div class="ss-arrow-wrapper ss-arrow-wrapper-left">
-					<a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
-				</div>
-				<div class="ss-arrow-wrapper ss-arrow-wrapper-right">
-					<a class="ss-arrow ss-arrow-next" href="#2"><div>&rsaquo;</div></a>
-				</div>
-
-				<div class="ss-slides-wrapper">
-				<?php
-
-				$slide_count = count( $slide_order );
-				$ss_half = floor( $slide_count / 2 ) + 1;
-				$end = false;
-				$i = $ss_half;
-				if ( $is_fullscreen ) {
-					$photo_essay_offset = 1;
-				}
-				while ( $end == false ) {
-					if ( $i == $slide_count ) {
-						$i = 0;
-					}
-
-					if ( $i == $ss_half - 1 ) {
-						$end = true;
-					}
-
-					if ( $is_fullscreen && $i == 0 ) {
-					?>
-						<div class="ss-slide-wrapper">
-							<?php
-								if ( !empty( $slide_order ) ):
-									$s = $slide_order[0];
-									$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
-							?>
-							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-
-								<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
-
-								<div class="ss-essay-intro">
-									<div class="title-wrap">
-										<h1><?php echo wptexturize( $post->post_title ); ?></h1>
-									</div>
-									<div class="description-wrap">
-										<span class="description"><?php echo wptexturize( get_post_meta( $post->ID, 'story_description', TRUE ) ); ?></span>
-										<a class="ss-control ss-play" href="#2"><i class="icon icon-caret-right"></i>
-										<?php echo display_social( get_permalink( $post ), $post->post_title ); ?>
-									</div>
-								</div>
-							</div>
-							<?php
-								endif;
-							?>
-						</div>
-						<?php
-					}
-
-					$s = $slide_order[$i];
-					$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
-					?>
-					<div class="ss-slide-wrapper">
-						<div class="ss-slide<?php echo $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : ''; ?><?php echo $i == $slide_count - 1 ? ' ss-last-slide' : ''; ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-							<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
-						</div>
-					</div>
-				<?php
-					$i++;
-				}
-				?>
-				</div>
-
-				<div class="ss-captions-wrapper">
-				<?php
-				$data_id = 0;
-				if ( $is_fullscreen ) {
-					$data_id++;
-				?>
-					<div class="ss-caption ss-current" data-id="<?php echo $data_id; ?>"></div>
-				<?php
-				}
-				foreach ( $slide_order as $s ) {
-					if ( $s !== '' ) {
-						$data_id++;
-				?>
-					<div class="ss-caption <?php echo $data_id == 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
-						<p class="caption"<?php if ( $caption_color ) { ?> style="color: <?php echo $caption_color; ?>;"<?php } ?>><?php echo wptexturize( $slide_caption[$s] ); ?></p>
-					</div>
-				<?php
-					}
-				}
-				?>
-				</div>
-
-				<div class="ss-closing-overlay" style="display: none;">
-					<div class="ss-slide" data-id="restart-slide">
-						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?php echo $is_fullscreen ? ':' : ''; ?></div></a>
-						<?php if ( $is_fullscreen ): ?><div class="ss-title"><?php echo wptexturize( $post->post_title ); ?></div><?php endif; ?>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<?php
+	if ( $photo_essay ) {
+		// Print either a bootstrap slideshow or markup for a fullscreen gallery
+		if ( $is_fullscreen ) {
+			echo display_photo_essay( $photo_essay, $post );
+		}
+		else {
+			echo display_photo_essay_slideshow( $photo_essay, $slug, $caption_color );
+		}
 	}
 
 	return ob_get_clean();
