@@ -102,7 +102,10 @@
           newX = parseInt((e.clientX || e.changedTouches[0].clientX), 10);
           newY = parseInt((e.clientY || e.changedTouches[0].clientY), 10);
 
-          // Determine the direction the player is moving
+          // Determine the direction the player is moving.  Only perform a move if:
+          // 1) The mouse has moved at least as var as `movement`
+          // 2) The player is still in-bounds
+          // 3) No collision is detected
           if (newY < y - movement && y - movement > 0 && !checkcollision(0, -movement)) {
             // Up
             move(0, -movement);
