@@ -31,8 +31,7 @@
       var
         canvas,
         ctx,
-        dx = 5,
-        dy = 5,
+        movement = 5,
         x = 32,
         y = 10,
         WIDTH = 628,
@@ -44,6 +43,12 @@
         hitboxHeight = 5,
         won = false;
 
+      function draw() {
+        ctx.drawImage(bg, 0, 0);
+        ctx.fillStyle = "purple";
+        rect(x, y, hitboxWidth, hitboxHeight);
+      }
+
       function rect(x, y, w, h) {
         ctx.beginPath();
         ctx.rect(x, y, w, h);
@@ -51,85 +56,35 @@
         ctx.fill();
       }
 
-      function clearCanvas() {
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
-        ctx.drawImage(bg, 0, 0);
-      }
-
-      function init() {
-        canvas = document.getElementById("canvas");
-        ctx = canvas.getContext("2d");
-        bg.src = "maze.png";
-        return setInterval(draw, 10);
-      }
-
-      function moveUp() {
-        checkcollision(x, y - dy);
-        if (collision === 0) {
-          y -= dy;
-        }
-        else {
-          collision = 0;  // reset
-        }
-        checkWin();
-      }
-
-      function moveDown() {
-        checkcollision(x, y + dy);
-        if (collision === 0) {
-          y += dy;
-        }
-        else {
-          collision = 0;  // reset
-        }
-        checkWin();
-      }
-
-      function moveLeft() {
-        checkcollision(x - dx, y);
-        if (collision === 0) {
-          x -= dx;
-        }
-        else {
-          collision = 0;  // reset
-        }
-        checkWin();
-      }
-
-      function moveRight() {
-        checkcollision(x + dx, y);
-        if (collision === 0) {
-          x += dx;
-        }
-        else {
-          collision = 0;  // reset
-        }
-        checkWin();
+      function move(moveX, moveY) {
+        x += moveX;
+        y += moveY;
       }
 
       function doKeyDown(e){
         switch (e.keyCode) {
-          case 38:  /* Up arrow was pressed */
-            if (y - dy > 0){
-              moveUp();
+          case 38:  // Up arrow was pressed
+            if (!checkcollision(0, -movement)) {
+              move(0, -movement);
             }
             break;
-          case 40:  /* Down arrow was pressed */
-            if (y + dy < HEIGHT){
-              moveDown();
+          case 40:  // Down arrow was pressed
+            if (!checkcollision(0, movement)) {
+              move(0, movement);
             }
             break;
-          case 37:  /* Left arrow was pressed */
-            if (x - dx > 0){
-              moveLeft();
+          case 37:  // Left arrow was pressed
+            if (!checkcollision(-movement, 0)) {
+              move(-movement, 0);
             }
             break;
-          case 39:  /* Right arrow was pressed */
-            if ((x + dx < WIDTH)){
-              moveRight();
+          case 39:  // Right arrow was pressed
+            if (!checkcollision(movement, 0)) {
+              move(movement, 0);
             }
             break;
         }
+        checkWin();
       }
 
       function handleMouseDown(){
@@ -148,35 +103,38 @@
           newY = parseInt((e.clientY || e.changedTouches[0].clientY), 10);
 
           // Determine the direction the player is moving
-          if (newY < y && y - dy > 0) {
+          if (newY < y && y - movement > 0 && !checkcollision(0, -movement)) {
             // Up
-            moveUp();
+            move(0, -movement);
           }
-          if (newY > y && y + dy < HEIGHT) {
+          if (newY > y && y + movement < HEIGHT && !checkcollision(0, movement)) {
             // Down
-            moveDown();
+            move(0, movement);
+          }
+          if (newX < x && x - movement > 0 && !checkcollision(-movement, 0)) {
+            // Left
+            move(-movement, 0);
+          }
+          if (newX > x && x + movement < WIDTH && !checkcollision(movement, 0)) {
+            // Right
+            move(movement, 0);
           }
 
-          if (newX < x && x - dx > 0) {
-            // Left
-            moveLeft();
-          }
-          if (newX > x && x + dx < WIDTH) {
-            // Right
-            moveRight();
-          }
+          checkWin();
         }
       }
 
-      function checkcollision(newX, newY) {
-        var imgd = ctx.getImageData(newX, newY, hitboxWidth, hitboxHeight);
+
+      function checkcollision(moveX, moveY) {
+        var imgd = ctx.getImageData(x + moveX, y + moveY, hitboxWidth, hitboxHeight);
         var pix = imgd.data;
         // Modified to check GREEN channel instead of BLACK (every 2nd value)
         for (var i = 1; n = pix.length, i < n; i += 4) {
           if (pix[i] < 255) {
-            collision = 1;
+            return true;
           }
         }
+        return false;
       }
 
       function checkWin() {
@@ -187,10 +145,11 @@
         }
       }
 
-      function draw() {
-        clearCanvas();
-        ctx.fillStyle = "purple";
-        rect(x, y, hitboxWidth, hitboxHeight); // TODO knightro icon
+      function init() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        bg.src = "maze.png";
+        return setInterval(draw, 10);
       }
 
       init();
