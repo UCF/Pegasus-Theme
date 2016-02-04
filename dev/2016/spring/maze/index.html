@@ -41,7 +41,8 @@
         collision = 0,
         isDragging = false,
         hitboxWidth = 5,
-        hitboxHeight = 5;
+        hitboxHeight = 5,
+        won = false;
 
       function rect(x, y, w, h) {
         ctx.beginPath();
@@ -70,6 +71,7 @@
           y += dy;
           collision = 0;
         }
+        checkWin();
       }
 
       function moveDown() {
@@ -80,6 +82,7 @@
           y -= dy;
           collision = 0;
         }
+        checkWin();
       }
 
       function moveLeft() {
@@ -90,6 +93,7 @@
           x += dx;
           collision = 0;
         }
+        checkWin();
       }
 
       function moveRight() {
@@ -100,6 +104,7 @@
           x -= dx;
           collision = 0;
         }
+        checkWin();
       }
 
       function doKeyDown(e){
@@ -171,6 +176,14 @@
           if (pix[i] < 255) {
             collision = 1;
           }
+        }
+      }
+
+      function checkWin() {
+        if (x >= 622 && y > 797 && y < 808 && !won) {
+          // TODO: what should happen when the user wins?
+          alert('Winner winner chicken dinner!');
+          won = true;
         }
       }
 
