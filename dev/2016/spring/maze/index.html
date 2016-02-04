@@ -64,45 +64,45 @@
       }
 
       function moveUp() {
-        y -= dy;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          y += dy;
-          collision = 0;
+        checkcollision(x, y - dy);
+        if (collision === 0) {
+          y -= dy;
+        }
+        else {
+          collision = 0;  // reset
         }
         checkWin();
       }
 
       function moveDown() {
-        y += dy;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          y -= dy;
-          collision = 0;
+        checkcollision(x, y + dy);
+        if (collision === 0) {
+          y += dy;
+        }
+        else {
+          collision = 0;  // reset
         }
         checkWin();
       }
 
       function moveLeft() {
-        x -= dx;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          x += dx;
-          collision = 0;
+        checkcollision(x - dx, y);
+        if (collision === 0) {
+          x -= dx;
+        }
+        else {
+          collision = 0;  // reset
         }
         checkWin();
       }
 
       function moveRight() {
-        x += dx;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          x -= dx;
-          collision = 0;
+        checkcollision(x + dx, y);
+        if (collision === 0) {
+          x += dx;
+        }
+        else {
+          collision = 0;  // reset
         }
         checkWin();
       }
@@ -168,8 +168,8 @@
         }
       }
 
-      function checkcollision() {
-        var imgd = ctx.getImageData(x, y, hitboxWidth, hitboxHeight);
+      function checkcollision(newX, newY) {
+        var imgd = ctx.getImageData(newX, newY, hitboxWidth, hitboxHeight);
         var pix = imgd.data;
         // Modified to check GREEN channel instead of BLACK (every 2nd value)
         for (var i = 1; n = pix.length, i < n; i += 4) {
