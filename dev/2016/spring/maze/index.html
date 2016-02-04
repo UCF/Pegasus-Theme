@@ -31,7 +31,7 @@
       var
         canvas,
         ctx,
-        movement = 5;
+        movement = 5,
         x = 32,
         y = 10,
         WIDTH = 628,
@@ -63,22 +63,22 @@
 
       function doKeyDown(e){
         switch (e.keyCode) {
-          case 38:  /* Up arrow was pressed */
+          case 38:  // Up arrow was pressed
             if (!checkcollision(0, -movement)) {
               move(0, -movement);
             }
             break;
-          case 40:  /* Down arrow was pressed */
+          case 40:  // Down arrow was pressed
             if (!checkcollision(0, movement)) {
               move(0, movement);
             }
             break;
-          case 37:  /* Left arrow was pressed */
+          case 37:  // Left arrow was pressed
             if (!checkcollision(-movement, 0)) {
               move(-movement, 0);
             }
             break;
-          case 39:  /* Right arrow was pressed */
+          case 39:  // Right arrow was pressed
             if (!checkcollision(movement, 0)) {
               move(movement, 0);
             }
@@ -103,23 +103,24 @@
           newY = parseInt((e.clientY || e.changedTouches[0].clientY), 10);
 
           // Determine the direction the player is moving
-          if (newY < y && y - dy > 0) {
+          if (newY < y && y - movement > 0 && !checkcollision(0, -movement)) {
             // Up
-            moveUp();
+            move(0, -movement);
           }
-          if (newY > y && y + dy < HEIGHT) {
+          if (newY > y && y + movement < HEIGHT && !checkcollision(0, movement)) {
             // Down
-            moveDown();
+            move(0, movement);
+          }
+          if (newX < x && x - movement > 0 && !checkcollision(-movement, 0)) {
+            // Left
+            move(-movement, 0);
+          }
+          if (newX > x && x + movement < WIDTH && !checkcollision(movement, 0)) {
+            // Right
+            move(movement, 0);
           }
 
-          if (newX < x && x - dx > 0) {
-            // Left
-            moveLeft();
-          }
-          if (newX > x && x + dx < WIDTH) {
-            // Right
-            moveRight();
-          }
+          checkWin();
         }
       }
 
@@ -129,7 +130,7 @@
         // Modified to check GREEN channel instead of BLACK (every 2nd value)
         for (var i = 1; n = pix.length, i < n; i += 4) {
           if (pix[i] < 255) {
-            return true
+            return true;
           }
         }
         return false;
@@ -147,9 +148,7 @@
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
         bg.src = "maze.png";
-        return setInterval(function() {
-          draw();
-        }, 10);
+        return setInterval(draw, 10);
       }
 
       init();
