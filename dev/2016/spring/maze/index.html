@@ -31,8 +31,7 @@
       var
         canvas,
         ctx,
-        dx = 5,
-        dy = 5,
+        movement = 5;
         x = 32,
         y = 10,
         WIDTH = 628,
@@ -44,6 +43,12 @@
         hitboxHeight = 5,
         won = false;
 
+      function draw() {
+        ctx.drawImage(bg, 0, 0);
+        ctx.fillStyle = "purple";
+        rect(x, y, hitboxWidth, hitboxHeight);
+      }
+
       function rect(x, y, w, h) {
         ctx.beginPath();
         ctx.rect(x, y, w, h);
@@ -51,85 +56,35 @@
         ctx.fill();
       }
 
-      function clearCanvas() {
-        ctx.clearRect(0, 0, WIDTH, HEIGHT);
-        ctx.drawImage(bg, 0, 0);
-      }
-
-      function init() {
-        canvas = document.getElementById("canvas");
-        ctx = canvas.getContext("2d");
-        bg.src = "maze.png";
-        return setInterval(draw, 10);
-      }
-
-      function moveUp() {
-        y -= dy;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          y += dy;
-          collision = 0;
-        }
-        checkWin();
-      }
-
-      function moveDown() {
-        y += dy;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          y -= dy;
-          collision = 0;
-        }
-        checkWin();
-      }
-
-      function moveLeft() {
-        x -= dx;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          x += dx;
-          collision = 0;
-        }
-        checkWin();
-      }
-
-      function moveRight() {
-        x += dx;
-        clearCanvas();
-        checkcollision();
-        if (collision == 1){
-          x -= dx;
-          collision = 0;
-        }
-        checkWin();
+      function move(moveX, moveY) {
+        x += moveX;
+        y += moveY;
       }
 
       function doKeyDown(e){
         switch (e.keyCode) {
           case 38:  /* Up arrow was pressed */
-            if (y - dy > 0){
-              moveUp();
+            if (!checkcollision(0, -movement)) {
+              move(0, -movement);
             }
             break;
           case 40:  /* Down arrow was pressed */
-            if (y + dy < HEIGHT){
-              moveDown();
+            if (!checkcollision(0, movement)) {
+              move(0, movement);
             }
             break;
           case 37:  /* Left arrow was pressed */
-            if (x - dx > 0){
-              moveLeft();
+            if (!checkcollision(-movement, 0)) {
+              move(-movement, 0);
             }
             break;
           case 39:  /* Right arrow was pressed */
-            if ((x + dx < WIDTH)){
-              moveRight();
+            if (!checkcollision(movement, 0)) {
+              move(movement, 0);
             }
             break;
         }
+        checkWin();
       }
 
       function handleMouseDown(){
@@ -168,15 +123,16 @@
         }
       }
 
-      function checkcollision() {
-        var imgd = ctx.getImageData(x, y, hitboxWidth, hitboxHeight);
+      function checkcollision(moveX, moveY) {
+        var imgd = ctx.getImageData(x + moveX, y + moveY, hitboxWidth, hitboxHeight);
         var pix = imgd.data;
         // Modified to check GREEN channel instead of BLACK (every 2nd value)
         for (var i = 1; n = pix.length, i < n; i += 4) {
           if (pix[i] < 255) {
-            collision = 1;
+            return true
           }
         }
+        return false;
       }
 
       function checkWin() {
@@ -187,10 +143,13 @@
         }
       }
 
-      function draw() {
-        clearCanvas();
-        ctx.fillStyle = "purple";
-        rect(x, y, hitboxWidth, hitboxHeight); // TODO knightro icon
+      function init() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        bg.src = "maze.png";
+        return setInterval(function() {
+          draw();
+        }, 10);
       }
 
       init();
