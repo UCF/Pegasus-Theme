@@ -1,0 +1,195 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Canvas Maze Game</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <style>
+      html, body {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+        padding: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+    </header>
+    <nav> </nav>
+    <section>
+      <div>
+        <canvas id="canvas" width="628" height="842">
+          This text is displayed if your browser does not support HTML5 Canvas.
+        </canvas>
+      </div>
+    </section>
+    <aside> </aside>
+    <footer> </footer>
+    <script type="text/javascript">
+      var
+        canvas,
+        ctx,
+        dx = 5,
+        dy = 5,
+        x = 32,
+        y = 10,
+        WIDTH = 628,
+        HEIGHT = 842,
+        bg = new Image(),
+        collision = 0,
+        isDragging = false,
+        hitboxWidth = 5,
+        hitboxHeight = 5;
+
+      function rect(x, y, w, h) {
+        ctx.beginPath();
+        ctx.rect(x, y, w, h);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      function clearCanvas() {
+        ctx.clearRect(0, 0, WIDTH, HEIGHT);
+        ctx.drawImage(bg, 0, 0);
+      }
+
+      function init() {
+        canvas = document.getElementById("canvas");
+        ctx = canvas.getContext("2d");
+        bg.src = "maze.png";
+        return setInterval(draw, 10);
+      }
+
+      function moveUp() {
+        y -= dy;
+        clearCanvas();
+        checkcollision();
+        if (collision == 1){
+          y += dy;
+          collision = 0;
+        }
+      }
+
+      function moveDown() {
+        y += dy;
+        clearCanvas();
+        checkcollision();
+        if (collision == 1){
+          y -= dy;
+          collision = 0;
+        }
+      }
+
+      function moveLeft() {
+        x -= dx;
+        clearCanvas();
+        checkcollision();
+        if (collision == 1){
+          x += dx;
+          collision = 0;
+        }
+      }
+
+      function moveRight() {
+        x += dx;
+        clearCanvas();
+        checkcollision();
+        if (collision == 1){
+          x -= dx;
+          collision = 0;
+        }
+      }
+
+      function doKeyDown(e){
+        switch (e.keyCode) {
+          case 38:  /* Up arrow was pressed */
+            if (y - dy > 0){
+              moveUp();
+            }
+            break;
+          case 40:  /* Down arrow was pressed */
+            if (y + dy < HEIGHT){
+              moveDown();
+            }
+            break;
+          case 37:  /* Left arrow was pressed */
+            if (x - dx > 0){
+              moveLeft();
+            }
+            break;
+          case 39:  /* Right arrow was pressed */
+            if ((x + dx < WIDTH)){
+              moveRight();
+            }
+            break;
+        }
+      }
+
+      function handleMouseDown(){
+        // set the drag flag
+        isDragging = true;
+      }
+
+      function handleMouseUp(){
+        // user has left the canvas, so clear the drag flag
+        isDragging = false;
+      }
+
+      function handleMouseMove(e){
+        if (isDragging) {
+          newX = parseInt((e.clientX || e.changedTouches[0].clientX), 10);
+          newY = parseInt((e.clientY || e.changedTouches[0].clientY), 10);
+
+          // Determine the direction the player is moving
+          if (newY < y && y - dy > 0) {
+            // Up
+            moveUp();
+          }
+          if (newY > y && y + dy < HEIGHT) {
+            // Down
+            moveDown();
+          }
+
+          if (newX < x && x - dx > 0) {
+            // Left
+            moveLeft();
+          }
+          if (newX > x && x + dx < WIDTH) {
+            // Right
+            moveRight();
+          }
+        }
+      }
+
+      function checkcollision() {
+        var imgd = ctx.getImageData(x, y, hitboxWidth, hitboxHeight);
+        var pix = imgd.data;
+        // Modified to check GREEN channel instead of BLACK (every 2nd value)
+        for (var i = 1; n = pix.length, i < n; i += 4) {
+          if (pix[i] < 255) {
+            collision = 1;
+          }
+        }
+      }
+
+      function draw() {
+        clearCanvas();
+        ctx.fillStyle = "purple";
+        rect(x, y, hitboxWidth, hitboxHeight); // TODO knightro icon
+      }
+
+      init();
+      document.addEventListener('touchmove', function(e) { e.preventDefault(); });
+      window.addEventListener('keydown', doKeyDown, true);
+      canvas.addEventListener('mousedown', handleMouseDown, false);
+      canvas.addEventListener('mousemove', handleMouseMove, true);
+      canvas.addEventListener('mouseup', handleMouseUp, false);
+      canvas.addEventListener('touchstart', handleMouseDown, false);
+      canvas.addEventListener('touchmove', handleMouseMove, true);
+      canvas.addEventListener('touchend', handleMouseUp, false);
+      canvas.addEventListener('touchcancel', handleMouseUp, false);
+    </script>
+  </body>
+</html>
