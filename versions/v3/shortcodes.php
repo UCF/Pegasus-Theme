@@ -244,19 +244,33 @@ add_shortcode( 'blockquote', 'sc_blockquote' );
  * Create a full-width callout box.
  **/
 function sc_callout( $attr, $content ) {
+	global $post;
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 	$content = do_shortcode( $content );
 
-	// Close out our existing .span, .row and .container
-	$html = '</div></div></div>';
-	$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
-	$html .= '<div class="container"><div class="row content-wrap">';
-	$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
-	$html .= $content;
-	$html .= '</div></div></div></div>';
-	// Reopen standard .container, .row and .span
-	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+	if ( $post->post_type == 'page' ) {
+		// Close out our existing .span, .row and .container
+		$html = '</div></div></div>';
+		$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container"><div class="row content-wrap">';
+		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
+		$html .= $content;
+		$html .= '</div></div></div></div>';
+		// Reopen standard .container, .row and .span
+		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-12">';
+	}
+	else {
+		// Close out our existing .span, .row and .container
+		$html = '</div></div></div>';
+		$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container"><div class="row content-wrap">';
+		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
+		$html .= $content;
+		$html .= '</div></div></div></div>';
+		// Reopen standard .container, .row and .span
+		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+	}
 
 	return $html;
 }

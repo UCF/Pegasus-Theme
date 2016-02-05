@@ -6,18 +6,6 @@
     display: block;
     margin-bottom: 40px;
     margin-top: 40px;
-
-    &,
-    p,
-    ol,
-    ul {
-      font-family: $font-family-serif;
-      font-size: 16px;
-
-      @media (max-width: $screen-xs-max) {
-        font-size: 15px;
-      }
-    }
   }
 
   h1 {
