@@ -53,6 +53,7 @@ function add_shortcode_interface_modal() {
 	if ( in_array( $page, array( 'post.php', 'page.php', 'page-new.php', 'post-new.php' ) ) ) {
 		$shortcodes = array(
 			'blockquote',
+			'button',
 			'callout',
 			'caption',
 			'clearfix',
@@ -66,6 +67,7 @@ function add_shortcode_interface_modal() {
 		// Dummy text to place between shortcodes that are enclosing.
 		$enclosing = array(
 			'blockquote' => 'Your blockquote text here...',
+			'button' => 'Your button text here...',
 			'callout'    => 'Your callout text or shortcode content here...',
 			'caption'    => 'Your caption text here...',
 			'lead'       => 'Your lead text here...',
@@ -101,6 +103,9 @@ function add_shortcode_interface_modal() {
 						<ul id="shortcode-descriptions">
 							<li class="shortcode-blockquote">
 								Styles a line of text as a blockquote.
+							</li>
+							<li class="shortcode-button">
+								Styles a line of text as a clickable button.
 							</li>
 							<li class="shortcode-callout">
 								Creates a full-width callout box, in which any text, media or shortcode content can be added.
@@ -148,6 +153,40 @@ function add_shortcode_interface_modal() {
 						<h3>Text Color:</h3>
 						<p class="help">(Optional) This will change the text color of the quote, source and cite. If it is left blank then the default text color will be used.</p>
 						<input type="text" name="blockquote-color" class="shortcode-color" data-default-color="#ffffff" data-parameter="color">
+					</li>
+					<li class="shortcode-button">
+						<h2>Button Options</h2>
+
+						<h3>CSS Classes:</h3>
+						<p class="help">(Optional) CSS classes to apply to the button. Separate classes with a space.</p>
+						<input type="text" name="button-class" value="" data-default-value="btn-default" data-parameter="class">
+
+						<h3>Link href:</h3>
+						<p class="help">The URL the button should link out to.</p>
+						<input type="text" name="button-href" value="" data-default-value="" data-parameter="href">
+
+						<h3>Open in New Window:</h3>
+						<p class="help">Whether or not this button's link should open in a new window when clicked.</p>
+						<select name="button-new_window" data-parameter="new_window">
+							<option value="false" selected>False</option>
+							<option value="true">True</option>
+						</select>
+
+						<h3>Google Analytics - Interaction:</h3>
+						<p class="help">"Interaction" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</p>
+						<input type="text" name="button-ga_interaction" value="" data-default-value="" data-parameter="ga_interaction">
+
+						<h3>Google Analytics - Category:</h3>
+						<p class="help">"Category" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</p>
+						<input type="text" name="button-ga_category" value="" data-default-value="" data-parameter="ga_category">
+
+						<h3>Google Analytics - Action:</h3>
+						<p class="help">"Action" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</p>
+						<input type="text" name="button-ga_action" value="" data-default-value="" data-parameter="ga_action">
+
+						<h3>Google Analytics - Label:</h3>
+						<p class="help">"Label" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</p>
+						<input type="text" name="button-ga_label" value="" data-default-value="" data-parameter="ga_label">
 					</li>
 					<li class="shortcode-callout">
 						<h2>Callout Options</h2>

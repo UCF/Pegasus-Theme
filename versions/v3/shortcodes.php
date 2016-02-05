@@ -247,12 +247,13 @@ function sc_callout( $attr, $content ) {
 	global $post;
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+	$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 	$content = do_shortcode( $content );
 
 	if ( $post->post_type == 'page' ) {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container-wide callout ' . $css_class . '" style="background-color: ' . $bgcolor . ';">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -263,7 +264,7 @@ function sc_callout( $attr, $content ) {
 	else {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container-wide callout ' . $css_class . '" style="background-color: ' . $bgcolor . ';">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -618,7 +619,7 @@ function sc_archive_search($params=array(), $content='') {
 
 	ob_start();
 	?>
-	<div class="row post-type-search" id="archives">
+	<div class="row post-type-search">
 		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<label for="s">Search</label>
@@ -907,5 +908,51 @@ function sc_remarketing_tag( $attr ) {
 }
 
 add_shortcode( 'google-remarketing', 'sc_remarketing_tag' );
+
+
+/**
+ * Inserts a Bootstrap button.
+ **/
+function sc_button( $attr, $content='' ) {
+	$attrs = shortcode_atts(
+		array(
+			'class' => 'btn-default',
+			'href' => '',
+			'new_window' => false,
+			'ga_interaction' => '',
+			'ga_category' => '',
+			'ga_action' => '',
+			'ga_label' => ''
+		),
+		$attr,
+		'button'
+	);
+
+	$link_attrs = '';
+	if ( filter_var( $attrs['new_window'], FILTER_VALIDATE_BOOLEAN ) ) {
+		$link_attrs .= 'target="_blank" ';
+	}
+	if ( $attrs['ga_interaction'] ) {
+		$link_attrs .= 'data-ga-interaction="' . $attrs['ga_interaction'] . '" ';
+	}
+	if ( $attrs['ga_category'] ) {
+		$link_attrs .= 'data-ga-category="' . $attrs['ga_category'] . '" ';
+	}
+	if ( $attrs['ga_action'] ) {
+		$link_attrs .= 'data-ga-action="' . $attrs['ga_action'] . '" ';
+	}
+	if ( $attrs['ga_label'] ) {
+		$link_attrs .= 'data-ga-label="' . $attrs['ga_label'] . '" ';
+	}
+
+	ob_start();
+?>
+	<a class="btn <?php echo $attrs['class']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
+		<?php echo $content; ?>
+	</a>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'button', 'sc_button' );
 
 ?>

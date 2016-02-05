@@ -12120,7 +12120,7 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v1\/static\/js\/script.js",
-		"outputAbbreviatedPath": "\/versions\/v1\/static\/js\/script.js",
+		"outputAbbreviatedPath": "\/versions\/v1\/static\/js\/script.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
@@ -12720,24 +12720,24 @@
 	"\/versions\/v3\/static\/js\/script.js": {
 		"fileType": 64,
 		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.js",
-		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.js",
+		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 1,
-		"outputStyle": 0,
+		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
 	"\/versions\/v3\/static\/js\/script.min.js": {
 		"fileType": 64,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 0,
-		"syntaxCheckerStyle": 1
+		"syntaxCheckerStyle": 0
 		},
 	"\/versions\/v3\/static\/js\/webcom-base.js": {
 		"fileType": 64,
