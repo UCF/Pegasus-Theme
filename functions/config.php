@@ -180,6 +180,7 @@ $template_fonts_array = array(
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
 );
+define( 'TEMPLATE_FONT_URLS', serialize( $template_fonts_array ) );
 $template_font_styles_array = array(
 	'Archer Medium' => array(
 		'url' => null,

@@ -716,6 +716,21 @@ function curl_exists($url) {
 function output_header_markup($post) {
 	$output = '';
 
+	// Add font library stylesheets for fonts that are available via the
+	// WYSIWYG editor (excluding Cloud.Typography fonts, which are already included)
+	if ( $post->post_type == 'page' || ( ( $post->post_type == 'story' || $post->post_type == 'issue' || is_home() ) && !uses_custom_template( $post ) ) ) {
+		$fonts = unserialize( TEMPLATE_FONT_URLS );
+		if ( $fonts ) {
+			foreach ( $fonts as $name => $url ) {
+				$output .= '<link rel="stylesheet" href="'.$url.'" type="text/css" media="all" />';
+			}
+		}
+
+		$output .= '<style type="text/css">';
+		$output .= get_all_font_classes();
+		$output .= '</style>';
+	}
+
 	// Page stylesheet
 	if ( $post->post_type == 'page' && !empty( $page_stylesheet_url ) ) {
 		$page_stylesheet_url = Page::get_stylesheet_url( $post );
@@ -759,15 +774,10 @@ function output_header_markup($post) {
 			} else {
 				$font = get_default_template_font_styles( $post );
 
-				if ($font['url']) {
-					$output .= '<link rel="stylesheet" href="'.$font['url'].'" type="text/css" media="all" />';
-				}
-
 				$output .= '<style type="text/css">';
 				if ( function_exists( 'get_default_template_font_css' ) ) {
 					$output .= get_default_template_font_css( $font ); // override per version
 				}
-				$output .= get_all_font_classes();
 				$output .= '</style>';
 			}
 		}
