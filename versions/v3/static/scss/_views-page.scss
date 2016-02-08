@@ -295,18 +295,19 @@
   }
 
   .btn-give {
-    border-bottom: 4px solid #eab700;
-    border-left: 0;
-    border-radius: 0;
-    border-right: 0;
-    border-top: 0;
-    font-size: 22px;
-    padding: 20px;
+    white-space: normal;
     width: 80%;
 
     @media (max-width: 480px) {
       width: 100%;
     }
+  }
+
+  .well {
+    background-color: rgba(255, 255, 255, .85);
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
   }
 }
 

@@ -120,7 +120,7 @@ function sc_photo($attr, $content) {
 	}
 	else {
 		if ( !empty( $position ) ) {
-			$css_classes .= $position.' ';
+			$css_classes .= ' ' . $position;
 		}
 	}
 
@@ -133,11 +133,11 @@ function sc_photo($attr, $content) {
 		if ( $width !== '100%' ) {
 			$width_px = intval( str_replace( 'px', '', $width ) );
 			if ( $width_px > 140 ) {
-				$css_classes .= 'mobile-img-fluid ';
+				$css_classes .= ' mobile-img-fluid';
 			}
 		}
 		else {
-			$css_classes .= 'mobile-img-fluid ';
+			$css_classes .= ' mobile-img-fluid';
 		}
 	}
 
@@ -929,7 +929,8 @@ add_shortcode( 'google-remarketing', 'sc_remarketing_tag' );
 function sc_button( $attr, $content='' ) {
 	$attrs = shortcode_atts(
 		array(
-			'class' => 'btn-default',
+			'css_class' => 'btn-default',
+			'inline_css' => '',
 			'href' => '',
 			'new_window' => false,
 			'ga_interaction' => '',
@@ -960,8 +961,8 @@ function sc_button( $attr, $content='' ) {
 
 	ob_start();
 ?>
-	<a class="btn <?php echo $attrs['class']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
-		<?php echo $content; ?>
+	<a class="btn <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
+		<?php echo do_shortcode( $content ); ?>
 	</a>
 <?php
 	return ob_get_clean();
@@ -1016,5 +1017,29 @@ function sc_header_callout( $attr, $content='' ) {
 	return ob_get_clean();
 }
 add_shortcode( 'header-callout', 'sc_header_callout' );
+
+
+/**
+ * Displays a Bootstrap well.
+ **/
+function sc_well( $attr, $content='' ) {
+	$attrs = shortcode_atts(
+		array(
+			'css_class' => '',
+			'inline_css' => ''
+		),
+		$attr,
+		'well'
+	);
+
+	ob_start();
+?>
+	<div class="well <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+		<?php echo do_shortcode( $content ); ?>
+	</div>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'well', 'sc_well' );
 
 ?>

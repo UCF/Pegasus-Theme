@@ -187,6 +187,8 @@ $template_font_styles_array = array(
 		'font-family' => '"Archer 6r", "Archer A", "Archer B", serif',
 		'font-weight' => '600',
 		'letter-spacing' => 'normal',
+		'-moz-osx-font-smoothing' => 'auto',
+		'-webkit-font-smoothing' => 'auto',
 	),
 	'Archer Medium Italic' => array(
 		'url' => null,
@@ -194,12 +196,16 @@ $template_font_styles_array = array(
 		'font-weight' => '600',
 		'font-style' => 'italic',
 		'letter-spacing' => 'normal',
+		'-moz-osx-font-smoothing' => 'auto',
+		'-webkit-font-smoothing' => 'auto',
 	),
 	'Archer Bold' => array(
 		'url' => null,
 		'font-family' => '"Archer 8r", "Archer A", "Archer B", serif',
 		'font-weight' => '800',
 		'letter-spacing' => 'normal',
+		'-moz-osx-font-smoothing' => 'auto',
+		'-webkit-font-smoothing' => 'auto',
 	),
 	'Archer Bold Italic' => array(
 		'url' => null,
@@ -207,6 +213,8 @@ $template_font_styles_array = array(
 		'font-weight' => '800',
 		'font-style' => 'italic',
 		'letter-spacing' => 'normal',
+		'-moz-osx-font-smoothing' => 'auto',
+		'-webkit-font-smoothing' => 'auto',
 	),
 	'Chronicle Display Roman' => array(
 		'url' => null,

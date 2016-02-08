@@ -659,6 +659,25 @@ var gaEventTracking = function($) {
 };
 
 
+/**
+ * Similar to removeEmptyPTags, but searches for and removes Bootstrap containers
+ * whose only child column is empty.
+ **/
+var removeEmptyPageContainers = function($) {
+  var $subpage = $('.subpage');
+  if ($subpage.length) {
+    $subpage
+      .find('div[class^="col-"]:only-child')
+        .each(function() {
+          var $col = $(this);
+          if ($.trim($col.html()) === '') {
+            $col.parents('.container').remove();
+          }
+        });
+  }
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -676,6 +695,7 @@ if (typeof jQuery !== 'undefined'){
       socialButtonTracking($);
       removeEmptyPTags($);
       gaEventTracking($);
+      removeEmptyPageContainers($);
     });
   })(jQuery);
 }
