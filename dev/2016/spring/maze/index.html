@@ -39,8 +39,8 @@
         bg = new Image(),
         collision = 0,
         isDragging = false,
-        hitboxWidth = 5,
-        hitboxHeight = 5,
+        hitboxWidth = movement,
+        hitboxHeight = movement,
         won = false,
         pegasusImage = null;
 
@@ -110,20 +110,23 @@
           newX = parseInt((e.clientX || e.changedTouches[0].clientX), 10);
           newY = parseInt((e.clientY || e.changedTouches[0].clientY), 10);
 
-          // Determine the direction the player is moving
-          if (newY < y && y - movement > 0 && !checkcollision(0, -movement)) {
+          // Determine the direction the player is moving.  Only perform a move if:
+          // 1) The mouse has moved at least as var as `movement`
+          // 2) The player is still in-bounds
+          // 3) No collision is detected
+          if (newY < y - movement && y - movement > 0 && !checkcollision(0, -movement)) {
             // Up
             move(0, -movement);
           }
-          if (newY > y && y + movement < HEIGHT && !checkcollision(0, movement)) {
+          if (newY > y + movement && y + movement < HEIGHT && !checkcollision(0, movement)) {
             // Down
             move(0, movement);
           }
-          if (newX < x && x - movement > 0 && !checkcollision(-movement, 0)) {
+          if (newX < x - movement && x - movement > 0 && !checkcollision(-movement, 0)) {
             // Left
             move(-movement, 0);
           }
-          if (newX > x && x + movement < WIDTH && !checkcollision(movement, 0)) {
+          if (newX > x + movement && x + movement < WIDTH && !checkcollision(movement, 0)) {
             // Right
             move(movement, 0);
           }
