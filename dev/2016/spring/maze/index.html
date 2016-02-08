@@ -41,12 +41,20 @@
         isDragging = false,
         hitboxWidth = 5,
         hitboxHeight = 5,
-        won = false;
+        won = false,
+        pegasusImage = null;
 
       function draw() {
         ctx.drawImage(bg, 0, 0);
-        ctx.fillStyle = "purple";
-        rect(x, y, hitboxWidth, hitboxHeight);
+        // ctx.fillStyle = "purple";
+        // rect(x, y, hitboxWidth, hitboxHeight);
+        pegasusImage = new Image();
+        pegasusImage.src = "/wp-content/themes/Pegasus-Theme/dev/2016/spring/maze/pegasusSmall.png";
+        pegasusImage.addEventListener('load', drawImage);
+      }
+
+      function drawImage() {
+        ctx.drawImage(pegasusImage, x, y);
       }
 
       function rect(x, y, w, h) {
