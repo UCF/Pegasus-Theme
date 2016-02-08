@@ -521,7 +521,223 @@ article.ss-photo-essay {
   }
 }
 
-iframe[name="google_conversion_frame"] {
-  height: 0 !important;
-  width: 0 !important;
+
+// Sidebars
+.sidebar {
+  margin-bottom: 20px;
+
+  &.pull-left {
+    padding-left: 0;
+    padding-right: $grid-gutter-width;
+  }
+
+  &.pull-right {
+    padding-left: $grid-gutter-width;
+    padding-right: 0;
+  }
+
+  &.pull-left,
+  &.pull-right {
+    @media (max-width: $screen-xs-max) {
+      float: left;
+      padding-left: 0;
+      padding-right: 0;
+      width: 100%;
+    }
+  }
+}
+
+.sidebar-inner {
+  padding: 10px 30px;
+
+  blockquote {
+    &.quote {
+      padding-left: 0;
+
+      &:before {
+        display: block;
+        float: left;
+        font-size: 28px;
+        left: -5px;
+        line-height: 38px;
+        position: relative;
+        top: 0;
+
+        @media (max-width: $screen-sm-max) {
+          font-size: 26px;
+          line-height: 36px;
+        }
+      }
+    }
+
+    &,
+    p {
+      font-size: 28px;
+      line-height: 38px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 26px;
+        line-height: 36px;
+      }
+    }
+
+    small {
+      font-size: 16px;
+      line-height: 22px;
+      margin-top: 10px;
+    }
+  }
+}
+
+
+// Callouts
+.callout {
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  &.callout-header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: -31px;
+    margin-top: -50px;
+    min-height: 500px;
+
+    @media (min-width: 1200px) {
+      min-height: 600px;
+    }
+
+    h1,
+    h1 > span {
+      @media (max-width: $screen-xs-max) {
+        font-size: 36px !important;  // Necessary to override inline css
+      }
+    }
+
+    .lead,
+    .lead > span {
+      @media (max-width: $screen-xs-max) {
+        font-size: 18px !important;  // Necessary to override inline css
+      }
+    }
+  }
+}
+
+.callout-inner {
+  padding-bottom: 30px;
+  padding-top: 30px;
+  text-align: center;
+
+  &.text-left {
+    text-align: left;
+  }
+
+  &.text-right {
+    text-align: right;
+  }
+
+  > div {
+    // Force centering of wrapper divs by default
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  > p:empty {
+    // kill_empty_p_tags won't work for these shortcodes :(
+    display: none;
+  }
+
+  // will not work in IE8
+  > *:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// Iframes
+body:not(.ie8) .callout-inner > div:not([class]),
+body:not(.ie8) .wp-video-shortcode,
+body:not(.ie8) .mejs-shim,
+body:not(.ie8) .mejs-overlay,
+body:not(.ie8) .mejs-poster,
+.me-plugin,
+iframe {
+  width: 100% !important;
+}
+
+body:not(.ie8) .callout-inner > div:not([class]),
+body:not(.ie8) .wp-video-shortcode,
+body:not(.ie8) .mejs-overlay,
+body:not(.ie8) .mejs-poster,
+iframe {
+  @media (max-width: $screen-sm-max) {
+    height: 280px !important;
+  }
+
+  @media (max-width: 480px) {
+    height: 220px !important;
+  }
+}
+
+iframe {
+  height: 360px;
+
+  &[name="google_conversion_frame"] {
+    height: 0 !important;
+    width: 0 !important;
+  }
+}
+
+
+// Images, figures
+img {
+  margin-bottom: 15px;
+  margin-top: 15px;
+
+  &.pull-left {
+    margin-right: 15px;
+  }
+
+  &.pull-right {
+    margin-left: 15px;
+  }
+}
+
+figure {
+  margin-bottom: 15px;
+  margin-left: 0; // force reset
+  margin-right: 0; // force reset
+  margin-top: 15px;
+
+  &.pull-left {
+    margin-right: 15px;
+  }
+
+  &.pull-right {
+    margin-left: 15px;
+  }
+
+  &.pull-center {
+    // override reset
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  img {
+    margin-top: 0;
+  }
+}
+
+.mobile-img-fluid,
+.mobile-img-fluid img {
+  @media (max-width: $screen-xs-max) {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+
+// Jumbotrons
+.jumbotron p {
+  font-size: 16px;
 }
