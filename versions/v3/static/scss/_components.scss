@@ -594,12 +594,47 @@ article.ss-photo-essay {
 .callout {
   margin-bottom: 30px;
   margin-top: 30px;
+
+  &.callout-header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-bottom: -31px;
+    margin-top: -50px;
+    min-height: 500px;
+
+    @media (min-width: 1200px) {
+      min-height: 600px;
+    }
+
+    h1,
+    h1 > span {
+      @media (max-width: $screen-xs-max) {
+        font-size: 36px !important;  // Necessary to override inline css
+      }
+    }
+
+    .lead,
+    .lead > span {
+      @media (max-width: $screen-xs-max) {
+        font-size: 18px !important;  // Necessary to override inline css
+      }
+    }
+  }
 }
 
 .callout-inner {
   padding-bottom: 30px;
   padding-top: 30px;
   text-align: center;
+
+  &.text-left {
+    text-align: left;
+  }
+
+  &.text-right {
+    text-align: right;
+  }
 
   > div {
     // Force centering of wrapper divs by default

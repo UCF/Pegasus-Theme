@@ -103,7 +103,8 @@ add_shortcode('media', 'sc_get_media');
  * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
-	$css_classes = '';
+	$css_classes = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 	$content = $content ? $content : '';
 	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
 	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
@@ -159,7 +160,10 @@ function sc_photo($attr, $content) {
 				$html .= ' max-width: '.$width.';';
 			}
 			$html .= '">';
-			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto; ';
+			if ( $inline_css ) {
+				$html .= $inline_css;
+			}
 			if ( $width ) {
 				$html .= ' width: '.$width.';';
 			}
@@ -168,7 +172,10 @@ function sc_photo($attr, $content) {
 			$html .= '</figure>';
 		}
 		else {
-			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto; ';
+			if ( $inline_css ) {
+				$html .= $inline_css;
+			}
 			if ( $width ) {
 				$html .= ' width: '.$width.';';
 			}
@@ -207,15 +214,18 @@ function sc_blockquote( $attr, $content = '' ) {
 	$source = $attr['source'] ? $attr['source'] : null;
 	$cite = $attr['cite'] ? $attr['cite'] : null;
 	$color = $attr['color'] ? $attr['color'] : null;
+	$class = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 
-	$html = '<blockquote';
 	if ( $source ) {
-		$html .= ' class="quote"';
+		$class .= ' quote';
+	}
+	if ( $color ) {
+		$inline_css .= ' color: ' . $color . ';';
 	}
 
-	if ( $color ) {
-		$html .= ' style="color: ' . $color . ';"';
-	}
+	$html = '<blockquote class="' . $class . '"';
+	$html .= ' style="' . $inline_css . '"';
 	$html .= '>';
 
 	$html .= $content;
@@ -248,12 +258,15 @@ function sc_callout( $attr, $content ) {
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 	$css_class = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 	$content = do_shortcode( $content );
+
+	$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
 
 	if ( $post->post_type == 'page' ) {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout ' . $css_class . '" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container-wide callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -264,7 +277,7 @@ function sc_callout( $attr, $content ) {
 	else {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout ' . $css_class . '" style="background-color: ' . $bgcolor . ';">';
+		$html .= '<div class="container-wide callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -954,5 +967,54 @@ function sc_button( $attr, $content='' ) {
 	return ob_get_clean();
 }
 add_shortcode( 'button', 'sc_button' );
+
+
+function sc_header_callout( $attr, $content='' ) {
+	global $post;
+	$attrs = shortcode_atts(
+		array(
+			'background' => '#fff',
+			'background_image' => '',
+			'content_align' => 'text-left',
+			'css_class' => '',
+			'inline_css' => ''
+		),
+		$attr,
+		'header-callout'
+	);
+
+	$attrs['inline_css'] = 'background-color: ' . $bgcolor . '; background-image: url(\'' . $attrs['background_image'] . '\'); ' . $attrs['inline_css'];
+
+	ob_start();
+?>
+	<?php if ( $post->post_type == 'page' ): ?>
+		</div></div></div>
+		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+			<div class="container">
+				<div class="row content-wrap">
+					<div class="col-md-12 callout-inner <?php echo $attrs['content_align']; ?>">
+						<?php echo do_shortcode( $content ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container"><div class="row content-wrap"><div class="col-md-12">
+	<?php else: ?>
+		</div></div></div>
+		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+			<div class="container">
+				<div class="row content-wrap">
+					<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner <?php echo $attrs['content_align']; ?>">
+						<?php echo do_shortcode( $content ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'header-callout', 'sc_header_callout' );
 
 ?>
