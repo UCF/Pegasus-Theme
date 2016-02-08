@@ -7835,6 +7835,99 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
+	"\/dev\/2016\/spring\/maze\/anime\/edge.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/maze\/anime\/edge_edge.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_edge.js",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_edge.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2016\/spring\/maze\/anime\/edge_edgeActions.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_edgeActions.js",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_edgeActions.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2016\/spring\/maze\/anime\/edge_includes\/edge.6.0.0.min.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_includes\/edge.6.0.0.min.js",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/edge_includes\/edge.6.0.0.min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 1
+		},
+	"\/dev\/2016\/spring\/maze\/anime\/images\/maze.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14488,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/images\/maze.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/anime\/images\/maze.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/maze\/draw.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/draw.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/maze\/index.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/index.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/maze\/knightro.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 766,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/knightro.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/knightro.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/maze\/maze.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 14488,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/maze.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/maze.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/functions.php": {
 		"fileType": 8192,
 		"ignore": 0,

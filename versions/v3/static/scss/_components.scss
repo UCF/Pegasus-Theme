@@ -690,7 +690,8 @@ iframe {
 
 
 // Images, figures
-img {
+.story img,
+.subpage img {
   margin-bottom: 15px;
   margin-top: 15px;
 
@@ -703,7 +704,8 @@ img {
   }
 }
 
-figure {
+.story figure,
+.subpage figure {
   margin-bottom: 15px;
   margin-left: 0; // force reset
   margin-right: 0; // force reset
