@@ -31,7 +31,7 @@
       var
         canvas,
         ctx,
-        movement = 5,
+        movement = 6,
         x = 32,
         y = 10,
         WIDTH = 628,
@@ -49,11 +49,11 @@
         // ctx.fillStyle = "purple";
         // rect(x, y, hitboxWidth, hitboxHeight);
         pegasusImage = new Image();
-        pegasusImage.src = "/wp-content/themes/Pegasus-Theme/dev/2016/spring/maze/pegasusSmall.png";
-        pegasusImage.addEventListener('load', drawImage);
+        pegasusImage.src = 'pegasusSmall.png';
+        pegasusImage.addEventListener('load', drawPegasus);
       }
 
-      function drawImage() {
+      function drawPegasus() {
         ctx.drawImage(pegasusImage, x, y);
       }
 
@@ -67,6 +67,7 @@
       function move(moveX, moveY) {
         x += moveX;
         y += moveY;
+        draw();
       }
 
       function doKeyDown(e){
@@ -149,7 +150,7 @@
       }
 
       function checkWin() {
-        if (x >= 622 && y > 797 && y < 808 && !won) {
+        if (x >= 620 && y > 797 && y < 808 && !won) {
           // TODO: what should happen when the user wins?
           alert('Winner winner chicken dinner!');
           won = true;
@@ -160,7 +161,8 @@
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
         bg.src = "maze.png";
-        return setInterval(draw, 10);
+        bg.addEventListener('load', draw);
+        // return setInterval(draw, 10);
       }
 
       init();
