@@ -1,0 +1,57 @@
+.ie8 main {
+  margin-top: -20px; }
+
+.story,
+.story p {
+  font-size: 14px;
+  line-height: 1.2; }
+.story h1,
+.story h2,
+.story .h2 {
+  font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 80;
+  text-transform: none; }
+.story h2,
+.story .h2 {
+  font-size: 38px;
+  line-height: 1; }
+  .story h2.caps,
+  .story .h2.caps {
+    font-size: 24px;
+    letter-spacing: -.045em;
+    line-height: 1em;
+    margin-bottom: 6px; }
+.story h3,
+.story .h3 {
+  font-size: 30px;
+  line-height: 1em;
+  margin-bottom: 4px; }
+.story h4,
+.story .h4 {
+  font-size: 16px;
+  line-height: 1em; }
+.story h3,
+.story .h3,
+.story h4,
+.story .h4,
+.story h5,
+.story .h5,
+.story h6,
+.story .h6 {
+  font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 60; }
+.story a {
+  color: #000;
+  font-weight: bold; }
+  .story a:hover, .story a:active {
+    text-decoration: underline; }
+.story .caps {
+  text-transform: uppercase; }
+.story .source {
+  font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 70;
+  font-size: 11px;
+  text-transform: uppercase; }
