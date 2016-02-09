@@ -7211,7 +7211,7 @@
 		},
 	"\/dev\/2015\/fall\/global-distribution\/global-distribution.css": {
 		"fileType": 16,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dev\/2015\/fall\/global-distribution\/global-distribution.css",
 		"outputAbbreviatedPath": "No Output Path",

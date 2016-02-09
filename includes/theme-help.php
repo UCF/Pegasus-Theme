@@ -835,6 +835,9 @@
 							<a href="#shortcodes-blockquote">Blockquote</a>
 						</li>
 						<li>
+							<a href="#shortcodes-button">Button</a>
+						</li>
+						<li>
 							<a href="#shortcodes-callout">Callout</a>
 						</li>
 						<li>
@@ -854,6 +857,9 @@
 						</li>
 						<li>
 							<a href="#shortcodes-slideshow">Slideshow</a>
+						</li>
+						<li>
+							<a href="#shortcodes-well">Well</a>
 						</li>
 					</ul>
 
@@ -922,11 +928,90 @@
 							<td>The color of the blockquote text, source and cite. (optional)</td>
 							<td>#000 (source/cite: #444)</td>
 						</tr>
+						<tr>
+							<td>CSS Classes</td>
+							<td>css_class</td>
+							<td>(Optional) CSS classes to apply to the blockquote. Separate classes with a space.</td>
+							<td>n/a</td>
+						</tr>
 					</table>
 
 					<h4>Examples</h4>
 					<pre><code>[blockquote]Powerful quote of the day.[/blockquote]</code></pre>
 					<pre><code>[blockquote source="Jane Doe" cite="Some Cool Book"]Powerful quote of the day.[/blockquote]</code></pre>
+
+					<hr/>
+
+					<h3 id="shortcodes-button">button</h3>
+					<p>
+						Styles a line of text as a clickable Bootstrap button.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						<strong>A single line of text, media or other shortcodes</strong> are permitted between the shortcode tags.
+					</p>
+
+					<h4>Attributes</h4>
+					<table>
+						<tr>
+							<th scope="col">Name</th>
+							<th scrop="col">Attribute</th>
+							<th scope="col">Description</th>
+							<th scope="col">Default Value</th>
+						</tr>
+						<tr>
+							<td>CSS Classes</td>
+							<td>css_class</td>
+							<td>
+								(Optional) CSS classes to apply to the button. Separate classes with a space.<br>
+								<strong>Note:</strong> This shortcode expects one or more of the built-in Bootstrap button
+								classes; see the <a href="http://getbootstrap.com/css/#buttons-options">Bootstrap Docs</a>
+								for more information.
+							</td>
+							<td>btn-default</td>
+						</tr>
+						<tr>
+							<td>Link href</td>
+							<td>href</td>
+							<td>The URL the button should link out to.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Open in New Window</td>
+							<td>new_window</td>
+							<td>Whether or not this button's link should open in a new window when clicked (true or false).</td>
+							<td>false</td>
+						</tr>
+						<tr>
+							<td>Google Analytics - Interaction</td>
+							<td>ga_interaction</td>
+							<td>"Interaction" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Google Analytics - Category</td>
+							<td>ga_category</td>
+							<td>"Category" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Google Analytics - Action</td>
+							<td>ga_action</td>
+							<td>"Action" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Google Analytics - Label</td>
+							<td>ga_label</td>
+							<td>"Label" parameter for this link's click event. Requires the "ga-event-link" class to be added to the button.</td>
+							<td></td>
+						</tr>
+					</table>
+
+					<h4>Examples</h4>
+					<pre><code>[button css_class="btn-primary" href="http://www.google.com"]I'm a blue button[/button]</code></pre>
 
 					<hr/>
 
@@ -960,6 +1045,12 @@
 							<td>content_align</td>
 							<td>Content text can be aligned left, right or center.</td>
 							<td>center</td>
+						</tr>
+						<tr>
+							<td>CSS Classes</td>
+							<td>css_class</td>
+							<td>(Optional) CSS classes to apply to the callout. Separate classes with a space.</td>
+							<td>n/a</td>
 						</tr>
 					</table>
 
@@ -1161,6 +1252,40 @@ and fall *under* the sidebar, instead of next to it.
 
 					<h4>Examples</h4>
 					<pre><code>[slideshow slug="awesome-photo-essay"][/slideshow]</code></pre>
+
+					<hr/>
+
+					<h3 id="shortcodes-well">well</h3>
+					<p>
+						Wraps contents (text, media or shortcode content) in a box (Bootstrap well).  Useful for
+						bringing focus to a chunk of content without using a full-width Callout.
+					</p>
+
+					<h4>Content</h4>
+					<p>
+						This shortcode <strong>requires content</strong> between its starting and ending tags.<br/>
+						<strong>Any text, media or other shortcodes</strong> are permitted between the shortcode tags.
+					</p>
+
+					<h4>Attributes</h4>
+					<table>
+						<tr>
+							<th scope="col">Name</th>
+							<th scrop="col">Attribute</th>
+							<th scope="col">Description</th>
+							<th scope="col">Default Value</th>
+						</tr>
+						<tr>
+							<td>CSS Classes</td>
+							<td>css_class</td>
+							<td>(Optional) CSS classes to apply to the well. Separate classes with a space.</td>
+							<td>n/a</td>
+						</tr>
+					</table>
+
+					<h4>Examples</h4>
+					<pre><code>[well][blockquote]Very very powerful quote![/blockquote][/well]</code></pre>
+					<pre><code>[well css_class="well-lg"]This well has extra padding.[/well]</code></pre>
 				</li>
 
 			</ul>

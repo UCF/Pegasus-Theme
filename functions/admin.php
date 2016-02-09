@@ -61,17 +61,19 @@ function add_shortcode_interface_modal() {
 			'google-remarketing',
 			'lead',
 			'sidebar',
-			'slideshow'
+			'slideshow',
+			'well'
 		);
 
 		// Dummy text to place between shortcodes that are enclosing.
 		$enclosing = array(
 			'blockquote' => 'Your blockquote text here...',
-			'button' => 'Your button text here...',
+			'button'     => 'Your button text or shortcode content here...',
 			'callout'    => 'Your callout text or shortcode content here...',
 			'caption'    => 'Your caption text here...',
 			'lead'       => 'Your lead text here...',
-			'sidebar'    => 'Your sidebar text or shortcode content here...'
+			'sidebar'    => 'Your sidebar text or shortcode content here...',
+			'well'       => 'Your well text or shortcode content here...'
 		);
 	?>
 		<div id="select-shortcode-form" style="display:none;">
@@ -134,6 +136,10 @@ function add_shortcode_interface_modal() {
 								Creates a slideshow embed of photos with captions.  Slideshows should be created as Photo
 								Essays and then be selected here.
 							</li>
+							<li class="shortcode-well">
+								Wraps contents (text, media or shortcode content) in a box.  Useful for bringing focus to
+								a chunk of content without using a full-width Callout.
+							</li>
 						</ul>
 					</div>
 				</div>
@@ -153,13 +159,17 @@ function add_shortcode_interface_modal() {
 						<h3>Text Color:</h3>
 						<p class="help">(Optional) This will change the text color of the quote, source and cite. If it is left blank then the default text color will be used.</p>
 						<input type="text" name="blockquote-color" class="shortcode-color" data-default-color="#ffffff" data-parameter="color">
+
+						<h3>CSS Classes:</h3>
+						<p class="help">(Optional) CSS classes to apply to the blockquote. Separate classes with a space.</p>
+						<input type="text" name="blockquote-css_class" value="" data-default-value="btn-default" data-parameter="css_class">
 					</li>
 					<li class="shortcode-button">
 						<h2>Button Options</h2>
 
 						<h3>CSS Classes:</h3>
 						<p class="help">(Optional) CSS classes to apply to the button. Separate classes with a space.</p>
-						<input type="text" name="button-class" value="" data-default-value="btn-default" data-parameter="class">
+						<input type="text" name="button-css_class" value="" data-default-value="btn-default" data-parameter="css_class">
 
 						<h3>Link href:</h3>
 						<p class="help">The URL the button should link out to.</p>
@@ -197,6 +207,17 @@ function add_shortcode_interface_modal() {
 							within this shortcode and picking a color from the text editor's Font Color dropdown menu.
 						</p>
 						<input type="text" name="callout-color" class="shortcode-color" value="#eeeeee" data-default-color="#ffffff" data-parameter="background">
+
+						<h3>Content Alignment:</h3>
+						<select name="callout-content_align" data-parameter="content_align">
+							<option selected="selected" value="left">Left</option>
+							<option value="center">Center</option>
+							<option value="right">Right</option>
+						</select>
+
+						<h3>CSS Classes:</h3>
+						<p class="help">(Optional) CSS classes to apply to the callout. Separate classes with a space.</p>
+						<input type="text" name="callout-css_class" value="" data-default-value="btn-default" data-parameter="css_class">
 					</li>
 					<li class="shortcode-google-remarketing">
 						<h2>Google-Remarketing Options</h2>
@@ -223,6 +244,13 @@ function add_shortcode_interface_modal() {
 						<select name="sidebar-position" data-parameter="position">
 							<option value="left">Left</option>
 							<option selected="selected" value="right">Right</option>
+						</select>
+
+						<h3>Content Alignment:</h3>
+						<select name="sidebar-content_align" data-parameter="content_align">
+							<option selected="selected" value="left">Left</option>
+							<option value="center">Center</option>
+							<option value="right">Right</option>
 						</select>
 					</li>
 					<li class="shortcode-slideshow">
@@ -253,6 +281,13 @@ function add_shortcode_interface_modal() {
 							(Optional) The color of caption text in this slideshow. Defaults to white (#fff).
 						</p>
 						<input type="text" name="caption-color" class="shortcode-color" value="#ffffff" data-default-color="#ffffff" data-parameter="caption_color">
+					</li>
+					<li class="shortcode-well">
+						<h2>Well Options</h2>
+
+						<h3>CSS Classes:</h3>
+						<p class="help">(Optional) CSS classes to apply to the well. Separate classes with a space.</p>
+						<input type="text" name="well-css_class" value="" data-default-value="btn-default" data-parameter="css_class">
 					</li>
 				</ul>
 
