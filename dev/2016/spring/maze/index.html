@@ -31,7 +31,7 @@
       var
         canvas,
         ctx,
-        movement = 5,
+        movement = 6,
         x = 32,
         y = 10,
         WIDTH = 628,
@@ -41,12 +41,20 @@
         isDragging = false,
         hitboxWidth = movement,
         hitboxHeight = movement,
-        won = false;
+        won = false,
+        pegasusImage = null;
 
       function draw() {
         ctx.drawImage(bg, 0, 0);
-        ctx.fillStyle = "purple";
-        rect(x, y, hitboxWidth, hitboxHeight);
+        // ctx.fillStyle = "purple";
+        // rect(x, y, hitboxWidth, hitboxHeight);
+        pegasusImage = new Image();
+        pegasusImage.src = 'pegasusSmall.png';
+        pegasusImage.addEventListener('load', drawPegasus);
+      }
+
+      function drawPegasus() {
+        ctx.drawImage(pegasusImage, x, y);
       }
 
       function rect(x, y, w, h) {
@@ -59,6 +67,7 @@
       function move(moveX, moveY) {
         x += moveX;
         y += moveY;
+        draw();
       }
 
       function doKeyDown(e){
@@ -141,7 +150,7 @@
       }
 
       function checkWin() {
-        if (x >= 622 && y > 797 && y < 808 && !won) {
+        if (x >= 620 && y > 797 && y < 808 && !won) {
           // TODO: what should happen when the user wins?
           alert('Winner winner chicken dinner!');
           won = true;
@@ -152,7 +161,8 @@
         canvas = document.getElementById("canvas");
         ctx = canvas.getContext("2d");
         bg.src = "maze.png";
-        return setInterval(draw, 10);
+        bg.addEventListener('load', draw);
+        // return setInterval(draw, 10);
       }
 
       init();
