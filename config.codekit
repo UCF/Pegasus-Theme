@@ -12842,15 +12842,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/versions\/v3\/static\/css\/style.min.css": {
-		"fileType": 16,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/versions\/v3\/static\/css\/style.min.css",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/versions\/v3\/static\/img\/social-share-r.png": {
 		"fileType": 32768,
 		"ignore": 0,
