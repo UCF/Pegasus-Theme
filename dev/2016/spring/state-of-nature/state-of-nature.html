@@ -1,60 +1,89 @@
 <style>
+    article.story h1 {
+        margin-bottom: 5px;
+    }
+    article.story h2 {
+        color: #53813E;
+        font-size: 20px;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
     .map-container {
         position: relative;
     }
     .map-container img {
-        margin: 0 !important;
+        margin: 0 0 30px !important;
     }
     .map-container .map-image {
         display: none;
         position: absolute;
     }
-    .map-container .map-image:first-child {
-        display: block;
-    }
     .map-container img:last-child {
-        visibility: hidden;
         position: static;
     }
-    .map-links {
+    .legend {
         left: 20%;
         list-style: none;
         position: absolute;
         top: 60%;
     }
-    .map-links li {
-        background-color: #000;
-        color: #fff;
+    .legend li {
+        background-color: #F9F1E3;
         margin: 0 !important;
         padding: 20px;
         transition: all 0.8s ease;
     }
-    .map-links li:hover {
-        background-color: #ffcc00;
-        color: #000;
-    }
-    .link-highlight {
+    .legend li.highlight {
+        background-color: #F3E3CA;
         font-weight: bold;
+    }
+    .legend span {
+        display: inline-block;
+        height: 15px;
+        width: 15px;
+    }
+    .legend .urban span {
+        background-color: #d8a85e;
+    }
+    .legend .current span {
+        background-color: #acb859;
+    }
+    .legend .proposed span {
+        background-color: #799636;
+    }
+    .legend li:hover {
+        background-color: #DFBE8A;
     }
 </style>
 <article class="story story-default">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <div class="map-container">
-                    <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida1.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida1.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%">
-                </div>
-                <ul class="map-links">
-                    <li class="link-highlight">Show Florida 1</li>
-                    <li>Show Florida 2</li>
-                    <li>Show Florida 1</li>
-                    <li>Show Florida 2</li>
-                </ul>
+                <h1>The State of Natural Florida</h1>
+                <h2>What's at stake. How we save it.</h2>
             </div>
         </div>
+    </div>
+     <div class="container-wide">
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="map-container">
+                        <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/urban.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/current.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/proposed.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%">
+                    </div>
+                    <ul class="legend">
+                        <li class="urban"><span></span> Urban</li>
+                        <li class="current"><span></span> Current</li>
+                        <li class="proposed"><span></span> Proposed</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                How does this work?!
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non perferendis assumenda maiores repellat molestiae commodi at ut consequuntur ipsa explicabo magnam nihil error voluptas, suscipit fugit! Temporibus incidunt in dolore.</p>
             </div>
         </div>
     </div>
@@ -63,27 +92,27 @@
     (function () {
         "use strict";
         var $mapContainer,
-            $mapLinks;
-        function toggleLinks(e) {
-            $mapLinks.find('li').removeClass('link-highlight');
-            $(e.target).addClass('link-highlight');
-        }
-        function toggleLayer($mapImage) {
-            $mapContainer.find('.map-image:visible').fadeOut(1000);
-            $mapImage.fadeIn(1000);
-        }
-        function toggleMap(e) {
+            $legend;
+        function toggleMapLayer(e) {
             e.preventDefault();
+            $(e.target).toggleClass('highlight');
             var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
-            if(!$mapImage.is(':visible')) {
-                toggleLinks(e);
-                toggleLayer($mapImage);
-            }
+            $mapImage.fadeToggle(1000);
+        }
+        function toggleLegend(index) {
+            var $this = $(this);
+            setTimeout(function() {
+                $this.trigger('click');
+            }, 2500*index);
+        }
+        function loadAnime() {
+            $legend.find('li').each(toggleLegend);
         }
         function init() {
             $mapContainer = $('.map-container');
-            $mapLinks = $('.map-links');
-            $mapLinks.on('click', 'li', toggleMap);
+            $legend = $('.legend');
+            $legend.on('click', 'li', toggleMapLayer);
+            loadAnime();
         }
         $(init);
     }());
