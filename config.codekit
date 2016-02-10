@@ -7984,6 +7984,46 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/florida1.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1.36694e+06,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/florida1.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/florida1.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/florida2.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 389198,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/florida2.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/florida2.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/state-of-nature.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/state-of-nature.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/state-of-nature.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/state-of-nature.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/functions.php": {
 		"fileType": 8192,
 		"ignore": 0,
