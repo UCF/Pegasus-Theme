@@ -109,6 +109,9 @@
 							<li id="nav-archives">
 								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
 							</li>
+							<li id="nav-give">
+								<a href="<?php echo get_permalink( get_page_by_title( 'Give' ) ); ?>" class="btn btn-gold">Give</a>
+							</li>
 						</ul>
 					</nav>
 				</div>
