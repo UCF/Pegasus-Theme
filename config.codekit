@@ -7977,7 +7977,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 411,
+		"initialSize": 299,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmall.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmall.png",
 		"outputPathIsOutsideProject": 0,
@@ -12838,6 +12838,15 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v3\/single-story.php",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/versions\/v3\/static\/css\/style.min.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/versions\/v3\/static\/css\/style.min.css",
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
