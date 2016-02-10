@@ -1,0 +1,143 @@
+// Variables
+
+$font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
+
+
+// Mixins
+
+// Adds Gotham font family styles to an element (using backward-compatible
+// font-family declarations for IE8 support.)
+// $weight should be a number from 1-9, which references the desired font
+// weight (100-900).  Default is 4 (400) or 'Book'.
+@mixin gotham($weight: 4, $font-style: normal) {
+  font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B';
+  font-style: $font-style;
+  font-weight: #{$weight}00;
+}
+
+// Adds commonly-used Open Sans Condensed Bold in all-caps.
+@mixin open-sans-condensed() {
+  font-family: "OpenSansCondensedBold", sans-serif;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+}
+
+
+// General Overrides
+
+.ie8 main {
+  margin-top: -20px;
+}
+
+article.story {  // over-qualified selector necessary to match+override theme-level css
+  &,
+  p {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+
+  h1,
+  h2,
+  .h2 {
+    @include gotham(8);
+  }
+
+  h2,
+  .h2 {
+    font-size: 38px;
+    line-height: 1;
+
+    &.caps {
+      font-size: 24px;
+      letter-spacing: -.045em;
+      line-height: 1em;
+      margin-bottom: 6px;
+    }
+  }
+
+  h3,
+  .h3 {
+    font-size: 30px;
+    line-height: 1em;
+    margin-bottom: 4px;
+  }
+
+  h4,
+  .h4 {
+    font-size: 16px;
+    line-height: 1em;
+  }
+
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    @include gotham(6);
+  }
+
+  h1 > span,
+  h2 > span,
+  h3 > span,
+  h4 > span,
+  h5 > span,
+  h6 > span {
+    display: inline;
+  }
+
+  a {
+    color: #000;
+    font-weight: bold;
+
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+
+  .source {
+    @include gotham(7);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .ucf-gold {
+    color: #fc0;
+  }
+}
+
+
+// Story-specific overrides
+
+#pro-goal {
+  h2 {
+    @include open-sans-condensed();
+    color: #512399;
+    font-size: 90px;
+  }
+
+  blockquote {
+    &.quote:before {
+      font-size: 40px;
+      left: 0;
+      line-height: 60px;
+    }
+
+    &,
+    p {
+      font-size: 22px;
+      line-height: 1.3;
+      padding-left: 25px;
+    }
+
+    small {
+      font-size: 14px;
+      font-style: italic;
+      margin-top: 12px;
+    }
+  }
+}
