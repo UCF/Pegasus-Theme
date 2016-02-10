@@ -96,6 +96,23 @@ article.story .wrapper-inverse {
     margin-top: 0; }
   article.story .wrapper-inverse .caption {
     margin-bottom: 10px; }
+article.story .story-header-image {
+  position: relative; }
+  @media (max-width: 767px) {
+    article.story .story-header-image {
+      height: 300px; } }
+article.story .story-header-inner {
+  bottom: 20px;
+  left: 0;
+  position: absolute;
+  right: 0; }
+article.story .social {
+  float: right;
+  margin-top: 54px; }
+  @media (max-width: 767px) {
+    article.story .social {
+      float: left;
+      margin-top: 0; } }
 
 #pro-goal h2 {
   color: #512399; }
