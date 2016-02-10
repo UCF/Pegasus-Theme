@@ -22,4 +22,20 @@ var Composition = Edge.Composition, Symbol = Edge.Symbol; // aliases for commonl
    })("stage");
    //Edge symbol end:'stage'
 
+   //=========================================================
+   
+   //Edge symbol: 'icon'
+   (function(symbolName) {   
+   
+   })("icon");
+   //Edge symbol end:'icon'
+
+   //=========================================================
+   
+   //Edge symbol: 'PegasusDot'
+   (function(symbolName) {   
+   
+   })("PegasusDot");
+   //Edge symbol end:'PegasusDot'
+
 })(window.jQuery || AdobeEdge.$, AdobeEdge, "maze-anime");
