@@ -1,0 +1,90 @@
+<style>
+    .map-container {
+        position: relative;
+    }
+    .map-container img {
+        margin: 0 !important;
+    }
+    .map-container .map-image {
+        display: none;
+        position: absolute;
+    }
+    .map-container .map-image:first-child {
+        display: block;
+    }
+    .map-container img:last-child {
+        visibility: hidden;
+        position: static;
+    }
+    .map-links {
+        left: 20%;
+        list-style: none;
+        position: absolute;
+        top: 60%;
+    }
+    .map-links li {
+        background-color: #000;
+        color: #fff;
+        margin: 0 !important;
+        padding: 20px;
+        transition: all 0.8s ease;
+    }
+    .map-links li:hover {
+        background-color: #ffcc00;
+        color: #000;
+    }
+    .link-highlight {
+        font-weight: bold;
+    }
+</style>
+<article class="story story-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="map-container">
+                    <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida1.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida1.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/florida2.png" alt="" width="100%">
+                </div>
+                <ul class="map-links">
+                    <li class="link-highlight">Show Florida 1</li>
+                    <li>Show Florida 2</li>
+                    <li>Show Florida 1</li>
+                    <li>Show Florida 2</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                How does this work?!
+            </div>
+        </div>
+    </div>
+</article>
+<script>
+    (function () {
+        "use strict";
+        var $mapContainer,
+            $mapLinks;
+        function toggleLinks(e) {
+            $mapLinks.find('li').removeClass('link-highlight');
+            $(e.target).addClass('link-highlight');
+        }
+        function toggleLayer($mapImage) {
+            $mapContainer.find('.map-image:visible').fadeOut(1000);
+            $mapImage.fadeIn(1000);
+        }
+        function toggleMap(e) {
+            e.preventDefault();
+            var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
+            if(!$mapImage.is(':visible')) {
+                toggleLinks(e);
+                toggleLayer($mapImage);
+            }
+        }
+        function init() {
+            $mapContainer = $('.map-container');
+            $mapLinks = $('.map-links');
+            $mapLinks.on('click', 'li', toggleMap);
+        }
+        $(init);
+    }());
+</script>
