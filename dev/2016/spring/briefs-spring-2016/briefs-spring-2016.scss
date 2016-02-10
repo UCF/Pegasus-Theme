@@ -3,6 +3,9 @@
 $font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 
+$screen-xs-max: 767px;
+$screen-sm-max: 991px;
+
 
 // Mixins
 
@@ -160,6 +163,31 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
     .caption {
       margin-bottom: 10px;
+    }
+  }
+
+  .story-header-image {
+    position: relative;
+
+    @media (max-width: $screen-xs-max) {
+      height: 300px;
+    }
+  }
+
+  .story-header-inner {
+    bottom: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .social {
+    float: right;
+    margin-top: 54px;
+
+    @media (max-width: $screen-xs-max) {
+      float: left;
+      margin-top: 0;
     }
   }
 }
