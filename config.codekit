@@ -7977,9 +7977,20 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 299,
+		"initialSize": 411,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmall.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmall.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/maze\/pegasusSmallYellow.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1056,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmallYellow.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/maze\/pegasusSmallYellow.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
