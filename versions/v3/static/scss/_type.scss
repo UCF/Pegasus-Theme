@@ -54,12 +54,6 @@ article {
     @include body-prefix('.ie8') {
       font-weight: normal !important;
     }
-
-    > span {
-      // allow line-height to reset properly
-      display: block;
-      letter-spacing: initial;
-    }
   }
 
   h1,
