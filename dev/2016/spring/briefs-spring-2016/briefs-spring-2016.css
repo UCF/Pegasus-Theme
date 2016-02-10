@@ -1,0 +1,83 @@
+.ie8 main {
+  margin-top: -20px; }
+
+article.story,
+article.story p {
+  font-size: 14px;
+  line-height: 1.2; }
+article.story h1,
+article.story h2,
+article.story .h2 {
+  font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 80; }
+article.story h2,
+article.story .h2 {
+  font-size: 38px;
+  line-height: 1; }
+  article.story h2.caps,
+  article.story .h2.caps {
+    font-size: 24px;
+    letter-spacing: -.045em;
+    line-height: 1em;
+    margin-bottom: 6px; }
+article.story h3,
+article.story .h3 {
+  font-size: 30px;
+  line-height: 1em;
+  margin-bottom: 4px; }
+article.story h4,
+article.story .h4 {
+  font-size: 16px;
+  line-height: 1em; }
+article.story h3,
+article.story .h3,
+article.story h4,
+article.story .h4,
+article.story h5,
+article.story .h5,
+article.story h6,
+article.story .h6 {
+  font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 60; }
+article.story h1 > span,
+article.story h2 > span,
+article.story h3 > span,
+article.story h4 > span,
+article.story h5 > span,
+article.story h6 > span {
+  display: inline; }
+article.story a {
+  color: #000;
+  font-weight: bold; }
+  article.story a:hover, article.story a:active {
+    text-decoration: underline; }
+article.story .source {
+  font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B";
+  font-style: normal;
+  font-weight: 70;
+  font-size: 11px;
+  text-transform: uppercase; }
+article.story .ucf-gold {
+  color: #fc0; }
+
+#pro-goal h2 {
+  font-family: "OpenSansCondensedBold", sans-serif;
+  letter-spacing: -.06em;
+  text-transform: uppercase;
+  color: #512399;
+  font-size: 90px; }
+#pro-goal blockquote.quote:before {
+  font-size: 40px;
+  left: 0;
+  line-height: 60px; }
+#pro-goal blockquote,
+#pro-goal blockquote p {
+  font-size: 22px;
+  line-height: 1.3;
+  padding-left: 25px; }
+#pro-goal blockquote small {
+  font-size: 14px;
+  font-style: italic;
+  margin-top: 12px; }
