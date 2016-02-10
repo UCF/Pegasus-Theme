@@ -4,6 +4,7 @@
     }
     article.story h2 {
         color: #53813E;
+        font-style: italic;
         font-size: 20px;
         margin-bottom: 30px;
         margin-top: 0;
@@ -21,25 +22,49 @@
     .map-container img:last-child {
         position: static;
     }
-    .legend {
-        left: 20%;
-        list-style: none;
+    .legend-container {
+        background-color: #F9F1E3;
+        left: 10%;
+        padding: 20px;
         position: absolute;
-        top: 60%;
+        top: 30%;
+    }
+    article.story .legend-container h3 {
+        border-bottom: solid 2px #d8a85e;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 10px;
+        padding-bottom: 5px;
+        text-transform: uppercase;
+    }
+    .legend-container p {
+        font-size: 10px;
+        margin: 0;
+        padding: 0 10px;
+    }
+    .legend {
+        list-style: none;
+    }
+    ul.legend {
+        margin: 0 0 10px;
     }
     .legend li {
         background-color: #F9F1E3;
+        color: #666;
+        font-size: 14px;
         margin: 0 !important;
-        padding: 20px;
+        padding: 10px;
         transition: all 0.8s ease;
     }
     .legend li.highlight {
         background-color: #F3E3CA;
-        font-weight: bold;
+        color: #000;
     }
     .legend span {
         display: inline-block;
         height: 15px;
+        margin-right: 10px;
         width: 15px;
     }
     .legend .urban span {
@@ -50,6 +75,9 @@
     }
     .legend .proposed span {
         background-color: #799636;
+    }
+    .legend .dash {
+        padding-left: 2px;
     }
     .legend li:hover {
         background-color: #DFBE8A;
@@ -71,11 +99,16 @@
                     <div class="map-container">
                         <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/urban.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/current.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/proposed.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%">
                     </div>
-                    <ul class="legend">
-                        <li class="urban"><span></span> Urban</li>
-                        <li class="current"><span></span> Current</li>
-                        <li class="proposed"><span></span> Proposed</li>
-                    </ul>
+                    <div class="legend-container">
+                        <h3>Legend</h3>
+                        <ul class="legend">
+                            <li class="urban"><span></span> Major Urban Areas</li>
+                            <li class="current"><span></span> Existing Conservation Areas &dagger;</li>
+                            <li class="proposed"><span></span> Proposed Conservation Areas &dagger;</li>
+                            <li><span class="dash">&mdash;</span> Major Roadways</li>
+                        </ul>
+                        <p>&dagger; According to the Florida Wildlife Corridor Project</p>
+                    </div>
                 </div>
             </div>
         </div>
