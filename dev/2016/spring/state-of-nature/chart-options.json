@@ -1,0 +1,11 @@
+{
+    "segmentShowStroke": false,
+    "percentageInnerCutout": 0,
+    "animationSteps": 100,
+    "animationEasing": "easeOutBounce",
+    "animateRotate": true,
+    "showScale": true,
+    "scaleShowLabels": true,
+    "tooltipTemplate": "<%if (label){%><%=label%> <%}%><%= value %>",
+    "showTooltips": true
+}

@@ -1,0 +1,147 @@
+article.story h1 {
+    margin-bottom: 5px;
+}
+article.story h2 {
+    color: #53813E;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 0;
+}
+article.story .map-container {
+    position: relative;
+}
+article.story .map-container img {
+    margin: 0 0 30px !important;
+}
+article.story .map-container .map-image {
+    display: none;
+    position: absolute;
+}
+article.story .map-container img:last-child {
+    position: static;
+}
+article.story .legend-container {
+    background-color: #F9F1E3;
+    left: 15%;
+    padding: 20px;
+    position: absolute;
+    top: 26%;
+}
+article.story .legend-container h3 {
+    border-bottom: solid 2px #d8a85e;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    margin: 0 0 10px;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+}
+article.story .legend {
+    list-style: none;
+}
+article.story ul.legend {
+    margin: 0 0 10px;
+}
+article.story .legend li {
+    background-color: #F9F1E3;
+    color: #666;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    margin: 0 !important;
+    padding: 10px;
+    transition: all 0.8s ease;
+}
+article.story .legend li.highlight {
+    background-color: #F3E3CA;
+    color: #000;
+}
+article.story .legend span {
+    display: inline-block;
+    height: 15px;
+    margin-right: 10px;
+    width: 15px;
+}
+.legend .urban span {
+    background-color: #d8a85e;
+}
+article.story .legend .current span {
+    background-color: #acb859;
+}
+article.story .legend .proposed span {
+    background-color: #799636;
+}
+article.story .legend .dash {
+    padding-left: 2px;
+}
+article.story .legend li:hover {
+    background-color: #DFBE8A;
+}
+article.story .chart-container {
+    left: 14%;
+    position: absolute;
+    top: 60%;
+}
+article.story .state-stats {
+    background-color: #F9F1E3;
+    padding: 10px 0;
+    text-align: center;
+}
+article.story .state-stats .number {
+    font-size: 36px;
+}
+article.story .state-stats .stat {
+    border-bottom: solid 2px #d8a85e;
+    display: inline-block;
+    font-size: 14px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+article.story .species-stats {
+    border-bottom: solid 2px #d8a85e;
+    margin-bottom: 15px;
+    margin-top: 30px;
+    padding-bottom: 10px;
+}
+article.story .species-stats .number {
+    color: #799636;
+    font-size: 60px;
+    line-height: 20px;
+}
+article.story .species-stats .anominaly {
+    line-height: 40px;
+}
+article.story .species-stats .stat {
+    font-size: 15px;
+    font-style: italic;
+    text-transform: uppercase;
+}
+article.story .species-list,
+article.story .species-list p,
+article.story .species-list li {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 13px;
+}
+article.story .species-list li {
+    color: #799636;
+}
+article.story .species-list li span {
+    color: #000;
+}
+article.story .species-list h4 {
+    border-bottom: solid 2px #d8a85e;
+    display: inline-block;
+    font-family: Georgia,"Times New Roman",Times,serif;
+    font-size: 14px;
+    margin-top: 0;
+    padding-bottom: 3px;
+    text-transform: uppercase;
+}
+article.story #footnote {
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 10px;
+    margin-top: 20px;
+}
+article.story a[href="#footnote"] {
+    color: #000;
+}
