@@ -1018,6 +1018,33 @@ function sc_header_callout( $attr, $content='' ) {
 }
 add_shortcode( 'header-callout', 'sc_header_callout' );
 
+/**
+ * ChartJS.
+ **/
+
+function sc_chart( $attr ) {
+	$id = $attr['id'] ? $attr['id'] : 'custom-chart';
+	$type = $attr['type'] ? $attr['type'] : 'bar';
+	$json = $attr['data'] ? $attr['data'] : '';
+	$options = $attr['options'] ? $attr['options'] : '';
+
+	if ( empty( $json ) ) {
+		return;
+	}
+
+	$class = $attr['class'] ? 'custom-chart ' . $class : 'custom-chart';
+
+	wp_enqueue_script('chart-js', THEME_COMPONENTS_URL.'/Chart.min.js', null, null, True);
+
+	ob_start();
+
+	?>
+		<div id="<?php echo $id; ?>" class="<?php echo $class; ?>" data-chart-type="<?php echo $type; ?>" data-chart-data="<?php echo $json; ?>" <?php echo $options ? 'data-chart-options="' . $options . '"' : ''; ?>></div>
+	<?php
+
+	return ob_get_clean();
+}
+add_shortcode( 'chart', 'sc_chart' );
 
 /**
  * Displays a Bootstrap well.
