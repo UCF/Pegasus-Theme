@@ -725,7 +725,6 @@ var customChart = function ($) {
               break;
             case 'pie':
               var pieChart = new Chart(ctx).Pie(data, options);
-                  console.log(pieChart);
               break;
             case 'doughnut':
               var doughnutChart = new Chart(ctx).Doughnut(data, options);
