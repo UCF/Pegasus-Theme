@@ -1,0 +1,152 @@
+<style>
+    article.story h1 {
+        margin-bottom: 5px;
+    }
+    article.story h2 {
+        color: #53813E;
+        font-style: italic;
+        font-size: 20px;
+        margin-bottom: 30px;
+        margin-top: 0;
+    }
+    .map-container {
+        position: relative;
+    }
+    .map-container img {
+        margin: 0 0 30px !important;
+    }
+    .map-container .map-image {
+        display: none;
+        position: absolute;
+    }
+    .map-container img:last-child {
+        position: static;
+    }
+    .legend-container {
+        background-color: #F9F1E3;
+        left: 10%;
+        padding: 20px;
+        position: absolute;
+        top: 30%;
+    }
+    article.story .legend-container h3 {
+        border-bottom: solid 2px #d8a85e;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: 800;
+        margin: 0 0 10px;
+        padding-bottom: 5px;
+        text-transform: uppercase;
+    }
+    .legend-container p {
+        font-size: 10px;
+        margin: 0;
+        padding: 0 10px;
+    }
+    .legend {
+        list-style: none;
+    }
+    ul.legend {
+        margin: 0 0 10px;
+    }
+    .legend li {
+        background-color: #F9F1E3;
+        color: #666;
+        font-size: 14px;
+        margin: 0 !important;
+        padding: 10px;
+        transition: all 0.8s ease;
+    }
+    .legend li.highlight {
+        background-color: #F3E3CA;
+        color: #000;
+    }
+    .legend span {
+        display: inline-block;
+        height: 15px;
+        margin-right: 10px;
+        width: 15px;
+    }
+    .legend .urban span {
+        background-color: #d8a85e;
+    }
+    .legend .current span {
+        background-color: #acb859;
+    }
+    .legend .proposed span {
+        background-color: #799636;
+    }
+    .legend .dash {
+        padding-left: 2px;
+    }
+    .legend li:hover {
+        background-color: #DFBE8A;
+    }
+</style>
+<article class="story story-default">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>The State of Natural Florida</h1>
+                <h2>What's at stake. How we save it.</h2>
+            </div>
+        </div>
+    </div>
+     <div class="container-wide">
+       <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="map-container">
+                        <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/urban.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/current.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/proposed.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%">
+                    </div>
+                    <div class="legend-container">
+                        <h3>Legend</h3>
+                        <ul class="legend">
+                            <li class="urban"><span></span> Major Urban Areas</li>
+                            <li class="current"><span></span> Existing Conservation Areas &dagger;</li>
+                            <li class="proposed"><span></span> Proposed Conservation Areas &dagger;</li>
+                            <li><span class="dash">&mdash;</span> Major Roadways</li>
+                        </ul>
+                        <p>&dagger; According to the Florida Wildlife Corridor Project</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+     <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non perferendis assumenda maiores repellat molestiae commodi at ut consequuntur ipsa explicabo magnam nihil error voluptas, suscipit fugit! Temporibus incidunt in dolore.</p>
+            </div>
+        </div>
+    </div>
+</article>
+<script>
+    (function () {
+        "use strict";
+        var $mapContainer,
+            $legend;
+        function toggleMapLayer(e) {
+            e.preventDefault();
+            $(e.target).toggleClass('highlight');
+            var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
+            $mapImage.fadeToggle(1000);
+        }
+        function toggleLegend(index) {
+            var $this = $(this);
+            setTimeout(function() {
+                $this.trigger('click');
+            }, 2500*index);
+        }
+        function loadAnime() {
+            $legend.find('li').each(toggleLegend);
+        }
+        function init() {
+            $mapContainer = $('.map-container');
+            $legend = $('.legend');
+            $legend.on('click', 'li', toggleMapLayer);
+            loadAnime();
+        }
+        $(init);
+    }());
+</script>
