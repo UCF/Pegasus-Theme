@@ -738,7 +738,6 @@ var customChart = function ($) {
   }
 };
 
-
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
