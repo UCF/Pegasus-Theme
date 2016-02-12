@@ -1,138 +1,81 @@
-.ie8 main {
-  margin-top: -20px; }
+.ie8 main { margin-top: -20px; }
 
-article.story h1,
-article.story .h1 {
-  font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 70px;
-  -moz-osx-font-smoothing: auto;
-  -webkit-font-smoothing: auto;
-  letter-spacing: -.04em; }
-article.story h2,
-article.story .h2 {
-  font-size: 60px; }
-  article.story h2.bigger,
-  article.story h2 span.bigger,
-  article.story .h2.bigger,
-  article.story .h2 span.bigger {
-    font-size: 90px; }
-article.story h3,
-article.story .h3 {
-  font-size: 26px; }
-article.story h2,
-article.story .h2,
-article.story h3,
-article.story .h3,
-article.story h4,
-article.story .h4,
-article.story h5,
-article.story .h5,
-article.story h6,
-article.story .h6 {
-  font-family: "OpenSansCondensedBold", sans-serif;
-  letter-spacing: -.06em;
-  text-transform: uppercase; }
-article.story h1 > span,
-article.story h2 > span,
-article.story h3 > span,
-article.story h4 > span,
-article.story h5 > span,
-article.story h6 > span {
-  display: inline;
-  letter-spacing: inherit; }
-article.story a {
-  color: #000;
-  font-weight: bold; }
-  article.story a:hover, article.story a:active {
-    text-decoration: underline; }
-article.story blockquote.quote:before {
-  font-size: 40px;
-  left: 0;
-  line-height: 60px; }
-article.story blockquote,
-article.story blockquote p {
-  font-size: 22px;
-  line-height: 1.3;
-  padding-left: 25px; }
-article.story blockquote small {
-  font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B";
-  font-style: italic;
-  font-weight: 400;
-  font-size: 14px;
-  margin-top: 12px; }
-article.story .source {
-  font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 11px;
-  text-transform: uppercase; }
-article.story .caption {
-  font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B";
-  font-style: normal;
-  font-weight: 600; }
-article.story .ucf-gold {
-  color: #fc0; }
-article.story .underlined-feature {
-  text-decoration: underline;
-  vertical-align: text-top; }
-article.story .wrapper-inverse {
-  background-color: #000;
-  padding: 20px; }
-  article.story .wrapper-inverse,
-  article.story .wrapper-inverse h2,
-  article.story .wrapper-inverse .h2,
-  article.story .wrapper-inverse h3,
-  article.story .wrapper-inverse .h3,
-  article.story .wrapper-inverse h4,
-  article.story .wrapper-inverse .h4,
-  article.story .wrapper-inverse h5,
-  article.story .wrapper-inverse .h5,
-  article.story .wrapper-inverse h6,
-  article.story .wrapper-inverse .h6 {
-    color: #fff; }
-  article.story .wrapper-inverse > *:first-child {
-    margin-top: 0; }
-  article.story .wrapper-inverse .caption {
-    margin-bottom: 10px; }
-article.story .story-header-image {
-  position: relative; }
-  @media (max-width: 767px) {
-    article.story .story-header-image {
-      height: 300px; } }
-article.story .story-header-inner {
-  bottom: 20px;
-  left: 0;
-  position: absolute;
-  right: 0; }
-article.story .social {
-  float: right;
-  margin-top: 54px; }
-  @media (max-width: 767px) {
-    article.story .social {
-      float: left;
-      margin-top: 0; } }
+article.story, article.story p, article.story ol, article.story ul { font-size: 14px; }
+article.story h1, article.story .h1 { -moz-osx-font-smoothing: auto; -webkit-font-smoothing: auto; font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 800; font-size: 130px; letter-spacing: -.04em; }
+@media (max-width: 991px) { article.story h1, article.story .h1 { font-size: 100px; } }
+@media (max-width: 767px) { article.story h1, article.story .h1 { font-size: 70px; } }
+article.story h2, article.story .h2 { font-size: 52px; }
+@media (max-width: 991px) { article.story h2, article.story .h2 { font-size: 44px; } }
+article.story h2.big, article.story h2 span.big, article.story .h2.big, article.story .h2 span.big { font-size: 70px; }
+@media (max-width: 991px) { article.story h2.big, article.story h2 span.big, article.story .h2.big, article.story .h2 span.big { font-size: 46px; } }
+article.story h2.bigger, article.story h2 span.bigger, article.story .h2.bigger, article.story .h2 span.bigger { font-size: 84px; }
+@media (max-width: 991px) { article.story h2.bigger, article.story h2 span.bigger, article.story .h2.bigger, article.story .h2 span.bigger { font-size: 58px; } }
+article.story h2.biggest, article.story h2 span.biggest, article.story .h2.biggest, article.story .h2 span.biggest { font-size: 160px; line-height: .85; }
+@media (max-width: 991px) { article.story h2.biggest, article.story h2 span.biggest, article.story .h2.biggest, article.story .h2 span.biggest { font-size: 110px; } }
+article.story h3, article.story .h3 { font-size: 26px; }
+article.story h2, article.story .h2, article.story h3, article.story .h3, article.story h4, article.story .h4, article.story h5, article.story .h5, article.story h6, article.story .h6 { font-family: "OpenSansCondensedBold", sans-serif; letter-spacing: -.06em; }
+article.story h1 > span, article.story h2 > span, article.story h3 > span, article.story h4 > span, article.story h5 > span, article.story h6 > span { display: inline; letter-spacing: inherit; }
+article.story a { color: #000; font-weight: bold; }
+article.story a:hover, article.story a:active { text-decoration: underline; }
+article.story blockquote.quote:before { font-size: 40px; left: 0; line-height: 60px; }
+article.story blockquote, article.story blockquote p { font-size: 22px; line-height: 1.3; padding-left: 25px; }
+article.story blockquote small { font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B"; font-style: italic; font-weight: 400; font-size: 14px; margin-top: 12px; }
+article.story .source { font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 700; font-size: 11px; text-transform: uppercase; }
+article.story .caption { -moz-osx-font-smoothing: auto; -webkit-font-smoothing: auto; font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 400; }
+article.story .ucf-gold { color: #fc0; }
+article.story .teal { color: #1bbcb2; }
+article.story .slate { color: #74a5ac; }
+article.story .gray { color: #939598; }
+article.story .salmon { color: #ca7878; }
+article.story .wrapper-inverse { background-color: #000; padding: 20px; }
+article.story .wrapper-inverse, article.story .wrapper-inverse h2, article.story .wrapper-inverse .h2, article.story .wrapper-inverse h3, article.story .wrapper-inverse .h3, article.story .wrapper-inverse h4, article.story .wrapper-inverse .h4, article.story .wrapper-inverse h5, article.story .wrapper-inverse .h5, article.story .wrapper-inverse h6, article.story .wrapper-inverse .h6 { color: #fff; }
+article.story .wrapper-inverse > *:first-child { margin-top: 0; }
+article.story .wrapper-inverse .caption { margin-bottom: 10px; }
+article.story .story-header-image { position: relative; }
+@media (max-width: 767px) { article.story .story-header-image { height: 300px; } }
+article.story .story-header-inner { bottom: 20px; left: 0; position: absolute; right: 0; }
+article.story .social { float: right; margin-top: 105px; }
+@media (max-width: 991px) { article.story .social { margin-top: 80px; } }
+@media (max-width: 767px) { article.story .social { float: left; margin-top: 0; } }
+article.story .border-bottom { border-bottom: 2px solid #000; }
+article.story .border-left { border-left: 2px solid #000; margin-left: 10px; padding-left: 30px; }
+@media (max-width: 767px) { article.story .border-left { border-left: 0 solid transparent; border-top: 2px solid #000; margin-left: 0; padding-left: 0; } }
+article.story .border-right { border-right: 2px solid #000; margin-right: 10px; padding-right: 30px; }
+@media (max-width: 767px) { article.story .border-right { border-bottom: 2px solid #000; border-right: 0 solid transparent; margin-right: 0; padding-right: 0; } }
+article.story .border-top { border-top: 2px solid #000; }
 
-#pro-goal h2 {
-  color: #512399; }
+#ucf-goes-downtown h2 { margin-top: 10px; }
+#ucf-goes-downtown h3 { font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 600; font-size: 14px; }
+#ucf-goes-downtown ul { font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 400; }
+#ucf-goes-downtown li { margin-bottom: 4px; }
+#ucf-goes-downtown .building-graph { margin-bottom: 20px; }
+#ucf-goes-downtown .donations { margin-bottom: 30px; margin-top: 12px; }
+@media (max-width: 991px) { #ucf-goes-downtown .donations { margin-top: 54px; } }
+#ucf-goes-downtown .donation { border-collapse: separate; border-spacing: 15px 0; display: table; margin-bottom: 2px; width: 100%; }
+#ucf-goes-downtown .donation-left, #ucf-goes-downtown .donation-right { display: table-cell; vertical-align: middle; }
+#ucf-goes-downtown .donation-left { text-align: right; width: 40%; }
+#ucf-goes-downtown .donation-right { text-align: left; width: 60%; }
+#ucf-goes-downtown .donation-dollar { font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 600; font-size: 38px; vertical-align: super; }
+@media (max-width: 991px) { #ucf-goes-downtown .donation-dollar { font-size: 20px; } }
+#ucf-goes-downtown .donation-number { font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 600; font-size: 64px; letter-spacing: -.02em; line-height: 1.05; }
+@media (max-width: 991px) { #ucf-goes-downtown .donation-number { font-size: 44px; } }
+#ucf-goes-downtown .donation-increment { font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 600; font-size: 18px; text-transform: uppercase; }
+@media (max-width: 991px) { #ucf-goes-downtown .donation-increment { font-size: 14px; } }
+#ucf-goes-downtown .donation-from { font-size: 16px; }
+@media (max-width: 991px) { #ucf-goes-downtown .donation-from { font-size: 14px; } }
+#ucf-goes-downtown .arrow { padding-right: 8px; padding-top: 4px; position: relative; }
+#ucf-goes-downtown .arrow:before { border-top: 2px solid #000; content: ''; display: block; height: 0; left: 0; position: absolute; right: 0; top: 0; width: 100%; }
+@media (max-width: 767px) { #ucf-goes-downtown .arrow:before { border-top-width: 1px; } }
+#ucf-goes-downtown .arrow:after { border-bottom: 5px solid transparent; border-right: 15px solid #000; border-top: 5px solid transparent; content: ''; height: 0; left: -15px; position: absolute; top: -4px; width: 0; }
+@media (max-width: 767px) { #ucf-goes-downtown .arrow:after { display: none; } }
 
-#twenty-five-years-of-life .underlined-feature {
-  font-size: 130px;
-  font-weight: normal;
-  line-height: 130px;
-  margin-right: -6px; }
+#facial-movement .facial-movement-img { margin-bottom: 0; }
 
-#top-honors .medal {
-  background-position: center center;
-  background-repeat: no-repeat;
-  display: inline-block;
-  height: 90px;
-  margin-left: -5px;
-  margin-right: -10px;
-  position: relative;
-  text-indent: -150%;
-  top: -3px;
-  vertical-align: top;
-  width: 87px;
-  z-index: -1; }
+#twenty-five-years-of-life h2 .biggest { display: block; }
+
+#hip-hip-hooray h2 { line-height: .9; margin-bottom: 25px; }
+#hip-hip-hooray .cheerleader-img { margin-bottom: 0; }
+@media (max-width: 991px) { #hip-hip-hooray .cheerleader-img { margin-top: 50px; width: 105px; } }
+@media (max-width: 767px) { #hip-hip-hooray .cheerleader-img { margin-bottom: 15px; margin-top: 15px; width: 95px; } }
+
+#top-honors .medal { background-position: center center; background-repeat: no-repeat; display: inline-block; height: 90px; margin-left: -5px; margin-right: -10px; position: relative; text-indent: -150%; top: -3px; vertical-align: top; width: 87px; z-index: -1; }

@@ -6,8 +6,16 @@ $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 $screen-xs-max: 767px;
 $screen-sm-max: 991px;
 
+$ucf-gold: #fc0;
+$teal: #1bbcb2;
+$slate: #74a5ac;
+$gray: #939598;
+$salmon: #ca7878;
+
 
 // Mixins
+
+@import '../../../../versions/v3/static/scss/mixins';
 
 // Adds Gotham font family styles to an element (using backward-compatible
 // font-family declarations for IE8 support.)
@@ -21,11 +29,10 @@ $screen-sm-max: 991px;
   font-weight: $h-weight;
 }
 
-// Adds commonly-used Open Sans Condensed Bold in all-caps.
+// Adds commonly-used Open Sans Condensed Bold.
 @mixin open-sans-condensed() {
   font-family: "OpenSansCondensedBold", sans-serif;
   letter-spacing: -.06em;
-  text-transform: uppercase;
 }
 
 
@@ -36,28 +43,63 @@ $screen-sm-max: 991px;
 }
 
 article.story {  // over-qualified selector necessary to match+override theme-level css
-  // &,
-  // p {
-  //   font-size: 14px;
-  //   line-height: 1.2;
-  // }
+  &,
+  p,
+  ol,
+  ul {
+    font-size: 14px;
+  }
 
   h1,
   .h1 {
+    @include no-font-smoothing();
     @include gotham(8);
-    font-size: 70px;
-    -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: auto;
+    font-size: 130px;
     letter-spacing: -.04em;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 100px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 70px;
+    }
   }
 
   h2,
   .h2 {
-    font-size: 60px;
+    font-size: 52px;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 44px;
+    }
+
+    &.big,
+    span.big {
+      font-size: 70px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 46px;
+      }
+    }
 
     &.bigger,
     span.bigger {
-      font-size: 90px;
+      font-size: 84px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 58px;
+      }
+    }
+
+    &.biggest,
+    span.biggest {
+      font-size: 160px;
+      line-height: .85;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 110px;
+      }
     }
   }
 
@@ -127,16 +169,28 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .caption {
-    @include gotham(6);
+    @include no-font-smoothing();
+    @include gotham(4);
   }
 
   .ucf-gold {
-    color: #fc0;
+    color: $ucf-gold;
   }
 
-  .underlined-feature {
-    text-decoration: underline;
-    vertical-align: text-top;
+  .teal {
+    color: $teal;
+  }
+
+  .slate {
+    color: $slate;
+  }
+
+  .gray {
+    color: $gray;
+  }
+
+  .salmon {
+    color: $salmon;
   }
 
   .wrapper-inverse {
@@ -183,30 +237,228 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
   .social {
     float: right;
-    margin-top: 54px;
+    margin-top: 105px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 80px;
+    }
 
     @media (max-width: $screen-xs-max) {
       float: left;
       margin-top: 0;
     }
   }
+
+  .border-bottom {
+    border-bottom: 2px solid #000;
+  }
+
+  .border-left {
+    border-left: 2px solid #000;
+    margin-left: 10px;  // + 20px bootstrap gutters = 30px space
+    padding-left: 30px;
+
+    @media (max-width: $screen-xs-max) {
+      border-left: 0 solid transparent;
+      border-top: 2px solid #000;
+      margin-left: 0;
+      padding-left: 0;
+    }
+  }
+
+  .border-right {
+    border-right: 2px solid #000;
+    margin-right: 10px;  // + 20px bootstrap gutters = 30px space
+    padding-right: 30px;
+
+    @media (max-width: $screen-xs-max) {
+      border-bottom: 2px solid #000;
+      border-right: 0 solid transparent;
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  .border-top {
+    border-top: 2px solid #000;
+  }
 }
 
 
 // Story-specific overrides
 
-#pro-goal {
+// #pro-goal {
+//   h2 {
+//     color: #512399;
+//   }
+// }
+
+#ucf-goes-downtown {
   h2 {
-    color: #512399;
+    margin-top: 10px;
+  }
+
+  h3 {
+    @include gotham(6);
+    font-size: 14px;
+  }
+
+  ul {
+    @include gotham(4);
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+
+  .building-graph {
+    margin-bottom: 20px;
+  }
+
+  .donations {
+    margin-bottom: 30px;
+    margin-top: 12px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 54px;
+    }
+  }
+
+  .donation {
+    border-collapse: separate;
+    border-spacing: 15px 0;
+    display: table;
+    margin-bottom: 2px;
+    width: 100%;
+  }
+
+  .donation-left,
+  .donation-right {
+    display: table-cell;
+    vertical-align: middle;
+  }
+
+  .donation-left {
+    text-align: right;
+    width: 40%;
+  }
+
+  .donation-right {
+    text-align: left;
+    width: 60%;
+  }
+
+  .donation-dollar {
+    @include gotham(6);
+    font-size: 38px;
+    vertical-align: super;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 20px;
+    }
+  }
+
+  .donation-number {
+    @include gotham(6);
+    font-size: 64px;
+    letter-spacing: -.02em;
+    line-height: 1.05;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 44px;
+    }
+  }
+
+  .donation-increment {
+    @include gotham(6);
+    font-size: 18px;
+    text-transform: uppercase;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 14px;
+    }
+  }
+
+  .donation-from {
+    font-size: 16px;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 14px;
+    }
+  }
+
+  .arrow {
+    padding-right: 8px;  // pseudo elements push other child elements due to display:table-cell
+    padding-top: 4px;
+    position: relative;
+
+    &:before {
+      border-top: 2px solid #000;
+      content: '';
+      display: block;
+      height: 0;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 100%;
+
+      @media (max-width: $screen-xs-max) {
+        border-top-width: 1px;
+      }
+    }
+
+    &:after {
+      border-bottom: 5px solid transparent;
+      border-right: 15px solid #000;
+      border-top: 5px solid transparent;
+      content: '';
+      height: 0;
+      left: -15px;
+      position: absolute;
+      top: -4px;
+      width: 0;
+
+      @media (max-width: $screen-xs-max) {
+        display: none;
+      }
+    }
+  }
+}
+
+#facial-movement {
+  .facial-movement-img {
+    margin-bottom: 0;
   }
 }
 
 #twenty-five-years-of-life {
-  .underlined-feature {
-    font-size: 130px;
-    font-weight: normal;
-    line-height: 130px;
-    margin-right: -6px;
+  h2 {
+    .biggest {
+      display: block;
+    }
+  }
+}
+
+#hip-hip-hooray {
+  h2 {
+    line-height: .9;
+    margin-bottom: 25px;
+  }
+
+  .cheerleader-img {
+    margin-bottom: 0;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 50px;
+      width: 105px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 15px;
+      margin-top: 15px;
+      width: 95px;
+    }
   }
 }
 
