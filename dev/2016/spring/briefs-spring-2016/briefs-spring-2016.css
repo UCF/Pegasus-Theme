@@ -37,13 +37,13 @@ article.story .story-header-inner { bottom: 20px; left: 0; position: absolute; r
 article.story .social { float: right; margin-top: 105px; }
 @media (max-width: 991px) { article.story .social { margin-top: 80px; } }
 @media (max-width: 767px) { article.story .social { float: left; margin-top: 0; } }
-article.story .border-bottom { border-bottom: 2px solid #000; }
-article.story .border-left { border-left: 2px solid #000; margin-left: 10px; padding-left: 30px; }
-@media (max-width: 767px) { article.story .border-left { border-left: 0 solid transparent; border-top: 2px solid #000; margin-left: 0; margin-top: 20px; padding-left: 0; } }
-article.story .border-right { border-right: 2px solid #000; margin-right: 10px; padding-right: 30px; }
-@media (max-width: 767px) { article.story .border-right { border-bottom: 2px solid #000; border-right: 0 solid transparent; margin-bottom: 20px; margin-right: 0; padding-right: 0; } }
-article.story .border-top { border-top: 2px solid #000; }
-article.story .border-w-padded { background-color: #000; height: 2px; margin-bottom: 20px; margin-top: 20px; width: 100%; }
+article.story .border-bottom { border-bottom: 1px solid #000; }
+article.story .border-left { border-left: 1px solid #000; margin-left: 10px; padding-left: 30px; }
+@media (max-width: 767px) { article.story .border-left { border-left: 0 solid transparent; border-top: 1px solid #000; margin-left: 0; margin-top: 20px; padding-left: 0; } }
+article.story .border-right { border-right: 1px solid #000; margin-right: 10px; padding-right: 30px; }
+@media (max-width: 767px) { article.story .border-right { border-bottom: 1px solid #000; border-right: 0 solid transparent; margin-bottom: 20px; margin-right: 0; padding-right: 0; } }
+article.story .border-top { border-top: 1px solid #000; }
+article.story .border-w-padded { background-color: #000; height: 1px; margin-bottom: 20px; margin-top: 20px; width: 100%; }
 @media (max-width: 991px) { article.story .border-w-padded { margin-bottom: 10px; margin-top: 10px; } }
 
 #facial-movement .caption { margin-bottom: 30px; }

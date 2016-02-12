@@ -12,6 +12,8 @@ $salmon: #ca7878;
 $purple: #512399;
 $blue: #2f59d0;
 
+$border: 1px solid #000;
+
 
 // Mixins
 
@@ -250,17 +252,17 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .border-bottom {
-    border-bottom: 2px solid #000;
+    border-bottom: $border;
   }
 
   .border-left {
-    border-left: 2px solid #000;
+    border-left: $border;
     margin-left: 10px;  // + 20px bootstrap gutters = 30px space
     padding-left: 30px;
 
     @media (max-width: $screen-xs-max) {
       border-left: 0 solid transparent;
-      border-top: 2px solid #000;
+      border-top: $border;
       margin-left: 0;
       margin-top: 20px;
       padding-left: 0;
@@ -268,12 +270,12 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .border-right {
-    border-right: 2px solid #000;
+    border-right: $border;
     margin-right: 10px;  // + 20px bootstrap gutters = 30px space
     padding-right: 30px;
 
     @media (max-width: $screen-xs-max) {
-      border-bottom: 2px solid #000;
+      border-bottom: $border;
       border-right: 0 solid transparent;
       margin-bottom: 20px;
       margin-right: 0;
@@ -282,12 +284,12 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .border-top {
-    border-top: 2px solid #000;
+    border-top: $border;
   }
 
   .border-w-padded {
     background-color: #000;
-    height: 2px;
+    height: 1px;
     margin-bottom: 20px;
     margin-top: 20px;
     width: 100%;
