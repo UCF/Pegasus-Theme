@@ -8,9 +8,9 @@ $screen-sm-max: 991px;
 
 $ucf-gold: #fc0;
 $teal: #1bbcb2;
-$slate: #74a5ac;
-$gray: #939598;
 $salmon: #ca7878;
+$purple: #512399;
+$blue: #2f59d0;
 
 
 // Mixins
@@ -54,6 +54,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   .h1 {
     @include no-font-smoothing();
     @include gotham(8);
+    color: #fff;
     font-size: 130px;
     letter-spacing: -.04em;
 
@@ -152,11 +153,10 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     p {
       font-size: 22px;
       line-height: 1.3;
-      padding-left: 25px;
     }
 
     small {
-      @include gotham(4, italic);
+      @include gotham(4);
       font-size: 14px;
       margin-top: 12px;
     }
@@ -169,7 +169,6 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .caption {
-    @include no-font-smoothing();
     @include gotham(4);
   }
 
@@ -181,16 +180,16 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     color: $teal;
   }
 
-  .slate {
-    color: $slate;
-  }
-
-  .gray {
-    color: $gray;
-  }
-
   .salmon {
     color: $salmon;
+  }
+
+  .purple {
+    color: $purple;
+  }
+
+  .blue {
+    color: $blue;
   }
 
   .wrapper-inverse {
@@ -224,6 +223,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     position: relative;
 
     @media (max-width: $screen-xs-max) {
+      background-size: cover;
       height: 300px;
     }
   }
@@ -262,6 +262,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
       border-left: 0 solid transparent;
       border-top: 2px solid #000;
       margin-left: 0;
+      margin-top: 20px;
       padding-left: 0;
     }
   }
@@ -274,6 +275,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     @media (max-width: $screen-xs-max) {
       border-bottom: 2px solid #000;
       border-right: 0 solid transparent;
+      margin-bottom: 20px;
       margin-right: 0;
       padding-right: 0;
     }
@@ -282,153 +284,45 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   .border-top {
     border-top: 2px solid #000;
   }
+
+  .border-w-padded {
+    background-color: #000;
+    height: 2px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+  }
 }
 
 
 // Story-specific overrides
 
-// #pro-goal {
-//   h2 {
-//     color: #512399;
-//   }
-// }
-
-#ucf-goes-downtown {
-  h2 {
-    margin-top: 10px;
-  }
-
-  h3 {
-    @include gotham(6);
-    font-size: 14px;
-  }
-
-  ul {
-    @include gotham(4);
-  }
-
-  li {
-    margin-bottom: 4px;
-  }
-
-  .building-graph {
-    margin-bottom: 20px;
-  }
-
-  .donations {
+#facial-movement {
+  .caption {
     margin-bottom: 30px;
-    margin-top: 12px;
-
-    @media (max-width: $screen-sm-max) {
-      margin-top: 54px;
-    }
   }
+}
 
-  .donation {
-    border-collapse: separate;
-    border-spacing: 15px 0;
-    display: table;
-    margin-bottom: 2px;
-    width: 100%;
-  }
-
-  .donation-left,
-  .donation-right {
-    display: table-cell;
-    vertical-align: middle;
-  }
-
-  .donation-left {
-    text-align: right;
-    width: 40%;
-  }
-
-  .donation-right {
-    text-align: left;
-    width: 60%;
-  }
-
-  .donation-dollar {
-    @include gotham(6);
-    font-size: 38px;
-    vertical-align: super;
-
-    @media (max-width: $screen-sm-max) {
-      font-size: 20px;
-    }
-  }
-
-  .donation-number {
-    @include gotham(6);
-    font-size: 64px;
-    letter-spacing: -.02em;
-    line-height: 1.05;
-
-    @media (max-width: $screen-sm-max) {
-      font-size: 44px;
-    }
-  }
-
-  .donation-increment {
-    @include gotham(6);
-    font-size: 18px;
-    text-transform: uppercase;
-
-    @media (max-width: $screen-sm-max) {
-      font-size: 14px;
-    }
-  }
-
-  .donation-from {
-    font-size: 16px;
-
-    @media (max-width: $screen-sm-max) {
-      font-size: 14px;
-    }
-  }
-
-  .arrow {
-    padding-right: 8px;  // pseudo elements push other child elements due to display:table-cell
-    padding-top: 4px;
-    position: relative;
-
-    &:before {
-      border-top: 2px solid #000;
-      content: '';
-      display: block;
-      height: 0;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      width: 100%;
-
-      @media (max-width: $screen-xs-max) {
-        border-top-width: 1px;
-      }
-    }
-
-    &:after {
-      border-bottom: 5px solid transparent;
-      border-right: 15px solid #000;
-      border-top: 5px solid transparent;
-      content: '';
-      height: 0;
-      left: -15px;
-      position: absolute;
-      top: -4px;
-      width: 0;
-
-      @media (max-width: $screen-xs-max) {
-        display: none;
-      }
+#pro-goal {
+  h2 {
+    @media (max-width: $screen-xs-max) {
+      margin-top: 10px;
     }
   }
 }
 
-#facial-movement {
-  .facial-movement-img {
-    margin-bottom: 0;
+#best-catch {
+  .world-series-img {
+    width: 175px;
+
+    @media (max-width: $screen-sm-max) {
+      width: 130px;
+    }
   }
 }
 
@@ -450,7 +344,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     margin-bottom: 0;
 
     @media (max-width: $screen-sm-max) {
-      margin-top: 50px;
+      margin-top: 60px;
       width: 105px;
     }
 
@@ -463,18 +357,39 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 }
 
 #top-honors {
+  h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h3 {
+    font-family: $font-family-serif;
+    font-size: 14px;
+    font-weight: bold !important;  // IE8 needs !important for whatever reason
+    letter-spacing: normal;
+    margin-bottom: 4px;
+  }
+
   .medal {
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: contain;
     display: inline-block;
-    height: 90px;
-    margin-left: -5px;
-    margin-right: -10px;
+    height: 82px;
+    margin-left: -3px;
+    margin-right: -3px;
+    overflow: hidden;
     position: relative;
     text-indent: -150%;
-    top: -3px;
     vertical-align: top;
-    width: 87px;
+    width: 75px;
     z-index: -1;
+
+    @media (max-width: $screen-sm-max) {
+      height: 58px;
+      margin-left: 0;
+      margin-right: 0;
+      width: 53px;
+    }
   }
 }
