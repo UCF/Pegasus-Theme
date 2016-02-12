@@ -84,10 +84,12 @@ article.story .chart-container {
 }
 article.story .state-stats {
     background-color: #F9F1E3;
+    margin-bottom: 40px;
     padding: 10px 0;
     text-align: center;
 }
 article.story .state-stats .number {
+    visibility: hidden;
     font-size: 36px;
 }
 article.story .state-stats .stat {
