@@ -677,10 +677,10 @@ var removeEmptyPageContainers = function($) {
   }
 };
 
+
 /**
  * ChartJS
  **/
-
 var customChart = function ($) {
   if ($('.custom-chart').length) {
     $.each($('.custom-chart'), function() {
@@ -738,6 +738,49 @@ var customChart = function ($) {
   }
 };
 
+
+/**
+ * Enable affixing on callouts with .callout-affix class.
+ **/
+var affixedCallouts = function($) {
+  var $callouts = $('.callout-affix');
+
+  if ($callouts.length && $(window).width() > 991) {
+    for (var i = 0; i < $callouts.length; i++) {
+      var $callout = $($callouts[i]),
+          calloutHeight = $callout.outerHeight();
+
+      // Only initialize affixing on callouts that take up half the vertical screen real
+      // estate or less.
+      if (calloutHeight < ($(window).outerHeight() / 2)) {
+        var $calloutPlaceholder = $callout.parent('.callout-outer'),
+            bottomOffset = ($('body').outerHeight() - $('#more-stories').offset().top + 30);
+
+        $callout
+          .affix({
+            offset: {
+              top: $callout.offset().top,
+              bottom: function() {
+                if (i !== $callouts.length - 1) {
+                  return (this.bottom = ($('body').outerHeight() - $($callouts[i+1]).offset().top + 30));
+                }
+                else {
+                  return (this.bottom = bottomOffset);
+                }
+              }
+            }
+          })
+          .css({
+            'z-index': 999 + i,
+          });
+
+        $calloutPlaceholder.css('height', calloutHeight);
+      }
+    }
+  }
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -757,6 +800,7 @@ if (typeof jQuery !== 'undefined'){
       gaEventTracking($);
       removeEmptyPageContainers($);
       customChart($);
+      affixedCallouts($);
     });
   })(jQuery);
 }

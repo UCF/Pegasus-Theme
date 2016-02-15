@@ -266,22 +266,22 @@ function sc_callout( $attr, $content ) {
 	if ( $post->post_type == 'page' ) {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
 		$html .= $content;
-		$html .= '</div></div></div></div>';
+		$html .= '</div></div></div></div></div>';
 		// Reopen standard .container, .row and .span
 		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-12">';
 	}
 	else {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
 		$html .= $content;
-		$html .= '</div></div></div></div>';
+		$html .= '</div></div></div></div></div>';
 		// Reopen standard .container, .row and .span
 		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
 	}

@@ -7995,6 +7995,28 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/chart-data.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/chart-data.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/chart-data-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/chart-options.json": {
+		"fileType": 524288,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/chart-options.json",
+		"orderOutput": 0,
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/chart-options-min.json",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1
+		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/current.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -8056,6 +8078,17 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/state-of-nature.js": {
+		"fileType": 64,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/state-of-nature.js",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/min\/state-of-nature-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 1,
+		"syntaxCheckerStyle": 1
 		},
 	"\/functions.php": {
 		"fileType": 8192,

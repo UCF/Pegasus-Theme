@@ -696,6 +696,37 @@ article.ss-photo-essay {
   }
 }
 
+.callout-outer {
+  margin-bottom: 30px;
+  margin-top: 30px;
+
+  @media (max-width: $screen-sm-max) {
+    height: auto !important;  // Necessary to override inline styles added via affix js
+  }
+}
+
+.callout-affix {
+  position: relative;
+
+  &.affix {
+    margin-bottom: 0;
+    margin-top: 0;
+    left: 0;
+    position: fixed !important;  // Necessary to override position:static on affixed callouts
+    right: 0;
+    top: 0;
+    z-index: 999;
+
+    @media (max-width: $screen-sm-max) {
+      // Disable affixed callouts @ -sm, -xs breakpoint
+      margin-bottom: 30px;
+      margin-top: 30px;
+      position: static !important;
+      z-index: 1;
+    }
+  }
+}
+
 .callout-inner {
   padding-bottom: 30px;
   padding-top: 30px;
