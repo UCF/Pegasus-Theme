@@ -753,7 +753,15 @@ var affixedCallouts = function($) {
       return $('body').outerHeight() - $($callouts[i+1]).parent('.callout-outer').offset().top + 30;
     }
     else {
-      return $('body').outerHeight() - $('#more-stories').offset().top + 30;
+      var $moreStories = $('#more-stories');
+      if ($moreStories.length) {
+        // Stories
+        return $('body').outerHeight() - $moreStories.offset().top + 30;
+      }
+      else {
+        // Pages
+        return $('body').outerHeight() - $('#footer-social').offset().top + 30;
+      }
     }
   }
 
