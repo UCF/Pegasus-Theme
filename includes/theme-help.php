@@ -1049,9 +1049,12 @@
 						<tr>
 							<td>Enable Affixing</td>
 							<td>affix</td>
-							<td>When set to 'true', enables affixing on the callout box.  (true or false)<br><br>
-							Multiple affixed callouts are supported.<br><br>
-							Affixing will only activate at screen sizes larger than 767px, and if the callout box is less than half the height of the user's screen.</td>
+							<td>
+								When set to 'true', enables affixing on the callout box.  (true or false)<br><br>
+								Multiple affixed callouts are supported.<br><br>
+								Affixing will only activate if the callout box doesn't take up an excessive amount of vertical
+								screen real estate (50% on screen sizes greater than 767px wide, 30% on screen sizes 767px and below.)
+							</td>
 							<td>false</td>
 						</tr>
 						<tr>
