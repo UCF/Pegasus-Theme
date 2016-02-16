@@ -259,9 +259,13 @@ function sc_callout( $attr, $content ) {
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
 	$css_class = $attr['css_class'] ? $attr['css_class'] : '';
 	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
+	$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 	$content = do_shortcode( $content );
 
 	$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
+	if ( $affix ) {
+		$css_class .= ' callout-affix';
+	}
 
 	if ( $post->post_type == 'page' ) {
 		// Close out our existing .span, .row and .container
