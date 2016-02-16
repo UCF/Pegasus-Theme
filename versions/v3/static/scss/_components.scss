@@ -700,13 +700,14 @@ article.ss-photo-essay {
   margin-bottom: 30px;
   margin-top: 30px;
 
-  @media (max-width: $screen-sm-max) {
+  @media (max-width: $screen-xs-max) {
     height: auto !important;  // Necessary to override inline styles added via affix js
   }
 }
 
 .callout-affix {
   position: relative;
+  z-index: 999;
 
   &.affix {
     margin-bottom: 0;
@@ -717,13 +718,24 @@ article.ss-photo-essay {
     top: 0;
     z-index: 999;
 
-    @media (max-width: $screen-sm-max) {
-      // Disable affixed callouts @ -sm, -xs breakpoint
+    @media (max-width: $screen-xs-max) {
+      // Disable affixed callouts @ -xs breakpoint
       margin-bottom: 30px;
       margin-top: 30px;
       position: static !important;
       z-index: 1;
     }
+
+    &.affix-cancel {
+      margin-bottom: 30px;
+      margin-top: 30px;
+      position: static !important;
+      z-index: 1;
+    }
+  }
+
+  &.affix-top {
+    top: 0 !important;
   }
 }
 

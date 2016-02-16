@@ -4,7 +4,7 @@
 
 
 // Define globals for JSHint validation:
-/* global console, IPAD_DEPLOYED, _gaq */
+/* global console, IPAD_DEPLOYED, _gaq, Chart */
 
 
 var togglePulldown = function($) {
@@ -745,38 +745,65 @@ var customChart = function ($) {
 var affixedCallouts = function($) {
   var $callouts = $('.callout-affix');
 
-  if ($callouts.length && $(window).width() > 991) {
+  function getBottomOffset(i) {
+    // If this is the last affixable callout on the page, set the bottom
+    // offset to the bottom of the article.  Else, set it to the top offset
+    // of the next affixable callout.
+    if (i !== $callouts.length - 1) {
+      return $('body').outerHeight() - $($callouts[i+1]).parent('.callout-outer').offset().top + 30;
+    }
+    else {
+      return $('body').outerHeight() - $('#more-stories').offset().top + 30;
+    }
+  }
+
+  function doAffix() {
     for (var i = 0; i < $callouts.length; i++) {
       var $callout = $($callouts[i]),
+          $calloutPlaceholder = $callout.parent('.callout-outer'),
           calloutHeight = $callout.outerHeight();
 
-      // Only initialize affixing on callouts that take up half the vertical screen real
-      // estate or less.
-      if (calloutHeight < ($(window).outerHeight() / 2)) {
-        var $calloutPlaceholder = $callout.parent('.callout-outer'),
-            bottomOffset = ($('body').outerHeight() - $('#more-stories').offset().top + 30);
+      // Set the callout's placeholder height.
+      $calloutPlaceholder.css('height', calloutHeight);
 
-        $callout
-          .affix({
-            offset: {
-              top: $callout.offset().top,
-              bottom: function() {
-                if (i !== $callouts.length - 1) {
-                  return (this.bottom = ($('body').outerHeight() - $($callouts[i+1]).offset().top + 30));
-                }
-                else {
-                  return (this.bottom = bottomOffset);
-                }
-              }
-            }
-          })
-          .css({
-            'z-index': 999 + i,
+      // Only initialize affixing on callouts that take up half the vertical
+      // screen real estate or less, and if the screen is wide enough
+      // (-sm, -md breakpoints.)
+      if (calloutHeight < ($(window).outerHeight() / 2) && $(window).width() > 767) {
+
+        var newOffset = {
+          top: $callout.offset().top,
+          bottom: getBottomOffset(i)
+        };
+
+        if ($callout.hasClass('affix-cancel')) {
+          $callout.removeClass('affix-cancel');
+        }
+
+        // If affixing is already applied, just replace the offset value.
+        // Else, initialize affixing
+        if ($callout.is('.affix, .affix-top, .affix-bottom')) {
+          $callout.data('bs.affix').options.offset = newOffset;
+        }
+        else {
+          $callout.affix({
+            offset: newOffset
           });
+        }
 
-        $calloutPlaceholder.css('height', calloutHeight);
       }
+      else {
+        // Use CSS to disable the affix effect.  Attempting to destroy the
+        // affix event is more trouble than it's worth.
+        $callout.addClass('affix-cancel');
+      }
+
     }
+  }
+
+  if ($callouts.length) {
+    doAffix();
+    $(window).on('resize', doAffix);
   }
 };
 
