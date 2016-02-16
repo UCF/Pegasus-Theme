@@ -802,7 +802,8 @@ var affixedCallouts = function($) {
   }
 
   if ($callouts.length) {
-    doAffix();
+    // Ugly, but need to give slideshows enough time to finish rendering/resizing
+    window.setTimeout(doAffix, 1500);
     $(window).on('resize', doAffix);
   }
 };
