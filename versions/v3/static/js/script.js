@@ -774,10 +774,12 @@ var affixedCallouts = function($) {
       // Set the callout's placeholder height.
       $calloutPlaceholder.css('height', calloutHeight);
 
-      // Only initialize affixing on callouts that take up half the vertical
-      // screen real estate or less, and if the screen is wide enough
-      // (-sm, -md breakpoints.)
-      if (calloutHeight < ($(window).outerHeight() / 2) && $(window).width() > 767) {
+      // Only initialize affixing on callouts that don't consume an excessive amount
+      // of vertical screen real estate.
+      if (
+        (calloutHeight < ($(window).outerHeight() / 2) && $(window).width() > 767) ||
+        (calloutHeight < ($(window).outerHeight() * 0.3) && $(window).width() <= 767)
+      ) {
 
         var newOffset = {
           top: $callout.offset().top,

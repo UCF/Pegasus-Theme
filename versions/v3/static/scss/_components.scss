@@ -699,10 +699,6 @@ article.ss-photo-essay {
 .callout-outer {
   margin-bottom: 30px;
   margin-top: 30px;
-
-  @media (max-width: $screen-xs-max) {
-    height: auto !important;  // Necessary to override inline styles added via affix js
-  }
 }
 
 .callout-affix {
@@ -717,14 +713,6 @@ article.ss-photo-essay {
     right: 0;
     top: 0;
     z-index: 999;
-
-    @media (max-width: $screen-xs-max) {
-      // Disable affixed callouts @ -xs breakpoint
-      margin-bottom: 30px;
-      margin-top: 30px;
-      position: static !important;
-      z-index: 1;
-    }
 
     &.affix-cancel {
       margin-bottom: 30px;
