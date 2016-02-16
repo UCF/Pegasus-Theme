@@ -215,6 +215,17 @@ function add_shortcode_interface_modal() {
 							<option value="right">Right</option>
 						</select>
 
+						<h3>Enable affixing:</h3>
+						<p class="help">
+							When set to 'True', this callout box will affix to the top of the page when scrolled to. It will
+							stay affixed until another affixable callout box is scrolled to, or when the end of the page is
+							reached.
+						</p>
+						<select name="callout-affix" data-parameter="affix">
+							<option value="false" selected>False</option>
+							<option value="true">True</option>
+						</select>
+
 						<h3>CSS Classes:</h3>
 						<p class="help">(Optional) CSS classes to apply to the callout. Separate classes with a space.</p>
 						<input type="text" name="callout-css_class" value="" data-default-value="btn-default" data-parameter="css_class">

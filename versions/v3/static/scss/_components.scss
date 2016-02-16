@@ -696,6 +696,37 @@ article.ss-photo-essay {
   }
 }
 
+.callout-outer {
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.callout-affix {
+  position: relative;
+  z-index: 999;
+
+  &.affix {
+    margin-bottom: 0;
+    margin-top: 0;
+    left: 0;
+    position: fixed !important;  // Necessary to override position:static on affixed callouts
+    right: 0;
+    top: 0;
+    z-index: 999;
+
+    &.affix-cancel {
+      margin-bottom: 30px;
+      margin-top: 30px;
+      position: static !important;
+      z-index: 1;
+    }
+  }
+
+  &.affix-top {
+    top: 0 !important;
+  }
+}
+
 .callout-inner {
   padding-bottom: 30px;
   padding-top: 30px;

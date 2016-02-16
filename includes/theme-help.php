@@ -1047,6 +1047,17 @@
 							<td>center</td>
 						</tr>
 						<tr>
+							<td>Enable Affixing</td>
+							<td>affix</td>
+							<td>
+								When set to 'true', enables affixing on the callout box.  (true or false)<br><br>
+								Multiple affixed callouts are supported.<br><br>
+								Affixing will only activate if the callout box doesn't take up an excessive amount of vertical
+								screen real estate (50% on screen sizes greater than 767px wide, 30% on screen sizes 767px and below.)
+							</td>
+							<td>false</td>
+						</tr>
+						<tr>
 							<td>CSS Classes</td>
 							<td>css_class</td>
 							<td>(Optional) CSS classes to apply to the callout. Separate classes with a space.</td>
