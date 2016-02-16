@@ -6,8 +6,18 @@ $font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
 $screen-xs-max: 767px;
 $screen-sm-max: 991px;
 
+$ucf-gold: #fc0;
+$teal: #1bbcb2;
+$salmon: #ca7878;
+$purple: #512399;
+$blue: #2f59d0;
+
+$border: 1px solid #000;
+
 
 // Mixins
+
+@import '../../../../versions/v3/static/scss/mixins';
 
 // Adds Gotham font family styles to an element (using backward-compatible
 // font-family declarations for IE8 support.)
@@ -21,11 +31,10 @@ $screen-sm-max: 991px;
   font-weight: $h-weight;
 }
 
-// Adds commonly-used Open Sans Condensed Bold in all-caps.
+// Adds commonly-used Open Sans Condensed Bold.
 @mixin open-sans-condensed() {
   font-family: "OpenSansCondensedBold", sans-serif;
   letter-spacing: -.06em;
-  text-transform: uppercase;
 }
 
 
@@ -36,28 +45,64 @@ $screen-sm-max: 991px;
 }
 
 article.story {  // over-qualified selector necessary to match+override theme-level css
-  // &,
-  // p {
-  //   font-size: 14px;
-  //   line-height: 1.2;
-  // }
+  &,
+  p,
+  ol,
+  ul {
+    font-size: 14px;
+  }
 
   h1,
   .h1 {
+    @include no-font-smoothing();
     @include gotham(8);
-    font-size: 70px;
-    -moz-osx-font-smoothing: auto;
-    -webkit-font-smoothing: auto;
+    color: #fff;
+    font-size: 130px;
     letter-spacing: -.04em;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 100px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 70px;
+    }
   }
 
   h2,
   .h2 {
-    font-size: 60px;
+    font-size: 52px;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 44px;
+    }
+
+    &.big,
+    span.big {
+      font-size: 70px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 46px;
+      }
+    }
 
     &.bigger,
     span.bigger {
-      font-size: 90px;
+      font-size: 84px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 58px;
+      }
+    }
+
+    &.biggest,
+    span.biggest {
+      font-size: 160px;
+      line-height: .85;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 110px;
+      }
     }
   }
 
@@ -110,11 +155,10 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     p {
       font-size: 22px;
       line-height: 1.3;
-      padding-left: 25px;
     }
 
     small {
-      @include gotham(4, italic);
+      @include gotham(4);
       font-size: 14px;
       margin-top: 12px;
     }
@@ -127,16 +171,27 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   }
 
   .caption {
-    @include gotham(6);
+    @include gotham(4);
   }
 
   .ucf-gold {
-    color: #fc0;
+    color: $ucf-gold;
   }
 
-  .underlined-feature {
-    text-decoration: underline;
-    vertical-align: text-top;
+  .teal {
+    color: $teal;
+  }
+
+  .salmon {
+    color: $salmon;
+  }
+
+  .purple {
+    color: $purple;
+  }
+
+  .blue {
+    color: $blue;
   }
 
   .wrapper-inverse {
@@ -170,6 +225,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     position: relative;
 
     @media (max-width: $screen-xs-max) {
+      background-size: cover;
       height: 300px;
     }
   }
@@ -183,11 +239,64 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
   .social {
     float: right;
-    margin-top: 54px;
+    margin-top: 105px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 80px;
+    }
 
     @media (max-width: $screen-xs-max) {
       float: left;
       margin-top: 0;
+    }
+  }
+
+  .border-bottom {
+    border-bottom: $border;
+  }
+
+  .border-left {
+    border-left: $border;
+    margin-left: 10px;  // + 20px bootstrap gutters = 30px space
+    padding-left: 30px;
+
+    @media (max-width: $screen-xs-max) {
+      border-left: 0 solid transparent;
+      border-top: $border;
+      margin-left: 0;
+      margin-top: 20px;
+      padding-left: 0;
+    }
+  }
+
+  .border-right {
+    border-right: $border;
+    margin-right: 10px;  // + 20px bootstrap gutters = 30px space
+    padding-right: 30px;
+
+    @media (max-width: $screen-xs-max) {
+      border-bottom: $border;
+      border-right: 0 solid transparent;
+      margin-bottom: 20px;
+      margin-right: 0;
+      padding-right: 0;
+    }
+  }
+
+  .border-top {
+    border-top: $border;
+  }
+
+  .border-w-padded {
+    background-color: #000;
+    height: 1px;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
   }
 }
@@ -195,34 +304,94 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
 // Story-specific overrides
 
+#facial-movement {
+  .caption {
+    margin-bottom: 30px;
+  }
+}
+
 #pro-goal {
   h2 {
-    color: #512399;
+    @media (max-width: $screen-xs-max) {
+      margin-top: 10px;
+    }
+  }
+}
+
+#best-catch {
+  .world-series-img {
+    width: 175px;
+
+    @media (max-width: $screen-sm-max) {
+      width: 130px;
+    }
   }
 }
 
 #twenty-five-years-of-life {
-  .underlined-feature {
-    font-size: 130px;
-    font-weight: normal;
-    line-height: 130px;
-    margin-right: -6px;
+  h2 {
+    .biggest {
+      display: block;
+    }
+  }
+}
+
+#hip-hip-hooray {
+  h2 {
+    line-height: .9;
+    margin-bottom: 25px;
+  }
+
+  .cheerleader-img {
+    margin-bottom: 0;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 60px;
+      width: 105px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      margin-bottom: 15px;
+      margin-top: 15px;
+      width: 95px;
+    }
   }
 }
 
 #top-honors {
+  h2 {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  h3 {
+    font-family: $font-family-serif;
+    font-size: 14px;
+    font-weight: bold !important;  // IE8 needs !important for whatever reason
+    letter-spacing: normal;
+    margin-bottom: 4px;
+  }
+
   .medal {
     background-position: center center;
     background-repeat: no-repeat;
+    background-size: contain;
     display: inline-block;
-    height: 90px;
-    margin-left: -5px;
-    margin-right: -10px;
+    height: 82px;
+    margin-left: -3px;
+    margin-right: -3px;
+    overflow: hidden;
     position: relative;
     text-indent: -150%;
-    top: -3px;
     vertical-align: top;
-    width: 87px;
+    width: 75px;
     z-index: -1;
+
+    @media (max-width: $screen-sm-max) {
+      height: 58px;
+      margin-left: 0;
+      margin-right: 0;
+      width: 53px;
+    }
   }
 }
