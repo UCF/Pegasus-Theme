@@ -1,0 +1,29 @@
+// Custom variables
+
+
+// Bootstrap overrides
+
+$screen-xs-min:              480px !default;
+$screen-sm-min:              768px !default;
+$screen-md-min:              992px !default;
+$screen-lg-min:              $screen-md-min !default;
+
+$grid-gutter-width: 20px !default;
+
+$container-tablet:             (720px + $grid-gutter-width) !default;
+$container-sm:                 $container-tablet !default;
+$container-desktop:            (940px + $grid-gutter-width) !default;
+$container-md:                 $container-desktop !default;
+$container-large-desktop:      $container-desktop !default;
+$container-lg:                 $container-large-desktop !default;
+
+$font-size-h1:            30px !default;
+$font-size-h2:            24px !default;
+$font-size-h3:            18px !default;
+$font-size-h4:            14px !default;
+$font-size-h5:            12px !default;
+$font-size-h6:            11px !default;
+
+$icon-font-path:    '../../../../static/components/bootstrap-sass-3.3.4/assets/fonts/bootstrap/';
+// Font Awesome fonts and css is currently not included on the web pages.
+$fa-font-path:      '../../../../static/components/font-awesome-4.3.0/fonts';
