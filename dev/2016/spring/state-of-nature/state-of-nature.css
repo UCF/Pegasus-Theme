@@ -1,5 +1,5 @@
 article.story .story h1 {
-    color: #53813E;
+    color: #d8a85e;
     font-size: 60px;
     margin-bottom: 5px;
 }
@@ -19,7 +19,8 @@ article.story .story h3 {
     text-transform: uppercase;
 }
 article.story .state-florida h3 {
-    font-size: 40px;
+    color: #d8a85e;
+    font-size: 60px;
     margin-bottom: 5px;
 }
 article.story .state-florida h4 {
@@ -29,8 +30,8 @@ article.story .state-florida h4 {
     margin: 0 0 30px 30px;
 }
 article.story .callout {
-    background-color: #F3E3CA;
-    color: #53813E;
+    background-color: #f9f1e3;
+    /* color: #d8a85e; */
 }
 article.story .map-container {
     position: relative;
@@ -46,11 +47,17 @@ article.story .map-container img:last-child {
     position: static;
 }
 article.story .legend-container {
-    background-color: #F9F1E3;
-    left: 15%;
+    background-color: #F3E3CA;
+    left: 10%;
     padding: 20px;
     position: absolute;
     top: 26%;
+}
+@media (max-width: 992px) {
+    article.story .legend-container {
+        left: 4%;
+        top: 26%;
+    }
 }
 article.story .legend-container h3 {
     border-bottom: solid 2px #d8a85e;
@@ -102,15 +109,21 @@ article.story .legend li:hover {
     background-color: #DFBE8A;
 }
 article.story .chart-container {
-    left: 14%;
+    left: 0;
     position: absolute;
-    top: 60%;
+    top: 66%;
+}
+@media (max-width: 992px) {
+    article.story .chart-container {
+        left: 1%;
+        top: 76%;
+    }
 }
 article.story .animal-images {
     margin-top: 50px;
 }
 article.story .state-stats {
-    background-color: #F9F1E3;
+    background-color: #F3E3CA;
     margin-bottom: 40px;
     padding: 10px 0;
     text-align: center;
@@ -125,6 +138,12 @@ article.story .state-stats .stat {
     font-size: 14px;
     margin-bottom: 15px;
     text-transform: uppercase;
+}
+@media (max-width: 992px) {
+    article.story .species-stats .stat,
+    article.story .state-stats .stat {
+        padding-left: 30px;
+    }
 }
 article.story .species-stats {
     border-bottom: solid 2px #d8a85e;
@@ -150,7 +169,7 @@ article.story .species-list li {
     font-size: 13px;
 }
 article.story .species-list ol {
-    margin-bottom: 0;
+    margin-bottom: 40px;
 }
 article.story .species-list li {
     color: #799636;
@@ -164,7 +183,8 @@ article.story .animal-images h4 {
     display: inline-block;
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 14px;
-    margin-top: 0;
+    margin-top: 5px;
+    margin-bottom: 5px;
     padding-bottom: 3px;
     text-transform: uppercase;
 }
@@ -182,7 +202,7 @@ article.story a[href^="#footnote"] {
 article.story .bear-cub {
     margin-right: 20px;
     margin-top: 5px;
-    width: 33%;
+    width: 55%;
 }
 article.story .bear-cub img {
     margin: 0 0 15px;
@@ -192,7 +212,10 @@ article.story .bear-cub img {
         width: 100%;
     }
 }
-article.story .controlled-burn {
+article.story blockquote {
+    color: #d8a85e;
+}
+article.story .text-center {
     text-align: center;
 }
 article.story .caption {
