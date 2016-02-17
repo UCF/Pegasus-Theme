@@ -76,6 +76,17 @@
       z-index: 5;
     }
 
+    h2,
+    h3 {
+      color: #fff;
+      font-family: $font-family-sans-serif;
+      font-weight: bold;
+
+      @media (max-width: $screen-xs-max) {
+        color: #222;
+      }
+    }
+
     img {
       height: auto;
       width: 100%;

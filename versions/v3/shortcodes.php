@@ -103,7 +103,8 @@ add_shortcode('media', 'sc_get_media');
  * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
-	$css_classes = '';
+	$css_classes = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 	$content = $content ? $content : '';
 	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
 	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
@@ -119,7 +120,7 @@ function sc_photo($attr, $content) {
 	}
 	else {
 		if ( !empty( $position ) ) {
-			$css_classes .= $position.' ';
+			$css_classes .= ' ' . $position;
 		}
 	}
 
@@ -132,11 +133,11 @@ function sc_photo($attr, $content) {
 		if ( $width !== '100%' ) {
 			$width_px = intval( str_replace( 'px', '', $width ) );
 			if ( $width_px > 140 ) {
-				$css_classes .= 'mobile-img-fluid ';
+				$css_classes .= ' mobile-img-fluid';
 			}
 		}
 		else {
-			$css_classes .= 'mobile-img-fluid ';
+			$css_classes .= ' mobile-img-fluid';
 		}
 	}
 
@@ -159,7 +160,10 @@ function sc_photo($attr, $content) {
 				$html .= ' max-width: '.$width.';';
 			}
 			$html .= '">';
-			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			$html .= '<img src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto; ';
+			if ( $inline_css ) {
+				$html .= $inline_css;
+			}
 			if ( $width ) {
 				$html .= ' width: '.$width.';';
 			}
@@ -168,7 +172,10 @@ function sc_photo($attr, $content) {
 			$html .= '</figure>';
 		}
 		else {
-			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto;';
+			$html .= '<img class="'.$css_classes.'" src="'.$url.'" alt="'.$alt.'" title="'.$alt.'" style="height: auto; ';
+			if ( $inline_css ) {
+				$html .= $inline_css;
+			}
 			if ( $width ) {
 				$html .= ' width: '.$width.';';
 			}
@@ -207,15 +214,18 @@ function sc_blockquote( $attr, $content = '' ) {
 	$source = $attr['source'] ? $attr['source'] : null;
 	$cite = $attr['cite'] ? $attr['cite'] : null;
 	$color = $attr['color'] ? $attr['color'] : null;
+	$class = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 
-	$html = '<blockquote';
 	if ( $source ) {
-		$html .= ' class="quote"';
+		$class .= ' quote';
+	}
+	if ( $color ) {
+		$inline_css .= ' color: ' . $color . ';';
 	}
 
-	if ( $color ) {
-		$html .= ' style="color: ' . $color . ';"';
-	}
+	$html = '<blockquote class="' . $class . '"';
+	$html .= ' style="' . $inline_css . '"';
 	$html .= '>';
 
 	$html .= $content;
@@ -244,19 +254,41 @@ add_shortcode( 'blockquote', 'sc_blockquote' );
  * Create a full-width callout box.
  **/
 function sc_callout( $attr, $content ) {
+	global $post;
 	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
+	$css_class = $attr['css_class'] ? $attr['css_class'] : '';
+	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
+	$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
 	$content = do_shortcode( $content );
 
-	// Close out our existing .span, .row and .container
-	$html = '</div></div></div>';
-	$html .= '<div class="container-wide callout" style="background-color: ' . $bgcolor . ';">';
-	$html .= '<div class="container"><div class="row content-wrap">';
-	$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
-	$html .= $content;
-	$html .= '</div></div></div></div>';
-	// Reopen standard .container, .row and .span
-	$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+	$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
+	if ( $affix ) {
+		$css_class .= ' callout-affix';
+	}
+
+	if ( $post->post_type == 'page' ) {
+		// Close out our existing .span, .row and .container
+		$html = '</div></div></div>';
+		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="container"><div class="row content-wrap">';
+		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
+		$html .= $content;
+		$html .= '</div></div></div></div></div>';
+		// Reopen standard .container, .row and .span
+		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-12">';
+	}
+	else {
+		// Close out our existing .span, .row and .container
+		$html = '</div></div></div>';
+		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="container"><div class="row content-wrap">';
+		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
+		$html .= $content;
+		$html .= '</div></div></div></div></div>';
+		// Reopen standard .container, .row and .span
+		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+	}
 
 	return $html;
 }
@@ -604,7 +636,7 @@ function sc_archive_search($params=array(), $content='') {
 
 	ob_start();
 	?>
-	<div class="row post-type-search" id="archives">
+	<div class="row post-type-search">
 		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<label for="s">Search</label>
@@ -893,5 +925,152 @@ function sc_remarketing_tag( $attr ) {
 }
 
 add_shortcode( 'google-remarketing', 'sc_remarketing_tag' );
+
+
+/**
+ * Inserts a Bootstrap button.
+ **/
+function sc_button( $attr, $content='' ) {
+	$attrs = shortcode_atts(
+		array(
+			'css_class' => 'btn-default',
+			'inline_css' => '',
+			'href' => '',
+			'new_window' => false,
+			'ga_interaction' => '',
+			'ga_category' => '',
+			'ga_action' => '',
+			'ga_label' => ''
+		),
+		$attr,
+		'button'
+	);
+
+	$link_attrs = '';
+	if ( filter_var( $attrs['new_window'], FILTER_VALIDATE_BOOLEAN ) ) {
+		$link_attrs .= 'target="_blank" ';
+	}
+	if ( $attrs['ga_interaction'] ) {
+		$link_attrs .= 'data-ga-interaction="' . $attrs['ga_interaction'] . '" ';
+	}
+	if ( $attrs['ga_category'] ) {
+		$link_attrs .= 'data-ga-category="' . $attrs['ga_category'] . '" ';
+	}
+	if ( $attrs['ga_action'] ) {
+		$link_attrs .= 'data-ga-action="' . $attrs['ga_action'] . '" ';
+	}
+	if ( $attrs['ga_label'] ) {
+		$link_attrs .= 'data-ga-label="' . $attrs['ga_label'] . '" ';
+	}
+
+	ob_start();
+?>
+	<a class="btn <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
+		<?php echo do_shortcode( $content ); ?>
+	</a>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'button', 'sc_button' );
+
+
+function sc_header_callout( $attr, $content='' ) {
+	global $post;
+	$attrs = shortcode_atts(
+		array(
+			'background' => '#fff',
+			'background_image' => '',
+			'content_align' => 'text-left',
+			'css_class' => '',
+			'inline_css' => ''
+		),
+		$attr,
+		'header-callout'
+	);
+
+	$attrs['inline_css'] = 'background-color: ' . $bgcolor . '; background-image: url(\'' . $attrs['background_image'] . '\'); ' . $attrs['inline_css'];
+
+	ob_start();
+?>
+	<?php if ( $post->post_type == 'page' ): ?>
+		</div></div></div>
+		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+			<div class="container">
+				<div class="row content-wrap">
+					<div class="col-md-12 callout-inner <?php echo $attrs['content_align']; ?>">
+						<?php echo do_shortcode( $content ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container"><div class="row content-wrap"><div class="col-md-12">
+	<?php else: ?>
+		</div></div></div>
+		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+			<div class="container">
+				<div class="row content-wrap">
+					<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner <?php echo $attrs['content_align']; ?>">
+						<?php echo do_shortcode( $content ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'header-callout', 'sc_header_callout' );
+
+/**
+ * ChartJS.
+ **/
+
+function sc_chart( $attr ) {
+	$id = $attr['id'] ? $attr['id'] : 'custom-chart';
+	$type = $attr['type'] ? $attr['type'] : 'bar';
+	$json = $attr['data'] ? $attr['data'] : '';
+	$options = $attr['options'] ? $attr['options'] : '';
+
+	if ( empty( $json ) ) {
+		return;
+	}
+
+	$class = $attr['class'] ? 'custom-chart ' . $class : 'custom-chart';
+
+	wp_enqueue_script('chart-js', THEME_COMPONENTS_URL.'/Chart.min.js', null, null, True);
+
+	ob_start();
+
+	?>
+		<div id="<?php echo $id; ?>" class="<?php echo $class; ?>" data-chart-type="<?php echo $type; ?>" data-chart-data="<?php echo $json; ?>" <?php echo $options ? 'data-chart-options="' . $options . '"' : ''; ?>></div>
+	<?php
+
+	return ob_get_clean();
+}
+add_shortcode( 'chart', 'sc_chart' );
+
+/**
+ * Displays a Bootstrap well.
+ **/
+function sc_well( $attr, $content='' ) {
+	$attrs = shortcode_atts(
+		array(
+			'css_class' => '',
+			'inline_css' => ''
+		),
+		$attr,
+		'well'
+	);
+
+	ob_start();
+?>
+	<div class="well <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+		<?php echo do_shortcode( $content ); ?>
+	</div>
+<?php
+	return ob_get_clean();
+}
+add_shortcode( 'well', 'sc_well' );
 
 ?>
