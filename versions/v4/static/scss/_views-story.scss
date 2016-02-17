@@ -510,125 +510,106 @@ article.story-default {
 
 
 // Story - Photo Essay Template
-main.ss-photo-essay {
-  @media (max-width: $screen-sm-max) {
-    height: 500px;
+.photo-essay {
+  .photo-essay-header {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 440px;
+    position: relative;
+
+    &:after {
+      background-color: rgba(0, 0, 0, .7);
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+      z-index: 1;
+    }
   }
 
-  @media (max-width: 320px) {
-    height: 400px;
-  }
-}
-
-article.ss-photo-essay {
-  @media (max-width: $screen-sm-max) {
-    padding-top: 5%;
-  }
-
-  h1 {
-    color: #fff;
-    padding-bottom: 30px;
-  }
-
-  .ss-essay-intro-wrapper img {
-    -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=20)';
-    filter: alpha(opacity=20);
-    -khtml-opacity: .2;
-    -moz-opacity: .2;
-    opacity: .2;
-  }
-
-  .ss-essay-intro {
-    bottom: 0;
-    height: 75%;
+  .photo-essay-header-inner {
     left: 0;
-    margin: auto;
     position: absolute;
     right: 0;
-    top: 0;
+    top: 35%;
+    transform: translate(0, -35%);
+    z-index: 2;
+  }
 
-    @media (max-width: $screen-sm-max) {
-      height: 100%;
+  .photo-essay-title,
+  .photo-essay-description {
+    color: #fff;
+    text-align: center;
+  }
+
+  .photo-essay-description {
+    font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    margin-bottom: 40px;
+    margin-top: 30px;
+
+    strong {
+      font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+      font-weight: 600;
     }
 
-    h1,
-    .description {
-      padding-left: 20px;
-      padding-right: 20px;
-
-      @media (max-width: $screen-xs-max) {
-        padding-left: 0;
-        padding-right: 0;
-        white-space: pre-wrap;
-      }
-    }
-
-    h1,
-    .description-wrap {
-      color: #fff;
-      text-align: center;
-    }
-
-    h1 {
-      @media (max-width: $screen-xs-max) {
-        font-size: 28px;
-        line-height: 32px;
-        padding-bottom: 15px;
-      }
-    }
-
-    .description {
-      display: block;
-      margin-bottom: 20px;
-      text-align: center;
-
-      @media (max-width: $screen-xs-max) {
-        font-size: 16px;
-        line-height: 20px;
-      }
-    }
-
-    .social {
-      left: 0;
-      position: relative;
-      right: 0;
-      text-align: center;
-      z-index: 999;
-
-      @media (max-width: $screen-xs-max) {
-        padding-top: 10px;
-      }
-
-      @media (max-width: 320px) {
-        left: -20px;
-      }
-
-      .share-twitter,
-      .share-facebook,
-      .share-googleplus {
-        display: inline-block;
-        float: none;
-        margin-right: 0;
-        white-space: nowrap;
-      }
+    em {
+      font-style: italic;
     }
   }
 
-  .ss-slide-wrapper {
-    width: 85%;
+  .social {
+    text-align: center;
 
-    @media (max-width: $screen-xs-max) {
-      width: 100%;
+    .share-twitter,
+    .share-facebook,
+    .share-googleplus {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
     }
   }
 
-  .ss-slide {
-    .social {
-      display: none;
+  .photo-essay-item {
+    margin-bottom: 0;
+    margin-top: $grid-gutter-width / 2;
+  }
+
+  .photo-essay-img {
+    margin: 0;
+
+    &.pull-right {
+      margin-left: 0;
     }
 
-    &.ss-current .social {
-      display: block;
+    &.pull-left {
+      margin-right: 0;
     }
+  }
+
+  .photo-essay-caption,
+  .photo-essay-caption-alternate {
+    @media (min-width: $screen-lg-min) {
+      font-size: 1.29vw;
+    }
+
+    @media (min-width: 1600px) {
+      font-size: 1vw;
+    }
+  }
+
+  .photo-essay-caption {
+    padding: 60px 0 0 30px;
+  }
+
+  .photo-essay-caption-alternate {
+    padding: 60px 30px 0 0;
   }
 }
+
