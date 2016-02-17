@@ -686,18 +686,11 @@ add_shortcode('archive-search', 'sc_archive_search');
 
 
 /**
- * Photo Essay Slider
+ * Photo Essay Slideshow
  **/
 function sc_photo_essay_slider( $atts, $content = null ) {
 	$slug 		   = @$atts['slug'];
 	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : '#000';
-	$recent 	   = get_posts( array(
-		'numberposts' => 1,
-		'post_type' => 'photo_essay',
-		'post_status' => 'publish',
-	) );
-
-	$mostrecent = $recent[0];
 
 	if ( is_string( $slug ) ) {
 		$photo_essays = get_posts( array(
@@ -710,31 +703,73 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 			$photo_essay = $photo_essays[0];
 		}
 	} else {
-		$photo_essay = $mostrecent;
-	}
-
-	global $post;
-	$is_fullscreen = false;
-	if ( $post->post_type == 'story' && get_post_meta( $post->ID, 'story_template', TRUE ) == 'photo_essay' ) {
-		$is_fullscreen = true;
+		$recent = get_posts( array(
+			'numberposts' => 1,
+			'post_type' => 'photo_essay',
+			'post_status' => 'publish',
+		) );
+		if ( $recent ) {
+			$photo_essay = $recent[0];
+		}
 	}
 
 	ob_start();
 
 	if ( $photo_essay ) {
-		// Print either a bootstrap slideshow or markup for a fullscreen gallery
-		if ( $is_fullscreen ) {
-			echo display_photo_essay( $photo_essay, $post );
-		}
-		else {
-			echo display_photo_essay_slideshow( $photo_essay, $slug, $caption_color );
-		}
+		echo display_photo_essay_slideshow( $photo_essay, $slug, $caption_color );
 	}
 
 	return ob_get_clean();
 
 }
 add_shortcode( 'slideshow', 'sc_photo_essay_slider' );
+
+
+/**
+ * Photo Essay
+ **/
+function sc_photo_essay( $atts, $content = null ) {
+	$atts = shortcode_atts(
+		array(
+			'slug' => ''
+		),
+		$atts,
+		'photo_essay'
+	);
+
+	if ( !is_numeric( $atts['slug'] ) ) {
+		$photo_essays = get_posts( array(
+			'name' => $atts['slug'],
+			'post_type' => 'photo_essay',
+			'post_status' => 'publish',
+			'posts_per_page' => 1
+		));
+		if ( $photo_essays ) {
+			$photo_essay = $photo_essays[0];
+		}
+	} else {
+		$recent = get_posts( array(
+			'numberposts' => 1,
+			'post_type' => 'photo_essay',
+			'post_status' => 'publish',
+		) );
+		if ( $recent ) {
+			$photo_essay = $recent[0];
+		}
+	}
+
+	global $post;
+
+	ob_start();
+
+	if ( $photo_essay ) {
+		echo display_photo_essay( $photo_essay, $post );
+	}
+
+	return ob_get_clean();
+
+}
+add_shortcode( 'photo_essay', 'sc_photo_essay' );
 
 
 /**

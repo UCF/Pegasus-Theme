@@ -13357,15 +13357,6 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
-	"\/versions\/v4\/templates\/photo_essay.php": {
-		"fileType": 8192,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/versions\/v4\/templates\/photo_essay.php",
-		"outputAbbreviatedPath": "No Output Path",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0
-		},
 	"\/versions\/v4\/templates\/story\/default.php": {
 		"fileType": 8192,
 		"ignore": 0,
