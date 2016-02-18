@@ -4,7 +4,7 @@
 
 
 // Define globals for JSHint validation:
-/* global console, IPAD_DEPLOYED, _gaq */
+/* global console, IPAD_DEPLOYED, _gaq, Chart */
 
 
 var togglePulldown = function($) {
@@ -622,6 +622,203 @@ var removeEmptyPTags = function($) {
 };
 
 
+/**
+ * Google Analytics click event tracking.
+ * Do not apply the .ga-event-link class to non-link ('<a></a>') tags!
+ *
+ * interaction: Default 'event'. Used to distinguish unique interactions, i.e. social interactions
+ * category:    Typically the object that was interacted with (e.g. button); for social interactions, this is the 'socialNetwork' value
+ * action:      The type of interaction (e.g. click) or 'like' for social ('socialAction' value)
+ * label:       Useful for categorizing events (e.g. nav buttons); for social, this is the 'socialTarget' value
+ **/
+var gaEventTracking = function($) {
+  $('.ga-event-link').on('click', function(e) {
+    e.preventDefault();
+
+    var $link       = $(this);
+    var url         = $link.attr('href');
+    var interaction = $link.attr('data-ga-interaction') ? $link.attr('data-ga-interaction') : 'event';
+    var category    = $link.attr('data-ga-category') ? $link.attr('data-ga-category') : 'Outbound Links';
+    var action      = $link.attr('data-ga-action') ? $link.attr('data-ga-action') : 'click';
+    var label       = $link.attr('data-ga-label') ? $link.attr('data-ga-label') : $link.text();
+    var target      = $link.attr('target');
+
+    if (typeof ga !== 'undefined' && action !== null && label !== null) {
+      _gaq.push([interaction, category, action, label]);
+      if (typeof target !== 'undefined' && target === '_blank') {
+        window.open(url, '_blank');
+      }
+      else {
+        window.setTimeout(function(){ document.location = url; }, 200);
+      }
+    }
+    else {
+      document.location = url;
+    }
+  });
+};
+
+
+/**
+ * Similar to removeEmptyPTags, but searches for and removes Bootstrap containers
+ * whose only child column is empty.
+ **/
+var removeEmptyPageContainers = function($) {
+  var $subpage = $('.subpage');
+  if ($subpage.length) {
+    $subpage
+      .find('div[class^="col-"]:only-child')
+        .each(function() {
+          var $col = $(this);
+          if ($.trim($col.html()) === '') {
+            $col.parents('.container').remove();
+          }
+        });
+  }
+};
+
+
+/**
+ * ChartJS
+ **/
+var customChart = function ($) {
+  if ($('.custom-chart').length) {
+    $.each($('.custom-chart'), function() {
+      var $chart = $(this);
+      // Update id of chart if it is set to default.
+      if ($chart.attr('id') === 'custom-chart') {
+        $chart.attr('id', 'custom-chart-' + idx);
+      }
+      var type = $(this).attr('data-chart-type'),
+          jsonPath = $(this).attr('data-chart-data'),
+          optionsPath = $(this).attr('data-chart-options'),
+          canvas = document.createElement('canvas'),
+          ctx = canvas.getContext('2d'),
+          data = {};
+
+      // Set default options
+      var options = {
+        responsive: true,
+        scaleShowGridLines: false,
+        pointHitDetectionRadius: 5
+      };
+
+      $chart.append(canvas);
+
+      $.getJSON(jsonPath, function(json) {
+        data = json;
+        $.getJSON(optionsPath, function(json) {
+          $.extend(options, options, json);
+        }).complete(function() {
+          switch(type.toLowerCase()) {
+            case 'bar':
+              var barChart = new Chart(ctx).Bar(data, options);
+              break;
+            case 'line':
+              var lineChart = new Chart(ctx).Line(data, options);
+              break;
+            case 'radar':
+              var radarChart = new Chart(ctx).Radar(data, options);
+              break;
+            case 'polar-area':
+              var polarAreaChart = new Chart(ctx).PolarArea(data, options);
+              break;
+            case 'pie':
+              var pieChart = new Chart(ctx).Pie(data, options);
+              break;
+            case 'doughnut':
+              var doughnutChart = new Chart(ctx).Doughnut(data, options);
+              break;
+            default:
+              break;
+          }
+        });
+      });
+    });
+  }
+};
+
+
+/**
+ * Enable affixing on callouts with .callout-affix class.
+ **/
+var affixedCallouts = function($) {
+  var $callouts = $('.callout-affix');
+
+  function getBottomOffset(i) {
+    // If this is the last affixable callout on the page, set the bottom
+    // offset to the bottom of the article.  Else, set it to the top offset
+    // of the next affixable callout.
+    if (i !== $callouts.length - 1) {
+      return $('body').outerHeight() - $($callouts[i+1]).parent('.callout-outer').offset().top + 30;
+    }
+    else {
+      var $moreStories = $('#more-stories');
+      if ($moreStories.length) {
+        // Stories
+        return $('body').outerHeight() - $moreStories.offset().top + 30;
+      }
+      else {
+        // Pages
+        return $('body').outerHeight() - $('#footer-social').offset().top + 30;
+      }
+    }
+  }
+
+  function doAffix() {
+    for (var i = 0; i < $callouts.length; i++) {
+      var $callout = $($callouts[i]),
+          $calloutPlaceholder = $callout.parent('.callout-outer'),
+          calloutHeight = $callout.outerHeight();
+
+      // Set the callout's placeholder height.
+      $calloutPlaceholder.css('height', calloutHeight);
+
+      // Only initialize affixing on callouts that don't consume an excessive amount
+      // of vertical screen real estate.
+      if (
+        (calloutHeight < ($(window).outerHeight() / 2) && $(window).width() > 767) ||
+        (calloutHeight < ($(window).outerHeight() * 0.3) && $(window).width() <= 767)
+      ) {
+
+        var newOffset = {
+          top: $callout.offset().top,
+          bottom: getBottomOffset(i)
+        };
+
+        if ($callout.hasClass('affix-cancel')) {
+          $callout.removeClass('affix-cancel');
+        }
+
+        // If affixing is already applied, just replace the offset value.
+        // Else, initialize affixing
+        if ($callout.is('.affix, .affix-top, .affix-bottom')) {
+          $callout.data('bs.affix').options.offset = newOffset;
+        }
+        else {
+          $callout.affix({
+            offset: newOffset
+          });
+        }
+
+      }
+      else {
+        // Use CSS to disable the affix effect.  Attempting to destroy the
+        // affix event is more trouble than it's worth.
+        $callout.addClass('affix-cancel');
+      }
+
+    }
+  }
+
+  if ($callouts.length) {
+    // Ugly, but need to give slideshows enough time to finish rendering/resizing
+    window.setTimeout(doAffix, 1500);
+    $(window).on('resize', doAffix);
+  }
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -638,6 +835,10 @@ if (typeof jQuery !== 'undefined'){
       lazyLoadAssets($);
       socialButtonTracking($);
       removeEmptyPTags($);
+      gaEventTracking($);
+      removeEmptyPageContainers($);
+      customChart($);
+      affixedCallouts($);
     });
   })(jQuery);
 }
