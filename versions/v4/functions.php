@@ -178,18 +178,18 @@ add_filter( 'wp_kses_allowed_html', 'v3_add_kses_whitelisted_attributes', 11, 2 
 function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $caption, $alternate=false ) {
 	ob_start();
 ?>
-	<figure class="photo-essay-item photo-essay-item-<?php echo $orientation; ?>" id="<?php echo $item_id; ?>">
+	<figure class="photo-essay-item photo-essay-item-<?php echo $orientation; ?> <?php if ( $alternate ) { ?>alternate<?php } ?>" id="<?php echo $item_id; ?>">
 		<?php
 		switch ( $orientation ):
 			case 'portrait':
 		?>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-md-push-5 col-sm-push-5<?php } ?>">
-						<img class="photo-essay-img img-responsive" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<div class="img-col col-lg-7 col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-lg-push-5 col-md-push-5 col-sm-push-5<?php } ?>">
+						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 					</div>
-					<div class="col-md-5 col-sm-5 <?php if ( $alternate ) { ?>col-md-pull-7 col-sm-pull-7<?php } ?>">
-						<figcaption class="<?php if ( $alternate ) { ?>photo-essay-caption-alternate<?php } else { ?>photo-essay-caption<?php } ?>>
+					<div class="caption-col col-lg-4 col-md-4 col-sm-4 <?php if ( $alternate ) { ?>col-lg-pull-7 col-lg-offset-1 col-md-pull-7 col-md-offset-1 col-sm-pull-7 col-sm-offset-1<?php } ?>">
+						<figcaption class="photo-essay-caption">
 							<?php echo $caption; ?>
 						</figcaption>
 					</div>
@@ -203,11 +203,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		?>
 			<div class="container-fluid">
 				<div class="row">
-					<div class="col-lg-8 col-md-12 <?php if ( $alternate ) { ?>col-lg-push-4<?php } ?>">
-						<img class="photo-essay-img img-responsive <?php if ( !$alternate ) { ?>pull-right<?php } ?>" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<div class="img-col col-lg-8 col-md-12 <?php if ( $alternate ) { ?>col-lg-push-4<?php } ?>">
+						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 					</div>
-					<div class="col-lg-3 col-md-12 <?php if ( $alternate ) { ?>col-lg-pull-8 col-lg-offset-1<?php } ?>">
-						<figcaption class="<?php if ( $alternate ) { ?>photo-essay-caption-alternate<?php } else { ?>photo-essay-caption<?php } ?>">
+					<div class="caption-col col-lg-3 col-md-12 <?php if ( $alternate ) { ?>col-lg-pull-8 col-lg-offset-1<?php } ?>">
+						<figcaption class="photo-essay-caption">
 							<?php echo $caption; ?>
 						</figcaption>
 					</div>

@@ -579,10 +579,16 @@ article.story-default {
   .photo-essay-item {
     margin-bottom: 0;
     margin-top: $grid-gutter-width / 2;
+
+    .img-col {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .photo-essay-img {
     margin: 0;
+    width: 100%;
 
     &.pull-right {
       margin-left: 0;
@@ -604,12 +610,47 @@ article.story-default {
     }
   }
 
-  .photo-essay-caption {
-    padding: 60px 0 0 30px;
+  .photo-essay-item-landscape,
+  .photo-essay-item-square {
+
+    &.alternate {
+      .photo-essay-caption {
+        padding: 30px 8.333% 60px;
+
+        @media (min-width: $screen-lg-min) {
+          padding: 60px 30px 0 0;
+        }
+      }
+    }
+
+    .photo-essay-caption {
+      padding: 30px 8.333% 60px;
+
+      @media (min-width: $screen-lg-min) {
+        padding: 60px 0 0 30px;
+      }
+    }
   }
 
-  .photo-essay-caption-alternate {
-    padding: 60px 30px 0 0;
+  .photo-essay-item-portrait {
+
+    &.alternate {
+      .photo-essay-caption {
+        padding: 60px 30px 0 0;
+
+        @media (max-width: $screen-xs-max) {
+          padding: 30px 8.333% 60px;
+        }
+      }
+    }
+
+    .photo-essay-caption {
+      padding: 60px 0 0 30px;
+
+      @media (max-width: $screen-xs-max) {
+        padding: 30px 8.333% 60px;
+      }
+    }
   }
 }
 
