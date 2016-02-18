@@ -175,9 +175,20 @@ article.story .species-list li {
 }
 article.story .species-list ol {
     margin-bottom: 40px;
+    margin-left: 18px;
+}
+article.story .species-list ul {
+    list-style: none;
+    margin-left: 22px;
+    margin-bottom: 15px;
 }
 article.story .species-list li {
+    list-style-position: inside;
+    text-indent: -23px;
+}
+article.story .species-list.plants li {
     color: #799636;
+    margin-bottom: 10px;
 }
 article.story .species-list li span {
     color: #000;
@@ -189,7 +200,7 @@ article.story .animal-images h4 {
     font-family: Georgia,"Times New Roman",Times,serif;
     font-size: 14px;
     margin-top: 5px;
-    margin-bottom: 5px;
+    margin-bottom: 8px;
     padding-bottom: 3px;
     text-transform: uppercase;
 }
