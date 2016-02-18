@@ -161,6 +161,21 @@ article.story-default {
 
 // Story - Photo Essay Template
 article.photo-essay {
+  blockquote {
+    &,
+    p {
+      @media (min-width: $screen-lg-min) {
+        font-size: 1.9vw;
+        line-height: 1.3;
+      }
+    }
+
+    small {
+      font-family: 'OpenSansCondensedBold', sans-serif;
+      font-style: italic;
+    }
+  }
+
   .photo-essay-header {
     background-position: center center;
     background-repeat: no-repeat;
