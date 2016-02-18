@@ -187,6 +187,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 				<div class="row">
 					<div class="img-col col-lg-7 col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-lg-push-5 col-md-push-5 col-sm-push-5<?php } ?>">
 						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+						<div class="carat"></div>
 					</div>
 					<div class="caption-col col-lg-4 col-md-4 col-sm-4 <?php if ( $alternate ) { ?>col-lg-pull-7 col-lg-offset-1 col-md-pull-7 col-md-offset-1 col-sm-pull-7 col-sm-offset-1<?php } ?>">
 						<figcaption class="photo-essay-caption">
@@ -205,6 +206,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 				<div class="row">
 					<div class="img-col col-lg-8 col-md-12 <?php if ( $alternate ) { ?>col-lg-push-4<?php } ?>">
 						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+						<div class="carat"></div>
 					</div>
 					<div class="caption-col col-lg-3 col-md-12 <?php if ( $alternate ) { ?>col-lg-pull-8 col-lg-offset-1<?php } ?>">
 						<figcaption class="photo-essay-caption">

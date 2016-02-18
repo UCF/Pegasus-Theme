@@ -244,11 +244,13 @@ article.photo-essay {
   .photo-essay-item {
     margin-bottom: 0;
     margin-top: $grid-gutter-width / 2;
+  }
 
-    .img-col {
-      padding-left: 0;
-      padding-right: 0;
-    }
+  .img-col {
+    padding-left: 0;
+    padding-right: 0;
+    position: relative;
+    z-index: 1;
   }
 
   .photo-essay-img {
@@ -264,8 +266,44 @@ article.photo-essay {
     }
   }
 
-  .photo-essay-caption,
-  .photo-essay-caption-alternate {
+  .carat {
+    border-style: solid;
+    height: 0;
+    position: absolute;
+    width: 0;
+    z-index: 2;
+  }
+
+  @mixin carat-top-left {
+    border-color: transparent transparent transparent #fff;
+    border-width: 35px 0 35px 25px;
+    bottom: unset;
+    left: 0;
+    margin: unset;
+    right: unset;
+    top: 50px;
+  }
+
+  @mixin carat-top-right {
+    border-color: transparent #fff;
+    border-width: 35px 25px 35px 0;
+    left: unset;
+    margin: unset;
+    right: 0;
+    top: 50px;
+  }
+
+  @mixin carat-bottom-center {
+    border-color: transparent transparent #fff;
+    border-width: 0 35px 25px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: unset;
+  }
+
+  .photo-essay-caption {
     @media (min-width: $screen-lg-min) {
       font-size: 1.29vw;
     }
@@ -279,12 +317,24 @@ article.photo-essay {
   .photo-essay-item-square {
 
     &.alternate {
-      .photo-essay-caption {
-        padding: 30px 8.333% 60px;
+      .carat {
+        @media (min-width: $screen-lg-min) {
+          @include carat-top-left();
+        }
+      }
 
+      .photo-essay-caption {
         @media (min-width: $screen-lg-min) {
           padding: 60px 30px 0 0;
         }
+      }
+    }
+
+    .carat {
+      @include carat-bottom-center();
+
+      @media (min-width: $screen-lg-min) {
+        @include carat-top-right();
       }
     }
 
@@ -300,12 +350,28 @@ article.photo-essay {
   .photo-essay-item-portrait {
 
     &.alternate {
+      .carat {
+        @include carat-top-left();
+
+        @media (max-width: $screen-xs-max) {
+          @include carat-bottom-center();
+        }
+      }
+
       .photo-essay-caption {
         padding: 60px 30px 0 0;
 
         @media (max-width: $screen-xs-max) {
           padding: 30px 8.333% 60px;
         }
+      }
+    }
+
+    .carat {
+      @include carat-top-right();
+
+      @media (max-width: $screen-xs-max) {
+        @include carat-bottom-center();
       }
     }
 
