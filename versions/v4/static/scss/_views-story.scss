@@ -315,7 +315,6 @@ article.photo-essay {
 
   .photo-essay-item-landscape,
   .photo-essay-item-square {
-
     &.alternate {
       .carat {
         @media (min-width: $screen-lg-min) {
@@ -348,7 +347,6 @@ article.photo-essay {
   }
 
   .photo-essay-item-portrait {
-
     &.alternate {
       .carat {
         @include carat-top-left();
@@ -382,5 +380,42 @@ article.photo-essay {
         padding: 30px 8.333% 60px;
       }
     }
+  }
+
+  .photo-essay-nav {
+    background-color: rgba(0, 0, 0, .8);
+    bottom: -50%;
+    height: 12%;
+    min-height: 80px;
+    overflow-x: scroll;
+    padding: ($grid-gutter-width / 2);
+    position: fixed;
+    text-align: center;
+    transition: bottom .5s ease-in-out;
+    white-space: nowrap;
+    width: 100%;
+    z-index: 999;
+
+    @media (max-width: $screen-xs-max) {
+      display: none;
+    }
+
+    &.active {
+      bottom: 0;
+    }
+  }
+
+  .photo-essay-nav-link {
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .photo-essay-nav-thumb {
+    height: 100%;
+    margin: 0;
+    width: auto;
   }
 }

@@ -227,8 +227,8 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 function display_photo_essay_navitem( $item_id, $image_thumb_url ) {
 	ob_start();
 ?>
-	<a href="#<?php echo $item_id; ?>">
-		<img src="<?php echo $image_thumb_url; ?>" alt="Jump to image" title="Jump to image">
+	<a class="photo-essay-nav-link" href="#<?php echo $item_id; ?>">
+		<img class="photo-essay-nav-thumb" src="<?php echo $image_thumb_url; ?>" alt="Jump to image" title="Jump to image">
 	</a>
 <?php
 	return ob_get_clean();
@@ -253,7 +253,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	$head_slide_title = $titles[$slide_order[0]];
 	?>
 
-	<section class="photo-essay-header clearfix" style="background-image: url('<?php echo $head_slide_image_url; ?>')">
+	<section id="photo-essay-top" class="photo-essay-header clearfix" style="background-image: url('<?php echo $head_slide_image_url; ?>')">
 		<div class="photo-essay-header-inner">
 			<div class="container">
 				<div class="row">
@@ -311,9 +311,12 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	}
 	?>
 
-	<nav class="photo-essay-nav">
+	<nav id="photo-essay-navbar" class="photo-essay-nav">
 		<?php echo $nav_markup; ?>
+		<a class="photo-essay-nav-link" href="#photo-essay-top"><span class="sr-only">Jump </span>to top</a>
 	</nav>
+
+	<div id="photo-essay-bottom"></div>
 <?php
 	return ob_get_clean();
 }

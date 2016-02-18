@@ -819,6 +819,50 @@ var affixedCallouts = function($) {
 };
 
 
+/**
+ * Enable the thumbnail nav for photo essays.
+ **/
+var photoEssayNav = function($) {
+  var $top = $('#photo-essay-top'),
+      $bottom = $('#photo-essay-bottom'),
+      $navbar = $('#photo-essay-navbar'),
+      topOffset = 0,
+      bottomOffset = 0;
+
+  function toggleActive() {
+    var scrolltop = $(document).scrollTop();
+    $navbar.toggleClass('active', scrolltop > topOffset && scrolltop < bottomOffset );
+  }
+
+  function setAffixOffsets() {
+    topOffset = $top.offset().top + $top.outerHeight(true);
+    bottomOffset = $bottom.offset().top - $(window).outerHeight();
+  }
+
+  function handleNavClick(e) {
+    e.preventDefault();
+
+    var $target = $(this.getAttribute('href'));
+    if ($target.length) {
+      $('html, body').animate({
+        scrollTop: $target.offset().top
+      }, 500);
+    }
+
+    return false;
+  }
+
+  if ( $top.length && $bottom.length ) {
+    setAffixOffsets();
+    $(window).on({
+      'scroll': toggleActive,
+      'resize': setAffixOffsets
+    });
+    $navbar.on('click', '.photo-essay-nav-link', handleNavClick);
+  }
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -839,6 +883,7 @@ if (typeof jQuery !== 'undefined'){
       removeEmptyPageContainers($);
       customChart($);
       affixedCallouts($);
+      photoEssayNav($);
     });
   })(jQuery);
 }
