@@ -217,9 +217,6 @@ function sc_blockquote( $attr, $content = '' ) {
 	$class = $attr['css_class'] ? $attr['css_class'] : '';
 	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
 
-	if ( $source ) {
-		$class .= ' quote';
-	}
 	if ( $color ) {
 		$inline_css .= ' color: ' . $color . ';';
 	}
