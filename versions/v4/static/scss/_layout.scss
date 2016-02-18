@@ -296,9 +296,13 @@
 
 // General - Mobile nav, Issue, Archives list items
 li#nav-issue,
-li#nav-archives {
+li#nav-archives,
+li#nav-give {
   display: inline-block;
+}
 
+li#nav-issue,
+li#nav-archives {
   #header-navigation ul.mobile-nav-visible & {
     @media (max-width: $screen-xs-max) {
       display: inline-block;
@@ -312,17 +316,13 @@ li#nav-archives {
       position: relative;
       top: 1px;
     }
-
-    @media (max-width: $screen-sm-max) {
-      font-size: 13px;
-      line-height: 13px;
-    }
   }
 }
 
 li#nav-about,
 li#nav-issue,
 li#nav-archives,
+li#nav-give,
 #header-navigation .header-logo.mobile-nav-visible {
   @media (max-width: $screen-xs-max) {
     display: none;
@@ -377,8 +377,6 @@ li#nav-mobile {
 }
 
 li#nav-issue {
-  margin-right: 20px;
-
   @media (max-width: $screen-xs-max) {
     margin-left: -30px;
   }
@@ -406,8 +404,34 @@ li#nav-archives {
   }
 }
 
+li#nav-issue,
+li#nav-archives {
+  margin-right: 15px;
+
+  a:before {
+    @include font-smoothing();
+    font-family: 'icomoon';
+    font-weight: normal;
+  }
+}
+
+li#nav-give {
+  a {
+    border-bottom-width: 3px;
+    border-top: 2px solid transparent;
+    padding: 4px 10px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #222;
+    }
+  }
+}
+
 li#nav-issue a,
-li#nav-archives a {
+li#nav-archives a,
+li#nav-give a {
   @include font-smoothing();
   color: #222;
   font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
@@ -416,15 +440,14 @@ li#nav-archives a {
   line-height: 14px;
   text-decoration: none;
 
+  @media (max-width: $screen-sm-max) {
+    font-size: 13px;
+    line-height: 13px;
+  }
+
   @include body-prefix('.ie8') {
     font-weight: normal;
   };
-
-  &:before {
-    @include font-smoothing();
-    font-family: 'icomoon';
-    font-weight: normal;
-  }
 }
 
 
@@ -573,7 +596,7 @@ li#nav-about {
     font-size: 18px;
 
     @media (max-width: $screen-sm-max) {
-      font-size: 14px;
+      font-size: 13px;
     }
   }
 

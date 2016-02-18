@@ -57,21 +57,21 @@ function display_story_list( $issue, $class=null ) {
 * @author Jo Dickson
 **/
 function display_social($url, $title) {
-	$tweet_title = urlencode('Pegasus Magazine: '.$title);
-	ob_start(); ?>
-	<aside class="social">
-		<a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-			Like "<?=$title?>" on Facebook
-		</a>
-		<a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-			Tweet "<?=$title?>" on Twitter
-		</a>
-		<a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
-			Share "<?=$title?>" on Google+
-		</a>
-	</aside>
-	<?php
-	return ob_get_clean();
+    $tweet_title = urlencode('Pegasus Magazine: '.$title);
+    ob_start(); ?>
+    <aside class="social">
+        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
+            Like "<?=$title?>" on Facebook
+        </a>
+        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
+            Tweet "<?=$title?>" on Twitter
+        </a>
+        <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
+            Share "<?=$title?>" on Google+
+        </a>
+    </aside>
+    <?php
+    return ob_get_clean();
 }
 
 
@@ -122,11 +122,11 @@ function get_default_template_font_css( $font ) {
 		article.story h1 {
 			font-size: '.$font['size-desktop'].';
 		}
-		article.story .ss-closing-overlay {
-			font-family: '.$font['font-family'].';
-			font-weight: '.$font['font-weight'].';
-			text-transform: '.$font['text-transform'].';
-		}
+        article.story .ss-closing-overlay {
+            font-family: '.$font['font-family'].';
+            font-weight: '.$font['font-weight'].';
+            text-transform: '.$font['text-transform'].';
+        }
 		@media (max-width: 979px) {
 			article.story h1 {
 				font-size: '.$font['size-tablet'].';
