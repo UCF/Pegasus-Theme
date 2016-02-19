@@ -252,17 +252,17 @@ article.story .species-list li {
     font-size: 13px;
 }
 article.story .species-list ol {
-    margin-bottom: 40px;
+    margin-bottom: 10px;
     margin-left: 18px;
 }
 article.story .species-list ul {
     list-style: none;
     margin-left: 22px;
-    margin-bottom: 15px;
+    margin-bottom: 10px;
 }
 article.story .species-list li {
     list-style-position: inside;
-    text-indent: -23px;
+    text-indent: -15px;
 }
 article.story .species-list.plants li {
     color: #799636;
@@ -314,6 +314,7 @@ article.story .text-center {
 }
 article.story .caption {
     color: #666;
+    padding: 0 20px;
 }
 article.story .table-cell {
     display: table;
@@ -324,4 +325,7 @@ article.story .table-cell-row {
 }
 article.story .table-cell-column {
     display: table-cell;
+}
+article.story #footnote4 {
+    margin-bottom: 40px;
 }
