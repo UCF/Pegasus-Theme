@@ -1,1 +1,0 @@
-!function(){function i(){clearTimeout(h),h=setTimeout(t,100)}function t(){if(e.css("height",""),o.css("height",""),$(window).width()>767){var i=e.outerHeight(),t=o.outerHeight(),h=null;h=i>t?i:t,e.css("height",h),o.css("height",h)}}var e=$("#profile-danny-white"),o=$("#profile-scott-frost"),h;$(window).on("load resize",i)}();
