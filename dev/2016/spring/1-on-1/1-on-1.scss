@@ -1,0 +1,311 @@
+// Variables
+
+$font-family-sans-serif:     "Helvetica Neue", Helvetica, Arial, sans-serif !default;
+$font-family-serif:          Georgia, "Times New Roman", Times, serif !default;
+
+$screen-xs-max: 767px;
+$screen-sm-max: 991px;
+
+$ucf-gold: #fc0;
+$gray: #ccc;
+
+
+// Mixins
+
+@import '../../../../versions/v3/static/scss/mixins';
+
+// Adds Gotham font family styles to an element (using backward-compatible
+// font-family declarations for IE8 support.)
+// $weight should be a number from 1-9, which references the desired font
+// weight (100-900).  Default is 4 (400) or 'Book'.
+@mixin gotham($weight: 4, $font-style: normal) {
+  $h-weight: $weight * 100;
+
+  font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B';
+  font-style: $font-style;
+  font-weight: $h-weight;
+}
+
+// Adds commonly-used Open Sans Condensed Bold.
+@mixin open-sans-condensed() {
+  font-family: "OpenSansCondensedBold", sans-serif;
+}
+
+
+// Story Overrides
+
+.ie8 main {
+  margin-top: -20px;
+}
+
+article.story {  // over-qualified selector necessary to match+override theme-level css
+
+  // General overrides
+
+  &,
+  p,
+  ol,
+  ul {
+    @include gotham();
+  }
+
+  h1,
+  .h1 {
+    @include no-font-smoothing();
+    @include gotham(8);
+    color: #000;
+    font-size: 280px;
+    letter-spacing: -.04em;
+    line-height: .9;
+    text-align: center;
+    text-transform: uppercase;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 270px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 35vw;
+    }
+
+    .ucf-gold {
+      margin-left: -.25em;
+      margin-right: -.22em;
+    }
+  }
+
+  h2,
+  .h2 {
+    letter-spacing: -.02em;
+  }
+
+  h1 > span,
+  h2 > span,
+  h3 > span,
+  h4 > span,
+  h5 > span,
+  h6 > span {
+    display: inline;
+    letter-spacing: inherit;
+  }
+
+  .lead {
+    @include gotham(3);
+    font-size: 28.5px;
+    line-height: 1.6;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 27px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 3.85vw;
+      padding: 0 9.5%;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 4.725vw;
+      padding: 0 7.5%;
+    }
+
+    // These must be declared separately to work properly.
+    &::first-letter {
+      display: inline;
+      float: none;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+    }
+
+    &:first-letter {
+      display: inline;
+      float: none;
+      font-size: inherit;
+      line-height: inherit;
+      margin: 0;
+    }
+  }
+
+  .btn-give {
+    @include gotham(7);
+    letter-spacing: -.012em;
+  }
+
+  .ucf-gold {
+    color: $ucf-gold;
+  }
+
+  .ucf-gold-bg {
+    background-color: $ucf-gold;
+  }
+
+  .gray-bg {
+    background-color: $gray;
+  }
+
+  .inline-block {
+    display: inline-block;
+  }
+
+  .callout {
+    h2 {
+      @include open-sans-condensed();
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+  }
+
+
+  // Story header
+
+  .story-header {
+    margin-bottom: 40px;
+    margin-top: 40px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 0;
+    }
+
+    .social {
+      text-align: center;
+
+      .share-facebook,
+      .share-twitter,
+      .share-googleplus {
+        display: inline-block;
+        float: none;
+        margin-right: 0;
+      }
+    }
+  }
+
+
+  // Video feature
+
+  .video-feature {
+    .callout {
+      margin-bottom: 0;
+    }
+  }
+
+
+  // Give callout
+
+  .give-callout {
+    h2 {
+      letter-spacing: initial;
+    }
+
+    .callout {
+      margin-top: 0;
+    }
+
+    .btn-give {
+      white-space: normal;
+      width: 80%;
+    }
+  }
+
+
+  // Profiles
+
+  .profiles {
+    margin-top: 60px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 0;
+    }
+  }
+
+  .profile-img {
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .profile {
+    margin-bottom: 20px;
+    padding: 20px 70px;
+
+    @media (max-width: $screen-sm-max) {
+      padding: 20px 50px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      padding: 10px 25px;
+    }
+
+    h2 {
+      @include gotham(8);
+      color: #fff;
+      font-size: 30px;
+      margin-bottom: 15px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 25px;
+      }
+    }
+
+    dl,
+    ul,
+    li {
+      font-size: 14px;
+    }
+
+    ul,
+    li {
+      margin-bottom: 0;
+    }
+
+    li {
+      // hanging non-first lines
+      padding-left: 40px;
+      text-indent: -40px;
+    }
+
+    dt:after {
+      content: ': ';
+    }
+  }
+
+
+  // Video excerpt
+
+  .interview-excerpt {
+    margin-top: 20px;
+
+    @media (max-width: $screen-xs-max) {
+      margin-top: 0;
+    }
+
+    h2 {
+      @include gotham(6);
+      font-size: 26px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      margin-bottom: 20px;
+    }
+
+    strong {
+      @include gotham(6);
+    }
+
+    .question,
+    .answer {
+      @include no-font-smoothing();
+    }
+
+    .question {
+      &,
+      strong {
+        font-style: italic;
+      }
+    }
+
+    .answer {
+      @include gotham(3);
+    }
+  }
+
+}
