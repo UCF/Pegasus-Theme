@@ -199,40 +199,36 @@ article.story .state-stats .stat {
 }
 article.story .species-stats {
     background-color: #F3E3CA;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     margin-top: 50px;
     padding-bottom: 5px;
 }
 article.story .species-stats .stat {
     font-size: 20px;
-    line-height: 42px;
     font-style: italic;
-    margin-top: 6px;
+    line-height: normal;
     text-transform: uppercase;
+    vertical-align: middle;
+    padding-top: 7px;
 }
 @media (max-width: 992px) {
     article.story .species-stats .stat {
         font-size: 16px;
-        padding-left: 0;
+        padding-top: 7px;
     }
 }
 @media (max-width: 768px) {
     article.story .species-stats .stat {
         font-size: 14px;
-        padding-left: 0;
-    }
-}
-@media (max-width: 650px) {
-    article.story .species-stats .stat {
-        width: auto;
-        line-height: normal;
     }
 }
 article.story .species-stats .number {
     color: #799636;
     font-size: 40px;
-    padding-left: 30px;
-    line-height: 43px;
+    line-height: normal;
+    padding-left: 20px;
+    vertical-align: middle;
+    width: 9%;
 }
 @media (max-width: 992px) {
     article.story .species-stats .number {
@@ -241,8 +237,12 @@ article.story .species-stats .number {
 }
 @media (max-width: 768px) {
     article.story .species-stats .number {
-        display: inline-block;
-        width: auto;
+        width: 11%;
+    }
+}
+@media (max-width: 650px) {
+    article.story .species-stats .number {
+        width: 20%;
     }
 }
 article.story .species-list,
@@ -314,4 +314,14 @@ article.story .text-center {
 }
 article.story .caption {
     color: #666;
+}
+article.story .table-cell {
+    display: table;
+    width: 100%;
+}
+article.story .table-cell-row {
+    display: table-row;
+}
+article.story .table-cell-column {
+    display: table-cell;
 }
