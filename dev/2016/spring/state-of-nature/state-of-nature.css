@@ -146,20 +146,25 @@ article.story .state-stats .stat {
     }
 }
 article.story .species-stats {
-    border-bottom: solid 2px #d8a85e;
+    background-color: #F3E3CA;
     margin-bottom: 15px;
     margin-top: 50px;
-    padding-bottom: 10px;
+    padding-bottom: 5px;
 }
 article.story .species-stats .number {
     color: #799636;
-    font-size: 60px;
-    line-height: 17px;
-    margin-bottom: 20px;
+    font-size: 40px;
+    padding-left: 30px;
+    line-height: 43px;
+}
+article.story .species-stats.habitat .number {
+    line-height: 48px;
 }
 article.story .species-stats .stat {
     font-size: 20px;
+    line-height: 42px;
     font-style: italic;
+    margin-top: 6px;
     text-transform: uppercase;
 }
 article.story .species-list,
