@@ -1,5 +1,9 @@
 // Stories - General
 article.story {
+  p {
+    margin-bottom: 16px;
+  }
+
   h2 {
     font-size: 36px;
 
@@ -97,6 +101,14 @@ article.story {
     i {
       font-style: normal;
     }
+  }
+
+  .lead {
+    margin-bottom: 30px;
+  }
+
+  .caption {
+    margin-bottom: 20px;
   }
 }
 
