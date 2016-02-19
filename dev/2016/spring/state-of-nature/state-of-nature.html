@@ -140,59 +140,66 @@ Overall, despite some setbacks and challenges, scientists say balance is achieva
             <h4>What's at stake. How we save it.</h4>
         </div>
         </div>
+        <div class="row inview" data-callback="startNumberAnime">
+            <div class="col-sm-4 col-md-4 state-stats">
+                <div class="number">34.6</div> <div class="stat">Million Acres <a href="#footnote1">&dagger;</a></div>
+                <div class="number">20</div> <div class="stat">Million People <a href="#footnote1">&dagger;</a></div>
+            </div>
+            <div class="col-sm-4 col-md-4 state-stats">
+                <div class="number">30,000+</div> <div class="stat">Animal Species</div>
+                <div class="number">2,800+</div> <div class="stat">Native Plant Species</div>
+            </div>
+            <div class="col-sm-4 col-md-4 state-stats">
+                <div class="number">45</div> <div class="stat">Habitats</div>
+                <div class="number">1</div> <div class="stat">State</div>
+            </div>
+        </div>
         <div class="row visible-xs">
             <div class="col-xs-12 col-md-12">
                 <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%" class="map-image">
             </div>
         </div>
         <div class="row hidden-xs">
-        <div class="col-sm-3 col-md-3 state-stats inview" data-callback="startNumberAnime">
-            <div class="number">34.6</div> <div class="stat">Million Acres <a href="#footnote1">&dagger;</a></div>
-            <div class="number">20</div> <div class="stat">Million People <a href="#footnote1">&dagger;</a></div>
-            <div class="number">30,000+</div> <div class="stat">Animal Species</div>
-            <div class="number">2,800+</div> <div class="stat">Native Plant Species</div>
-            <div class="number">45</div> <div class="stat">Habitats</div>
-            <div class="number">1</div> <div class="stat">State</div>
-        </div>
-        <div class="col-sm-9 col-md-9">
-            <div class="map-container inview" data-callback="startMapAnime">
-            <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-urban.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-current.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-proposed.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-roads-cities.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%">
-            </div>
-            <div class="legend-container">
-            <h3>Legend</h3>
-            <ul class="legend">
-                <li class="current"><span></span> Existing Conservation Areas <sup><a href="#footnote1">&dagger;&dagger;</a></sup></li>
-                <li class="proposed"><span></span> Proposed Conservation Areas <sup><a href="#footnote1">&dagger;&dagger;</a></sup></li>
-                <li class="urban"><span></span> Major Urban Areas</li>
-                <li><span class="dash">&mdash;</span> Major Roadways</li>
-            </ul>
-            </div>
-            <div class="row chart-container">
-                <div class="col-md-5 col-sm-5">
-                    [chart id="state-of-nature-chart" type="pie" data="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/chart-data.json" options="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/chart-options.json"]
+            <div class="col-sm-12 col-md-12">
+                <div class="map-container inview" data-callback="startMapAnime">
+                    <img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-current.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-proposed.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-urban.png" alt="" width="100%" class="map-image"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map-roads-cities.png" alt="" width="100%" class="roads-cities"><img src="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/img/map.png" alt="" width="100%">
                 </div>
-                <div class="col-md-7 col-sm-7 chart-legend">
-                    <ul>
-                        <li>
-                            <span class="number existing">27%</span> <span class="acres">(9.5 Million Acres)</span>
-                            <span class="areas">Existing Conservation Areas</span>
-                        </li>
-                        <li>
-                            <span class="number proposed">18%</span> <span class="acres">(6.3 Million Acres)</span>
-                            <span class="areas">Proposed Conservation Areas</span>
-                        </li>
-                        <li>
-                            <span class="number urban">12%</span> <span class="acres">(4.2 Million Acres)</span>
-                            <span class="areas">Urban and Developed Areas</span>
-                        </li>
-                        <li>
-                            <span class="number other">43%</span> <span class="acres">(14.6 Million Acres)</span>
-                            <span class="areas">Other Land Use</span>
-                        </li>
+                <div class="legend-container">
+                    <h3>Legend</h3>
+                    <ul class="legend">
+                        <li class="current toggle"><span class="fa">&nbsp;</span> Existing Conservation Areas <sup><a href="#footnote1">&dagger;&dagger;</a></sup></li>
+                        <li class="proposed toggle"><span class="fa">&nbsp;</span> Proposed Conservation Areas <sup><a href="#footnote1">&dagger;&dagger;</a></sup></li>
+                        <li class="urban toggle"><span class="fa">&nbsp;</span> Major Urban Areas</li>
+                        <li class="highlight"><span class="dash">&mdash;</span> Major Roadways</li>
                     </ul>
+                    <p>Click above to toggle layers on the map</p>
+                </div>
+                <div class="row chart-container">
+                    <div class="col-md-5 col-sm-5">
+                        [chart id="state-of-nature-chart" type="pie" data="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/chart-data.json" options="/wp-content/themes/Pegasus-Theme/dev/2016/spring/state-of-nature/chart-options.json"]
+                    </div>
+                    <div class="col-md-7 col-sm-7 chart-legend">
+                        <ul>
+                            <li>
+                                <span class="number existing">27%</span> <span class="acres">(9.5 Million Acres)</span>
+                                <span class="areas">Existing Conservation Areas</span>
+                            </li>
+                            <li>
+                                <span class="number proposed">18%</span> <span class="acres">(6.3 Million Acres)</span>
+                                <span class="areas">Proposed Conservation Areas</span>
+                            </li>
+                            <li>
+                                <span class="number urban">12%</span> <span class="acres">(4.2 Million Acres)</span>
+                                <span class="areas">Urban and Developed Areas</span>
+                            </li>
+                            <li>
+                                <span class="number other">43%</span> <span class="acres">(14.6 Million Acres)</span>
+                                <span class="areas">Other Land Use</span>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
         <div class="row">
         <div id="footnote1" class="col-sm-12 col-md-12 footnote">

@@ -8,6 +8,7 @@
     function toggleMapLayer(e) {
         e.preventDefault();
         $(e.target).toggleClass('highlight');
+        $(e.target).find('span.fa').toggleClass('fa-check');
         var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
         $mapImage.fadeToggle(1000);
     }
@@ -20,7 +21,7 @@
     }
 
     function startMapAnime() {
-        $legend.find('li').each(toggleLegend);
+        $legend.find('li.toggle').each(toggleLegend);
     }
 
     // Returns a comma-separated numerical string.
@@ -58,7 +59,7 @@
 
     function startNumberAnime() {
         $('.state-stats').find('.number').each(function (index, element) {
-            setTimeout(animateNumber, index * 500, $(element));
+            setTimeout(animateNumber, 500, $(element));
         });
     }
 
@@ -90,7 +91,7 @@
         $legend = $('.legend');
         $inview = $('.inview');
 
-        $legend.on('click', 'li', toggleMapLayer);
+        $legend.on('click', 'li.toggle', toggleMapLayer);
         $(window).on('load scroll', inview);
     }
 
