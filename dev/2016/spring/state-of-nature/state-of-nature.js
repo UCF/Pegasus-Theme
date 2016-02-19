@@ -16,7 +16,7 @@
         var $this = $(this);
         setTimeout(function () {
             $this.trigger('click');
-        }, 2000 * index);
+        }, 1000 * index);
     }
 
     function startMapAnime() {

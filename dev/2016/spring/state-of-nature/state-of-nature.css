@@ -23,6 +23,11 @@ article.story .state-florida h3 {
     font-size: 60px;
     margin-bottom: 5px;
 }
+@media (max-width: 992px) {
+    article.story .state-florida h3 {
+        font-size: 55px;
+    }
+}
 article.story .state-florida h4 {
     color: #53813E;
     font-style: italic;
@@ -31,7 +36,6 @@ article.story .state-florida h4 {
 }
 article.story .callout {
     background-color: #f9f1e3;
-    /* color: #d8a85e; */
 }
 article.story .map-container {
     position: relative;
@@ -48,15 +52,15 @@ article.story .map-container img:last-child {
 }
 article.story .legend-container {
     background-color: #F3E3CA;
-    left: 10%;
-    padding: 20px;
+    left: 9%;
+    padding: 10px;
     position: absolute;
-    top: 26%;
+    top: 30%;
 }
 @media (max-width: 992px) {
     article.story .legend-container {
         left: 4%;
-        top: 26%;
+        top: 35%;
     }
 }
 article.story .legend-container h3 {
@@ -64,15 +68,15 @@ article.story .legend-container h3 {
     display: inline-block;
     font-size: 16px;
     font-weight: 800;
-    margin: 0 0 10px;
-    padding-bottom: 5px;
+    margin: 0px 0 5px 5px;
+    padding-bottom: 3px;
     text-transform: uppercase;
 }
 article.story .legend {
     list-style: none;
 }
 article.story ul.legend {
-    margin: 0 0 10px;
+    margin: 0;
 }
 article.story .legend li {
     background-color: #F9F1E3;
@@ -80,7 +84,7 @@ article.story .legend li {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     margin: 0 !important;
-    padding: 10px;
+    padding: 5px;
     transition: all 0.8s ease;
 }
 article.story .legend li.highlight {
@@ -109,15 +113,57 @@ article.story .legend li:hover {
     background-color: #DFBE8A;
 }
 article.story .chart-container {
-    left: 0;
+    left: -23px;
     position: absolute;
-    top: 66%;
+    top: 63%;
 }
 @media (max-width: 992px) {
     article.story .chart-container {
-        left: 1%;
-        top: 76%;
+        left: -11%;
+        top: 77%;
     }
+}
+article.story .chart-container #state-of-nature-chart {
+    margin-top: 34px;
+}
+@media (max-width: 992px) {
+    article.story .chart-legend {
+        margin-left: 0px;
+    }
+}
+article.story .chart-legend ul {
+    list-style: none;
+    margin-left: 3px;
+}
+article.story .chart-legend li {
+    margin-bottom: 10px;
+}
+article.story .chart-legend .number {
+    line-height: normal;
+    font-size: 16px;
+}
+article.story .chart-legend .existing {
+    color: #acb859;
+}
+article.story .chart-legend .proposed {
+    color: #799636;
+}
+article.story .chart-legend .urban {
+    color: #d8a85e;
+}
+article.story .chart-legend .other {
+    color: #F3E3CA;
+}
+article.story .chart-legend .acres {
+    color: #d8a85e;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+article.story .chart-legend .areas {
+    border-bottom: solid 2px #d8a85e;
+    font-size: 12px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
 }
 article.story .animal-images {
     margin-top: 50px;
@@ -132,17 +178,23 @@ article.story .state-stats .number {
     visibility: hidden;
     font-size: 36px;
 }
+@media (max-width: 992px) {
+    article.story .state-stats .number {
+        font-size: 30px;
+    }
+}
 article.story .state-stats .stat {
     border-bottom: solid 2px #d8a85e;
     display: inline-block;
     font-size: 14px;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     text-transform: uppercase;
 }
 @media (max-width: 992px) {
-    article.story .species-stats .stat,
     article.story .state-stats .stat {
-        padding-left: 30px;
+        font-size: 12px;
+        padding-left: 2px;
+        margin-bottom: 32px;
     }
 }
 article.story .species-stats {
@@ -151,21 +203,47 @@ article.story .species-stats {
     margin-top: 50px;
     padding-bottom: 5px;
 }
-article.story .species-stats .number {
-    color: #799636;
-    font-size: 40px;
-    padding-left: 30px;
-    line-height: 43px;
-}
-article.story .species-stats.habitat .number {
-    line-height: 48px;
-}
 article.story .species-stats .stat {
     font-size: 20px;
     line-height: 42px;
     font-style: italic;
     margin-top: 6px;
     text-transform: uppercase;
+}
+@media (max-width: 992px) {
+    article.story .species-stats .stat {
+        font-size: 16px;
+        padding-left: 0;
+    }
+}
+@media (max-width: 768px) {
+    article.story .species-stats .stat {
+        font-size: 14px;
+        padding-left: 0;
+    }
+}
+@media (max-width: 650px) {
+    article.story .species-stats .stat {
+        width: auto;
+        line-height: normal;
+    }
+}
+article.story .species-stats .number {
+    color: #799636;
+    font-size: 40px;
+    padding-left: 30px;
+    line-height: 43px;
+}
+@media (max-width: 992px) {
+    article.story .species-stats .number {
+        width: 11%;
+    }
+}
+@media (max-width: 768px) {
+    article.story .species-stats .number {
+        display: inline-block;
+        width: auto;
+    }
 }
 article.story .species-list,
 article.story .species-list p,
