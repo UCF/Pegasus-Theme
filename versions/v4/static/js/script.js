@@ -820,23 +820,28 @@ var affixedCallouts = function($) {
 
 
 /**
- * Enable the thumbnail nav for photo essays.
+ * Enable the thumbnail nav and jump to top affixing for photo essays.
  **/
 var photoEssayNav = function($) {
   var $top = $('#photo-essay-top'),
       $bottom = $('#photo-essay-bottom'),
       $navbar = $('#photo-essay-navbar'),
+      $jumpTop = $('#photo-essay-jump-top'),
       topOffset = 0,
-      bottomOffset = 0;
+      bottomOffset = 0,
+      navbarHeight = 0,
+      windowHeight = 0;
 
-  function toggleActive() {
-    var scrolltop = $(document).scrollTop();
-    $navbar.toggleClass('active', scrolltop > topOffset && scrolltop < bottomOffset );
-  }
-
-  function setAffixOffsets() {
+  function setVars() {
     topOffset = $top.offset().top + $top.outerHeight(true);
     bottomOffset = $bottom.offset().top - $(window).outerHeight();
+    navbarHeight = $navbar.outerHeight(true);
+    windowHeight = $(window).outerHeight();
+  }
+
+  function toggleNavs() {
+    var scrolltop = $(document).scrollTop();
+    $navbar.add($jumpTop).toggleClass('active', scrolltop > topOffset && scrolltop < bottomOffset );
   }
 
   function handleNavClick(e) {
@@ -852,13 +857,25 @@ var photoEssayNav = function($) {
     return false;
   }
 
+  function handleJumpTopClick(e) {
+    e.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: 0
+    }, 300);
+  }
+
   if ( $top.length && $bottom.length ) {
-    setAffixOffsets();
-    $(window).on({
-      'scroll': toggleActive,
-      'resize': setAffixOffsets
-    });
+    setVars();
+
+    $(window)
+      .on({
+        'load scroll': toggleNavs,
+        'resize': setVars
+      });
+
     $navbar.on('click', '.photo-essay-nav-link', handleNavClick);
+    $jumpTop.on('click', handleJumpTopClick);
   }
 };
 
