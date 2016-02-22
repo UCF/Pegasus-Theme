@@ -56,8 +56,8 @@ article.story .border-w-padded { background-color: #000; height: 1px; margin-bot
 #twenty-five-years-of-life h2 .biggest { display: block; }
 
 #hip-hip-hooray h2 { line-height: .9; margin-bottom: 25px; }
-#hip-hip-hooray .cheerleader-img { margin-bottom: 0; }
-@media (max-width: 991px) { #hip-hip-hooray .cheerleader-img { margin-top: 60px; width: 105px; } }
+#hip-hip-hooray .cheerleader-img { margin-bottom: 0; margin-top: 35px; }
+@media (max-width: 991px) { #hip-hip-hooray .cheerleader-img { margin-top: 70px; width: 105px; } }
 @media (max-width: 767px) { #hip-hip-hooray .cheerleader-img { margin-bottom: 15px; margin-top: 15px; width: 95px; } }
 
 #top-honors h2 { margin-bottom: 0; margin-top: 0; }

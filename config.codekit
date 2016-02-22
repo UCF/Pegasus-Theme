@@ -7913,17 +7913,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2016\/spring\/state-of-nature\/img\/current.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 181111,
-		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/current.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/current.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/featured-finding-balance-thumb.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -7950,7 +7939,7 @@
 		"fileType": 16384,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 373462,
+		"initialSize": 525463,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/finding-balance-header.jpg",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/finding-balance-header.jpg",
 		"outputPathIsOutsideProject": 0,
@@ -8001,6 +7990,50 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/map-current.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 226497,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-current.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-current.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/map-proposed.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 142507,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-proposed.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-proposed.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 49030,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 105997,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/map.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -8023,17 +8056,6 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2016\/spring\/state-of-nature\/img\/proposed.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 177585,
-		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/proposed.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/proposed.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/SnailKite600px.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -8041,17 +8063,6 @@
 		"initialSize": 282796,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/SnailKite600px.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/SnailKite600px.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2016\/spring\/state-of-nature\/img\/urban.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 169900,
-		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/urban.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/urban.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
