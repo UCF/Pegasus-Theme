@@ -1,0 +1,26 @@
+[
+    {
+        "value": 12,
+        "color": "#d8a85e",
+        "highlight": "#e2be87",
+        "label": "Urban and Developed Areas"
+    },
+    {
+        "value": 27,
+        "color":"#acb859",
+        "highlight": "#bec77d",
+        "label": "Existing Conservation Areas"
+    },
+    {
+        "value": 18,
+        "color": "#799636",
+        "highlight": "#97bc44",
+        "label": "Proposed Conservation Areas"
+    },
+    {
+        "value": 43,
+        "color": "#F3E3CA",
+        "highlight": "#fefcf8",
+        "label": "Other Land Use"
+    }
+]
