@@ -54,15 +54,15 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     @include no-font-smoothing();
     @include gotham(8);
     color: #000;
-    font-size: 280px;
+    font-size: 240px;
     letter-spacing: -.04em;
     line-height: .9;
     text-align: center;
     text-transform: uppercase;
 
-    @media (max-width: $screen-sm-max) {
-      font-size: 270px;
-    }
+    // @media (max-width: $screen-sm-max) {
+    //   font-size: 270px;
+    // }
 
     @media (max-width: $screen-xs-max) {
       font-size: 35vw;
@@ -91,16 +91,18 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
   .lead {
     @include gotham(3);
-    font-size: 28.5px;
+    font-size: 24.5px;
     line-height: 1.6;
+    text-align: justify;
 
-    @media (max-width: $screen-sm-max) {
-      font-size: 27px;
-    }
+    // @media (max-width: $screen-sm-max) {
+    //   font-size: 27px;
+    // }
 
     @media (max-width: $screen-xs-max) {
       font-size: 3.85vw;
       padding: 0 9.5%;
+      text-align: left;
     }
 
     @media (max-width: 480px) {
@@ -160,11 +162,7 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
   .story-header {
     margin-bottom: 40px;
-    margin-top: 40px;
-
-    @media (max-width: $screen-xs-max) {
-      margin-top: 0;
-    }
+    margin-top: 0;
 
     .social {
       text-align: center;
