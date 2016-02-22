@@ -271,11 +271,12 @@ article.story .species-list ul {
 }
 article.story .species-list li {
     list-style-position: inside;
-    text-indent: -15px;
+    text-indent: -22px;
 }
 article.story .species-list.plants li {
     color: #799636;
     margin-bottom: 10px;
+    text-indent: -15px;
 }
 article.story .species-list li span {
     color: #000;
@@ -297,7 +298,7 @@ article.story .animal-images {
 article.story .footnote {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 10px;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 article.story a[href^="#footnote"] {
     color: #000;
