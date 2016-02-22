@@ -7835,9 +7835,54 @@
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
-	"\/dev\/2016\/spring\/briefs-spring-2016\/briefs-spring-2016.css": {
+	"\/dev\/2016\/spring\/1-on-1\/1-on-1.css": {
 		"fileType": 16,
 		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/1-on-1\/1-on-1.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/spring\/1-on-1\/1-on-1.js": {
+		"fileType": 64,
+		"ignore": 1,
+		"ignoreWasSetByUser": 1,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.js",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1-min.js",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 0,
+		"syntaxCheckerStyle": 0
+		},
+	"\/dev\/2016\/spring\/1-on-1\/1-on-1.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 1,
+		"outputStyle": 3,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2016\/spring\/briefs-spring-2016\/briefs-spring-2016.css": {
+		"fileType": 16,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/briefs-spring-2016\/briefs-spring-2016.css",
 		"outputAbbreviatedPath": "No Output Path",
@@ -7861,11 +7906,11 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/briefs-spring-2016\/briefs-spring-2016.scss",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/briefs-spring-2016\/briefs-spring-2016.css",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/css\/briefs-spring-2016.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 2,
-		"shouldRunAutoprefixer": 1,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
 		},
