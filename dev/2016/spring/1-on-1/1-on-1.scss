@@ -146,6 +146,10 @@ article.story {  // over-qualified selector necessary to match+override theme-le
       margin-top: 0;
       text-transform: uppercase;
     }
+
+    .one-on-one-video {
+      height: 100% !important;  // Necessary to override theme embed styles
+    }
   }
 
 
