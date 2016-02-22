@@ -60,10 +60,6 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     text-align: center;
     text-transform: uppercase;
 
-    // @media (max-width: $screen-sm-max) {
-    //   font-size: 270px;
-    // }
-
     @media (max-width: $screen-xs-max) {
       font-size: 35vw;
     }
@@ -95,14 +91,9 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     line-height: 1.6;
     text-align: justify;
 
-    // @media (max-width: $screen-sm-max) {
-    //   font-size: 27px;
-    // }
-
     @media (max-width: $screen-xs-max) {
       font-size: 3.85vw;
       padding: 0 9.5%;
-      text-align: left;
     }
 
     @media (max-width: 480px) {
