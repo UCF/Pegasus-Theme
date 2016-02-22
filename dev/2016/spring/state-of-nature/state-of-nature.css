@@ -1,3 +1,4 @@
+/* Headings */
 article.story .story h1 {
     color: #d8a85e;
     font-size: 60px;
@@ -18,6 +19,31 @@ article.story .story h3 {
     padding-bottom: 5px;
     text-transform: uppercase;
 }
+
+/* Callout */
+article.story .callout {
+    background-color: #f9f1e3;
+}
+article.story blockquote {
+    color: #d8a85e;
+}
+
+/* Bear Cub Image */
+article.story .bear-cub {
+    margin-right: 20px;
+    margin-top: 5px;
+    width: 55%;
+}
+article.story .bear-cub img {
+    margin: 0 0 15px;
+}
+@media (max-width: 767px) {
+    article.story .bear-cub {
+        width: 100%;
+    }
+}
+
+/* State of Natural Florida Section */
 article.story .state-florida h3 {
     color: #d8a85e;
     font-size: 60px;
@@ -34,9 +60,8 @@ article.story .state-florida h4 {
     font-size: 30px;
     margin: 0 0 30px 30px;
 }
-article.story .callout {
-    background-color: #f9f1e3;
-}
+
+/* Map */
 article.story .map-container {
     position: relative;
 }
@@ -53,6 +78,8 @@ article.story .map-container .roads-cities {
 article.story .map-container img:last-child {
     position: static;
 }
+
+/* Map Legend */
 article.story .legend-container {
     background-color: #F3E3CA;
     left: 13%;
@@ -122,6 +149,8 @@ article.story .legend .dash {
 article.story .legend li.toggle:hover {
     background-color: #DFBE8A;
 }
+
+/* Chart */
 article.story .chart-container {
     left: 32px;
     position: absolute;
@@ -175,9 +204,8 @@ article.story .chart-legend .areas {
     margin-bottom: 8px;
     text-transform: uppercase;
 }
-article.story .animal-images {
-    margin-top: 50px;
-}
+
+/* State Stats */
 article.story .state-stats {
     background-color: #F3E3CA;
     padding: 10px 0;
@@ -206,6 +234,8 @@ article.story .state-stats .stat {
         margin-bottom: 32px;
     }
 }
+
+/* Species Stats */
 article.story .species-stats {
     background-color: #F3E3CA;
     margin-bottom: 25px;
@@ -254,6 +284,8 @@ article.story .species-stats .number {
         width: 20%;
     }
 }
+
+/* Species List */
 article.story .species-list,
 article.story .species-list p,
 article.story .species-list li {
@@ -281,6 +313,11 @@ article.story .species-list.plants li {
 article.story .species-list li span {
     color: #000;
 }
+
+/* Animals Images */
+article.story .animal-images {
+    margin-top: 50px;
+}
 article.story .species-list h4,
 article.story .animal-images h4 {
     border-bottom: solid 2px #d8a85e;
@@ -295,6 +332,8 @@ article.story .animal-images h4 {
 article.story .animal-images {
     text-align: center;
 }
+
+/* Footnote */
 article.story .footnote {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 10px;
@@ -303,22 +342,11 @@ article.story .footnote {
 article.story a[href^="#footnote"] {
     color: #000;
 }
-article.story .bear-cub {
-    margin-right: 20px;
-    margin-top: 5px;
-    width: 55%;
+article.story #footnote4 {
+    margin-bottom: 40px;
 }
-article.story .bear-cub img {
-    margin: 0 0 15px;
-}
-@media (max-width: 767px) {
-    article.story .bear-cub {
-        width: 100%;
-    }
-}
-article.story blockquote {
-    color: #d8a85e;
-}
+
+/* Utility */
 article.story .text-center {
     text-align: center;
 }
@@ -335,7 +363,4 @@ article.story .table-cell-row {
 }
 article.story .table-cell-column {
     display: table-cell;
-}
-article.story #footnote4 {
-    margin-bottom: 40px;
 }
