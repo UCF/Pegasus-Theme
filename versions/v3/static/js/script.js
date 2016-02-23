@@ -616,8 +616,12 @@ var removeEmptyPageContainers = function($) {
  **/
 
 // jshint unused:false
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
 var customChart = function ($) {
-  if ($('.custom-chart').length) {
+  if ($('.custom-chart').length && isCanvasSupported()) {
     $.each($('.custom-chart'), function() {
       var $chart = $(this),
           type = $chart.attr('data-chart-type'),

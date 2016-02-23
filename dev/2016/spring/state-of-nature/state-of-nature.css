@@ -204,6 +204,20 @@ article.story .chart-legend .areas {
     margin-bottom: 8px;
     text-transform: uppercase;
 }
+article.story .chart-static {
+    display: none;
+}
+body.ie8 article.story .chart-static {
+    display: block;
+}
+article.story .chart-static {
+    left: 0;
+    position: absolute;
+    top: 60%;
+}
+body.ie8 article.story .chart-container {
+    display: none;
+}
 
 /* State Stats */
 article.story .state-stats {
@@ -294,21 +308,30 @@ article.story .species-list li {
 }
 article.story .species-list ol {
     margin-bottom: 10px;
-    margin-left: 18px;
+    margin-left: 26px;
+}
+body.ie article.story .species-list ol {
+    margin-left:31px;
 }
 article.story .species-list ul {
     list-style: none;
     margin-left: 22px;
     margin-bottom: 10px;
 }
+body.ie article.story .species-list ul {
+    margin-left:30px;
+}
 article.story .species-list li {
     list-style-position: inside;
-    text-indent: -22px;
+    text-indent: -23px;
+}
+body.ie article.story .species-list li {
+    text-indent: -31px;
 }
 article.story .species-list.plants li {
     color: #799636;
     margin-bottom: 10px;
-    text-indent: -15px;
+    text-indent: -23px;
 }
 article.story .species-list li span {
     color: #000;
