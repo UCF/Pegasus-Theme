@@ -192,49 +192,16 @@ var mobileNavToggle = function($) {
 
 var handleIpad = function($) {
   // Is this the user's first visit to the site?
-  var ipad  = navigator.userAgent.match(/iPad/i) === null ? false : true;
+  var ipad  = navigator.userAgent.match(/iPad/i) === null ? false : true,
+      ipad_hide = $.cookie('ipad-hide');
 
-  $('.header_stories').hide();
-
-  var toggle_nav    = $('.toggle_story_nav a'),
-    tooltip_options = {
-      placement:'bottom',
-      title  :'<strong>Click here <br /> for more stories</strong>'
-    };
-
-  if(!ipad) {
-    toggle_nav.tooltip(tooltip_options);
-  }
-  toggle_nav
-    .on( (ipad) ? 'touchend' : 'click', function(e) {
-      e.preventDefault();
-      var story_nav = $('.header_stories');
-      if(story_nav.is(':visible')) {
-        $(this).html('&#9650;');
-        if(!ipad) {
-          toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Click here <br /> for more stories</strong>').tooltip('fixTitle').tooltip('show');
-        }
-      } else {
-        $(this).html('&#9660;');
-        if(!ipad) {
-          toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Close menu</strong>').tooltip('fixTitle').tooltip('show');
-        }
-      }
-      story_nav.slideToggle().toggleClass('active');
-    });
-
-
-  /* iPad Model */
-  var ipad_hide = $.cookie('ipad-hide');
-  if((ipad_hide === null || !ipad_hide) && ipad && IPAD_DEPLOYED) {
+  if ((ipad_hide === null || !ipad_hide) && ipad && IPAD_DEPLOYED) {
     $('#ipad')
       .modal()
       .on('hidden', function() {
         $.cookie('ipad-hide', true);
       });
   }
-
-  $.cookie('initial-visit', true);
 };
 
 var gformSublabels = function($) {

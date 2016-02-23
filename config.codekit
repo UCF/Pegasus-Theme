@@ -7837,7 +7837,7 @@
 		},
 	"\/dev\/2016\/spring\/1-on-1\/1-on-1.css": {
 		"fileType": 16,
-		"ignore": 1,
+		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.css",
 		"outputAbbreviatedPath": "No Output Path",
@@ -7872,10 +7872,10 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.scss",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/1-on-1\/1-on-1.css",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/css\/1-on-1.css",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
-		"outputStyle": 3,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
 		"shouldRunAutoprefixer": 0,
 		"shouldRunBless": 0,
 		"useLibsass": 0
@@ -8046,6 +8046,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/map-mobile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 253079,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-mobile.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-mobile.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/map-proposed.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -8061,7 +8072,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 49030,
+		"initialSize": 62143,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
 		"outputPathIsOutsideProject": 0,
