@@ -614,17 +614,15 @@ var removeEmptyPageContainers = function($) {
 /**
  * ChartJS
  **/
+
+// jshint unused:false
 var customChart = function ($) {
   if ($('.custom-chart').length) {
     $.each($('.custom-chart'), function() {
-      var $chart = $(this);
-      // Update id of chart if it is set to default.
-      if ($chart.attr('id') === 'custom-chart') {
-        $chart.attr('id', 'custom-chart-' + idx);
-      }
-      var type = $(this).attr('data-chart-type'),
-          jsonPath = $(this).attr('data-chart-data'),
-          optionsPath = $(this).attr('data-chart-options'),
+      var $chart = $(this),
+          type = $chart.attr('data-chart-type'),
+          jsonPath = $chart.attr('data-chart-data'),
+          optionsPath = $chart.attr('data-chart-options'),
           canvas = document.createElement('canvas'),
           ctx = canvas.getContext('2d'),
           data = {};
@@ -670,6 +668,7 @@ var customChart = function ($) {
     });
   }
 };
+// jshint unused:true
 
 
 /**
