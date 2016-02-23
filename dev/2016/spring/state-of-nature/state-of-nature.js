@@ -8,6 +8,7 @@
     function toggleMapLayer(e) {
         e.preventDefault();
         $(e.target).toggleClass('highlight');
+        $(e.target).find('span.fa').toggleClass('fa-check');
         var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
         $mapImage.fadeToggle(1000);
     }
@@ -16,11 +17,11 @@
         var $this = $(this);
         setTimeout(function () {
             $this.trigger('click');
-        }, 1000 * index);
+        }, 1500 * index);
     }
 
     function startMapAnime() {
-        $legend.find('li').each(toggleLegend);
+        $legend.find('li.toggle').each(toggleLegend);
     }
 
     // Returns a comma-separated numerical string.
@@ -33,32 +34,32 @@
     }
 
     // Animates increment of a number (no decimals). Handles commas.
-    function animateNumber(e) {
-        var $num = e,
-            numText = $num.text(),
+    function animateNumber($num) {
+        var numText = $num.text(),
             numTextParsed = parseInt($num.text().replace(/\D/g, ''), 10);
 
-        e.css("visibility","visible");
-
-        $num.css('width', $num.width()); // force fixed width to reduce flicker
+        $num.css({
+            "visibility": "visible",
+            "width": $num.width() // force fixed width to reduce flicker
+        });
 
         $({number: 0}).animate({number: numTextParsed}, {
-        duration: 1500,
-        easing: 'swing',
-        step: function() {
-            $num.text(commaSeparateNumber(Math.ceil(this.number)));
-        },
-        done: function() {
-            $num
-            .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
-            .css('width', ''); // removed forced width
-        }
+            duration: 1500,
+            easing: 'swing',
+            step: function() {
+                $num.text(commaSeparateNumber(Math.ceil(this.number)));
+            },
+            done: function() {
+                $num
+                .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
+                .css('width', ''); // removed forced width
+            }
         });
     }
 
     function startNumberAnime() {
-        $('.state-stats').find('.number').each(function (index, element) {
-            setTimeout(animateNumber, index * 500, $(element));
+        $('.state-stats-number').each(function (index, element) {
+            setTimeout(animateNumber, 500, $(element));
         });
     }
 
@@ -90,7 +91,7 @@
         $legend = $('.legend');
         $inview = $('.inview');
 
-        $legend.on('click', 'li', toggleMapLayer);
+        $legend.on('click', 'li.toggle', toggleMapLayer);
         $(window).on('load scroll', inview);
     }
 
