@@ -204,36 +204,6 @@ var handleIpad = function($) {
   }
 };
 
-var gformSublabels = function($) {
-  // Move Gravity Forms Address sublabels above the fields
-  $('.ginput_container label').each(function(i,e){
-    var field_desc = $('<div>').append($(e).clone()).remove().html();
-    $(e).siblings('.ginput_container input').before(field_desc); //moves sub label above input fields
-    $(e).siblings('.ginput_container select').before(field_desc); //moves sub label above select fields (e.g. country drop-down)
-    $(e).remove();
-  });
-};
-
-var videoCarousels = function($) {
-  // Prevent video sliders from automatically advancing
-  $('#videoslides,#recipe-carousel').carousel({
-    interval: 0
-  });
-
-  // Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time:
-  $('#videoslides,#recipe-carousel').bind('slide', function() {
-    $('.active').addClass('last');
-    var videoSrc = $('.last').children('iframe').attr('src');
-    $('.last').children('iframe').attr('switchsrc', videoSrc);
-  });
-  $('#videoslides,#recipe-carousel').bind('slid', function() {
-    $('.last').children('iframe').attr('src', 'none');
-    var videoSwitchSrc = $('.last').children('iframe').attr('switchsrc');
-    $('.last').children('iframe').attr('src', videoSwitchSrc);
-    $('.last').removeClass('last');
-  });
-};
-
 var popovers = function($) {
   $('.popover-parent').popover({});
 };
@@ -794,8 +764,6 @@ if (typeof jQuery !== 'undefined'){
       pulldownMenuScroll($);
       mobileNavToggle($);
       handleIpad($);
-      gformSublabels($);
-      videoCarousels($);
       popovers($);
       var slideshow = new SlideShow();
       slideshow.init();
