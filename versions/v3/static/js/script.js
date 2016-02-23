@@ -617,7 +617,7 @@ var removeEmptyPageContainers = function($) {
 
 // jshint unused:false
 var customChart = function ($) {
-  if ($('.custom-chart').length) {
+  if (!$('body').hasClass('ie8') && $('.custom-chart').length) {
     $.each($('.custom-chart'), function() {
       var $chart = $(this),
           type = $chart.attr('data-chart-type'),
