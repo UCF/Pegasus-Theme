@@ -59,7 +59,10 @@
 
     function startNumberAnime() {
         $('.state-stats-number').each(function (index, element) {
-            setTimeout(animateNumber, 500, $(element));
+            var $element = $(element);
+            setTimeout(function () {
+                animateNumber($element);
+            }, 500);
         });
     }
 
@@ -68,11 +71,13 @@
         $inview.each(function (index, element) {
             if ($(element).offset().top < $(window).scrollTop() + ($(window).outerHeight() / 2)) {
                 found.push(index);
-                // call function defined in the callback data attribute
-                var callback = $(element).data("callback"),
-                    x = eval(callback);
-                if (typeof x === 'function') {
-                    x();
+                switch ($(element).data("callback")) {
+                    case 'startNumberAnime':
+                        startNumberAnime();
+                        break;
+                    case 'startMapAnime':
+                        startMapAnime();
+                        break;
                 }
             }
         });
