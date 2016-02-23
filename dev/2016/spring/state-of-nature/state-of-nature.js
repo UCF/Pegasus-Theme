@@ -34,31 +34,31 @@
     }
 
     // Animates increment of a number (no decimals). Handles commas.
-    function animateNumber(e) {
-        var $num = e,
-            numText = $num.text(),
+    function animateNumber($num) {
+        var numText = $num.text(),
             numTextParsed = parseInt($num.text().replace(/\D/g, ''), 10);
 
-        e.css("visibility","visible");
-
-        $num.css('width', $num.width()); // force fixed width to reduce flicker
+        $num.css({
+            "visibility": "visible",
+            "width": $num.width() // force fixed width to reduce flicker
+        });
 
         $({number: 0}).animate({number: numTextParsed}, {
-        duration: 1500,
-        easing: 'swing',
-        step: function() {
-            $num.text(commaSeparateNumber(Math.ceil(this.number)));
-        },
-        done: function() {
-            $num
-            .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
-            .css('width', ''); // removed forced width
-        }
+            duration: 1500,
+            easing: 'swing',
+            step: function() {
+                $num.text(commaSeparateNumber(Math.ceil(this.number)));
+            },
+            done: function() {
+                $num
+                .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
+                .css('width', ''); // removed forced width
+            }
         });
     }
 
     function startNumberAnime() {
-        $('.state-stats').find('.number').each(function (index, element) {
+        $('.state-stats-number').each(function (index, element) {
             setTimeout(animateNumber, 500, $(element));
         });
     }
