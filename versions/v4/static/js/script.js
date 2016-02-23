@@ -829,19 +829,75 @@ var photoEssayNav = function($) {
       $jumpTop = $('#photo-essay-jump-top'),
       topOffset = 0,
       bottomOffset = 0,
-      navbarHeight = 0,
-      windowHeight = 0;
+      bottomOffsetInverse = 0,
+      prevScrollPos = 0;
 
-  function setVars() {
+  function setOffsets() {
     topOffset = $top.offset().top + $top.outerHeight(true);
     bottomOffset = $bottom.offset().top - $(window).outerHeight();
-    navbarHeight = $navbar.outerHeight(true);
-    windowHeight = $(window).outerHeight();
+    bottomOffsetInverse = $(window).outerHeight() - $bottom.offset().top;
+  }
+
+  function toggleJumpTop() {
+    var scrollPos = $(document).scrollTop();
+    $jumpTop.toggleClass('active', scrollPos > topOffset && scrollPos < bottomOffset );
+  }
+
+  function toggleNavbar() {
+    var newOffset = {
+      top: topOffset,
+      bottom: bottomOffsetInverse
+    };
+
+    // If affixing is already applied, just replace the offset value and
+    // handle scrolling of $navbar.
+    //
+    // Else, initialize affixing.
+    if ($navbar.is('.affix, .affix-top, .affix-bottom')) {
+      $navbar.data('bs.affix').options.offset = newOffset;
+
+      if ($navbar.is('.affix')) {
+        var scrollPos = $(document).scrollTop(),
+            navbarTop = parseFloat($navbar.css('top')),
+            newNavbarScrollPos,
+            scrollAmount;
+
+        if (scrollPos > prevScrollPos) {
+          // scroll down
+          scrollAmount = scrollPos - prevScrollPos;
+
+          // If scrolling down, $navbar's 'top' value should increase by scrollAmount
+          // up to the point that the bottom of $navbar is scrolled to (but no further).
+          newNavbarScrollPos = Math.max(navbarTop - scrollAmount, ($navbar.outerHeight(true) - $(window).height()) * -1);
+          $navbar.css('top', newNavbarScrollPos);
+        }
+        else {
+          // scroll up
+          scrollAmount = prevScrollPos - scrollPos;
+
+          // If scrolling up, $navbar's 'top' value should decrease by scrollAmount, but
+          // reach no less than 0.
+          newNavbarScrollPos = Math.min(navbarTop + scrollAmount, 0);
+          $navbar.css('top', newNavbarScrollPos);
+        }
+      }
+    }
+    else {
+      $navbar
+        .affix({
+          offset: newOffset
+        })
+        .on('affix-top.bs.affix', function() {
+          // Unset position top overrides
+          $navbar.css('top', '');
+        });
+    }
   }
 
   function toggleNavs() {
-    var scrolltop = $(document).scrollTop();
-    $navbar.add($jumpTop).toggleClass('active', scrolltop > topOffset && scrolltop < bottomOffset );
+    toggleJumpTop();
+    toggleNavbar();
+    prevScrollPos = $(document).scrollTop();
   }
 
   function handleNavClick(e) {
@@ -866,12 +922,13 @@ var photoEssayNav = function($) {
   }
 
   if ( $top.length && $bottom.length ) {
-    setVars();
+    setOffsets();
+    prevScrollPos = $(document).scrollTop();
 
     $(window)
       .on({
         'load scroll': toggleNavs,
-        'resize': setVars
+        'resize': setOffsets
       });
 
     $navbar.on('click', '.photo-essay-nav-link', handleNavClick);

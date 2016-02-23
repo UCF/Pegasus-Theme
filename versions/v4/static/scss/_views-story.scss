@@ -239,21 +239,26 @@ article.photo-essay {
     }
   }
 
+  .photo-essay-contents {
+    margin: auto;
+    max-width: $container-lg - $grid-gutter-width;
+  }
+
   .photo-essay-item {
     margin-bottom: 0;
-    margin-left: auto;
-    margin-right: auto;
+    // margin-left: auto;
+    // margin-right: auto;
     margin-top: $grid-gutter-width / 2;
-    max-width: $container-lg - $grid-gutter-width;
-    padding-left: 150px;  // navbar width
+    // max-width: $container-lg - $grid-gutter-width;
+    // padding-left: 150px;  // navbar width
 
-    @media (max-width: $screen-sm-max) {
-      padding-left: 120px;  // navbar width
-    }
+    // @media (max-width: $screen-sm-max) {
+    //   padding-left: 120px;  // navbar width
+    // }
 
-    @media (max-width: $screen-xs-max) {
-      padding-left: 0;  // navbar width
-    }
+    // @media (max-width: $screen-xs-max) {
+    //   padding-left: 0;  // navbar width
+    // }
   }
 
   .img-col {
@@ -364,37 +369,58 @@ article.photo-essay {
     }
   }
 
-  .photo-essay-nav {
-    background-color: #f0f0f0;
-    bottom: 0;
-    height: 100%;
-    left: -50%;
-    -webkit-overflow-scrolling: touch;
-    overflow-y: scroll;
-    padding: ($grid-gutter-width / 2);
-    position: fixed;
-    text-align: center;
-    top: 0;
-    transition: left .5s ease-in-out;
-    width: 150px;
-    z-index: 999;
-
-    @media (max-width: $screen-sm-max) {
-      width: 120px;
-    }
+  .navbar-col {
+    padding-left: 0;
 
     @media (max-width: $screen-xs-max) {
       display: none;
     }
+  }
 
-    &.active {
-      left: 0;
+  .photo-essay-nav {
+    background-color: #f0f0f0;
+    // bottom: 0;
+    // height: 100%;
+    // left: -50%;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    padding: ($grid-gutter-width / 2);
+    // position: fixed;
+    text-align: center;
+    // top: 0;
+    // transition: left .5s ease-in-out;
+    width: 150px;
+    // z-index: 999;
+
+    @media (min-width: $screen-lg-min) {
+      width: 180px;
+    }
+
+    @media (max-width: $screen-sm-max) {
+      width: 110px;
+    }
+
+    // @media (max-width: $screen-xs-max) {
+    //   display: none;
+    // }
+
+    // &.active {
+    //   left: 0;
+    // }
+
+    &.affix {
+      position: fixed !important; // wtf?
+      top: 0;
     }
   }
 
   .photo-essay-nav-link {
     display: block;
-    margin: 0 0 ($grid-gutter-width / 2);
+    margin: ($grid-gutter-width / 2) 0 0;
+
+    &:first-child {
+      margin-top: 0;
+    }
 
     &:hover,
     &:active,

@@ -183,17 +183,15 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		switch ( $orientation ):
 			case 'portrait':
 		?>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="img-col col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-md-push-5 col-sm-push-5<?php } ?>">
-						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
-						<div class="carat"></div>
-					</div>
-					<div class="caption-col col-md-4 col-sm-4 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1 col-sm-pull-7 col-sm-offset-1<?php } ?>">
-						<figcaption class="photo-essay-caption">
-							<?php echo $caption; ?>
-						</figcaption>
-					</div>
+			<div class="row">
+				<div class="img-col col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-md-push-5 col-sm-push-5<?php } ?>">
+					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<div class="carat"></div>
+				</div>
+				<div class="caption-col col-md-4 col-sm-4 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1 col-sm-pull-7 col-sm-offset-1<?php } ?>">
+					<figcaption class="photo-essay-caption">
+						<?php echo $caption; ?>
+					</figcaption>
 				</div>
 			</div>
 		<?php
@@ -202,17 +200,15 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 			case 'square':
 			default:
 		?>
-			<div class="container-fluid">
-				<div class="row">
-					<div class="img-col col-md-12">
-						<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
-						<div class="carat"></div>
-					</div>
-					<div class="caption-col col-md-12">
-						<figcaption class="photo-essay-caption">
-							<?php echo $caption; ?>
-						</figcaption>
-					</div>
+			<div class="row">
+				<div class="img-col col-md-12">
+					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<div class="carat"></div>
+				</div>
+				<div class="caption-col col-md-12">
+					<figcaption class="photo-essay-caption">
+						<?php echo $caption; ?>
+					</figcaption>
 				</div>
 			</div>
 		<?php
@@ -241,7 +237,44 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	$captions = get_post_meta( $photo_essay->ID, 'ss_slide_caption', TRUE );
 	$titles = get_post_meta( $photo_essay->ID, 'ss_slide_title', TRUE );
 	$images = get_post_meta( $photo_essay->ID, 'ss_slide_image', TRUE );
+	$photo_essay_markup = '';
 	$nav_markup = '';
+
+	$count = 0;
+	foreach ( $slide_order as $i ) {
+		$image = wp_get_attachment_image_src( $images[$i], 'full' );
+		$image_url = $image[0];
+		$image_w = $image[1];
+		$image_h = $image[2];
+		$image_thumb = wp_get_attachment_image_src( $images[$i], 'thumbnail' );
+		$image_thumb_url = $image_thumb[0];
+		$caption = wptexturize( do_shortcode( $captions[$i] ) );
+		$title = wptexturize( $titles[$i] );
+		$item_id = 'photo-' . sanitize_title( $title );
+		$orientation = '';
+		$alternate = false;
+
+		if ( $image_w > $image_h ) {
+			$orientation = 'landscape';
+		}
+		else if ( $image_w < $image_h ) {
+			$orientation = 'portrait';
+		}
+		else {
+			$orientation = 'square';
+		}
+
+		// Alternate every other slide (odd-numbered indexes)
+		if ( $count % 2 !== 0 ) {
+			$alternate = true;
+		}
+
+		$photo_essay_markup .= display_photo_essay_item( $orientation, $item_id, $image_url, $title, $caption, $alternate );
+
+		$nav_markup .= display_photo_essay_navitem( $item_id, $image_thumb_url );
+
+		$count++;
+	}
 
 	ob_start();
 ?>
@@ -273,47 +306,20 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		</div>
 	</section>
 
-	<?php
-	$count = 0;
-	foreach ( $slide_order as $i ) {
-		$image = wp_get_attachment_image_src( $images[$i], 'full' );
-		$image_url = $image[0];
-		$image_w = $image[1];
-		$image_h = $image[2];
-		$image_thumb = wp_get_attachment_image_src( $images[$i], 'thumbnail' );
-		$image_thumb_url = $image_thumb[0];
-		$caption = wptexturize( do_shortcode( $captions[$i] ) );
-		$title = wptexturize( $titles[$i] );
-		$item_id = 'photo-' . sanitize_title( $title );
-		$orientation = '';
-		$alternate = false;
-
-		if ( $image_w > $image_h ) {
-			$orientation = 'landscape';
-		}
-		else if ( $image_w < $image_h ) {
-			$orientation = 'portrait';
-		}
-		else {
-			$orientation = 'square';
-		}
-
-		// Alternate every other slide (odd-numbered indexes)
-		if ( $count % 2 !== 0 ) {
-			$alternate = true;
-		}
-
-		echo display_photo_essay_item( $orientation, $item_id, $image_url, $title, $caption, $alternate );
-
-		$nav_markup .= display_photo_essay_navitem( $item_id, $image_thumb_url );
-
-		$count++;
-	}
-	?>
-
-	<nav id="photo-essay-navbar" class="photo-essay-nav">
-		<?php echo $nav_markup; ?>
-	</nav>
+	<section class="photo-essay-contents">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-2 col-sm-2 navbar-col">
+					<nav id="photo-essay-navbar" class="photo-essay-nav">
+						<?php echo $nav_markup; ?>
+					</nav>
+				</div>
+				<div class="col-md-10 col-sm-10">
+					<?php echo $photo_essay_markup; ?>
+				</div>
+			</div>
+		</div>
+	</section>
 
 	<a class="photo-essay-jump" id="photo-essay-jump-top" href="#">
 		<span class="fa fa-long-arrow-up"></span>
