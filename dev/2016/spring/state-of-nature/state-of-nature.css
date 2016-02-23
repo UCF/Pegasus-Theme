@@ -182,19 +182,19 @@ article.story .chart-legend .number {
     font-size: 25px;
 }
 article.story .chart-legend .existing {
-    color: #acb859;
+    color: #aeba5e;
 }
 article.story .chart-legend .proposed {
     color: #799636;
 }
 article.story .chart-legend .urban {
-    color: #d8a85e;
+    color: #a77321;
 }
 article.story .chart-legend .other {
-    color: #F3E3CA;
+    color: #000000;
 }
 article.story .chart-legend .acres {
-    color: #d8a85e;
+    color: #000000;
     font-size: 14px;
     text-transform: uppercase;
 }
