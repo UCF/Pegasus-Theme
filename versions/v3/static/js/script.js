@@ -204,10 +204,6 @@ var handleIpad = function($) {
   }
 };
 
-var popovers = function($) {
-  $('.popover-parent').popover({});
-};
-
 var SlideShow = (function() {
     var $win = $(window),
         $slidesContents = $('.ss-content');
@@ -764,7 +760,6 @@ if (typeof jQuery !== 'undefined'){
       pulldownMenuScroll($);
       mobileNavToggle($);
       handleIpad($);
-      popovers($);
       var slideshow = new SlideShow();
       slideshow.init();
       lazyLoadAssets($);
