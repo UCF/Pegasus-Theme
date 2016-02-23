@@ -246,24 +246,20 @@ article.photo-essay {
 
   .photo-essay-item {
     margin-bottom: 0;
-    // margin-left: auto;
-    // margin-right: auto;
     margin-top: $grid-gutter-width / 2;
-    // max-width: $container-lg - $grid-gutter-width;
-    // padding-left: 150px;  // navbar width
-
-    // @media (max-width: $screen-sm-max) {
-    //   padding-left: 120px;  // navbar width
-    // }
-
-    // @media (max-width: $screen-xs-max) {
-    //   padding-left: 0;  // navbar width
-    // }
   }
 
   .img-col {
     position: relative;
     z-index: 1;
+  }
+
+  .img-col,
+  .caption-col {
+    @media (max-width: $screen-xs-max) {
+      padding-left: 0;
+      padding-right: 0;
+    }
   }
 
   .photo-essay-img {
@@ -379,34 +375,22 @@ article.photo-essay {
 
   .photo-essay-nav {
     background-color: #f0f0f0;
-    // bottom: 0;
-    // height: 100%;
-    // left: -50%;
+    margin-left: 40px;
     min-height: 100vh;
     -webkit-overflow-scrolling: touch;
     padding: ($grid-gutter-width / 2);
-    // position: fixed;
     text-align: center;
-    // top: 0;
-    // transition: left .5s ease-in-out;
-    width: 150px;
-    // z-index: 999;
+    width: 120px;
 
     @media (min-width: $screen-lg-min) {
-      width: 180px;
+      margin-left: 30px;
+      width: 150px;
     }
 
     @media (max-width: $screen-sm-max) {
-      width: 110px;
+      margin-left: 20px;
+      width: 100px;
     }
-
-    // @media (max-width: $screen-xs-max) {
-    //   display: none;
-    // }
-
-    // &.active {
-    //   left: 0;
-    // }
 
     &.affix {
       position: fixed !important; // wtf?
@@ -416,11 +400,7 @@ article.photo-essay {
 
   .photo-essay-nav-link {
     display: block;
-    margin: ($grid-gutter-width / 2) 0 0;
-
-    &:first-child {
-      margin-top: 0;
-    }
+    margin: 0 auto ($grid-gutter-width / 2);
 
     &:hover,
     &:active,
@@ -445,7 +425,7 @@ article.photo-essay {
   .photo-essay-jump {
     background-color: #fff;
     border-radius: 100%;
-    box-shadow: 0 5px 8px rgba(0, 0, 0, .6);
+    box-shadow: 0 5px 8px rgba(0, 0, 0, .4);
     color: #000;
     display: block;
     font-size: 11px;
@@ -483,13 +463,6 @@ article.photo-essay {
   }
 
   #photo-essay-jump-top {
-    bottom: -100px;
-    position: fixed;
-    right: $grid-gutter-width;
-    transition: bottom .3s ease-in-out;
-
-    &.active {
-      bottom: $grid-gutter-width;
-    }
+    margin-top: 20px;
   }
 }

@@ -246,7 +246,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		$image_url = $image[0];
 		$image_w = $image[1];
 		$image_h = $image[2];
-		$image_thumb = wp_get_attachment_image_src( $images[$i], 'thumbnail' );
+		$image_thumb = wp_get_attachment_image_src( $images[$i], 'photo_essay-thumb' );
 		$image_thumb_url = $image_thumb[0];
 		$caption = wptexturize( do_shortcode( $captions[$i] ) );
 		$title = wptexturize( $titles[$i] );
@@ -309,22 +309,21 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	<section class="photo-essay-contents">
 		<div class="container">
 			<div class="row">
+				<div class="col-md-10 col-sm-10">
+					<?php echo $photo_essay_markup; ?>
+				</div>
 				<div class="col-md-2 col-sm-2 navbar-col">
 					<nav id="photo-essay-navbar" class="photo-essay-nav">
 						<?php echo $nav_markup; ?>
+						<a class="photo-essay-jump photo-essay-nav-link" id="photo-essay-jump-top" href="#">
+							<span class="fa fa-long-arrow-up"></span>
+							<span class="sr-only">Jump </span>to top
+						</a>
 					</nav>
-				</div>
-				<div class="col-md-10 col-sm-10">
-					<?php echo $photo_essay_markup; ?>
 				</div>
 			</div>
 		</div>
 	</section>
-
-	<a class="photo-essay-jump" id="photo-essay-jump-top" href="#">
-		<span class="fa fa-long-arrow-up"></span>
-		<span class="sr-only">Jump </span>to top
-	</a>
 
 	<div id="photo-essay-bottom"></div>
 <?php
