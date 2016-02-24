@@ -6,9 +6,12 @@
         $inview;
 
     function toggleMapLayer(e) {
-        e.preventDefault();
-        $(e.target).toggleClass('highlight');
-        $(e.target).find('span.fa').toggleClass('fa-check');
+        var $target = $(e.target);
+        if ($target.hasClass('fa')) {
+            $target = $target.parent();
+        }
+        $target.toggleClass('highlight');
+        $target.find('span.fa').toggleClass('fa-check');
         var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
         $mapImage.fadeToggle(1000);
     }
