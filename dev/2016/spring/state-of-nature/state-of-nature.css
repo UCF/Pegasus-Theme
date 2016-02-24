@@ -10,7 +10,7 @@ article.story .story .description {
     line-height: 32px;
     white-space: normal;
 }
-article.story .story h3 {
+article.story .story h2 {
     border-bottom: solid 2px #d8a85e;
     display: inline-block;
     font-size: 18px;
@@ -44,17 +44,17 @@ article.story .bear-cub img {
 }
 
 /* State of Natural Florida Section */
-article.story .state-florida h3 {
+article.story .state-florida h2 {
     color: #d8a85e;
     font-size: 60px;
     margin-bottom: 5px;
 }
 @media (max-width: 992px) {
-    article.story .state-florida h3 {
+    article.story .state-florida h2 {
         font-size: 55px;
     }
 }
-article.story .state-florida h4 {
+article.story .state-florida h3 {
     color: #53813E;
     font-style: italic;
     font-size: 30px;
@@ -93,7 +93,7 @@ article.story .legend-container {
         top: 31%;
     }
 }
-article.story .legend-container h3 {
+article.story .legend-container h2 {
     border-bottom: solid 2px #d8a85e;
     display: inline-block;
     font-size: 16px;
@@ -341,8 +341,8 @@ article.story .species-list li span {
 article.story .animal-images {
     margin-top: 50px;
 }
-article.story .species-list h4,
-article.story .animal-images h4 {
+article.story .species-list h3,
+article.story .animal-images h3 {
     border-bottom: solid 2px #d8a85e;
     display: inline-block;
     font-family: Georgia,"Times New Roman",Times,serif;
