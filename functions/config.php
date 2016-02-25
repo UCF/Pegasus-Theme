@@ -16,7 +16,6 @@ function __init__(){
 	add_image_size( 'single-post-thumbnail', 220, 230, true );
 	add_image_size( 'issue-thumbnail', 190, 248 );
 	add_image_size( 'issue-cover-feature', 768, 432, true );
-	add_image_size( 'photo_essay-thumb', 300, 175, true );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
 
 	foreach( Config::$styles as $style ) {

@@ -184,11 +184,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 			case 'portrait':
 		?>
 			<div class="row">
-				<div class="img-col col-md-7 col-sm-7 <?php if ( $alternate ) { ?>col-md-push-5 col-sm-push-5<?php } ?>">
+				<div class="img-col col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1 <?php if ( $alternate ) { ?>col-md-push-5<?php } ?>">
 					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 					<div class="carat"></div>
 				</div>
-				<div class="caption-col col-md-4 col-sm-4 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1 col-sm-pull-7 col-sm-offset-1<?php } ?>">
+				<div class="caption-col col-md-4 col-sm-12 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1<?php } else { ?>col-md-offset-0<?php  } ?>">
 					<figcaption class="photo-essay-caption">
 						<?php echo $caption; ?>
 					</figcaption>
@@ -246,7 +246,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		$image_url = $image[0];
 		$image_w = $image[1];
 		$image_h = $image[2];
-		$image_thumb = wp_get_attachment_image_src( $images[$i], 'photo_essay-thumb' );
+		$image_thumb = wp_get_attachment_image_src( $images[$i], 'thumbnail' );
 		$image_thumb_url = $image_thumb[0];
 		$caption = wptexturize( do_shortcode( $captions[$i] ) );
 		$title = wptexturize( $titles[$i] );
