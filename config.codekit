@@ -7936,6 +7936,17 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 825162,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/bear-cub.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -7943,6 +7954,17 @@
 		"initialSize": 103555,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/bear-cub.jpg",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/bear-cub.jpg",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/chart-mobile.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 25274,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/chart-mobile.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/chart-mobile.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -8086,17 +8108,6 @@
 		"initialSize": 105997,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2016\/spring\/state-of-nature\/img\/map.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 141527,
-		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -13041,7 +13052,7 @@
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.js",
 		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 1,
+		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},

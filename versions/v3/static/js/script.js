@@ -616,8 +616,14 @@ var removeEmptyPageContainers = function($) {
  **/
 
 // jshint unused:false
+
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
+
 var customChart = function ($) {
-  if (!$('body').hasClass('ie8') && $('.custom-chart').length) {
+  if ($('.custom-chart').length && isCanvasSupported()) {
     $.each($('.custom-chart'), function() {
       var $chart = $(this),
           type = $chart.attr('data-chart-type'),
@@ -668,6 +674,7 @@ var customChart = function ($) {
     });
   }
 };
+
 // jshint unused:true
 
 

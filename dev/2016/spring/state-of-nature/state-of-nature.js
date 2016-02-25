@@ -6,9 +6,12 @@
         $inview;
 
     function toggleMapLayer(e) {
-        e.preventDefault();
-        $(e.target).toggleClass('highlight');
-        $(e.target).find('span.fa').toggleClass('fa-check');
+        var $target = $(e.target);
+        if ($target.hasClass('fa')) {
+            $target = $target.parent();
+        }
+        $target.toggleClass('highlight');
+        $target.find('span.fa').toggleClass('fa-check');
         var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
         $mapImage.fadeToggle(1000);
     }
@@ -59,7 +62,10 @@
 
     function startNumberAnime() {
         $('.state-stats-number').each(function (index, element) {
-            setTimeout(animateNumber, 500, $(element));
+            var $element = $(element);
+            setTimeout(function () {
+                animateNumber($element);
+            }, 500);
         });
     }
 
@@ -68,11 +74,13 @@
         $inview.each(function (index, element) {
             if ($(element).offset().top < $(window).scrollTop() + ($(window).outerHeight() / 2)) {
                 found.push(index);
-                // call function defined in the callback data attribute
-                var callback = $(element).data("callback"),
-                    x = eval(callback);
-                if (typeof x === 'function') {
-                    x();
+                switch ($(element).data("callback")) {
+                    case 'startNumberAnime':
+                        startNumberAnime();
+                        break;
+                    case 'startMapAnime':
+                        startMapAnime();
+                        break;
                 }
             }
         });
