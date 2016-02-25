@@ -1,6 +1,6 @@
 {
 "CodeKitInfo": "This is a CodeKit 2.x project configuration file. It is designed to sync project settings across multiple machines. MODIFYING THE CONTENTS OF THIS FILE IS A POOR LIFE DECISION. If you do so, you will likely cause CodeKit to crash. This file is not useful unless accompanied by the project that created it in CodeKit 2. This file is not backwards-compatible with CodeKit 1.x. For more information, see: http:\/\/incident57.com\/codekit",
-"creatorBuild": "18902",
+"creatorBuild": "19115",
 "files": {
 	"\/404.php": {
 		"fileType": 8192,
@@ -7695,7 +7695,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 45009,
+		"initialSize": 32042,
 		"inputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
 		"outputAbbreviatedPath": "\/dev\/2015\/summer\/mars\/img\/elevation0.png",
 		"outputPathIsOutsideProject": 0,
@@ -7936,6 +7936,17 @@
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1
 		},
+	"\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 825162,
+		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/balance-map.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2016\/spring\/state-of-nature\/img\/bear-cub.jpg": {
 		"fileType": 16384,
 		"ignore": 0,
@@ -8061,7 +8072,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 267477,
+		"initialSize": 253079,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-mobile.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-mobile.png",
 		"outputPathIsOutsideProject": 0,
@@ -8083,7 +8094,7 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 49030,
+		"initialSize": 62143,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-roads-cities.png",
 		"outputPathIsOutsideProject": 0,
@@ -8097,17 +8108,6 @@
 		"initialSize": 105997,
 		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map-urban.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2016\/spring\/state-of-nature\/img\/map.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 141527,
-		"inputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/spring\/state-of-nature\/img\/map.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -8234,17 +8234,6 @@
 		"outputAbbreviatedPath": "No Output Path",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
-		},
-	"\/jsconfig.json": {
-		"fileType": 524288,
-		"ignore": 1,
-		"ignoreWasSetByUser": 0,
-		"inputAbbreviatedPath": "\/jsconfig.json",
-		"orderOutput": 0,
-		"outputAbbreviatedPath": "\/jsconfig-min.json",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"outputStyle": 1
 		},
 	"\/page.php": {
 		"fileType": 8192,
@@ -13061,7 +13050,7 @@
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.js",
-		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/min\/script-min.js",
+		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"outputStyle": 1,
@@ -13069,7 +13058,7 @@
 		},
 	"\/versions\/v3\/static\/js\/script.min.js": {
 		"fileType": 64,
-		"ignore": 0,
+		"ignore": 1,
 		"ignoreWasSetByUser": 0,
 		"inputAbbreviatedPath": "\/versions\/v3\/static\/js\/script.min.js",
 		"outputAbbreviatedPath": "\/versions\/v3\/static\/js\/min\/script.min-min.js",
@@ -13311,7 +13300,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "RJ Bruneel",
+"lastSavedByUser": "Work",
 "manualImportLinks": {
 	},
 "projectAttributes": {
@@ -13411,8 +13400,16 @@
 			"active": 0,
 			"flagValue": -1
 			},
+		"no_nested_string_interpolation": {
+			"active": 1,
+			"flagValue": -1
+			},
 		"no_plusplus": {
 			"active": 0,
+			"flagValue": -1
+			},
+		"no_private_function_fat_arrows": {
+			"active": 1,
 			"flagValue": -1
 			},
 		"no_stand_alone_at": {
@@ -13421,6 +13418,10 @@
 			},
 		"no_tabs": {
 			"active": 1,
+			"flagValue": -1
+			},
+		"no_this": {
+			"active": 0,
 			"flagValue": -1
 			},
 		"no_throwing_strings": {
@@ -13800,10 +13801,6 @@
 			}
 		},
 	"jsLintFlags2": {
-		"ass": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"bitwise": {
 			"active": 0,
 			"flagValue": -1
@@ -13812,15 +13809,7 @@
 			"active": 1,
 			"flagValue": -1
 			},
-		"closure": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"continue": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"debug": {
+		"couch": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -13828,75 +13817,27 @@
 			"active": 0,
 			"flagValue": -1
 			},
-		"eqeq": {
+		"es6": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"evil": {
+		"eval": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"forin": {
+		"for": {
 			"active": 0,
 			"flagValue": -1
-			},
-		"indent": {
-			"active": 0,
-			"flagValue": 4
 			},
 		"maxlen": {
 			"active": 0,
 			"flagValue": 150
 			},
-		"newcap": {
-			"active": 0,
-			"flagValue": -1
-			},
 		"node": {
 			"active": 0,
 			"flagValue": -1
 			},
-		"nomen": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"plusplus": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"properties": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"regexp": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"rhino": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sloppy": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"stupid": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"sub": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"todo": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"unparam": {
-			"active": 0,
-			"flagValue": -1
-			},
-		"vars": {
+		"this": {
 			"active": 0,
 			"flagValue": -1
 			},
@@ -13997,7 +13938,9 @@
 	"typescriptAutoOutputPathStyle": 2,
 	"typescriptCreateDeclarationFile": 0,
 	"typescriptCreateSourceMap": 0,
+	"typescriptJSXMode": 0,
 	"typescriptMinifyOutput": 0,
+	"typescriptModuleResolutionType": 0,
 	"typescriptModuleType": 0,
 	"typescriptNoImplicitAny": 0,
 	"typescriptPreserveConstEnums": 0,
