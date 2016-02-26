@@ -52,15 +52,17 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
-		<div id="ipad" class="modal">
-			<div class="modal-header">
-				<strong>Pegasus Magazine is available on the iPad!</strong>
+		<div id="ipad" class="modal" tabindex="-1" role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<strong>Pegasus Magazine is available on the iPad!</strong>
+					</div>
+					<div class="modal-body">
+						<a href="<?php echo get_theme_option( 'ipad_app_url' ); ?>" class="btn btn-primary">Go to iTunes</a>
+						<a href="#" class="btn" data-dismiss="modal">Continue to Web Version</a>
+					</div>
 				</div>
-			<div class="modal-body">
-				<a href="<?=get_theme_option('ipad_app_url')?>" class="btn btn-primary">Go to iTunes</a>
-				<a href="#" class="btn" data-dismiss="modal">Continue to Web Version</a>
-			</div>
-			<div class="modal-footer">
 			</div>
 		</div>
 
