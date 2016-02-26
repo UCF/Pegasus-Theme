@@ -15,8 +15,6 @@ article.story h2.biggest, article.story h2 span.biggest, article.story .h2.bigge
 article.story h3, article.story .h3 { font-size: 26px; }
 article.story h2, article.story .h2, article.story h3, article.story .h3, article.story h4, article.story .h4, article.story h5, article.story .h5, article.story h6, article.story .h6 { font-family: "OpenSansCondensedBold", sans-serif; letter-spacing: -.06em; }
 article.story h1 > span, article.story h2 > span, article.story h3 > span, article.story h4 > span, article.story h5 > span, article.story h6 > span { display: inline; letter-spacing: inherit; }
-article.story a { color: #000; font-weight: bold; }
-article.story a:hover, article.story a:active { text-decoration: underline; }
 article.story blockquote.quote:before { font-size: 40px; left: 0; line-height: 60px; }
 article.story blockquote, article.story blockquote p { font-size: 22px; line-height: 1.3; }
 article.story blockquote small { font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B"; font-style: normal; font-weight: 400; font-size: 14px; margin-top: 12px; }
