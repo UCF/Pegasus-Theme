@@ -5,7 +5,7 @@
 
   function resizeHandler() {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(setEqualHeights, 100);
+    resizeTimer = setTimeout(setEqualHeights, 50);
   }
 
   function setEqualHeights() {
