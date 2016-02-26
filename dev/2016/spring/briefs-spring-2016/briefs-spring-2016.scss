@@ -344,9 +344,10 @@ article.story {  // over-qualified selector necessary to match+override theme-le
 
   .cheerleader-img {
     margin-bottom: 0;
+    margin-top: 35px;
 
     @media (max-width: $screen-sm-max) {
-      margin-top: 60px;
+      margin-top: 70px;
       width: 105px;
     }
 
