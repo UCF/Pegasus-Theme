@@ -153,23 +153,23 @@ function get_default_template_font_css( $font ) {
  **/
 global $allowedposttags;
 
-function v3_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
+function v4_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	if ( $context == 'post' ) {
-		$allowedposttags['h3'] = array(
-			'data-elevation-image' => true
-		);
+		// $allowedposttags['h3'] = array(
+		// 	'data-elevation-image' => true
+		// );
 
-		$allowedposttags['div'] = array(
-			'data-inc-us' => true,
-			'data-inc-world' => true,
-			'data-out-us' => true,
-			'data-out-world' => true,
-			'data-marker-img' => true
-		);
+		// $allowedposttags['div'] = array(
+		// 	'data-inc-us' => true,
+		// 	'data-inc-world' => true,
+		// 	'data-out-us' => true,
+		// 	'data-out-world' => true,
+		// 	'data-marker-img' => true
+		// );
 	}
 	return $allowedposttags;
 }
-add_filter( 'wp_kses_allowed_html', 'v3_add_kses_whitelisted_attributes', 11, 2 );
+add_filter( 'wp_kses_allowed_html', 'v4_add_kses_whitelisted_attributes', 11, 2 );
 
 
 /**
