@@ -1,4 +1,4 @@
-# Pegasus Version 3 (v4) | Current Version
+# Pegasus Version 4 (v4) | Current Version
 
 Functions, templates and assets used in issues from Summer 2016 onward.
 
