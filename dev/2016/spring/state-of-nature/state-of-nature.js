@@ -6,8 +6,12 @@
         $inview;
 
     function toggleMapLayer(e) {
-        e.preventDefault();
-        $(e.target).toggleClass('highlight');
+        var $target = $(e.target);
+        if ($target.hasClass('fa')) {
+            $target = $target.parent();
+        }
+        $target.toggleClass('highlight');
+        $target.find('span.fa').toggleClass('fa-check');
         var $mapImage = $($mapContainer.find('.map-image').eq($(this).index()));
         $mapImage.fadeToggle(1000);
     }
@@ -16,11 +20,11 @@
         var $this = $(this);
         setTimeout(function () {
             $this.trigger('click');
-        }, 2000 * index);
+        }, 1500 * index);
     }
 
     function startMapAnime() {
-        $legend.find('li').each(toggleLegend);
+        $legend.find('li.toggle').each(toggleLegend);
     }
 
     // Returns a comma-separated numerical string.
@@ -33,32 +37,35 @@
     }
 
     // Animates increment of a number (no decimals). Handles commas.
-    function animateNumber(e) {
-        var $num = e,
-            numText = $num.text(),
+    function animateNumber($num) {
+        var numText = $num.text(),
             numTextParsed = parseInt($num.text().replace(/\D/g, ''), 10);
 
-        e.css("visibility","visible");
-
-        $num.css('width', $num.width()); // force fixed width to reduce flicker
+        $num.css({
+            "visibility": "visible",
+            "width": $num.width() // force fixed width to reduce flicker
+        });
 
         $({number: 0}).animate({number: numTextParsed}, {
-        duration: 1500,
-        easing: 'swing',
-        step: function() {
-            $num.text(commaSeparateNumber(Math.ceil(this.number)));
-        },
-        done: function() {
-            $num
-            .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
-            .css('width', ''); // removed forced width
-        }
+            duration: 1500,
+            easing: 'swing',
+            step: function() {
+                $num.text(commaSeparateNumber(Math.ceil(this.number)));
+            },
+            done: function() {
+                $num
+                .text(numText) // sometimes the animation doesn't animate the last incremention for whatever reason, so force it
+                .css('width', ''); // removed forced width
+            }
         });
     }
 
     function startNumberAnime() {
-        $('.state-stats').find('.number').each(function (index, element) {
-            setTimeout(animateNumber, index * 500, $(element));
+        $('.state-stats-number').each(function (index, element) {
+            var $element = $(element);
+            setTimeout(function () {
+                animateNumber($element);
+            }, 500);
         });
     }
 
@@ -67,11 +74,13 @@
         $inview.each(function (index, element) {
             if ($(element).offset().top < $(window).scrollTop() + ($(window).outerHeight() / 2)) {
                 found.push(index);
-                // call function defined in the callback data attribute
-                var callback = $(element).data("callback"),
-                    x = eval(callback);
-                if (typeof x === 'function') {
-                    x();
+                switch ($(element).data("callback")) {
+                    case 'startNumberAnime':
+                        startNumberAnime();
+                        break;
+                    case 'startMapAnime':
+                        startMapAnime();
+                        break;
                 }
             }
         });
@@ -90,7 +99,7 @@
         $legend = $('.legend');
         $inview = $('.inview');
 
-        $legend.on('click', 'li', toggleMapLayer);
+        $legend.on('click', 'li.toggle', toggleMapLayer);
         $(window).on('load scroll', inview);
     }
 
