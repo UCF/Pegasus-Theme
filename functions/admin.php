@@ -289,9 +289,9 @@ function add_shortcode_interface_modal() {
 
 						<h3>Select a caption color:</h3>
 						<p class="help">
-							(Optional) The color of caption text in this slideshow. Defaults to white (#fff).
+							(Optional) The color of caption text in this slideshow. Defaults to black (#000).
 						</p>
-						<input type="text" name="caption-color" class="shortcode-color" value="#ffffff" data-default-color="#ffffff" data-parameter="caption_color">
+						<input type="text" name="caption-color" class="shortcode-color" value="#000" data-default-color="#000" data-parameter="caption_color">
 					</li>
 					<li class="shortcode-well">
 						<h2>Well Options</h2>
