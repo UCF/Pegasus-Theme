@@ -9312,6 +9312,8 @@ li#nav-about {
 #home .home-article-1 a {
   background: url("about:blank"); }
 
+article.story p {
+  margin-bottom: 16px; }
 article.story h2 {
   font-size: 36px; }
   @media (max-width: 767px) {
@@ -9379,6 +9381,10 @@ article.story .description {
   article.story .description em,
   article.story .description i {
     font-style: normal; }
+article.story .lead {
+  margin-bottom: 30px; }
+article.story .caption {
+  margin-bottom: 20px; }
 
 article.story-default .title-wrap {
   margin-bottom: 15px;

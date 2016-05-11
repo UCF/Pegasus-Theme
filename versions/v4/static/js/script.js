@@ -192,83 +192,16 @@ var mobileNavToggle = function($) {
 
 var handleIpad = function($) {
   // Is this the user's first visit to the site?
-  var ipad  = navigator.userAgent.match(/iPad/i) === null ? false : true;
+  var ipad  = navigator.userAgent.match(/iPad/i) === null ? false : true,
+      ipad_hide = $.cookie('ipad-hide');
 
-  $('.header_stories').hide();
-
-  var toggle_nav    = $('.toggle_story_nav a'),
-    tooltip_options = {
-      placement:'bottom',
-      title  :'<strong>Click here <br /> for more stories</strong>'
-    };
-
-  if(!ipad) {
-    toggle_nav.tooltip(tooltip_options);
-  }
-  toggle_nav
-    .on( (ipad) ? 'touchend' : 'click', function(e) {
-      e.preventDefault();
-      var story_nav = $('.header_stories');
-      if(story_nav.is(':visible')) {
-        $(this).html('&#9650;');
-        if(!ipad) {
-          toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Click here <br /> for more stories</strong>').tooltip('fixTitle').tooltip('show');
-        }
-      } else {
-        $(this).html('&#9660;');
-        if(!ipad) {
-          toggle_nav.tooltip('hide').attr('data-original-title', '<strong>Close menu</strong>').tooltip('fixTitle').tooltip('show');
-        }
-      }
-      story_nav.slideToggle().toggleClass('active');
-    });
-
-
-  /* iPad Model */
-  var ipad_hide = $.cookie('ipad-hide');
-  if((ipad_hide === null || !ipad_hide) && ipad && IPAD_DEPLOYED) {
+  if ((ipad_hide === null || !ipad_hide) && ipad && IPAD_DEPLOYED) {
     $('#ipad')
       .modal()
       .on('hidden', function() {
         $.cookie('ipad-hide', true);
       });
   }
-
-  $.cookie('initial-visit', true);
-};
-
-var gformSublabels = function($) {
-  // Move Gravity Forms Address sublabels above the fields
-  $('.ginput_container label').each(function(i,e){
-    var field_desc = $('<div>').append($(e).clone()).remove().html();
-    $(e).siblings('.ginput_container input').before(field_desc); //moves sub label above input fields
-    $(e).siblings('.ginput_container select').before(field_desc); //moves sub label above select fields (e.g. country drop-down)
-    $(e).remove();
-  });
-};
-
-var videoCarousels = function($) {
-  // Prevent video sliders from automatically advancing
-  $('#videoslides,#recipe-carousel').carousel({
-    interval: 0
-  });
-
-  // Remove, then re-add video iframes on prev/next button click to prevent multiple videos from playing at a time:
-  $('#videoslides,#recipe-carousel').bind('slide', function() {
-    $('.active').addClass('last');
-    var videoSrc = $('.last').children('iframe').attr('src');
-    $('.last').children('iframe').attr('switchsrc', videoSrc);
-  });
-  $('#videoslides,#recipe-carousel').bind('slid', function() {
-    $('.last').children('iframe').attr('src', 'none');
-    var videoSwitchSrc = $('.last').children('iframe').attr('switchsrc');
-    $('.last').children('iframe').attr('src', videoSwitchSrc);
-    $('.last').removeClass('last');
-  });
-};
-
-var popovers = function($) {
-  $('.popover-parent').popover({});
 };
 
 var SlideShow = (function() {
@@ -681,17 +614,21 @@ var removeEmptyPageContainers = function($) {
 /**
  * ChartJS
  **/
+
+// jshint unused:false
+
+function isCanvasSupported(){
+  var elem = document.createElement('canvas');
+  return !!(elem.getContext && elem.getContext('2d'));
+}
+
 var customChart = function ($) {
-  if ($('.custom-chart').length) {
+  if ($('.custom-chart').length && isCanvasSupported()) {
     $.each($('.custom-chart'), function() {
-      var $chart = $(this);
-      // Update id of chart if it is set to default.
-      if ($chart.attr('id') === 'custom-chart') {
-        $chart.attr('id', 'custom-chart-' + idx);
-      }
-      var type = $(this).attr('data-chart-type'),
-          jsonPath = $(this).attr('data-chart-data'),
-          optionsPath = $(this).attr('data-chart-options'),
+      var $chart = $(this),
+          type = $chart.attr('data-chart-type'),
+          jsonPath = $chart.attr('data-chart-data'),
+          optionsPath = $chart.attr('data-chart-options'),
           canvas = document.createElement('canvas'),
           ctx = canvas.getContext('2d'),
           data = {};
@@ -737,6 +674,8 @@ var customChart = function ($) {
     });
   }
 };
+
+// jshint unused:true
 
 
 /**
@@ -945,9 +884,6 @@ if (typeof jQuery !== 'undefined'){
       pulldownMenuScroll($);
       mobileNavToggle($);
       handleIpad($);
-      gformSublabels($);
-      videoCarousels($);
-      popovers($);
       var slideshow = new SlideShow();
       slideshow.init();
       lazyLoadAssets($);
