@@ -721,7 +721,7 @@ function output_header_markup($post) {
 
 	// Add font library stylesheets for fonts that are available via the
 	// WYSIWYG editor (excluding Cloud.Typography fonts, which are already included)
-	if ( $post->post_type == 'page' || ( ( $post->post_type == 'story' || $post->post_type == 'issue' || is_home() ) && !uses_custom_template( $post ) ) ) {
+	if ( $post->post_type == 'page' || ( ( $post->post_type == 'story' || $post->post_type == 'issue' || $post->post_type == 'photo_essay' || is_home() ) && !uses_custom_template( $post ) ) ) {
 		$fonts = unserialize( TEMPLATE_FONT_URLS );
 		if ( $fonts ) {
 			foreach ( $fonts as $name => $url ) {
