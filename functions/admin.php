@@ -131,7 +131,7 @@ function add_shortcode_interface_modal() {
 								section of a story.  The first letter of this line will be styled as a dropcap.
 							</li>
 							<li class="shortcode-photo_essay">
-								Creates a running photo gallary with captions and side navigation. Slideshows should be created as Photo
+								Creates a running photo gallery with captions and side navigation. Slideshows should be created as Photo
 								Essays and then be selected here.
 							</li>
 							<li class="shortcode-sidebar">
@@ -291,12 +291,6 @@ function add_shortcode_interface_modal() {
 							?>
 
 						</select>
-
-						<h3>Select a caption color:</h3>
-						<p class="help">
-							(Optional) The color of caption text in this slideshow. Defaults to black (#000).
-						</p>
-						<input type="text" name="caption-color" class="shortcode-color" value="#000" data-default-color="#000" data-parameter="caption_color">
 					</li>
 					<li class="shortcode-slideshow">
 						<h2>Slideshow Options</h2>
