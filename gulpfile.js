@@ -2,7 +2,6 @@ var gulp = require('gulp'),
     configLocal = require('./gulp-config.json'),
     merge = require('merge'),
     sass = require('gulp-sass'),
-    minifyCss = require('gulp-minify-css'),
     bless = require('gulp-bless'),
     concat = require('gulp-concat'),
     uglify = require('gulp-uglify'),
@@ -11,6 +10,7 @@ var gulp = require('gulp'),
     jshintStylish = require('jshint-stylish'),
     scsslint = require('gulp-scss-lint'),
     autoprefixer = require('gulp-autoprefixer'),
+    cleanCSS = require('gulp-clean-css'),
     browserSync = require('browser-sync').create();
 
 var configDefault = {
@@ -36,13 +36,13 @@ gulp.task('css-main-build', function() {
     case 'v4':
       gulp.src(config.versionsPath + '/static/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
-        .pipe(minifyCss({compatibility: 'ie8'}))
-        .pipe(rename('style.min.css'))
         .pipe(autoprefixer({
           browsers: ['last 2 versions', 'ie >= 8'],
           cascade: false
         }))
         .pipe(bless())
+        .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(rename('style.min.css'))
         .pipe(gulp.dest(config.versionsPath + '/static/css/'))
         .pipe(browserSync.stream());
       break;
@@ -115,11 +115,11 @@ gulp.task('watch', function() {
     return gulp.src(src)
       .pipe(scsslint())
       .pipe(sass().on('error', sass.logError))
-      .pipe(minifyCss({compatibility: 'ie8'}))
       .pipe(autoprefixer({
         browsers: ['last 2 versions', 'ie >= 8'],
         cascade: false
       }))
+      .pipe(cleanCSS({compatibility: 'ie8'}))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream());
   })
