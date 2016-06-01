@@ -1,8 +1,3 @@
-// @codekit-prepend "../../../../static/components/bootstrap-sass-3.3.4/assets/javascripts/bootstrap.js";
-// @codekit-prepend "webcom-base.js";
-// @codekit-prepend "generic-base.js";
-
-
 // Define globals for JSHint validation:
 /* global console, IPAD_DEPLOYED, _gaq, Chart */
 
