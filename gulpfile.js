@@ -14,23 +14,23 @@ var gulp = require('gulp'),
     browserSync = require('browser-sync').create();
 
 var configDefault = {
-      fontPath: './static/fonts',
-      componentsPath: './static/components'
+      fontPath: 'static/fonts',
+      componentsPath: 'static/components'
     },
     config = merge(configDefault, configLocal);
 
-config.versionsPath = './versions/' + config.version;
+config.versionsPath = 'versions/' + config.version;
 
 
-// Lint all scss files (by version)
-gulp.task('scss-lint', function() {
+// Lint main scss files (by version)
+gulp.task('scss-main-lint', function() {
   gulp.src(config.versionsPath + '/**/*.scss')
     .pipe(scsslint());
 });
 
 
 // Compile + bless primary scss files (by version)
-gulp.task('css-main', function() {
+gulp.task('css-main-build', function() {
   switch (config.version) {
     case 'v3':
     case 'v4':
@@ -52,8 +52,8 @@ gulp.task('css-main', function() {
 });
 
 
-// All css-related tasks
-gulp.task('css', ['scss-lint', 'css-main']);
+// Main css-related tasks
+gulp.task('css', ['scss-main-lint', 'css-main-build']);
 
 
 // Run jshint on all js files in the version's js path
@@ -67,7 +67,7 @@ gulp.task('js-lint', function() {
 
 
 // Concat and uglify primary js files (by version)
-gulp.task('js-main', function() {
+gulp.task('js-build', function() {
   switch (config.version) {
     case 'v3':
     case 'v4':
@@ -92,7 +92,7 @@ gulp.task('js-main', function() {
 
 
 // All js-related tasks
-gulp.task('js', ['js-lint', 'js-main']);
+gulp.task('js', ['js-lint', 'js-build']);
 
 
 // Rerun tasks when files change
@@ -107,6 +107,23 @@ gulp.task('watch', function() {
 
   gulp.watch(config.versionsPath + '/**/*.scss', ['css']).on('change', browserSync.reload);
   gulp.watch(config.versionsPath + '/**/*.js', ['js']).on('change', browserSync.reload);
+
+  gulp.watch('dev/**/*.scss', function(event) {
+    var src = event.path,
+        dest = src.slice(0, (src.lastIndexOf('/') > -1 ? src.lastIndexOf('/') : src.lastIndexOf('\\')) + 1);
+
+    return gulp.src(src)
+      .pipe(scsslint())
+      .pipe(sass().on('error', sass.logError))
+      .pipe(minifyCss({compatibility: 'ie8'}))
+      .pipe(autoprefixer({
+        browsers: ['last 2 versions', 'ie >= 8'],
+        cascade: false
+      }))
+      .pipe(gulp.dest(dest))
+      .pipe(browserSync.stream());
+  })
+    .on('change', browserSync.reload);
 });
 
 
