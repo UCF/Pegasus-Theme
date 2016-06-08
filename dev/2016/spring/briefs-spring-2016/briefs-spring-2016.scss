@@ -134,16 +134,6 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     letter-spacing: inherit;
   }
 
-  a {
-    color: #000;
-    font-weight: bold;
-
-    &:hover,
-    &:active {
-      text-decoration: underline;
-    }
-  }
-
   blockquote {
     &.quote:before {
       font-size: 40px;
