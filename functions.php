@@ -77,7 +77,7 @@ function get_relevant_version( $the_post=null ) {
 
 					// Remove '/story' and '/issue' url prefixes (get_page_by_path() will fail if
 					// URLs have these prefixes)
-					$url_path = preg_replace( '/^\/story\/|\/issue\//', '/', $url_path );
+					$url_path = preg_replace( '/^\/story\/|\/issue\/|\/photo\_essay\//', '/', $url_path );
 
 					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
 					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
@@ -375,6 +375,9 @@ function get_relevant_issue( $post ) {
 	}
 	else if ( $post && $post->post_type == 'issue' && !is_404() && !is_search() ) {
 		$issue = $post;
+	} 
+	else if ( $post && $post->post_type == 'photo_essay' && !is_404() && !is_search() ) {
+		$issue = get_story_issue( $post );
 	}
 
 	// Fallback, or if get_story_issue() returned false
@@ -718,7 +721,7 @@ function output_header_markup($post) {
 
 	// Add font library stylesheets for fonts that are available via the
 	// WYSIWYG editor (excluding Cloud.Typography fonts, which are already included)
-	if ( $post->post_type == 'page' || ( ( $post->post_type == 'story' || $post->post_type == 'issue' || is_home() ) && !uses_custom_template( $post ) ) ) {
+	if ( $post->post_type == 'page' || ( ( $post->post_type == 'story' || $post->post_type == 'issue' || $post->post_type == 'photo_essay' || is_home() ) && !uses_custom_template( $post ) ) ) {
 		$fonts = unserialize( TEMPLATE_FONT_URLS );
 		if ( $fonts ) {
 			foreach ( $fonts as $name => $url ) {
