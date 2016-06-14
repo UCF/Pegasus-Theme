@@ -1,0 +1,101 @@
+@mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+	background-repeat: repeat-x;
+	background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
+	background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
+	background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
+}
+
+.header {
+	min-height: 400px;
+	position: relative;
+	@include gradient-directional(#262c44, #5d687e, 180deg);
+
+	.jumper-container {
+		position: absolute;
+
+		.jumper {
+			position: absolute;
+			left: 20%;
+			padding: 40px;
+		}
+
+		@keyframes cloudAnime {
+			0% {
+				top: 300px;
+			}
+			100% {
+				top: -350px;
+			}
+		}
+
+		@keyframes smCloudAnime {
+			0% {
+				top: 400px;
+			}
+			50% {
+				top: -350px;
+			}
+			100% {
+				top: -350px;
+			}
+		}
+
+		.cloud {
+			position: absolute;
+			top: 300px;
+			// animation-name: cloudAnime;
+			animation-duration: 40s;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+
+		.cloud-sm-left {
+			left: 10%;
+			animation-delay: 5s;
+			animation-duration: 5s;
+		}
+
+		.cloud-sm-right {
+			right: 40%;
+			animation-delay: 8s;
+			animation-duration: 10s;
+		}
+
+		.cloud-sm {
+			position: absolute;
+			top: 400px;
+			animation-name: smCloudAnime;
+			animation-iteration-count: infinite;
+			animation-timing-function: linear;
+		}
+
+		.pegasus {
+			position: absolute;
+			left: 15%;
+			top: 390px;
+			animation-name: cloudAnime;
+			animation-delay: 180s;
+			animation-duration: 1s;
+			animation-timing-function: linear;
+		}
+
+		.counter {
+			color: #fff;
+			display: inline-block;
+			font-family: 'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
+			font-size: 30px;
+			padding: 20px;
+			position: absolute;
+			left: 10%;
+			top: 310px;
+			white-space: nowrap;
+		}
+	}
+}
+
+.content {
+	background-color: #fff;
+	padding-top: 50px;
+	position: relative;
+	z-index: 200;
+}
