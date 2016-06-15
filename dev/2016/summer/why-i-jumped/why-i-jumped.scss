@@ -5,95 +5,119 @@
 	background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
 }
 
-.content-container {
-	margin-top: 40px;
-	overflow: hidden;
-}
+article.story {
 
-.side-bar {
-	@include gradient-directional(#262c44, #5d687e, 180deg);
-	margin-top: 25px;
-	height: 1000px;
-
-	.jumper-container {
-		position: relative;
-
-		@keyframes cloudAnime {
-			0% {
-				top: 2350px;
-			}
-			100% {
-				top: -350px;
-			}
-		}
-
-		.cloud {
-			position: absolute;
-			animation-name: cloudAnime;
-			animation-duration: 13s;
-			animation-iteration-count: infinite;
-			animation-timing-function: linear;
-			top: 1900px;
-		}
-
-		.cloud-sm-left {
-			animation-duration: 6s;
-			left: -300px;
-			top: 1900px;
-		}
-
-		.cloud-sm-right {
-			animation-delay: 3s;
-			animation-duration: 22s;
-			right: -100px;
-			top: 1900px;
-		}
-
-		.cloud-sm {
-			position: absolute;
-			animation-name: cloudAnime;
-			animation-iteration-count: infinite;
-			animation-timing-function: linear;
-		}
-
-		.pegasus {
-			position: absolute;
-			left: 40%;
-			top: 2000px;
-			animation-name: cloudAnime;
-			animation-delay: 180s;
-			animation-duration: 2s;
-			animation-timing-function: linear;
-		}
-
-		.jumper {
-			position: fixed;
-			text-align: center;
-			top: 50%;
-
-			.counter {
-				color: #fff;
-				display: inline-block;
-				font-size: 30px;
-				padding: 20px 0;
-				white-space: nowrap;
-			}
-		}
-
-		.jumper-fixed {
-			position: fixed;
-		}
-
-		.jumper-absolute {
-			position: absolute;
-			top: 1700px;
-		}
-
+	h1 {
+		color: #262c44;
+		font-size: 60px;
+		margin-bottom: 5px;
 	}
-}
 
-.content {
-	background-color: #fff;
-	position: relative;
-	z-index: 200;
+	.content-container {
+		margin-top: 40px;
+
+		.content {
+			position: relative;
+		}
+	}
+
+	.side-bar {
+		@include gradient-directional(#262c44, #5d687e, 180deg);
+		height: 1000px;
+		overflow: hidden;
+
+		.jumper-container {
+			position: relative;
+
+			@keyframes cloudAnime {
+				0% {
+					top: 2350px;
+				}
+				100% {
+					top: -350px;
+				}
+			}
+
+			.cloud {
+				position: absolute;
+				animation-name: cloudAnime;
+				animation-duration: 13s;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+				top: 1900px;
+			}
+
+			.cloud-sm-left {
+				animation-duration: 6s;
+				left: -300px;
+				top: 1900px;
+			}
+
+			.cloud-sm-right {
+				animation-delay: 3s;
+				animation-duration: 22s;
+				right: -100px;
+				top: 1900px;
+			}
+
+			.cloud-sm {
+				position: absolute;
+				animation-name: cloudAnime;
+				animation-iteration-count: infinite;
+				animation-timing-function: linear;
+			}
+
+			.pegasus {
+				position: absolute;
+				left: 40%;
+				top: 2000px;
+				animation-name: cloudAnime;
+				animation-delay: 180s;
+				animation-duration: 2s;
+				animation-timing-function: linear;
+			}
+
+			@keyframes jumperAnime {
+				0% {
+					padding-right: 8px;
+				}
+				100% {
+					padding-left: 8px;
+				}
+			}
+
+			.jumper {
+				position: fixed;
+				text-align: center;
+				top: 50%;
+
+				.space-man {
+					animation-name: jumperAnime;
+					animation-direction: alternate;
+					animation-duration: 3s;
+					animation-iteration-count: infinite;
+				}
+
+				.counter {
+					color: #fff;
+					display: inline-block;
+					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+					font-size: 30px;
+					font-weight: bold;
+					padding: 20px 0;
+					white-space: nowrap;
+				}
+			}
+
+			.jumper-fixed {
+				position: fixed;
+			}
+
+			.jumper-absolute {
+				position: absolute;
+				top: 1700px;
+			}
+
+		}
+	}
 }

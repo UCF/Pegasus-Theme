@@ -45,7 +45,6 @@ $(function() {
         var $jumper = $('.jumper');
         $(window).scroll(function (event) {
             var scroll = $(window).scrollTop();
-            console.log(scroll + " > " + sideBarHeight);
             if(scroll < sideBarHeight) {
                 $jumper.addClass('jumper-fixed');
                 $jumper.removeClass('jumper-absolute');
@@ -53,13 +52,13 @@ $(function() {
             } else {
                 $jumper.addClass('jumper-absolute');
                 $jumper.removeClass('jumper-fixed');
-                $jumper.css('top', sideBarHeight + 400);
+                $jumper.css('top', sideBarHeight + 100);
             }
         });
     }
 
     $('.side-bar').height($('.content').height());
-    var sideBarHeight = $('.side-bar').height() - 700;
+    var sideBarHeight = $('.side-bar').height() - 420;
 
     startNumberAnime();
     pauseJumperScoll();
