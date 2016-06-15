@@ -41,6 +41,27 @@ $(function() {
         });
     }
 
+    function pauseJumperScoll() {
+        var $jumper = $('.jumper');
+        $(window).scroll(function (event) {
+            var scroll = $(window).scrollTop();
+            console.log(scroll + " > " + sideBarHeight);
+            if(scroll < sideBarHeight) {
+                $jumper.addClass('jumper-fixed');
+                $jumper.removeClass('jumper-absolute');
+                $jumper.css('top', '50%');
+            } else {
+                $jumper.addClass('jumper-absolute');
+                $jumper.removeClass('jumper-fixed');
+                $jumper.css('top', sideBarHeight + 400);
+            }
+        });
+    }
+
+    $('.side-bar').height($('.content').height());
+    var sideBarHeight = $('.side-bar').height() - 700;
+
     startNumberAnime();
+    pauseJumperScoll();
 
 });

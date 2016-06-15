@@ -5,35 +5,22 @@
 	background-image: linear-gradient($deg, $start-color, $end-color); // Standard, IE10, Firefox 16+, Opera 12.10+, Safari 7+, Chrome 26+
 }
 
-.header {
-	min-height: 400px;
-	position: relative;
+.content-container {
+	margin-top: 40px;
+	overflow: hidden;
+}
+
+.side-bar {
 	@include gradient-directional(#262c44, #5d687e, 180deg);
+	margin-top: 25px;
+	height: 1000px;
 
 	.jumper-container {
-		position: absolute;
-
-		.jumper {
-			position: absolute;
-			left: 20%;
-			padding: 40px;
-		}
+		position: relative;
 
 		@keyframes cloudAnime {
 			0% {
-				top: 300px;
-			}
-			100% {
-				top: -350px;
-			}
-		}
-
-		@keyframes smCloudAnime {
-			0% {
-				top: 400px;
-			}
-			50% {
-				top: -350px;
+				top: 2350px;
 			}
 			100% {
 				top: -350px;
@@ -42,60 +29,71 @@
 
 		.cloud {
 			position: absolute;
-			top: 300px;
-			// animation-name: cloudAnime;
-			animation-duration: 40s;
+			animation-name: cloudAnime;
+			animation-duration: 13s;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
+			top: 1900px;
 		}
 
 		.cloud-sm-left {
-			left: 10%;
-			animation-delay: 5s;
-			animation-duration: 5s;
+			animation-duration: 6s;
+			left: -300px;
+			top: 1900px;
 		}
 
 		.cloud-sm-right {
-			right: 40%;
-			animation-delay: 8s;
-			animation-duration: 10s;
+			animation-delay: 3s;
+			animation-duration: 22s;
+			right: -100px;
+			top: 1900px;
 		}
 
 		.cloud-sm {
 			position: absolute;
-			top: 400px;
-			animation-name: smCloudAnime;
+			animation-name: cloudAnime;
 			animation-iteration-count: infinite;
 			animation-timing-function: linear;
 		}
 
 		.pegasus {
 			position: absolute;
-			left: 15%;
-			top: 390px;
+			left: 40%;
+			top: 2000px;
 			animation-name: cloudAnime;
 			animation-delay: 180s;
-			animation-duration: 1s;
+			animation-duration: 2s;
 			animation-timing-function: linear;
 		}
 
-		.counter {
-			color: #fff;
-			display: inline-block;
-			font-family: 'Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif';
-			font-size: 30px;
-			padding: 20px;
-			position: absolute;
-			left: 10%;
-			top: 310px;
-			white-space: nowrap;
+		.jumper {
+			position: fixed;
+			text-align: center;
+			top: 50%;
+
+			.counter {
+				color: #fff;
+				display: inline-block;
+				font-size: 30px;
+				padding: 20px 0;
+				white-space: nowrap;
+			}
 		}
+
+		.jumper-fixed {
+			position: fixed;
+		}
+
+		.jumper-absolute {
+			position: absolute;
+			top: 1700px;
+		}
+
 	}
 }
 
 .content {
 	background-color: #fff;
-	padding-top: 50px;
 	position: relative;
 	z-index: 200;
 }
