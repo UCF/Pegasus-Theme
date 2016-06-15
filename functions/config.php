@@ -115,6 +115,7 @@ $custom_available_fonts_array = array(
 	'Visitor'				=> THEME_FONT_URL . '/visitor/stylesheet.css',
 	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' 	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+	'League Spartan' 		=> THEME_FONT_URL . '/league-spartan/stylesheet.css',
 );
 define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 

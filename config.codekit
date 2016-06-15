@@ -8163,6 +8163,157 @@
 		"outputStyle": 1,
 		"syntaxCheckerStyle": 1
 		},
+	"\/dev\/2016\/summer\/css\/one-small-step-for-man-one-giant-leap-for-ucf.css": {
+		"fileType": 16,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/css\/one-small-step-for-man-one-giant-leap-for-ucf.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-down.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 808,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-down.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-down.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-solid.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 504,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-solid.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/arrow-solid.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/citronaut.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 97894,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/citronaut.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/citronaut.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 1656,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.html": {
+		"fileType": 8192,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.html",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/one-small-step-for-man-one-giant-leap-for-ucf.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/css\/one-small-step-for-man-one-giant-leap-for-ucf.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_layout.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_layout.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/css\/_layout.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_mixins.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_mixins.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/css\/_mixins.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_variables.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 1,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/partials\/_variables.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/css\/_variables.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/style.scss": {
+		"createSourceMap": 0,
+		"debugStyle": 0,
+		"decimalPrecision": 10,
+		"fileType": 4,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/timeline\/style.scss",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/css\/style.css",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"outputStyle": 0,
+		"shouldRunAutoprefixer": 0,
+		"shouldRunBless": 0,
+		"useLibsass": 0
+		},
 	"\/functions.php": {
 		"fileType": 8192,
 		"ignore": 0,
@@ -11773,6 +11924,15 @@
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0
 		},
+	"\/static\/fonts\/league-spartan\/stylesheet.css": {
+		"fileType": 16,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"inputAbbreviatedPath": "\/static\/fonts\/league-spartan\/stylesheet.css",
+		"outputAbbreviatedPath": "No Output Path",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0
+		},
 	"\/static\/fonts\/montserrat\/stylesheet.css": {
 		"fileType": 16,
 		"ignore": 0,
@@ -13300,7 +13460,7 @@
 	},
 "hooks": [
 	],
-"lastSavedByUser": "Work",
+"lastSavedByUser": "Keegan Berry",
 "manualImportLinks": {
 	},
 "projectAttributes": {

@@ -332,6 +332,10 @@ add_shortcode( 'sidebar', 'sc_sidebar' );
 function sc_social_buttons($attr) {
 	global $post;
 
+	if ( !is_array($attr) ) {
+		$attr = array();
+	}
+
 	$title = $attr['title'] ? $attr['title'] : $post->post_title;
 	$url = $attr['url'] ? $attr['url'] : get_permalink($post->ID);
 
