@@ -1,0 +1,227 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+$flagpole-height: 45px;
+
+
+@keyframes flyInFlagSkewUp {
+  from { transform: skewY(-32deg) scaleX(.9) translateY(-1500px); }
+  to   { transform: skewY(-32deg) scaleX(.9) translateY(0); }
+}
+
+@keyframes flyInFlagSkewDown {
+  from { transform: skewY(32deg) scaleX(.9) translateY(-1500px); }
+  to   { transform: skewY(32deg) scaleX(.9) translateY(0); }
+}
+
+
+.story {
+  .map-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-img {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  // Flag styles
+
+  .flag {
+    display: none;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 2;
+
+    @media (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+
+  .flag-ne {
+    animation: flyInFlagSkewUp 1s ease-in-out;
+    transform: skewY(-32deg) scaleX(.9) translate(-1000px);
+  }
+
+  .flag-sw {
+    animation: flyInFlagSkewUp 1.5s ease-in-out;
+    transform: skewY(-32deg) scaleX(.9) translate(-1000px);
+  }
+
+  .flag-nw {
+    animation: flyInFlagSkewDown 1s ease-in-out;
+    transform: skewY(32deg) scaleX(.9) translate(-1000px);
+  }
+
+  .flag-se {
+    animation: flyInFlagSkewDown 1.5s ease-in-out;
+    transform: skewY(32deg) scaleX(.9) translate(-1000px);
+  }
+
+  .flag-ucf-downtown {
+    animation: flyInFlagSkewDown 2s ease-in-out;
+    transform: skewY(32deg) scaleX(.9) translate(-1000px);
+  }
+
+  .flag-nw,
+  .flag-sw {
+    // Position the flagpole right of the flag
+    .flag-text {
+      &:before {
+        right: 0;
+      }
+
+      &:after {
+        right: -2px;
+      }
+    }
+  }
+
+  .flag-ne,
+  .flag-se {
+    // Position the flagpole left of the flag
+    .flag-text {
+      &:before {
+        left: 0;
+      }
+
+      &:after {
+        left: -2px;
+      }
+    }
+  }
+
+  .flag-text {
+    @include font-smoothing();
+    background-color: #fc0;
+    color: #000;
+    display: block;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 12px;
+    padding: 4px 6px;
+    position: relative;
+
+    &:before,
+    &:after {
+      // flagpole + cap base styles
+      background-color: #444;
+      content: '';
+      position: absolute;
+    }
+
+    &:before {
+      // flagpole
+      height: $flagpole-height;
+      top: -4px;
+      width: 2px;
+    }
+
+    &:after {
+      // flagpole cap
+      border-radius: 6px;
+      height: 6px;
+      top: -8px;
+      width: 6px;
+    }
+  }
+
+  .flag-ucf-downtown .flag-text {
+    @include no-font-smoothing();
+    background-color: #000;
+    color: #fff;
+    font-size: 15px;
+
+    .alt {
+      color: #fc0;
+    }
+  }
+
+
+  // Specific flag positioning
+
+  .inview {
+    .flag-ne,
+    .flag-sw {
+      transform: skewY(-32deg) scaleX(.9) translate(0);
+    }
+
+    .flag-nw,
+    .flag-se {
+      transform: skewY(32deg) scaleX(.9) translate(0);
+    }
+
+    .flag-ucf-downtown {
+      left: 51.75%;
+      top: 68.25%;
+
+      .flag-text {
+        @include no-font-smoothing();
+        background-color: #000;
+        color: #fff;
+        font-size: 15px;
+
+        .alt {
+          color: #fc0;
+        }
+      }
+    }
+
+    .flag-dr-phillips {
+      right: 40.5%;
+      top: 10%;
+    }
+
+    .flag-city-hall {
+      right: 26.5%;
+      top: 6%;
+    }
+
+    .flag-exec-dev {
+      right: 45.5%;
+      top: 26.75%;
+    }
+
+    .flag-church-tech {
+      // $flagpole-height / 2 should be roughly the amount of flagpole space that sticks outside of .flag's box
+      bottom: calc(74% + #{$flagpole-height / 2});
+      left: 62.5%;
+    }
+
+    .flag-amway {
+      bottom: calc(72% + #{$flagpole-height / 2});
+      right: 11%;
+    }
+
+    .flag-courthouse {
+      bottom: calc(59.75% + #{$flagpole-height / 2});
+      left: 4%;
+    }
+
+    .flag-lynx {
+      bottom: calc(45.5% + #{$flagpole-height / 2});
+      right: 77%;
+    }
+
+    .flag-famu {
+      bottom: calc(52.25% + #{$flagpole-height / 2});
+      right: 47.75%;
+    }
+
+    .flag-mls {
+      bottom: calc(52% + #{$flagpole-height / 2});
+      right: 5%;
+    }
+
+    .flag-parramore {
+      bottom: calc(16% + #{$flagpole-height / 2});
+      left: 67%;
+    }
+  }
+
+}
