@@ -45,28 +45,19 @@ $flagpole-height: 45px;
   }
 
   .flag-ne {
-    animation: flyInFlagSkewUp 1s ease-in-out;
-    transform: skewY(-32deg) scaleX(.9) translate(-1000px);
+    transform: skewY(-32deg) scaleX(.9) translate(-1500px);
   }
 
   .flag-sw {
-    animation: flyInFlagSkewUp 1.5s ease-in-out;
-    transform: skewY(-32deg) scaleX(.9) translate(-1000px);
+    transform: skewY(-32deg) scaleX(.9) translate(-1500px);
   }
 
   .flag-nw {
-    animation: flyInFlagSkewDown 1s ease-in-out;
-    transform: skewY(32deg) scaleX(.9) translate(-1000px);
+    transform: skewY(32deg) scaleX(.9) translate(-1500px);
   }
 
   .flag-se {
-    animation: flyInFlagSkewDown 1.5s ease-in-out;
-    transform: skewY(32deg) scaleX(.9) translate(-1000px);
-  }
-
-  .flag-ucf-downtown {
-    animation: flyInFlagSkewDown 2s ease-in-out;
-    transform: skewY(32deg) scaleX(.9) translate(-1000px);
+    transform: skewY(32deg) scaleX(.9) translate(-1500px);
   }
 
   .flag-nw,
@@ -131,14 +122,16 @@ $flagpole-height: 45px;
     }
   }
 
-  .flag-ucf-downtown .flag-text {
-    @include no-font-smoothing();
-    background-color: #000;
-    color: #fff;
-    font-size: 15px;
+  .flag-ucf-downtown {
+    .flag-text {
+      @include no-font-smoothing();
+      background-color: #000;
+      color: #fff;
+      font-size: 15px;
 
-    .alt {
-      color: #fc0;
+      .alt {
+        color: #fc0;
+      }
     }
   }
 
@@ -157,6 +150,7 @@ $flagpole-height: 45px;
     }
 
     .flag-ucf-downtown {
+      animation: flyInFlagSkewDown 2s ease-in-out;
       left: 51.75%;
       top: 68.25%;
 
@@ -173,52 +167,62 @@ $flagpole-height: 45px;
     }
 
     .flag-dr-phillips {
+      animation: flyInFlagSkewUp 1s ease-in-out;
       right: 40.5%;
       top: 10%;
     }
 
     .flag-city-hall {
+      animation: flyInFlagSkewUp 1.25s ease-in-out;
       right: 26.5%;
       top: 6%;
     }
 
     .flag-exec-dev {
+      animation: flyInFlagSkewUp .75s ease-in-out;
       right: 45.5%;
       top: 26.75%;
     }
 
     .flag-church-tech {
+      animation: flyInFlagSkewUp 1.25s ease-in-out;
       // $flagpole-height / 2 should be roughly the amount of flagpole space that sticks outside of .flag's box
       bottom: calc(74% + #{$flagpole-height / 2});
       left: 62.5%;
     }
 
     .flag-amway {
+      animation: flyInFlagSkewDown .75s ease-in-out;
       bottom: calc(72% + #{$flagpole-height / 2});
       right: 11%;
     }
 
     .flag-courthouse {
+      animation: flyInFlagSkewUp 1s ease-in-out;
       bottom: calc(59.75% + #{$flagpole-height / 2});
       left: 4%;
     }
 
     .flag-lynx {
+      animation: flyInFlagSkewDown 1.25s ease-in-out;
       bottom: calc(45.5% + #{$flagpole-height / 2});
       right: 77%;
     }
 
     .flag-famu {
+      animation: flyInFlagSkewDown 1.25s ease-in-out;
       bottom: calc(52.25% + #{$flagpole-height / 2});
       right: 47.75%;
     }
 
     .flag-mls {
+      animation: flyInFlagSkewDown .75s ease-in-out;
       bottom: calc(52% + #{$flagpole-height / 2});
       right: 5%;
     }
 
     .flag-parramore {
+      animation: flyInFlagSkewUp 1s ease-in-out;
       bottom: calc(16% + #{$flagpole-height / 2});
       left: 67%;
     }
