@@ -19,6 +19,13 @@ $flagpole-height: 45px;
 
 
 .story {
+  &,
+  p,
+  ol,
+  ul {
+    font-size: 18px;
+  }
+
   .map-container {
     overflow: hidden;
     position: relative;
