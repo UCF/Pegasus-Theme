@@ -5,6 +5,7 @@
 
 
 $flagpole-height: 45px;
+$ucf-gold: #fc0;
 
 
 @keyframes flyInFlagSkewUp {
@@ -18,12 +19,311 @@ $flagpole-height: 45px;
 }
 
 
-.story {
+article.story {
   &,
   p,
   ol,
   ul {
+    font-size: 16px;
+    line-height: 1.45;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  ol,
+  ul {
+    margin-top: $grid-gutter-width / 2;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6,
+  .lead:first-letter,
+  .jumbo-numbered-list-item:before,
+  .stats-numbers-list dt {
+    @include no-font-smoothing();
+    font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  strong {
+    @include no-font-smoothing();
+    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  figcaption,
+  blockquote small,
+  .lead,
+  .well,
+  .well p,
+  .well ol,
+  .well ul,
+  .photo-credit,
+  .stats-section,
+  .stats-section ul {
+    font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  h2,
+  .h2 {
+    font-size: 28px;
+    margin-bottom: .4em;
+    margin-top: 1.4em;
+  }
+
+  h3,
+  .h3 {
+    font-size: 19px;
+    margin-bottom: .2em;
+  }
+
+  h4,
+  .h4 {
+    font-size: 17px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 15px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 13px;
+  }
+
+  blockquote {
+    padding: 0;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 35px;
+    }
+
+    &,
+    & p {
+      font-size: 24px;
+      line-height: 1.4375;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 32px;
+      }
+    }
+
+    small {
+      font-style: italic;
+
+      @media (min-width: $screen-sm-min) {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  figcaption {
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 30px;
+    position: relative;
+
+    &:after {
+      border-color: transparent transparent $ucf-gold;
+      border-style: solid;
+      border-width: 0 9px 10px;
+      content: '';
+      height: 0;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      top: 2px;
+      width: 0;
+    }
+  }
+
+  hr {
+    background-image: linear-gradient(to right, #333 20%, rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-size: 10px 2px;
+    border-top: 0 solid transparent;
+    height: 3px;
+    margin-bottom: $grid-gutter-width;
+    margin-top: $grid-gutter-width;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: $grid-gutter-width * 1.5;
+      margin-top: $grid-gutter-width * 1.5;
+    }
+  }
+
+  .lead {
     font-size: 18px;
+    line-height: 1.6;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    &:first-letter {
+      line-height: .72;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 125px;
+      }
+    }
+  }
+
+  .section-heading,
+  .section-heading-inverse {
+    margin-bottom: $grid-gutter-width;
+
+    &:after {
+      content: ' ';
+      display: block;
+      height: 3px;
+      margin-top: 8px;
+      width: 25px;
+    }
+  }
+
+  .section-heading {
+    &:after {
+      background-color: $ucf-gold;
+    }
+  }
+
+  .section-heading-inverse {
+    &:after {
+      background-color: #fff;
+    }
+  }
+
+
+  // Design Priorities
+
+  .jumbo-numbered-list {
+    counter-reset: item;
+    list-style-type: none;
+    margin-top: $grid-gutter-width;
+  }
+
+  .jumbo-numbered-list-item {
+    counter-increment: item;
+    margin-bottom: $grid-gutter-width;
+    padding-left: 40px;
+    position: relative;
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: 80px;
+    }
+
+    &:before {
+      color: $ucf-gold;
+      content: counter(item, decimal);
+      display: block;
+      font-size: 36px;
+      font-weight: 800;
+      left: 0;
+      line-height: .825;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 40px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 75px;
+        width: 80px;
+      }
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+  }
+
+
+  // Campus Life
+
+  .campus-life {
+    line-height: 0; // makes <br>'s in this elem shorter
+    margin-top: 2.4em;
+
+    @media (min-width: $screen-md-min) {
+      padding-left: $grid-gutter-width;
+    }
+
+    figcaption {
+      line-height: 1.4;
+      margin-top: 20px;
+    }
+  }
+
+
+  // Leading the Charge
+
+  .well {
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+
+    &,
+    p,
+    ol,
+    ul {
+      font-size: 14px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .well-striped {
+    background: repeating-linear-gradient(
+      -40deg,
+      #f4f9fb,
+      #f4f9fb 8px,
+      #fff 8px,
+      #fff 16px
+    );
+  }
+
+  .well-heading {
+    margin-top: 20px;
+  }
+
+  .leading-charge-inner {
+    padding-top: 2px;
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: $grid-gutter-width / 2;
+      padding-top: 0;
+    }
+  }
+
+
+  // Map
+
+  .photo-credit {
+    color: $gray-light;
+    font-size: 11px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
   }
 
   .map-container {
@@ -97,7 +397,7 @@ $flagpole-height: 45px;
 
   .flag-text {
     @include font-smoothing();
-    background-color: #fc0;
+    background-color: $ucf-gold;
     color: #000;
     display: block;
     font-family: 'Open Sans Condensed', sans-serif;
@@ -137,7 +437,7 @@ $flagpole-height: 45px;
       font-size: 15px;
 
       .alt {
-        color: #fc0;
+        color: $ucf-gold;
       }
     }
   }
@@ -168,7 +468,7 @@ $flagpole-height: 45px;
         font-size: 15px;
 
         .alt {
-          color: #fc0;
+          color: $ucf-gold;
         }
       }
     }
@@ -232,6 +532,64 @@ $flagpole-height: 45px;
       animation: flyInFlagSkewUp 1s ease-in-out;
       bottom: calc(16% + #{$flagpole-height / 2});
       left: 67%;
+    }
+  }
+
+
+  // Numbers/Partners
+
+  .stats-container {
+    @media (min-width: $screen-md-min) {
+      display: table-row;
+    }
+  }
+
+  .stats-section {
+    height: 100%;
+    padding: 15px 25px 25px;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 25px 50px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      display: table-cell;
+    }
+  }
+
+  .stats-numbers {
+    background-color: $ucf-gold;
+
+    @media (min-width: $screen-md-min) {
+      width: 65%;
+    }
+  }
+
+  .stats-numbers-list {
+    margin-bottom: 0;
+
+    dt {
+      color: #fff;
+      font-size: 45px;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+
+    dd {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .stats-partners {
+    background-color: #fafafa;
+
+    @media (min-width: $screen-md-min) {
+      width: 35%;
+    }
+
+    ul {
+      font-size: 13px;
     }
   }
 
