@@ -4,6 +4,7 @@
 @import '../../../../versions/v4/static/scss/mixins';
 
 
+$site-nav-height: 40px;
 $flagpole-height: 45px;
 $ucf-gold: #fc0;
 
@@ -20,6 +21,9 @@ $ucf-gold: #fc0;
 
 
 article.story {
+
+  // General overrides
+
   &,
   p,
   ol,
@@ -34,7 +38,7 @@ article.story {
 
   ol,
   ul {
-    margin-top: $grid-gutter-width / 2;
+    margin-top: 15px;
   }
 
   h1,
@@ -58,7 +62,9 @@ article.story {
     font-weight: 800;
   }
 
-  strong {
+  strong,
+  h1 .alt,
+  .author {
     @include no-font-smoothing();
     font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-style: normal;
@@ -78,6 +84,35 @@ article.story {
     font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-style: normal;
     font-weight: 400;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 11vw;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 85px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 120px;
+    }
+
+    .alt {
+      color: $ucf-gold;
+      font-size: 4.5vw;
+      letter-spacing: .25em;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 28px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        font-size: 40px;
+      }
+    }
   }
 
   h2,
@@ -161,12 +196,12 @@ article.story {
     background-size: 10px 2px;
     border-top: 0 solid transparent;
     height: 3px;
-    margin-bottom: $grid-gutter-width;
-    margin-top: $grid-gutter-width;
+    margin-bottom: 30px;
+    margin-top: 30px;
 
     @media (min-width: $screen-sm-min) {
-      margin-bottom: $grid-gutter-width * 1.5;
-      margin-top: $grid-gutter-width * 1.5;
+      margin-bottom: 40px;
+      margin-top: 40px;
     }
   }
 
@@ -190,7 +225,7 @@ article.story {
 
   .section-heading,
   .section-heading-inverse {
-    margin-bottom: $grid-gutter-width;
+    margin-bottom: 40px;
 
     &:after {
       content: ' ';
@@ -214,17 +249,81 @@ article.story {
   }
 
 
+  // Header Image
+
+  .story-header-image {
+    background-size: cover;
+    height: 500px;
+    margin-bottom: 30px;
+    transform-style: preserve-3d;
+
+    @media (min-width: $screen-sm-min) {
+      height: calc(100vh - #{$site-nav-height});
+      margin-bottom: 50px;
+      min-height: 650px;
+    }
+  }
+
+  .story-header-inner {
+    position: relative;
+    top: 18%;
+    transform: translateY(-18%);
+  }
+
+  .description {
+    color: #fff;
+    font-size: 17px;
+    font-style: normal;
+    line-height: 1.4;
+
+    @media (min-width: 475px) {
+      font-size: 3vw;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 30px;
+    }
+  }
+
+  .author {
+    font-size: 13px;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+    @media (min-width: 475px) {
+      font-size: 2vw;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  .social {
+    margin-top: 30px;
+    text-align: center;
+
+    .share-facebook,
+    .share-twitter,
+    .share-googleplus {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+    }
+  }
+
+
   // Design Priorities
 
   .jumbo-numbered-list {
     counter-reset: item;
     list-style-type: none;
-    margin-top: $grid-gutter-width;
+    margin-top: 30px;
   }
 
   .jumbo-numbered-list-item {
     counter-increment: item;
-    margin-bottom: $grid-gutter-width;
+    margin-bottom: 30px;
     padding-left: 40px;
     position: relative;
 
@@ -264,7 +363,7 @@ article.story {
     margin-top: 2.4em;
 
     @media (min-width: $screen-md-min) {
-      padding-left: $grid-gutter-width;
+      padding-left: 30px;
     }
 
     figcaption {
@@ -311,7 +410,7 @@ article.story {
     padding-top: 2px;
 
     @media (min-width: $screen-sm-min) {
-      padding-left: $grid-gutter-width / 2;
+      padding-left: 15px;
       padding-top: 0;
     }
   }
