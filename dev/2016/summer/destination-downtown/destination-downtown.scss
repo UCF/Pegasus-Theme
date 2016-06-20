@@ -64,7 +64,8 @@ article.story {
 
   strong,
   h1 .alt,
-  .author {
+  .author,
+  .perimeter-text {
     @include no-font-smoothing();
     font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-style: normal;
@@ -437,13 +438,63 @@ article.story {
   }
 
 
+  // Perimeter circle styles
+
+  .perimeter {
+    background-image: radial-gradient(ellipse at center, rgba(125, 185, 232, 0) 55%, rgba(125, 185, 232, .5) 95%, rgba(30, 87, 153, 1) 100%);
+    border: 3px solid #1B87B9;
+    border-radius: 100%;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg) scale(0);
+    z-index: 2;
+
+    @media (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+
+  .perimeter-5min {
+    height: 62%;
+    left: 22%;
+    top: 37%;
+    width: 64%;
+  }
+
+  .perimeter-15min {
+    height: 140%;
+    left: -16%;
+    top: -1.5%;
+    width: 145%;
+  }
+
+  .perimeter-text {
+    background-color: #1B87B9;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    padding: 5px 12px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 45%;
+    transform: scaleY(.9);
+    z-index: 3;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 12px;
+    }
+  }
+
+
+
   // Flag styles
 
   .flag {
     display: none;
     position: absolute;
     text-transform: uppercase;
-    z-index: 2;
+    z-index: 4;
 
     @media (min-width: $screen-sm-min) {
       display: block;
@@ -500,9 +551,13 @@ article.story {
     color: #000;
     display: block;
     font-family: 'Open Sans Condensed', sans-serif;
-    font-size: 12px;
+    font-size: 11px;
     padding: 4px 6px;
     position: relative;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 12px;
+    }
 
     &:before,
     &:after {
@@ -542,9 +597,24 @@ article.story {
   }
 
 
-  // Specific flag positioning
+  // Specific perimeter+flag positioning
 
   .inview {
+    .perimeter {
+      transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg) scale(1);
+      transition: transform 1.5s cubic-bezier(.770, 0, .175, 1);
+      transition-timing-function: cubic-bezier(.770, 0, .175, 1);
+    }
+
+    .perimeter-5min {
+      transition-delay: 2.25s;
+    }
+
+    .perimeter-15min {
+      transition-delay: 1.75s;
+    }
+
+
     .flag-ne,
     .flag-sw {
       transform: skewY(-32deg) scaleX(.9) translate(0);
