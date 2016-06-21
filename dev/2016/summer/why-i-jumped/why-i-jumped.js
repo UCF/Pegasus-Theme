@@ -35,32 +35,34 @@ $(function() {
     function startNumberAnime() {
         $('.counter').each(function (index, element) {
             var $element = $(element);
-            setTimeout(function () {
+            numberTimeout = setTimeout(function () {
                 animateNumber($element);
             }, 1000);
         });
     }
 
-    function pauseJumperScoll() {
-        var $jumper = $('.jumper');
+    function addScrollEvent() {
+        $('.side-bar').height($('.content').height());
+
         $(window).scroll(function (event) {
             var scroll = $(window).scrollTop();
-            if(scroll < sideBarHeight) {
-                $jumper.addClass('jumper-fixed');
-                $jumper.removeClass('jumper-absolute');
-                $jumper.css('top', '50%');
-            } else {
-                $jumper.addClass('jumper-absolute');
-                $jumper.removeClass('jumper-fixed');
-                $jumper.css('top', sideBarHeight + 100);
-            }
+            $jumper.css('top', scroll);
         });
     }
 
-    $('.side-bar').height($('.content').height());
-    var sideBarHeight = $('.side-bar').height() - 420;
+    function addPlayPauseClickHandler() {
+        $('.pause').find('span').on('click', function() {
+            $(this).toggleClass('glyphicon-pause glyphicon-play');
+            $jumper.find('div:first-child').toggleClass('space-man');
+            $jumperContainer.find('.cloud,.cloud-sm,.counter,.pegasus').toggle();
+        });
+    }
+
+    var $jumperContainer = $('.jumper-container'),
+        $jumper = $jumperContainer.find('.jumper');
 
     startNumberAnime();
-    pauseJumperScoll();
+    addScrollEvent();
+    addPlayPauseClickHandler();
 
 });

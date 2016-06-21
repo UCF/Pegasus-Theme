@@ -8,26 +8,35 @@
 article.story {
 
 	h1 {
-		color: #262c44;
+		color: #2c314b;
 		font-size: 60px;
 		margin-bottom: 5px;
 	}
 
 	.content-container {
 		margin-top: 40px;
-
-		.content {
-			position: relative;
-		}
 	}
 
 	.side-bar {
-		@include gradient-directional(#262c44, #5d687e, 180deg);
+		@include gradient-directional(#2c314b, #9aaabc, 180deg);
 		height: 1000px;
 		overflow: hidden;
 
+		// Animation control
+
+		.pause {
+			color: #fff;
+			cursor: pointer;
+			position: absolute;
+			right: 5px;
+			top: 5px;
+			z-index: 300;
+		}
+
 		.jumper-container {
 			position: relative;
+
+			// Clouds
 
 			@keyframes cloudAnime {
 				0% {
@@ -67,6 +76,8 @@ article.story {
 				animation-timing-function: linear;
 			}
 
+			// Pegasus
+
 			.pegasus {
 				position: absolute;
 				left: 40%;
@@ -77,19 +88,31 @@ article.story {
 				animation-timing-function: linear;
 			}
 
+			// Jumper
+
+			@keyframes jumperInitAnime {
+				from {
+					top: -300px;
+				}
+				to {
+					top: 0;
+				}
+			}
+
 			@keyframes jumperAnime {
-				0% {
+				from {
 					padding-right: 8px;
 				}
-				100% {
+				to {
 					padding-left: 8px;
 				}
 			}
 
 			.jumper {
-				position: fixed;
 				text-align: center;
-				top: 50%;
+				position: absolute;
+				animation-name: jumperInitAnime;
+				animation-duration: 2s;
 
 				.space-man {
 					animation-name: jumperAnime;
@@ -107,15 +130,6 @@ article.story {
 					padding: 20px 0;
 					white-space: nowrap;
 				}
-			}
-
-			.jumper-fixed {
-				position: fixed;
-			}
-
-			.jumper-absolute {
-				position: absolute;
-				top: 1700px;
 			}
 
 		}
