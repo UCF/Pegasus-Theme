@@ -7,6 +7,7 @@
 $site-nav-height: 40px;
 $flagpole-height: 45px;
 $ucf-gold: #fc0;
+$perimeter-bg: #1b87b9;
 
 
 @keyframes flyInFlagSkewUp {
@@ -105,13 +106,14 @@ article.story {
       color: $ucf-gold;
       font-size: 4.5vw;
       letter-spacing: .25em;
+      margin-bottom: .3em;
 
       @media (min-width: $screen-sm-min) {
         font-size: 28px;
       }
 
       @media (min-width: $screen-md-min) {
-        font-size: 40px;
+        font-size: 38px;
       }
     }
   }
@@ -263,12 +265,21 @@ article.story {
       margin-bottom: 50px;
       min-height: 650px;
     }
+
+    img {
+      clip: unset;
+      height: auto;
+      margin: 0 auto;
+      position: static;
+      visibility: visible;
+      width: auto;
+    }
   }
 
   .story-header-inner {
     position: relative;
-    top: 18%;
-    transform: translateY(-18%);
+    top: 14%;
+    transform: translateY(-14%);
   }
 
   .description {
@@ -442,7 +453,7 @@ article.story {
 
   .perimeter {
     background-image: radial-gradient(ellipse at center, rgba(125, 185, 232, 0) 55%, rgba(125, 185, 232, .5) 95%, rgba(30, 87, 153, 1) 100%);
-    border: 3px solid #1B87B9;
+    border: 3px solid $perimeter-bg;
     border-radius: 100%;
     display: none;
     overflow: hidden;
@@ -470,7 +481,7 @@ article.story {
   }
 
   .perimeter-text {
-    background-color: #1B87B9;
+    background-color: $perimeter-bg;
     color: #fff;
     font-size: 10px;
     line-height: 1;
@@ -487,7 +498,6 @@ article.story {
   }
 
 
-
   // Flag styles
 
   .flag {
@@ -498,6 +508,10 @@ article.story {
 
     @media (min-width: $screen-sm-min) {
       display: block;
+    }
+
+    &:hover {
+      cursor: default;
     }
   }
 
