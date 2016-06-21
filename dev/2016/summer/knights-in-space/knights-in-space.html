@@ -1,7 +1,26 @@
 <article id="knights-in-space">
-  <div id="background" [background-image filename='background']>
-    <h1>Knights<span class="h1-white"> In Space</span></h1>
-    <p id="intro-text">Since our beginnings as one of America’s first space-grant universities in 1963, UCF researchers have focused their attention beyond our Central Florida skies to investigate cosmic questions on nearly every planet in the solar system, plus a few other celestial objects.</p>
+  <div class="background hidden-xs" [background-image filename='background']>
+    <div class="title-instructions">
+      <span class="h1">Knights <span class="h1-white">In Space</span></span>
+      <p>Click on each planetary object to learn how UCF researchers are involved.</p>
+      <p><a href="#" data-toggle="modal" data-target="#intro-screen">
+        <span class="back-icons">&lsaquo;&lsaquo;</span> Back to intro screen
+        </a>
+      </p>
+    </div>
+    <div id="intro-screen" class="detail modal fade" tab-index="-1" role="dialog">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="detail-inner">
+              <h1>Knights In Space</h1>
+              <p class="intro-text">Since our beginnings as one of America’s first space-grant universities in 1963, UCF researchers have focused their attention beyond our Central Florida skies to investigate cosmic questions on nearly every planet in the solar system, plus a few other celestial objects.</p>
+              <a href="#" class="btn btn-lg btn-explore center-block" data-dismiss="modal">Explore</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     <div id="mars-details" class="detail modal fade" tab-index="-1" role="dialog">
       <div class="modal-dialog modal-sm">
         <div class="modal-content">
@@ -12,6 +31,10 @@
               <h2>Mars</h2>
               <p class="planet-subtitle">Curiosity</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Dan Britt</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='britt']" alt="Dan Britt Portrait">
+                <p class="caption">Ban Britt <span class="title">Professor of Physics</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To develop and build radiometric calibration targets that enable scientists to “see” Mars colors as they are on Earth.</p>
               <p class="planet-status"><span class="term">Status:</span> In progress (have been used on every Mars rover)</p>
             </div>
@@ -29,6 +52,10 @@
               <h2>Mercury</h2>
               <p class="planet-subtitle">Messenger</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Todd Bradley, principle investigator for Planteary Mission Data Analysis Program grant</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='bradley']" alt="Todd Bradley Portrait">
+                <p class="caption">Todd Bradley <span class="title">Associate scientist at Florida Space Institute (FSI)</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To learn more about the thin exosphere of Mercury, the smallest and swiftest planet in our solar system</p>
               <p class="planet-status"><span class="term">Status:</span> In progress</p>
             </div>
@@ -46,6 +73,14 @@
               <h2>Astroid</h2>
               <p class="planet-subtitle">Osirus-Rex</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Humberto Campins, co-investigator, and Yan Fernandex, contributing scientiest</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='campins']" alt="Humberto Campins Portrait">
+                <p class="caption">Humberto Campins <span class="title">Pegasus Professor of physics</span></p>
+              </div>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='fernandez']" alt="Yan Fernandez Portrait">
+                <p class="caption">Yan Fernandez <span class="title">Associate professor of physics</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To send a spacecraft to the asteroid Bennu, one of the oldest in the solar system, and bring back samples to analyze.</p>
               <p class="planet-status"><span class="term">Status:</span> Scheduled to launch September 2016</p>
             </div>
@@ -63,6 +98,10 @@
               <h2>Luna (The Moon)</h2>
               <p class="planet-subtitle">Resource Prospector</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Philip Metzger, cooperating scientist</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='metzger']" alt="Philip Metzger Portrait">
+                <p class="caption">Philip Metzger <span class="title">Associate in planetary science research at FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To examine the soil on the moon’s poles in order to excavate potential resources including hydrogen, oxygen and water.</p>
               <p class="planet-status"><span class="term">Status:</span> Planning</p>
             </div>
@@ -80,6 +119,10 @@
               <h2>Earth</h2>
               <p class="planet-subtitle">Gold</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Richard Eastes, principal investigator</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='eastes']" alt="Richard Eastes Portrait">
+                <p class="caption">Richard Eastes <span class="title">Assistant scientist at FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To better understand solar wind’s impact on the Earth’s upper atmoshere.</p>
               <p class="planet-status"><span class="term">Status:</span> Scheduled to launch in 2017</p>
             </div>
@@ -96,7 +139,11 @@
               <img class="planet-thumb" src="[image filename='Jupiter-60x60']">
               <h2>Jupiter</h2>
               <p class="planet-subtitle">Galileo</p>
-              <p class="planet-researchers"><span class="term">Researchers:</span> Ramon Lugo ’79, NASA engineer</p>
+              <p class="planet-researchers"><span class="term">Researchers:</span> Ramon Lugo, NASA engineer</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='lugo']" alt="Ramon Lugo Portrait">
+                <p class="caption">Ramon Lugo ’79 <span class="title">Director of FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To measure the atmosphere of Jupiter, the largest planet in the solar system, and observe the planet and its moons from orbit.</p>
               <p class="planet-status"><span class="term">Status:</span> Completed</p>
             </div>
@@ -114,6 +161,10 @@
               <h2>Saturn</h2>
               <p class="planet-subtitle">Cassini</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, co-investigator</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+                <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To observe, analyze and interpret data from Saturn’s rings using an ultraviolet imaging spectrograph.</p>
               <p class="planet-status"><span class="term">Status:</span> In progress</p>
             </div>
@@ -131,6 +182,10 @@
               <h2>Uranus</h2>
               <p class="planet-subtitle">Voyager 2</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, science team member</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+                <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To study the structure, origin and history of the rings of Uranus and Neptune.</p>
               <p class="planet-status"><span class="term">Status:</span> Completed</p>
             </div>
@@ -148,6 +203,10 @@
               <h2>Neptune</h2>
               <p class="planet-subtitle">Voyager 2</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, science team member</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+                <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To study the structure, origin and history of the rings of Uranus and Neptune.</p>
               <p class="planet-status"><span class="term">Status:</span> Completed</p>
             </div>
@@ -164,7 +223,15 @@
               <img class="planet-thumb" src="[image filename='Kuiperbelt-60x60']">
               <h2>Kuiper Belt</h2>
               <p class="planet-subtitle">New Horizons</p>
-              <p class="planet-researchers"><span class="term">Researchers:</span> Stern, principal investigator, and Dan Britt, science team member</p>
+              <p class="planet-researchers"><span class="term">Researchers:</span> Alan Stern, principal investigator, and Dan Britt, science team member</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='stern']" alt="Alan Stern Portrait">
+                <p class="caption">Alan Stern <span class="title">Director of FSI</span></p>
+              </div>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='britt']" alt="Dan Britt Portrait">
+                <p class="caption">Ban Britt <span class="title">Professor of Physics</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To study the solar system’s outskirts and discover how ice dwarf planets have evolved over time.</p>
               <p class="planet-status"><span class="term">Status:</span> In progress</p>
             </div>
@@ -182,6 +249,10 @@
               <h2>Upsilon Andromedae B</h2>
               <p class="planet-subtitle">Spitzer Exoplanet Targets of Opportunity Program</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Joseph Harrington, principal investigator</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='harrison']" alt="Joseph Harrington Portrait">
+                <p class="caption">Joseph Harrington <span class="title">Professor of planetary science</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To measure the chemistry and temperature of the atmosphere of exoplanets, which are planets that orbit stars other than the sun.</p>
               <p class="planet-status"><span class="term">Status:</span> In Progress</p>
             </div>
@@ -199,6 +270,10 @@
               <h2>Pluto</h2>   
               <p class="planet-subtitle">New Horizons</p>
               <p class="planet-researchers"><span class="term">Researchers:</span> Alan Stern, principal investigator</p>
+              <div class="researcher">
+                <img class="img-circle" src="[image filename='stern']" alt="Alan Stern Portrait">
+                <p class="caption">Alan Stern <span class="title">Director of FSI</span></p>
+              </div>
               <p class="planet-objective"><span class="term">Objectives:</span> To study the surface composition, atmosphere and temperature of the icy dwarf planet Pluto and its moon Charon.</p>
               <p class="planet-status"><span class="term">Status:</span> In progress</p>
             </div>
@@ -257,5 +332,162 @@
         <img class="image-asset" id="pluto" src="[image filename='pluto']" /><span class="h2">Pluto</span>
       </div>
     </div>
+  </div>
+  <div class="mobile visible-xs" [background-image filename='space-tiled']>
+    <div class="container">
+      <span class="h1">Knights in Space</span>
+      <p class="lead">Since our beginnings as one of America’s first space-grant universities in 1963, UCF researchers have focused their attention beyond our Central Florida skies to investigate cosmic questions on nearly every planet in the solar system, plus a few other celestial objects.</p>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Mercury-60x60']">
+        <h2>Mercury</h2>
+        <p class="planet-subtitle">Messenger</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Todd Bradley, principle investigator for Planteary Mission Data Analysis Program grant</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='bradley']" alt="Todd Bradley Portrait">
+          <p class="caption">Todd Bradley <span class="title">Associate scientist at Florida Space Institute (FSI)</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To learn more about the thin exosphere of Mercury, the smallest and swiftest planet in our solar system</p>
+        <p class="planet-status"><span class="term">Status:</span> In progress</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Moon-60x60']">
+        <h2>Luna (The Moon)</h2>
+        <p class="planet-subtitle">Resource Prospector</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Philip Metzger, cooperating scientist</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='metzger']" alt="Philip Metzger Portrait">
+          <p class="caption">Philip Metzger <span class="title">Associate in planetary science research at FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To examine the soil on the moon’s poles in order to excavate potential resources including hydrogen, oxygen and water.</p>
+        <p class="planet-status"><span class="term">Status:</span> Planning</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Earth-60x60']">
+        <h2>Earth</h2>
+        <p class="planet-subtitle">Gold</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Richard Eastes, principal investigator</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='eastes']" alt="Richard Eastes Portrait">
+          <p class="caption">Richard Eastes <span class="title">Assistant scientist at FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To better understand solar wind’s impact on the Earth’s upper atmoshere.</p>
+        <p class="planet-status"><span class="term">Status:</span> Scheduled to launch in 2017</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Asteroid-Bunne-60x60']">
+        <h2>Astroid</h2>
+        <p class="planet-subtitle">Osirus-Rex</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Humberto Campins, co-investigator, and Yan Fernandex, contributing scientiest</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='campins']" alt="Humberto Campins Portrait">
+          <p class="caption">Humberto Campins <span class="title">Pegasus Professor of physics</span></p>
+        </div>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='fernandez']" alt="Yan Fernandez Portrait">
+          <p class="caption">Yan Fernandez <span class="title">Associate professor of physics</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To send a spacecraft to the asteroid Bennu, one of the oldest in the solar system, and bring back samples to analyze.</p>
+        <p class="planet-status"><span class="term">Status:</span> Scheduled to launch September 2016</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Mars-60x60']">
+        <h2>Mars</h2>
+        <p class="planet-subtitle">Curiosity</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Dan Britt</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='britt']" alt="Dan Britt Portrait">
+          <p class="caption">Ban Britt <span class="title">Professor of Physics</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To develop and build radiometric calibration targets that enable scientists to “see” Mars colors as they are on Earth.</p>
+        <p class="planet-status"><span class="term">Status:</span> In progress (have been used on every Mars rover)</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Jupiter-60x60']">
+        <h2>Jupiter</h2>
+        <p class="planet-subtitle">Galileo</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Ramon Lugo, NASA engineer</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='lugo']" alt="Ramon Lugo Portrait">
+          <p class="caption">Ramon Lugo ’79 <span class="title">Director of FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To measure the atmosphere of Jupiter, the largest planet in the solar system, and observe the planet and its moons from orbit.</p>
+        <p class="planet-status"><span class="term">Status:</span> Completed</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Saturn-60x60']">
+        <h2>Saturn</h2>
+        <p class="planet-subtitle">Cassini</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, co-investigator</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+          <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To observe, analyze and interpret data from Saturn’s rings using an ultraviolet imaging spectrograph.</p>
+        <p class="planet-status"><span class="term">Status:</span> In progress</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Uranus-60x60']">
+        <h2>Uranus</h2>
+        <p class="planet-subtitle">Voyager 2</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, science team member</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+          <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To study the structure, origin and history of the rings of Uranus and Neptune.</p>
+        <p class="planet-status"><span class="term">Status:</span> Completed</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Neptune-60x60']">
+        <h2>Neptune</h2>
+        <p class="planet-subtitle">Voyager 2</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Joshua Colwell, science team member</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='colwell']" alt="Joshua Colwell Portrait">
+          <p class="caption">Joshua Colwell <span class="title">Professor of planetary science and assistant director of FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To study the structure, origin and history of the rings of Uranus and Neptune.</p>
+        <p class="planet-status"><span class="term">Status:</span> Completed</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Kuiperbelt-60x60']">
+        <h2>Kuiper Belt</h2>
+        <p class="planet-subtitle">New Horizons</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Alan Stern, principal investigator, and Dan Britt, science team member</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='stern']" alt="Alan Stern Portrait">
+          <p class="caption">Alan Stern <span class="title">Director of FSI</span></p>
+        </div>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='britt']" alt="Dan Britt Portrait">
+          <p class="caption">Ban Britt <span class="title">Professor of Physics</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To study the solar system’s outskirts and discover how ice dwarf planets have evolved over time.</p>
+        <p class="planet-status"><span class="term">Status:</span> In progress</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Upsilion-60x60']">
+        <h2>Upsilon Andromedae B</h2>
+        <p class="planet-subtitle">Spitzer Exoplanet Targets of Opportunity Program</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Joseph Harrington, principal investigator</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='harrington']" alt="Joseph Harrington Portrait">
+          <p class="caption">Joseph Harrington <span class="title">Professor of planetary science</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To measure the chemistry and temperature of the atmosphere of exoplanets, which are planets that orbit stars other than the sun.</p>
+        <p class="planet-status"><span class="term">Status:</span> In Progress</p>
+      </div>
+      <div class="detail-inner">
+        <img class="planet-thumb" src="[image filename='Pluto-60x60']"> 
+        <h2>Pluto</h2>   
+        <p class="planet-subtitle">New Horizons</p>
+        <p class="planet-researchers"><span class="term">Researchers:</span> Alan Stern, principal investigator</p>
+        <div class="researcher">
+          <img class="img-circle" src="[image filename='stern']" alt="Alan Stern Portrait">
+          <p class="caption">Alan Stern <span class="title">Director of FSI</span></p>
+        </div>
+        <p class="planet-objective"><span class="term">Objectives:</span> To study the surface composition, atmosphere and temperature of the icy dwarf planet Pluto and its moon Charon.</p>
+        <p class="planet-status"><span class="term">Status:</span> In progress</p>
+      </div>
   </div>
 </article>

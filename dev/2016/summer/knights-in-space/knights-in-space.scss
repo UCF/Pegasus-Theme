@@ -1,37 +1,117 @@
 $primary: #cc9;
 $secondary: #fff;
+$background: #000;
 $light: 'OpenSansCondensedLight', sans-serif;
 $bold: 'OpenSansCondensedBold', sans-serif;
 
-#background {
-  background-position: center center;
-  background-size: cover;
+* {
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
+  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
 }
 
-.modal.fade {
-  .modal-dialog {
-    transform: none;
-    transition: transform .3s ease-out;
+.background {
+  background-position: center center;
+  background-size: cover;
+  height: 56.25vw;
+  width: 100vw;
+}
+
+.h1 {
+  border-bottom: 1px solid $secondary;
+  color: $primary;
+  display: inline-block;
+  font-family: $bold;
+  font-size: 1.5em;
+  text-transform: uppercase;
+
+  @media(max-width: 768px) {
+    display: block;
+    text-align: center;
+    font-size: 3em;
+  }
+}
+
+.title-instructions {
+  display: block;
+  opacity: 1;
+  left: 10%;
+  position: absolute;
+  top: 10%;
+  transition: opacity .5s ease;
+  width: 300px;
+  z-index: 10;
+
+  a {
+    color: $primary;
+    font-family: $bold;
+
+    &:hover,
+    &:active,
+    &:visited,
+    &:focus {
+      outline: none;
+      text-decoration: none;
+    }
   }
 
-  &.in {
-    .modal-dialog {
-      transform: translate(0, 40%);
-    }
+  p {
+    color: $secondary;
+    font-family: $light;
+  }
+
+  &.invisible {
+    opacity: 0;
+  }
+}
+
+#intro-screen {
+  transform: translate(0, 25%);
+
+  .detail-inner {
+    padding: 12px 110px;
+  }
+
+  h1 {
+    border-bottom: 1px solid $secondary;
+    color: $primary;
+    display: block;
+    font-family: $bold;
+    font-size: 3em;
+    text-align: center;
+    text-transform: uppercase;
+  }
+
+  .intro-text {
+    color: $secondary;
+    font-family: $light;
+    font-size: 1.2em;
+    margin: 12px 0 24px;
+    text-align: left;
+  }
+
+  .btn-explore {
+    border: 1px solid $primary;
+    border-radius: 0;
+    color: $secondary;
+    display: inline-block;
+    margin-left: 123px;
+    margin-right: 123px;
+    width: 100px;
   }
 }
 
 .detail {
   .modal-content {
-    background: #000;
+    background: $background;
 
     .detail-inner {
       border: 1px solid $primary;
       padding: 12px;
+    }
 
-      .close {
-        color: $secondary;
-      }
+    .close {
+      color: $secondary;
     }
 
     h2 {
@@ -65,54 +145,29 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   }
 }
 
-h1 {
-  display: inline-block;
-  color: $primary !important;
-  font-family: $bold;
-  font-size: 3em;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-
-  .h1-white {
-    display: block;
-    color: $secondary;
-    font-size: .65em;
-    text-align: right;
-  }
-}
-
-#intro-text {
-  display: none;
-  color: $primary;
-  font-family: $light;
-  font-size: 1.3em;
-  text-align: left;
-}
-
 .planets,
 .static {
   display: inline;
   position: absolute;
+  z-index: 1;
 
   img {
     display: inline-block;
     position: absolute;
+    z-index: 1;
   }
 
   .planet {
 
     img {
+      display: block;
+      height: 100%;
       position: relative;
+      width: 100%;
     }
 
     &:hover {
       cursor: pointer;
-    }
-
-    img {
-      display: block;
-      height: 100%;
-      width: 100%;
     }
   }
 
@@ -177,7 +232,6 @@ h1 {
     left: 35.75%;
     top: 15%;
     width: 8%;
-    z-index: 2;
   }
 
   .jupiter {
@@ -217,9 +271,9 @@ h1 {
 
   .upsilon {
     border: 1px solid $primary;
-    padding: 4px 8px;
     height: 15%;
     left: 65%;
+    padding: 4px 8px;
     top: 82%;
     width: 25%;
 
@@ -236,11 +290,83 @@ h1 {
   .h2 {
     color: $secondary;
     display: block;
-    font-family: 'OpenSansCondensedLight';
+    font-family: $light;
     margin-top: 0;
     position: relative;
     text-align: center;
     text-decoration: underline;
     text-transform: uppercase;
+  }
+}
+
+.researcher {
+  display: inline-block;
+  text-align: center;
+  width: 100px;
+
+  p.caption {
+    color: $primary;
+    display: inline-block;
+    font-family: $bold;
+    text-align: center;
+
+    .title {
+      color: $secondary;
+      display: block;
+      font-family: $light;
+      font-size: 16px;
+      font-style: italic;
+      margin-top: 2px;
+    }
+  }
+}
+
+.mobile {
+  background-size: 100vw;
+  background-repeat: repeat-y;
+
+  p {
+    color: $secondary;
+    font-family: $bold;
+    font-size: 18px;
+
+    &.lead {
+      font-family: $bold;
+    }
+  }
+
+  h2 {
+    color: $secondary;
+    font-family: $light;
+    font-size: 1.5em;
+    margin-bottom: 0;
+    text-decoration: underline;
+    text-transform: uppercase;
+  }
+
+  .planet-subtitle {
+    color: $primary;
+    font-family: $bold;
+    font-size: 2em;
+    text-transform: uppercase;
+  }
+
+  .term {
+    color: $primary;
+    font-family: $bold;
+  }
+
+  .planet-thumb {
+    float: right;
+  }
+
+  .detail-inner {
+    border-bottom: 1px solid $primary;
+    margin-bottom: 18px;
+
+    &:last-child {
+      border-bottom: 0;
+      margin-bottom: 0;
+    }
   }
 }

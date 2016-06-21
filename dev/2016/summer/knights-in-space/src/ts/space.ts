@@ -10,7 +10,6 @@ module KnightsInSpace {
         flare: any;
         astroidBelt: any;
         kuiperBelt: any;
-        mercury: any;
 
         fullHeight: Array<HTMLImageElement>;
 
@@ -39,7 +38,7 @@ module KnightsInSpace {
         }
 
         resize() {
-            var background: HTMLElement = $('#background')[0];
+            var background: HTMLElement = $('.background')[0];
             var boundingBox = background.getBoundingClientRect();
             this.height = boundingBox.height;
             this.width = boundingBox.width;
