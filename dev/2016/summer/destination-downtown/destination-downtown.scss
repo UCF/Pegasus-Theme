@@ -665,7 +665,11 @@ article.story {
     .flag-city-hall {
       animation: flyInFlagSkewUp 1.25s ease-in-out;
       right: 26.5%;
-      top: 6%;
+      top: 5.5%;
+
+      @media (min-width: $screen-md-min) {
+        top: 6.25%;
+      }
     }
 
     .flag-exec-dev {
@@ -690,7 +694,12 @@ article.story {
     .flag-courthouse {
       animation: flyInFlagSkewUp 1s ease-in-out;
       bottom: calc(59.75% + #{$flagpole-height / 2});
-      left: 4%;
+      left: 4.5%;
+
+      @media (min-width: $screen-md-min) {
+        bottom: calc(59% + #{$flagpole-height / 2});
+        left: 5%;
+      }
     }
 
     .flag-lynx {
@@ -707,13 +716,13 @@ article.story {
 
     .flag-mls {
       animation: flyInFlagSkewDown .75s ease-in-out;
-      bottom: calc(52% + #{$flagpole-height / 2});
+      bottom: calc(51% + #{$flagpole-height / 2});
       right: 5%;
     }
 
     .flag-parramore {
       animation: flyInFlagSkewUp 1s ease-in-out;
-      bottom: calc(16% + #{$flagpole-height / 2});
+      bottom: calc(15% + #{$flagpole-height / 2});
       left: 67%;
     }
   }
