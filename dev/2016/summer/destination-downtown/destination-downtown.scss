@@ -568,6 +568,7 @@ article.story {
     font-size: 11px;
     padding: 4px 6px;
     position: relative;
+    transform: perspective(1px);  // FF Windows janky text fix
 
     @media (min-width: $screen-md-min) {
       font-size: 12px;
