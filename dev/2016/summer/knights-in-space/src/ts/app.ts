@@ -3,7 +3,8 @@ module KnightsInSpace {
     export class App {
         element: any;
         background: any;
-        space: KnightsInSpace.Space;
+
+        oldWindowWidth: number;
 
         constructor(element: string) {
             var $intro = $('#intro-screen').modal('hide');
@@ -15,17 +16,41 @@ module KnightsInSpace {
                 $('.title-instructions').addClass('invisible');
             });
 
+            $('.detail').on('show.bs.modal', function(e) {
+                var target = $(e.target).find('.modal-body');
+                if ( target.find('.detail-inner').length == 0) {
+                    var markup = $('div[data-related="' + e.target.id + '"]').get(0);
+                    $(markup).prepend('<button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>');
+                    target.append(markup);
+                }
+            });
+
             if ($(window).width() > 767) {
                 $intro.modal('show');
             }
 
-            this.element = $('#' + element);
-            this.background = $('.background').get(0);
-            
-            this.space = new KnightsInSpace.Space($(this.background).height(), $(this.background).width(), $(this.background).position());
+            this.scaleImageMap();
+        }
 
-            $(window).resize( () => {
-                this.space.resize();
+        scaleImageMap() {
+            var scale = $('.background').width() / 2000;
+
+            var $map = $('#planetmap');
+            $map.find('area').each((i, a) => {
+                var coords = $(a).attr('coords');
+                var cSplit = coords.split(',');
+                var scaledCoords = new Array<number>();
+
+                for(var c in cSplit) {
+                    var index = parseInt(c),
+                        value = Math.floor(parseInt(cSplit[c]) * scale);
+
+                    if (index === 1 || index === 3 ) {
+                        value -= 20;
+                    }
+                    scaledCoords.push(value);
+                }
+                $(a).attr('coords', scaledCoords.join(','));
             });
         }
     }

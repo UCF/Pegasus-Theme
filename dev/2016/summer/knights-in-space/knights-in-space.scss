@@ -159,12 +159,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
   .planet {
 
-    img {
-      display: block;
-      height: 100%;
-      position: relative;
-      width: 100%;
-    }
+    border: 1px solid red;
 
     &:hover {
       cursor: pointer;
@@ -189,7 +184,9 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
   .kuiper-belt {
     left: 90%;
+    height: 100%;
     top: -8%;
+    width: 10%;
   }
 
   .mercury {
@@ -270,17 +267,10 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   }
 
   .upsilon {
-    border: 1px solid $primary;
     height: 15%;
     left: 65%;
-    padding: 4px 8px;
     top: 82%;
     width: 25%;
-
-    img {
-      height: 75%;
-      width: 25%;      
-    }
   }
 
   div {
