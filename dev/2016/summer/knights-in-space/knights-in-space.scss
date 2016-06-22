@@ -17,6 +17,10 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   width: 100vw;
 }
 
+map area {
+  outline: none;
+}
+
 .h1 {
   border-bottom: 1px solid $secondary;
   color: $primary;
