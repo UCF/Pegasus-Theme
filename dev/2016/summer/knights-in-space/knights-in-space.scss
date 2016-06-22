@@ -216,6 +216,7 @@ map area {
      @media(max-width: 767px) {
        display: inline;
        float: right;
+       margin-top: 12px;
        transition: transform .3s ease;
      }
   }
@@ -276,6 +277,13 @@ map area {
     .expand-toggle {
       padding-bottom: 8px;
       display: block;
+
+      &:hover,
+      &:active,
+      &:focus,
+      &:visited {
+        text-decoration: none;
+      }
 
       &.active {
         .selector {
