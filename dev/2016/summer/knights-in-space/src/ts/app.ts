@@ -61,9 +61,9 @@ module KnightsInSpace {
             var $map = $('#planetmap');
 
             $map.find('area').each((i, a) => {
-                var coords = $(a).attr('coords');
-                var cSplit = coords.split(',');
-                var scaledCoords = new Array<number>();
+                var coords = $(a).attr('coords'),
+                    cSplit = coords.split(','),
+                    scaledCoords = new Array<number>();
 
                 for(var c in cSplit) {
                     var index = parseInt(c),

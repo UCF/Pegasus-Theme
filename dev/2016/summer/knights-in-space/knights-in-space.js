@@ -42,9 +42,7 @@ var KnightsInSpace;
             this.backgroundHeight = $background.height();
             var $map = $('#planetmap');
             $map.find('area').each(function (i, a) {
-                var coords = $(a).attr('coords');
-                var cSplit = coords.split(',');
-                var scaledCoords = new Array();
+                var coords = $(a).attr('coords'), cSplit = coords.split(','), scaledCoords = new Array();
                 for (var c in cSplit) {
                     var index = parseInt(c), origVal = parseInt(cSplit[c]), newVal = 0;
                     if (index === 1 || index === 3) {
