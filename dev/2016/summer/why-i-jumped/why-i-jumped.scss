@@ -1,4 +1,5 @@
 @mixin gradient-directional($start-color: #555, $end-color: #333, $deg: 45deg) {
+	background: $start-color;
 	background-repeat: repeat-x;
 	background-image: -webkit-linear-gradient($deg, $start-color, $end-color); // Safari 5.1-6, Chrome 10+
 	background-image: -o-linear-gradient($deg, $start-color, $end-color); // Opera 12
@@ -11,6 +12,11 @@ article.story {
 		color: #2c314b;
 		font-size: 60px;
 		margin-bottom: 5px;
+		margin-top: 0;
+
+		@media (max-width: 767px) {
+			font-size: 50px;
+		}
 	}
 
 	.content-container {
@@ -113,6 +119,10 @@ article.story {
 				position: absolute;
 				animation-name: jumperInitAnime;
 				animation-duration: 2s;
+
+				@media (min-width: 1199px) {
+					left: 8%;
+				}
 
 				.space-man {
 					animation-name: jumperAnime;

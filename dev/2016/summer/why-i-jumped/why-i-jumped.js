@@ -1,5 +1,5 @@
 $(function() {
-        // Returns a comma-separated numerical string.
+    // Returns a comma-separated numerical string.
     // http://stackoverflow.com/a/16228123
     function commaSeparateNumber(val) {
         while (/(\d+)(\d{3})/.test(val.toString())) {
@@ -35,14 +35,14 @@ $(function() {
     function startNumberAnime() {
         $('.counter').each(function (index, element) {
             var $element = $(element);
-            numberTimeout = setTimeout(function () {
+            setTimeout(function () {
                 animateNumber($element);
             }, 1000);
         });
     }
 
     function addScrollEvent() {
-        $('.side-bar').height($('.content').height());
+        $('.side-bar').height($('.content-container').height());
 
         $(window).scroll(function (event) {
             var scroll = $(window).scrollTop();
