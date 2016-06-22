@@ -1,15 +1,24 @@
-// $('body').addClass('withbg');
+// Based on Codepen by Amelia Bellamy-Royds http://codepen.io/AmeliaBR/pen/emoPVL
 
-// $(window).scroll(function() {
-//     var x = $(this).scrollTop();
-//     var start = -200;
-//     $('body').css('background-position', 'center bottom ' + parseInt(x / 50 + start) + 'px');
-// });
+function svgasimg() {
+	return document.implementation.hasFeature(
+		"http://www.w3.org/TR/SVG11/feature#Image", "1.1");
+}
 
-// $(window).scroll(function() {
-//     var scroll = $(this).scrollTop() + $('#footer-navigation').outerHeight() +  $(window).outerHeight();
-//     var height = $('#footer-navigation').offset().top + $('#footer-navigation').outerHeight() + $(window).outerHeight();
-//     var start = -50;
-
-//     console.log(scroll, height, scroll/height);
-// });
+if (!svgasimg()){
+	var e = document.getElementsByTagName("img");
+	if (!e.length){
+		e = document.getElementsByTagName("IMG");
+	}
+	console.log(e);
+	for (var i=0, n=e.length; i<n; i++){
+		var img = e[i],
+				src = img.getAttribute("src");
+		if (src && src.match(/svgz?$/) && img.getAttribute("data-fallback")) {
+			console.log(img);
+			/* URL ends in svg or svgz */
+			img.setAttribute("src",
+			img.getAttribute("data-fallback"));
+		}
+	}
+}

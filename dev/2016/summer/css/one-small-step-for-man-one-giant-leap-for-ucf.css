@@ -1,12 +1,9 @@
-/*
-font-family: 'Work Sans', sans-serif;
-*/
 #header-navigation {
   background: transparent; }
 
 .story {
-  max-width: 1700px;
   margin: 0 auto;
+  max-width: 1700px;
   padding: 0 10%; }
 
 body {
@@ -14,10 +11,10 @@ body {
 
 body.withbg {
   background: #f37153 url("../one-giant-leap-ucf/img/mars-horizon.png");
-  background-repeat: no-repeat;
-  background-size: contain;
+  background-attachment: fixed;
   background-position: center bottom -200px;
-  background-attachment: fixed; }
+  background-repeat: no-repeat;
+  background-size: contain; }
 
 .story-header-inner {
   color: #fff;
@@ -28,134 +25,162 @@ body.withbg {
 .story-list .subtitle, .story-list-grid .subtitle {
   color: #fff; }
 
+.story:before {
+  background: url("../one-giant-leap-ucf/img/arrow-solid.svg") no-repeat;
+  background-position: center center;
+  clear: both;
+  content: '';
+  display: block;
+  height: 10px;
+  margin: 0 auto;
+  margin-top: -41px;
+  width: 30px; }
+
 /* timeline  */
 article.story #space-timeline {
-  position: relative;
-  padding: 0;
+  margin-top: -55px;
+  padding-bottom: 0;
   padding-top: 0;
-  padding-bottom: 200px;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-top: -55px; }
+  padding: 0;
+  position: relative; }
   article.story #space-timeline::before {
     /* this is the vertical line */
+    background: #E2EDF3;
     content: '';
+    height: 100%;
+    left: 18px;
     position: absolute;
     top: 0;
-    left: 18px;
-    height: 100%;
     width: 4px;
-    background: #E2EDF3;
     z-index: -5; }
   @media (min-width: 767px) {
     article.story #space-timeline::before {
       left: 50%;
       margin-left: -2px; } }
-article.story .space-timeline-block.header-block {
-  margin-bottom: 130px; }
 article.story .space-timeline-block {
   clear: both;
-  padding-bottom: 75px;
-  overflow: auto; }
+  padding-bottom: 75px; }
   article.story .space-timeline-block .author {
+    color: #f8e1c9;
+    display: block;
     font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-weight: 800;
     font-size: 1.1em;
     font-style: normal;
-    text-transform: uppercase;
-    color: #f8e1c9;
+    font-weight: 800;
     margin-top: 0;
-    display: block; }
+    text-transform: uppercase; }
+  article.story .space-timeline-block:after {
+    content: '';
+    background: url("../one-giant-leap-ucf/img/arrow-down.svg") no-repeat;
+    background-position: center center;
+    clear: both;
+    display: block;
+    margin: 0 auto;
+    padding-bottom: 50px;
+    padding-top: 80px;
+    width: 30px;
+    height: 10px; }
 article.story .space-timeline-header {
-  width: 45%;
+  color: #fff;
   float: left;
   padding-bottom: 100px;
   padding-top: 130px;
-  color: #fff; }
+  width: 45%; }
   article.story .space-timeline-header h1 {
+    color: #fff;
     font-family: "League Spartan", Helvetica, Arial, sans-serif;
     font-size: 3em;
-    text-transform: uppercase;
     line-height: 1.2;
-    color: #fff; }
+    max-width: 300px;
+    text-transform: uppercase; }
   article.story .space-timeline-header p {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 1.45em;
-    line-height: 1.3em;
     font-style: italic;
+    line-height: 1.3em;
     margin-bottom: 20px; }
 article.story .space-timeline-content.intro {
-  position: relative;
-  border-radius: 0;
   background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  color: #fff;
+  margin-top: 145px;
   padding: 0;
-  margin-top: 200px;
-  box-shadow: none; }
+  position: relative; }
   article.story .space-timeline-content.intro p {
     font-family: Georgia, "Times New Roman", Times, serif;
     font-size: 1em;
     line-height: 1.5em;
     margin-bottom: 20px; }
 article.story .space-timeline-content {
-  width: 45%;
-  float: left;
-  position: relative;
-  /**/
-  border-radius: 10px;
   background: #fdfdfd;
-  padding: 30px;
+  border-radius: 10px;
   box-shadow: 0 3px 0 rgba(208, 84, 57, 0.5);
-  /**/ }
+  float: left;
+  padding: 30px;
+  position: relative;
+  width: 45%; }
   article.story .space-timeline-content.left {
     float: left; }
   article.story .space-timeline-content.right {
     float: right; }
   article.story .space-timeline-content h2 {
-    font-family: "League Spartan", Helvetica, Arial, sans-serif;
     color: #f3c314;
+    font-family: "League Spartan", Helvetica, Arial, sans-serif;
     font-size: 3em;
     margin-bottom: 0;
     margin-top: 0; }
   article.story .space-timeline-content h3 {
-    font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
-    font-weight: 800;
-    font-size: 1.1em;
-    text-transform: uppercase;
-    color: #56585b;
-    margin-top: 0;
     border-bottom: solid 1px;
+    color: #56585b;
+    font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size: 1.1em;
+    font-weight: 800;
+    margin-bottom: 30px;
+    margin-top: 0;
     padding-bottom: 12px;
     padding-top: 9px;
-    margin-bottom: 30px; }
+    text-transform: uppercase; }
   article.story .space-timeline-content p {
     font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
     font-size: 14px;
     line-height: 22px; }
 article.story .space-timeline-media {
+  float: right;
   width: 40%;
-  float: right; }
+  position: relative; }
+  article.story .space-timeline-media .caption {
+    color: #d03f2b;
+    font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", "Arial Black", "Arial Bold", Gadget, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    position: absolute;
+    text-transform: uppercase;
+    text-transform: uppercase; }
   article.story .space-timeline-media.left {
     float: left; }
-
-.arrow-down {
-  width: 30px;
-  margin: 0 auto;
-  display: block; }
+  article.story .space-timeline-media.citronaut {
+    width: 46%; }
+    article.story .space-timeline-media.citronaut .media {
+      margin-top: -50px; }
+    article.story .space-timeline-media.citronaut .caption {
+      bottom: 25%;
+      left: 2%; }
 
 .pointing-line {
-  width: 83px;
-  margin: 0 auto;
   display: block;
-  z-index: 20;
+  margin: 0 auto;
   position: absolute;
-  right: -58px; }
+  right: -58px;
+  width: 83px;
+  z-index: 20; }
 
 .right .pointing-line {
   -moz-transform: scaleX(-1);
   -o-transform: scaleX(-1);
   -webkit-transform: scaleX(-1);
-  transform: scaleX(-1);
-  filter: FlipH;
   -ms-filter: "FlipH";
+  filter: FlipH;
   left: -58px;
-  right: auto; }
+  right: auto;
+  transform: scaleX(-1); }
