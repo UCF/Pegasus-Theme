@@ -122,6 +122,7 @@ map area {
     h2 {
       border-bottom: 1px solid $secondary;
       color: $secondary;
+      display: inline;
       font-family: $light;
       font-size: 32px;
       margin-bottom: 0;
@@ -135,6 +136,10 @@ map area {
       font-size: 40px;
       line-height: 40px;
       text-transform: uppercase;
+    }
+
+    .planet-thumb {
+      display: none;
     }
 
     p {
@@ -241,13 +246,6 @@ map area {
   .term {
     color: $primary;
     font-family: $bold;
-  }
-
-  .planet-thumb {
-    display: inline;
-    height: 24px;
-    margin-bottom: 8px;
-    width: 24px;
   }
 
   .instructions {

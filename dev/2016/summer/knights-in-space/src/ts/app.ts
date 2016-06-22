@@ -18,14 +18,7 @@ module KnightsInSpace {
                 $('.title-instructions').addClass('invisible');
             });
 
-            $('.detail').on('show.bs.modal', function(e) {
-                var target = $(e.target).find('.modal-body');
-                if ( target.find('.detail-inner').length == 0) {
-                    var markup = $('div[data-related="' + e.target.id + '"]').get(0);
-                    $(markup).prepend('<button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>');
-                    target.append(markup);
-                }
-            });
+            $('.detail').on('show.bs.modal', this.addDetail);
 
             if ($(window).width() > 767) {
                 $intro.modal('show');
@@ -36,6 +29,15 @@ module KnightsInSpace {
             $('.expand-toggle').click(this.expand);
 
             setTimeout(this.scaleImageMap, 100); // Wait 100ms for scale to make sure image is loaded.
+        }
+
+        addDetail(e: JQueryEventObject) {
+            var target = $(e.target).find('.modal-body');
+            if ( target.find('.detail-inner').length == 0) {
+                var markup = $('div[data-related="' + e.target.id + '"]').get(0);
+                $(markup).prepend('<button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>');
+                target.append(markup);
+            }
         }
 
         scaleImageMap() {
@@ -57,7 +59,7 @@ module KnightsInSpace {
             this.backgroundHeight = $background.height();
 
             var $map = $('#planetmap');
-            
+
             $map.find('area').each((i, a) => {
                 var coords = $(a).attr('coords');
                 var cSplit = coords.split(',');
