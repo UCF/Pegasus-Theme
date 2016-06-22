@@ -66,7 +66,8 @@ article.story {
   strong,
   h1 .alt,
   .author,
-  .perimeter-text {
+  .perimeter-text,
+  .flag-caption {
     @include no-font-smoothing();
     font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
     font-style: normal;
@@ -498,13 +499,92 @@ article.story {
   }
 
 
+  // Building styles
+
+  .building {
+    position: absolute;
+    transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg);
+    z-index: 4;
+  }
+
+  .building-dr-phillips {
+    height: 8%;
+    left: 53%;
+    top: 0;
+    width: 10%;
+  }
+
+  .building-city-hall {
+    height: 4%;
+    left: 71.5%;
+    top: 8%;
+    width: 4%;
+  }
+
+  .building-exec-dev {
+    height: 3%;
+    left: 52.5%;
+    top: 24%;
+    width: 3%;
+  }
+
+  .building-church-tech {
+    height: 5%;
+    left: 60.5%;
+    top: 28%;
+    width: 5%;
+  }
+
+  .building-amway {
+    height: 11%;
+    left: 81%;
+    top: 27%;
+    width: 11%;
+  }
+
+  .building-courthouse {
+    height: 13%;
+    left: -3%;
+    top: 42%;
+    width: 13%;
+  }
+
+  .building-lynx {
+    height: 13%;
+    left: 18%;
+    top: 53%;
+    width: 7%;
+  }
+
+  .building-famu {
+    height: 12%;
+    left: 49%;
+    top: 46%;
+    width: 5%;
+  }
+
+  .building-mls {
+    height: 13%;
+    left: 89%;
+    top: 47%;
+    width: 13%;
+  }
+
+  .building-parramore {
+    height: 14%;
+    left: 57%;
+    top: 85%;
+    width: 25%;
+  }
+
+
   // Flag styles
 
   .flag {
     display: none;
     position: absolute;
     text-transform: uppercase;
-    z-index: 4;
+    z-index: 5;
 
     @media (min-width: $screen-sm-min) {
       display: block;
@@ -596,6 +676,26 @@ article.story {
       top: -8px;
       width: 6px;
     }
+  }
+
+  .flag-caption {
+    background-color: $perimeter-bg;
+    bottom: calc(100% + 5px);
+    color: #fff;
+    font-size: 12px;
+    min-width: 105px;
+    opacity: 0;
+    padding: 4px 8px;
+    position: absolute;
+    text-align: center;
+    transform: translateY(25px);
+  }
+
+  .building:hover + .flag .flag-caption,
+  .flag:hover .flag-caption {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all .25s ease-in-out;
   }
 
   .flag-ucf-downtown {
