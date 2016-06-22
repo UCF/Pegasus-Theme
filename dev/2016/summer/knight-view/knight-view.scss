@@ -1,0 +1,20 @@
+article.story {
+
+	h1 {
+		font-size: 60px;
+		margin-bottom: 5px;
+
+		@media (max-width: 767px) {
+			font-size: 50px;
+		}
+	}
+
+    h3 {
+        color: #d05439;
+        font-weight: bold;
+    }
+
+    blockquote {
+        margin-top: 10px;
+    }
+}
