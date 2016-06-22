@@ -177,6 +177,11 @@ map area {
   text-align: center;
   width: 100px;
 
+  img {
+    margin: 5px 5px;
+    width: 90px;
+  }
+
   p.caption {
     color: $primary;
     display: inline-block;
