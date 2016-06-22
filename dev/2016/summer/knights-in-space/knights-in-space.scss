@@ -203,6 +203,15 @@ map area {
   display: none;
 }
 
+.expand-toggle {
+  &:hover,
+  &:active,
+  &:focus,
+  &:visited {
+    text-decoration: none;
+  }
+}
+
 .mobile {
   background-color: #051733;
   background-repeat: repeat-y;
@@ -212,7 +221,6 @@ map area {
   }
 
   .selector {
-    display: none;
      @media(max-width: 767px) {
        display: inline;
        float: right;
@@ -277,13 +285,6 @@ map area {
     .expand-toggle {
       padding-bottom: 8px;
       display: block;
-
-      &:hover,
-      &:active,
-      &:focus,
-      &:visited {
-        text-decoration: none;
-      }
 
       &.active {
         .selector {
