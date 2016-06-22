@@ -157,135 +157,8 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     z-index: 1;
   }
 
-  .planet {
-
-    border: 1px solid red;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .sun {
-    left: 0;
-    top: 0;
-  }
-
-  .flare {
-    left: 0;
-    top: 0;
-  }
-
-  .astroid-belt {
-    left: 27%;
-    top: 0;
-    z-index: 0;
-  }
-
-  .kuiper-belt {
-    left: 90%;
-    height: 100%;
-    top: -8%;
-    width: 10%;
-  }
-
-  .mercury {
-    height: 8%;
-    left: 15.5%;
-    top: 30%;
-    width: 5%;
-  }
-
-  .venus {
-    height: 8.5%;
-    left: 20.6%;
-    top: 50%;
-    width: 5%;
-  }
-
-  .earth {
-    height: 12%;
-    left: 28.5%;
-    top: 40%;
-    width: 7%;
-  }
-
-  .moon {
-    height: 5%;
-    left: 27%;
-    top: 24%;
-    width: 2.5%;
-  }
-
-  .osirus-rex {
-    height: 8%;
-    left: 35%;
-    top: 30%;
-    width: 2%;
-  }
-
-  .mars {
-    height: 13.5%;
-    left: 35.75%;
-    top: 15%;
-    width: 8%;
-  }
-
-  .jupiter {
-    height: 30%;
-    left: 47%;
-    top: 25%;
-    width: 18%;
-  }
-
-  .saturn {
-    height: 20%;
-    left: 61%;
-    top: 55%;
-    width: 20%;
-  }
-
-  .uranus {
-    height: 24%;
-    left: 78%;
-    top: 10%;
-    width: 7%;
-  }
-
-  .neptune {
-    height: 14%;
-    left: 85%;
-    top: 40%;
-    width: 8%;
-  }
-
-  .pluto {
-    height: 4.5%;
-    left: 91.75%;
-    top: 20%;
-    width: 3%;
-  }
-
-  .upsilon {
-    height: 15%;
-    left: 65%;
-    top: 82%;
-    width: 25%;
-  }
-
   div {
     position: absolute;
-  }
-
-  .h2 {
-    color: $secondary;
-    display: block;
-    font-family: $light;
-    margin-top: 0;
-    position: relative;
-    text-align: center;
-    text-decoration: underline;
-    text-transform: uppercase;
   }
 }
 
@@ -311,9 +184,23 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   }
 }
 
+.selector {
+  display: none;
+}
+
 .mobile {
-  background-size: 100vw;
-  background-repeat: repeat-y;
+  background-color: #051733;
+  //background-size: cover;
+  //background-repeat: no-repeat;
+
+  .selector {
+    display: none;
+     @media(max-width: 767px) {
+       display: inline;
+       float: right;
+       transition: transform .3s ease;
+     }
+  }
 
   p {
     color: $secondary;
@@ -327,17 +214,19 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
   h2 {
     color: $secondary;
-    font-family: $light;
-    font-size: 1.5em;
-    margin-bottom: 0;
-    text-decoration: underline;
+    display: inline;
+    font-family: $bold;
+    font-size: 24px;
+    margin: 0 24px;
+    padding-bottom: 0;
     text-transform: uppercase;
   }
 
   .planet-subtitle {
+    clear: both;
     color: $primary;
-    font-family: $bold;
-    font-size: 2em;
+    font-family: $light;
+    font-size: 3em;
     text-transform: uppercase;
   }
 
@@ -347,16 +236,52 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   }
 
   .planet-thumb {
-    float: right;
+    display: inline;
+    height: 24px;
+    margin-bottom: 8px;
+    width: 24px;
+  }
+
+  .instructions {
+    padding: 0 20%;
+
+    p {
+      color: $primary;
+      text-align: center;
+    }
   }
 
   .detail-inner {
-    border-bottom: 1px solid $primary;
-    margin-bottom: 18px;
+
+    border-bottom: 1px solid $secondary;
 
     &:last-child {
       border-bottom: 0;
       margin-bottom: 0;
+    }
+  }
+
+  @media(max-width: 767px) {
+    .expand-toggle {
+      padding-bottom: 8px;
+      display: block;
+
+      &.active {
+        .selector {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
+
+      &.active {
+        max-height: 2000px;
+        margin-bottom: 18px;
+      }
     }
   }
 }

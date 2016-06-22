@@ -21,24 +21,53 @@ var KnightsInSpace;
             if ($(window).width() > 767) {
                 $intro.modal('show');
             }
-            this.scaleImageMap();
+            $(window).resize(this.scaleImageMap);
+            $('.expand-toggle').click(this.expand);
+            setTimeout(this.scaleImageMap, 100); // Wait 100ms for scale to make sure image is loaded.
         }
         App.prototype.scaleImageMap = function () {
-            var scale = $('.background').width() / 2000;
+            // Make sure background width and height are set.
+            this.backgroundWidth = this.backgroundWidth ? this.backgroundWidth : 2000;
+            this.backgroundHeight = this.backgroundHeight ? this.backgroundHeight : 1175;
+            // Cache background as we will be referring to it quite a bit.
+            var $background = $('.background');
+            // Calculate scale based on new width-height divided by old width/height.
+            var scale = {
+                x: $background.width() / this.backgroundWidth,
+                y: $background.height() / this.backgroundHeight
+            };
+            // Set old width/height to the new values.
+            this.backgroundWidth = $background.width();
+            this.backgroundHeight = $background.height();
             var $map = $('#planetmap');
             $map.find('area').each(function (i, a) {
                 var coords = $(a).attr('coords');
                 var cSplit = coords.split(',');
                 var scaledCoords = new Array();
                 for (var c in cSplit) {
-                    var index = parseInt(c), value = Math.floor(parseInt(cSplit[c]) * scale);
+                    var index = parseInt(c), origVal = parseInt(cSplit[c]), newVal = 0;
                     if (index === 1 || index === 3) {
-                        value -= 20;
+                        newVal = Math.floor(origVal * scale.y);
                     }
-                    scaledCoords.push(value);
+                    else {
+                        newVal = Math.floor(origVal * scale.x);
+                    }
+                    scaledCoords.push(newVal);
                 }
                 $(a).attr('coords', scaledCoords.join(','));
             });
+        };
+        App.prototype.expand = function (e) {
+            e.preventDefault();
+            var $toggle = $(e.target).closest('.expand-toggle');
+            var $detail = $(e.target).closest('.detail-inner');
+            var $expand = $detail.find('.expand');
+            if (!$toggle.hasClass('active')) {
+                $('.expand-toggle, .detail-inner, .expand').removeClass('active');
+            }
+            $toggle.toggleClass('active');
+            $detail.toggleClass('active');
+            $expand.toggleClass('active');
         };
         return App;
     }());
