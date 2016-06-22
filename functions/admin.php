@@ -60,6 +60,7 @@ function add_shortcode_interface_modal() {
 			'divider',
 			'google-remarketing',
 			'lead',
+			'photo_essay',
 			'sidebar',
 			'slideshow',
 			'well'
@@ -128,6 +129,10 @@ function add_shortcode_interface_modal() {
 							<li class="shortcode-lead">
 								Styles a line of text intended for use as the lead paragraph of an entire story or a major
 								section of a story.  The first letter of this line will be styled as a dropcap.
+							</li>
+							<li class="shortcode-photo_essay">
+								Creates a running photo gallery with captions and side navigation. Slideshows should be created as Photo
+								Essays and then be selected here.
 							</li>
 							<li class="shortcode-sidebar">
 								Creates a floating sidebar, in which any text, media or shortcode content can be added.
@@ -264,6 +269,29 @@ function add_shortcode_interface_modal() {
 							<option value="right">Right</option>
 						</select>
 					</li>
+					<li class="shortcode-photo_essay">
+						<h2>Photo Essay Options</h2>
+
+						<h3>Select a Photo Essay:</h3>
+						<select name="photo-essay-select" id="photo-essay-select" data-parameter="slug">
+							<option value="">--Choose Photo Essay--</option>
+
+							<?php
+							$photo_essays = get_posts(array(
+								'posts_per_page' => -1,
+								'post_type' => 'photo_essay',
+							));
+							foreach($photo_essays as $photo_essay):
+							?>
+
+							<option class="shortcode" value="<?php echo $photo_essay->post_name; ?>"><?php echo $photo_essay->post_title; ?></option>
+
+							<?php
+							endforeach;
+							?>
+
+						</select>
+					</li>
 					<li class="shortcode-slideshow">
 						<h2>Slideshow Options</h2>
 
@@ -289,9 +317,9 @@ function add_shortcode_interface_modal() {
 
 						<h3>Select a caption color:</h3>
 						<p class="help">
-							(Optional) The color of caption text in this slideshow. Defaults to white (#fff).
+							(Optional) The color of caption text in this slideshow. Defaults to black (#000).
 						</p>
-						<input type="text" name="caption-color" class="shortcode-color" value="#ffffff" data-default-color="#ffffff" data-parameter="caption_color">
+						<input type="text" name="caption-color" class="shortcode-color" value="#000" data-default-color="#000" data-parameter="caption_color">
 					</li>
 					<li class="shortcode-well">
 						<h2>Well Options</h2>

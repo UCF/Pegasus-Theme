@@ -753,6 +753,124 @@ var affixedCallouts = function($) {
 };
 
 
+/**
+ * Enable the thumbnail nav and jump to top affixing for photo essays.
+ **/
+var photoEssayNav = function($) {
+  var $top = $('#photo-essay-top'),
+      $bottom = $('#photo-essay-bottom'),
+      $navbar = $('#photo-essay-navbar'),
+      $jumpTop = $('#photo-essay-jump-top'),
+      topOffset = 0,
+      bottomOffset = 0,
+      bottomOffsetInverse = 0,
+      prevScrollPos = 0;
+
+  function setOffsets() {
+    topOffset = $top.offset().top + $top.outerHeight(true);
+    bottomOffset = $bottom.offset().top - $(window).outerHeight();
+    bottomOffsetInverse = $(window).outerHeight() - $bottom.offset().top + 100;
+  }
+
+  function toggleNavbar() {
+    var newOffset = {
+      top: topOffset,
+      bottom: bottomOffsetInverse
+    };
+
+    // If affixing is already applied, just replace the offset value.
+    //
+    // Else, initialize affixing.
+    if ($navbar.is('.affix, .affix-top, .affix-bottom')) {
+      $navbar.data('bs.affix').options.offset = newOffset;
+    }
+    else {
+      $navbar
+        .affix({
+          offset: newOffset
+        })
+        .on('affix-top.bs.affix', function() {
+          // Unset position top overrides
+          $navbar.css('top', '');
+        });
+    }
+  }
+
+  function handleResize() {
+    setOffsets();
+    toggleNavbar();
+  }
+
+  function scrollNavbar() {
+    if ($navbar.is('.affix')) {
+      var scrollPos = $(document).scrollTop(),
+          navbarTop = parseFloat($navbar.css('top')),
+          newNavbarScrollPos,
+          scrollAmount;
+
+      if (scrollPos > prevScrollPos) {
+        // scroll down
+        scrollAmount = scrollPos - prevScrollPos;
+
+        // If scrolling down, $navbar's 'top' value should increase by scrollAmount
+        // up to the point that the bottom of $navbar is scrolled to (but no further).
+        newNavbarScrollPos = Math.max(navbarTop - scrollAmount, ($navbar.outerHeight(true) - $(window).height()) * -1);
+        $navbar.css('top', newNavbarScrollPos);
+      }
+      else {
+        // scroll up
+        scrollAmount = prevScrollPos - scrollPos;
+
+        // If scrolling up, $navbar's 'top' value should decrease by scrollAmount, but
+        // reach no less than 0.
+        newNavbarScrollPos = Math.min(navbarTop + scrollAmount, 0);
+        $navbar.css('top', newNavbarScrollPos);
+      }
+    }
+  }
+
+  function handleScroll() {
+    scrollNavbar();
+    prevScrollPos = $(document).scrollTop();
+  }
+
+  function handleNavClick(e) {
+    e.preventDefault();
+
+    var $target = $(this.getAttribute('href'));
+    if ($target.length) {
+      $('html, body').animate({
+        scrollTop: $target.offset().top
+      }, 500);
+    }
+
+    return false;
+  }
+
+  function handleJumpTopClick(e) {
+    e.preventDefault();
+
+    $('html, body').animate({
+      scrollTop: 0
+    }, 300);
+  }
+
+  if ( $top.length && $bottom.length ) {
+    setOffsets();
+    prevScrollPos = $(document).scrollTop();
+
+    $(window)
+      .on({
+        'load scroll': handleScroll,
+        'load resize': handleResize
+      });
+
+    $navbar.on('click', '.photo-essay-nav-link', handleNavClick);
+    $jumpTop.on('click', handleJumpTopClick);
+  }
+};
+
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -770,6 +888,7 @@ if (typeof jQuery !== 'undefined'){
       removeEmptyPageContainers($);
       customChart($);
       affixedCallouts($);
+      photoEssayNav($);
     });
   })(jQuery);
 }
