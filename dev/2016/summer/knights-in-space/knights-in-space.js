@@ -21,7 +21,7 @@ var KnightsInSpace;
         App.prototype.addDetail = function (e) {
             var target = $(e.target).find('.modal-body');
             if (target.find('.detail-inner').length == 0) {
-                var markup = $('div[data-related="' + e.target.id + '"]').get(0);
+                var markup = $('div[data-related="' + e.target.id + '"]').clone().get(0);
                 $(markup).prepend('<button type="button" class="close" data-dismiss="modal" aria-label="close"><span aria-hidden="true">&times;</span></button>');
                 target.append(markup);
             }
