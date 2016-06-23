@@ -280,8 +280,10 @@ function display_photo_essay( $photo_essay, $story=null ) {
 ?>
 
 	<?php
-	$header_img_id = get_post_meta( $story->ID, 'story_default_header_img', TRUE );
-	$header_img = wp_get_attachment_url( get_post($header_img_id)->ID );
+	if ( $story ) {
+		$header_img_id = get_post_meta( $story->ID, 'story_default_header_img', TRUE );
+		$header_img = wp_get_attachment_url( get_post($header_img_id)->ID );
+	}
 
 	if( $header_img ) {
 		$head_slide_image_url = $header_img;
