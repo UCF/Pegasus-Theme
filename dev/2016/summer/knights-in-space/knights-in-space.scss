@@ -4,303 +4,342 @@ $background: #000;
 $light: 'OpenSansCondensedLight', sans-serif;
 $bold: 'OpenSansCondensedBold', sans-serif;
 
-* {
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-  text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
-}
 
-.background {
-  background-position: center center;
-  background-size: cover;
-  height: 56.25vw;
-  width: 100vw;
-}
-
-map area {
-  outline: none;
-}
-
-.h1 {
-  border-bottom: 1px solid $secondary;
-  color: $primary;
-  display: inline-block;
-  font-family: $bold;
-  font-size: 2.5em;
-  text-transform: uppercase;
-
-  @media(max-width: 768px) {
-    display: block;
-    text-align: center;
-    font-size: 3em;
-  }
-}
-
-.title-instructions {
-  display: block;
-  opacity: 1;
-  left: 10%;
-  position: absolute;
-  top: 10%;
-  transition: opacity .5s ease;
-  width: 300px;
-  z-index: 10;
-
-  a {
-    color: $primary;
-    font-family: $bold;
-
-    &:hover,
-    &:active,
-    &:visited,
-    &:focus {
-      outline: none;
-      text-decoration: none;
-    }
+#knights-in-space {
+  * {
+    -webkit-font-smoothing: antialiased;
   }
 
-  p {
-    color: $secondary;
-    font-family: $light;
-    font-size: 1.3em;
+  .background {
+    background-position: center center;
+    background-size: cover;
+    height: 56.25vw;
+    position: relative;
+    width: 100vw;
   }
 
-  &.invisible {
-    opacity: 0;
-  }
-}
-
-#intro-screen {
-  transform: translate(0, 25%);
-
-  .detail-inner {
-    padding: 12px 110px;
+  map area {
+    outline: none;
   }
 
-  h1 {
+  .h1 {
     border-bottom: 1px solid $secondary;
     color: $primary;
-    display: block;
-    font-family: $bold;
-    font-size: 3em;
-    text-align: center;
-    text-transform: uppercase;
-  }
-
-  .intro-text {
-    color: $secondary;
-    font-family: $light;
-    font-size: 1.2em;
-    margin: 12px 0 24px;
-    text-align: left;
-  }
-
-  .btn-explore {
-    border: 1px solid $primary;
-    border-radius: 0;
-    color: $secondary;
     display: inline-block;
-    margin-left: 123px;
-    margin-right: 123px;
-    width: 100px;
+    font-family: $bold;
+    font-size: 2.5em;
+    text-transform: uppercase;
+
+    @media (max-width: 767px) {
+      display: block;
+      text-align: center;
+      font-size: 3em;
+    }
+
+    @media (max-width: 991px) {
+      display: block;
+      text-align: center;
+      font-size: 2em;
+    }
   }
-}
 
-.detail {
-  .modal-content {
-    background: $background;
+  .title-instructions {
+    display: block;
+    left: 10%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    transition: opacity .5s ease;
+    width: 300px;
+    z-index: 10;
 
-    .detail-inner {
-      border: 1px solid $primary;
-      padding: 12px;
+    @media (max-width: 991px) {
+      left: 12%;
+      width: 230px;
     }
 
-    .close {
-      color: $secondary;
-    }
-
-    h2 {
-      border-bottom: 1px solid $secondary;
-      color: $secondary;
-      display: inline;
-      font-family: $light;
-      font-size: 32px;
-      line-height: 46px;
-      margin-bottom: 0;
-      text-transform: uppercase;
-    }
-
-    .planet-subtitle {
+    a {
       color: $primary;
       font-family: $bold;
-      font-size: 40px;
-      line-height: 40px;
-      text-transform: uppercase;
-    }
 
-    .planet-thumb {
-      display: none;
+      &:hover,
+      &:active,
+      &:visited,
+      &:focus {
+        outline: none;
+        text-decoration: none;
+      }
     }
 
     p {
       color: $secondary;
       font-family: $light;
-      font-size: 22px;
+      font-size: 1.3em;
+
+      @media (max-width: 991px) {
+        font-size: 1.1em;
+      }
+    }
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+
+  #intro-screen {
+    transform: translate(0, 25%);
+
+    .detail-inner {
+      padding: 12px 110px;
+    }
+
+    h1 {
+      border-bottom: 1px solid $secondary;
+      color: $primary;
+      display: block;
+      font-family: $bold;
+      font-size: 3em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .intro-text {
+      color: $secondary;
+      font-family: $light;
+      font-size: 1.2em;
+      margin: 12px 0 24px;
+      text-align: left;
+    }
+
+    .btn-explore {
+      border: 1px solid $primary;
+      border-radius: 0;
+      color: $secondary;
+      display: inline-block;
+      margin-left: 123px;
+      margin-right: 123px;
+      width: 100px;
+    }
+  }
+
+  .detail {
+    .modal-content {
+      background: $background;
+
+      .detail-inner {
+        border: 1px solid $primary;
+        padding: 12px;
+      }
+
+      .close {
+        color: $secondary;
+      }
+
+      h2 {
+        border-bottom: 1px solid $secondary;
+        color: $secondary;
+        display: inline;
+        font-family: $light;
+        font-size: 32px;
+        line-height: 46px;
+        margin-bottom: 0;
+        text-transform: uppercase;
+      }
+
+      .planet-subtitle {
+        color: $primary;
+        font-family: $bold;
+        font-size: 40px;
+        line-height: 40px;
+        text-transform: uppercase;
+      }
+
+      .planet-thumb {
+        display: none;
+      }
+
+      p {
+        color: $secondary;
+        font-family: $light;
+        font-size: 22px;
+      }
+
+      .term {
+        color: $primary;
+        font-family: $bold;
+      }
+    }
+  }
+
+  .planets,
+  .static {
+    display: inline;
+    position: absolute;
+    z-index: 1;
+
+    img {
+      display: inline-block;
+      position: absolute;
+      z-index: 1;
+    }
+
+    div {
+      position: absolute;
+    }
+  }
+
+  .researcher {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 100px;
+
+    img {
+      margin: 5px 5px;
+      width: 90px;
+    }
+
+    p.caption {
+      color: $primary;
+      display: inline-block;
+      font-family: $bold;
+      text-align: center;
+
+      .title {
+        color: $secondary;
+        display: block;
+        font-family: $light;
+        font-size: 16px;
+        font-style: italic;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .selector {
+    display: none;
+  }
+
+  .expand-toggle {
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      text-decoration: none;
+    }
+  }
+
+  .mobile {
+    background-color: #092435;
+    background-repeat: repeat-y;
+
+    .container {
+      margin-top: -70px;
+    }
+
+    .selector {
+       @media (max-width: 767px) {
+         display: inline;
+         float: right;
+         font-size: 22px;
+         transition: transform .3s ease;
+       }
+    }
+
+    p {
+      color: $secondary;
+      font-family: $bold;
+      font-size: 18px;
+
+      &.lead {
+        font-family: $bold;
+      }
+    }
+
+    h2 {
+      color: $secondary;
+      display: inline;
+      font-family: $bold;
+      font-size: 24px;
+      margin: 0 24px;
+      padding-bottom: 0;
+      text-transform: uppercase;
+    }
+
+    .planet-subtitle {
+      clear: both;
+      color: $primary;
+      font-family: $light;
+      font-size: 3em;
+      line-height: 1.1;
+      text-transform: uppercase;
     }
 
     .term {
       color: $primary;
       font-family: $bold;
     }
-  }
-}
 
-.planets,
-.static {
-  display: inline;
-  position: absolute;
-  z-index: 1;
+    .instructions {
+      padding: 0 15%;
 
-  img {
-    display: inline-block;
-    position: absolute;
-    z-index: 1;
-  }
-
-  div {
-    position: absolute;
-  }
-}
-
-.researcher {
-  display: inline-block;
-  text-align: center;
-  width: 100px;
-
-  img {
-    margin: 5px 5px;
-    width: 90px;
-  }
-
-  p.caption {
-    color: $primary;
-    display: inline-block;
-    font-family: $bold;
-    text-align: center;
-
-    .title {
-      color: $secondary;
-      display: block;
-      font-family: $light;
-      font-size: 16px;
-      font-style: italic;
-      margin-top: 2px;
-    }
-  }
-}
-
-.selector {
-  display: none;
-}
-
-.expand-toggle {
-  &:hover,
-  &:active,
-  &:focus,
-  &:visited {
-    text-decoration: none;
-  }
-}
-
-.mobile {
-  background-color: #051733;
-  background-repeat: repeat-y;
-
-  .container {
-    margin-top: -70px;
-  }
-
-  .selector {
-     @media(max-width: 767px) {
-       display: inline;
-       float: right;
-       margin-top: 12px;
-       transition: transform .3s ease;
-     }
-  }
-
-  p {
-    color: $secondary;
-    font-family: $bold;
-    font-size: 18px;
-
-    &.lead {
-      font-family: $bold;
-    }
-  }
-
-  h2 {
-    color: $secondary;
-    display: inline;
-    font-family: $bold;
-    font-size: 24px;
-    margin: 0 24px;
-    padding-bottom: 0;
-    text-transform: uppercase;
-  }
-
-  .planet-subtitle {
-    clear: both;
-    color: $primary;
-    font-family: $light;
-    font-size: 3em;
-    text-transform: uppercase;
-  }
-
-  .term {
-    color: $primary;
-    font-family: $bold;
-  }
-
-  .instructions {
-    padding: 0 20%;
-
-    p {
-      color: $primary;
-      text-align: center;
-    }
-  }
-
-  .detail-inner {
-
-    border-bottom: 1px solid $secondary;
-
-    &:last-child {
-      border-bottom: 0;
-      margin-bottom: 0;
-    }
-  }
-
-  @media(max-width: 767px) {
-    .expand-toggle {
-      padding-bottom: 8px;
-      display: block;
-
-      &.active {
-        .selector {
-          transform: rotate(90deg);
-        }
+      p {
+        color: $primary;
+        text-align: center;
       }
     }
 
-    .expand {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height .5s ease;
+    .detail-inner {
 
-      &.active {
-        max-height: 2000px;
-        margin-bottom: 18px;
+      border-bottom: 1px solid $secondary;
+
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .expand-toggle {
+        display: table;
+        padding-top: 8px;
+        width: 100%;
+
+        > * {
+          display: table-cell;
+          vertical-align: middle;
+        }
+
+        .planet-thumb {
+          width: 80px;
+        }
+
+        h2 {
+          margin: 0;
+          width: calc(100% - 110px);
+        }
+
+        .selector-wrap {
+          color: #fff;
+          width: 30px;
+        }
+
+        &.active {
+          .selector {
+            transform: rotate(90deg);
+          }
+        }
+      }
+
+      .expand {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height .5s ease;
+
+        &.active {
+          max-height: 2000px;
+          margin-bottom: 18px;
+        }
       }
     }
   }
