@@ -1,20 +1,17 @@
 <article id="knights-in-space">
-  <div class="background hidden-xs">
-    <img class="background" src="[image filename='background']" alt="solar system" usemap="#planetmap">
-    <map id="planetmap" name="planetmap">
-      <area href="#" shape="rect" coords="250,473,422,578" data-toggle="modal" data-target="#mercury-details">
-      <area href="#" shape="rect" coords="504,435,619,545" data-toggle="modal" data-target="#moon-details">
-      <area href="#" shape="rect" coords="545,546,656,684" data-toggle="modal" data-target="#earth-details">
-      <area href="#" shape="rect" coords="629,731,794,825" data-toggle="modal" data-target="#osirus-rex-details">
-      <area href="#" shape="rect" coords="729,465,820,579" data-toggle="modal" data-target="#mars-details">
-      <area href="#" shape="rect" coords="1040,205,1327,565" data-toggle="modal" data-target="#jupiter-details">
-      <area href="#" shape="rect" coords="1108,580,1534,865" data-toggle="modal" data-target="#saturn-details">
-      <area href="#" shape="rect" coords="1423,238,1679,488" data-toggle="modal" data-target="#uranus-details">
-      <area href="#" shape="rect" coords="1550,524,1821,751" data-toggle="modal" data-target="#neptune-details">
-      <area href="#" shape="rect" coords="1799,425,1910,514" data-toggle="modal" data-target="#pluto-details">
-      <area href="#" shape="rect" coords="1360,950,1865,1103" data-toggle="modal" data-target="#upsilon-details">
-      <area href="#" shape="rect" coords="1705,850,2000,922" data-toggle="modal" data-target="#kuiper-belt-details">
-    </map>
+  <div class="background hidden-xs" [background-image filename='background']>
+    <a href="#" class="planet-map planet-map-mercury" data-target="#mercury-details" data-toggle="modal"><span class="sr-only">Mercury</span></a>
+    <a href="#" class="planet-map planet-map-moon" data-target="#moon-details" data-toggle="modal"><span class="sr-only">Luna (The Moon)</span></a>
+    <a href="#" class="planet-map planet-map-earth" data-target="#earth-details" data-toggle="modal"><span class="sr-only">Earth</span></a>
+    <a href="#" class="planet-map planet-map-osirus" data-target="#osirus-rex-details" data-toggle="modal"><span class="sr-only">Osirus Rex</span></a>
+    <a href="#" class="planet-map planet-map-mars" data-target="#mars-details" data-toggle="modal"><span class="sr-only">Mars</span></a>
+    <a href="#" class="planet-map planet-map-jupiter" data-target="#jupiter-details" data-toggle="modal"><span class="sr-only">Jupiter</span></a>
+    <a href="#" class="planet-map planet-map-saturn" data-target="#saturn-details" data-toggle="modal"><span class="sr-only">Saturn</span></a>
+    <a href="#" class="planet-map planet-map-uranus" data-target="#uranus-details" data-toggle="modal"><span class="sr-only">Uranus</span></a>
+    <a href="#" class="planet-map planet-map-neptune" data-target="#neptune-details" data-toggle="modal"><span class="sr-only">Neptune</span></a>
+    <a href="#" class="planet-map planet-map-pluto" data-target="#pluto-details" data-toggle="modal"><span class="sr-only">Pluto</span></a>
+    <a href="#" class="planet-map planet-map-upsilon" data-target="#upsilon-details" data-toggle="modal"><span class="sr-only">Upsilon</span></a>
+    <a href="#" class="planet-map planet-map-kuiper" data-target="#kuiper-belt-details" data-toggle="modal"><span class="sr-only">Kuiper Belt</span></a>
     <div class="title-instructions">
       <span class="h1">Knights <span class="h1-white">In Space</span></span>
       <p>Click on each planetary object to learn how UCF researchers are involved.</p>

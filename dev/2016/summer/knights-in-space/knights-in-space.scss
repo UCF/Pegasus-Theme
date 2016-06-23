@@ -1,3 +1,6 @@
+@import '../../../../versions/v4/static/scss/mixins';
+
+
 $primary: #cc9;
 $secondary: #fff;
 $background: #000;
@@ -6,23 +9,109 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
 
 #knights-in-space {
-  * {
-    -webkit-font-smoothing: antialiased;
-  }
+  @include no-font-smoothing();
 
   .background {
-    background-position: center center;
+    background-position: center top;
     background-size: cover;
-    height: 56.25vw;
+    height: 58.7vw;
     position: relative;
-    width: 100vw;
+    width: 100%;
   }
 
-  map area {
+  .planet-map {
+    display: block;
     outline: none;
+    position: absolute;
   }
+
+  .planet-map-mercury {
+    height: 10%;
+    left: 13%;
+    top: 40%;
+    width: 8%;
+  }
+
+  .planet-map-moon {
+    height: 9%;
+    left: 24.5%;
+    top: 37%;
+    width: 7%;
+  }
+
+  .planet-map-earth {
+    height: 12%;
+    left: 27%;
+    top: 46%;
+    width: 6%;
+  }
+
+  .planet-map-osirus {
+    height: 8%;
+    left: 31%;
+    top: 63%;
+    width: 9%;
+  }
+
+  .planet-map-mars {
+    height: 10%;
+    left: 35.5%;
+    top: 39%;
+    width: 6%;
+  }
+
+  .planet-map-jupiter {
+    height: 29%;
+    left: 52%;
+    top: 19%;
+    width: 15%;
+  }
+
+  .planet-map-saturn {
+    height: 25%;
+    left: 55%;
+    top: 50%;
+    width: 22%;
+  }
+
+  .planet-map-uranus {
+    height: 22%;
+    left: 70%;
+    top: 19%;
+    width: 14%;
+  }
+
+  .planet-map-neptune {
+    height: 19%;
+    left: 77%;
+    top: 45%;
+    width: 14%;
+  }
+
+  .planet-map-pluto {
+    height: 8%;
+    left: 90%;
+    top: 36%;
+    width: 6%;
+  }
+
+  .planet-map-upsilon {
+    height: 9%;
+    left: 68%;
+    top: 85%;
+    width: 26%;
+  }
+
+  .planet-map-kuiper {
+    height: 8%;
+    left: 85.5%;
+    top: 72%;
+    width: 10%;
+  }
+
 
   .h1 {
+    @include font-smoothing();
     border-bottom: 1px solid $secondary;
     color: $primary;
     display: inline-block;
@@ -59,6 +148,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     a {
+      @include font-smoothing();
       color: $primary;
       font-family: $bold;
 
@@ -94,6 +184,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     h1 {
+      @include font-smoothing();
       border-bottom: 1px solid $secondary;
       color: $primary;
       display: block;
@@ -147,6 +238,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       }
 
       .planet-subtitle {
+        @include font-smoothing();
         color: $primary;
         font-family: $bold;
         font-size: 40px;
@@ -165,6 +257,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       }
 
       .term {
+        @include font-smoothing();
         color: $primary;
         font-family: $bold;
       }
@@ -200,12 +293,14 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     p.caption {
+      @include font-smoothing();
       color: $primary;
       display: inline-block;
       font-family: $bold;
       text-align: center;
 
       .title {
+        @include no-font-smoothing();
         color: $secondary;
         display: block;
         font-family: $light;
@@ -247,6 +342,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     p {
+      @include font-smoothing();
       color: $secondary;
       font-family: $bold;
       font-size: 18px;
@@ -257,6 +353,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     h2 {
+      @include font-smoothing();
       color: $secondary;
       display: inline;
       font-family: $bold;
@@ -276,6 +373,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .term {
+      @include font-smoothing();
       color: $primary;
       font-family: $bold;
     }
