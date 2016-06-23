@@ -39,7 +39,13 @@ article.story {
 
   ol,
   ul {
+    list-style-position: outside;
     margin-top: 15px;
+    padding-left: 20px;
+  }
+
+  .list-unstyled {
+    padding-left: 0;
   }
 
   h1,
@@ -330,8 +336,10 @@ article.story {
 
   .jumbo-numbered-list {
     counter-reset: item;
+    list-style-position: inside;
     list-style-type: none;
     margin-top: 30px;
+    padding-left: 0;
   }
 
   .jumbo-numbered-list-item {
