@@ -26,17 +26,6 @@ article.story {
 		height: 1000px;
 		overflow: hidden;
 
-		// Animation control
-
-		.pause {
-			color: #fff;
-			cursor: pointer;
-			position: absolute;
-			right: 5px;
-			top: 5px;
-			z-index: 300;
-		}
-
 		.jumper-container {
 			position: relative;
 
@@ -129,14 +118,43 @@ article.story {
 					animation-iteration-count: infinite;
 				}
 
-				.counter {
-					color: #fff;
-					display: inline-block;
-					font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-					font-size: 30px;
-					font-weight: bold;
-					padding: 20px 0;
+				.counter-container {
 					white-space: nowrap;
+
+					.counter {
+						color: #fff;
+						display: block;
+						float: left;
+						font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+						font-size: 30px;
+						font-weight: bold;
+						margin-left: 15px;
+						white-space: nowrap;
+						width: 150px;
+
+						&.counter-hidden {
+							visibility: hidden;
+						}
+
+						&.counter-visible {
+							visibility: visible;
+						}
+
+					}
+
+					.pause {
+						background-color: #fff;
+						border-radius: 50%;
+						color: #2c314b;
+						cursor: pointer;
+						display: block;
+						float: left;
+						padding-left: 1px;
+    					margin-left: 10px;
+						margin-top: 13px;
+						height: 20px;
+						width: 20px;
+					}
 				}
 			}
 
