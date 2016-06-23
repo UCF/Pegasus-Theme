@@ -142,9 +142,20 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     width: 300px;
     z-index: 10;
 
-    @media (max-width: 991px) {
-      left: 12%;
-      width: 230px;
+    @media (min-width: 768px) {
+      left: 13%;
+      width: 30vw;
+    }
+
+    @media (min-width: 992px) {
+      left: 13%;
+      top: 4%;
+      width: 27vw;
+    }
+
+    @media (min-width: 1200px) {
+      left: 15%;
+      width: 24vw;
     }
 
     a {
@@ -166,8 +177,32 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       font-family: $light;
       font-size: 1.3em;
 
-      @media (max-width: 991px) {
-        font-size: 1.1em;
+      @media (min-width: 768px) {
+        font-size: 2vw;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 1.8vw;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 1.5vw;
+      }
+    }
+
+    .h1 {
+      display: inline-block;
+
+      @media (min-width: 768px) {
+        font-size: 4.2vw;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 3.6vw;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 3.2vw;
       }
     }
 
