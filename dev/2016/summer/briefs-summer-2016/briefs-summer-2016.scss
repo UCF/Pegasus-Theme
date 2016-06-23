@@ -61,6 +61,7 @@ article.story {
 
   h2,
   .h2 {
+    font-size: 42px;
     line-height: .95;
 
     @media (min-width: $screen-sm-min) {
@@ -78,6 +79,8 @@ article.story {
 
   h3,
   .h3 {
+    font-size: 28px;
+
     @media (min-width: $screen-sm-min) {
       font-size: 40px;
     }
@@ -125,13 +128,25 @@ article.story {
     &,
     p {
       @include gotham(4);
+      font-size: 16px;
     }
 
     h3,
     .h3 {
-      @media (min-width: $screen-sm-min) {
-        font-size: 24px; // reset
-      }
+      @include gotham(8);
+      font-size: 17px; // reset
+    }
+
+    blockquote,
+    blockquote p {
+      font-family: $font-family-serif;
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    blockquote small {
+      @include gotham(7);
     }
   }
 
@@ -183,13 +198,36 @@ article.story {
 
   .divider {
     border-top: $border-styles;
-    margin-bottom: 30px;
-    margin-top: 30px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     width: 100%;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
   }
 
 
   // Header Image
+
+  .story-header-image {
+    background-position: center 20%;
+    background-size: cover;
+    height: 300px;
+
+    @media (min-width: $screen-sm-min) {
+      height: 600px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .story-header-inner {
+    bottom: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
 
   .social {
     float: right;
@@ -209,6 +247,10 @@ article.story {
   // Heavenly View
 
   #heavenly-view {
+    .article-heading {
+      color: #F1BC88;
+    }
+
     .img-left {
       max-width: 40%;
 
@@ -222,7 +264,16 @@ article.story {
   // New Horizons (3.6 billion...)
 
   #new-horizons {
+    .article-heading {
+      color: #6E4438;
+    }
 
+    .photo-pluto {
+      @media (min-width: $screen-sm-min) {
+        margin-top: 70px;
+        padding-left: 30px;
+      }
+    }
   }
 
 
@@ -243,12 +294,38 @@ article.story {
       padding-left: 46px;
     }
 
+    .article-heading {
+      color: #8B4B70;
+    }
+
     .img-left {
       max-width: 40%;
 
       @media (min-width: $screen-sm-min) {
         width: auto;
       }
+    }
+  }
+
+
+  // New Leaders
+
+  #new-leaders {
+    .article-heading {
+      color: #333;
+      margin-top: 0;
+    }
+
+    img {
+      margin-top: 30px;
+    }
+
+    blockquote {
+      margin-top: 25px;
+    }
+
+    h3 {
+      margin-bottom: 2px;
     }
   }
 
