@@ -8,8 +8,29 @@ $light: 'OpenSansCondensedLight', sans-serif;
 $bold: 'OpenSansCondensedBold', sans-serif;
 
 
+// Adds Gotham font family styles to an element (using backward-compatible
+// font-family declarations for IE8 support.)
+// $weight should be a number from 1-9, which references the desired font
+// weight (100-900).  Default is 4 (400) or 'Book'.
+@mixin gotham($weight: 4, $font-style: normal) {
+  $h-weight: $weight * 100;
+
+  font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-style: $font-style;
+  font-weight: $h-weight;
+}
+
+
 #knights-in-space {
   @include no-font-smoothing();
+
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-sm {
+    width: 450px;
+  }
 
   .background {
     background-position: center top;
@@ -230,6 +251,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .intro-text {
+      @include no-font-smoothing();
       color: $secondary;
       font-family: $light;
       font-size: 1.2em;
@@ -238,13 +260,11 @@ $bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .btn-explore {
+      @include gotham(7);
       border: 1px solid $primary;
       border-radius: 0;
       color: $secondary;
       display: inline-block;
-      margin-left: 123px;
-      margin-right: 123px;
-      width: 100px;
     }
   }
 
@@ -254,7 +274,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
       .detail-inner {
         border: 1px solid $primary;
-        padding: 12px;
+        padding: 15px 30px 30px;
       }
 
       .close {
@@ -262,11 +282,11 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       }
 
       h2 {
+        @include gotham(4);
         border-bottom: 1px solid $secondary;
         color: $secondary;
-        display: inline;
-        font-family: $light;
-        font-size: 32px;
+        font-size: 18px;
+        letter-spacing: .2em;
         line-height: 46px;
         margin-bottom: 0;
         text-transform: uppercase;
@@ -276,8 +296,8 @@ $bold: 'OpenSansCondensedBold', sans-serif;
         @include font-smoothing();
         color: $primary;
         font-family: $bold;
-        font-size: 40px;
-        line-height: 40px;
+        font-size: 36px;
+        line-height: 1;
         text-transform: uppercase;
       }
 
@@ -286,15 +306,17 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       }
 
       p {
+        @include font-smoothing();
+        @include gotham(4);
         color: $secondary;
-        font-family: $light;
-        font-size: 22px;
+        font-size: 15px;
       }
 
       .term {
         @include font-smoothing();
         color: $primary;
         font-family: $bold;
+        font-size: 22px;
       }
     }
   }
@@ -335,12 +357,12 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       text-align: center;
 
       .title {
+        @include gotham(4, italic);
         @include no-font-smoothing();
         color: $secondary;
         display: block;
-        font-family: $light;
-        font-size: 16px;
-        font-style: italic;
+        font-size: 12px;
+        line-height: 1.2;
         margin-top: 2px;
       }
     }
