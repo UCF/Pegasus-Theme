@@ -329,4 +329,72 @@ article.story {
     }
   }
 
+
+  // Shining Stars
+
+  #shining-stars {
+    .shining-stars-wrap {
+      background-position: 9% bottom;
+      background-repeat: no-repeat;
+      background-size: 185% auto;
+      padding-bottom: 90vw;
+
+      @media (min-width: $screen-sm-min) {
+        background-position: center bottom;
+        background-size: 100% auto;
+        height: 387px;
+        padding-bottom: 0;
+        padding-top: 10%;
+      }
+
+      @media (min-width: $screen-md-min) {
+        background-position: center top;
+        height: 421px;
+      }
+
+      @media (min-width: $screen-lg-min) {
+        height: 513px;
+      }
+
+      &,
+      p {
+        @include gotham(4);
+        font-size: 16px;
+
+        @media (min-width: $screen-sm-min) {
+          font-size: 14px;
+        }
+
+        @media (min-width: $screen-md-min) {
+          font-size: 15px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .big-number {
+      @include gotham(8);
+      color: $ucf-gold;
+      display: block;
+      font-size: 90px;
+      line-height: .8;
+      margin-bottom: 4px;
+    }
+
+    .btn-shining-stars {
+      @include gotham(8);
+      background-color: $ucf-gold;
+      color: #fff;
+      font-size: 26px;
+      padding: 20px;
+
+      @media (min-width: $screen-md-min) {
+        font-size: 32px;
+      }
+    }
+  }
+
 }
