@@ -1,4 +1,22 @@
 article.story {
+    position: relative;
+
+    .replay {
+        display: none;
+        position: absolute;
+        right: 10%;
+        top: 15px;
+        z-index: 200;
+
+        .glyphicon {
+            font-size: 14px;
+        }
+
+        a {
+            color: #fff;
+            text-transform: uppercase;
+        }
+    }
 
 	h1 {
 		font-size: 60px;
@@ -8,6 +26,11 @@ article.story {
 			font-size: 50px;
 		}
 	}
+
+    .story-header-image {
+        background-color: #000;
+        background-size: 0 0;
+    }
 
     h3 {
         color: #d05439;
