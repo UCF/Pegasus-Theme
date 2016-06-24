@@ -7,14 +7,20 @@
 article.story {
 
 	h1 {
-		color: #2c314b;
-		font-size: 60px;
-		margin-bottom: 5px;
+		font-family: "MontserratBold", sans-serif;
+    	font-weight: normal;
+		font-size: 58px;
+		margin-bottom: 30px;
 		margin-top: 0;
 
 		@media (max-width: 767px) {
 			font-size: 50px;
 		}
+	}
+
+	.social {
+		float: none;
+		margin-top: 20px;
 	}
 
 	.content-container {
@@ -74,7 +80,7 @@ article.story {
 			.pegasus {
 				position: absolute;
 				left: 40%;
-				top: 2000px;
+				top: 2200px;
 				animation-name: cloudAnime;
 				animation-delay: 180s;
 				animation-duration: 2s;
