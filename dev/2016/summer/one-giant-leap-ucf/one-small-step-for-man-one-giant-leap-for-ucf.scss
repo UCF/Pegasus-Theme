@@ -202,7 +202,11 @@ article.story {
 			line-height: 1.2;
 			max-width: 300px;
 			text-transform: uppercase;
+
+			@media (max-width: $screen-xs-max) {
+				font-size: 2.5em;
 			}
+		}
 
 		p {
 			font-family: $font-family-serif;
@@ -355,10 +359,10 @@ article.story {
 
 		&.observatory {
 			.caption {
-				left: -180px;
+				left: 197px;
 				position: absolute;
-				text-align: right;
-				top: 158px;
+				text-align: left;
+				top: -27px;
 			}
 		}
 
