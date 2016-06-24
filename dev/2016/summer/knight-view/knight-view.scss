@@ -3,23 +3,37 @@ article.story {
 
     .replay {
         display: none;
+        left: 0;
+        margin: 0 auto;
         position: absolute;
-        right: 10%;
-        top: 15px;
+        right: 0;
+        top: 10px;
+        width: 85px;
         z-index: 200;
 
-        .glyphicon {
+        .glyphicon-repeat {
             font-size: 14px;
+            transition: all 1s ease;
         }
 
         a {
-            color: #fff;
+            color: #ccc;
             text-transform: uppercase;
+
+            &:hover {
+                color: #fff;
+
+                .glyphicon-repeat {
+                    transform: rotate(360deg);
+                }
+            }
         }
     }
 
 	h1 {
-		font-size: 60px;
+        font-family: MontserratBold,sans-serif;
+        font-weight: 400;
+		font-size: 58px;
 		margin-bottom: 5px;
 
 		@media (max-width: 767px) {
