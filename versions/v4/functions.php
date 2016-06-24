@@ -280,10 +280,17 @@ function display_photo_essay( $photo_essay, $story=null ) {
 ?>
 
 	<?php
-	// TODO: meta field that lets user pick specific slide?
-	$head_slide_image = wp_get_attachment_image_src( $images[$slide_order[0]], 'full' );
-	$head_slide_image_url = $head_slide_image[0];
-	$head_slide_title = $titles[$slide_order[0]];
+	if ( $story ) {
+		$header_img_id = get_post_meta( $story->ID, 'story_default_header_img', TRUE );
+		$header_img = wp_get_attachment_url( get_post($header_img_id)->ID );
+	}
+
+	if( $header_img ) {
+		$head_slide_image_url = $header_img;
+	} else {
+		$head_slide_image = wp_get_attachment_image_src( $images[$slide_order[0]], 'full' );
+		$head_slide_image_url = $head_slide_image[0];
+	}
 	?>
 
 	<section id="photo-essay-top" class="photo-essay-header clearfix" style="background-image: url('<?php echo $head_slide_image_url; ?>')">
