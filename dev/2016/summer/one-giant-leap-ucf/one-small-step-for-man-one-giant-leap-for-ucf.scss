@@ -1,6 +1,6 @@
 // Variables
 
-$font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+$font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
 $font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
 $font-family-sans-serif-heading:   'League Spartan', Helvetica, Arial, sans-serif !default;
 
@@ -13,16 +13,13 @@ $mustard: #f3c314;
 $peach: #f8e1c9;
 $gray: #56585b;
 $white: #fff;
-$line: #E2EDF3;
+$off-white: #fdfdfd;
+$steel: #E2EDF3;
 
 $border: 1px solid #000;
 
 // Mixins
 @import '../../../../versions/v3/static/scss/mixins';
-
-#header-navigation {
-	background: transparent;
-}
 
 .story {
 	margin: 0 auto;
@@ -34,14 +31,6 @@ body {
 	background: $mars;
 }
 
-body.withbg {
-	background: $mars url('../one-giant-leap-ucf/img/mars-horizon.png');
-	background-attachment: fixed;
-	background-position: center bottom -200px;
-	background-repeat: no-repeat;
-	background-size: contain;
-}
-
 .story-header-inner {
 	color: #fff;
 	margin-top: 50px;
@@ -51,23 +40,32 @@ body.withbg {
 
 }
 
-.section-title,
+// .section-title,
+// #more-stories article .story-title,
+// .story-list .subtitle, .story-list-grid .subtitle {
+// 	color: $white;
+// }
+
+#more-stories .section-title,
 #more-stories article .story-title,
-.story-list .subtitle, .story-list-grid .subtitle {
+#more-stories .story-list .subtitle,
+#more-stories .story-list-grid .subtitle {
 	color: $white;
 }
 
 
 main {
-	&::after {
+	&::before {
 		background: url('../one-giant-leap-ucf/img/arrow-solid.svg') no-repeat;
 		background-position: center center;
 		clear: both;
 		content: '';
 		display: block;
 		height: 10px;
-		margin: 0 auto;
+		margin-bottom: 50px;
 		margin-top: -41px;
+		margin-left: auto;
+		margin-right: auto;
 		width: 30px;
 	}
 }
@@ -75,16 +73,30 @@ main {
 /* timeline  */
 
 article.story {
+
+
+	@media (max-width: $screen-xs-max) {
+		.container {
+			padding-right: 0;
+		}
+	}
+			// @media (min-width: $screen-xs-max) {
+			// 	left: -2%;
+			// }
+
+
+	padding-left: 0;
+	padding-right: 0;
+
 	#space-timeline {
 		margin-top: -55px;
-		padding-bottom: 0;
-		padding-top: 0;
-		padding: 0;
+		padding: 0 8%;
+		padding-bottom: 100px;
 		position: relative;
 
 		&::before {
 			/* this is the vertical line */
-			background: $line;
+			background: $steel;
 			content: '';
 			height: 100%;
 			left: 18px;
@@ -92,16 +104,22 @@ article.story {
 			top: 0;
 			width: 4px;
 			z-index: -5;
+
+				left: 50%;
+				margin-left: -2px;
+
+			@media (max-width: $screen-xs-max) {
+					left: 0;
+					margin-left: 0;
+			}
 		}
 
 		&::after {
 			/* this is the vertical line */
-/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,1+100 */
-background: -moz-linear-gradient(top,  rgba(243, 113, 83, 0) 0%, rgba(243, 113, 83, 1) 100%); /* FF3.6-15 */
-background: -webkit-linear-gradient(top,  rgba(243, 113, 83,0) 0%,rgba(243, 113, 83, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-background: linear-gradient(to bottom,  rgba(243, 113, 83, 0) 0%,rgba(243, 113, 83, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
-			border: solid;
+			background: -moz-linear-gradient(top,  rgba(243, 113, 83, 0) 0%, rgba(243, 113, 83, 1) 100%); /* FF3.6-15 */
+			background: -webkit-linear-gradient(top,  rgba(243, 113, 83,0) 0%,rgba(243, 113, 83, 1) 100%); /* Chrome10-25,Safari5.1-6 */
+			background: linear-gradient(to bottom,  rgba(243, 113, 83, 0) 0%,rgba(243, 113, 83, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 			bottom: 0px;
 			content: '';
 			height: 100px;
@@ -109,13 +127,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 			position: absolute;
 			width: 100%;
 			z-index: 5;
-		}
-
-		@media (min-width: $screen-xs-max) {
-			&::before {
-				left: 50%;
-				margin-left: -2px;
-			}
 		}
 	}
 
@@ -130,8 +141,6 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 	.space-timeline-block {
 		clear: both;
-		// overflow: auto;
-		padding-bottom: 75px;
 		position: relative;
 
 		.author {
@@ -145,17 +154,37 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 			text-transform: uppercase;
 		}
 
+		&.padding-bottom {
+			padding-bottom: 58px;
+		}
+
 		&::after {
-			content: '';
 			background: url('../one-giant-leap-ucf/img/arrow-down.svg') no-repeat;
 			background-position: center center;
+			content: '';
 			clear: both;
 			display: block;
 			margin: 0 auto;
 			padding-bottom: 50px;
-			padding-top: 80px;
+			padding-top: 20px;
 			width: 30px;
 			height: 10px;
+
+			@media (max-width: $screen-xs-max) {
+				display: none;
+			}
+		}
+
+		&:last-child {
+			padding-bottom: 50px;
+		}
+
+		&:nth-child(odd)::after {
+			background: transparent;
+		}
+
+		&:last-child::after {
+			background: transparent;
 		}
 	}
 
@@ -167,7 +196,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 		width: 45%;
 
 		h1 {
-			color: #fff;
+			color: $white;
 			font-family: $font-family-sans-serif-heading;
 			font-size: 3em;
 			line-height: 1.2;
@@ -183,6 +212,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 			margin-bottom: 20px;
 		}
 
+		@media (max-width: $screen-xs-max) {
+			float: right;
+			width: 100%;
+			margin-top: 15px;
+			margin-bottom: 0;
+			padding-bottom: 44px;
+			padding-top: 80px;
+		}
 	}
 
 	.space-timeline-content.intro {
@@ -199,29 +236,43 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 			font-size: 1em;
 			line-height: 1.5em;
 			margin-bottom: 20px;
+
+			@media (max-width: $screen-xs-max) {
+				font-size: 1.1em;
+				line-height: 1.25em;
+			}
 		}
 
+		@media (max-width: $screen-xs-max) {
+			margin-top: 15px;
+			margin-bottom: 30px;
+		}
 	}
 
 	.space-timeline-content {
-		background: #fdfdfd;
+		background: $off-white;
 		border-radius: 10px;
 		box-shadow: 0 3px 0 rgba(208, 84, 57, 0.5);
 		float: left;
 		padding: 30px;
 		position: relative;
 		width: 45%;
-
-		&.padded-top {
-			margin-top: 120px;
-		}
+		z-index: 15;
 
 		&.left {
 			float: left;
+
+			@media (max-width: $screen-xs-max) {
+				float: right;
+			}
 		}
 
 		&.right {
 			float: right;
+
+			@media (max-width: $screen-xs-max) {
+				float: right;
+			}
 		}
 
 		h2 {
@@ -258,23 +309,30 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 			font-family: $font-family-sans-serif;
 			font-size: 14px;
 			line-height: 22px;
+
+			@media (max-width: $screen-xs-max) {
+				font-size: 1.1em;
+				line-height: 1.25em;
+			}
 		}
 
-		&.mars {
-			z-index: 10;
+		@media (max-width: $screen-xs-max) {
+			float: right;
+			width: 100%;
+			margin-bottom: 30px;
 		}
 	}
 
 	.space-timeline-media {
 		float: right;
-		width: 40%;
 		position: relative;
+		width: 40%;
 
 		.caption {
 			color: $mars-dark;
 			font-family: $font-family-sans-serif;
 			font-size: 17px;
-			font-weight: 400;
+			font-weight: 600;
 			letter-spacing: 2px;
 			position: absolute;
 			text-transform: uppercase;
@@ -285,9 +343,9 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 		}
 
 		&.citronaut {
-			width: 47%;
 			position: absolute;
-			top: 40px;
+			top: -50px;
+			width: 48%;
 
 			.caption {
 				bottom: 21%;
@@ -297,18 +355,18 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 
 		&.observatory {
 			.caption {
-				position: absolute;
-				top: 158px;
 				left: -180px;
+				position: absolute;
 				text-align: right;
+				top: 158px;
 			}
 		}
 
 		&.iss {
 			.caption {
+				left: 49%;
 				position: absolute;
 				top: 190px;
-				left: 49%;
 			}
 		}
 
@@ -339,28 +397,78 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', e
 				top: 30px;
 				text-align: right;
 			}
+
+			@media (max-width: $screen-xs-max) {
+				overflow: hidden;
+				img {
+					width: 130%;
+					margin: 0;
+				}
+			}
 		}
 
+		img {
+			width: 100%;
+
+			@media (max-width: $screen-xs-max) {
+				width: 70%;
+				margin: 0 15%;
+			}
+		}
+
+		@media (max-width: $screen-xs-max) {
+			width: 100% !important;
+			position: relative !important;
+			top: 0 !important;
+			padding: 1% !important;
+			left: 0 !important;
+			right: 0 !important;
+			margin-bottom: 0;
+			margin-top: -10px !important;
+
+			.caption {
+				top: 0 !important;
+				left: 0 !important;
+				right: 0;
+				text-align: center !important;
+				position: relative !important;
+				padding-top: 15px;
+			}
+		}
 	}
 }
 
-.pointing-line {
-	display: block;
-	margin: 0 auto;
-	position: absolute;
-	right: -58px;
-	width: 83px;
-	z-index: 20;
-}
+// .pointing-line {
+// 	display: block;
+// 	margin: 0 auto;
+// 	position: absolute;
+// 	right: -49px;
+// 	width: 70px;
+// 	z-index: 20;
+// }
 
 
-.right .pointing-line {
-	-moz-transform: scaleX(-1);
-	-o-transform: scaleX(-1);
-	-webkit-transform: scaleX(-1);
-	-ms-filter: "FlipH";
-	filter: FlipH;
-	left: -58px;
-	right: auto;
-	transform: scaleX(-1);
-	}
+// .right .pointing-line {
+// 	-moz-transform: scaleX(-1);
+// 	-o-transform: scaleX(-1);
+// 	-webkit-transform: scaleX(-1);
+// 	-ms-filter: "FlipH";
+// 	filter: FlipH;
+// 	left: -49px;
+// 	right: auto;
+// 	transform: scaleX(-1);
+// }
+
+
+	// @media (max-width: $screen-xs-max) {
+	// 	.pointing-line {
+	// 		-moz-transform: scaleX(-1);
+	// 		-o-transform: scaleX(-1);
+	// 		-webkit-transform: scaleX(-1);
+	// 		-ms-filter: "FlipH";
+	// 		filter: FlipH;
+	// 		left: -49px;
+	// 		right: auto;
+	// 		transform: scaleX(-1);
+	// 	}
+	// }

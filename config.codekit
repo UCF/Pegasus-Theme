@@ -8198,9 +8198,20 @@
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 97894,
+		"initialSize": 45486,
 		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/citronaut.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/citronaut.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/iss.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 36953,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/iss.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/iss.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
@@ -8227,6 +8238,17 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 99190,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
 	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png": {
 		"fileType": 32768,
 		"ignore": 0,
@@ -8234,6 +8256,39 @@
 		"initialSize": 1656,
 		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/pointing-line.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/robinson-observatory.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 30222,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/robinson-observatory.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/robinson-observatory.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/shuttle-discovery.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 46820,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/shuttle-discovery.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/shuttle-discovery.png",
+		"outputPathIsOutsideProject": 0,
+		"outputPathIsSetByUser": 0,
+		"processed": 0
+		},
+	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/ucf-1.01.png": {
+		"fileType": 32768,
+		"ignore": 0,
+		"ignoreWasSetByUser": 0,
+		"initialSize": 16609,
+		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/ucf-1.01.png",
+		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/ucf-1.01.png",
 		"outputPathIsOutsideProject": 0,
 		"outputPathIsSetByUser": 0,
 		"processed": 0
