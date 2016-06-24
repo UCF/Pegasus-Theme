@@ -24,6 +24,10 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 #knights-in-space {
   @include no-font-smoothing();
 
+  hr {
+    border-color: $primary;
+  }
+
   .modal-content {
     border-radius: 0;
   }
@@ -265,59 +269,79 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       border-radius: 0;
       color: $secondary;
       display: inline-block;
+      text-decoration: none;
     }
   }
 
   .detail {
     .modal-content {
       background: $background;
+    }
 
-      .detail-inner {
-        border: 1px solid $primary;
-        padding: 15px 30px 30px;
-      }
+    .detail-inner {
+      border: 1px solid $primary;
+      padding: 15px 30px 30px;
+    }
 
-      .close {
-        color: $secondary;
-      }
+    .close {
+      color: $secondary;
+      opacity: .4;
+    }
 
-      h2 {
-        @include gotham(4);
-        border-bottom: 1px solid $secondary;
-        color: $secondary;
-        font-size: 18px;
-        letter-spacing: .2em;
-        line-height: 46px;
-        margin-bottom: 0;
-        text-transform: uppercase;
-      }
+    h2 {
+      @include gotham(4);
+      border-bottom: 1px solid $secondary;
+      color: $secondary;
+      font-size: 18px;
+      letter-spacing: .2em;
+      line-height: 46px;
+      margin-bottom: 0;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
 
-      .planet-subtitle {
-        @include font-smoothing();
-        color: $primary;
-        font-family: $bold;
-        font-size: 36px;
-        line-height: 1;
-        text-transform: uppercase;
-      }
+    .planet-subtitle {
+      @include font-smoothing();
+      color: $primary;
+      font-family: $bold;
+      font-size: 36px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
 
-      .planet-thumb {
-        display: none;
+    .planet-thumb {
+      &,
+      img {
+        height: 30px;
+        width: 30px;
       }
+    }
 
-      p {
-        @include font-smoothing();
-        @include gotham(4);
-        color: $secondary;
-        font-size: 15px;
-      }
+    p,
+    a {
+      @include font-smoothing();
+      @include gotham(4);
+      color: $secondary;
+      font-size: 15px;
+    }
 
-      .term {
-        @include font-smoothing();
-        color: $primary;
-        font-family: $bold;
-        font-size: 22px;
-      }
+    a {
+      text-decoration: underline;
+    }
+
+    .term {
+      @include font-smoothing();
+      color: $primary;
+      font-family: $bold;
+      font-size: 22px;
+    }
+
+    figcaption {
+      @include gotham(4, italic);
+      color: $secondary;
+      font-size: 15px;
+      line-height: 1.4;
+      margin-top: 10px;
     }
   }
 
@@ -349,7 +373,7 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       width: 90px;
     }
 
-    p.caption {
+    .caption {
       @include font-smoothing();
       color: $primary;
       display: inline-block;
@@ -373,11 +397,12 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   }
 
   .expand-toggle {
+    &,
     &:hover,
     &:active,
     &:focus,
     &:visited {
-      text-decoration: none;
+      text-decoration: none !important;
     }
   }
 
@@ -398,7 +423,8 @@ $bold: 'OpenSansCondensedBold', sans-serif;
        }
     }
 
-    p {
+    p,
+    a {
       @include font-smoothing();
       color: $secondary;
       font-family: $bold;
@@ -407,6 +433,10 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       &.lead {
         font-family: $bold;
       }
+    }
+
+    a {
+      text-decoration: underline;
     }
 
     h2 {
@@ -454,6 +484,14 @@ $bold: 'OpenSansCondensedBold', sans-serif;
       }
     }
 
+    figcaption {
+      color: $secondary;
+      font-family: $bold;
+      font-style: italic;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
     @media (max-width: 767px) {
       .expand-toggle {
         display: table;
@@ -467,6 +505,11 @@ $bold: 'OpenSansCondensedBold', sans-serif;
 
         .planet-thumb {
           width: 80px;
+
+          img {
+            height: auto;
+            width: auto;
+          }
         }
 
         h2 {
