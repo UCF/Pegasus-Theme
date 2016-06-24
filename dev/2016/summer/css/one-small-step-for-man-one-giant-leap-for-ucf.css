@@ -46,13 +46,12 @@ article.story {
       background: #E2EDF3;
       content: '';
       height: 100%;
-      left: 18px;
+      left: 50%;
+      margin-left: -2px;
       position: absolute;
       top: 0;
       width: 4px;
-      z-index: -5;
-      left: 50%;
-      margin-left: -2px; }
+      z-index: -5; }
       @media (max-width: 767px) {
         article.story #space-timeline::before {
           left: 0;

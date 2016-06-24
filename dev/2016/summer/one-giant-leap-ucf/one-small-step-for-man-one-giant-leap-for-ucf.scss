@@ -36,16 +36,6 @@ body {
 	margin-top: 50px;
 }
 
-.header-intro {
-
-}
-
-// .section-title,
-// #more-stories article .story-title,
-// .story-list .subtitle, .story-list-grid .subtitle {
-// 	color: $white;
-// }
-
 #more-stories .section-title,
 #more-stories article .story-title,
 #more-stories .story-list .subtitle,
@@ -74,16 +64,11 @@ main {
 
 article.story {
 
-
 	@media (max-width: $screen-xs-max) {
 		.container {
 			padding-right: 0;
 		}
 	}
-			// @media (min-width: $screen-xs-max) {
-			// 	left: -2%;
-			// }
-
 
 	padding-left: 0;
 	padding-right: 0;
@@ -99,14 +84,12 @@ article.story {
 			background: $steel;
 			content: '';
 			height: 100%;
-			left: 18px;
+			left: 50%;
+			margin-left: -2px;
 			position: absolute;
 			top: 0;
 			width: 4px;
 			z-index: -5;
-
-				left: 50%;
-				margin-left: -2px;
 
 			@media (max-width: $screen-xs-max) {
 					left: 0;
