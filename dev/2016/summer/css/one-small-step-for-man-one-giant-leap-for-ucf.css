@@ -94,7 +94,7 @@ article.story {
     article.story .space-timeline-block.padding-bottom {
       padding-bottom: 58px; }
     article.story .space-timeline-block::after {
-      background: url("../one-giant-leap-ucf/img/arrow-down.svg") no-repeat;
+      background: url("/wp-content/themes/Pegasus-Theme/one-giant-leap-ucf/dev/2016/summer/one-giant-leap-ucf/img/arrow-down.svg") no-repeat;
       background-position: center center;
       content: '';
       clear: both;
@@ -197,7 +197,13 @@ article.story {
         border-bottom: #56585b solid 1px;
         margin-bottom: 30px;
         padding-bottom: 12px; }
-    article.story .space-timeline-content h3 {
+        @media (max-width: 991px) {
+          article.story .space-timeline-content h2.no-subtitle {
+            font-size: 24px; } }
+        @media (max-width: 767px) {
+          article.story .space-timeline-content h2.no-subtitle {
+            font-size: 30px; } }
+    article.story .space-timeline-content .subtitle {
       border-bottom: solid 1px;
       color: #56585b;
       font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", Arial, Gadget, sans-serif;
@@ -296,3 +302,29 @@ article.story {
           text-align: center !important;
           position: relative !important;
           padding-top: 15px; } }
+  article.story .pointing-line {
+    display: block;
+    margin: 0 auto;
+    position: absolute;
+    right: -49px;
+    width: 70px;
+    z-index: 20; }
+  article.story .right .pointing-line {
+    -moz-transform: scaleX(-1);
+    -o-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    -ms-filter: "FlipH";
+    filter: FlipH;
+    left: -49px;
+    right: auto;
+    transform: scaleX(-1); }
+  @media (max-width: 767px) {
+    article.story .pointing-line {
+      -moz-transform: scaleX(-1);
+      -o-transform: scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      -ms-filter: "FlipH";
+      filter: FlipH;
+      left: -49px;
+      right: auto;
+      transform: scaleX(-1); } }
