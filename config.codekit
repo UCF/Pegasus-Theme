@@ -8216,33 +8216,11 @@
 		"outputPathIsSetByUser": 0,
 		"processed": 0
 		},
-	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon-blur.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 388844,
-		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon-blur.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon-blur.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
-	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon.png": {
-		"fileType": 32768,
-		"ignore": 0,
-		"ignoreWasSetByUser": 0,
-		"initialSize": 1.61145e+06,
-		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon.png",
-		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-horizon.png",
-		"outputPathIsOutsideProject": 0,
-		"outputPathIsSetByUser": 0,
-		"processed": 0
-		},
 	"\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png": {
 		"fileType": 32768,
 		"ignore": 0,
 		"ignoreWasSetByUser": 0,
-		"initialSize": 99190,
+		"initialSize": 112242,
 		"inputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png",
 		"outputAbbreviatedPath": "\/dev\/2016\/summer\/one-giant-leap-ucf\/img\/mars-one.png",
 		"outputPathIsOutsideProject": 0,
