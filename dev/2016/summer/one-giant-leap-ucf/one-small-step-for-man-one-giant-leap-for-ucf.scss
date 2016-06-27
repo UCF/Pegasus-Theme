@@ -4,6 +4,7 @@ $font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 
 $font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
 $font-family-sans-serif-heading:   'League Spartan', Helvetica, Arial, sans-serif !default;
 
+$screen-xs-max: 768px;
 $screen-sm-max: 991px;
 
 $mars: #f37153;
@@ -116,11 +117,18 @@ article.story {
 			content: '';
 			margin: 0 auto;
 
+			@media (max-width: $screen-xs-max) {
+				width: 20px;
+				height: 20px;
+				margin-left: -12.5%;
+			}
+
 			@media (max-width: $screen-sm-max) {
 				width: 25px;
 				height: 25px;
 				margin-left: -11.5%;
 			}
+
 		}
 
 		&::after {
@@ -233,9 +241,10 @@ article.story {
 				right: auto;
 
 				@media (max-width: $screen-sm-max) {
-					border-width: 20px 20px 20px 0;
-					left: -20px;
+					border-width: 10px 10px 10px 0;
+					left: -10px;
 				}
+
 			}
 		}
 
@@ -263,8 +272,8 @@ article.story {
 
 				@media (max-width: $screen-sm-max) {
 					border-color: transparent $off-white transparent transparent;
-					border-width: 20px 20px 20px 0;
-					left: -20px;
+					border-width: 10px 10px 10px 0;
+					left: -10px;
 					right: auto;
 				}
 			}
@@ -311,6 +320,10 @@ article.story {
 			width: 100%;
 			margin-bottom: 30px;
 			margin-top: -68px;
+		}
+
+		@media (max-width: $screen-xs-max) {
+			margin-top: -57px;
 		}
 	}
 
