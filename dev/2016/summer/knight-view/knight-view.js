@@ -26,6 +26,7 @@ $(function () {
 
         // triggered if autoplay works
         video.addEventListener('play', function () {
+            body.removeChild(video);
             clearTimeout(removeVideoTimeout);
             $video
                 .css('max-height', $storyHeaderImage.height() + 'px')
