@@ -347,19 +347,33 @@ article.story {
 		}
 
 		&.citronaut {
-			position: absolute;
+			margin-bottom: -110px;
 			top: -50px;
 			width: 43%;
 
 			.caption {
 				bottom: 21%;
 				left: 0px;
+				@media (max-width: $screen-sm-max) {
+					padding-bottom: 25px;
+					margin-top: -30px;
+				}
 			}
 		}
 
 		&.observatory {
+			img {
+				width: 100%;
+				padding-left: 15%;
+
+				@media (max-width: $screen-sm-max) {
+					width: 60%;
+					padding-left: 0;
+					margin-left: 22%;
+				}
+			}
 			.caption {
-				left: 197px;
+				left: 257px;
 				position: absolute;
 				text-align: left;
 				top: -27px;
