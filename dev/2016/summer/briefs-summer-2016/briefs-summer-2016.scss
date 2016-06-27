@@ -386,13 +386,19 @@ article.story {
 
     .btn-shining-stars {
       @include gotham(8);
-      background-color: $ucf-gold;
+      background-color: darken($ucf-gold, 5%);
       color: #fff;
       font-size: 26px;
       padding: 20px;
 
       @media (min-width: $screen-md-min) {
         font-size: 32px;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: darken($ucf-gold, 10%);
       }
     }
   }
