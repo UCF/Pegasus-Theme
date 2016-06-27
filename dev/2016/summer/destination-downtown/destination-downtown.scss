@@ -1,0 +1,897 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+$site-nav-height: 40px;
+$flagpole-height: 45px;
+$ucf-gold: #fc0;
+$perimeter-bg: #1b87b9;
+
+
+@keyframes flyInFlagSkewUp {
+  from { transform: skewY(-32deg) scaleX(.9) translateY(-1500px); }
+  to   { transform: skewY(-32deg) scaleX(.9) translateY(0); }
+}
+
+@keyframes flyInFlagSkewDown {
+  from { transform: skewY(32deg) scaleX(.9) translateY(-1500px); }
+  to   { transform: skewY(32deg) scaleX(.9) translateY(0); }
+}
+
+
+article.story {
+
+  // General overrides
+
+  &,
+  p,
+  ol,
+  ul {
+    font-size: 16px;
+    line-height: 1.45;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  ol,
+  ul {
+    list-style-position: outside;
+    margin-top: 15px;
+    padding-left: 20px;
+  }
+
+  .list-unstyled {
+    padding-left: 0;
+  }
+
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6,
+  .lead:first-letter,
+  .jumbo-numbered-list-item:before,
+  .stats-numbers-list dt {
+    @include no-font-smoothing();
+    font-family: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 800;
+  }
+
+  strong,
+  h1 .alt,
+  .author,
+  .perimeter-text,
+  .flag-caption {
+    @include no-font-smoothing();
+    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  figcaption,
+  blockquote small,
+  .lead,
+  .well,
+  .well p,
+  .well ol,
+  .well ul,
+  .photo-credit,
+  .stats-section,
+  .stats-section ul {
+    font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  h1 {
+    color: #fff;
+    font-size: 11vw;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 85px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 120px;
+    }
+
+    .alt {
+      color: $ucf-gold;
+      font-size: 4.5vw;
+      letter-spacing: .25em;
+      margin-bottom: .3em;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 28px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        font-size: 38px;
+      }
+    }
+  }
+
+  h2,
+  .h2 {
+    font-size: 28px;
+    margin-bottom: .4em;
+    margin-top: 1.4em;
+  }
+
+  h3,
+  .h3 {
+    font-size: 19px;
+    margin-bottom: .2em;
+  }
+
+  h4,
+  .h4 {
+    font-size: 17px;
+  }
+
+  h5,
+  .h5 {
+    font-size: 15px;
+  }
+
+  h6,
+  .h6 {
+    font-size: 13px;
+  }
+
+  blockquote {
+    padding: 0;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 35px;
+    }
+
+    &,
+    & p {
+      font-size: 24px;
+      line-height: 1.4375;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 32px;
+      }
+    }
+
+    small {
+      font-style: italic;
+
+      @media (min-width: $screen-sm-min) {
+        margin-top: 25px;
+      }
+    }
+  }
+
+  figcaption {
+    font-size: 14px;
+    line-height: 1.4;
+    padding-left: 30px;
+    position: relative;
+
+    &:after {
+      border-color: transparent transparent $ucf-gold;
+      border-style: solid;
+      border-width: 0 9px 10px;
+      content: '';
+      height: 0;
+      left: 0;
+      padding: 0;
+      position: absolute;
+      top: 2px;
+      width: 0;
+    }
+  }
+
+  hr {
+    background-image: linear-gradient(to right, #333 20%, rgba(255, 255, 255, 0) 0%);
+    background-position: top;
+    background-repeat: repeat-x;
+    background-size: 10px 2px;
+    border-top: 0 solid transparent;
+    height: 3px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 40px;
+      margin-top: 40px;
+    }
+  }
+
+  .lead {
+    font-size: 18px;
+    line-height: 1.6;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 20px;
+      line-height: 1.8;
+    }
+
+    &:first-letter {
+      line-height: .72;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 125px;
+      }
+    }
+  }
+
+  .section-heading,
+  .section-heading-inverse {
+    margin-bottom: 40px;
+
+    &:after {
+      content: ' ';
+      display: block;
+      height: 3px;
+      margin-top: 8px;
+      width: 25px;
+    }
+  }
+
+  .section-heading {
+    &:after {
+      background-color: $ucf-gold;
+    }
+  }
+
+  .section-heading-inverse {
+    &:after {
+      background-color: #fff;
+    }
+  }
+
+
+  // Header Image
+
+  .story-header-image {
+    background-size: cover;
+    height: 500px;
+    margin-bottom: 30px;
+    transform-style: preserve-3d;
+
+    @media (min-width: $screen-sm-min) {
+      height: calc(100vh - #{$site-nav-height});
+      margin-bottom: 50px;
+      min-height: 650px;
+    }
+
+    img {
+      clip: unset;
+      height: auto;
+      margin: 0 auto;
+      position: static;
+      visibility: visible;
+      width: auto;
+    }
+  }
+
+  .story-header-inner {
+    position: relative;
+    top: 14%;
+    transform: translateY(-14%);
+  }
+
+  .description {
+    color: #fff;
+    font-size: 17px;
+    font-style: normal;
+    line-height: 1.4;
+
+    @media (min-width: 475px) {
+      font-size: 3vw;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 30px;
+    }
+  }
+
+  .author {
+    font-size: 13px;
+    margin-top: 20px;
+    text-transform: uppercase;
+
+    @media (min-width: 475px) {
+      font-size: 2vw;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  .social {
+    margin-top: 30px;
+    text-align: center;
+
+    .share-facebook,
+    .share-twitter,
+    .share-googleplus {
+      display: inline-block;
+      float: none;
+      margin-right: 0;
+    }
+  }
+
+
+  // Design Priorities
+
+  .jumbo-numbered-list {
+    counter-reset: item;
+    list-style-position: inside;
+    list-style-type: none;
+    margin-top: 30px;
+    padding-left: 0;
+  }
+
+  .jumbo-numbered-list-item {
+    counter-increment: item;
+    margin-bottom: 30px;
+    padding-left: 40px;
+    position: relative;
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: 80px;
+    }
+
+    &:before {
+      color: $ucf-gold;
+      content: counter(item, decimal);
+      display: block;
+      font-size: 36px;
+      font-weight: 800;
+      left: 0;
+      line-height: .825;
+      position: absolute;
+      text-align: center;
+      top: 0;
+      width: 40px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 75px;
+        width: 80px;
+      }
+    }
+
+    > *:first-child {
+      margin-top: 0;
+    }
+  }
+
+
+  // Campus Life
+
+  .campus-life {
+    line-height: 0; // makes <br>'s in this elem shorter
+    margin-top: 2.4em;
+
+    @media (min-width: $screen-md-min) {
+      padding-left: 30px;
+    }
+
+    figcaption {
+      line-height: 1.4;
+      margin-top: 20px;
+    }
+  }
+
+
+  // Leading the Charge
+
+  .well {
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+
+    &,
+    p,
+    ol,
+    ul {
+      font-size: 14px;
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 16px;
+      }
+    }
+  }
+
+  .well-striped {
+    background: repeating-linear-gradient(
+      -40deg,
+      #f4f9fb,
+      #f4f9fb 8px,
+      #fff 8px,
+      #fff 16px
+    );
+  }
+
+  .well-heading {
+    margin-top: 20px;
+  }
+
+  .leading-charge-inner {
+    padding-top: 2px;
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: 15px;
+      padding-top: 0;
+    }
+  }
+
+
+  // Map
+
+  .photo-credit {
+    color: $gray-light;
+    font-size: 11px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+
+  .map-container {
+    overflow: hidden;
+    position: relative;
+  }
+
+  .map-img {
+    margin: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+
+  // Perimeter circle styles
+
+  .perimeter {
+    background-image: radial-gradient(ellipse at center, rgba(125, 185, 232, 0) 55%, rgba(125, 185, 232, .5) 95%, rgba(30, 87, 153, 1) 100%);
+    border: 3px solid $perimeter-bg;
+    border-radius: 100%;
+    display: none;
+    overflow: hidden;
+    position: absolute;
+    transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg) scale(0);
+    z-index: 2;
+
+    @media (min-width: $screen-sm-min) {
+      display: block;
+    }
+  }
+
+  .perimeter-5min {
+    height: 62%;
+    left: 22%;
+    top: 37%;
+    width: 64%;
+  }
+
+  .perimeter-15min {
+    height: 140%;
+    left: -16%;
+    top: -1.5%;
+    width: 145%;
+  }
+
+  .perimeter-text {
+    background-color: $perimeter-bg;
+    color: #fff;
+    font-size: 10px;
+    line-height: 1;
+    padding: 5px 12px;
+    position: absolute;
+    text-transform: uppercase;
+    top: 45%;
+    transform: scaleY(.9);
+    z-index: 3;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 12px;
+    }
+  }
+
+
+  // Building styles
+
+  .building {
+    position: absolute;
+    transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg);
+    z-index: 4;
+  }
+
+  .building-dr-phillips {
+    height: 8%;
+    left: 53%;
+    top: 0;
+    width: 10%;
+  }
+
+  .building-city-hall {
+    height: 4%;
+    left: 71.5%;
+    top: 8%;
+    width: 4%;
+  }
+
+  .building-exec-dev {
+    height: 3%;
+    left: 52.5%;
+    top: 24%;
+    width: 3%;
+  }
+
+  .building-church-tech {
+    height: 5%;
+    left: 60.5%;
+    top: 28%;
+    width: 5%;
+  }
+
+  .building-amway {
+    height: 11%;
+    left: 81%;
+    top: 27%;
+    width: 11%;
+  }
+
+  .building-courthouse {
+    height: 13%;
+    left: -3%;
+    top: 42%;
+    width: 13%;
+  }
+
+  .building-lynx {
+    height: 13%;
+    left: 18%;
+    top: 53%;
+    width: 7%;
+  }
+
+  .building-famu {
+    height: 12%;
+    left: 49%;
+    top: 46%;
+    width: 5%;
+  }
+
+  .building-mls {
+    height: 13%;
+    left: 89%;
+    top: 47%;
+    width: 13%;
+  }
+
+  .building-parramore {
+    height: 14%;
+    left: 57%;
+    top: 85%;
+    width: 25%;
+  }
+
+
+  // Flag styles
+
+  .flag {
+    display: none;
+    position: absolute;
+    text-transform: uppercase;
+    z-index: 5;
+
+    @media (min-width: $screen-sm-min) {
+      display: block;
+    }
+
+    &:hover {
+      cursor: default;
+    }
+  }
+
+  .flag-ne {
+    transform: skewY(-32deg) scaleX(.9) translate(-1500px);
+  }
+
+  .flag-sw {
+    transform: skewY(-32deg) scaleX(.9) translate(-1500px);
+  }
+
+  .flag-nw {
+    transform: skewY(32deg) scaleX(.9) translate(-1500px);
+  }
+
+  .flag-se {
+    transform: skewY(32deg) scaleX(.9) translate(-1500px);
+  }
+
+  .flag-nw,
+  .flag-sw {
+    // Position the flagpole right of the flag
+    .flag-text {
+      &:before {
+        right: 0;
+      }
+
+      &:after {
+        right: -2px;
+      }
+    }
+  }
+
+  .flag-ne,
+  .flag-se {
+    // Position the flagpole left of the flag
+    .flag-text {
+      &:before {
+        left: 0;
+      }
+
+      &:after {
+        left: -2px;
+      }
+    }
+  }
+
+  .flag-text {
+    @include font-smoothing();
+    background-color: $ucf-gold;
+    color: #000;
+    display: block;
+    font-family: 'OpenSansCondensedBold', sans-serif;
+    font-size: 11px;
+    padding: 4px 6px;
+    position: relative;
+    transform: perspective(1px);  // FF Windows janky text fix
+
+    @media (min-width: $screen-md-min) {
+      font-size: 12px;
+    }
+
+    &:before,
+    &:after {
+      // flagpole + cap base styles
+      background-color: #444;
+      content: '';
+      position: absolute;
+    }
+
+    &:before {
+      // flagpole
+      height: $flagpole-height;
+      top: -4px;
+      width: 2px;
+    }
+
+    &:after {
+      // flagpole cap
+      border-radius: 6px;
+      height: 6px;
+      top: -8px;
+      width: 6px;
+    }
+  }
+
+  .flag-caption {
+    background-color: $perimeter-bg;
+    bottom: calc(100% + 5px);
+    color: #fff;
+    font-size: 12px;
+    min-width: 105px;
+    opacity: 0;
+    padding: 4px 8px;
+    position: absolute;
+    text-align: center;
+    transform: translateY(25px);
+  }
+
+  .building:hover + .flag .flag-caption,
+  .flag:hover .flag-caption {
+    opacity: 1;
+    transform: translateY(0);
+    transition: all .25s ease-in-out;
+  }
+
+  .flag-ucf-downtown {
+    .flag-text {
+      @include no-font-smoothing();
+      background-color: #000;
+      color: #fff;
+      font-size: 15px;
+
+      .alt {
+        color: $ucf-gold;
+      }
+    }
+  }
+
+
+  // Specific perimeter+flag positioning
+
+  .inview {
+    .perimeter {
+      transform: rotateX(32deg) rotateZ(32deg) skewX(-22deg) skewY(3deg) scale(1);
+      transition: transform 1.5s cubic-bezier(.770, 0, .175, 1);
+      transition-timing-function: cubic-bezier(.770, 0, .175, 1);
+    }
+
+    .perimeter-5min {
+      transition-delay: 2.25s;
+    }
+
+    .perimeter-15min {
+      transition-delay: 1.75s;
+    }
+
+
+    .flag-ne,
+    .flag-sw {
+      transform: skewY(-32deg) scaleX(.9) translate(0);
+    }
+
+    .flag-nw,
+    .flag-se {
+      transform: skewY(32deg) scaleX(.9) translate(0);
+    }
+
+    .flag-ucf-downtown {
+      animation: flyInFlagSkewDown 2s ease-in-out;
+      left: 51.75%;
+      top: 68.25%;
+
+      .flag-text {
+        @include no-font-smoothing();
+        background-color: #000;
+        color: #fff;
+        font-size: 15px;
+
+        .alt {
+          color: $ucf-gold;
+        }
+      }
+    }
+
+    .flag-dr-phillips {
+      animation: flyInFlagSkewUp 1s ease-in-out;
+      right: 40.5%;
+      top: 10%;
+    }
+
+    .flag-city-hall {
+      animation: flyInFlagSkewUp 1.25s ease-in-out;
+      right: 26.5%;
+      top: 5.5%;
+
+      @media (min-width: $screen-md-min) {
+        top: 6.25%;
+      }
+    }
+
+    .flag-exec-dev {
+      animation: flyInFlagSkewUp .75s ease-in-out;
+      right: 45.5%;
+      top: 26.75%;
+    }
+
+    .flag-church-tech {
+      animation: flyInFlagSkewUp 1.25s ease-in-out;
+      // $flagpole-height / 2 should be roughly the amount of flagpole space that sticks outside of .flag's box
+      bottom: calc(74% + #{$flagpole-height / 2});
+      left: 62.5%;
+    }
+
+    .flag-amway {
+      animation: flyInFlagSkewDown .75s ease-in-out;
+      bottom: calc(72% + #{$flagpole-height / 2});
+      right: 11%;
+    }
+
+    .flag-courthouse {
+      animation: flyInFlagSkewUp 1s ease-in-out;
+      bottom: calc(59.75% + #{$flagpole-height / 2});
+      left: 4.5%;
+
+      @media (min-width: $screen-md-min) {
+        bottom: calc(59% + #{$flagpole-height / 2});
+        left: 5%;
+      }
+    }
+
+    .flag-lynx {
+      animation: flyInFlagSkewDown 1.25s ease-in-out;
+      bottom: calc(45.5% + #{$flagpole-height / 2});
+      right: 77%;
+    }
+
+    .flag-famu {
+      animation: flyInFlagSkewDown 1.25s ease-in-out;
+      bottom: calc(52.25% + #{$flagpole-height / 2});
+      right: 47.75%;
+    }
+
+    .flag-mls {
+      animation: flyInFlagSkewDown .75s ease-in-out;
+      bottom: calc(51% + #{$flagpole-height / 2});
+      right: 5%;
+    }
+
+    .flag-parramore {
+      animation: flyInFlagSkewUp 1s ease-in-out;
+      bottom: calc(15% + #{$flagpole-height / 2});
+      left: 67%;
+    }
+  }
+
+
+  // Numbers/Partners
+
+  .stats-container {
+    @media (min-width: $screen-md-min) {
+      display: table-row;
+    }
+  }
+
+  .stats-section {
+    height: 100%;
+    padding: 15px 25px 25px;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 25px 50px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      display: table-cell;
+    }
+  }
+
+  .stats-numbers {
+    background-color: $ucf-gold;
+
+    @media (min-width: $screen-md-min) {
+      width: 65%;
+    }
+  }
+
+  .stats-numbers-list {
+    margin-bottom: 0;
+
+    dt {
+      color: #fff;
+      font-size: 45px;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+    }
+
+    dd {
+      font-size: 16px;
+      margin-bottom: 15px;
+    }
+  }
+
+  .stats-partners {
+    background-color: #fafafa;
+
+    @media (min-width: $screen-md-min) {
+      width: 35%;
+    }
+
+    ul {
+      font-size: 13px;
+    }
+  }
+
+}
