@@ -394,9 +394,9 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         textarea.show();
         html5iframe.remove();
         toolbar.hide();
-        
+
         var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-            toolbar: toolbar.attr('id'), // id of toolbar element                    
+            toolbar: toolbar.attr('id'), // id of toolbar element
             stylesheets: [THEME_CSS_URL + "editor.css"],
             parserRules: wysihtml5ParserRules, // defined in parser rules set
         });
@@ -539,7 +539,7 @@ WebcomAdmin.storyFieldToggle = function($) {
     }
     var fields = {
       "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img"],
-      "photo_essayFields": ["story_description", "story_default_font"],
+      "photo_essayFields": ["story_description", "story_default_font", "story_default_header_img"],
       "customFields" : ["story_html", "story_stylesheet", "story_javascript", "story_fonts"],
     };
     var fieldsOnKey = val + 'Fields';
