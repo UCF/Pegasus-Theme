@@ -4,7 +4,7 @@ $font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', 
 $font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
 $font-family-sans-serif-heading:   'League Spartan', Helvetica, Arial, sans-serif !default;
 
-$screen-xs-max: 767px;
+$screen-sm-max: 767px;
 $screen-sm-max: 991px;
 
 $mars: #f37153;
@@ -39,7 +39,7 @@ article.story {
 	padding-left: 0;
 	padding-right: 0;
 
-	@media (max-width: $screen-xs-max) {
+	@media (max-width: $screen-sm-max) {
 		.container {
 			padding-right: 0;
 		}
@@ -55,10 +55,15 @@ article.story {
 		margin-left: auto;
 		margin-right: auto;
 		width: 30px;
+
+		@media (max-width: $screen-sm-max) {
+			display: none;
+		}
 	}
 
 	#space-timeline {
 		margin-top: -55px;
+		margin-bottom: 70px;
 		padding: 0 8%;
 		padding-bottom: 100px;
 		position: relative;
@@ -73,21 +78,19 @@ article.story {
 			position: absolute;
 			top: 0;
 			width: 4px;
-			z-index: 1;
+			z-index: 0;
 
-			@media (max-width: $screen-xs-max) {
-					left: 0;
-					margin-left: 0;
+			@media (max-width: $screen-sm-max) {
+				left: 0;
+				margin-left: 0;
 			}
 		}
 
 		&::after {
-			background: -moz-linear-gradient(top,  rgba(243, 113, 83, 0) 0%, rgba(243, 113, 83, 1) 100%); /* FF3.6-15 */
-			background: -webkit-linear-gradient(top,  rgba(243, 113, 83,0) 0%,rgba(243, 113, 83, 1) 100%); /* Chrome10-25,Safari5.1-6 */
-			background: linear-gradient(to bottom,  rgba(243, 113, 83, 0) 0%,rgba(243, 113, 83, 1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+			background: linear-gradient(to bottom,  rgba(243, 113, 83, 0) 0%,rgba(243, 113, 83, 1) 100%);
 			bottom: 0px;
 			content: '';
+			filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
 			height: 100px;
 			left: 0px;
 			position: absolute;
@@ -123,9 +126,23 @@ article.story {
 			padding-bottom: 58px;
 		}
 
+		&::before {
+			background: $mustard;
+			border: solid 2px $steel;
+			width: 30px;
+			height: 30px;
+			border-radius: 50%;
+			display: block;
+			content: '';
+			margin: 0 auto;
+			margin-bottom: -62px;
+
+			@media (max-width: $screen-sm-max) {
+				display: none;
+			}
+		}
+
 		&::after {
-			background: url('/wp-content/themes/Pegasus-Theme/one-giant-leap-ucf/dev/2016/summer/one-giant-leap-ucf/img/arrow-down.svg') no-repeat;
-			background-position: center center;
 			content: '';
 			clear: both;
 			display: block;
@@ -134,22 +151,6 @@ article.story {
 			padding-top: 20px;
 			width: 30px;
 			height: 10px;
-
-			@media (max-width: $screen-xs-max) {
-				display: none;
-			}
-		}
-
-		&:last-child {
-			padding-bottom: 50px;
-		}
-
-		&:nth-child(odd)::after {
-			background: transparent;
-		}
-
-		&:last-child::after {
-			background: transparent;
 		}
 	}
 
@@ -168,7 +169,7 @@ article.story {
 			max-width: 300px;
 			text-transform: uppercase;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				font-size: 2.5em;
 			}
 		}
@@ -181,13 +182,13 @@ article.story {
 			margin-bottom: 20px;
 		}
 
-		@media (max-width: $screen-xs-max) {
+		@media (max-width: $screen-sm-max) {
 			float: right;
-			width: 100%;
-			margin-top: 15px;
 			margin-bottom: 0;
+			margin-top: 15px;
 			padding-bottom: 44px;
 			padding-top: 80px;
+			width: 100%;
 		}
 	}
 
@@ -206,13 +207,13 @@ article.story {
 			line-height: 1.5;
 			margin-bottom: 20px;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				font-size: 1.1em;
 				line-height: 1.25;
 			}
 		}
 
-		@media (max-width: $screen-xs-max) {
+		@media (max-width: $screen-sm-max) {
 			margin-top: 15px;
 			margin-bottom: 30px;
 		}
@@ -231,7 +232,7 @@ article.story {
 		&.left {
 			float: left;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				float: right;
 			}
 		}
@@ -239,8 +240,20 @@ article.story {
 		&.right {
 			float: right;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				float: right;
+			}
+
+			h2::before {
+				border-color: transparent $off-white transparent transparent;
+				border-width: 10px 10px 10px 0;
+				left: -10px;
+				right: auto;
+
+				@media (max-width: $screen-sm-max) {
+					border-width: 20px 20px 20px 0;
+					left: -20px;
+				}
 			}
 		}
 
@@ -253,6 +266,27 @@ article.story {
 			margin-top: 0;
 			text-transform: uppercase;
 
+			&::before {
+				border-color: transparent transparent transparent $off-white;
+				border-style: solid;
+				border-width: 10px 0 10px 10px;
+				content: '';
+				display: block;
+				height: 0;
+				position: absolute;
+				right: -10px;
+				top: 37px;
+				width: 0;
+				-webkit-transform:rotate(360deg); // for better anti-aliasing in webkit browsers
+
+				@media (max-width: $screen-sm-max) {
+					border-color: transparent $off-white transparent transparent;
+					border-width: 20px 20px 20px 0;
+					left: -20px;
+					right: auto;
+				}
+			}
+
 			&.no-subtitle {
 				color: $mustard;
 				font-size: 30px;
@@ -261,10 +295,6 @@ article.story {
 				padding-bottom: 12px;
 
 				@media (max-width: $screen-sm-max) {
-					font-size: 24px;
-				}
-
-				@media (max-width: $screen-xs-max) {
 					font-size: 30px
 				}
 			}
@@ -288,13 +318,13 @@ article.story {
 			font-size: 14px;
 			line-height: 1.75;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				font-size: 1.1em;
 				line-height: 1.25;
 			}
 		}
 
-		@media (max-width: $screen-xs-max) {
+		@media (max-width: $screen-sm-max) {
 			float: right;
 			width: 100%;
 			margin-bottom: 30px;
@@ -376,7 +406,7 @@ article.story {
 				text-align: right;
 			}
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				overflow: hidden;
 				img {
 					width: 130%;
@@ -388,13 +418,13 @@ article.story {
 		img {
 			width: 100%;
 
-			@media (max-width: $screen-xs-max) {
+			@media (max-width: $screen-sm-max) {
 				width: 70%;
 				margin: 0 15%;
 			}
 		}
 
-		@media (max-width: $screen-xs-max) {
+		@media (max-width: $screen-sm-max) {
 			width: 100% !important;
 			position: relative !important;
 			top: 0 !important;
@@ -453,7 +483,7 @@ article.story {
 		transform: scaleX(-1);
 	}
 
-	@media (max-width: $screen-xs-max) {
+	@media (max-width: $screen-sm-max) {
 		.pointing-line {
 			-moz-transform: scaleX(-1);
 			-o-transform: scaleX(-1);
