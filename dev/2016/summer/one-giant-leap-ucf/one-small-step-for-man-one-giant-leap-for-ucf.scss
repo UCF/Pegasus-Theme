@@ -35,15 +35,14 @@ article.story {
 	padding-right: 0;
 
 	&::before {
-		background: url('../one-giant-leap-ucf/img/arrow-solid.svg') no-repeat;
-		background-position: center center;
-		clear: both;
+		border-color: $steel transparent transparent transparent;
+		border-style: solid;
+		border-width: 15px 15px 0 15px;
 		content: '';
 		display: block;
-		height: 10px;
-		margin-left: auto;
-		margin-right: auto;
-		width: 30px;
+		height: 0;
+		margin: 0 auto;
+		width: 0;
 
 		@media (max-width: $screen-sm-max) {
 			display: none;
@@ -140,6 +139,12 @@ article.story {
 			padding-top: 20px;
 			width: 30px;
 			height: 10px;
+		}
+
+		&.header-block {
+			&::before {
+				display: none;
+			}
 		}
 	}
 
