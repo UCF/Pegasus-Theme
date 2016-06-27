@@ -416,18 +416,19 @@ $bold: 'OpenSansCondensedBold', sans-serif;
   .mobile {
     background-color: #092435;
     background-repeat: repeat-y;
+    background-size: auto 3150px;
 
     .container {
       margin-top: -70px;
     }
 
     .selector {
-       @media (max-width: 767px) {
-         display: inline;
-         float: right;
-         font-size: 22px;
-         transition: transform .3s ease;
-       }
+      @media (max-width: 767px) {
+        display: inline;
+        float: right;
+        font-size: 22px;
+        transition: transform .3s ease;
+      }
     }
 
     p,
