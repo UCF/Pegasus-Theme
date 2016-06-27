@@ -19,25 +19,28 @@ $(function () {
         // triggered if autoplay fails
         var removeVideoTimeout = setTimeout(function () {
             body.removeChild(video);
-            $('video').remove();
-            $('.story-header-image')
+            $video.remove();
+            $storyHeaderImage
                 .css('background-size', 'cover');
         }, 50);
 
         // triggered if autoplay works
         video.addEventListener('play', function () {
             clearTimeout(removeVideoTimeout);
-            $('.story-header-image')
-                .find('video')
-                .css('max-height', '650px')
+            $video
+                .css('max-height', $storyHeaderImage.height() + 'px')
                 .end().find('img').remove()
                 .end().css('height', 'auto');
-            $('.replay').fadeIn(7000);
+            $replay.fadeIn(7000);
         }, false);
     }
 
-    $('.replay').on('click', function () {
-        $('video').get(0).play();
+    var $video = $('video'),
+        $replay = $('.replay'),
+        $storyHeaderImage = $('.story-header-image');
+
+    $replay.on('click', function () {
+        $video.get(0).play();
     });
 
     isAutoPlay();
