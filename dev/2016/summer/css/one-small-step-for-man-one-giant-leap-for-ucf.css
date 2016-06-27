@@ -1,41 +1,28 @@
-.story {
-  margin: 0 auto;
-  max-width: 1700px;
-  padding: 0 10%; }
-
-body {
-  background: #f37153; }
-
 .story-header-inner {
   color: #fff;
   margin-top: 50px; }
 
-#more-stories .section-title,
-#more-stories article .story-title,
-#more-stories .story-list .subtitle,
-#more-stories .story-list-grid .subtitle {
-  color: #fff; }
-
-main::before {
-  background: url("../one-giant-leap-ucf/img/arrow-solid.svg") no-repeat;
-  background-position: center center;
-  clear: both;
-  content: '';
-  display: block;
-  height: 10px;
-  margin-bottom: 50px;
-  margin-top: -41px;
-  margin-left: auto;
-  margin-right: auto;
-  width: 30px; }
-
-/* timeline  */
 article.story {
+  margin: 0 auto;
+  max-width: 1700px;
+  padding: 0 10%;
+  background: #f37153;
+  padding-bottom: 50px;
   padding-left: 0;
   padding-right: 0; }
   @media (max-width: 767px) {
     article.story .container {
       padding-right: 0; } }
+  article.story::before {
+    background: url("../one-giant-leap-ucf/img/arrow-solid.svg") no-repeat;
+    background-position: center center;
+    clear: both;
+    content: '';
+    display: block;
+    height: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30px; }
   article.story #space-timeline {
     margin-top: -55px;
     padding: 0 8%;
@@ -51,13 +38,12 @@ article.story {
       position: absolute;
       top: 0;
       width: 4px;
-      z-index: -5; }
+      z-index: 1; }
       @media (max-width: 767px) {
         article.story #space-timeline::before {
           left: 0;
           margin-left: 0; } }
     article.story #space-timeline::after {
-      /* this is the vertical line */
       background: -moz-linear-gradient(top, rgba(243, 113, 83, 0) 0%, #f37153 100%);
       /* FF3.6-15 */
       background: -webkit-linear-gradient(top, rgba(243, 113, 83, 0) 0%, #f37153 100%);
@@ -205,6 +191,7 @@ article.story {
     article.story .space-timeline-content .subtitle {
       border-bottom: solid 1px;
       color: #56585b;
+      display: block;
       font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", Arial, Gadget, sans-serif;
       font-size: 1.1em;
       font-weight: 800;
