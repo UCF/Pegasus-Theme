@@ -375,7 +375,7 @@ function get_relevant_issue( $post ) {
 	}
 	else if ( $post && $post->post_type == 'issue' && !is_404() && !is_search() ) {
 		$issue = $post;
-	} 
+	}
 	else if ( $post && $post->post_type == 'photo_essay' && !is_404() && !is_search() ) {
 		$issue = get_story_issue( $post );
 	}
@@ -735,7 +735,7 @@ function output_header_markup($post) {
 	}
 
 	// Page stylesheet
-	if ( $post->post_type == 'page' && !empty( $page_stylesheet_url ) ) {
+	if ( $post->post_type == 'page' ) {
 		$page_stylesheet_url = Page::get_stylesheet_url( $post );
 		if ( !empty( $page_stylesheet_url ) ) {
 			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
