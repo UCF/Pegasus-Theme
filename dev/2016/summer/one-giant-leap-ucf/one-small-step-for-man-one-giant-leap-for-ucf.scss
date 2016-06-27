@@ -115,7 +115,6 @@ article.story {
 			display: block;
 			content: '';
 			margin: 0 auto;
-			margin-bottom: -62px;
 
 			@media (max-width: $screen-sm-max) {
 				display: none;
@@ -204,6 +203,7 @@ article.story {
 		border-radius: 10px;
 		box-shadow: 0 3px 0 rgba(208, 84, 57, 0.5);
 		float: left;
+		margin-top: -62px;
 		padding: 30px;
 		position: relative;
 		width: 45%;
