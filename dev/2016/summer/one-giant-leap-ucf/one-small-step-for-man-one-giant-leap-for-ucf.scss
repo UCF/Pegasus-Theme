@@ -32,7 +32,6 @@ main {
 
 article.story {
 	margin: 0 auto;
-	max-width: 1700px;
 	padding: 0 10%;
 	background: $mars;
 	padding-bottom: 50px;
@@ -363,7 +362,7 @@ article.story {
 
 		&.observatory {
 			.caption {
-				left: 237px;
+				left: 197px;
 				position: absolute;
 				text-align: left;
 				top: -27px;
