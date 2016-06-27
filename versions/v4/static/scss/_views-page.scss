@@ -324,3 +324,64 @@
   }
 }
 
+
+// Contribute page
+#contribute {
+  h1,
+  h1 img {
+    margin-top: 0;
+  }
+
+  hr {
+    margin-bottom: 35px;
+    margin-top: 35px;
+  }
+
+  form,
+  input,
+  textarea {
+    font-family: 'Gotham SSm 4r', 'Gotham SSm A', 'Gotham SSm B', sans-serif !important;
+  }
+
+  .gform_title,
+  .gfield_label,
+  label {
+    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif !important;
+    font-weight: bold;
+  }
+
+  h1 + .lead {
+    margin-top: -20px;
+  }
+
+  .lead:first-letter {
+    display: inline;
+    float: none;
+    font-size: inherit;
+    line-height: inherit;
+    margin: 0;
+  }
+
+  .contribute-callout {
+    margin-top: -30px;
+
+    .callout-inner {
+      padding-bottom: 0;
+      padding-top: 0;
+    }
+
+    .btn {
+      margin-bottom: 4px;
+      min-width: 25%;
+    }
+  }
+
+  .btn-give {
+    white-space: normal;
+    width: 80%;
+
+    @media (max-width: 480px) {
+      width: 100%;
+    }
+  }
+}
