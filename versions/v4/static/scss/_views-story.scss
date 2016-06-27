@@ -311,17 +311,17 @@ article.photo-essay {
   @mixin carat-top-left {
     border-color: transparent transparent transparent #fff;
     border-width: 35px 0 35px 25px;
-    bottom: unset;
+    bottom: auto;
     left: 0;
     margin: unset;
-    right: unset;
+    right: auto;
     top: 50px;
   }
 
   @mixin carat-top-right {
     border-color: transparent #fff;
     border-width: 35px 25px 35px 0;
-    left: unset;
+    left: auto;
     margin: unset;
     right: 0;
     top: 50px;
@@ -334,7 +334,7 @@ article.photo-essay {
     left: 0;
     margin: auto;
     right: 0;
-    top: unset;
+    top: auto;
   }
 
   .photo-essay-caption {
