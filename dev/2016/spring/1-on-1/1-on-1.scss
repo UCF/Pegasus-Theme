@@ -136,11 +136,22 @@ article.story {  // over-qualified selector necessary to match+override theme-le
     background-color: $gray;
   }
 
+  .dark-bg {
+    background-color: #000;
+  }
+
   .inline-block {
     display: inline-block;
   }
 
   .callout {
+    &.dark-bg {
+      &,
+      h2 {
+        color: #fff;
+      }
+    }
+
     h2 {
       @include open-sans-condensed();
       margin-top: 0;
@@ -203,7 +214,8 @@ article.story {  // over-qualified selector necessary to match+override theme-le
   // Profiles
 
   .profiles {
-    margin-top: 60px;
+    margin-bottom: 40px;
+    margin-top: 30px;
 
     @media (max-width: $screen-xs-max) {
       margin-top: 0;
