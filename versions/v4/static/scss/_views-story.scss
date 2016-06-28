@@ -196,8 +196,16 @@ article.photo-essay {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
-    min-height: 440px;
+    display: table;
     position: relative;
+    width: 100%;
+
+    &:before {
+      // Force a min-height
+      content: '';
+      display: block;
+      height: 440px;
+    }
 
     &:after {
       background-color: rgba(0, 0, 0, .7);
@@ -213,11 +221,10 @@ article.photo-essay {
   }
 
   .photo-essay-header-inner {
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: 35%;
-    transform: translate(0, -35%);
+    display: table-cell;
+    padding: 40px 0 60px;
+    position: relative;
+    vertical-align: middle;
     z-index: 2;
   }
 
@@ -304,17 +311,17 @@ article.photo-essay {
   @mixin carat-top-left {
     border-color: transparent transparent transparent #fff;
     border-width: 35px 0 35px 25px;
-    bottom: unset;
+    bottom: auto;
     left: 0;
     margin: unset;
-    right: unset;
+    right: auto;
     top: 50px;
   }
 
   @mixin carat-top-right {
     border-color: transparent #fff;
     border-width: 35px 25px 35px 0;
-    left: unset;
+    left: auto;
     margin: unset;
     right: 0;
     top: 50px;
@@ -327,7 +334,7 @@ article.photo-essay {
     left: 0;
     margin: auto;
     right: 0;
-    top: unset;
+    top: auto;
   }
 
   .photo-essay-caption {
