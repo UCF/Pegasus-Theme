@@ -1,0 +1,406 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+$ucf-gold: #fc0;
+$border-styles: 4px solid #000;
+
+
+// Adds Gotham font family styles to an element (using backward-compatible
+// font-family declarations for IE8 support.)
+// $weight should be a number from 1-9, which references the desired font
+// weight (100-900).  Default is 4 (400) or 'Book'.
+@mixin gotham($weight: 4, $font-style: normal) {
+  $h-weight: $weight * 100;
+
+  font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-style: $font-style;
+  font-weight: $h-weight;
+}
+
+
+article.story {
+
+  // General overrides
+
+  &,
+  p,
+  ol,
+  ul {
+    font-size: 16px;
+    line-height: 1.45;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  ol,
+  ul {
+    margin-top: 15px;
+  }
+
+  h1,
+  .h1 {
+    @include no-font-smoothing();
+    @include gotham(8);
+    color: #fff;
+    font-size: 70px;
+    letter-spacing: -.04em;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 100px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 130px;
+    }
+  }
+
+  h2,
+  .h2 {
+    font-size: 42px;
+    line-height: .95;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 65px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 72px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      font-size: 85px;
+    }
+  }
+
+  h3,
+  .h3 {
+    font-size: 28px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 40px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 50px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      font-size: 60px;
+    }
+  }
+
+  blockquote {
+    padding: 0;
+
+    &,
+    p {
+      font-size: 28px;
+      line-height: 1.35;
+    }
+
+    small {
+      @include gotham(7);
+      font-size: 14px;
+      margin-top: 12px;
+    }
+  }
+
+  .source {
+    @include gotham(7);
+    font-size: 11px;
+    text-transform: uppercase;
+  }
+
+  .caption {
+    @include gotham(4);
+  }
+
+  .well {
+    border: 0;
+    border-radius: 0;
+    box-shadow: 0 0 0 transparent;
+
+    &,
+    p {
+      @include gotham(4);
+      font-size: 16px;
+    }
+
+    h3,
+    .h3 {
+      @include gotham(8);
+      font-size: 17px; // reset
+    }
+
+    blockquote,
+    blockquote p {
+      font-family: $font-family-serif;
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    blockquote small {
+      @include gotham(7);
+    }
+  }
+
+  .well-striped {
+    background: repeating-linear-gradient(
+      -40deg,
+      #f4f9fb,
+      #f4f9fb 8px,
+      #fff 8px,
+      #fff 16px
+    );
+  }
+
+  .img-left {
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 30px;
+      margin-right: 30px;
+    }
+  }
+
+  .img-right {
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 30px;
+      margin-left: 30px;
+    }
+  }
+
+  .article-heading {
+    @include no-font-smoothing();
+    font-family: "OpenSansCondensedBold", sans-serif;
+    margin-bottom: 20px;
+  }
+
+  .article-subheading {
+    @include no-font-smoothing();
+    font-family: "OpenSansCondensedLight", sans-serif;
+    font-size: 18px;
+    line-height: 1.2;
+    margin-top: 6px;
+
+    @media (min-width: $screen-md-min) {
+      font-size: 21px;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      font-size: 22.5px;
+    }
+  }
+
+  .divider {
+    border-top: $border-styles;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    width: 100%;
+
+    @media (min-width: $screen-sm-min) {
+      margin-bottom: 30px;
+      margin-top: 30px;
+    }
+  }
+
+
+  // Header Image
+
+  .story-header-image {
+    background-position: center 20%;
+    background-size: cover;
+    height: 300px;
+
+    @media (min-width: $screen-sm-min) {
+      height: 600px;
+      margin-bottom: 30px;
+    }
+  }
+
+  .story-header-inner {
+    bottom: 20px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  .social {
+    float: right;
+    margin-top: 105px;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 80px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      float: left;
+      margin-top: 0;
+    }
+  }
+
+
+  // Heavenly View
+
+  #heavenly-view {
+    .article-heading {
+      color: #F1BC88;
+    }
+
+    .img-left {
+      max-width: 40%;
+
+      @media (min-width: $screen-sm-min) {
+        width: auto;
+      }
+    }
+  }
+
+
+  // New Horizons (3.6 billion...)
+
+  #new-horizons {
+    .article-heading {
+      color: #6E4438;
+    }
+
+    .photo-pluto {
+      @media (min-width: $screen-sm-min) {
+        margin-top: 70px;
+        padding-left: 30px;
+      }
+    }
+  }
+
+
+  // Spacing Out
+
+  #spacing-out {
+    @media (min-width: $screen-md-min) {
+      padding-right: 30px;
+    }
+  }
+
+
+  // Fueling Discovery
+
+  #fueling-discovery {
+    @media (min-width: $screen-md-min) {
+      border-left: $border-styles;
+      padding-left: 46px;
+    }
+
+    .article-heading {
+      color: #8B4B70;
+    }
+
+    .img-left {
+      max-width: 40%;
+
+      @media (min-width: $screen-sm-min) {
+        width: auto;
+      }
+    }
+  }
+
+
+  // New Leaders
+
+  #new-leaders {
+    .article-heading {
+      color: #333;
+      margin-top: 0;
+    }
+
+    img {
+      margin-top: 30px;
+    }
+
+    blockquote {
+      margin-top: 25px;
+    }
+
+    h3 {
+      margin-bottom: 2px;
+    }
+  }
+
+
+  // Shining Stars
+
+  #shining-stars {
+    .shining-stars-wrap {
+      background-position: 9% bottom;
+      background-repeat: no-repeat;
+      background-size: 185% auto;
+      padding-bottom: 90vw;
+
+      @media (min-width: $screen-sm-min) {
+        background-position: center bottom;
+        background-size: 100% auto;
+        height: 387px;
+        padding-bottom: 0;
+        padding-top: 10%;
+      }
+
+      @media (min-width: $screen-md-min) {
+        background-position: center top;
+        height: 421px;
+      }
+
+      @media (min-width: $screen-lg-min) {
+        height: 513px;
+      }
+
+      &,
+      p {
+        @include gotham(4);
+        font-size: 16px;
+
+        @media (min-width: $screen-sm-min) {
+          font-size: 14px;
+        }
+
+        @media (min-width: $screen-md-min) {
+          font-size: 15px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+          font-size: 18px;
+        }
+      }
+    }
+
+    .big-number {
+      @include gotham(8);
+      color: $ucf-gold;
+      display: block;
+      font-size: 90px;
+      line-height: .8;
+      margin-bottom: 4px;
+    }
+
+    .btn-shining-stars {
+      @include gotham(8);
+      background-color: darken($ucf-gold, 5%);
+      color: #fff;
+      font-size: 26px;
+      padding: 20px;
+
+      @media (min-width: $screen-md-min) {
+        font-size: 32px;
+      }
+
+      &:hover,
+      &:active,
+      &:focus {
+        background-color: darken($ucf-gold, 10%);
+      }
+    }
+  }
+
+}
