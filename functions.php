@@ -1138,9 +1138,9 @@ add_action( 'rest_api_init', 'register_api_issue_meta' );
  **/
 function register_api_issue_links( $response, $post, $request ) {
 	$cover_story_id = get_post_meta( $post->ID, 'issue_cover_story', true );
-	if ( !$cover_story_id ) { return; }
-
-	$response->add_link( 'issue_cover_story', rest_url( '/wp/v2/story/' . $cover_story_id ), array( 'embeddable' => true ) );
+	if ( $cover_story_id ) {
+		$response->add_link( 'issue_cover_story', rest_url( '/wp/v2/story/' . $cover_story_id ), array( 'embeddable' => true ) );
+	}
 
 	return $response;
 }
