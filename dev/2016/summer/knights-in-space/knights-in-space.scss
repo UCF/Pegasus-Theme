@@ -1,0 +1,552 @@
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+$primary: #cc9;
+$secondary: #fff;
+$background: #000;
+$light: 'OpenSansCondensedLight', sans-serif;
+$bold: 'OpenSansCondensedBold', sans-serif;
+
+
+// Adds Gotham font family styles to an element (using backward-compatible
+// font-family declarations for IE8 support.)
+// $weight should be a number from 1-9, which references the desired font
+// weight (100-900).  Default is 4 (400) or 'Book'.
+@mixin gotham($weight: 4, $font-style: normal) {
+  $h-weight: $weight * 100;
+
+  font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-style: $font-style;
+  font-weight: $h-weight;
+}
+
+
+#knights-in-space {
+  @include no-font-smoothing();
+
+  hr {
+    border-color: $primary;
+  }
+
+  .modal-content {
+    border-radius: 0;
+  }
+
+  .modal-sm {
+    width: 450px;
+  }
+
+  .embed-responsive iframe {
+    height: 100% !important;
+  }
+
+  .background {
+    background-position: center top;
+    background-size: cover;
+    height: 58.7vw;
+    position: relative;
+    width: 100%;
+  }
+
+  .planet-map {
+    display: block;
+    outline: none;
+    position: absolute;
+  }
+
+  .planet-map-mercury {
+    height: 10%;
+    left: 13%;
+    top: 40%;
+    width: 8%;
+  }
+
+  .planet-map-moon {
+    height: 9%;
+    left: 24.5%;
+    top: 37%;
+    width: 7%;
+  }
+
+  .planet-map-earth {
+    height: 12%;
+    left: 27%;
+    top: 46%;
+    width: 6%;
+  }
+
+  .planet-map-osirus {
+    height: 8%;
+    left: 31%;
+    top: 63%;
+    width: 9%;
+  }
+
+  .planet-map-mars {
+    height: 10%;
+    left: 35.5%;
+    top: 39%;
+    width: 6%;
+  }
+
+  .planet-map-jupiter {
+    height: 29%;
+    left: 52%;
+    top: 19%;
+    width: 15%;
+  }
+
+  .planet-map-saturn {
+    height: 25%;
+    left: 55%;
+    top: 50%;
+    width: 22%;
+  }
+
+  .planet-map-uranus {
+    height: 22%;
+    left: 70%;
+    top: 19%;
+    width: 14%;
+  }
+
+  .planet-map-neptune {
+    height: 19%;
+    left: 77%;
+    top: 45%;
+    width: 14%;
+  }
+
+  .planet-map-pluto {
+    height: 8%;
+    left: 90%;
+    top: 36%;
+    width: 6%;
+  }
+
+  .planet-map-upsilon {
+    height: 9%;
+    left: 68%;
+    top: 85%;
+    width: 26%;
+  }
+
+  .planet-map-kuiper {
+    height: 8%;
+    left: 85.5%;
+    top: 72%;
+    width: 10%;
+  }
+
+
+  .h1 {
+    @include font-smoothing();
+    border-bottom: 1px solid $secondary;
+    color: $primary;
+    display: inline-block;
+    font-family: $bold;
+    font-size: 2.5em;
+    text-transform: uppercase;
+
+    @media (max-width: 767px) {
+      display: block;
+      text-align: center;
+      font-size: 3em;
+    }
+
+    @media (max-width: 991px) {
+      display: block;
+      text-align: center;
+      font-size: 2em;
+    }
+  }
+
+  .title-instructions {
+    display: block;
+    left: 10%;
+    opacity: 1;
+    position: absolute;
+    top: 0;
+    transition: opacity .5s ease;
+    width: 300px;
+    z-index: 10;
+
+    @media (min-width: 768px) {
+      left: 13%;
+      width: 30vw;
+    }
+
+    @media (min-width: 992px) {
+      left: 13%;
+      top: 4%;
+      width: 27vw;
+    }
+
+    @media (min-width: 1200px) {
+      left: 15%;
+      width: 24vw;
+    }
+
+    a {
+      @include font-smoothing();
+      color: $primary;
+      font-family: $bold;
+
+      &:hover,
+      &:active,
+      &:visited,
+      &:focus {
+        outline: none;
+        text-decoration: none;
+      }
+    }
+
+    p {
+      color: $secondary;
+      font-family: $light;
+      font-size: 1.3em;
+
+      @media (min-width: 768px) {
+        font-size: 2vw;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 1.8vw;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 1.5vw;
+      }
+    }
+
+    .h1 {
+      display: inline-block;
+
+      @media (min-width: 768px) {
+        font-size: 4.2vw;
+      }
+
+      @media (min-width: 992px) {
+        font-size: 3.6vw;
+      }
+
+      @media (min-width: 1200px) {
+        font-size: 3.2vw;
+      }
+    }
+
+    &.invisible {
+      opacity: 0;
+    }
+  }
+
+  #intro-screen {
+    transform: translate(0, 25%);
+
+    .detail-inner {
+      padding: 12px 110px;
+    }
+
+    h1 {
+      @include font-smoothing();
+      border-bottom: 1px solid $secondary;
+      color: $primary;
+      display: block;
+      font-family: $bold;
+      font-size: 3em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .intro-text {
+      @include no-font-smoothing();
+      color: $secondary;
+      font-family: $light;
+      font-size: 1.2em;
+      margin: 12px 0 24px;
+      text-align: left;
+    }
+
+    .btn-explore {
+      @include gotham(7);
+      border: 1px solid $primary;
+      border-radius: 0;
+      color: $secondary;
+      display: inline-block;
+      text-decoration: none;
+    }
+  }
+
+  .detail {
+    .modal-content {
+      background: $background;
+    }
+
+    .detail-inner {
+      border: 1px solid $primary;
+      padding: 15px 30px 30px;
+    }
+
+    .close {
+      color: $secondary;
+      opacity: .4;
+    }
+
+    h2 {
+      @include gotham(4);
+      border-bottom: 1px solid $secondary;
+      color: $secondary;
+      font-size: 18px;
+      letter-spacing: .2em;
+      line-height: 46px;
+      margin-bottom: 0;
+      margin-top: 0;
+      text-transform: uppercase;
+    }
+
+    .planet-subtitle {
+      &,
+      a {
+        @include font-smoothing();
+        color: $primary;
+        font-family: $bold;
+        font-size: 36px;
+        line-height: 1;
+        text-transform: uppercase;
+      }
+    }
+
+    .planet-thumb {
+      &,
+      img {
+        height: 30px;
+        width: 30px;
+      }
+    }
+
+    p,
+    a {
+      @include font-smoothing();
+      @include gotham(4);
+      color: $secondary;
+      font-size: 15px;
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    .term {
+      @include font-smoothing();
+      color: $primary;
+      font-family: $bold;
+      font-size: 22px;
+    }
+
+    figcaption {
+      @include gotham(4, italic);
+      color: $secondary;
+      font-size: 14px;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+  }
+
+  .planets,
+  .static {
+    display: inline;
+    position: absolute;
+    z-index: 1;
+
+    img {
+      display: inline-block;
+      position: absolute;
+      z-index: 1;
+    }
+
+    div {
+      position: absolute;
+    }
+  }
+
+  .researcher {
+    display: inline-block;
+    text-align: center;
+    vertical-align: top;
+    width: 100px;
+
+    img {
+      margin: 5px 5px;
+      width: 90px;
+    }
+
+    .caption {
+      @include font-smoothing();
+      color: $primary;
+      display: inline-block;
+      font-family: $bold;
+      text-align: center;
+
+      .title {
+        @include gotham(4, italic);
+        @include no-font-smoothing();
+        color: $secondary;
+        display: block;
+        font-size: 12px;
+        line-height: 1.2;
+        margin-top: 2px;
+      }
+    }
+  }
+
+  .selector {
+    display: none;
+  }
+
+  .expand-toggle {
+    &,
+    &:hover,
+    &:active,
+    &:focus,
+    &:visited {
+      text-decoration: none !important;
+    }
+  }
+
+  .mobile {
+    background-color: #092435;
+    background-repeat: repeat-y;
+    background-size: auto 3150px;
+
+    .container {
+      margin-top: -70px;
+    }
+
+    .selector {
+      @media (max-width: 767px) {
+        display: inline;
+        float: right;
+        font-size: 22px;
+        transition: transform .3s ease;
+      }
+    }
+
+    p,
+    a {
+      @include font-smoothing();
+      color: $secondary;
+      font-family: $bold;
+      font-size: 18px;
+
+      &.lead {
+        font-family: $bold;
+      }
+    }
+
+    a {
+      text-decoration: underline;
+    }
+
+    h2 {
+      @include font-smoothing();
+      color: $secondary;
+      display: inline;
+      font-family: $bold;
+      font-size: 24px;
+      margin: 0 24px;
+      padding-bottom: 0;
+      text-transform: uppercase;
+    }
+
+    .planet-subtitle {
+      &,
+      a {
+        clear: both;
+        color: $primary;
+        font-family: $light;
+        font-size: 40px;
+        line-height: 1.1;
+        text-transform: uppercase;
+      }
+    }
+
+    .term {
+      @include font-smoothing();
+      color: $primary;
+      font-family: $bold;
+    }
+
+    .instructions {
+      padding: 0 15%;
+
+      p {
+        color: $primary;
+        text-align: center;
+      }
+    }
+
+    .detail-inner {
+      border-bottom: 1px solid $secondary;
+
+      &:last-child {
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+    }
+
+    figcaption {
+      color: $secondary;
+      font-family: $bold;
+      font-style: italic;
+      line-height: 1.4;
+      margin-top: 10px;
+    }
+
+    .expand-toggle {
+      display: table;
+      padding-top: 8px;
+      width: 100%;
+
+      > * {
+        display: table-cell;
+        vertical-align: middle;
+      }
+
+      .planet-thumb {
+        width: 80px;
+
+        img {
+          height: auto;
+          width: auto;
+        }
+      }
+
+      h2 {
+        margin: 0;
+        width: calc(100% - 110px);
+      }
+
+      .selector-wrap {
+        color: #fff;
+        width: 30px;
+      }
+
+      &.active {
+        .selector {
+          transform: rotate(90deg);
+        }
+      }
+    }
+
+    .expand {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height .5s ease;
+
+      &.active {
+        margin-bottom: 18px;
+        max-height: 2000px;
+      }
+    }
+  }
+}
