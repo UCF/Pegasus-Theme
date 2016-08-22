@@ -1160,9 +1160,21 @@ function register_api_story_meta() {
 			'schema'          => null,
 		)
 	);
+	register_rest_field( 'story',
+		'story_description',
+		array(
+			'get_callback'    => 'api_story_get_description',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
 }
 
 function api_story_get_subtitle( $object, $field_name, $request ) {
+	return get_post_meta( $object['id'], $field_name, true );
+}
+
+function api_story_get_description( $object, $field_name, $request ) {
 	return get_post_meta( $object['id'], $field_name, true );
 }
 
