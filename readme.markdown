@@ -10,7 +10,7 @@ Wordpress theme for Pegasus Magazine.  Built off of UCF's Generic Theme.
 ## Required Plugins
 - Map Cap (see notes)
 - Gravity Forms
-- WP Rest API
+- WP Rest API (version 2.0-beta13.1 or greater)
 
 ## Installation Requirements
 - Set user capabilities for custom post types via Map Cap.  See notes below.
