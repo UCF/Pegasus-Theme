@@ -24,6 +24,7 @@ abstract class CustomPostType{
 		$taxonomies     = array('post_tag'),
 		$built_in       = False,
 		$menu_icon      = 'dashicons-admin-post',
+		$show_in_rest   = False,
 
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
@@ -190,6 +191,7 @@ abstract class CustomPostType{
 			'taxonomies'      => $this->options('taxonomies'),
 			'_builtin'        => $this->options('built_in'),
 			'menu_icon'       => $this->options('menu_icon'),
+			'show_in_rest'    => $this->options('show_in_rest')
 		);
 
 		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
@@ -316,6 +318,7 @@ class Story extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$menu_icon      = 'dashicons-media-document',
+		$show_in_rest   = True,
 		$taxonomies     = array('issues', 'post_tag');
 
 	static function get_javascript_url($story) {
@@ -451,6 +454,7 @@ class Issue extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$menu_icon      = 'dashicons-book',
+		$show_in_rest   = True,
 		$taxonomies     = array();
 
 	static function get_home_javascript_url($issue) {
