@@ -394,13 +394,13 @@ function get_relevant_issue( $post ) {
  */
 function get_featured_image_url($id, $size=null) {
 	$size = !$size ? 'single-post-thumbnail' : $size;
-    $url = '';
-    if(has_post_thumbnail($id)
-        && ($thumb_id = get_post_thumbnail_id($id)) !== False
-        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
-            return $image[0];
-    }
-    return $url;
+	$url = '';
+	if(has_post_thumbnail($id)
+		&& ($thumb_id = get_post_thumbnail_id($id)) !== False
+		&& ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
+			return $image[0];
+	}
+	return $url;
 }
 
 
@@ -704,7 +704,7 @@ function get_issue_stories( $issue, $options=array() ) {
 function curl_exists($url) {
 	$file_headers = @get_headers($url);
 	if($file_headers[0] == 'HTTP/1.1 404 Not Found' || $file_headers[0] == 'HTTP/1.1 500 Internal Server Error') {
-    	return false;
+		return false;
 	}
 	return true;
 }
@@ -747,12 +747,12 @@ function output_header_markup($post) {
 		$output .= '<style type="text/css">';
 		$output .= '
 			html, body {
-			    height: 100%;
-			    width: 100%;
+				height: 100%;
+				width: 100%;
 			}
 			@media (max-width: 767px) {
 				html, body {
-				    width: auto;
+					width: auto;
 				}
 			}
 		';
@@ -1106,6 +1106,79 @@ function add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	return $allowedposttags;
 }
 add_filter( 'wp_kses_allowed_html', 'add_kses_whitelisted_attributes', 10, 2 );
+
+
+/**
+ * Updates REST API responses for Issues to include relevant meta data.
+ **/
+function register_api_issue_meta() {
+	register_rest_field( 'issue',
+		'issue_cover_story',
+		array(
+			'get_callback'    => 'api_issue_get_cover_story',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+}
+
+function api_issue_get_cover_story( $object, $field_name, $request ) {
+	$meta = get_post_meta( $object['id'], $field_name, true );
+	return $meta ? intval( $meta ) : 0;
+}
+
+add_action( 'rest_api_init', 'register_api_issue_meta' );
+
+
+/**
+ * Updates REST API responses for Issues to include links to related data
+ * for client-side convenience.
+ *
+ * http://v2.wp-api.org/extending/linking/
+ **/
+function register_api_issue_links( $response, $post, $request ) {
+	$cover_story_id = get_post_meta( $post->ID, 'issue_cover_story', true );
+	if ( $cover_story_id ) {
+		$response->add_link( 'issue_cover_story', rest_url( '/wp/v2/story/' . $cover_story_id ), array( 'embeddable' => true ) );
+	}
+
+	return $response;
+}
+
+add_filter( 'rest_prepare_issue', 'register_api_issue_links', 10, 3 );
+
+
+/**
+ * Updates REST API responses for Stories to include relevant meta data.
+ **/
+function register_api_story_meta() {
+	register_rest_field( 'story',
+		'story_subtitle',
+		array(
+			'get_callback'    => 'api_story_get_subtitle',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+	register_rest_field( 'story',
+		'story_description',
+		array(
+			'get_callback'    => 'api_story_get_description',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+}
+
+function api_story_get_subtitle( $object, $field_name, $request ) {
+	return get_post_meta( $object['id'], $field_name, true );
+}
+
+function api_story_get_description( $object, $field_name, $request ) {
+	return get_post_meta( $object['id'], $field_name, true );
+}
+
+add_action( 'rest_api_init', 'register_api_story_meta' );
 
 
 /****************************************************************************

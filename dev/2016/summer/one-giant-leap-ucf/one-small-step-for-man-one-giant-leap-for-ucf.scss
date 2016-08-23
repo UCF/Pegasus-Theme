@@ -196,6 +196,19 @@ article.story {
 		padding: 0;
 		position: relative;
 
+		a:link,
+		a:active,
+		a:visited,
+		a:hover {
+			color: $white;
+			font-weight: bold;
+			text-decoration: underline;
+		}
+		a:hover {
+			color: #ffe5df;
+			text-decoration: none;
+		}
+
 		p {
 			font-family: $font-family-serif;
 			font-size: 1em;
@@ -224,6 +237,16 @@ article.story {
 		position: relative;
 		width: 45%;
 		z-index: 15;
+
+		a:link,
+		a:active,
+		a:visited,
+		a:hover {
+			text-decoration: underline;
+		}
+		a:hover {
+			text-decoration: none;
+		}
 
 		&.left {
 			float: left;
