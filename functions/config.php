@@ -71,7 +71,7 @@ define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activ
 /**
  * Version definitions.  Versions should always be whole numbers (no decimals).
  **/
-define( 'LATEST_VERSION', 4 ); // The most up-to-date major version of the theme
+define( 'LATEST_VERSION', 5 ); // The most up-to-date major version of the theme
 define( 'EARLIEST_VERSION', 1 ); // the very first version
 define( 'VERSIONS', serialize( range( EARLIEST_VERSION, LATEST_VERSION ) ) );
 define( 'VERSIONS_PATH', 'versions/' );
