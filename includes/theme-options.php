@@ -1,10 +1,10 @@
-<?php 
+<?php
 	# Check for settings updated or updated, varies between wp versions
 	$updated  = (bool)($_GET['settings-updated'] or $_GET['updated']);
 	$settings = array_filter(Config::$theme_settings, 'is_array');
 	$misc     = array_filter(Config::$theme_settings, 'is_object');
 	if (count($misc)){ $settings['Miscellaneous'] = $misc;}
-	
+
 	$sections = array_keys($settings);
 ?>
 
@@ -12,22 +12,22 @@
     <?php settings_fields(THEME_OPTIONS_GROUP);?>
 	<div class="container">
 		<h2><?=__(THEME_OPTIONS_PAGE_TITLE)?></h2>
-		
+
 		<?php if ($updated):?>
 		<div class="updated fade"><p><strong><?=__( 'Options saved' ); ?></strong></p></div>
 		<?php endif; ?>
-		
+
 		<div class="sections">
 			<ul>
 				<?php foreach($sections as $key=>$section):?>
-				<li class="section"><a href="#<?=slug($section)?>"><?=$section?></a></li>
+				<li class="section"><a href="#<?=slugify($section)?>"><?=$section?></a></li>
 				<?php endforeach;?>
 			</ul>
 		</div>
 		<div class="fields">
 			<ul>
 				<?php foreach($settings as $section=>$fields):?>
-				<li class="section" id="<?=slug($section)?>">
+				<li class="section" id="<?=slugify($section)?>">
 					<h3><?=$section?></h3>
 					<table class="form-table">
 						<?php foreach($fields as $field):?>
