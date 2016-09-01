@@ -352,16 +352,31 @@ Config::$custom_taxonomies = array(
 
 
 /**
- * Grab array of Issue posts for Config::$theme_settings:
+ * Grab array of Issue and Story posts for Config::$theme_settings:
  **/
-$issue_covers 		= get_posts(array('post_type' => 'issue'));
-$issue_cover_array 	= array();
+$issue_covers = get_posts( array(
+	'post_type' => 'issue',
+	'numberposts' => -1
+) );
+$issue_cover_array = array();
 $issue_cover_first = null;
 foreach ( $issue_covers as $cover ) {
 	$issue_cover_array[$cover->post_title] = $cover->post_name;
 }
 $issue_cover_keys = array_keys( $issue_cover_array );
 $issue_cover_first = $issue_cover_keys[0];
+
+$story_obj = new Story();
+$story_options = $story_obj->get_objects_as_options( array(
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
+$story_gallery_options = $story_obj->get_objects_as_options( array(
+	'meta_key' => 'story_template',
+	'meta_value' => 'photo_essay',
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
 
 
 /**
@@ -411,6 +426,131 @@ Config::$theme_settings = array(
 			'description' => 'Example: <em>some.domain.com</em>',
 			'default'     => null,
 			'value'       => $theme_options['cb_domain'],
+		)),
+	),
+	'Home Page' => array(
+		new RadioField(array(
+			'name'        => 'Enable Custom Homepage',
+			'id'          => THEME_OPTIONS_NAME.'[custom_homepage_enabled]',
+			'description' => 'Set to "On" to use a custom homepage layout, instead of the current issue\'s cover, as the Pegasus homepage. If this option is disabled, the other options below will have no effect.',
+			'default'     => 'Off',
+			'choices'     => array(
+				'On'  => 1,
+				'Off' => 0,
+			),
+			'value'       => $theme_options['custom_homepage_enabled'],
+	    )),
+		new SelectField(array(
+			'name'        => 'Featured Story #1',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_story_1]',
+			'description' => 'The top featured story to display on the homepage.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_story_1'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #2',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_story_2]',
+			'description' => 'First of four featured stories underneath the top story on the homepage.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_story_2'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #3',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_story_3]',
+			'description' => 'Second of four featured stories underneath the top story on the homepage.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_story_3'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #4',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_story_4]',
+			'description' => 'Third of four featured stories underneath the top story on the homepage.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_story_4'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #5',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_story_5]',
+			'description' => 'Last of four featured stories underneath the top story on the homepage.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_story_5'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Gallery',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_featured_gallery_1]',
+			'description' => 'Featured gallery displayed next to events on the homepage.',
+			'choices'     => $story_gallery_options,
+			'default'     => '',
+			'value'       => $theme_options['homepage_featured_gallery_1'],
+		)),
+		// TODO file upload field for banner ad here
+		new TextField(array(
+			'name'        => 'Banner Ad URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_ad_url]',
+			'description' => 'URL that the homepage banner ad should load when clicked.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_ad_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 Title',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_1_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_1_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_1_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_1_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 Title',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_2_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_2_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_2_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_2_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 Title',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_3_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_3_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_other_story_3_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of homepage.',
+			'default'     => '',
+			'value'       => $theme_options['homepage_other_story_3_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Today Story Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_today_feed_url]',
+			'description' => 'URL to the RSS feed for stories to display in "The Feed" section of the homepage.',
+			'default'     => 'http://today.ucf.edu/feed/',
+			'value'       => $theme_options['homepage_today_feed_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Events JSON Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_events_feed_url]',
+			'description' => 'URL to the JSON feed for events to display in the Events section of the homepage.',
+			'default'     => 'http://events.ucf.edu/upcoming/feed.json',
+			'value'       => $theme_options['homepage_events_feed_url'],
 		)),
 	),
 	'Search' => array(
@@ -488,9 +628,9 @@ Config::$theme_settings = array(
 	),
 	'Issues' => array(
 		new SelectField(array(
-			'name'        => 'Current Issue Cover',
+			'name'        => 'Current Issue',
 			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
-			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
+			'description' => 'Specify the current active issue. If a custom homepage layout is enabled, this issue\'s stories will be used on the homepage where the list of 12 stories in the issue is displayed.<br><br>The issue cover will be used as the homepage if a custom homepage is disabled (Homepage > Use Custom Homepage).',
 			'choices'     => $issue_cover_array,
 			'default'     => $issue_cover_first,
 			'value'       => $theme_options['current_issue_cover'],
