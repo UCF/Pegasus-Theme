@@ -551,7 +551,7 @@ Config::$theme_settings = array(
 			'description' => 'URL to the JSON feed for events to display in the Events section of the homepage.',
 			'default'     => 'http://events.ucf.edu/upcoming/feed.json',
 			'value'       => $theme_options['homepage_events_feed_url'],
-		)),
+		))
 	),
 	'Search' => array(
 		new RadioField(array(

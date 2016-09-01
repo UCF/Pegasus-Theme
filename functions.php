@@ -188,6 +188,19 @@ function get_version_footer() {
 
 
 /**
+ * Loads version-specific home.php.
+ **/
+function get_version_home() {
+	// Same some time and reference LATEST_VERSION, since home.php should always
+	// use the latest version's assets
+	$new_template = locate_template( array( get_version_file_path( 'home.php', LATEST_VERSION ) ) );
+	if ( !empty( $new_template ) ) {
+		return load_template( THE_POST_VERSION_DIR . '/home.php' );
+	}
+}
+
+
+/**
  * Check/create hidden theme options which store flags that tell us if methods
  * for maintaining backward compatibility have already been performed.
  * Functions with theme option flags below should only run once, assuming they
