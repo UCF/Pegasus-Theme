@@ -430,15 +430,15 @@ Config::$theme_settings = array(
 	),
 	'Home Page' => array(
 		new RadioField(array(
-			'name'        => 'Enable Custom Homepage',
-			'id'          => THEME_OPTIONS_NAME.'[use_custom_homepage]',
-			'description' => 'Set to "On" to use a custom homepage layout, instead of the current issue\'s cover, as the Pegasus homepage. If this option is disabled, the other options below will have no effect.',
+			'name'        => 'Enable Curated Homepage',
+			'id'          => THEME_OPTIONS_NAME.'[use_curated_homepage]',
+			'description' => 'Set to "On" to use a curated homepage layout, instead of the current issue\'s cover, as the Pegasus homepage. If this option is disabled, the other options below will have no effect.',
 			'default'     => 'Off',
 			'choices'     => array(
 				'On'  => 1,
 				'Off' => 0,
 			),
-			'value'       => $theme_options['use_custom_homepage'],
+			'value'       => $theme_options['use_curated_homepage'],
 	    )),
 		new SelectField(array(
 			'name'        => 'Featured Story #1',
