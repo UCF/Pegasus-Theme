@@ -13,7 +13,7 @@ class ArgumentException extends Exception {}
 
 class Config {
 	static
-		$body_classes      = array(), // Body classes (DEPRECATED in v5)
+		$body_classes      = array(), // Body classes (WILL BE DEPRECATED in v5)
 		$theme_settings    = array(), // Theme settings
 		$custom_post_types = array(), // Custom post types to register
 		$custom_taxonomies = array(), // Custom taxonomies to register
@@ -943,7 +943,7 @@ function set_defaults_for_options(){
  ***************************************************************************/
 
 /**
- * Header content - DEPRECATED in v5
+ * Header content - DEPRECATED in v4
  *
  * @return string
  * @author Jared Lang
@@ -954,7 +954,7 @@ function header_() {
 
 
 /**
- * Footer content - DEPRECATED in v5
+ * Footer content - DEPRECATED in v4
  *
  * @return string
  * @author Jared Lang
@@ -1108,8 +1108,8 @@ add_filter( 'wp_title', 'header_title', 10, 2 );
 
 
 /**
- * Returns string to use for value of class attribute on body tag
- * DEPRECATED in v5
+ * Returns string to use for value of class attribute on body tag.
+ * WILL BE DEPRECATED in v5; use WP's built-in body_class() instead.
  **/
 function body_classes(){
 	$classes = Config::$body_classes;
