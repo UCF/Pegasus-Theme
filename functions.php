@@ -79,8 +79,8 @@ function get_relevant_version( $the_post=null ) {
 					// URLs have these prefixes)
 					$url_path = preg_replace( '/^\/story\/|\/issue\/|\/photo\_essay\//', '/', $url_path );
 
-					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
-					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
+					$post_issue = get_page_by_path( $url_path , OBJECT, array( 'issue' ) );
+					$post_story = get_page_by_path( $url_path , OBJECT, array( 'story' ) );
 
 					if ( $post_issue ) {
 						$the_post = $post_issue;
@@ -110,6 +110,7 @@ function get_relevant_version( $the_post=null ) {
 
 	return intval( $relevant_version );
 }
+
 
 /**
  * Returns a relative path to a file by version.
