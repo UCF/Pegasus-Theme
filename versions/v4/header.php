@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<?="\n".header_()."\n"?>
+		<?php wp_head(); ?>
 		<!--[if lte IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
