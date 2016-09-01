@@ -453,13 +453,12 @@ Config::$theme_settings = array(
 			'default'     => '',
 			'value'       => $theme_options['homepage_featured_gallery_1'],
 		)),
-		// TODO file upload field for banner ad here
-		new TextField(array(
-			'name'        => 'Banner Ad URL',
-			'id'          => THEME_OPTIONS_NAME.'[homepage_ad_url]',
-			'description' => 'URL that the homepage banner ad should load when clicked.',
+		new TextareaField(array(
+			'name'        => 'Banner Ad Contents',
+			'id'          => THEME_OPTIONS_NAME.'[homepage_ad_contents]',
+			'description' => 'HTML for banner ad content to be displayed underneath list of issue stories on the homepage. Accepts shortcode content.',
+			'value'       => $theme_options['homepage_ad_contents'],
 			'default'     => '',
-			'value'       => $theme_options['homepage_ad_url'],
 		)),
 		new TextField(array(
 			'name'        => 'Other Story #1 Title',
