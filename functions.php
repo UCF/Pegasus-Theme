@@ -551,7 +551,7 @@ function enqueue_issue_story_scripts() {
 	global $post;
 
 	if ( !is_404() && !is_search() ) {
-		// 1. add home page script(s)
+		// 1. add issue cover script(s)
 		if( $post->post_type == 'issue' || is_home() ) {
 
 			// issue-wide
@@ -569,7 +569,7 @@ function enqueue_issue_story_scripts() {
 				}
 			}
 
-			// home page specific
+			// issue cover specific
 			$dev_issue_home_directory = get_post_meta( $post->ID, 'issue_dev_home_asset_directory', TRUE );
 			$home_javascript_url = Issue::get_home_javascript_url( $post );
 
@@ -577,7 +577,7 @@ function enqueue_issue_story_scripts() {
 				Config::add_script( $home_javascript_url );
 			}
 			elseif ( DEV_MODE == 1 && !empty( $dev_issue_home_directory ) ) {
-				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.js';
+				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.js';
 
 				if ( curl_exists( $dev_home_javascript_url ) ) {
 					Config::add_script( $dev_home_javascript_url );
@@ -794,7 +794,7 @@ function output_header_markup($post) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -865,7 +865,7 @@ function uses_custom_template($post) {
 function display_markup_or_template($post) {
 	if ($post->post_type == 'issue') {
 		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'issue-cover.html');
 	}
 	else {
 		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
