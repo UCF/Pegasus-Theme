@@ -167,8 +167,12 @@ add_filter( 'template_include', 'by_version_template', 99 );
  * root, so we opt to use a separate function instead to avoid excessive file
  * includes.
  **/
-function get_version_header() {
-	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
+function get_version_header( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'header' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
 		return load_template( $new_template );
 	}
@@ -179,8 +183,12 @@ function get_version_header() {
  * Loads version-specific footer template.  Should be used in place of
  * get_footer() for this theme.
  **/
-function get_version_footer() {
-	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
+function get_version_footer( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'footer' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
 		return load_template( $new_template );
 	}

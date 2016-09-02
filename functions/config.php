@@ -569,6 +569,13 @@ Config::$theme_settings = array(
 			'default'     => 'https://plus.google.com/+UCF',
 			'value'       => $theme_options['googleplus_url'],
 		)),
+		new TextField(array(
+			'name'        => 'Instagram URL',
+			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
+			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => '',
+			'value'       => $theme_options['instagram_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(
