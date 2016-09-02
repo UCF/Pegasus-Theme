@@ -2,51 +2,6 @@
 <html lang="en-US">
 	<head>
 		<?php wp_head(); ?>
-		<!--[if lte IE 9]>
-		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-		<![endif]-->
-
-		<?php if(GA_ACCOUNT or CB_UID):?>
-
-		<script type="text/javascript">
-			var _sf_startpt = (new Date()).getTime();
-			<?php if(GA_ACCOUNT):?>
-
-			var GA_ACCOUNT = '<?=GA_ACCOUNT?>';
-			var _gaq = _gaq || [];
-			_gaq.push(['_setAccount', GA_ACCOUNT]);
-			_gaq.push(['_setDomainName', 'none']);
-			_gaq.push(['_setAllowLinker', true]);
-			_gaq.push(['_trackPageview']);
-			<?php endif;?>
-			<?php if(CB_UID):?>
-
-			var CB_UID = '<?=CB_UID?>';
-			var CB_DOMAIN = '<?=CB_DOMAIN?>';
-			<?php endif?>
-		</script>
-		<?php endif;?>
-
-		<script type="text/javascript">
-			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
-			var PROTOCOL = '<?=is_ssl() ? "https://" : "http://"?>';
-			var THEME_COMPONENTS_URL = PROTOCOL + '<?=str_replace(array("http://", "https://"), "", THEME_COMPONENTS_URL)?>';
-
-			var PostTypeSearchDataManager = {
-                'searches' : [],
-                'register' : function(search) {
-                    this.searches.push(search);
-                }
-            }
-            var PostTypeSearchData = function(column_count, column_width, data) {
-                this.column_count = column_count;
-                this.column_width = column_width;
-                this.data = data;
-            }
-		</script>
-
-		<?=output_header_markup($post);?>
-
 	</head>
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>

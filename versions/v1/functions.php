@@ -236,7 +236,7 @@ function output_header_markup_v1($post) {
 			}
 		}
 
-		// DEPRECATED:  Issue-wide stylesheet (on home/issue cover page)
+		// DEPRECATED:  Issue-wide stylesheet (on issue cover page)
 		if( (is_home() || $post->post_type == 'issue') ) {
 			$issue_stylesheet_url = Issue::get_issue_stylesheet_url($post);
 			$dev_issue_directory = get_post_meta($post->ID, 'issue_dev_issue_asset_directory', TRUE);
@@ -278,7 +278,7 @@ function output_header_markup_v1($post) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -319,7 +319,7 @@ function output_header_markup_v1($post) {
 function display_markup_or_template_v1($post) {
 	if ($post->post_type == 'issue') {
 		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'issue-cover.html');
 	}
 	else {
 		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);

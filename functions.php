@@ -167,10 +167,14 @@ add_filter( 'template_include', 'by_version_template', 99 );
  * root, so we opt to use a separate function instead to avoid excessive file
  * includes.
  **/
-function get_version_header() {
-	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
+function get_version_header( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'header' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/header.php' );
+		return load_template( $new_template );
 	}
 }
 
@@ -179,10 +183,35 @@ function get_version_header() {
  * Loads version-specific footer template.  Should be used in place of
  * get_footer() for this theme.
  **/
-function get_version_footer() {
-	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
+function get_version_footer( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'footer' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
+		return load_template( $new_template );
+	}
+}
+
+
+/**
+ * Loads front-page.php or home.php using the relevant version's template.
+ * Falls back to loading root index.php if no templates are found.
+ **/
+function get_version_front_page() {
+	$new_template_front = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	$new_template_home = locate_template( array( get_version_file_path( 'home.php' ) ) );
+
+	if ( !empty( $new_template_front ) ) {
+		return load_template( $new_template_front );
+	}
+	elseif ( !empty( $new_template_home ) ) {
+		return load_template( $new_template_home );
+	}
+	else {
+		// something is very wrong--fall back to root index.php
+		return load_template( get_stylesheet_directory() . '/index.php' );
 	}
 }
 
@@ -551,7 +580,7 @@ function enqueue_issue_story_scripts() {
 	global $post;
 
 	if ( !is_404() && !is_search() ) {
-		// 1. add home page script(s)
+		// 1. add issue cover script(s)
 		if( $post->post_type == 'issue' || is_home() ) {
 
 			// issue-wide
@@ -569,7 +598,7 @@ function enqueue_issue_story_scripts() {
 				}
 			}
 
-			// home page specific
+			// issue cover specific
 			$dev_issue_home_directory = get_post_meta( $post->ID, 'issue_dev_home_asset_directory', TRUE );
 			$home_javascript_url = Issue::get_home_javascript_url( $post );
 
@@ -577,7 +606,7 @@ function enqueue_issue_story_scripts() {
 				Config::add_script( $home_javascript_url );
 			}
 			elseif ( DEV_MODE == 1 && !empty( $dev_issue_home_directory ) ) {
-				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.js';
+				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.js';
 
 				if ( curl_exists( $dev_home_javascript_url ) ) {
 					Config::add_script( $dev_home_javascript_url );
@@ -794,7 +823,7 @@ function output_header_markup($post) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -865,7 +894,7 @@ function uses_custom_template($post) {
 function display_markup_or_template($post) {
 	if ($post->post_type == 'issue') {
 		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'issue-cover.html');
 	}
 	else {
 		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
