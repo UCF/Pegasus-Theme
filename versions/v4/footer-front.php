@@ -37,7 +37,9 @@
 										<li>
 											<a target="_blank" class="" href="<?php echo $instagram_url; ?>">Follow UCF on Instagram</a>
 										</li>
+										<?php } ?>
 									</ul>
+									<?php endif; ?>
 
 									<?php if ( ipad_deployed() ) { ?>
 									<span class="footer-ipad-app">
