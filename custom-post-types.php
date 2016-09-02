@@ -546,19 +546,19 @@ class Issue extends CustomPostType {
 			),
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Issue Cover HTML File',
-				'desc' => 'HTML markup specifically for the issue cover. Also used on the homepage if this issue is the latest issue, and the custom homepage theme option is disabled.',
+				'desc' => 'HTML markup specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'html',
 				'type' => 'file',
 			),
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Issue Cover Stylesheet',
-				'desc' => 'Stylesheet specifically for the issue cover. Also used on the homepage if this issue is the latest issue, and the custom homepage theme option is disabled.',
+				'desc' => 'Stylesheet specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'stylesheet_home',
 				'type' => 'file',
 			),
 			array(
 				'name' => '<strong>Custom Issue Template:</strong> Issue Cover JavaScript File',
-				'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the homepage if this issue is the latest issue, and the custom homepage theme option is disabled.',
+				'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'javascript_home',
 				'type' => 'file',
 			),

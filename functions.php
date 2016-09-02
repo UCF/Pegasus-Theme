@@ -170,7 +170,7 @@ add_filter( 'template_include', 'by_version_template', 99 );
 function get_version_header() {
 	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/header.php' );
+		return load_template( $new_template );
 	}
 }
 
@@ -182,20 +182,28 @@ function get_version_header() {
 function get_version_footer() {
 	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
+		return load_template( $new_template );
 	}
 }
 
 
 /**
- * Loads version-specific home.php.
+ * Loads front-page.php or home.php using the relevant version's template.
+ * Falls back to loading root index.php if no templates are found.
  **/
-function get_version_home() {
-	// Same some time and reference LATEST_VERSION, since home.php should always
-	// use the latest version's assets
-	$new_template = locate_template( array( get_version_file_path( 'home.php', LATEST_VERSION ) ) );
-	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/home.php' );
+function get_version_front_page() {
+	$new_template_front = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	$new_template_home = locate_template( array( get_version_file_path( 'home.php' ) ) );
+
+	if ( !empty( $new_template_front ) ) {
+		return load_template( $new_template_front );
+	}
+	elseif ( !empty( $new_template_home ) ) {
+		return load_template( $new_template_home );
+	}
+	else {
+		// something is very wrong--fall back to root index.php
+		return load_template( get_stylesheet_directory() . '/index.php' );
 	}
 }
 
