@@ -627,6 +627,81 @@ WebcomAdmin.issueFieldToggle = function($) {
 };
 
 
+/**
+ * Adds file uploader functionality to File fields.
+ * Mostly copied from https://codex.wordpress.org/Javascript_Reference/wp.media
+ **/
+WebcomAdmin.fileUploader = function($) {
+  $('.meta-file-wrap').each(function() {
+    var frame,
+        $container = $(this),
+        $field = $container.find('.meta-file-field'),
+        $uploadBtn = $container.find('.meta-file-upload'),
+        $deleteBtn = $container.find('.meta-file-delete'),
+        $previewContainer = $container.find('.meta-file-preview');
+
+    // Add new btn click
+    $uploadBtn.on('click', function(e) {
+      e.preventDefault();
+
+      // If the media frame already exists, reopen it.
+      if (frame) {
+        frame.open();
+        return;
+      }
+
+      // Create a new media frame
+      frame = wp.media({
+        title: 'Select or Upload a File',
+        button: {
+          text: 'Use this file'
+        },
+        multiple: false  // Set to true to allow multiple files to be selected
+      });
+
+      // When an image is selected in the media frame...
+      frame.on('select', function() {
+
+        // Get media attachment details from the frame state
+        var attachment = frame.state().get('selection').first().toJSON();
+
+        // Send the attachment URL to our custom image input field.
+        $previewContainer.html( '<img src="' + attachment.iconOrThumb + '"><br>' + attachment.filename );
+
+        // Send the attachment id to our hidden input
+        $field.val(attachment.id);
+
+        // Hide the add image link
+        $uploadBtn.addClass('hidden');
+
+        // Unhide the remove image link
+        $deleteBtn.removeClass('hidden');
+      });
+
+      // Finally, open the modal on click
+      frame.open();
+    });
+
+    // Delete selected btn click
+    $deleteBtn.on('click', function(e) {
+      e.preventDefault();
+
+      // Clear out the preview image
+      $previewContainer.html('No file selected.');
+
+      // Un-hide the add image link
+      $uploadBtn.removeClass('hidden');
+
+      // Hide the delete image link
+      $deleteBtn.addClass('hidden');
+
+      // Delete the image id from the hidden input
+      $field.val('');
+    });
+  });
+};
+
+
 (function($){
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
@@ -635,4 +710,5 @@ WebcomAdmin.issueFieldToggle = function($) {
   WebcomAdmin.sliderMetaBoxes($);
   WebcomAdmin.storyFieldToggle($);
   WebcomAdmin.issueFieldToggle($);
+  WebcomAdmin.fileUploader($);
 })(jQuery);

@@ -146,5 +146,5 @@
 				</div>
 			</footer>
 		</body>
-		<?php echo "\n".footer_()."\n"; ?>
+		<?php wp_footer(); ?>
 	</html>
