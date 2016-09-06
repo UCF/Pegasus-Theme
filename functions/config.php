@@ -317,16 +317,31 @@ Config::$custom_taxonomies = array(
 
 
 /**
- * Grab array of Issue posts for Config::$theme_settings:
+ * Grab array of Issue and Story posts for Config::$theme_settings:
  **/
-$issue_covers 		= get_posts(array('post_type' => 'issue'));
-$issue_cover_array 	= array();
+$issue_covers = get_posts( array(
+	'post_type' => 'issue',
+	'numberposts' => -1
+) );
+$issue_cover_array = array();
 $issue_cover_first = null;
 foreach ( $issue_covers as $cover ) {
 	$issue_cover_array[$cover->post_title] = $cover->post_name;
 }
 $issue_cover_keys = array_keys( $issue_cover_array );
 $issue_cover_first = $issue_cover_keys[0];
+
+$story_obj = new Story();
+$story_options = $story_obj->get_objects_as_options( array(
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
+$story_gallery_options = $story_obj->get_objects_as_options( array(
+	'meta_key' => 'story_template',
+	'meta_value' => 'photo_essay',
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
 
 
 /**
@@ -377,6 +392,119 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => $theme_options['cb_domain'],
 		)),
+	),
+	'Front Page' => array(
+		new SelectField(array(
+			'name'        => 'Featured Story #1',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_1]',
+			'description' => 'The top featured story to display on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_1'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #2',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_2]',
+			'description' => 'First of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_2'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #3',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_3]',
+			'description' => 'Second of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_3'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #4',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_4]',
+			'description' => 'Third of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_4'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #5',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_5]',
+			'description' => 'Last of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_5'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Gallery',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_gallery_1]',
+			'description' => 'Featured gallery displayed next to events on the front page.',
+			'choices'     => $story_gallery_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_gallery_1'],
+		)),
+		new TextareaField(array(
+			'name'        => 'Banner Ad Contents',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_ad_contents]',
+			'description' => 'HTML for banner ad content to be displayed underneath list of issue stories on the front page. Accepts shortcode content.',
+			'value'       => $theme_options['front_page_ad_contents'],
+			'default'     => '',
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_1_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_1_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_2_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_2_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_3_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_3_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Today Story Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_today_feed_url]',
+			'description' => 'URL to the RSS feed for stories to display in "The Feed" section of the front page.',
+			'default'     => 'http://today.ucf.edu/feed/',
+			'value'       => $theme_options['front_page_today_feed_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Events JSON Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_events_feed_url]',
+			'description' => 'URL to the JSON feed for events to display in the Events section of the front page.',
+			'default'     => 'http://events.ucf.edu/upcoming/feed.json',
+			'value'       => $theme_options['front_page_events_feed_url'],
+		))
 	),
 	'Search' => array(
 		new RadioField(array(
@@ -441,6 +569,13 @@ Config::$theme_settings = array(
 			'default'     => 'https://plus.google.com/+UCF',
 			'value'       => $theme_options['googleplus_url'],
 		)),
+		new TextField(array(
+			'name'        => 'Instagram URL',
+			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
+			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => '',
+			'value'       => $theme_options['instagram_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(
@@ -453,9 +588,9 @@ Config::$theme_settings = array(
 	),
 	'Issues' => array(
 		new SelectField(array(
-			'name'        => 'Current Issue Cover',
+			'name'        => 'Current Issue',
 			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
-			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
+			'description' => 'Specify the current active issue. If a custom front page layout is enabled, this issue\'s stories will be used on the front page where the list of 12 stories in the issue is displayed.<br><br>The issue cover will be used as the front page if a custom front page is disabled (Settings > Reading > Front page displays is set to "Your latest posts").',
 			'choices'     => $issue_cover_array,
 			'default'     => $issue_cover_first,
 			'value'       => $theme_options['current_issue_cover'],

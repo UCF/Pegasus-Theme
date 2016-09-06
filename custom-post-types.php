@@ -545,20 +545,20 @@ class Issue extends CustomPostType {
 				'options' => $story_options,
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page HTML File',
-				'desc' => 'HTML markup specifically for the issue cover/home page.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover HTML File',
+				'desc' => 'HTML markup specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'html',
 				'type' => 'file',
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
-				'desc' => 'Stylesheet specifically for the issue cover/home page.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover Stylesheet',
+				'desc' => 'Stylesheet specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'stylesheet_home',
 				'type' => 'file',
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page JavaScript File',
-				'desc' => 'JavaScript file that runs exclusively on the issue cover/home page for this issue.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover JavaScript File',
+				'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'javascript_home',
 				'type' => 'file',
 			),
@@ -583,9 +583,9 @@ class Issue extends CustomPostType {
 
 		if (DEV_MODE == 1) {
 			array_unshift($fields, array(
-				'name' => '<strong>Developer Mode:</strong> Issue\'s Home Page Asset Directory',
-				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
-							(home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
+				'name' => '<strong>Developer Mode:</strong> Issue Cover Asset Directory',
+				'desc' => 'Directory to this issue\'s cover page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
+							(issue-cover.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
 							<strong>NOTE:</strong>
 							<ul style="list-style: disc !important;">
 							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>
