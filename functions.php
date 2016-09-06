@@ -1211,6 +1211,133 @@ function api_story_get_description( $object, $field_name, $request ) {
 add_action( 'rest_api_init', 'register_api_story_meta' );
 
 
+/**
+ * Displays a single story on the front page.
+ * TODO add default 263x175px thumbnail size value for $thumbnail_size
+ **/
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='thumbnail', $heading='h3' ) {
+	if ( !$story ) { return false; }
+
+	$thumbnail_id = get_post_meta( $story->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
+	// $thumbnail = null;
+	$thumbnail = '//placehold.it/263x175';
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	$title = wptexturize( $story->post_title );
+
+	$description = '';
+	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
+		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
+	}
+	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
+		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
+	}
+
+	$vertical = null;
+	if ( $show_vertical ) {
+		$vertical = get_the_category( $story->ID );
+		if ( $vertical ) {
+			$vertical = wptexturize( $vertical[0] );
+		}
+	}
+
+	ob_start();
+?>
+<article class="fp-feature <?php echo $css_class; ?>">
+	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php if ( $thumbnail ): ?>
+		<div class="fp-feature-img-wrap">
+			<img class="fp-feature-img img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+
+			<?php if ( $show_vertical && $vertical ): ?>
+			<span class="fp-vertical">
+				<?php echo $vertical; ?>
+			</span>
+			<?php endif; ?>
+		</div>
+		<?php endif; ?>
+
+		<<?php echo $heading; ?> class="fp-feature-title"><?php echo $title; ?></<?php echo $heading; ?>>
+		<div class="fp-feature-description">
+			<?php echo $description; ?>
+		</div>
+	</a>
+</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single Today article on the front page.
+ **/
+function display_front_page_today_story( $article ) {
+	ob_start();
+?>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single event item on the front page.
+ **/
+function display_front_page_event( $event ) {
+	ob_start();
+?>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single featured gallery on the front page.
+ **/
+function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
+	if ( !$gallery ) { return false; }
+
+	$title = wptexturize( $gallery->post_title );
+
+	$vertical = get_the_category( $gallery->ID );
+	if ( $vertical ) {
+		$vertical = wptexturize( $vertical[0] );
+	}
+
+	$thumbnail_id = get_post_meta( $gallery->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
+	// $thumbnail = null;
+	$thumbnail = '//placehold.it/515x390';
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, '' );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	ob_start();
+?>
+	<article class="fp-featured-gallery <?php echo $css_class; ?>">
+		<a href="<?php echo get_permalink( $gallery->ID ); ?>">
+			<h2 class="fp-heading"><?php echo $title; ?></h2>
+
+			<?php if ( $vertical ): ?>
+			<span class="fp-vertical"><?php echo $vertical; ?></span>
+			<?php endif; ?>
+
+			<?php if ( $thumbnail ): ?>
+			<img src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<?php endif; ?>
+		</a>
+	</article>
+<?php
+	return ob_get_clean();
+}
+
+
 /****************************************************************************
  *
  * END site-level functions.  Don't add anything else below this line.
