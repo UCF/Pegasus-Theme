@@ -41,8 +41,10 @@ else:
 
 	<div class="row">
 		<div class="col-sm-8">
-			<h2 class="fp-heading"><a href="https://today.ucf.edu/">The Feed <span class="fa fa-caret-right"></span></a></h2>
-			<a href="https://today.ucf.edu/">Check out more stories at UCFToday <span class="fa fa-share-square-o"></span></a>
+			<a href="https://today.ucf.edu/">
+				<h2 class="fp-heading">The Feed <span class="fa fa-caret-right"></span></h2>
+				<span class="">Check out more stories at UCFToday <span class="fa fa-share-square-o"></span></span>
+			</a>
 			TODO Today stories
 		</div>
 		<div class="col-sm-4 hidden-xs">
@@ -52,10 +54,48 @@ else:
 
 	<div class="row">
 		<div class="col-sm-3">
-			TODO this issue thumb + details
+			<?php
+			$current_issue = get_current_issue();
+			$current_issue_title = wptexturize( $current_issue->post_title );
+			$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
+			$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true ); // TODO update with new description meta name
+			$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
+			?>
+			<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+				<h2 class="h3 fp-subheading">In This Issue</h2>
+
+				<?php if ( $current_issue_thumbnail ): ?>
+				<img class="img-responsive fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
+				<?php endif; ?>
+
+				<?php if ( $current_issue_description ): ?>
+				<div class="fp-issue-description">
+					<?php echo wptexturize( $current_issue_description ); ?>
+				</div>
+				<?php endif; ?>
+			</a>
 		</div>
 		<div class="col-sm-9">
-			TODO in this issue
+			<div class="row">
+				<?php
+				$current_issue_stories = get_current_issue_stories( array( $current_issue_cover_story ), 12 );
+
+				if ( $current_issue_stories ):
+				?>
+					<?php $i = 1; ?>
+					<?php foreach ( $current_issue_stories as $issue_story ): ?>
+						<div class="col-sm-4">
+							<?php echo display_front_page_story( $issue_story, 'fp-issue-list-item', true ); ?>
+						</div>
+
+						<?php if ( $i !== 12 && $i % 3 === 0 ): ?>
+							<div class="clearfix hidden-xs"></div>
+						<?php endif; ?>
+
+						<?php $i++; ?>
+					<?php endforeach; ?>
+				<?php endif; ?>
+			</div>
 		</div>
 	</div>
 
