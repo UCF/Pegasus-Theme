@@ -13,6 +13,8 @@ else:
 	<?php echo display_front_page_story( get_post( $feature_1 ), 'fp-feature-top', false, 'full' ); ?>
 	<?php endif; ?>
 
+	<hr class="visible-xs-block">
+
 	<div class="row">
 		<?php if ( $feature_2 = get_theme_option( 'front_page_featured_story_2' ) ): ?>
 		<div class="col-sm-3">
@@ -51,6 +53,8 @@ else:
 			TODO trending section
 		</div>
 	</div>
+
+	<hr class="visible-xs-block">
 
 	<div class="row">
 		<div class="col-sm-3">
