@@ -1,0 +1,132 @@
+//
+// General
+//
+.front-page {
+  border-top: 10px solid $ucf-gold;
+
+  @media (min-width: $screen-sm-min) {
+    border-top-width: 25px;
+  }
+}
+
+
+//
+// Header
+//
+.fp-header-link {
+  @include gotham(6);
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .06em;
+  margin: 15px 0 25px;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    margin: 65px 0 0;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 85px;
+  }
+}
+
+.fp-header-link-issue {
+  float: left;
+
+  @media (min-width: $screen-sm-min) {
+    float: none;
+  }
+}
+
+.fp-header-link-archives {
+  float: right;
+
+  @media (min-width: $screen-sm-min) {
+    float: none;
+  }
+}
+
+.fp-header-title {
+  display: block;
+  margin: 0 auto 15px;
+  max-width: 384px;
+  padding: 0 10px;
+
+  @media (min-width: $screen-sm-min) {
+    margin: 50px auto 20px;
+    padding: 0 20px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    padding: 0;
+  }
+}
+
+.fp-header-subtitle {
+  @include archer();
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    font-size: 13px;
+  }
+
+  @media (min-width: $screen-md-min) {
+    font-size: 15px;
+  }
+}
+
+.fp-header-subtitle-pre {
+  // Force a line break in subtitle at certain screen sizes
+  display: block;
+
+  @media (min-width: 480px) {
+    display: inline;
+  }
+
+  @media (min-width: $screen-sm-min) {
+    display: block;
+  }
+
+  @media (min-width: $screen-md-min) {
+    display: inline;
+  }
+}
+
+.fp-social-links {
+  background: #bbb; // TODO (placeholder block)
+  margin: 25px auto 20px;
+
+  @media (min-width: $screen-sm-min) {
+    margin: 20px 0 0;
+  }
+}
+
+.fp-header-border {
+  border-bottom: 7px solid $black;
+  border-top: 1px solid $gray-light-alt;
+  bottom: 0;
+  display: block;
+  height: 13px;
+  margin: 50px 0 20px;
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 70px;
+  }
+}

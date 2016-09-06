@@ -4,7 +4,7 @@
 		<?php wp_head(); ?>
 	</head>
 
-	<body <?php echo body_class(); ?>>
+	<body <?php echo body_class( 'front-page' ); ?>>
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -19,34 +19,46 @@
 			</div>
 		</div>
 
-		<header>
-			<div class="container text-center">
+		<header class="front-page-header">
+			<div class="container">
 				<div class="row hidden-xs">
 					<div class="col-sm-12">
-						<div class="social-share-links pull-right">
+						<div class="fp-social-links pull-right">
 							TODO social sharing btns (desktop)
 						</div>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col-xs-6 col-sm-2">
-						<a class="fp-header-link" href="#CURRENT_ISSUE_URL_HERE">CURRENT ISSUE TITLE HERE</a>
+					<div class="col-xs-6 col-sm-3 col-md-2 text-center">
+						<?php
+						$current_issue = get_current_issue();
+						$current_issue_title = wptexturize( $current_issue->post_title );
+						?>
+						<a class="fp-header-link fp-header-link-issue" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+							<?php echo $current_issue_title; ?>
+						</a>
 					</div>
-					<div class="col-xs-6 col-sm-2 col-sm-push-8">
-						<a class="fp-header-link" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">Archives</a>
+					<div class="col-xs-6 col-sm-3 col-sm-push-6 col-md-2 col-md-push-8 text-center">
+						<a class="fp-header-link fp-header-link-archives" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">Archives</a>
 					</div>
 					<div class="clearfix visible-xs-block"></div>
-					<div class="col-sm-8 col-sm-pull-2">
-						<h1 class="fp-header-title">Pegasus</h1>
-						<a class="fp-header-subtitle" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">The Magazine of the University of Central Florida</a>
+					<div class="col-sm-6 col-sm-pull-3 col-md-8 col-md-pull-2 text-center">
+						<h1 class="fp-header-title">
+							<img class="img-responsive fp-header-title-img" src="<?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray.png" srcset="<?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray.png 384w, <?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray-r.png 769w" alt="Pegasus" title="Pegasus">
+						</h1>
+						<a class="fp-header-subtitle" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
+							<span class="fp-header-subtitle-pre">The Magazine of </span>the University of Central Florida
+						</a>
 					</div>
 				</div>
 
-				<div class="visible-xs-block social-share-links text-center">
+				<div class="visible-xs-block fp-social-links text-center">
 					TODO social sharing btns (mobile)
 				</div>
+
+				<div class="hidden-xs fp-header-border"></div>
 			</div>
 		</header>
 
-		<main>
+		<main class="front-page-main">

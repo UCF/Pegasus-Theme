@@ -88,7 +88,7 @@ else:
 							<?php echo display_front_page_story( $issue_story, 'fp-issue-list-item', true ); ?>
 						</div>
 
-						<?php if ( $i !== 12 && $i % 3 === 0 ): ?>
+						<?php if ( $i !== count( $current_issue_stories ) && $i % 3 === 0 ): ?>
 							<div class="clearfix hidden-xs"></div>
 						<?php endif; ?>
 
@@ -99,7 +99,11 @@ else:
 		</div>
 	</div>
 
-	TODO ad/whatever here
+	<?php
+	if ( $banner_ad = get_theme_option( 'front_page_ad_contents' ) ) {
+		echo wptexturize( do_shortcode( $banner_ad ) );
+	}
+	?>
 
 	<div class="row">
 		<div class="col-sm-6">
