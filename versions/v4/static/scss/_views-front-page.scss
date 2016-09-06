@@ -7,6 +7,13 @@
   @media (min-width: $screen-sm-min) {
     border-top-width: 25px;
   }
+
+  hr {
+    border-top: 3px solid $ucf-gold;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    width: 66%;
+  }
 }
 
 
@@ -57,7 +64,7 @@
   display: block;
   margin: 0 auto 15px;
   max-width: 384px;
-  padding: 0 10px;
+  width: 85%;
 
   @media (min-width: $screen-sm-min) {
     margin: 50px auto 20px;
@@ -129,4 +136,95 @@
   @media (min-width: $screen-md-min) {
     margin-top: 70px;
   }
+}
+
+
+//
+// Featured stories
+//
+.fp-feature {
+  margin: 0 auto 30px;
+  text-align: center;
+  width: 90%;
+
+  @media (min-width: $screen-sm-min) {
+    width: 100%;
+  }
+}
+
+.fp-feature-top {
+  width: 100%;
+
+  .fp-feature-link {
+    @media (min-width: $screen-sm-min) {
+      display: block;
+      position: relative;
+    }
+  }
+
+  .fp-feature-text-wrap {
+    @media (min-width: $screen-sm-min) {
+      background-color: rgba(0, 0, 0, .6);
+      bottom: 0;
+      left: 0;
+      padding: 10px 30px 30px;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .fp-feature-title,
+  .fp-feature-description {
+    @media (min-width: $screen-sm-min) {
+      color: #fff;
+    }
+  }
+
+  .fp-feature-title {
+    @media (min-width: $screen-md-min) {
+      font-size: 36px;
+    }
+  }
+
+  .fp-feature-description {
+    @media (min-width: $screen-md-min) {
+      font-size: 24px;
+      line-height: 1.2;
+    }
+  }
+
+  .fp-feature-img {
+    width: 100%;
+  }
+}
+
+.fp-feature-link {
+  &:hover,
+  &:active,
+  &:focus {
+    text-decoration: none;
+
+    .fp-feature-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.fp-issue-list-item {
+  .fp-feature-description {
+    text-align: left;
+  }
+}
+
+.fp-feature-title {
+  @include archer(7);
+  font-size: 22px;
+  margin: 15px 0 10px;
+}
+
+.fp-feature-description {
+  @include archer();
+  color: $black;
+  font-size: 16px;
+  line-height: 1.3;
 }

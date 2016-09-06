@@ -1252,7 +1252,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php if ( $thumbnail ): ?>
 		<div class="fp-feature-img-wrap">
-			<img class="fp-feature-img img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<img class="fp-feature-img center-block img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 
 			<?php if ( $show_vertical && $vertical ): ?>
 			<span class="fp-vertical">
@@ -1262,9 +1262,11 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		</div>
 		<?php endif; ?>
 
-		<<?php echo $heading; ?> class="fp-feature-title"><?php echo $title; ?></<?php echo $heading; ?>>
-		<div class="fp-feature-description">
-			<?php echo $description; ?>
+		<div class="fp-feature-text-wrap">
+			<<?php echo $heading; ?> class="fp-feature-title"><?php echo $title; ?></<?php echo $heading; ?>>
+			<div class="fp-feature-description">
+				<?php echo $description; ?>
+			</div>
 		</div>
 	</a>
 </article>
@@ -1329,7 +1331,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 			<?php endif; ?>
 
 			<?php if ( $thumbnail ): ?>
-			<img class="img-responsive fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 			<?php endif; ?>
 		</a>
 	</article>
