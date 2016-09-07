@@ -1214,7 +1214,6 @@ add_action( 'rest_api_init', 'register_api_story_meta' );
 
 /**
  * Displays a single story on the front page.
- * TODO add default 263x175px thumbnail size value for $thumbnail_size
  **/
 function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) { return false; }
@@ -1281,14 +1280,16 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 /**
  * Displays a single Today article on the front page.
- * TODO dynamically populate data from $article
  **/
 function display_front_page_today_story( $article ) {
+	$url = $article->get_link();
+	$title = $article->get_title();
+
 	ob_start();
 ?>
 <article class="fp-today-feed-item">
-	<a class="fp-today-item-link" href="#">
-		Nursing Expands Leadership with Two New Associate Deans
+	<a class="fp-today-item-link" href="<?php echo $url; ?>">
+		<?php echo $title; ?>
 	</a>
 </article>
 <?php
