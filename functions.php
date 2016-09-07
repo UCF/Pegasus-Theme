@@ -19,6 +19,7 @@
 
 
 require_once( 'functions/base.php' );    # Base theme functions
+require_once( 'functions/feeds.php' );   # Feed-related functions
 require_once( 'functions/admin.php' );   # Admin/login functions
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
 require_once( 'custom-post-types.php' ); # Where post types are defined
