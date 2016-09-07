@@ -43,21 +43,26 @@ else:
 
 	<div class="row">
 		<div class="col-sm-8">
-			<a href="https://today.ucf.edu/">
-				<h2 class="fp-heading">The Feed <span class="fa fa-caret-right"></span></h2>
-				<span class="">Check out more stories at UCFToday <span class="fa fa-share-square-o"></span></span>
-			</a>
-			TODO Today stories
+			<aside class="fp-today-feed">
+				<a href="https://today.ucf.edu/">
+					<h2 class="fp-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
+					<span class="">Check out more stories at UCFToday <span class="fa fa-share-square-o ucf-gold"></span></span>
+				</a>
+				TODO Today stories
+			</aside>
 		</div>
 		<div class="col-sm-4 hidden-xs">
-			TODO trending section
+			<aside class="fp-trending-feed">
+				<h2>What&rsquo;s Trending</h2>
+				TODO trending section
+			</aside>
 		</div>
 	</div>
 
 	<hr class="visible-xs-block">
 
 	<div class="row">
-		<div class="col-sm-3">
+		<div class="col-sm-3 text-center">
 			<?php
 			$current_issue = get_current_issue();
 			$current_issue_title = wptexturize( $current_issue->post_title );
@@ -66,18 +71,26 @@ else:
 			$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
 			?>
 			<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-				<h2 class="h3 fp-subheading">In This Issue</h2>
+				<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
 
 				<?php if ( $current_issue_thumbnail ): ?>
-				<img class="img-responsive fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
-				<?php endif; ?>
-
-				<?php if ( $current_issue_description ): ?>
-				<div class="fp-issue-description">
-					<?php echo wptexturize( $current_issue_description ); ?>
-				</div>
+				<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
 				<?php endif; ?>
 			</a>
+
+			<!-- TODO remove after desc. meta field is added -->
+			<div class="fp-issue-description center-block text-left">
+				<strong>The Space Issue</strong> is a look at how UCF, one of America’s first “space universities” since 1963, have focused to investigate our cosmos.
+			</div>
+			<!-- /TODO -->
+
+			<?php if ( $current_issue_description ): ?>
+			<div class="fp-issue-description text-left">
+				<?php echo wptexturize( $current_issue_description ); ?>
+			</div>
+			<?php endif; ?>
+
+			<hr class="divider-short">
 		</div>
 		<div class="col-sm-9">
 			<div class="row">
