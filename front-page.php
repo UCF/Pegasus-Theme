@@ -158,8 +158,15 @@ else:
 
 	<div class="row">
 		<div class="col-sm-6">
-			<h2 class="fp-heading">Events</h2>
-			TODO events
+			<h2 class="fp-heading fp-events-heading">Events</h2>
+			<div class="fp-events">
+				<?php
+				$events = range(0,2); // TODO replace with get_events()
+				foreach ( $events as $event ) {
+					echo display_front_page_event( $event );
+				}
+				?>
+			</div>
 		</div>
 
 		<?php if ( $gallery_1 = get_theme_option( 'front_page_featured_gallery_1' ) ): ?>
