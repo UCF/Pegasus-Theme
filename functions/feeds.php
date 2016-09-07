@@ -37,6 +37,22 @@ function check_remote_file($url) {
     return false;
 }
 
+/**
+ * Fetches an external url's contents with a timeout applied to the request.
+ **/
+function fetch_with_timeout( $url ) {
+	// Set a timeout
+	$opts = array(
+		'http' => array(
+			'method'  => 'GET',
+			'timeout' => FEED_FETCH_TIMEOUT
+		)
+	);
+	$context = stream_context_create( $opts );
+	// Grab the file
+	return file_get_contents( $url, false, $context );
+}
+
 
 /**
  * Handles fetching and processing of feeds.  Currently uses SimplePie to parse
@@ -66,13 +82,7 @@ class FeedManager{
 		$content   = get_site_transient($cache_key);
 
 		if ($content === False){
-			// Set a timeout
-			$opts = array('http' => array(
-									'method'  => 'GET',
-									'timeout' => FEED_FETCH_TIMEOUT,
-			));
-			$context = stream_context_create($opts);
-			$content = file_get_contents($url, false, $context);
+			$content = fetch_with_timeout( $url );
 			if ($content === False || empty($content)){
 				$failed  = True;
 				$content = null;
