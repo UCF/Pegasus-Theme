@@ -1299,24 +1299,29 @@ function display_front_page_today_story( $article ) {
 
 /**
  * Displays a single event item on the front page.
- * TODO dynamically populate data from $event
  **/
 function display_front_page_event( $event ) {
+	$start = strtotime( $event['starts'] );
+	$description = substr( strip_tags( $event['description'] ), 0, 250 );
+	if ( strlen( $description ) == 250 ) {
+		$description .= '...';
+	}
+
 	ob_start();
 ?>
 <div class="fp-event">
 	<div class="fp-event-when">
-		<span class="fp-event-day">Wed</span>
-		<span class="fp-event-date">17</span>
-		<span class="fp-event-month">Sept</span>
+		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
+		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
+		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
 	</div>
 	<div class="fp-event-content">
-		<span class="fp-vertical">On Campus</span><!-- TODO use event category here -->
+		<span class="fp-vertical"><?php echo $event['category']; ?></span>
 		<span class="fp-event-title">
-			<a class="fp-event-link" href="#TODO">Narcotics Anonymous: Recovery on Campus</a>
+			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
 		</span>
-		<div class="fp-event-description"><!-- TODO might have to force character limit here -->
-			UCF has been committed to space exploration since before man's first step on the moon. Sponsored by UCF's Environmental Health Office.
+		<div class="fp-event-description">
+			<?php echo $description; ?>
 		</div>
 	</div>
 </div>
