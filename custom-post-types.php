@@ -497,6 +497,12 @@ class Issue extends CustomPostType {
 
 		$fields = array(
 			array(
+				'name'    => 'Description',
+				'desc'    => 'Short description describing what is included in the issue.',
+				'id'      => $prefix.'description',
+				'type'    => 'textarea'
+			),
+			array(
 				'name'    => 'Issue Version',
 				'desc'    => 'The theme version to use for this issue and its stories.',
 				'id'      => $prefix.'version',
