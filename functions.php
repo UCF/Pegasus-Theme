@@ -1280,10 +1280,16 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 /**
  * Displays a single Today article on the front page.
+ * TODO dynamically populate data from $article
  **/
 function display_front_page_today_story( $article ) {
 	ob_start();
 ?>
+<article class="fp-today-feed-item">
+	<a class="fp-today-item-link" href="#">
+		Nursing Expands Leadership with Two New Associate Deans
+	</a>
+</article>
 <?php
 	return ob_get_clean();
 }

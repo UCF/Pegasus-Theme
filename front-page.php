@@ -13,7 +13,7 @@ else:
 	<?php echo display_front_page_story( get_post( $feature_1 ), 'fp-feature-top', false, 'full' ); ?>
 	<?php endif; ?>
 
-	<hr class="visible-xs-block">
+	<hr class="fp-divider visible-xs-block">
 
 	<div class="row">
 		<?php if ( $feature_2 = get_theme_option( 'front_page_featured_story_2' ) ): ?>
@@ -41,25 +41,59 @@ else:
 		<?php endif; ?>
 	</div>
 
+	<hr class="fp-divider visible-xs-block">
+
 	<div class="row">
-		<div class="col-sm-8">
+		<div class="col-sm-7 col-md-8">
 			<aside class="fp-today-feed">
 				<a href="https://today.ucf.edu/">
-					<h2 class="fp-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
-					<span class="">Check out more stories at UCFToday <span class="fa fa-share-square-o ucf-gold"></span></span>
+					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
+					<span class="fp-today-feed-more hidden-xs">Check out more stories at UCFToday <span class="fa fa-share-square-o ucf-gold"></span></span>
 				</a>
-				TODO Today stories
+				<!-- TODO replace with function output, grabbing actual Today stories (use display_front_page_today_story() for each story) -->
+				<?php
+				$articles = range(0,9); // replace value with get_news() or something, returning 10 feed items
+				?>
+				<div class="fp-today-feed-wrap">
+					<div class="fp-today-feed-col">
+						<?php echo display_front_page_today_story( $articles[0] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
+						<?php echo display_front_page_today_story( $articles[1] ); ?>
+						<hr class="fp-divider fp-today-feed-divider visible-xs-block">
+					</div>
+					<div class="fp-today-feed-col">
+						<?php echo display_front_page_today_story( $articles[2] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
+						<?php echo display_front_page_today_story( $articles[3] ); ?>
+					</div>
+					<div class="fp-today-feed-col hidden-xs hidden-sm">
+						<?php echo display_front_page_today_story( $articles[4] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
+						<?php echo display_front_page_today_story( $articles[5] ); ?>
+					</div>
+					<div class="fp-today-feed-col hidden-xs hidden-sm">
+						<?php echo display_front_page_today_story( $articles[6] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
+						<?php echo display_front_page_today_story( $articles[7] ); ?>
+					</div>
+					<div class="fp-today-feed-col hidden-xs hidden-sm hidden-md">
+						<?php echo display_front_page_today_story( $articles[8] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
+						<?php echo display_front_page_today_story( $articles[9] ); ?>
+					</div>
+				</div>
+				<!-- /TODO -->
 			</aside>
 		</div>
-		<div class="col-sm-4 hidden-xs">
+		<div class="col-sm-5 col-md-4 hidden-xs">
 			<aside class="fp-trending-feed">
-				<h2>What&rsquo;s Trending</h2>
-				TODO trending section
+				<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
+				<div style="background-color: #fff; border: 1px solid #ddd; padding: 15px; height: 300px;">
+					TODO replace this div with a generic Twitter widget, probably
+				</div>
 			</aside>
 		</div>
 	</div>
-
-	<hr class="visible-xs-block">
 
 	<div class="row">
 		<div class="col-sm-3 text-center">
@@ -90,7 +124,7 @@ else:
 			</div>
 			<?php endif; ?>
 
-			<hr class="divider-short">
+			<hr class="fp-divider fp-divider-short">
 		</div>
 		<div class="col-sm-9">
 			<div class="row">
