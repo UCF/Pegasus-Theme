@@ -58,8 +58,7 @@ class FeedManager{
 	 * @author Jared Lang
 	 **/
 	static protected function __new_feed($url){
-		$timer = Timer::start();
-		require_once(THEME_DIR.'/third-party/simplepie.php');
+		require_once ABSPATH . '/wp-includes/class-simplepie.php';
 
 		$simplepie = null;
 		$failed    = False;
@@ -99,8 +98,6 @@ class FeedManager{
 			$failed = True;
 		}
 
-		$elapsed = round($timer->elapsed() * 1000);
-		debug("__new_feed: {$elapsed} milliseconds");
 		return array(
 			'content'   => $content,
 			'url'       => $url,
@@ -283,39 +280,45 @@ function display_news() { ?>
 
 
 /* Modified function for main site theme: */
-function get_events($start, $limit){
-	$options = get_option(THEME_OPTIONS_NAME);
-	$qstring = (bool)strpos($options['events_url'], '?');
-	$url     = $options['events_url'];
-	if (!$qstring){
-		$url .= '?';
-	}else{
-		$url .= '&';
+function get_events( $start=0, $limit=4, $url='' ) {
+	$options = get_option( THEME_OPTIONS_NAME );
+	$url = $url ?: $options['events_url'];
+
+	// Remove any query strings attached to the url provided.
+	$qstring = ( bool )strpos( $url, '?' );
+	if ( $qstring ) {
+		$url_parts = explode( '?', $url );
+		$url = $url_parts[0];
 	}
-	$url    .= 'upcoming=upcoming&format=json';
 
-	// Set a timeout
-	$opts = array('http' => array(
-						'method'  => 'GET',
-						'timeout' => FEED_FETCH_TIMEOUT
-	));
-	$context = stream_context_create($opts);
+	// Append trailing end slash to url.
+	if ( substr( $url, -1 ) !== '/' ) {
+		$url .= '/';
+	}
 
-	// Grab the weather feed
-	$raw_events = file_get_contents($url, false, $context);
-	if ($raw_events) {
-		$events = json_decode($raw_events, TRUE);
-		$events = array_slice($events, $start, $limit);
+	// Append /upcoming/ to the end of the url, if it's not already present.
+	if ( substr( $url, -9 ) !== 'upcoming/' ) {
+		$url .= 'upcoming/';
+	}
+
+	// Append /feed.json to the end of the url.
+	$url .= 'feed.json';
+
+	// Grab the feed
+	$raw_events = fetch_with_timeout( $url );
+	if ( $raw_events ) {
+		$events = json_decode( $raw_events, TRUE );
+		$events = array_slice( $events, $start, $limit );
 		return $events;
 	}
 	else { return NULL; }
 }
 
 
-function get_news($start=null, $limit=null){
-	$options = get_option(THEME_OPTIONS_NAME);
-	$url     = $options['news_url'];
-	$news    = FeedManager::get_items($url, $start, $limit);
+function get_news( $start=null, $limit=null, $url='' ){
+	$options = get_option( THEME_OPTIONS_NAME );
+	$url = $url ?: $options['news_url'];
+	$news = FeedManager::get_items( $url, $start, $limit );
 	return $news;
 }
 
