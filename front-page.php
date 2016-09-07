@@ -101,7 +101,7 @@ else:
 			$current_issue = get_current_issue();
 			$current_issue_title = wptexturize( $current_issue->post_title );
 			$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
-			$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true ); // TODO update with new description meta name
+			$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true );
 			$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
 			?>
 			<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
@@ -112,14 +112,8 @@ else:
 				<?php endif; ?>
 			</a>
 
-			<!-- TODO remove after desc. meta field is added -->
-			<div class="fp-issue-description center-block text-left">
-				<strong>The Space Issue</strong> is a look at how UCF, one of America’s first “space universities” since 1963, have focused to investigate our cosmos.
-			</div>
-			<!-- /TODO -->
-
 			<?php if ( $current_issue_description ): ?>
-			<div class="fp-issue-description text-left">
+			<div class="fp-issue-description center-block text-left">
 				<?php echo wptexturize( $current_issue_description ); ?>
 			</div>
 			<?php endif; ?>
