@@ -301,18 +301,20 @@ function get_events( $start=0, $limit=4, $url='' ) {
 		$url = $url_parts[0];
 	}
 
-	// Append trailing end slash to url.
-	if ( substr( $url, -1 ) !== '/' ) {
-		$url .= '/';
-	}
+	if ( substr( $url, -9 ) !== 'feed.json' ) {
+		// Append trailing end slash to url.
+		if ( substr( $url, -1 ) !== '/' ) {
+			$url .= '/';
+		}
 
-	// Append /upcoming/ to the end of the url, if it's not already present.
-	if ( substr( $url, -9 ) !== 'upcoming/' ) {
-		$url .= 'upcoming/';
-	}
+		// Append /upcoming/ to the end of the url, if it's not already present.
+		if ( substr( $url, -9 ) !== 'upcoming/' ) {
+			$url .= 'upcoming/';
+		}
 
-	// Append /feed.json to the end of the url.
-	$url .= 'feed.json';
+		// Append /feed.json to the end of the url.
+		$url .= 'feed.json';
+	}
 
 	// Grab the feed
 	$raw_events = fetch_with_timeout( $url );
