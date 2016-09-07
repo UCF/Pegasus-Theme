@@ -356,6 +356,18 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 			array(
+				'name' => 'Front Page Small Featured Stories Thumbnail',
+				'desc' => 'Displayed in the small featured stories, as well as the stories in the "In This Issue" section.  Recommended dimensions: 263x175; if using this story as the top featured story on the front page, recommended dimensions are 1140x515px.',
+				'id'   => $prefix.'frontpage_thumb',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Front Page Gallery Thumbnail',
+				'desc' => 'Thumbnail displayed in the bottom right of the front page.  Recommended dimensions: 515x390px.',
+				'id'   => $prefix.'frontpage_gallery_thumb',
+				'type' => 'file',
+			),
+			array(
 				'name' => 'Default Issue Template Featured Story Thumbnail',
 				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 768x432px',
 				'id'   => $prefix.'issue_featured_thumb',
@@ -496,6 +508,12 @@ class Issue extends CustomPostType {
 		$versions = array_combine( $versions, $versions ); // Force identical key/val pairs
 
 		$fields = array(
+			array(
+				'name'    => 'Description',
+				'desc'    => 'Short description describing what is included in the issue.',
+				'id'      => $prefix.'description',
+				'type'    => 'textarea'
+			),
 			array(
 				'name'    => 'Issue Version',
 				'desc'    => 'The theme version to use for this issue and its stories.',
