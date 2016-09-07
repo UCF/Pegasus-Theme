@@ -1220,7 +1220,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 	$thumbnail_id = get_post_meta( $story->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
 	// $thumbnail = null;
-	$thumbnail = '//placehold.it/263x175';
+	$thumbnail = '//placehold.it/263x175'; // TODO remove; uncomment previous line
 	if ( $thumbnail_id ) {
 		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
 		if ( $thumbnail ) {
@@ -1261,14 +1261,17 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			<?php endif; ?>
 		</div>
 		<?php endif; ?>
-
-		<div class="fp-feature-text-wrap">
-			<<?php echo $heading; ?> class="fp-feature-title"><?php echo $title; ?></<?php echo $heading; ?>>
-			<div class="fp-feature-description">
-				<?php echo $description; ?>
-			</div>
-		</div>
 	</a>
+	<div class="fp-feature-text-wrap">
+		<<?php echo $heading; ?> class="fp-feature-title">
+			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+				<?php echo $title; ?>
+			</a>
+		</<?php echo $heading; ?>>
+		<div class="fp-feature-description">
+			<?php echo $description; ?>
+		</div>
+	</div>
 </article>
 <?php
 	return ob_get_clean();
@@ -1312,7 +1315,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 
 	$thumbnail_id = get_post_meta( $gallery->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
 	// $thumbnail = null;
-	$thumbnail = '//placehold.it/515x390';
+	$thumbnail = '//placehold.it/515x390'; // TODO remove; uncomment previous line
 	if ( $thumbnail_id ) {
 		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, '' );
 		if ( $thumbnail ) {

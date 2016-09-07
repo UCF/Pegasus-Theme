@@ -1124,7 +1124,9 @@ function body_classes(){
  * @author Jared Lang
  * */
 function opengraph_setup() {
-	if ( !(bool)get_theme_mod_or_default( 'enable_og' ) ) { return; }
+	$options = get_option( THEME_OPTIONS_NAME );
+
+	if ( !(bool)$options['enable_og'] ) { return; }
 	if ( is_search() || is_404() ) { return; }
 
 	global $post;
@@ -1182,7 +1184,7 @@ function opengraph_setup() {
 
 
 	// Include admins if available
-	$admins = trim( get_theme_mod_or_default( 'fb_admins' ) );
+	$admins = trim( $options['fb_admins'] );
 	if ( strlen( $admins ) > 0 ) {
 		$metas[] = array( 'property' => 'fb:admins', 'content' => $admins );
 	}
