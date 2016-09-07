@@ -1,4 +1,6 @@
 <?php
+require_once(THEME_DIR.'/functions/feeds.php');			# Where functions related to feed data live
+
 /*
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
