@@ -356,6 +356,24 @@ class Story extends CustomPostType {
 				'type' => 'textarea',
 			),
 			array(
+				'name' => 'Homepage Small Featured Stories Thumbnail',
+				'desc' => 'Displayed in the small featured stories, as well as the stories in the "In This Issue" section.  Recommended dimensions: 263x175; if using this story as the top featured story on the front page, recommended dimensions are 1140x515px.',
+				'id'   => $prefix.'homepage_thumb',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Homepage In Focus Gallery Thumbnail',
+				'desc' => 'Thumbnail displayed in the bottom right of the homepage.  Recommended dimensions: 515x390px.',
+				'id'   => $prefix.'gallery_thumb',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Default Issue Template Small Featured Story Thumbnail',
+				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 263x175px',
+				'id'   => $prefix.'small_issue_featured_thumb',
+				'type' => 'file',
+			),
+			array(
 				'name' => 'Default Issue Template Featured Story Thumbnail',
 				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 768x432px',
 				'id'   => $prefix.'issue_featured_thumb',
