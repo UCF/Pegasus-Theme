@@ -50,9 +50,10 @@ else:
 					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
 					<span class="fp-today-feed-more hidden-xs">Check out more stories at UCFToday <span class="fa fa-share-square-o ucf-gold"></span></span>
 				</a>
-				<!-- TODO replace with function output, grabbing actual Today stories (use display_front_page_today_story() for each story) -->
 				<?php
-				$articles = range(0,9); // replace value with get_news() or something, returning 10 feed items
+				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
+
+				if ( $articles ):
 				?>
 				<div class="fp-today-feed-wrap">
 					<div class="fp-today-feed-col">
@@ -82,7 +83,9 @@ else:
 						<?php echo display_front_page_today_story( $articles[9] ); ?>
 					</div>
 				</div>
-				<!-- /TODO -->
+				<?php else: ?>
+				News articles could not be loaded. Please try again later.
+				<?php endif; ?>
 			</aside>
 		</div>
 		<div class="col-sm-5 col-md-4 hidden-xs">
@@ -155,7 +158,7 @@ else:
 			<h2 class="fp-heading fp-events-heading">Events</h2>
 			<div class="fp-events">
 				<?php
-				$events = range(0,2); // TODO replace with get_events()
+				$events = get_events( 0, 10, get_theme_option( 'front_page_events_feed_url' ) );
 				foreach ( $events as $event ) {
 					echo display_front_page_event( $event );
 				}
