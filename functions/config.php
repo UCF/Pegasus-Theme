@@ -725,6 +725,8 @@ function __init__(){
 	add_theme_support( 'post-thumbnails' );
 	add_theme_support( 'title-tag' );
 	add_image_size( 'homepage', 620 );
+	add_image_size( 'frontpage-story-thumbnail', 263, 175, true );
+	add_image_size( 'frontpage-featured-gallery-thumbnail', 515, 390, true );
 	add_image_size( 'single-post-thumbnail', 220, 230, true );
 	add_image_size( 'issue-thumbnail', 190, 248 );
 	add_image_size( 'issue-cover-feature', 768, 432, true );
