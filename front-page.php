@@ -158,7 +158,7 @@ else:
 			<h2 class="fp-heading fp-events-heading">Events</h2>
 			<div class="fp-events">
 				<?php
-				$events = get_events( 0, 10, get_theme_option( 'front_page_events_feed_url' ) );
+				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
 				foreach ( $events as $event ) {
 					echo display_front_page_event( $event );
 				}
