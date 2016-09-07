@@ -74,9 +74,12 @@
 }
 
 .fp-vertical {
+  background-color: $ucf-gold;
+  display: inline-block;
   font-size: 10px;
-  display: block;
-  padding: 3px 6px;
+  letter-spacing: .1em;
+  max-width: 100%;
+  padding: 3px 15px;
 }
 
 
@@ -271,6 +274,19 @@
   }
 }
 
+.fp-feature-img-wrap {
+  position: relative;
+
+  .fp-vertical {
+    bottom: 0;
+    left: 50%;
+    padding-bottom: 6px;
+    padding-top: 6px;
+    position: absolute;
+    transform: translateX(-50%);
+  }
+}
+
 .fp-issue-list-item {
   .fp-feature-description {
     text-align: left;
@@ -420,4 +436,84 @@
 .fp-issue-description {
   font-size: 13px;
   margin-top: 15px;
+}
+
+
+//
+// Events
+//
+.fp-events-heading {
+  border-bottom: 3px solid $ucf-gold;
+  margin-bottom: 10px;
+}
+
+.fp-event {
+  border-top: 5px solid $gray-light-alt;
+  display: table;
+  margin-bottom: 25px;
+  padding-top: 20px;
+  width: 100%;
+
+  &:first-child {
+    border-top: 0 solid transparent;
+  }
+}
+
+.fp-event-date,
+.fp-event-content {
+  display: table-cell;
+  vertical-align: top;
+}
+
+.fp-event-when {
+  padding-right: 25px;
+  text-align: center;
+  text-transform: uppercase;
+  width: 90px;
+}
+
+.fp-event-day,
+.fp-event-date,
+.fp-event-month {
+  display: block;
+}
+
+.fp-event-day {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.fp-event-date {
+  @include archer();
+  color: $gray-medium;
+  font-size: 60px;
+  letter-spacing: -.04em;
+  line-height: .5;
+  margin-bottom: 20px;
+}
+
+.fp-event-month {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.fp-event-title {
+  display: block;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2;
+  margin: 10px 0;
+}
+
+.fp-event-link {
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+}
+
+.fp-event-description {
+  font-size: 13px;
 }

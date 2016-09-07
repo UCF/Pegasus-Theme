@@ -1238,13 +1238,14 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
 	}
 
-	$vertical = null;
-	if ( $show_vertical ) {
-		$vertical = get_the_category( $story->ID );
-		if ( $vertical ) {
-			$vertical = wptexturize( $vertical[0] );
-		}
-	}
+	$vertical = 'Opinion';  // TODO remove and uncomment code below
+	// $vertical = null;
+	// if ( $show_vertical ) {
+	// 	$vertical = get_the_category( $story->ID );
+	// 	if ( $vertical ) {
+	// 		$vertical = wptexturize( $vertical[0] );
+	// 	}
+	// }
 
 	ob_start();
 ?>
@@ -1297,10 +1298,27 @@ function display_front_page_today_story( $article ) {
 
 /**
  * Displays a single event item on the front page.
+ * TODO dynamically populate data from $event
  **/
 function display_front_page_event( $event ) {
 	ob_start();
 ?>
+<div class="fp-event">
+	<div class="fp-event-when">
+		<span class="fp-event-day">Wed</span>
+		<span class="fp-event-date">17</span>
+		<span class="fp-event-month">Sept</span>
+	</div>
+	<div class="fp-event-content">
+		<span class="fp-vertical">On Campus</span><!-- TODO use event category here -->
+		<span class="fp-event-title">
+			<a class="fp-event-link" href="#TODO">Narcotics Anonymous: Recovery on Campus</a>
+		</span>
+		<div class="fp-event-description"><!-- TODO might have to force character limit here -->
+			UCF has been committed to space exploration since before man's first step on the moon. Sponsored by UCF's Environmental Health Office.
+		</div>
+	</div>
+</div>
 <?php
 	return ob_get_clean();
 }
