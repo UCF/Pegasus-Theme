@@ -1332,10 +1332,11 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 
 	$title = wptexturize( $gallery->post_title );
 
-	$vertical = get_the_category( $gallery->ID );
-	if ( $vertical ) {
-		$vertical = wptexturize( $vertical[0] );
-	}
+	$vertical = 'Gallery'; // TODO remove and uncomment code below
+	// $vertical = get_the_category( $gallery->ID );
+	// if ( $vertical ) {
+	// 	$vertical = wptexturize( $vertical[0] );
+	// }
 
 	$thumbnail_id = get_post_meta( $gallery->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
 	// $thumbnail = null;
@@ -1351,7 +1352,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 ?>
 	<article class="fp-gallery <?php echo $css_class; ?>">
 		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
-			<h2 class="fp-heading"><?php echo $title; ?></h2>
+			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2>
 
 			<?php if ( $vertical ): ?>
 			<span class="fp-vertical"><?php echo $vertical; ?></span>
