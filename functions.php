@@ -1215,12 +1215,11 @@ add_action( 'rest_api_init', 'register_api_story_meta' );
  * Displays a single story on the front page.
  * TODO add default 263x175px thumbnail size value for $thumbnail_size
  **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='thumbnail', $heading='h3' ) {
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) { return false; }
 
-	$thumbnail_id = get_post_meta( $story->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
-	// $thumbnail = null;
-	$thumbnail = '//placehold.it/263x175'; // TODO remove; uncomment previous line
+	$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
+	$thumbnail = null;
 	if ( $thumbnail_id ) {
 		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
 		if ( $thumbnail ) {
@@ -1338,11 +1337,10 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 	// 	$vertical = wptexturize( $vertical[0] );
 	// }
 
-	$thumbnail_id = get_post_meta( $gallery->ID, 'story_front_page_thumbnail', true ); // TODO update with new thumbnail meta name
-	// $thumbnail = null;
-	$thumbnail = '//placehold.it/515x390'; // TODO remove; uncomment previous line
+	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
+	$thumbnail = null;
 	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, '' );
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-featured-gallery-thumbnail' );
 		if ( $thumbnail ) {
 			$thumbnail = $thumbnail[0];
 		}
