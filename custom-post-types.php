@@ -363,7 +363,7 @@ class Story extends CustomPostType {
 			),
 			array(
 				'name' => 'Front Page Gallery Thumbnail',
-				'desc' => 'Thumbnail displayed in the bottom right of the homepage.  Recommended dimensions: 515x390px.',
+				'desc' => 'Thumbnail displayed in the bottom right of the front page.  Recommended dimensions: 515x390px.',
 				'id'   => $prefix.'frontpage_gallery_thumb',
 				'type' => 'file',
 			),
