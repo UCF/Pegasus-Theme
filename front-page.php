@@ -150,11 +150,11 @@ else:
 		</div>
 	</div>
 
-	<?php
-	if ( $banner_ad = get_theme_option( 'front_page_ad_contents' ) ) {
-		echo wptexturize( do_shortcode( $banner_ad ) );
-	}
-	?>
+	<?php if ( $banner_ad = get_theme_option( 'front_page_ad_contents' ) ): ?>
+	<div class="fp-banner">
+		<?php echo wptexturize( do_shortcode( $banner_ad ) ); ?>
+	</div>
+	<?php endif; ?>
 
 	<div class="row">
 		<div class="col-sm-6">
