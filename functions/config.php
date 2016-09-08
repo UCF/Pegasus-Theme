@@ -1,40 +1,5 @@
 <?php
 
-/**
- * Responsible for running code that needs to be executed as wordpress is
- * initializing.  Good place to register scripts, stylesheets, theme elements,
- * etc.
- *
- * @return void
- * @author Jared Lang
- **/
-function __init__(){
-	add_theme_support( 'menus' );
-	add_theme_support( 'post-thumbnails' );
-	add_theme_support( 'title-tag' );
-	add_image_size( 'homepage', 620 );
-	add_image_size( 'single-post-thumbnail', 220, 230, true );
-	add_image_size( 'issue-thumbnail', 190, 248 );
-	add_image_size( 'issue-cover-feature', 768, 432, true );
-	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
-
-	foreach( Config::$styles as $style ) {
-		Config::add_css( $style );
-	}
-	foreach( Config::$scripts as $script ) {
-		Config::add_script( $script );
-	}
-
-	global $timer;
-	$timer = Timer::start();
-
-	wp_deregister_script( 'l10n' );
-	set_defaults_for_options();
-}
-add_action( 'init', '__init__', 4 );
-
-
-
 /****************************************************************************
  *
  * START theme constants here
@@ -64,6 +29,9 @@ $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GA_ACCOUNT', $theme_options['ga_account']);
 define('CB_UID', $theme_options['cb_uid']);
 define('CB_DOMAIN', $theme_options['cb_domain']);
+
+// Timeout for data grabbed from feeds
+define( 'FEED_FETCH_TIMEOUT', 10 ); // seconds
 
 define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
 
@@ -115,6 +83,7 @@ $custom_available_fonts_array = array(
 	'Visitor'				=> THEME_FONT_URL . '/visitor/stylesheet.css',
 	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' 	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+	'League Spartan' 		=> THEME_FONT_URL . '/league-spartan/stylesheet.css',
 );
 define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 
@@ -351,16 +320,31 @@ Config::$custom_taxonomies = array(
 
 
 /**
- * Grab array of Issue posts for Config::$theme_settings:
+ * Grab array of Issue and Story posts for Config::$theme_settings:
  **/
-$issue_covers 		= get_posts(array('post_type' => 'issue'));
-$issue_cover_array 	= array();
+$issue_covers = get_posts( array(
+	'post_type' => 'issue',
+	'numberposts' => -1
+) );
+$issue_cover_array = array();
 $issue_cover_first = null;
 foreach ( $issue_covers as $cover ) {
 	$issue_cover_array[$cover->post_title] = $cover->post_name;
 }
 $issue_cover_keys = array_keys( $issue_cover_array );
 $issue_cover_first = $issue_cover_keys[0];
+
+$story_obj = new Story();
+$story_options = $story_obj->get_objects_as_options( array(
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
+$story_gallery_options = $story_obj->get_objects_as_options( array(
+	'meta_key' => 'story_template',
+	'meta_value' => 'photo_essay',
+	'orderby' => 'date',
+	'order' => 'DESC'
+) );
 
 
 /**
@@ -411,6 +395,119 @@ Config::$theme_settings = array(
 			'default'     => null,
 			'value'       => $theme_options['cb_domain'],
 		)),
+	),
+	'Front Page' => array(
+		new SelectField(array(
+			'name'        => 'Featured Story #1',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_1]',
+			'description' => 'The top featured story to display on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_1'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #2',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_2]',
+			'description' => 'First of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_2'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #3',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_3]',
+			'description' => 'Second of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_3'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #4',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_4]',
+			'description' => 'Third of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_4'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Story #5',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_story_5]',
+			'description' => 'Last of four featured stories underneath the top story on the front page.',
+			'choices'     => $story_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_story_5'],
+		)),
+		new SelectField(array(
+			'name'        => 'Featured Gallery',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_gallery_1]',
+			'description' => 'Featured gallery displayed next to events on the front page.',
+			'choices'     => $story_gallery_options,
+			'default'     => '',
+			'value'       => $theme_options['front_page_featured_gallery_1'],
+		)),
+		new TextareaField(array(
+			'name'        => 'Banner Ad Contents',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_ad_contents]',
+			'description' => 'HTML for banner ad content to be displayed underneath list of issue stories on the front page. Accepts shortcode content.',
+			'value'       => $theme_options['front_page_ad_contents'],
+			'default'     => '',
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_1_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #1 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_1_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_2_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #2 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_2_url'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 Title',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_title]',
+			'description' => 'Title of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_3_title'],
+		)),
+		new TextField(array(
+			'name'        => 'Other Story #3 URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_url]',
+			'description' => 'URL of story displayed in "Other Stories" section of front page.',
+			'default'     => '',
+			'value'       => $theme_options['front_page_other_story_3_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Today Story Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_today_feed_url]',
+			'description' => 'URL to the RSS feed for stories to display in "The Feed" section of the front page.',
+			'default'     => 'http://today.ucf.edu/feed/',
+			'value'       => $theme_options['front_page_today_feed_url'],
+		)),
+		new TextField(array(
+			'name'        => 'UCF Events JSON Feed URL',
+			'id'          => THEME_OPTIONS_NAME.'[front_page_events_feed_url]',
+			'description' => 'URL to the JSON feed for events to display in the Events section of the front page.',
+			'default'     => 'http://events.ucf.edu/upcoming/feed.json',
+			'value'       => $theme_options['front_page_events_feed_url'],
+		))
 	),
 	'Search' => array(
 		new RadioField(array(
@@ -475,6 +572,13 @@ Config::$theme_settings = array(
 			'default'     => 'https://plus.google.com/+UCF',
 			'value'       => $theme_options['googleplus_url'],
 		)),
+		new TextField(array(
+			'name'        => 'Instagram URL',
+			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
+			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
+			'default'     => '',
+			'value'       => $theme_options['instagram_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(
@@ -487,9 +591,9 @@ Config::$theme_settings = array(
 	),
 	'Issues' => array(
 		new SelectField(array(
-			'name'        => 'Current Issue Cover',
+			'name'        => 'Current Issue',
 			'id'          => THEME_OPTIONS_NAME.'[current_issue_cover]',
-			'description' => 'Specify the current active issue\'s front cover to display on the home page.  This should match up with the Issue Term specified above.',
+			'description' => 'Specify the current active issue. If a custom front page layout is enabled, this issue\'s stories will be used on the front page where the list of 12 stories in the issue is displayed.<br><br>The issue cover will be used as the front page if a custom front page is disabled (Settings > Reading > Front page displays is set to "Your latest posts").',
 			'choices'     => $issue_cover_array,
 			'default'     => $issue_cover_first,
 			'value'       => $theme_options['current_issue_cover'],
@@ -610,3 +714,69 @@ if ( $theme_options['gw_verify'] ) {
 		'content' => htmlentities( $theme_options['gw_verify'] ),
 	);
 }
+
+
+/**
+ * Responsible for running code that needs to be executed as wordpress is
+ * initializing. Good place to register widgets, image sizes, and menus.
+ *
+ * @return void
+ * @author Jared Lang
+ **/
+function __init__(){
+	add_theme_support( 'menus' );
+	add_theme_support( 'post-thumbnails' );
+	add_theme_support( 'title-tag' );
+	add_image_size( 'homepage', 620 );
+	add_image_size( 'frontpage-story-thumbnail', 263, 175, true );
+	add_image_size( 'frontpage-featured-gallery-thumbnail', 515, 390, true );
+	add_image_size( 'single-post-thumbnail', 220, 230, true );
+	add_image_size( 'issue-thumbnail', 190, 248 );
+	add_image_size( 'issue-cover-feature', 768, 432, true );
+	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
+}
+add_action( 'after_setup_theme', '__init__' );
+add_action( 'init', 'set_defaults_for_options', 4 );
+
+
+/**
+ * Register frontend scripts and stylesheets.
+ **/
+function enqueue_frontend_theme_assets() {
+	wp_deregister_script( 'l10n' );
+
+	// Register Config css, js
+	foreach( Config::$styles as $style ) {
+		if ( !isset( $style['admin'] ) || ( isset( $style['admin'] ) && $style['admin'] !== true ) ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( !isset( $script['admin'] ) || ( isset( $script['admin'] ) && $script['admin'] !== true ) ) {
+			Config::add_script( $script );
+		}
+	}
+
+	// NOTE: jquery re-registering in the document head and other post-specific
+	// asset registration is done in version-specific /functions/config.php files.
+}
+add_action( 'wp_enqueue_scripts', 'enqueue_frontend_theme_assets' );
+
+
+/**
+ * Register backend scripts and stylesheets.
+ **/
+function enqueue_backend_theme_assets() {
+	// Register Config css, js
+	foreach( Config::$styles as $style ) {
+		if ( isset( $style['admin'] ) && $style['admin'] == true ) {
+			Config::add_css( $style );
+		}
+	}
+	foreach( Config::$scripts as $script ) {
+		if ( isset( $script['admin'] ) && $script['admin'] == true ) {
+			Config::add_script( $script );
+		}
+	}
+}
+add_action( 'admin_enqueue_scripts', 'enqueue_backend_theme_assets' );

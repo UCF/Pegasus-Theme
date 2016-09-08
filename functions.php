@@ -19,6 +19,7 @@
 
 
 require_once( 'functions/base.php' );    # Base theme functions
+require_once( 'functions/feeds.php' );   # Feed-related functions
 require_once( 'functions/admin.php' );   # Admin/login functions
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
 require_once( 'custom-post-types.php' ); # Where post types are defined
@@ -79,8 +80,8 @@ function get_relevant_version( $the_post=null ) {
 					// URLs have these prefixes)
 					$url_path = preg_replace( '/^\/story\/|\/issue\/|\/photo\_essay\//', '/', $url_path );
 
-					$post_issue = get_page_by_path( $url_path , OBJECT, 'issue');
-					$post_story = get_page_by_path( $url_path , OBJECT, 'story');
+					$post_issue = get_page_by_path( $url_path , OBJECT, array( 'issue' ) );
+					$post_story = get_page_by_path( $url_path , OBJECT, array( 'story' ) );
 
 					if ( $post_issue ) {
 						$the_post = $post_issue;
@@ -110,6 +111,7 @@ function get_relevant_version( $the_post=null ) {
 
 	return intval( $relevant_version );
 }
+
 
 /**
  * Returns a relative path to a file by version.
@@ -166,10 +168,14 @@ add_filter( 'template_include', 'by_version_template', 99 );
  * root, so we opt to use a separate function instead to avoid excessive file
  * includes.
  **/
-function get_version_header() {
-	$new_template = locate_template( array( get_version_file_path( 'header.php' ) ) );
+function get_version_header( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'header' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/header.php' );
+		return load_template( $new_template );
 	}
 }
 
@@ -178,10 +184,35 @@ function get_version_header() {
  * Loads version-specific footer template.  Should be used in place of
  * get_footer() for this theme.
  **/
-function get_version_footer() {
-	$new_template = locate_template( array( get_version_file_path( 'footer.php' ) ) );
+function get_version_footer( $template_name='' ) {
+	if ( $template_name ) {
+		$template_name = '-' . $template_name;
+	}
+
+	$new_template = locate_template( array( get_version_file_path( 'footer' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
-		return load_template( THE_POST_VERSION_DIR . '/footer.php' );
+		return load_template( $new_template );
+	}
+}
+
+
+/**
+ * Loads front-page.php or home.php using the relevant version's template.
+ * Falls back to loading root index.php if no templates are found.
+ **/
+function get_version_front_page() {
+	$new_template_front = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	$new_template_home = locate_template( array( get_version_file_path( 'home.php' ) ) );
+
+	if ( !empty( $new_template_front ) ) {
+		return load_template( $new_template_front );
+	}
+	elseif ( !empty( $new_template_home ) ) {
+		return load_template( $new_template_home );
+	}
+	else {
+		// something is very wrong--fall back to root index.php
+		return load_template( get_stylesheet_directory() . '/index.php' );
 	}
 }
 
@@ -375,7 +406,7 @@ function get_relevant_issue( $post ) {
 	}
 	else if ( $post && $post->post_type == 'issue' && !is_404() && !is_search() ) {
 		$issue = $post;
-	} 
+	}
 	else if ( $post && $post->post_type == 'photo_essay' && !is_404() && !is_search() ) {
 		$issue = get_story_issue( $post );
 	}
@@ -394,13 +425,13 @@ function get_relevant_issue( $post ) {
  */
 function get_featured_image_url($id, $size=null) {
 	$size = !$size ? 'single-post-thumbnail' : $size;
-    $url = '';
-    if(has_post_thumbnail($id)
-        && ($thumb_id = get_post_thumbnail_id($id)) !== False
-        && ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
-            return $image[0];
-    }
-    return $url;
+	$url = '';
+	if(has_post_thumbnail($id)
+		&& ($thumb_id = get_post_thumbnail_id($id)) !== False
+		&& ($image = wp_get_attachment_image_src($thumb_id, $size)) !== False) {
+			return $image[0];
+	}
+	return $url;
 }
 
 
@@ -550,7 +581,7 @@ function enqueue_issue_story_scripts() {
 	global $post;
 
 	if ( !is_404() && !is_search() ) {
-		// 1. add home page script(s)
+		// 1. add issue cover script(s)
 		if( $post->post_type == 'issue' || is_home() ) {
 
 			// issue-wide
@@ -568,7 +599,7 @@ function enqueue_issue_story_scripts() {
 				}
 			}
 
-			// home page specific
+			// issue cover specific
 			$dev_issue_home_directory = get_post_meta( $post->ID, 'issue_dev_home_asset_directory', TRUE );
 			$home_javascript_url = Issue::get_home_javascript_url( $post );
 
@@ -576,7 +607,7 @@ function enqueue_issue_story_scripts() {
 				Config::add_script( $home_javascript_url );
 			}
 			elseif ( DEV_MODE == 1 && !empty( $dev_issue_home_directory ) ) {
-				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.js';
+				$dev_home_javascript_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.js';
 
 				if ( curl_exists( $dev_home_javascript_url ) ) {
 					Config::add_script( $dev_home_javascript_url );
@@ -704,7 +735,7 @@ function get_issue_stories( $issue, $options=array() ) {
 function curl_exists($url) {
 	$file_headers = @get_headers($url);
 	if($file_headers[0] == 'HTTP/1.1 404 Not Found' || $file_headers[0] == 'HTTP/1.1 500 Internal Server Error') {
-    	return false;
+		return false;
 	}
 	return true;
 }
@@ -735,7 +766,7 @@ function output_header_markup($post) {
 	}
 
 	// Page stylesheet
-	if ( $post->post_type == 'page' && !empty( $page_stylesheet_url ) ) {
+	if ( $post->post_type == 'page' ) {
 		$page_stylesheet_url = Page::get_stylesheet_url( $post );
 		if ( !empty( $page_stylesheet_url ) ) {
 			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
@@ -747,12 +778,12 @@ function output_header_markup($post) {
 		$output .= '<style type="text/css">';
 		$output .= '
 			html, body {
-			    height: 100%;
-			    width: 100%;
+				height: 100%;
+				width: 100%;
 			}
 			@media (max-width: 767px) {
 				html, body {
-				    width: auto;
+					width: auto;
 				}
 			}
 		';
@@ -793,7 +824,7 @@ function output_header_markup($post) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'home.css';
+				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -864,7 +895,7 @@ function uses_custom_template($post) {
 function display_markup_or_template($post) {
 	if ($post->post_type == 'issue') {
 		$dev_directory          = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
-		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'home.html');
+		$dev_directory_html_url = str_replace('https', 'http', THEME_DEV_URL.'/'.$dev_directory.'issue-cover.html');
 	}
 	else {
 		$dev_directory          = get_post_meta($post->ID, $post->post_type.'_dev_directory', TRUE);
@@ -1106,6 +1137,240 @@ function add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	return $allowedposttags;
 }
 add_filter( 'wp_kses_allowed_html', 'add_kses_whitelisted_attributes', 10, 2 );
+
+
+/**
+ * Updates REST API responses for Issues to include relevant meta data.
+ **/
+function register_api_issue_meta() {
+	register_rest_field( 'issue',
+		'issue_cover_story',
+		array(
+			'get_callback'    => 'api_issue_get_cover_story',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+}
+
+function api_issue_get_cover_story( $object, $field_name, $request ) {
+	$meta = get_post_meta( $object['id'], $field_name, true );
+	return $meta ? intval( $meta ) : 0;
+}
+
+add_action( 'rest_api_init', 'register_api_issue_meta' );
+
+
+/**
+ * Updates REST API responses for Issues to include links to related data
+ * for client-side convenience.
+ *
+ * http://v2.wp-api.org/extending/linking/
+ **/
+function register_api_issue_links( $response, $post, $request ) {
+	$cover_story_id = get_post_meta( $post->ID, 'issue_cover_story', true );
+	if ( $cover_story_id ) {
+		$response->add_link( 'issue_cover_story', rest_url( '/wp/v2/story/' . $cover_story_id ), array( 'embeddable' => true ) );
+	}
+
+	return $response;
+}
+
+add_filter( 'rest_prepare_issue', 'register_api_issue_links', 10, 3 );
+
+
+/**
+ * Updates REST API responses for Stories to include relevant meta data.
+ **/
+function register_api_story_meta() {
+	register_rest_field( 'story',
+		'story_subtitle',
+		array(
+			'get_callback'    => 'api_story_get_subtitle',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+	register_rest_field( 'story',
+		'story_description',
+		array(
+			'get_callback'    => 'api_story_get_description',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
+}
+
+function api_story_get_subtitle( $object, $field_name, $request ) {
+	return get_post_meta( $object['id'], $field_name, true );
+}
+
+function api_story_get_description( $object, $field_name, $request ) {
+	return get_post_meta( $object['id'], $field_name, true );
+}
+
+add_action( 'rest_api_init', 'register_api_story_meta' );
+
+
+/**
+ * Displays a single story on the front page.
+ **/
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
+	if ( !$story ) { return false; }
+
+	$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
+	$thumbnail = null;
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	$title = wptexturize( $story->post_title );
+
+	$description = '';
+	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
+		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
+	}
+	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
+		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
+	}
+
+	$vertical = 'Opinion';  // TODO remove and uncomment code below
+	// $vertical = null;
+	// if ( $show_vertical ) {
+	// 	$vertical = get_the_category( $story->ID );
+	// 	if ( $vertical ) {
+	// 		$vertical = wptexturize( $vertical[0] );
+	// 	}
+	// }
+
+	ob_start();
+?>
+<article class="fp-feature <?php echo $css_class; ?>">
+	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php if ( $thumbnail ): ?>
+		<div class="fp-feature-img-wrap">
+			<img class="fp-feature-img center-block img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+
+			<?php if ( $show_vertical && $vertical ): ?>
+			<span class="fp-vertical">
+				<?php echo $vertical; ?>
+			</span>
+			<?php endif; ?>
+		</div>
+		<?php endif; ?>
+	</a>
+	<div class="fp-feature-text-wrap">
+		<<?php echo $heading; ?> class="fp-feature-title">
+			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+				<?php echo $title; ?>
+			</a>
+		</<?php echo $heading; ?>>
+		<div class="fp-feature-description">
+			<?php echo $description; ?>
+		</div>
+	</div>
+</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single Today article on the front page.
+ **/
+function display_front_page_today_story( $article ) {
+	$url = $article->get_link();
+	$title = $article->get_title();
+
+	ob_start();
+?>
+<article class="fp-today-feed-item">
+	<a class="fp-today-item-link" href="<?php echo $url; ?>">
+		<?php echo $title; ?>
+	</a>
+</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single event item on the front page.
+ **/
+function display_front_page_event( $event ) {
+	$start = strtotime( $event['starts'] );
+	$description = substr( strip_tags( $event['description'] ), 0, 250 );
+	if ( strlen( $description ) == 250 ) {
+		$description .= '...';
+	}
+
+	ob_start();
+?>
+<div class="fp-event">
+	<div class="fp-event-when">
+		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
+		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
+		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
+	</div>
+	<div class="fp-event-content">
+		<span class="fp-vertical"><?php echo $event['category']; ?></span>
+		<span class="fp-event-title">
+			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
+		</span>
+		<div class="fp-event-description">
+			<?php echo $description; ?>
+		</div>
+	</div>
+</div>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single featured gallery on the front page.
+ **/
+function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
+	if ( !$gallery ) { return false; }
+
+	$title = wptexturize( $gallery->post_title );
+
+	$vertical = 'Gallery'; // TODO remove and uncomment code below
+	// $vertical = get_the_category( $gallery->ID );
+	// if ( $vertical ) {
+	// 	$vertical = wptexturize( $vertical[0] );
+	// }
+
+	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
+	$thumbnail = null;
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-featured-gallery-thumbnail' );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	ob_start();
+?>
+	<article class="fp-gallery <?php echo $css_class; ?>">
+		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
+			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2>
+
+			<?php if ( $vertical ): ?>
+			<span class="fp-vertical"><?php echo $vertical; ?></span>
+			<?php endif; ?>
+
+			<?php if ( $thumbnail ): ?>
+			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<?php endif; ?>
+		</a>
+	</article>
+<?php
+	return ob_get_clean();
+}
 
 
 /****************************************************************************

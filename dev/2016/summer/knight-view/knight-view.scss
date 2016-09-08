@@ -1,0 +1,73 @@
+article.story {
+
+    .story-header-image {
+        background-color: #000;
+        background-size: 0 0;
+        text-align: center;
+
+        .video-container {
+            display: inline-block;
+            max-width: 1067px;
+            position: relative;
+
+            .replay {
+                display: none;
+                bottom: 10px;
+                padding: 10px;
+                position: absolute;
+                right: 0;
+                width: 105px;
+                z-index: 200;
+
+                a {
+                    color: #ccc;
+                    text-transform: uppercase;
+
+                    .glyphicon-repeat {
+                        font-size: 14px;
+                        transition: all 1s ease;
+                    }
+
+                    &:hover {
+                        color: #fff;
+
+                        .glyphicon-repeat {
+                            transform: rotate(360deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+	h1 {
+        font-family: MontserratBold,sans-serif;
+        font-weight: 400;
+		font-size: 58px;
+		margin-bottom: 5px;
+
+		@media (max-width: 767px) {
+			font-size: 50px;
+		}
+	}
+
+    .call-out {
+        background-color: #ddd;
+        padding-bottom: 20px;
+    }
+
+    h2 {
+        color: #d05439;
+        font-size: 26px;
+        font-weight: bold;
+    }
+
+    blockquote {
+        margin-top: 20px;
+
+        p {
+            font-size: 24px;
+            line-height: 37px;
+        }
+    }
+}

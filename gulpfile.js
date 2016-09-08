@@ -40,9 +40,9 @@ gulp.task('css-main-build', function() {
           browsers: ['last 2 versions', 'ie >= 8'],
           cascade: false
         }))
-        .pipe(bless())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(rename('style.min.css'))
+        .pipe(bless())
         .pipe(gulp.dest(config.versionsPath + '/static/css/'))
         .pipe(browserSync.stream());
       break;

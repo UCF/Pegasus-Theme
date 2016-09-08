@@ -24,6 +24,7 @@ abstract class CustomPostType{
 		$taxonomies     = array('post_tag'),
 		$built_in       = False,
 		$menu_icon      = 'dashicons-admin-post',
+		$show_in_rest   = False,
 
 		# Optional default ordering for generic shortcode if not specified by user.
 		$default_orderby = null,
@@ -190,6 +191,7 @@ abstract class CustomPostType{
 			'taxonomies'      => $this->options('taxonomies'),
 			'_builtin'        => $this->options('built_in'),
 			'menu_icon'       => $this->options('menu_icon'),
+			'show_in_rest'    => $this->options('show_in_rest')
 		);
 
 		if ($this->options('name') !== 'post' && $this->options('name') !== 'page') {
@@ -316,6 +318,7 @@ class Story extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$menu_icon      = 'dashicons-media-document',
+		$show_in_rest   = True,
 		$taxonomies     = array('issues', 'post_tag');
 
 	static function get_javascript_url($story) {
@@ -351,6 +354,18 @@ class Story extends CustomPostType {
 				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer and archives.',
 				'id'   => $prefix.'subtitle',
 				'type' => 'textarea',
+			),
+			array(
+				'name' => 'Front Page Small Featured Stories Thumbnail',
+				'desc' => 'Displayed in the small featured stories, as well as the stories in the "In This Issue" section.  Recommended dimensions: 263x175; if using this story as the top featured story on the front page, recommended dimensions are 1140x515px.',
+				'id'   => $prefix.'frontpage_thumb',
+				'type' => 'file',
+			),
+			array(
+				'name' => 'Front Page Gallery Thumbnail',
+				'desc' => 'Thumbnail displayed in the bottom right of the front page.  Recommended dimensions: 515x390px.',
+				'id'   => $prefix.'frontpage_gallery_thumb',
+				'type' => 'file',
 			),
 			array(
 				'name' => 'Default Issue Template Featured Story Thumbnail',
@@ -451,6 +466,7 @@ class Issue extends CustomPostType {
 		$use_thumbnails = True,
 		$use_order      = False,
 		$menu_icon      = 'dashicons-book',
+		$show_in_rest   = True,
 		$taxonomies     = array();
 
 	static function get_home_javascript_url($issue) {
@@ -492,6 +508,12 @@ class Issue extends CustomPostType {
 		$versions = array_combine( $versions, $versions ); // Force identical key/val pairs
 
 		$fields = array(
+			array(
+				'name'    => 'Description',
+				'desc'    => 'Short description describing what is included in the issue.',
+				'id'      => $prefix.'description',
+				'type'    => 'textarea'
+			),
 			array(
 				'name'    => 'Issue Version',
 				'desc'    => 'The theme version to use for this issue and its stories.',
@@ -541,20 +563,20 @@ class Issue extends CustomPostType {
 				'options' => $story_options,
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page HTML File',
-				'desc' => 'HTML markup specifically for the issue cover/home page.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover HTML File',
+				'desc' => 'HTML markup specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'html',
 				'type' => 'file',
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page Stylesheet',
-				'desc' => 'Stylesheet specifically for the issue cover/home page.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover Stylesheet',
+				'desc' => 'Stylesheet specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'stylesheet_home',
 				'type' => 'file',
 			),
 			array(
-				'name' => '<strong>Custom Issue Template:</strong> Home Page JavaScript File',
-				'desc' => 'JavaScript file that runs exclusively on the issue cover/home page for this issue.',
+				'name' => '<strong>Custom Issue Template:</strong> Issue Cover JavaScript File',
+				'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
 				'id'   => $prefix.'javascript_home',
 				'type' => 'file',
 			),
@@ -579,9 +601,9 @@ class Issue extends CustomPostType {
 
 		if (DEV_MODE == 1) {
 			array_unshift($fields, array(
-				'name' => '<strong>Developer Mode:</strong> Issue\'s Home Page Asset Directory',
-				'desc' => 'Directory to this issue\'s home page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
-							(home.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
+				'name' => '<strong>Developer Mode:</strong> Issue Cover Asset Directory',
+				'desc' => 'Directory to this issue\'s cover page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
+							(issue-cover.html/css/js) in this directory will be automatically referenced for the issue home page if they are available.<br/><br/>
 							<strong>NOTE:</strong>
 							<ul style="list-style: disc !important;">
 							<li>Any content in the WYSIWYG editor takes priority over the dev directory\'s HTML file contents.</li>

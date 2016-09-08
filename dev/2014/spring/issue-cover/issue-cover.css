@@ -1,0 +1,195 @@
+p:empty { display: none; }
+#footer-social .border-top { border-top: 0; }
+
+
+#home { background-color: #e5e5e5; overflow: hidden; padding-top: 11px; padding-bottom: 40px; }
+
+#nothing-for-granted { position: relative; }
+#nothing-for-granted a {
+	display: block;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: 5;
+}
+#nothing-for-granted .description {
+	position: absolute;
+	bottom: 0;
+	padding: 10px;
+}
+#nothing-for-granted .description h2 { margin-bottom: 0; color: #fff; }
+#nothing-for-granted img {
+	-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
+}
+#the-season { margin-bottom: 11px; }
+#more-in-spring-2014 { margin-top: 11px; }
+
+#home .heading-wrap {
+	border-bottom: 1px solid #828282;
+	margin-bottom: 20px;
+}
+#home .heading-wrap h2 {
+	background: #e5e5e5;
+	font-family: 'MontserratBold', sans-serif;
+	font-weight: normal;
+	font-size: 18px;
+	line-height: 30px;
+	color: #828282;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	display: block;
+	height: 30px;
+	float: left;
+	padding-right: 10px;
+	position: relative;
+	top: 10px;
+	letter-spacing: -0.03em;
+}
+
+#home .thumb {
+	display: block;
+	float: left;
+	margin-left: 20px;
+	margin-bottom: 11px;
+	width: 172px;
+	-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+	box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
+	position: relative;
+	overflow: hidden;
+}
+.ie8 #home .thumb { width: 168px; }
+#home .thumb.t-1, 
+#home .thumb.t-6,
+#home .thumb.t-11 {
+	margin-left: 0;
+}
+#home .thumb.featured,
+.ie8 #home .thumb.featured {
+	width: 100%;
+	margin-left: 0;
+}
+#home .thumb a {
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-indent: 200%;
+	white-space: nowrap;
+	overflow: hidden;
+	position: absolute;
+	z-index: 5;
+}
+.ie #home .thumb a,
+#nothing-for-granted a {
+	/* Thanks IE.  http://stackoverflow.com/a/15034224 */
+	background: url('about:blank');
+}
+#home .thumb .description {
+	position: absolute;
+	z-index: 4;
+	top: 100%;
+	width: 100%;
+	height: 100%;
+	background: #222;
+	filter: alpha(opacity=85);
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	-webkit-transition: all 250ms ease-in-out;
+    transition: all 250ms ease-in-out;
+    line-height: 22px;
+}
+#home .thumb:hover .description {
+	top: 0;
+}
+#home .thumb .description > * {
+	padding: 15px;
+	margin: 0;
+}
+#home .thumb .description h2,
+#nothing-for-granted .description h2 {
+ 	line-height: 28px;
+}
+#home .thumb .description h3 { line-height: 20px; }
+
+#past-issues .thumb a { text-indent: 0; position: static; }
+
+
+@media (max-width: 979px) {
+	#home .thumb { width: 128.8px; }
+	#home .thumb.featured { width: 100%; }
+	#home .thumb .description { display: none; }
+}
+
+@media (max-width: 979px) and (min-width: 768px) {
+}
+
+@media (max-width: 767px) {
+	#nothing-for-granted .description {
+		position: static;
+		padding-left: 0;
+		padding-right: 0;
+	}
+	#nothing-for-granted .description h2 { color: #000; }
+
+	#home .heading-wrap { overflow: hidden;	}
+	#home .heading-wrap h2 { top: 0; }
+
+	#home .thumb {
+		width: 31%;
+		margin-left: 2.35%;
+		-webkit-box-shadow: none;
+		box-shadow: none;
+		overflow: visible;
+		display: inline-block;
+		float: none;
+		text-align: center;
+	}
+	#home .thumb.t-6,
+	#home .thumb.t-11 {
+		margin-left: 2.35%;
+	}
+	#home .thumb.t-1,
+	#home .thumb.t-4,
+	#home .thumb.t-7,
+	#home .thumb.t-10,
+	#home .thumb.t-13 {
+		margin-left: 0;
+	}
+	#home .thumb.featured { width: 48.5%; margin-left: 0; }
+	#home .thumb a { overflow: visible; }
+	#home .thumb img {
+		-webkit-box-shadow: 2px 2px 6px 2px rgba(0,0,0,0.2);
+		box-shadow: 1px 1px 6px 2px rgba(0,0,0,0.2);
+	}
+
+	#nothing-for-granted { margin-bottom: 11px; }
+	#home .thumb.featured#the-season { float: left; }
+	#home .thumb.featured#work-of-art { float: right; }
+	#past-issues { margin-top: 11px; }
+}
+
+@media (max-width: 480px) {
+	#home .thumb { width: 47.75%; }
+	#home .thumb.t-1,
+	#home .thumb.t-3,
+	#home .thumb.t-5,
+	#home .thumb.t-7,
+	#home .thumb.t-9,
+	#home .thumb.t-11,
+	#home .thumb.t-13,
+	#home .thumb.t-15 {
+		margin-left: 0;
+	}
+	#home .thumb.t-2,
+	#home .thumb.t-4,
+	#home .thumb.t-6,
+	#home .thumb.t-8,
+	#home .thumb.t-10,
+	#home .thumb.t-12,
+	#home .thumb.t-14 {
+		margin-left: 3%;
+	}
+
+	#home .thumb.featured {	width: 100%; float: left; }
+	#home .thumb.featured img { width: 100%; }
+}
