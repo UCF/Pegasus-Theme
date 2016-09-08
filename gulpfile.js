@@ -100,7 +100,7 @@ gulp.task('watch', function() {
   if (config.sync) {
     browserSync.init({
         proxy: {
-          target: config.syncTarget
+          target: config.target
         }
     });
   }

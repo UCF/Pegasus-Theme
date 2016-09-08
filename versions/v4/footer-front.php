@@ -24,21 +24,15 @@
 										!empty( $instagram_url )
 									):
 									?>
-									<ul class="footer-social-links">
+									<div class="footer-social-links">
 										<?php if ( !empty( $fb_url ) ) { ?>
-										<li>
-											<a target="_blank" class="" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
-										</li>
+											<a target="_blank" class="social-icon" href="<?php echo $fb_url; ?>"><span class="fa fa-facebook"></span><span class="sr-only">Follow UCF on Facebook</span></a>
 										<?php } if ( !empty( $twitter_url ) ) { ?>
-										<li>
-											<a target="_blank" class="" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
-										</li>
+											<a target="_blank" class="social-icon" href="<?php echo $twitter_url; ?>"><span class="fa fa-twitter"></span><span class="sr-only">Follow UCF on Twitter</span></a>
 										<?php } if ( !empty( $instagram_url ) ) { ?>
-										<li>
-											<a target="_blank" class="" href="<?php echo $instagram_url; ?>">Follow UCF on Instagram</a>
-										</li>
+											<a target="_blank" class="social-icon" href="<?php echo $instagram_url; ?>"><span class="fa fa-instagram"></span><span class="sr-only">Follow UCF on Instagram</span></a>
 										<?php } ?>
-									</ul>
+									</div>
 									<?php endif; ?>
 
 									<?php if ( ipad_deployed() ) { ?>
@@ -49,18 +43,25 @@
 									</span>
 									<?php } ?>
 								</div>
-								<div class="col-sm-3 col-sm-offset-1">
-									Other Stories (TODO)
+								<div class="col-sm-3 col-sm-offset-1 other-stories">
+									<div class="footer-header">Other Stories</div>
+									<ul>
+										<?php
+											$i = 1;
+											while ($i < 3):
+												display_other_stories($i++);
+											endwhile;
+										?>
+									</ul>
 								</div>
 								<div class="col-sm-3 col-sm-offset-1">
-									More Info (TODO)
+									<div class="footer-header">More Info</div>
 									<?php
 									$defaults = array(
 										'theme_location' => 'footer-menu',
 										'container'      => false,
 										'menu_class'     => 'navigation',
 									);
-
 									wp_nav_menu( $defaults );
 									?>
 								</div>

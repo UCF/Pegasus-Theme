@@ -1406,7 +1406,7 @@ html {
 }
 
 body {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
   font-size: 14px;
   line-height: 1.42857;
   color: #333;
@@ -6862,7 +6862,7 @@ a.list-group-item-danger.active:hover {
 
 .popover,
 .tooltip {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
   font-weight: 400;
 }
 
@@ -10438,7 +10438,7 @@ article ul {
 
 blockquote small,
 p .caption {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
 }
 
 article p:empty {
@@ -10615,7 +10615,7 @@ blockquote.quote>p:last-of-type:after {
 
 .btn,
 .caption {
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
 }
 
 @media (max-width:767px) {
@@ -10652,14 +10652,6 @@ blockquote.quote>p:last-of-type:after {
 
 .text-lowercase {
   text-transform: lowercase;
-}
-
-.fp-subheading,
-.fp-subheading-underline,
-.fp-vertical {
-  text-transform: uppercase;
-  font-style: normal;
-  color: #000;
 }
 
 .lead {
@@ -11935,7 +11927,7 @@ li#nav-mobile a:before {
 
 li#nav-mobile a.active:before {
   content: '×';
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
   font-size: 24px;
   font-weight: 700;
   position: relative;
@@ -12087,16 +12079,15 @@ li#nav-about a {
   padding: 20px 0;
 }
 
-#archives ul,
 #footer-navigation ul,
 #footer-social ul {
   padding-left: 0;
+  text-align: center;
   list-style: none;
 }
 
 #footer-social ul {
   margin-bottom: 0;
-  text-align: center;
 }
 
 #footer-social li {
@@ -12162,6 +12153,12 @@ li#nav-about a {
   font-weight: 700;
 }
 
+.front-page-footer .copyright,
+.front-page-footer .footer-header {
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
+  text-transform: uppercase;
+}
+
 .ie8 #footer-navigation,
 .ie8 #footer-navigation a,
 .ie8 #footer-navigation p,
@@ -12211,7 +12208,6 @@ li#nav-about a {
 #footer-navigation ul {
   clear: both;
   margin-bottom: 0;
-  text-align: center;
 }
 
 #footer-navigation li {
@@ -12251,7 +12247,8 @@ li#nav-about a {
   padding: 0 6px;
 }
 
-#footer-navigation li:first-child:before {
+#footer-navigation li:first-child:before,
+.front-page-footer .footer-header::after {
   content: '';
 }
 
@@ -12270,12 +12267,6 @@ li#nav-about a {
   #footer-navigation .copyright {
     font-size: 13px;
   }
-}
-
-#archives h2,
-.subpage h1 {
-  font-size: 36px;
-  line-height: 36px;
 }
 
 @media (max-width:767px) {
@@ -12304,6 +12295,118 @@ li#nav-about a {
   #footer-navigation .copyright {
     padding-top: 30px;
   }
+}
+
+.front-page-footer {
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 30px 0;
+}
+
+.front-page-footer p {
+  font-size: 10px;
+}
+
+.front-page-footer a {
+  color: #fc0;
+}
+
+.front-page-footer hr {
+  border-top: 1px solid #606060;
+}
+
+.front-page-footer .footer-logo {
+  font-size: 40px;
+  line-height: 44px;
+  text-transform: uppercase;
+}
+
+.front-page-footer .address {
+  font-size: 12px;
+  margin-top: 20px;
+}
+
+.front-page-footer .footer-social-links {
+  margin: 25px 0;
+}
+
+.front-page-footer .footer-social-links .social-icon {
+  background: #525252;
+  border-radius: 50%;
+  color: #000;
+  display: inline-block;
+  height: 32px;
+  margin: 0 5px;
+  padding-top: 10px;
+  width: 32px;
+}
+
+.front-page-footer .footer-social-links .social-icon span {
+  font-size: 20px;
+  line-height: 0;
+  padding: 6px;
+}
+
+.front-page-footer .footer-social-links .social-icon span.fa-facebook {
+  padding: 6px 8px 0;
+}
+
+.front-page-footer .footer-social-links .social-icon span.fa-google-plus {
+  padding: 0 2px 0 4px;
+}
+
+.front-page-footer .footer-social-links .social-icon span.fa-linkedin {
+  padding: 4px 8px;
+}
+
+.front-page-footer .footer-header {
+  font-size: 12px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.front-page-footer .footer-header::after {
+  background-color: #fc0;
+  bottom: 0;
+  display: block;
+  height: 3px;
+  left: 0;
+  position: absolute;
+  width: 40px;
+}
+
+.front-page-footer .other-stories ul {
+  font-size: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#archives h2,
+.subpage h1 {
+  font-size: 36px;
+  line-height: 36px;
+}
+
+.front-page-footer .other-stories ul a {
+  display: block;
+}
+
+.front-page-footer #menu-footer_navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+
+.front-page-footer #menu-footer_navigation li {
+  margin: 0 0 20px;
+}
+
+.front-page-footer #menu-footer_navigation li a {
+  color: #fff;
 }
 
 .subpage main {
@@ -12449,6 +12552,11 @@ li#nav-about a {
 
 #archives img {
   margin-bottom: 10px;
+}
+
+#archives ul {
+  padding-left: 0;
+  list-style: none;
 }
 
 #archives li {
@@ -12721,7 +12829,10 @@ li#nav-about a {
 
 .fp-subheading,
 .fp-vertical {
+  font-style: normal;
+  color: #000;
   letter-spacing: .06em;
+  text-transform: uppercase;
 }
 
 .fp-subheading {
@@ -12729,12 +12840,15 @@ li#nav-about a {
 }
 
 .fp-subheading-underline {
+  font-style: normal;
+  color: #000;
   display: block;
   font-size: 14px;
   letter-spacing: .1em;
   margin-bottom: 15px;
   padding-bottom: 12px;
   position: relative;
+  text-transform: uppercase;
 }
 
 .fp-subheading-underline:after {
@@ -13340,7 +13454,7 @@ li#nav-about a {
 #home .thumb h2,
 #home .thumb h3 {
   color: #fff;
-  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family: "Gotham SSm A","Gotham SSm B",sans-serif;
   font-weight: 700;
 }
 
