@@ -49,7 +49,7 @@
 										<?php
 											$i = 1;
 											while ($i < 3):
-												display_other_stories($i++);
+												echo display_other_stories($i++);
 											endwhile;
 										?>
 									</ul>

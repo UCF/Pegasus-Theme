@@ -426,17 +426,17 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 
 function display_other_stories( $i ) {
 	if ( $other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' ) ):
-	ob_start();
+		ob_start();
 ?>
 		<li>
+			<?php if($i != 1) { ?><hr><?php } ?>
 			<?php echo $other_story_title ?>
 			<?php if ( $other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' ) ): ?>
 				<a href="<?php echo $other_story_url ?>"><?php echo $other_story_url ?></a>
 			<?php endif; ?>
 		</li>
-		<hr>
-	<?php endif; ?>
 <?php
+	endif;
 	return ob_get_clean();
 }
 
