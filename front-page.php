@@ -88,14 +88,22 @@ else:
 				<?php endif; ?>
 			</aside>
 		</div>
-		<div class="col-sm-5 col-md-4 hidden-xs">
-			<aside class="fp-trending-feed">
-				<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
-				<div style="background-color: #fff; border: 1px solid #ddd; padding: 15px; height: 300px;">
-					TODO replace this div with a generic Twitter widget, probably
-				</div>
-			</aside>
-		</div>
+		<?php
+		if (!empty( $twitter_url = get_theme_option( 'twitter_url' ) )):
+		?>
+			<div class="col-sm-5 col-md-4 hidden-xs">
+				<aside class="fp-trending-feed">
+					<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
+					<div class="twitter-widget">
+						<a class="twitter-timeline"
+							href="<?php echo $twitter_url ?>"
+							height="318">
+							Tweets by @UCF
+						</a>
+					</div>
+				</aside>
+			</div>
+		<?php endif; ?>
 	</div>
 
 	<div class="row">

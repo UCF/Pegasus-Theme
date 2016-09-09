@@ -1,4 +1,9 @@
-@import url('style.min-blessed1.css?z=4');
+@import url('style.min-blessed1.css?z=984');
+
+article.photo-essay .photo-essay-nav-link {
+  display: block;
+  margin: 0 auto 10px;
+}
 
 article.photo-essay .photo-essay-nav-link:active,
 article.photo-essay .photo-essay-nav-link:focus,
