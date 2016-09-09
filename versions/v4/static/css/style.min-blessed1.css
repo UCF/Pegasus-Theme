@@ -11600,6 +11600,16 @@ iframe[name=google_conversion_frame] {
   text-decoration: underline;
 }
 
+#more-stories article a:active,
+#more-stories article a:hover,
+.front-page-footer .footer-logo:hover,
+li#nav-archives a,
+li#nav-give a,
+li#nav-issue a,
+li#nav-mobile a {
+  text-decoration: none;
+}
+
 .story-list .subtitle,
 .story-list-grid .subtitle {
   color: #222;
@@ -11916,7 +11926,6 @@ li#nav-mobile a {
   height: 100%;
   line-height: 40px;
   opacity: 1;
-  text-decoration: none;
   width: 100%;
 }
 
@@ -11990,7 +11999,6 @@ li#nav-issue a {
   font-size: 14px;
   font-weight: 700;
   line-height: 14px;
-  text-decoration: none;
 }
 
 @media (max-width:991px) {
@@ -12054,11 +12062,6 @@ li#nav-about a {
 #more-stories article a {
   display: block;
   overflow: hidden;
-}
-
-#more-stories article a:active,
-#more-stories article a:hover {
-  text-decoration: none;
 }
 
 #more-stories article .story-title,
@@ -12306,6 +12309,10 @@ li#nav-about a {
   #footer-navigation .copyright {
     padding-top: 30px;
   }
+
+  .front-page-footer {
+    text-align: center;
+  }
 }
 
 .front-page-footer {
@@ -12388,6 +12395,16 @@ li#nav-about a {
   width: 40px;
 }
 
+@media (max-width:767px) {
+  .front-page-footer .footer-header {
+    display: inline-block;
+  }
+
+  .front-page-footer .footer-header::after {
+    left: 17px;
+  }
+}
+
 .front-page-footer .other-stories ul {
   font-size: 12px;
   list-style: none;
@@ -12418,6 +12435,12 @@ li#nav-about a {
 
 .front-page-footer #menu-footer_navigation li a {
   color: #fff;
+}
+
+@media (max-width:767px) {
+  .front-page-footer .ipad-app-btn {
+    margin: 0 auto;
+  }
 }
 
 .header-social {
@@ -14062,47 +14085,4 @@ article.photo-essay .photo-essay-nav.affix {
 article.photo-essay .photo-essay-nav-link {
   display: block;
   margin: 0 auto 10px;
-}
-
-article.photo-essay .photo-essay-nav-link:active,
-article.photo-essay .photo-essay-nav-link:focus,
-article.photo-essay .photo-essay-nav-link:hover {
-  text-decoration: none;
-}
-
-article.photo-essay .photo-essay-nav-thumb {
-  margin: 0;
-  opacity: .6;
-  transition: opacity .2s ease-in-out;
-  width: 100%;
-}
-
-article.photo-essay .photo-essay-nav-thumb:active,
-article.photo-essay .photo-essay-nav-thumb:focus,
-article.photo-essay .photo-essay-nav-thumb:hover {
-  opacity: 1;
-}
-
-article.photo-essay .photo-essay-jump {
-  background-color: #fff;
-  border-radius: 100%;
-  box-shadow: 0 5px 8px rgba(0,0,0,.4);
-  color: #000;
-  display: block;
-  font-size: 11px;
-  font-style: italic;
-  height: 70px;
-  padding: 10px 20px;
-  text-align: center;
-  width: 70px;
-  z-index: 999;
-}
-
-@media (max-width:767px) {
-  article.photo-essay .photo-essay-jump {
-    font-size: 10px;
-    height: 50px;
-    padding: 6px;
-    width: 50px;
-  }
 }

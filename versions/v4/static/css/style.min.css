@@ -1,4 +1,47 @@
-@import url('style.min-blessed1.css?z=648');
+@import url('style.min-blessed1.css?z=4');
+
+article.photo-essay .photo-essay-nav-link:active,
+article.photo-essay .photo-essay-nav-link:focus,
+article.photo-essay .photo-essay-nav-link:hover {
+  text-decoration: none;
+}
+
+article.photo-essay .photo-essay-nav-thumb {
+  margin: 0;
+  opacity: .6;
+  transition: opacity .2s ease-in-out;
+  width: 100%;
+}
+
+article.photo-essay .photo-essay-nav-thumb:active,
+article.photo-essay .photo-essay-nav-thumb:focus,
+article.photo-essay .photo-essay-nav-thumb:hover {
+  opacity: 1;
+}
+
+article.photo-essay .photo-essay-jump {
+  background-color: #fff;
+  border-radius: 100%;
+  box-shadow: 0 5px 8px rgba(0,0,0,.4);
+  color: #000;
+  display: block;
+  font-size: 11px;
+  font-style: italic;
+  height: 70px;
+  padding: 10px 20px;
+  text-align: center;
+  width: 70px;
+  z-index: 999;
+}
+
+@media (max-width:767px) {
+  article.photo-essay .photo-essay-jump {
+    font-size: 10px;
+    height: 50px;
+    padding: 6px;
+    width: 50px;
+  }
+}
 
 article.photo-essay .photo-essay-jump:active,
 article.photo-essay .photo-essay-jump:focus,

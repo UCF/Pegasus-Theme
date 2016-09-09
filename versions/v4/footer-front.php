@@ -2,7 +2,29 @@
 					<footer class="front-page-footer">
 						<div class="container">
 							<div class="row">
-								<div class="col-sm-4">
+								<div class="col-sm-3 col-sm-offset-1 col-md-offset-1 col-sm-push-8">
+									<div class="footer-header">More Info</div>
+									<?php
+									$defaults = array(
+										'theme_location' => 'footer-menu',
+										'container'      => false,
+										'menu_class'     => 'navigation',
+									);
+									wp_nav_menu( $defaults );
+									?>
+								</div>
+								<div class="col-sm-3 col-sm-offset-1 hidden-xs other-stories">
+									<div class="footer-header">Other Stories</div>
+									<ul>
+										<?php
+											$i = 1;
+											while ($i < 3):
+												echo display_other_stories($i++);
+											endwhile;
+										?>
+									</ul>
+								</div>
+								<div class="col-sm-4 col-sm-pull-8">
 									<a class="footer-logo" href="<?php echo get_site_url(); ?>">
 										Pegasus
 									</a>
@@ -42,28 +64,6 @@
 										</a>
 									</span>
 									<?php } ?>
-								</div>
-								<div class="col-sm-3 col-sm-offset-1 other-stories">
-									<div class="footer-header">Other Stories</div>
-									<ul>
-										<?php
-											$i = 1;
-											while ($i < 3):
-												echo display_other_stories($i++);
-											endwhile;
-										?>
-									</ul>
-								</div>
-								<div class="col-sm-3 col-sm-offset-1">
-									<div class="footer-header">More Info</div>
-									<?php
-									$defaults = array(
-										'theme_location' => 'footer-menu',
-										'container'      => false,
-										'menu_class'     => 'navigation',
-									);
-									wp_nav_menu( $defaults );
-									?>
 								</div>
 							</div>
 						</div>

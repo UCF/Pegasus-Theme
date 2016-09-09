@@ -731,6 +731,10 @@ li#nav-about {
   font-size: 10px;
   padding: 30px 0;
 
+  @media (max-width: $screen-xs-max) {
+    text-align: center;
+  }
+
   p {
     font-size: 10px;
   }
@@ -747,6 +751,10 @@ li#nav-about {
     font-size: 40px;
     line-height: 44px;
     text-transform: uppercase;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .copyright {
@@ -810,6 +818,13 @@ li#nav-about {
       position: absolute;
       width: 40px;
     }
+
+    @media (max-width: $screen-xs-max) {
+      display: inline-block;
+      &::after {
+        left: 17px;
+      }
+    }
   }
 
   .other-stories {
@@ -838,6 +853,12 @@ li#nav-about {
       a {
         color: #fff;
       }
+    }
+  }
+
+  .ipad-app-btn {
+    @media (max-width: $screen-xs-max) {
+      margin: 0 auto;
     }
   }
 }
