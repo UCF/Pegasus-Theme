@@ -326,6 +326,23 @@
     background: transparent;
     padding: 0;
   }
+
+  .fp-today-feed-more {
+    color: #95989a;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 10px;
+    text-transform: uppercase;
+
+    .ucf-today {
+      color: #000;
+    }
+
+    .fa-share-square-o:before {
+      font-size:14px;
+    }
+  }
+
 }
 
 .fp-today-heading {

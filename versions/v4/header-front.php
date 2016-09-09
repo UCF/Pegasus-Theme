@@ -23,7 +23,7 @@
 			<div class="container">
 				<div class="row hidden-xs">
 					<div class="col-sm-12">
-						<div class="header-social" class="pull-right">
+						<div class="header-social pull-right">
 							<?php echo display_social_header(); ?>
 						</div>
 					</div>

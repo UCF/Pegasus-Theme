@@ -13078,22 +13078,18 @@ li#nav-about a {
   }
 }
 
-.fp-feature-link,
-.fp-feature-link:active,
-.fp-feature-link:focus,
-.fp-feature-link:hover,
-.fp-today-item-link,
-.fp-today-item-link:active,
-.fp-today-item-link:focus,
-.fp-today-item-link:hover {
-  color: #000;
-}
-
 @media (min-width:992px) {
   .fp-feature-top .fp-feature-description {
     font-size: 24px;
     line-height: 1.2;
   }
+}
+
+.fp-feature-link,
+.fp-feature-link:active,
+.fp-feature-link:focus,
+.fp-feature-link:hover {
+  color: #000;
 }
 
 .fp-feature-img-wrap {
@@ -13145,14 +13141,6 @@ li#nav-about a {
   padding: 0 25px 30px;
 }
 
-.fp-today-heading {
-  margin-top: 10px;
-}
-
-.fp-today-feed-wrap {
-  margin-top: 30px;
-}
-
 @media (min-width:768px) {
   .fp-today-feed {
     background: 0 0;
@@ -13163,7 +13151,37 @@ li#nav-about a {
     display: table;
     width: 100%;
   }
+}
 
+.fp-today-feed .fp-today-feed-more {
+  color: #95989a;
+  font-size: 12px;
+  font-weight: 700;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.fp-today-feed .fp-today-feed-more .ucf-today,
+.fp-today-item-link,
+.fp-today-item-link:active,
+.fp-today-item-link:focus,
+.fp-today-item-link:hover {
+  color: #000;
+}
+
+.fp-today-feed .fp-today-feed-more .fa-share-square-o:before {
+  font-size: 14px;
+}
+
+.fp-today-heading {
+  margin-top: 10px;
+}
+
+.fp-today-feed-wrap {
+  margin-top: 30px;
+}
+
+@media (min-width:768px) {
   .fp-today-feed-col {
     background: linear-gradient(to bottom,rgba(255,255,255,.8) 0,rgba(255,255,255,0) 40%),linear-gradient(to right,#fcfcfc 0,#eee 90%,#ddd 100%);
     display: table-cell;
@@ -14087,11 +14105,4 @@ article.photo-essay .photo-essay-jump {
     padding: 6px;
     width: 50px;
   }
-}
-
-article.photo-essay .photo-essay-jump:active,
-article.photo-essay .photo-essay-jump:focus,
-article.photo-essay .photo-essay-jump:hover {
-  background-color: #fafafa;
-  text-decoration: none;
 }

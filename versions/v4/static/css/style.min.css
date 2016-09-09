@@ -1,4 +1,11 @@
-@import url('style.min-blessed1.css?z=440');
+@import url('style.min-blessed1.css?z=648');
+
+article.photo-essay .photo-essay-jump:active,
+article.photo-essay .photo-essay-jump:focus,
+article.photo-essay .photo-essay-jump:hover {
+  background-color: #fafafa;
+  text-decoration: none;
+}
 
 article.photo-essay .photo-essay-jump .fa {
   display: block;
