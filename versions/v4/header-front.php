@@ -23,8 +23,8 @@
 			<div class="container">
 				<div class="row hidden-xs">
 					<div class="col-sm-12">
-						<div class="fp-social-links pull-right">
-							TODO social sharing btns (desktop)
+						<div class="header-social" class="pull-right">
+							<?php echo display_social_header(); ?>
 						</div>
 					</div>
 				</div>
@@ -53,8 +53,10 @@
 					</div>
 				</div>
 
-				<div class="visible-xs-block fp-social-links text-center">
-					TODO social sharing btns (mobile)
+				<div class="visible-xs-block text-center">
+					<div class="header-social">
+						<?php echo display_social_header(); ?>
+					</div>
 				</div>
 
 				<div class="hidden-xs fp-header-border"></div>

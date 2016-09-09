@@ -519,7 +519,8 @@ li#nav-about {
 
 
 // Subfooter - Social Links
-#footer-social {
+#footer-social,
+.header-social {
   // "hide" .border-top border on default issue template
   margin-top: -1px;
 
@@ -838,5 +839,22 @@ li#nav-about {
         color: #fff;
       }
     }
+  }
+}
+
+
+// Header Social Icons
+.header-social {
+  margin-top: 10px;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 40px 0 20px;
+    }
+
+  .title {
+    color: #95989a;
+    padding-top: 8px;
+    text-transform: uppercase;
+    vertical-align: top;
   }
 }
