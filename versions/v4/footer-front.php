@@ -18,14 +18,22 @@
 										<h2 class="fp-subheading-underline fp-footer-heading">Other Stories</h2>
 										<ul class="list-unstyled">
 											<?php
+											$other_story_title = null;
+											$other_story_url = null;
 											$i = 1;
+
 											while ( $i < 4 ):
+												$other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' );
+												$other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' );
+
+												if ( $other_story_title && $other_story_url ):
 											?>
 											<li>
-												<?php echo display_front_page_other_story( $i ); ?>
+												<?php echo display_front_page_other_story( $other_story_title, $other_story_url ); ?>
 											</li>
 											<?php
-											$i++;
+												endif;
+												$i++;
 											endwhile;
 											?>
 										</ul>

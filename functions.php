@@ -1373,16 +1373,12 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 }
 
 
-function display_front_page_other_story( $i ) {
+function display_front_page_other_story( $title, $url ) {
 	ob_start();
-	if ( $other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' ) ):
 ?>
-	<?php echo $other_story_title ?>
-	<?php if ( $other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' ) ): ?>
-		<a href="<?php echo $other_story_url ?>"><?php echo $other_story_url ?></a>
-	<?php endif; ?>
+	<?php echo $title; ?>
+	<a href="<?php echo $url; ?>"><?php echo $url; ?></a>
 <?php
-	endif;
 	return ob_get_clean();
 }
 
