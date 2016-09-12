@@ -1237,14 +1237,13 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
 	}
 
-	$vertical = 'Opinion';  // TODO remove and uncomment code below
-	// $vertical = null;
-	// if ( $show_vertical ) {
-	// 	$vertical = get_the_category( $story->ID );
-	// 	if ( $vertical ) {
-	// 		$vertical = wptexturize( $vertical[0] );
-	// 	}
-	// }
+	$vertical = null;
+	if ( $show_vertical ) {
+		$vertical = get_the_category( $story->ID );
+		if ( $vertical ) {
+			$vertical = wptexturize( $vertical[0] );
+		}
+	}
 
 	ob_start();
 ?>
@@ -1338,11 +1337,10 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 
 	$title = wptexturize( $gallery->post_title );
 
-	$vertical = 'Gallery'; // TODO remove and uncomment code below
-	// $vertical = get_the_category( $gallery->ID );
-	// if ( $vertical ) {
-	// 	$vertical = wptexturize( $vertical[0] );
-	// }
+	$vertical = get_the_category( $gallery->ID );
+	if ( $vertical ) {
+		$vertical = wptexturize( $vertical[0] );
+	}
 
 	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
 	$thumbnail = null;
