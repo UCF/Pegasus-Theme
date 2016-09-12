@@ -134,7 +134,7 @@ else:
 		<div class="col-sm-9">
 			<div class="row">
 				<?php
-				$current_issue_stories = get_current_issue_stories( array( $current_issue_cover_story ), 12 );
+				$current_issue_stories = get_current_issue_stories( array( intval( $current_issue_cover_story ) ), 12 );
 
 				if ( $current_issue_stories ):
 				?>
