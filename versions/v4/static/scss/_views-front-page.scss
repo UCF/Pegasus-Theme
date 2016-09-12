@@ -205,17 +205,47 @@
 }
 
 .header-social {
-  margin-top: 10px;
+  margin-top: 15px;
 
   @media (max-width: $screen-xs-max) {
+    display: inline-block;
     margin: 40px 0 20px;
   }
 
-  .title {
-    color: #95989a;
-    padding-top: 8px;
-    text-transform: uppercase;
-    vertical-align: top;
+  .social-icon-list-heading,
+  .social-icon-list {
+    float: left;
+  }
+
+  .social-icon-list-heading {
+    line-height: 20px;
+    margin-right: 10px;
+  }
+
+  .social-icon-list-item a {
+    background-size: 128px auto;
+    height: 20px;
+    width: 20px;
+
+    &.facebook {
+      background-position: 0 -76px;
+    }
+
+    &.twitter {
+      background-position: -44px -75px;
+    }
+
+    &.flickr {
+      background-position: -21px -76px;
+    }
+
+    &.youtube {
+      background-position: -67px -76px;
+    }
+
+    &.googleplus {
+      background-position: -88px -76px;
+    }
   }
 }
 
@@ -345,8 +375,9 @@
 
 .fp-today-feed-more {
   @include gotham(6);
-  color: #95989a;
+  color: $gray-medium;
   font-size: 12px;
+  letter-spacing: .06em;
   padding-top: 10px;
   text-transform: uppercase;
 

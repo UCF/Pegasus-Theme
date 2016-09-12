@@ -529,6 +529,15 @@ li#nav-about {
   }
 }
 
+.social-icon-list-heading {
+  @include gotham(6);
+  color: $gray-medium;
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 .social-icon-list {
   @include list-unstyled();
   margin-bottom: 0;

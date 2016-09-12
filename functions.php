@@ -1408,7 +1408,7 @@ function display_social_header() {
 		!empty( $youtube_url )
 	):
 	?>
-		<span class="social-icon-list-heading">Share:</span>
+		<span class="social-icon-list-heading">Share</span>
 		<ul class="social-icon-list">
 			<?php if ( !empty( $fb_url ) ) { ?>
 			<li class="social-icon-list-item">
