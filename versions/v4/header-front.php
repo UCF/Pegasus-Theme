@@ -23,7 +23,7 @@
 			<div class="container">
 				<div class="row hidden-xs">
 					<div class="col-sm-12">
-						<div class="header-social pull-right">
+						<div class="fp-social-links pull-right">
 							<?php echo display_social_header(); ?>
 						</div>
 					</div>
@@ -54,7 +54,7 @@
 				</div>
 
 				<div class="visible-xs-block text-center">
-					<div class="header-social">
+					<div class="fp-social-links">
 						<?php echo display_social_header(); ?>
 					</div>
 				</div>
