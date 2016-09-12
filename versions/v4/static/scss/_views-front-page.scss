@@ -754,7 +754,7 @@
 }
 
 .fp-footer-social-links {
-  margin: 25px 0;
+  margin: 25px -5px;
 
   .social-icon {
     background: #525252;
@@ -763,12 +763,12 @@
     display: inline-block;
     height: 32px;
     margin: 0 5px;
-    padding-top: 10px;
+    text-align: center;
+    vertical-align: middle;
     width: 32px;
 
     span {
       font-size: 20px;
-      line-height: 0;
       padding: 6px;
 
       &.fa-facebook {
