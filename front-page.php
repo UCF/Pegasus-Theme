@@ -134,7 +134,12 @@ else:
 		<div class="col-sm-9">
 			<div class="row">
 				<?php
-				$current_issue_stories = get_current_issue_stories( array( intval( $current_issue_cover_story ) ), 12 );
+				$issue_stories_exclude = array();
+				if ( $feature_1 ) {
+					$issue_stories_exclude[] = intval( $feature_1 );
+				}
+
+				$current_issue_stories = get_current_issue_stories( $issue_stories_exclude, 12 );
 
 				if ( $current_issue_stories ):
 				?>
