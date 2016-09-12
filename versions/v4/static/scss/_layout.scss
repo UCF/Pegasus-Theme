@@ -519,7 +519,8 @@ li#nav-about {
 
 
 // Subfooter - Social Links
-#footer-social {
+#footer-social,
+.header-social {
   // "hide" .border-top border on default issue template
   margin-top: -1px;
 
@@ -721,5 +722,160 @@ li#nav-about {
     @media (max-width: $screen-xs-max) {
       padding-top: 30px;
     }
+  }
+}
+
+.front-page-footer {
+  background-color: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 30px 0;
+
+  @media (max-width: $screen-xs-max) {
+    text-align: center;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  a {
+    color: $ucf-gold;
+  }
+
+  hr {
+    border-top: 1px solid #606060;
+  }
+
+  .footer-logo {
+    font-size: 40px;
+    line-height: 44px;
+    text-transform: uppercase;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .copyright {
+    font-family: $font-family-sans-serif;
+    text-transform: uppercase;
+  }
+
+  .address {
+    font-size: 12px;
+    margin-top: 20px;
+  }
+
+  .footer-social-links {
+    margin: 25px 0;
+
+    .social-icon {
+        background: #525252;
+        border-radius: 50%;
+        color: #000;
+        display: inline-block;
+        height: 32px;
+        margin: 0 5px;
+        padding-top: 10px;
+        width: 32px;
+
+      span {
+        font-size: 20px;
+        line-height: 0;
+        padding: 6px;
+
+        &.fa-facebook {
+          padding: 6px 8px 0;
+        }
+
+        &.fa-google-plus {
+          padding: 0 2px 0 4px;
+        }
+
+        &.fa-linkedin {
+          padding: 4px 8px;
+        }
+      }
+    }
+  }
+
+  .footer-header {
+    font-family: $font-family-sans-serif;
+    font-size: 12px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+    text-transform: uppercase;
+
+    &::after {
+      background-color: $ucf-gold;
+      bottom: 0;
+      content: '';
+      display: block;
+      height: 3px;
+      left: 0;
+      position: absolute;
+      width: 40px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      display: inline-block;
+      &::after {
+        left: 17px;
+      }
+    }
+  }
+
+  .other-stories {
+
+    ul {
+      font-size: 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+
+      a {
+        display: block;
+      }
+    }
+  }
+
+  #menu-footer_navigation {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-transform: uppercase;
+
+    li {
+      margin: 0 0 20px;
+
+      a {
+        color: #fff;
+      }
+    }
+  }
+
+  .ipad-app-btn {
+    @media (max-width: $screen-xs-max) {
+      margin: 0 auto;
+    }
+  }
+}
+
+
+// Header Social Icons
+.header-social {
+  margin-top: 10px;
+
+    @media (max-width: $screen-xs-max) {
+      margin: 40px 0 20px;
+    }
+
+  .title {
+    color: #95989a;
+    padding-top: 8px;
+    text-transform: uppercase;
+    vertical-align: top;
   }
 }

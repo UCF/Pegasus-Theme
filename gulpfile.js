@@ -100,12 +100,13 @@ gulp.task('watch', function() {
   if (config.sync) {
     browserSync.init({
         proxy: {
-          target: config.syncTarget
+          target: config.target
         }
     });
   }
 
-  gulp.watch(config.versionsPath + '/**/*.scss', ['css']).on('change', browserSync.reload);
+  gulp.watch(config.versionsPath + '/**/*.php').on('change', browserSync.reload);
+  gulp.watch(config.versionsPath + '/**/*.scss', ['css']);
   gulp.watch(config.versionsPath + '/**/*.js', ['js']).on('change', browserSync.reload);
 
   gulp.watch('dev/**/*.scss', function(event) {
@@ -122,8 +123,7 @@ gulp.task('watch', function() {
       .pipe(cleanCSS({compatibility: 'ie8'}))
       .pipe(gulp.dest(dest))
       .pipe(browserSync.stream());
-  })
-    .on('change', browserSync.reload);
+  });
 });
 
 

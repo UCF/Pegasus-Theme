@@ -47,8 +47,8 @@ else:
 		<div class="col-sm-7 col-md-8">
 			<aside class="fp-today-feed">
 				<a href="https://today.ucf.edu/">
+					<span class="fp-today-feed-more pull-right hidden-xs">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o ucf-gold"></span></span>
 					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
-					<span class="fp-today-feed-more hidden-xs">Check out more stories at UCFToday <span class="fa fa-share-square-o ucf-gold"></span></span>
 				</a>
 				<?php
 				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
@@ -88,14 +88,22 @@ else:
 				<?php endif; ?>
 			</aside>
 		</div>
-		<div class="col-sm-5 col-md-4 hidden-xs">
-			<aside class="fp-trending-feed">
-				<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
-				<div style="background-color: #fff; border: 1px solid #ddd; padding: 15px; height: 300px;">
-					TODO replace this div with a generic Twitter widget, probably
-				</div>
-			</aside>
-		</div>
+		<?php
+		if (!empty( $twitter_url = get_theme_option( 'twitter_url' ) )):
+		?>
+			<div class="col-sm-5 col-md-4 hidden-xs">
+				<aside class="fp-trending-feed">
+					<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
+					<div class="twitter-widget">
+						<a class="twitter-timeline"
+							href="<?php echo $twitter_url ?>"
+							height="318">
+							Tweets by @UCF
+						</a>
+					</div>
+				</aside>
+			</div>
+		<?php endif; ?>
 	</div>
 
 	<div class="row">
