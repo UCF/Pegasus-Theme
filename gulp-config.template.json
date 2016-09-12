@@ -1,5 +1,5 @@
 {
 	"sync": false,
-	"target": "http://localhost/pegasus",
+	"target": "http://localhost/",
 	"version": "v4"
 }

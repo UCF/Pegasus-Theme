@@ -1373,6 +1373,70 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 }
 
 
+function display_front_page_other_story( $i ) {
+	ob_start();
+	if ( $other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' ) ):
+?>
+	<?php echo $other_story_title ?>
+	<?php if ( $other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' ) ): ?>
+		<a href="<?php echo $other_story_url ?>"><?php echo $other_story_url ?></a>
+	<?php endif; ?>
+<?php
+	endif;
+	return ob_get_clean();
+}
+
+
+/**
+* Displays social buttons (Facebook, Twitter, G+) for front page header.
+*
+* @return string
+* @author RJ Bruneel
+**/
+function display_social_header() {
+	$fb_url = get_theme_option( 'fb_url' );
+	$twitter_url = get_theme_option( 'twitter_url' );
+	$googleplus_url = get_theme_option( 'googleplus_url' );
+	$flickr_url = get_theme_option( 'flickr_url' );
+	$youtube_url = get_theme_option( 'youtube_url' );
+	ob_start();
+	if (
+		!empty( $fb_url ) ||
+		!empty( $twitter_url ) ||
+		!empty( $googleplus_url ) ||
+		!empty( $flickr_url ) ||
+		!empty( $youtube_url )
+	):
+	?>
+		<span class="social-icon-list-heading">Share:</span>
+		<ul class="social-icon-list">
+			<?php if ( !empty( $fb_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
+			</li>
+			<?php } if ( !empty( $twitter_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
+			</li>
+			<?php } if ( !empty( $flickr_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url; ?>">Follow UCF on Flickr</a>
+			</li>
+			<?php } if ( !empty( $youtube_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
+			</li>
+			<?php } if ( !empty( $googleplus_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Follow UCF on Google+</a>
+			</li>
+			<?php } ?>
+		</ul>
+	<?php endif;
+    return ob_get_clean();
+}
+
+
 /****************************************************************************
  *
  * END site-level functions.  Don't add anything else below this line.

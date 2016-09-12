@@ -79,25 +79,25 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 border-top">
-							<ul>
+							<ul class="social-icon-list">
 								<?php if ( !empty( $fb_url ) ) { ?>
-								<li>
+								<li class="social-icon-list-item">
 									<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
 								</li>
 								<?php } if ( !empty( $twitter_url ) ) { ?>
-								<li>
+								<li class="social-icon-list-item">
 									<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
 								</li>
 								<?php } if ( !empty( $flickr_url ) ) { ?>
-								<li>
+								<li class="social-icon-list-item">
 									<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url; ?>">Follow UCF on Flickr</a>
 								</li>
 								<?php } if ( !empty( $youtube_url ) ) { ?>
-								<li>
+								<li class="social-icon-list-item">
 									<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
 								</li>
 								<?php } if ( !empty( $googleplus_url ) ) { ?>
-								<li>
+								<li class="social-icon-list-item">
 									<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Follow UCF on Google+</a>
 								</li>
 								<?php } ?>

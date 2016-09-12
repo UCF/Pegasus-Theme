@@ -3,36 +3,43 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-3 col-sm-offset-1 col-md-offset-1 col-sm-push-8">
-									<div class="footer-header">More Info</div>
+									<h2 class="fp-subheading-underline fp-footer-heading">More Info</h2>
 									<?php
 									$defaults = array(
 										'theme_location' => 'footer-menu',
 										'container'      => false,
-										'menu_class'     => 'navigation',
+										'menu_class'     => 'fp-footer-menu list-unstyled',
 									);
 									wp_nav_menu( $defaults );
 									?>
 								</div>
-								<div class="col-sm-3 col-sm-offset-1 hidden-xs other-stories">
-									<div class="footer-header">Other Stories</div>
-									<ul>
-										<?php
+								<div class="col-sm-3 col-sm-offset-1 hidden-xs">
+									<aside class="fp-other-stories">
+										<h2 class="fp-subheading-underline fp-footer-heading">Other Stories</h2>
+										<ul class="list-unstyled">
+											<?php
 											$i = 1;
-											while ($i < 3):
-												echo display_other_stories($i++);
+											while ( $i < 4 ):
+											?>
+											<li>
+												<?php echo display_front_page_other_story( $i ); ?>
+											</li>
+											<?php
+											$i++;
 											endwhile;
-										?>
-									</ul>
+											?>
+										</ul>
+									</aside>
 								</div>
 								<div class="col-sm-4 col-sm-pull-8">
-									<a class="footer-logo" href="<?php echo get_site_url(); ?>">
+									<a class="fp-footer-logo" href="<?php echo get_site_url(); ?>">
 										Pegasus
 									</a>
 
-									<p class="copyright">
+									<p class="fp-copyright">
 										&copy; <?php echo get_theme_option( 'org_name' ); ?>
 									</p>
-									<p class="address">
+									<p class="fp-address">
 										<?php echo nl2br( get_theme_option( 'org_address' ) ); ?>
 									</p>
 
@@ -46,7 +53,7 @@
 										!empty( $instagram_url )
 									):
 									?>
-									<div class="footer-social-links">
+									<div class="fp-footer-social-links">
 										<?php if ( !empty( $fb_url ) ) { ?>
 											<a target="_blank" class="social-icon" href="<?php echo $fb_url; ?>"><span class="fa fa-facebook"></span><span class="sr-only">Follow UCF on Facebook</span></a>
 										<?php } if ( !empty( $twitter_url ) ) { ?>
