@@ -1,3 +1,6 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
+
+
 //
 // General
 //
@@ -183,33 +186,12 @@
 }
 
 .fp-social-links {
-  background: #bbb; // TODO (placeholder block)
-  margin: 25px auto 20px;
+  display: inline-block;
+  margin: 30px auto 10px;
 
   @media (min-width: $screen-sm-min) {
-    margin: 20px 0 0;
-  }
-}
-
-.fp-header-border {
-  border-bottom: 7px solid $black;
-  border-top: 1px solid $gray-light-alt;
-  bottom: 0;
-  display: block;
-  height: 13px;
-  margin: 50px 0 20px;
-
-  @media (min-width: $screen-md-min) {
-    margin-top: 70px;
-  }
-}
-
-.header-social {
-  margin-top: 15px;
-
-  @media (max-width: $screen-xs-max) {
-    display: inline-block;
-    margin: 40px 0 20px;
+    display: block;
+    margin: 15px 0 0;
   }
 
   .social-icon-list-heading,
@@ -246,6 +228,19 @@
     &.googleplus {
       background-position: -88px -76px;
     }
+  }
+}
+
+.fp-header-border {
+  border-bottom: 7px solid $black;
+  border-top: 1px solid $gray-light-alt;
+  bottom: 0;
+  display: block;
+  height: 13px;
+  margin: 50px 0 20px;
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 70px;
   }
 }
 
@@ -439,9 +434,10 @@
 
 .fp-today-item-link {
   display: block;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
   line-height: 1.4;
 
-  // TODO Roboto font
   @media (min-width: $screen-sm-min) {
     font-size: 14px;
   }
@@ -504,7 +500,7 @@
 }
 
 .fp-issue-description {
-  // TODO Roboto font
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
   margin-top: 15px;
 }
@@ -569,7 +565,7 @@
 }
 
 .fp-event-day {
-  // TODO Roboto font
+  font-family: 'Roboto', sans-serif;
   font-size: 22px;
   font-weight: bold;
 }
@@ -580,17 +576,18 @@
   font-size: 60px;
   letter-spacing: -.04em;
   line-height: .5;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .fp-event-month {
-  // TODO Roboto font
+  font-family: 'Roboto', sans-serif;
   font-size: 14px;
   font-weight: bold;
 }
 
 .fp-event-title {
   display: block;
+  font-family: 'Roboto', sans-serif;
   font-size: 18px;
   font-weight: bold;
   line-height: 1.2;
@@ -611,6 +608,7 @@
 }
 
 .fp-event-description {
+  font-family: 'Roboto', sans-serif;
   font-size: 13px;
 }
 
