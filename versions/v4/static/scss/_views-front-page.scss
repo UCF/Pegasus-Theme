@@ -394,7 +394,12 @@
 
   @media (min-width: $screen-sm-min) {
     display: table;
+    margin-top: 15px;
     width: 100%;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 30px;
   }
 }
 
