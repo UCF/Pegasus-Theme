@@ -1241,7 +1241,8 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	if ( $show_vertical ) {
 		$vertical = get_the_category( $story->ID );
 		if ( $vertical ) {
-			$vertical = wptexturize( $vertical[0] );
+			$vertical = $vertical[0];
+			$vertical = wptexturize( $vertical->name );
 		}
 	}
 
@@ -1339,7 +1340,8 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 
 	$vertical = get_the_category( $gallery->ID );
 	if ( $vertical ) {
-		$vertical = wptexturize( $vertical[0] );
+		$vertical = $vertical[0];
+		$vertical = wptexturize( $vertical->name );
 	}
 
 	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
