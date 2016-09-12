@@ -204,6 +204,21 @@
   }
 }
 
+.header-social {
+  margin-top: 10px;
+
+  @media (max-width: $screen-xs-max) {
+    margin: 40px 0 20px;
+  }
+
+  .title {
+    color: #95989a;
+    padding-top: 8px;
+    text-transform: uppercase;
+    vertical-align: top;
+  }
+}
+
 
 //
 // Featured stories
@@ -325,6 +340,22 @@
   @media (min-width: $screen-sm-min) {
     background: transparent;
     padding: 0;
+  }
+}
+
+.fp-today-feed-more {
+  @include gotham(6);
+  color: #95989a;
+  font-size: 12px;
+  padding-top: 10px;
+  text-transform: uppercase;
+
+  .ucf-today {
+    color: $black;
+  }
+
+  .fa:before {
+    font-size: 14px;
   }
 }
 
@@ -595,5 +626,151 @@
 
   @media (min-width: $screen-sm-min) {
     border: 0 solid transparent;
+  }
+}
+
+
+//
+// Footer
+//
+.front-page-footer {
+  background-color: $black;
+  color: $white;
+  margin-top: 20px;
+  padding: 40px 0;
+  text-align: center;
+
+  @media (min-width: $screen-sm-min) {
+    padding: 60px 0 80px;
+    text-align: left;
+  }
+
+  a {
+    color: $ucf-gold;
+  }
+
+  .ipad-app-btn {
+    @media (max-width: $screen-xs-max) {
+      margin: 0 auto;
+    }
+  }
+}
+
+.fp-footer-logo {
+  @include gotham(4);
+  display: block;
+  font-size: 40px;
+  letter-spacing: .06em;
+  line-height: 1.1;
+  margin-top: 30px;
+  text-transform: uppercase;
+
+  @media (min-width: $screen-sm-min) {
+    margin-top: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.fp-footer-heading {
+  color: $white;
+  font-size: 12px;
+  margin-bottom: 25px;
+  margin-top: 0;
+  padding-bottom: 15px;
+
+  &:after {
+    width: 35px;
+
+    @media (max-width: $screen-xs-max) {
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}
+
+.fp-footer-menu {
+  @include gotham();
+  font-size: 11px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+
+  li {
+    margin: 0 0 20px;
+
+    a {
+      color: $white;
+    }
+  }
+}
+
+.fp-copyright {
+  @include gotham();
+  font-size: 10px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.fp-address {
+  @include archer();
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.fp-footer-social-links {
+  margin: 25px 0;
+
+  .social-icon {
+    background: #525252;
+    border-radius: 50%;
+    color: #000;
+    display: inline-block;
+    height: 32px;
+    margin: 0 5px;
+    padding-top: 10px;
+    width: 32px;
+
+    span {
+      font-size: 20px;
+      line-height: 0;
+      padding: 6px;
+
+      &.fa-facebook {
+        padding: 6px 8px 0;
+      }
+
+      &.fa-google-plus {
+        padding: 0 2px 0 4px;
+      }
+
+      &.fa-linkedin {
+        padding: 4px 8px;
+      }
+    }
+  }
+}
+
+.fp-other-stories {
+  @include archer();
+
+  ul {
+    font-size: 16px;
+  }
+
+  li {
+    border-top: 1px solid $gray;
+    padding: 15px 0;
+
+    &:first-child {
+      border-top: 0 solid transparent;
+      padding-top: 0;
+    }
+  }
+
+  a {
+    @include archer(4, italic);
+    display: inline-block;
   }
 }

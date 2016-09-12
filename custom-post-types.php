@@ -319,7 +319,7 @@ class Story extends CustomPostType {
 		$use_order      = False,
 		$menu_icon      = 'dashicons-media-document',
 		$show_in_rest   = True,
-		$taxonomies     = array('issues', 'post_tag');
+		$taxonomies     = array('issues', 'post_tag', 'category');
 
 	static function get_javascript_url($story) {
 		return Story::get_file_url($story, 'story_javascript');

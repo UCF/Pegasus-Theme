@@ -23,8 +23,8 @@
 			<div class="container">
 				<div class="row hidden-xs">
 					<div class="col-sm-12">
-						<div class="fp-social-links pull-right">
-							TODO social sharing btns (desktop)
+						<div class="header-social pull-right">
+							<?php echo display_social_header(); ?>
 						</div>
 					</div>
 				</div>
@@ -36,7 +36,7 @@
 						$current_issue_title = wptexturize( $current_issue->post_title );
 						?>
 						<a class="fp-header-link fp-header-link-issue" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-							<?php echo $current_issue_title; ?>
+							<?php echo str_replace(' ', '<br>', $current_issue_title); ?>
 						</a>
 					</div>
 					<div class="col-xs-6 col-sm-3 col-sm-push-6 col-md-2 col-md-push-8 text-center">
@@ -53,8 +53,10 @@
 					</div>
 				</div>
 
-				<div class="visible-xs-block fp-social-links text-center">
-					TODO social sharing btns (mobile)
+				<div class="visible-xs-block text-center">
+					<div class="header-social">
+						<?php echo display_social_header(); ?>
+					</div>
 				</div>
 
 				<div class="hidden-xs fp-header-border"></div>
