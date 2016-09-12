@@ -37,6 +37,22 @@ function check_remote_file( $url ) {
 	return false;
 }
 
+/**
+ * Fetches an external url's contents with a timeout applied to the request.
+ **/
+function fetch_with_timeout( $url ) {
+	// Set a timeout
+	$opts = array(
+		'http' => array(
+			'method'  => 'GET',
+			'timeout' => FEED_FETCH_TIMEOUT
+		)
+	);
+	$context = stream_context_create( $opts );
+	// Grab the file
+	return file_get_contents( $url, false, $context );
+}
+
 
 /**
  * Handles fetching and processing of feeds.  Currently uses SimplePie to parse
@@ -57,26 +73,17 @@ class FeedManager {
 	 * @return array
 	 * @author Jared Lang
 	 **/
-	static protected function __new_feed( $url ) {
-		$timer = Timer::start();
-		require_once( THEME_DIR . '/third-party/simplepie.php' );
+	static protected function __new_feed($url){
+		require_once ABSPATH . '/wp-includes/class-simplepie.php';
 
 		$simplepie = null;
 		$failed    = False;
 		$cache_key = 'feedmanager-' . md5( $url );
 		$content   = get_site_transient( $cache_key );
 
-		if ( $content === False ) {
-			// Set a timeout
-			$opts    = array(
-				 	'http' => array(
-					'method' => 'GET',
-					'timeout' => FEED_FETCH_TIMEOUT
-				)
-			);
-			$context = stream_context_create( $opts );
-			$content = file_get_contents( $url, false, $context );
-			if ( $content === False || empty( $content ) ) {
+		if ($content === False){
+			$content = fetch_with_timeout( $url );
+			if ($content === False || empty($content)){
 				$failed  = True;
 				$content = null;
 				error_log( 'FeedManager failed to fetch data using url of ' . $url );
@@ -101,8 +108,6 @@ class FeedManager {
 			$failed = True;
 		}
 
-		$elapsed = round( $timer->elapsed() * 1000 );
-		debug( "__new_feed: {$elapsed} milliseconds" );
 		return array(
 			 'content' => $content,
 			'url' => $url,
@@ -286,28 +291,34 @@ function display_news() {
 
 
 /* Modified function for main site theme: */
-function get_events( $start, $limit ) {
+function get_events( $start=0, $limit=4, $url='' ) {
 	$options = get_option( THEME_OPTIONS_NAME );
-	$qstring = (bool) strpos( $options['events_url'], '?' );
-	$url     = $options['events_url'];
-	if ( !$qstring ) {
-		$url .= '?';
-	} else {
-		$url .= '&';
+	$url = $url ?: $options['events_url'];
+
+	// Remove any query strings attached to the url provided.
+	$qstring = ( bool )strpos( $url, '?' );
+	if ( $qstring ) {
+		$url_parts = explode( '?', $url );
+		$url = $url_parts[0];
 	}
-	$url .= 'upcoming=upcoming&format=json';
 
-	// Set a timeout
-	$opts    = array(
-		 	'http' => array(
-			'method' => 'GET',
-			'timeout' => FEED_FETCH_TIMEOUT
-		)
-	);
-	$context = stream_context_create( $opts );
+	if ( substr( $url, -9 ) !== 'feed.json' ) {
+		// Append trailing end slash to url.
+		if ( substr( $url, -1 ) !== '/' ) {
+			$url .= '/';
+		}
 
-	// Grab the weather feed
-	$raw_events = file_get_contents( $url, false, $context );
+		// Append /upcoming/ to the end of the url, if it's not already present.
+		if ( substr( $url, -9 ) !== 'upcoming/' ) {
+			$url .= 'upcoming/';
+		}
+
+		// Append /feed.json to the end of the url.
+		$url .= 'feed.json';
+	}
+
+	// Grab the feed
+	$raw_events = fetch_with_timeout( $url );
 	if ( $raw_events ) {
 		$events = json_decode( $raw_events, TRUE );
 		$events = array_slice( $events, $start, $limit );
@@ -318,10 +329,10 @@ function get_events( $start, $limit ) {
 }
 
 
-function get_news( $start = null, $limit = null ) {
+function get_news( $start=null, $limit=null, $url='' ){
 	$options = get_option( THEME_OPTIONS_NAME );
-	$url     = $options['news_url'];
-	$news    = FeedManager::get_items( $url, $start, $limit );
+	$url = $url ?: $options['news_url'];
+	$news = FeedManager::get_items( $url, $start, $limit );
 	return $news;
 }
 
