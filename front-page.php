@@ -97,7 +97,8 @@ else:
 					<div class="twitter-widget">
 						<a class="twitter-timeline"
 							href="<?php echo $twitter_url; ?>"
-							height="318">
+							height="318"
+							data-chrome="nofooter noborders">
 							Tweets by @UCF
 						</a>
 					</div>
