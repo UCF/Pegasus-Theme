@@ -35,8 +35,11 @@
 						$current_issue = get_current_issue();
 						$current_issue_title = wptexturize( $current_issue->post_title );
 						?>
-						<a class="fp-header-link fp-header-link-issue" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+						<a class="fp-header-link fp-header-link-issue hidden-xs" href="<?php echo get_permalink( $current_issue->ID ); ?>">
 							<?php echo str_replace(' ', '<br>', $current_issue_title); ?>
+						</a>
+						<a class="fp-header-link fp-header-link-issue visible-xs-block" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+							<?php echo $current_issue_title; ?>
 						</a>
 					</div>
 					<div class="col-xs-6 col-sm-3 col-sm-push-6 col-md-2 col-md-push-8 text-center">
