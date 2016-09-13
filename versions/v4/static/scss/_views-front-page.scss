@@ -103,8 +103,13 @@
   &:focus {
     color: $black;
   }
+}
+
+.fp-header-link-issue {
+  float: left;
 
   @media (min-width: $screen-sm-min) {
+    float: none;
     margin: 65px 0 0;
   }
 
@@ -113,19 +118,16 @@
   }
 }
 
-.fp-header-link-issue {
-  float: left;
-
-  @media (min-width: $screen-sm-min) {
-    float: none;
-  }
-}
-
 .fp-header-link-archives {
   float: right;
 
   @media (min-width: $screen-sm-min) {
     float: none;
+    margin: 73px 0 0;
+  }
+
+  @media (min-width: $screen-md-min) {
+    margin-top: 93px;
   }
 }
 
