@@ -109,38 +109,13 @@ else:
 
 	<div class="row">
 		<div class="col-sm-3 text-center">
-			<?php
-			$current_issue = get_current_issue();
-			$current_issue_title = wptexturize( $current_issue->post_title );
-			$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
-			$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true );
-			$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
-			?>
-			<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-				<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
-
-				<?php if ( $current_issue_thumbnail ): ?>
-				<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
-				<?php endif; ?>
-			</a>
-
-			<?php if ( $current_issue_description ): ?>
-			<div class="fp-issue-description center-block text-left">
-				<?php echo wptexturize( $current_issue_description ); ?>
-			</div>
-			<?php endif; ?>
-
+			<?php echo display_front_page_issue_details(); ?>
 			<hr class="fp-divider fp-divider-short">
 		</div>
 		<div class="col-sm-9">
 			<div class="row">
 				<?php
-				$issue_stories_exclude = array();
-				if ( $feature_1 ) {
-					$issue_stories_exclude[] = intval( $feature_1 );
-				}
-
-				$current_issue_stories = get_current_issue_stories( $issue_stories_exclude, 12 );
+				$current_issue_stories = get_front_page_issue_stories();
 
 				if ( $current_issue_stories ):
 				?>

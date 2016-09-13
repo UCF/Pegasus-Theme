@@ -1373,6 +1373,9 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 }
 
 
+/**
+ * Displays a single "other story" item in the footer of the front page.
+ **/
 function display_front_page_other_story( $title, $url ) {
 	ob_start();
 ?>
@@ -1430,6 +1433,81 @@ function display_social_header() {
 		</ul>
 	<?php endif;
     return ob_get_clean();
+}
+
+
+/**
+ * Displays the current issue's thumbnail and description, for use in the
+ * "In This Issue" section of the front page.
+ **/
+function display_front_page_issue_details() {
+	$current_issue = get_current_issue();
+	$current_issue_title = wptexturize( $current_issue->post_title );
+	$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
+	$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true );
+	$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
+
+	ob_start();
+?>
+	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
+
+		<?php if ( $current_issue_thumbnail ): ?>
+		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
+		<?php endif; ?>
+	</a>
+
+	<?php if ( $current_issue_description ): ?>
+	<div class="fp-issue-description center-block text-left">
+		<?php echo wptexturize( $current_issue_description ); ?>
+	</div>
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Returns an array of Story objects for use in the "In This Issue" section of
+ * the front page.
+ **/
+function get_front_page_issue_stories() {
+	$issue_stories_exclude = array();
+	$feature_1 = get_theme_option( 'front_page_featured_story_1' );
+
+	if ( $feature_1 ) {
+		$issue_stories_exclude[] = intval( $feature_1 );
+	}
+
+	return get_current_issue_stories( $issue_stories_exclude, 12 );
+}
+
+
+/**
+ * Returns an array of theme option data for each "other story" to be listed
+ * in the footer on the front page.
+ **/
+function get_front_page_other_stories() {
+	$other_stories = array();
+	$other_story_title = null;
+	$other_story_url = null;
+	$i = 1;
+
+	while ( $i < 4 ) {
+		$other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' );
+		$other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' );
+
+		if ( $other_story_title && $other_story_url ) {
+			$other_stories[] = array(
+				'title' => $other_story_title,
+				'url' => $other_story_url
+			);
+		}
+
+		$i++;
+	}
+
+	return $other_stories;
 }
 
 
