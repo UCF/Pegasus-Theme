@@ -527,41 +527,50 @@ li#nav-about {
     border-top: 1px solid #e5e5e5;
     padding: 20px 0;
   }
+}
 
-  ul {
-    @include list-unstyled();
-    margin-bottom: 0;
-    text-align: center;
-  }
+.social-icon-list-heading {
+  @include gotham(6);
+  color: $gray-medium;
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
-  li {
-    display: inline-block;
-    padding: 0 3px;
+.social-icon-list {
+  @include list-unstyled();
+  margin-bottom: 0;
+  text-align: center;
+}
 
-    a {
-      @include sprite();
-      height: 32px;
-      width: 35px;
+.social-icon-list-item {
+  display: inline-block;
+  padding: 0 3px;
 
-      &.facebook {
-        background-position: 3px -114px;
-      }
+  a {
+    @include sprite();
+    height: 32px;
+    width: 35px;
 
-      &.twitter {
-        background-position: -63px -113px;
-      }
+    &.facebook {
+      background-position: 3px -114px;
+    }
 
-      &.flickr {
-        background-position: -30px -114px;
-      }
+    &.twitter {
+      background-position: -63px -113px;
+    }
 
-      &.youtube {
-        background-position: -98px -114px;
-      }
+    &.flickr {
+      background-position: -30px -114px;
+    }
 
-      &.googleplus {
-        background-position: -131px -114px;
-      }
+    &.youtube {
+      background-position: -98px -114px;
+    }
+
+    &.googleplus {
+      background-position: -131px -114px;
     }
   }
 }

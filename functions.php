@@ -1212,6 +1212,305 @@ function api_story_get_description( $object, $field_name, $request ) {
 add_action( 'rest_api_init', 'register_api_story_meta' );
 
 
+/**
+ * Displays a single story on the front page.
+ **/
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
+	if ( !$story ) { return false; }
+
+	$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
+	$thumbnail = null;
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	$title = wptexturize( $story->post_title );
+
+	$description = '';
+	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
+		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
+	}
+	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
+		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
+	}
+
+	$vertical = null;
+	if ( $show_vertical ) {
+		$vertical = get_the_category( $story->ID );
+		if ( $vertical ) {
+			$vertical = $vertical[0];
+			$vertical = wptexturize( $vertical->name );
+		}
+	}
+
+	ob_start();
+?>
+<article class="fp-feature <?php echo $css_class; ?>">
+	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php if ( $thumbnail ): ?>
+		<div class="fp-feature-img-wrap">
+			<img class="fp-feature-img center-block img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+
+			<?php if ( $show_vertical && $vertical ): ?>
+			<span class="fp-vertical">
+				<?php echo $vertical; ?>
+			</span>
+			<?php endif; ?>
+		</div>
+		<?php endif; ?>
+	</a>
+	<div class="fp-feature-text-wrap">
+		<<?php echo $heading; ?> class="fp-feature-title">
+			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+				<?php echo $title; ?>
+			</a>
+		</<?php echo $heading; ?>>
+		<div class="fp-feature-description">
+			<?php echo $description; ?>
+		</div>
+	</div>
+</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single Today article on the front page.
+ **/
+function display_front_page_today_story( $article ) {
+	$url = $article->get_link();
+	$title = $article->get_title();
+
+	ob_start();
+?>
+<article class="fp-today-feed-item">
+	<a class="fp-today-item-link" href="<?php echo $url; ?>">
+		<?php echo $title; ?>
+	</a>
+</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single event item on the front page.
+ **/
+function display_front_page_event( $event ) {
+	$start = strtotime( $event['starts'] );
+	$description = substr( strip_tags( $event['description'] ), 0, 250 );
+	if ( strlen( $description ) == 250 ) {
+		$description .= '...';
+	}
+
+	ob_start();
+?>
+<div class="fp-event">
+	<div class="fp-event-when">
+		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
+		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
+		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
+	</div>
+	<div class="fp-event-content">
+		<span class="fp-vertical"><?php echo $event['category']; ?></span>
+		<span class="fp-event-title">
+			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
+		</span>
+		<div class="fp-event-description">
+			<?php echo $description; ?>
+		</div>
+	</div>
+</div>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single featured gallery on the front page.
+ **/
+function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
+	if ( !$gallery ) { return false; }
+
+	$title = wptexturize( $gallery->post_title );
+
+	$vertical = get_the_category( $gallery->ID );
+	if ( $vertical ) {
+		$vertical = $vertical[0];
+		$vertical = wptexturize( $vertical->name );
+	}
+
+	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
+	$thumbnail = null;
+	if ( $thumbnail_id ) {
+		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-featured-gallery-thumbnail' );
+		if ( $thumbnail ) {
+			$thumbnail = $thumbnail[0];
+		}
+	}
+
+	ob_start();
+?>
+	<article class="fp-gallery <?php echo $css_class; ?>">
+		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
+			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2>
+
+			<?php if ( $vertical ): ?>
+			<span class="fp-vertical"><?php echo $vertical; ?></span>
+			<?php endif; ?>
+
+			<?php if ( $thumbnail ): ?>
+			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<?php endif; ?>
+		</a>
+	</article>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays a single "other story" item in the footer of the front page.
+ **/
+function display_front_page_other_story( $title, $url ) {
+	ob_start();
+?>
+	<?php echo $title; ?>
+	<a href="<?php echo $url; ?>"><?php echo $url; ?></a>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+* Displays social buttons (Facebook, Twitter, G+) for front page header.
+*
+* @return string
+* @author RJ Bruneel
+**/
+function display_social_header() {
+	$fb_url = get_theme_option( 'fb_url' );
+	$twitter_url = get_theme_option( 'twitter_url' );
+	$googleplus_url = get_theme_option( 'googleplus_url' );
+	$flickr_url = get_theme_option( 'flickr_url' );
+	$youtube_url = get_theme_option( 'youtube_url' );
+	ob_start();
+	if (
+		!empty( $fb_url ) ||
+		!empty( $twitter_url ) ||
+		!empty( $googleplus_url ) ||
+		!empty( $flickr_url ) ||
+		!empty( $youtube_url )
+	):
+	?>
+		<span class="social-icon-list-heading">Share</span>
+		<ul class="social-icon-list">
+			<?php if ( !empty( $fb_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
+			</li>
+			<?php } if ( !empty( $twitter_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
+			</li>
+			<?php } if ( !empty( $flickr_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url; ?>">Follow UCF on Flickr</a>
+			</li>
+			<?php } if ( !empty( $youtube_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
+			</li>
+			<?php } if ( !empty( $googleplus_url ) ) { ?>
+			<li class="social-icon-list-item">
+				<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Follow UCF on Google+</a>
+			</li>
+			<?php } ?>
+		</ul>
+	<?php endif;
+    return ob_get_clean();
+}
+
+
+/**
+ * Displays the current issue's thumbnail and description, for use in the
+ * "In This Issue" section of the front page.
+ **/
+function display_front_page_issue_details() {
+	$current_issue = get_current_issue();
+	$current_issue_title = wptexturize( $current_issue->post_title );
+	$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
+	$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true );
+	$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
+
+	ob_start();
+?>
+	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
+
+		<?php if ( $current_issue_thumbnail ): ?>
+		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
+		<?php endif; ?>
+	</a>
+
+	<?php if ( $current_issue_description ): ?>
+	<div class="fp-issue-description center-block text-left">
+		<?php echo wptexturize( $current_issue_description ); ?>
+	</div>
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Returns an array of Story objects for use in the "In This Issue" section of
+ * the front page.
+ **/
+function get_front_page_issue_stories() {
+	$issue_stories_exclude = array();
+	$feature_1 = get_theme_option( 'front_page_featured_story_1' );
+
+	if ( $feature_1 ) {
+		$issue_stories_exclude[] = intval( $feature_1 );
+	}
+
+	return get_current_issue_stories( $issue_stories_exclude, 12 );
+}
+
+
+/**
+ * Returns an array of theme option data for each "other story" to be listed
+ * in the footer on the front page.
+ **/
+function get_front_page_other_stories() {
+	$other_stories = array();
+	$other_story_title = null;
+	$other_story_url = null;
+	$i = 1;
+
+	while ( $i < 4 ) {
+		$other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' );
+		$other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' );
+
+		if ( $other_story_title && $other_story_url ) {
+			$other_stories[] = array(
+				'title' => $other_story_title,
+				'url' => $other_story_url
+			);
+		}
+
+		$i++;
+	}
+
+	return $other_stories;
+}
+
+
 /****************************************************************************
  *
  * END site-level functions.  Don't add anything else below this line.

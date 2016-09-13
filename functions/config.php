@@ -339,12 +339,6 @@ $story_options = $story_obj->get_objects_as_options( array(
 	'orderby' => 'date',
 	'order' => 'DESC'
 ) );
-$story_gallery_options = $story_obj->get_objects_as_options( array(
-	'meta_key' => 'story_template',
-	'meta_value' => 'photo_essay',
-	'orderby' => 'date',
-	'order' => 'DESC'
-) );
 
 
 /**
@@ -441,7 +435,7 @@ Config::$theme_settings = array(
 			'name'        => 'Featured Gallery',
 			'id'          => THEME_OPTIONS_NAME.'[front_page_featured_gallery_1]',
 			'description' => 'Featured gallery displayed next to events on the front page.',
-			'choices'     => $story_gallery_options,
+			'choices'     => $story_options,
 			'default'     => '',
 			'value'       => $theme_options['front_page_featured_gallery_1'],
 		)),
