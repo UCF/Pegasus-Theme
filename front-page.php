@@ -148,8 +148,13 @@ else:
 			<div class="fp-events">
 				<?php
 				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
-				foreach ( $events as $event ) {
-					echo display_front_page_event( $event );
+				if ( $events ) {
+					foreach ( $events as $event ) {
+						echo display_front_page_event( $event );
+					}
+				}
+				else {
+					echo 'Events could not be loaded. Please try again later.';
 				}
 				?>
 			</div>
