@@ -53,7 +53,7 @@
 					?>
 					</div>
 				</div>
-				<?php echo display_story_list( $issue, 'hidden-md' ); ?>
+				<?php echo display_story_list( $issue, 'hidden-md hidden-lg' ); ?>
 				<div class="controls hidden-md hidden-lg">
 					<a class="backward icon icon-caret-left" href="#">Back</a>
 					<a class="forward icon icon-caret-right" href="#">Forward</a>
