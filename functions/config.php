@@ -573,6 +573,13 @@ Config::$theme_settings = array(
 			'default'     => '',
 			'value'       => $theme_options['instagram_url'],
 		)),
+		new TextField(array(
+			'name'        => 'Share URL',
+			'id'          => THEME_OPTIONS_NAME.'[share_url]',
+			'description' => 'URL of the Share page related to this site. If this field is left empty, this share link will not appear in the footer.',
+			'default'     => '',
+			'value'       => $theme_options['share_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(
