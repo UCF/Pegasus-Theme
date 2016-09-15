@@ -12693,12 +12693,12 @@ li#nav-about a {
   }
 }
 
-.front-page {
+.front-page header {
   border-top: 10px solid #fc0;
 }
 
 @media (min-width:768px) {
-  .front-page {
+  .front-page header {
     border-top-width: 25px;
   }
 }
