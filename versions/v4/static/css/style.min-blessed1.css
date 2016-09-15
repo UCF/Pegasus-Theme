@@ -13029,6 +13029,10 @@ li#nav-about a {
     font-size: 24px;
     line-height: 1.2;
   }
+
+  .fp-today-feed .fp-today-feed-item {
+    min-height: 150px;
+  }
 }
 
 .fp-feature-link,
@@ -13088,6 +13092,15 @@ li#nav-about a {
     background: 0 0;
     padding: 0;
   }
+}
+
+.fp-today-feed .fp-today-feed-item .publish-date {
+  font-family: "Gotham SSm 8r","Gotham SSm A","Gotham SSm B";
+  font-style: normal;
+  font-size: 13px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  text-transform: uppercase;
 }
 
 .fp-today-feed-more {
@@ -14088,18 +14101,4 @@ article.photo-essay .photo-essay-item-square .carat {
 article.photo-essay .photo-essay-item-landscape .photo-essay-caption,
 article.photo-essay .photo-essay-item-square .photo-essay-caption {
   padding: 30px 8.333% 60px;
-}
-
-article.photo-essay .photo-essay-item-portrait.alternate .carat {
-  border-color: transparent transparent transparent #fff;
-  border-width: 35px 0 35px 25px;
-  bottom: auto;
-  left: 0;
-  margin: unset;
-  right: auto;
-  top: 50px;
-}
-
-article.photo-essay .photo-essay-item-portrait.alternate .photo-essay-caption {
-  padding: 60px 30px 0 0;
 }

@@ -1,4 +1,18 @@
-@import url('style.min-blessed1.css?z=829');
+@import url('style.min-blessed1.css?z=163');
+
+article.photo-essay .photo-essay-item-portrait.alternate .carat {
+  border-color: transparent transparent transparent #fff;
+  border-width: 35px 0 35px 25px;
+  bottom: auto;
+  left: 0;
+  margin: unset;
+  right: auto;
+  top: 50px;
+}
+
+article.photo-essay .photo-essay-item-portrait.alternate .photo-essay-caption {
+  padding: 60px 30px 0 0;
+}
 
 @media (max-width:991px) {
   article.photo-essay .photo-essay-item-portrait.alternate .carat {

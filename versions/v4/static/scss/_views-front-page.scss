@@ -386,6 +386,21 @@
     background: transparent;
     padding: 0;
   }
+
+  .fp-today-feed-item {
+
+    @media (min-width: $screen-md-min) {
+      min-height: 150px;
+    }
+
+    .publish-date {
+      @include gotham(8);
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+  }
 }
 
 .fp-today-feed-more {
