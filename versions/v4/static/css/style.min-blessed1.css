@@ -12996,6 +12996,16 @@ li#nav-about a {
   transition: all .5s ease;
 }
 
+.fp-issue-link {
+  transition: all .5s ease;
+}
+
+.fp-issue-link:hover img {
+  -webkit-filter: brightness(80%);
+  filter: brightness(80%);
+  transition: all .5s ease;
+}
+
 @media (min-width:768px) {
   .fp-feature {
     width: 100%;
@@ -14096,9 +14106,4 @@ article.photo-essay .photo-essay-item-square .carat {
   margin: auto;
   right: 0;
   top: auto;
-}
-
-article.photo-essay .photo-essay-item-landscape .photo-essay-caption,
-article.photo-essay .photo-essay-item-square .photo-essay-caption {
-  padding: 30px 8.333% 60px;
 }
