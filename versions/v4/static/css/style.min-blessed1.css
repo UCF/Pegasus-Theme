@@ -12991,8 +12991,8 @@ li#nav-about a {
 .fp-feature:hover img,
 .fp-gallery:hover .fp-feature-text-wrap,
 .fp-gallery:hover img {
-  -webkit-filter: brightness(80%);
-  filter: brightness(80%);
+  -webkit-filter: brightness(115%);
+  filter: brightness(115%);
   transition: all .5s ease;
 }
 
@@ -13001,8 +13001,8 @@ li#nav-about a {
 }
 
 .fp-issue-link:hover img {
-  -webkit-filter: brightness(80%);
-  filter: brightness(80%);
+  -webkit-filter: brightness(115%);
+  filter: brightness(115%);
   transition: all .5s ease;
 }
 
