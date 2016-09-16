@@ -1284,7 +1284,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 function display_front_page_today_story( $article ) {
 	$url = $article->get_link();
 	$title = $article->get_title();
-	$publish_date = $article->get_date('F j');
+	$publish_date = $article->get_date('m/d');
 
 	ob_start();
 ?>

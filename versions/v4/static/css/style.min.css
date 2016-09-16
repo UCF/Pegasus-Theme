@@ -1,4 +1,8 @@
-@import url('style.min-blessed1.css?z=419');
+@import url('style.min-blessed1.css?z=52');
+
+article.photo-essay .photo-essay-img.pull-left {
+  margin-right: 0;
+}
 
 article.photo-essay .carat {
   border-style: solid;

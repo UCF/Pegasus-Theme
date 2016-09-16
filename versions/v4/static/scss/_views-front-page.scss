@@ -428,6 +428,7 @@
 
     .publish-date {
       @include gotham(8);
+      color: #999;
       font-size: 13px;
       font-weight: 900;
       margin-bottom: 10px;
@@ -835,6 +836,10 @@
     text-align: center;
     vertical-align: middle;
     width: 32px;
+
+    &:hover {
+      background-color: lighten(#525252, 10)
+    }
 
     span {
       font-size: 20px;
