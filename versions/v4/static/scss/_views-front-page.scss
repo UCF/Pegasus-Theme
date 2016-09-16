@@ -276,6 +276,28 @@
   }
 }
 
+.fp-issue-wrapper {
+  @media (min-width: $screen-sm-min) {
+    position: relative;
+  }
+
+  .fp-issue {
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+    }
+
+    &.affix {
+
+      @media (min-width: $screen-sm-min) {
+          position: fixed;
+          top: 0;
+      }
+    }
+
+  }
+}
+
 .fp-issue-link {
   transition: all .5s ease;
 

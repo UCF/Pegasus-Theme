@@ -1,4 +1,23 @@
-@import url('style.min-blessed1.css?z=19');
+@import url('style.min-blessed1.css?z=483');
+
+article.photo-essay .carat {
+  border-style: solid;
+  height: 0;
+  position: absolute;
+  width: 0;
+  z-index: 2;
+}
+
+article.photo-essay .photo-essay-item-landscape .carat,
+article.photo-essay .photo-essay-item-square .carat {
+  border-color: transparent transparent #fff;
+  border-width: 0 35px 25px;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  right: 0;
+  top: auto;
+}
 
 article.photo-essay .photo-essay-item-landscape .photo-essay-caption,
 article.photo-essay .photo-essay-item-square .photo-essay-caption {

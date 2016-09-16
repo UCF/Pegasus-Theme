@@ -13011,6 +13011,19 @@ li#nav-about a {
     width: 100%;
   }
 
+  .fp-issue-wrapper {
+    position: relative;
+  }
+
+  .fp-issue-wrapper .fp-issue {
+    position: absolute;
+  }
+
+  .fp-issue-wrapper .fp-issue.affix {
+    position: fixed;
+    top: 0;
+  }
+
   .fp-feature-top {
     position: relative;
   }
@@ -14087,23 +14100,4 @@ article.photo-essay .photo-essay-img.pull-right {
 
 article.photo-essay .photo-essay-img.pull-left {
   margin-right: 0;
-}
-
-article.photo-essay .carat {
-  border-style: solid;
-  height: 0;
-  position: absolute;
-  width: 0;
-  z-index: 2;
-}
-
-article.photo-essay .photo-essay-item-landscape .carat,
-article.photo-essay .photo-essay-item-square .carat {
-  border-color: transparent transparent #fff;
-  border-width: 0 35px 25px;
-  bottom: 0;
-  left: 0;
-  margin: auto;
-  right: 0;
-  top: auto;
 }

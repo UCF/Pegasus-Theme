@@ -107,10 +107,12 @@ else:
 		<?php endif; ?>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-3 text-center">
-			<?php echo display_front_page_issue_details(); ?>
-			<hr class="fp-divider fp-divider-short">
+	<div class="row fp-issue-story">
+		<div class="col-sm-3 text-center fp-issue-wrapper">
+			<div class="fp-issue">
+				<?php echo display_front_page_issue_details(); ?>
+				<hr class="fp-divider fp-divider-short">
+			</div>
 		</div>
 		<div class="col-sm-9">
 			<div class="row">

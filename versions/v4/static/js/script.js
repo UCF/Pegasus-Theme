@@ -890,6 +890,33 @@ var twitterWidget = function () {
 };
 
 
+var $fpIssueStory,
+  $fpIssue,
+  issueTop,
+  issueBottom;
+
+var setIssueTopBottom = function () {
+  issueTop = $fpIssue.offset().top;
+  issueBottom = $('body').outerHeight(true) - ($fpIssueStory.offset().top + $fpIssueStory.outerHeight(true));
+};
+
+var initFrontPageIssue = function ($) {
+  $fpIssueStory = $('.fp-issue-story');
+  $fpIssue = $fpIssueStory.find('.fp-issue');
+  setIssueTopBottom();
+
+  $fpIssue.affix({
+    offset: {
+      top: function () {
+        return issueTop;
+      },
+      bottom: function () {
+        return (this.bottom = issueBottom);
+      }
+    }
+  });
+};
+
 if (typeof jQuery !== 'undefined'){
   (function(){
     $(document).ready(function() {
@@ -908,7 +935,14 @@ if (typeof jQuery !== 'undefined'){
       customChart($);
       affixedCallouts($);
       photoEssayNav($);
-      twitterWidget();
+      if ($('.front-page').length) {
+        twitterWidget();
+        if ($(this).width() > 991) {
+          setTimeout(function () {
+            initFrontPageIssue($);
+          }, 1000);
+        }
+      }
     });
   })(jQuery);
 }
