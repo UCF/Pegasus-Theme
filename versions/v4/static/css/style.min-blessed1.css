@@ -12081,6 +12081,13 @@ li#nav-about a {
   text-decoration: none;
 }
 
+#archives a:active h4,
+#archives a:hover h4,
+.fp-feature:hover a,
+.fp-gallery:hover a {
+  text-decoration: underline;
+}
+
 #more-stories article .story-title,
 #more-stories article .subtitle {
   display: block;
@@ -12405,11 +12412,6 @@ li#nav-about a {
 
 #archives a {
   color: #222;
-}
-
-#archives a:active h4,
-#archives a:hover h4 {
-  text-decoration: underline;
 }
 
 #archives a.featured-story {
@@ -12994,6 +12996,10 @@ li#nav-about a {
   -webkit-filter: brightness(115%);
   filter: brightness(115%);
   transition: all .5s ease;
+}
+
+.fp-issue-wrapper .fp-issue a {
+  color: #000;
 }
 
 .fp-issue-link {
@@ -14080,25 +14086,4 @@ article.photo-essay .photo-essay-item {
 article.photo-essay .img-col {
   position: relative;
   z-index: 1;
-}
-
-@media (max-width:767px) {
-  article.photo-essay .caption-col,
-  article.photo-essay .img-col {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  article.photo-essay .navbar-col {
-    display: none;
-  }
-}
-
-article.photo-essay .photo-essay-img {
-  margin: 0;
-  width: 100%;
-}
-
-article.photo-essay .photo-essay-img.pull-right {
-  margin-left: 0;
 }

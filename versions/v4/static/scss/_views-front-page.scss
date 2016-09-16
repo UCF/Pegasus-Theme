@@ -274,6 +274,10 @@
     filter: brightness(115%);
     transition: all .5s ease;
   }
+
+  &:hover a {
+    text-decoration: underline;
+  }
 }
 
 .fp-issue-wrapper {
@@ -282,6 +286,10 @@
   }
 
   .fp-issue {
+
+    a {
+      color: #000;
+    }
 
     @media (min-width: $screen-sm-min) {
       position: absolute;
