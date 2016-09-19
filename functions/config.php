@@ -447,48 +447,6 @@ Config::$theme_settings = array(
 			'default'     => '',
 		)),
 		new TextField(array(
-			'name'        => 'Other Story #1 Title',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_title]',
-			'description' => 'Title of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_1_title'],
-		)),
-		new TextField(array(
-			'name'        => 'Other Story #1 URL',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_1_url]',
-			'description' => 'URL of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_1_url'],
-		)),
-		new TextField(array(
-			'name'        => 'Other Story #2 Title',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_title]',
-			'description' => 'Title of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_2_title'],
-		)),
-		new TextField(array(
-			'name'        => 'Other Story #2 URL',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_2_url]',
-			'description' => 'URL of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_2_url'],
-		)),
-		new TextField(array(
-			'name'        => 'Other Story #3 Title',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_title]',
-			'description' => 'Title of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_3_title'],
-		)),
-		new TextField(array(
-			'name'        => 'Other Story #3 URL',
-			'id'          => THEME_OPTIONS_NAME.'[front_page_other_story_3_url]',
-			'description' => 'URL of story displayed in "Other Stories" section of front page.',
-			'default'     => '',
-			'value'       => $theme_options['front_page_other_story_3_url'],
-		)),
-		new TextField(array(
 			'name'        => 'UCF Today Story Feed URL',
 			'id'          => THEME_OPTIONS_NAME.'[front_page_today_feed_url]',
 			'description' => 'URL to the RSS feed for stories to display in "The Feed" section of the front page.',
@@ -736,6 +694,7 @@ function __init__(){
 	add_image_size( 'issue-thumbnail', 190, 248 );
 	add_image_size( 'issue-cover-feature', 768, 432, true );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
+	register_nav_menu( 'footer-middle-menu', __( 'Footer Middle Menu' ) );
 }
 add_action( 'after_setup_theme', '__init__' );
 add_action( 'init', 'set_defaults_for_options', 4 );

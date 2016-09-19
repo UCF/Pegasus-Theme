@@ -1,4 +1,9 @@
-@import url('style.min-blessed1.css?z=44');
+@import url('style.min-blessed1.css?z=40');
+
+article.photo-essay .photo-essay-img {
+  margin: 0;
+  width: 100%;
+}
 
 article.photo-essay .photo-essay-img.pull-right {
   margin-left: 0;

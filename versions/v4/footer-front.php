@@ -3,7 +3,7 @@
 						<div class="container">
 							<div class="row">
 								<div class="col-sm-3 col-sm-offset-1 col-md-offset-1 col-sm-push-8">
-									<h2 class="fp-subheading-underline fp-footer-heading">More Info</h2>
+									<h2 class="fp-subheading-underline fp-footer-heading">Connect</h2>
 									<?php
 									$defaults = array(
 										'theme_location' => 'footer-menu',
@@ -14,24 +14,16 @@
 									?>
 								</div>
 								<div class="col-sm-3 col-sm-offset-1 hidden-xs">
-									<aside class="fp-other-stories">
-										<h2 class="fp-subheading-underline fp-footer-heading">Other Stories</h2>
-										<ul class="list-unstyled">
-										<?php
-										$other_stories = get_front_page_other_stories();
-
-										if ( $other_stories ):
-											foreach ( $other_stories as $other_story ):
-										?>
-											<li>
-												<?php echo display_front_page_other_story( $other_story['title'], $other_story['url'] ); ?>
-											</li>
-										<?php
-											endforeach;
-										endif;
-										?>
-										</ul>
-									</aside>
+									<h2 class="fp-subheading-underline fp-footer-heading">About Pegasus Magazine</h2>
+									<ul class="list-unstyled">
+									<?php
+									$defaults = array(
+										'theme_location' => 'footer-middle-menu',
+										'container'      => false,
+										'menu_class'     => 'fp-footer-menu list-unstyled',
+									);
+									wp_nav_menu( $defaults );
+									?>
 								</div>
 								<div class="col-sm-4 col-sm-pull-8">
 									<a class="fp-footer-logo" href="<?php echo get_site_url(); ?>">
