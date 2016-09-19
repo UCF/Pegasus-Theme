@@ -336,6 +336,8 @@
   .fp-feature-link:hover,
   .fp-feature-link:active,
   .fp-feature-link:focus {
+    @include gotham(7);
+
     @media (min-width: $screen-sm-min) {
       color: $white;
     }
@@ -348,6 +350,8 @@
   }
 
   .fp-feature-description {
+    font-family: $font-family-serif;
+
     @media (min-width: $screen-md-min) {
       font-size: 24px;
       line-height: 1.2;
@@ -388,16 +392,15 @@
 }
 
 .fp-feature-title {
-  @include archer(7);
+  @include gotham(7);
   font-size: 22px;
   margin: 15px 0 8px;
 }
 
 .fp-feature-description {
-  @include archer();
+  font-family: $font-family-serif;
   color: $black;
   font-size: 16px;
-  line-height: 1.3;
 }
 
 
@@ -564,7 +567,7 @@
 .fp-issue-description {
   font-size: 14px;
   font-weight: 600;
-  margin-top: 30px;
+  margin-top: 15px;
   text-align: center;
   text-transform: uppercase;
 }
