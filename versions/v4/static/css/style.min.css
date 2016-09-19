@@ -1,4 +1,12 @@
-@import url('style.min-blessed1.css?z=278');
+@import url('style.min-blessed1.css?z=344');
+
+article.photo-essay .social .share-facebook,
+article.photo-essay .social .share-googleplus,
+article.photo-essay .social .share-twitter {
+  display: inline-block;
+  float: none;
+  margin-right: 0;
+}
 
 article.photo-essay .photo-essay-contents {
   margin: auto;

@@ -38,9 +38,9 @@
     .story-title {
       @include font-smoothing();
       color: #333;
-      font-family: "AleoBold", serif;
+      font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
       font-size: 16px;
-      font-weight: normal;
+      font-weight: 700;
       line-height: 18px;
       margin-top: 0;
     }
