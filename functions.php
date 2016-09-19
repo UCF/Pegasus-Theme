@@ -1359,12 +1359,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 ?>
 	<article class="fp-gallery <?php echo $css_class; ?>">
 		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
-			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2>
-
-			<?php if ( $vertical ): ?>
-			<span class="fp-vertical"><?php echo $vertical; ?></span>
-			<?php endif; ?>
-
+			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
 			<?php if ( $thumbnail ): ?>
 			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
 			<?php endif; ?>
