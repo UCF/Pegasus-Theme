@@ -573,6 +573,13 @@ Config::$theme_settings = array(
 			'default'     => '',
 			'value'       => $theme_options['instagram_url'],
 		)),
+		new TextField(array(
+			'name'        => 'Share URL',
+			'id'          => THEME_OPTIONS_NAME.'[share_url]',
+			'description' => 'URL of the Share page related to this site. If this field is left empty, this share link will not appear in the footer.',
+			'default'     => '',
+			'value'       => $theme_options['share_url'],
+		)),
 	),
 	'Devices' => array(
 		new TextField(array(
@@ -694,6 +701,7 @@ Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
+	array( 'name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1', ),
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
 );
 

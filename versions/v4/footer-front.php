@@ -49,10 +49,12 @@
 									$fb_url = get_theme_option( 'fb_url' );
 									$twitter_url = get_theme_option( 'twitter_url' );
 									$instagram_url = get_theme_option( 'instagram_url' );
+									$share_url = get_theme_option( 'share_url' );
 									if (
 										!empty( $fb_url ) ||
 										!empty( $twitter_url ) ||
-										!empty( $instagram_url )
+										!empty( $instagram_url ) ||
+										!empty( $share_url )
 									):
 									?>
 									<div class="fp-footer-social-links">
@@ -62,6 +64,8 @@
 											<a target="_blank" class="social-icon" href="<?php echo $twitter_url; ?>"><span class="fa fa-twitter"></span><span class="sr-only">Follow UCF on Twitter</span></a>
 										<?php } if ( !empty( $instagram_url ) ) { ?>
 											<a target="_blank" class="social-icon" href="<?php echo $instagram_url; ?>"><span class="fa fa-instagram"></span><span class="sr-only">Follow UCF on Instagram</span></a>
+										<?php } if ( !empty( $share_url ) ) { ?>
+											<a target="_blank" class="social-icon" href="<?php echo $share_url; ?>"><span class="fa fa-share-alt"></span><span class="sr-only">Share</span></a>
 										<?php } ?>
 									</div>
 									<?php endif; ?>

@@ -4,13 +4,6 @@
 //
 // General
 //
-.front-page {
-  border-top: 10px solid $ucf-gold;
-
-  @media (min-width: $screen-sm-min) {
-    border-top-width: 25px;
-  }
-}
 
 .fp-divider {
   border-top: 3px solid $ucf-gold;
@@ -260,6 +253,63 @@
   }
 }
 
+// hover effect
+.fp-feature,
+.fp-gallery {
+
+  .fp-feature-text-wrap,
+  img {
+    transition: all .5s ease;
+  }
+
+  &:hover .fp-feature-text-wrap,
+  &:hover img {
+    filter: brightness(115%);
+    transition: all .5s ease;
+  }
+
+  &:hover a {
+    text-decoration: underline;
+  }
+}
+
+.fp-issue-wrapper {
+  @media (min-width: $screen-sm-min) {
+    position: relative;
+  }
+
+  .fp-issue {
+
+    a {
+      color: #000;
+    }
+
+    @media (min-width: $screen-sm-min) {
+      position: absolute;
+    }
+
+    &.affix {
+
+      @media (min-width: $screen-sm-min) {
+          position: fixed;
+          top: 0;
+      }
+    }
+
+  }
+}
+
+.fp-issue-link {
+  transition: all .5s ease;
+
+  &:hover img {
+    filter: brightness(115%);
+    transition: all .5s ease;
+  }
+}
+
+
+
 .fp-feature-top {
   width: 100%;
 
@@ -268,6 +318,7 @@
   }
 
   .fp-feature-text-wrap {
+
     @media (min-width: $screen-sm-min) {
       background-color: rgba(0, 0, 0, .6);
       bottom: 0;
@@ -275,6 +326,7 @@
       padding: 10px 30px 30px;
       position: absolute;
       right: 0;
+
     }
   }
 
@@ -367,6 +419,22 @@
   @media (min-width: $screen-sm-min) {
     background: transparent;
     padding: 0;
+  }
+
+  .fp-today-feed-item {
+
+    @media (min-width: $screen-md-min) {
+      min-height: 150px;
+    }
+
+    .publish-date {
+      @include gotham(8);
+      color: #337ab7;
+      font-size: 13px;
+      font-weight: 900;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
   }
 }
 
@@ -769,6 +837,10 @@
     text-align: center;
     vertical-align: middle;
     width: 32px;
+
+    &:hover {
+      background-color: lighten(#525252, 10)
+    }
 
     span {
       font-size: 20px;
