@@ -1,39 +1,4 @@
-@import url('style.min-blessed1.css?z=344');
-
-article.photo-essay .social .share-facebook,
-article.photo-essay .social .share-googleplus,
-article.photo-essay .social .share-twitter {
-  display: inline-block;
-  float: none;
-  margin-right: 0;
-}
-
-article.photo-essay .photo-essay-contents {
-  margin: auto;
-  max-width: 1140px;
-}
-
-article.photo-essay .photo-essay-item {
-  margin-bottom: 0;
-  margin-top: 10px;
-}
-
-article.photo-essay .img-col {
-  position: relative;
-  z-index: 1;
-}
-
-@media (max-width:767px) {
-  article.photo-essay .caption-col,
-  article.photo-essay .img-col {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  article.photo-essay .navbar-col {
-    display: none;
-  }
-}
+@import url('style.min-blessed1.css?z=941');
 
 article.photo-essay .photo-essay-img {
   margin: 0;

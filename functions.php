@@ -1371,19 +1371,6 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 
 
 /**
- * Displays a single "other story" item in the footer of the front page.
- **/
-function display_front_page_other_story( $title, $url ) {
-	ob_start();
-?>
-	<?php echo $title; ?>
-	<a href="<?php echo $url; ?>"><?php echo $url; ?></a>
-<?php
-	return ob_get_clean();
-}
-
-
-/**
 * Displays social buttons (Facebook, Twitter, G+) for front page header.
 *
 * @return string
@@ -1479,33 +1466,6 @@ function get_front_page_issue_stories() {
 	return get_current_issue_stories( $issue_stories_exclude, 12 );
 }
 
-
-/**
- * Returns an array of theme option data for each "other story" to be listed
- * in the footer on the front page.
- **/
-function get_front_page_other_stories() {
-	$other_stories = array();
-	$other_story_title = null;
-	$other_story_url = null;
-	$i = 1;
-
-	while ( $i < 4 ) {
-		$other_story_title = get_theme_option( 'front_page_other_story_' . $i . '_title' );
-		$other_story_url = get_theme_option( 'front_page_other_story_' . $i . '_url' );
-
-		if ( $other_story_title && $other_story_url ) {
-			$other_stories[] = array(
-				'title' => $other_story_title,
-				'url' => $other_story_url
-			);
-		}
-
-		$i++;
-	}
-
-	return $other_stories;
-}
 
 
 /****************************************************************************
