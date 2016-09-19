@@ -8,7 +8,7 @@
 .fp-divider {
   border-top: 3px solid $ucf-gold;
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 15px;
   width: 66%;
 }
 
@@ -430,7 +430,7 @@
     .publish-date {
       @include gotham(8);
       color: #337ab7;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 900;
       margin-bottom: 10px;
       text-transform: uppercase;
@@ -561,24 +561,33 @@
   margin: 0 0 20px;
 }
 
-.fp-issue-img,
 .fp-issue-description {
-  width: 220px;
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.fp-issue-img {
+  text-align: center;
+
+  @media (min-width: $screen-xs-min) {
+    max-width: 250px;
+  }
 
   @media (min-width: $screen-sm-min) {
-    width: 85%;
+    max-width: 170px;
   }
 
   @media (min-width: $screen-md-min) {
-    max-width: 220px;
-    width: 90%;
+    max-width: 200px;
   }
-}
 
-.fp-issue-description {
-  font-family: 'Roboto', sans-serif;
-  font-size: 13px;
-  margin-top: 15px;
+  @media (min-width: $screen-lg-min) {
+    max-width: 250px;
+  }
+
 }
 
 

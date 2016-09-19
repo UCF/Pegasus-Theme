@@ -1455,8 +1455,8 @@ function display_front_page_issue_details() {
 	</a>
 
 	<?php if ( $current_issue_description ): ?>
-	<div class="fp-issue-description center-block text-left">
-		<?php echo wptexturize( $current_issue_description ); ?>
+	<div class="fp-issue-description">
+		<?php echo $current_issue_title; ?>
 	</div>
 	<?php endif; ?>
 <?php

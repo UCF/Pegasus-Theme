@@ -12698,7 +12698,7 @@ li#nav-about a {
 .fp-divider {
   border-top: 3px solid #fc0;
   margin-bottom: 30px;
-  margin-top: 30px;
+  margin-top: 15px;
   width: 66%;
 }
 
@@ -12872,6 +12872,10 @@ li#nav-about a {
 @media (min-width:480px) {
   .fp-header-subtitle-pre {
     display: inline;
+  }
+
+  .fp-issue-img {
+    max-width: 250px;
   }
 }
 
@@ -13079,6 +13083,12 @@ li#nav-about a {
   text-align: left;
 }
 
+.fp-event-when,
+.fp-issue-img,
+.front-page-footer {
+  text-align: center;
+}
+
 .fp-feature-title {
   font-family: "Archer 7r","Archer A","Archer B";
   font-style: normal;
@@ -13117,7 +13127,7 @@ li#nav-about a {
   font-family: "Gotham SSm 8r","Gotham SSm A","Gotham SSm B";
   font-style: normal;
   color: #337ab7;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
   margin-bottom: 10px;
   text-transform: uppercase;
@@ -13135,7 +13145,6 @@ li#nav-about a {
 }
 
 .fp-event-day,
-.fp-issue-description,
 .fp-today-item-link {
   font-family: Roboto,sans-serif;
 }
@@ -13243,29 +13252,24 @@ li#nav-about a {
   margin: 0 0 20px;
 }
 
-.fp-issue-description,
-.fp-issue-img {
-  width: 220px;
+.fp-issue-description {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 30px;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 @media (min-width:768px) {
-  .fp-issue-description,
   .fp-issue-img {
-    width: 85%;
+    max-width: 170px;
   }
 }
 
 @media (min-width:992px) {
-  .fp-issue-description,
   .fp-issue-img {
-    max-width: 220px;
-    width: 90%;
+    max-width: 200px;
   }
-}
-
-.fp-issue-description {
-  font-size: 13px;
-  margin-top: 15px;
 }
 
 .fp-banner {
@@ -13312,7 +13316,6 @@ li#nav-about a {
 
 .fp-event-when {
   padding-right: 25px;
-  text-align: center;
   text-transform: uppercase;
   width: 90px;
 }
@@ -13438,7 +13441,6 @@ article.photo-essay .photo-essay-nav-link:hover {
   color: #fff;
   margin-top: 20px;
   padding: 40px 0;
-  text-align: center;
 }
 
 .front-page-footer a {
@@ -13977,6 +13979,10 @@ article.photo-essay blockquote p {
 }
 
 @media (min-width:1200px) {
+  .fp-issue-img {
+    max-width: 250px;
+  }
+
   article.photo-essay blockquote,
   article.photo-essay blockquote p {
     font-size: 24px;
