@@ -736,6 +736,7 @@ function __init__(){
 	add_image_size( 'issue-thumbnail', 190, 248 );
 	add_image_size( 'issue-cover-feature', 768, 432, true );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
+	register_nav_menu( 'footer-middle-menu', __( 'Footer Middle Menu' ) );
 }
 add_action( 'after_setup_theme', '__init__' );
 add_action( 'init', 'set_defaults_for_options', 4 );
