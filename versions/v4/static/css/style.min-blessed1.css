@@ -12695,16 +12695,6 @@ li#nav-about a {
   }
 }
 
-.front-page header {
-  border-top: 10px solid #fc0;
-}
-
-@media (min-width:768px) {
-  .front-page header {
-    border-top-width: 25px;
-  }
-}
-
 .fp-divider {
   border-top: 3px solid #fc0;
   margin-bottom: 30px;
@@ -13126,7 +13116,7 @@ li#nav-about a {
 .fp-today-feed .fp-today-feed-item .publish-date {
   font-family: "Gotham SSm 8r","Gotham SSm A","Gotham SSm B";
   font-style: normal;
-  color: #999;
+  color: #337ab7;
   font-size: 13px;
   font-weight: 900;
   margin-bottom: 10px;
@@ -14086,4 +14076,21 @@ article.photo-essay .photo-essay-item {
 article.photo-essay .img-col {
   position: relative;
   z-index: 1;
+}
+
+@media (max-width:767px) {
+  article.photo-essay .caption-col,
+  article.photo-essay .img-col {
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  article.photo-essay .navbar-col {
+    display: none;
+  }
+}
+
+article.photo-essay .photo-essay-img {
+  margin: 0;
+  width: 100%;
 }

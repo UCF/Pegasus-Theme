@@ -1,21 +1,4 @@
-@import url('style.min-blessed1.css?z=144');
-
-@media (max-width:767px) {
-  article.photo-essay .caption-col,
-  article.photo-essay .img-col {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  article.photo-essay .navbar-col {
-    display: none;
-  }
-}
-
-article.photo-essay .photo-essay-img {
-  margin: 0;
-  width: 100%;
-}
+@import url('style.min-blessed1.css?z=417');
 
 article.photo-essay .photo-essay-img.pull-right {
   margin-left: 0;

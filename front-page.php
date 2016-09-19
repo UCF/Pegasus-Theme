@@ -59,26 +59,26 @@ else:
 					<div class="fp-today-feed-col">
 						<?php echo display_front_page_today_story( $articles[0] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[1] ); ?>
+						<?php echo display_front_page_today_story( $articles[5] ); ?>
 						<hr class="fp-divider fp-today-feed-divider visible-xs-block">
 					</div>
 					<div class="fp-today-feed-col">
-						<?php echo display_front_page_today_story( $articles[2] ); ?>
+						<?php echo display_front_page_today_story( $articles[1] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[3] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm">
-						<?php echo display_front_page_today_story( $articles[4] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[5] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm">
 						<?php echo display_front_page_today_story( $articles[6] ); ?>
+					</div>
+					<div class="fp-today-feed-col hidden-xs hidden-sm">
+						<?php echo display_front_page_today_story( $articles[2] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[7] ); ?>
 					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm hidden-md">
+					<div class="fp-today-feed-col hidden-xs hidden-sm">
+						<?php echo display_front_page_today_story( $articles[3] ); ?>
+						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[8] ); ?>
+					</div>
+					<div class="fp-today-feed-col hidden-xs hidden-sm hidden-md">
+						<?php echo display_front_page_today_story( $articles[4] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[9] ); ?>
 					</div>

@@ -4,13 +4,6 @@
 //
 // General
 //
-.front-page header {
-  border-top: 10px solid $ucf-gold;
-
-  @media (min-width: $screen-sm-min) {
-    border-top-width: 25px;
-  }
-}
 
 .fp-divider {
   border-top: 3px solid $ucf-gold;
@@ -436,7 +429,7 @@
 
     .publish-date {
       @include gotham(8);
-      color: #999;
+      color: #337ab7;
       font-size: 13px;
       font-weight: 900;
       margin-bottom: 10px;
