@@ -565,10 +565,6 @@
 // Issue list of stories
 //
 .fp-issue-title {
-  margin: 0 0 20px;
-}
-
-.fp-issue-description {
   font-size: 14px;
   font-weight: 600;
   margin-top: 15px;
@@ -584,7 +580,7 @@
   }
 
   @media (min-width: $screen-sm-min) {
-    max-width: 170px;
+    max-width: 150px;
   }
 
   @media (min-width: $screen-md-min) {
@@ -855,7 +851,7 @@
     width: 32px;
 
     &:hover {
-      background-color: lighten(#525252, 10)
+      background-color: lighten(#525252, 10);
     }
 
     span {

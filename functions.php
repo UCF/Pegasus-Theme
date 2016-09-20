@@ -1428,7 +1428,6 @@ function display_front_page_issue_details() {
 	$current_issue = get_current_issue();
 	$current_issue_title = wptexturize( $current_issue->post_title );
 	$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
-	$current_issue_description = get_post_meta( $current_issue->ID, 'issue_description', true );
 	$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
 
 	ob_start();
@@ -1441,8 +1440,8 @@ function display_front_page_issue_details() {
 		<?php endif; ?>
 	</a>
 
-	<?php if ( $current_issue_description ): ?>
-	<div class="fp-issue-description">
+	<?php if ( $current_issue_title ): ?>
+	<div class="fp-issue-title">
 		<?php echo $current_issue_title; ?>
 	</div>
 	<?php endif; ?>

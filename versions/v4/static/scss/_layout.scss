@@ -38,9 +38,8 @@
     .story-title {
       @include font-smoothing();
       color: #333;
-      font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+      @include gotham(7);
       font-size: 16px;
-      font-weight: 700;
       line-height: 18px;
       margin-top: 0;
     }
