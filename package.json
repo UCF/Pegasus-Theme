@@ -5,7 +5,7 @@
     "clean-css": "^3.4.19",
     "gulp": "~3.9.1",
     "gulp-autoprefixer": "^3.1.1",
-    "gulp-bless": "3.1.0",
+    "gulp-bless": "3.0.x",
     "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.1",
