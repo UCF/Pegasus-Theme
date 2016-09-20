@@ -86,5 +86,16 @@ function v4_hook_frontend_theme_scripts() {
 }
 add_action( 'wp_head', 'v4_hook_frontend_theme_scripts' );
 
+/**
+ * Add ID attribute to registered University Header script.
+ **/
+function add_id_to_ucfhb($url) {
+    if ( (false !== strpos($url, 'bar/js/university-header.js')) || (false !== strpos($url, 'bar/js/university-header-full.js')) ) {
+      remove_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
+      return "$url' id='ucfhb-script";
+    }
+    return $url;
+}
+add_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
 
 ?>
