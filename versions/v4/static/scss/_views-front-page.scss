@@ -1,6 +1,9 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
 
 
+$fp-feature-img-width: 263px;
+
+
 //
 // General
 //
@@ -245,10 +248,12 @@
 //
 .fp-feature {
   margin: 0 auto 30px;
+  max-width: $fp-feature-img-width;
   text-align: center;
   width: 90%;
 
   @media (min-width: $screen-sm-min) {
+    max-width: none;
     width: 100%;
   }
 }
@@ -291,8 +296,8 @@
     &.affix {
 
       @media (min-width: $screen-sm-min) {
-          position: fixed;
-          top: 0;
+        position: fixed;
+        top: 0;
       }
     }
 
@@ -311,6 +316,7 @@
 
 
 .fp-feature-top {
+  max-width: none;
   width: 100%;
 
   @media (min-width: $screen-sm-min) {
@@ -318,7 +324,6 @@
   }
 
   .fp-feature-text-wrap {
-
     @media (min-width: $screen-sm-min) {
       background-color: rgba(0, 0, 0, .6);
       bottom: 0;
@@ -326,7 +331,6 @@
       padding: 10px 30px 30px;
       position: absolute;
       right: 0;
-
     }
   }
 
