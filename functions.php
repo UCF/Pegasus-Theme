@@ -1377,7 +1377,9 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 * @author RJ Bruneel
 **/
 function display_social_header() {
-	$link = get_home_url();
+	global $wp;
+
+	$link = home_url( add_query_arg( array(), $wp->request ) );
 	$fb_url = 'http://www.facebook.com/sharer.php?u=' . $link;
 	$twitter_url = 'https://twitter.com/intent/tweet?text=' . urlencode( 'Pegasus Magazine' ) . '&url=' . $link;
 	$googleplus_url = 'https://plus.google.com/share?url=' . $link;
