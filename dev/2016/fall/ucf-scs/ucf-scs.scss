@@ -2,9 +2,16 @@
 @import '../../../../versions/v4/static/scss/variables';
 
 $ucf-metalic: #cc9;
-$font-open-sans: 'OpenSansCondensedLight', sans-serif;
+$font-open-sans-light: 'OpenSansCondensedLight', sans-serif;
+$font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
 
 #ucf-scs {
+
+  h1 {
+    font-size: 60px;
+    color: #222;
+    @include gotham(8);
+  }
 
   .background {
     background-position: center top;
@@ -17,6 +24,39 @@ $font-open-sans: 'OpenSansCondensedLight', sans-serif;
   @mixin gold-border() {
     border: 1px solid $ucf-metalic;
     padding: 10px;
+  }
+
+  .audio-link {
+    @include gotham(8);
+    color: #ccc;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    &:hover {
+      color: #fff;
+    }
+
+    &.play {
+      &:after {
+        content: 'Play Audio';
+      }
+
+      &:before {
+        font-family: FontAwesome;
+        content: ' ';
+      }
+    }
+
+    &.pause {
+      &:after {
+        content: 'Pause Audio';
+      }
+
+      &:before {
+        font-family: FontAwesome;
+        content: ' ';
+      }
+    }
   }
 
   // Carousel
@@ -33,14 +73,6 @@ $font-open-sans: 'OpenSansCondensedLight', sans-serif;
       background-repeat: no-repeat;
       background-size: cover;
       min-height: 600px;
-
-      &:nth-child(1) {
-        background-image: url(http://placehold.it/1600x1200?text=slide+1);
-      }
-
-      &:nth-child(2) {
-        background-image: url(http://placehold.it/1600x1200?text=slide+2);
-      }
     }
 
     .carousel-control {
@@ -48,10 +80,9 @@ $font-open-sans: 'OpenSansCondensedLight', sans-serif;
     }
 
     .carousel-caption {
-      background-color: #000;
+      background-color: rgba(0,0,0,0.6);
       bottom: 10%;
       left: 10%;
-      opacity: .8;
       padding: 15px;
       text-align: left;
       width: 400px;
@@ -63,15 +94,16 @@ $font-open-sans: 'OpenSansCondensedLight', sans-serif;
         h3 {
           border-bottom: 1px solid #fff;
           color: $ucf-metalic;
-          font-family: $font-open-sans;
+          font-family: $font-open-sans-bold;
           font-size: 2.2em;
+          font-weight: 500;
           -webkit-font-smoothing: antialiased;
           text-transform: uppercase;
         }
 
         p {
           color: #fff;
-          font-family: $font-open-sans;
+          font-family: $font-open-sans-light;
           font-size: 1.2em;
         }
       }
@@ -80,6 +112,28 @@ $font-open-sans: 'OpenSansCondensedLight', sans-serif;
     .carousel-indicators {
       bottom: 50px;
     }
+  }
+
+  .read-story {
+    bottom: 0;
+    color: #fff;
+    display: inline-block;
+    font-family: $font-open-sans-bold;
+    font-weight: 500;
+    padding: 20px 30px;
+    position: absolute;
+    right: 0;
+    text-transform: uppercase;
+    z-index: 1000;
+
+    &::after {
+      font-family: 'FontAwesome';
+      content: ' ';
+    }
+  }
+
+  .content {
+    margin-top: 40px;
   }
 
 }
