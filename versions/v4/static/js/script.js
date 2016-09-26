@@ -870,6 +870,52 @@ var photoEssayNav = function($) {
   }
 };
 
+var twitterWidget = function () {
+  window.twttr = (function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
+
+    return t;
+  } (document, "script", "twitter-wjs"));
+};
+
+
+var $fpIssueStory,
+  $fpIssue,
+  issueTop,
+  issueBottom;
+
+var setIssueTopBottom = function () {
+  issueTop = $fpIssue.offset().top;
+  issueBottom = $('body').outerHeight(true) - ($fpIssueStory.offset().top + $fpIssueStory.outerHeight(true));
+};
+
+var initFrontPageIssue = function ($) {
+  $fpIssueStory = $('.fp-issue-story');
+  $fpIssue = $fpIssueStory.find('.fp-issue');
+  setIssueTopBottom();
+
+  $fpIssue.affix({
+    offset: {
+      top: function () {
+        return issueTop;
+      },
+      bottom: function () {
+        return (this.bottom = issueBottom);
+      }
+    }
+  });
+};
 
 if (typeof jQuery !== 'undefined'){
   (function(){
@@ -889,6 +935,14 @@ if (typeof jQuery !== 'undefined'){
       customChart($);
       affixedCallouts($);
       photoEssayNav($);
+      if ($('.front-page').length) {
+        twitterWidget();
+        if ($(this).width() > 991) {
+          setTimeout(function () {
+            initFrontPageIssue($);
+          }, 1000);
+        }
+      }
     });
   })(jQuery);
 }

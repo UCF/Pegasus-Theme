@@ -1,20 +1,22 @@
 {
   "private": true,
   "devDependencies": {
-    "browser-sync": "^2.10.0",
-    "gulp": "~3.9.0",
-    "gulp-autoprefixer": "^3.1.0",
-    "gulp-bless": "3.1.0",
-    "gulp-clean-css": "^2.0.9",
+    "browser-sync": "^2.15.0",
+    "clean-css": "^3.4.19",
+    "gulp": "~3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-bless": "3.0.x",
+    "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.1",
     "gulp-notify": "~2.2.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sass": "~2.3.1",
+    "gulp-sass": "~2.3.2",
     "gulp-scss-lint": "^0.4.0",
-    "gulp-uglify": "^1.5.1",
-    "jshint": "^2.9.2",
-    "jshint-stylish": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.3",
+    "jshint-stylish": "^2.2.1",
     "merge": "^1.2.0"
   }
 }

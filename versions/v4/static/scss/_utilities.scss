@@ -35,32 +35,6 @@
 }
 
 
-// Remove necessity for -lg utility classes for showing/hiding
-// elements by screen size.  Also overrides broken generated
-// media queries (due to $screen-lg-min being overridden)
-.visible-md-block {
-  @media (min-width: $screen-md-min) {
-    display: block !important;
-  }
-}
-
-.visible-md-inline {
-  @media (min-width: $screen-md-min) {
-    display: inline !important;
-  }
-}
-
-.visible-md-inline-block {
-  @media (min-width: $screen-md-min) {
-    display: inline-block !important;
-  }
-}
-
-@media (min-width: $screen-md-min) {
-  @include responsive-invisibility('.hidden-md');
-}
-
-
 // Creates columns that are 20% wide
 .col-lg-20percent {
   @include make-lg-column(2.4);
