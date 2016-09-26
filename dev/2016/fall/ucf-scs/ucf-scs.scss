@@ -1,0 +1,85 @@
+@import '../../../../versions/v4/static/scss/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+
+$ucf-metalic: #cc9;
+$font-open-sans: 'OpenSansCondensedLight', sans-serif;
+
+#ucf-scs {
+
+  .background {
+    background-position: center top;
+    background-size: cover;
+    height: 58.7vw;
+    position: relative;
+    width: 100%;
+  }
+
+  @mixin gold-border() {
+    border: 1px solid $ucf-metalic;
+    padding: 10px;
+  }
+
+  // Carousel
+
+  .carousel-control.left,
+  .carousel-control.right {
+    background-image: none;
+  }
+
+  .carousel {
+
+    .item {
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      min-height: 600px;
+
+      &:nth-child(1) {
+        background-image: url(http://placehold.it/1600x1200?text=slide+1);
+      }
+
+      &:nth-child(2) {
+        background-image: url(http://placehold.it/1600x1200?text=slide+2);
+      }
+    }
+
+    .carousel-control {
+      width: 10%;
+    }
+
+    .carousel-caption {
+      background-color: #000;
+      bottom: 10%;
+      left: 10%;
+      opacity: .8;
+      padding: 15px;
+      text-align: left;
+      width: 400px;
+
+      .carousel-caption-inner {
+        @include gold-border();
+        padding: 15px;
+
+        h3 {
+          border-bottom: 1px solid #fff;
+          color: $ucf-metalic;
+          font-family: $font-open-sans;
+          font-size: 2.2em;
+          -webkit-font-smoothing: antialiased;
+          text-transform: uppercase;
+        }
+
+        p {
+          color: #fff;
+          font-family: $font-open-sans;
+          font-size: 1.2em;
+        }
+      }
+    }
+
+    .carousel-indicators {
+      bottom: 50px;
+    }
+  }
+
+}
