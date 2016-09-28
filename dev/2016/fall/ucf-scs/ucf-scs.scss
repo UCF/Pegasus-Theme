@@ -5,12 +5,18 @@ $ucf-metalic: #cc9;
 $font-open-sans-light: 'OpenSansCondensedLight', sans-serif;
 $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
 
+@mixin gold-border() {
+  border: 1px solid $ucf-metalic;
+  padding: 10px;
+}
+
+
 #ucf-scs {
 
   h1 {
-    font-size: 60px;
-    color: #222;
     @include gotham(8);
+    color: #222;
+    font-size: 60px;
   }
 
   .background {
@@ -19,11 +25,6 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     height: 58.7vw;
     position: relative;
     width: 100%;
-  }
-
-  @mixin gold-border() {
-    border: 1px solid $ucf-metalic;
-    padding: 10px;
   }
 
   .audio-link {
@@ -76,7 +77,45 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .carousel-control {
+      opacity: 1;
       width: 10%;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $ucf-gold;
+      }
+
+      &.left {
+        .fa,
+        .glyphicon {
+          left: 0;
+        }
+      }
+
+      &.right {
+        .fa,
+        .glyphicon {
+          right: 0;
+        }
+      }
+
+      .fa,
+      .glyphicon {
+        font-size: 70px;
+        height: 70px;
+        margin-top: -35px;
+        position: absolute;
+        top: 50%;
+        width: 70px;
+
+        @media (min-width: $screen-sm-min) {
+          font-size: 140px;
+          height: 140px;
+          margin-top: -70px;
+          width: 140px;
+        }
+      }
     }
 
     .carousel-caption {
