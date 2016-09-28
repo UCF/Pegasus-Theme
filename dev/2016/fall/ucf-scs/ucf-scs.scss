@@ -106,7 +106,7 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
         height: 70px;
         margin-top: -35px;
         position: absolute;
-        top: 50%;
+        top: 30%;
         width: 70px;
 
         @media (min-width: $screen-sm-min) {
@@ -119,12 +119,24 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .carousel-caption {
-      background-color: rgba(0,0,0,0.6);
-      bottom: 10%;
-      left: 10%;
+      background-color: rgba(0, 0, 0, .6);
+      bottom: 0;
+      left: 0;
       padding: 15px;
+      right: 0;
       text-align: left;
-      width: 400px;
+
+      @media (min-width: $screen-sm-min) {
+        bottom: 15%;
+        left: 15%;
+        right: auto;
+        width: 400px;
+      }
+
+      @media (min-width: $screen-md-min) {
+        bottom: 10%;
+        left: 10%;
+      }
 
       .carousel-caption-inner {
         @include gold-border();
@@ -149,7 +161,17 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     }
 
     .carousel-indicators {
-      bottom: 50px;
+      bottom: auto;
+      top: 20px;
+
+      @media (min-width: $screen-sm-min) {
+        bottom: 5%;
+        top: auto;
+      }
+
+      li {
+        vertical-align: top;
+      }
     }
   }
 
@@ -157,7 +179,7 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     background-color: rgba(255, 255, 255, .8);
     bottom: 0;
     color: #000;
-    display: inline-block;
+    display: none;
     font-family: $font-open-sans-bold;
     font-weight: 500;
     padding: 20px 30px;
@@ -169,6 +191,10 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
     &::after {
       font-family: 'FontAwesome';
       content: ' ';
+    }
+
+    @media (min-width: $screen-sm-min) {
+      display: inline-block;
     }
   }
 
