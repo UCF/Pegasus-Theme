@@ -3,12 +3,12 @@ $(function () {
 
     var $carouselItem = $('#carousel-ucf-scs').find('.item'),
         $header = $('header'),
-        carouselImages = [],
         audio = new Audio(),
-        audioUrl;
+        audioUrl,
+        $currentAudio;
 
     /**
-     * Debouce method to prvent code to run too quickly on resize
+     * Debouce method to pause logic until resize is complete
      */
     function debounce(func, wait, immediate) {
         var timeout;
@@ -28,12 +28,19 @@ $(function () {
     }
 
     /**
-     * Method to adjust the carousel height
+     * Method to adjust the carousel height, insert image, copy and audio
      */
-    var updateCarouselHeight = debounce(function () {
-        var carouselHeight = $(window).height() - ($header.offset().top + $header.height());
-        $.each($carouselItem, function (index) {
-            $(this).attr('style', 'min-height:' + carouselHeight + 'px;' + carouselImages[index]);
+    var updateCarousel = debounce(function () {
+        var carouselHeight = $(window).height() - ($header.offset().top + $header.height()),
+            isMobile = ($(window).width() < 992) ? true : false;
+        $.each($carouselItem, function (i) {
+            var $that = $(this),
+                img = (isMobile) ? carouselObjects[i].img.replace('.jpg','-xs.jpg') : carouselObjects[i].img;
+            $that.attr('style', 'min-height:' + carouselHeight + 'px;background-image: url(' + img + ")");
+            $that.find('.copy').text(carouselObjects[i].copy);
+            if (carouselObjects[i].audio) {
+                $that.find('.audio-link').attr('data-audio-url', carouselObjects[i].audio);
+            }
         });
     }, 100);
 
@@ -47,11 +54,14 @@ $(function () {
         }, 500);
     }
 
+    /**
+     * method to play/pause audio
+     */
     function playPauseAudio(e) {
         e.preventDefault();
-        var $that = $(this);
 
-        //TODO: When finished playing switch back to play text
+        var $that = $(this);
+        $currentAudio = $that;
 
         if (audioUrl && audioUrl === $that.attr('data-audio-url')) {
             if (audio.paused === false) {
@@ -71,19 +81,22 @@ $(function () {
     }
 
     /**
+     * audio ended
+     */
+    function onAudioEnded() {
+        $currentAudio.addClass('play').removeClass('pause');
+    }
+
+    /**
      * Init for Page
      */
     function initPage() {
-        $audio = $('#audio-player');
-        // Store carousel image urls
-        $.each($carouselItem, function () {
-            carouselImages.push($(this).attr('style'));
-        });
         // Event handler to resize carousel on load and on resize
-        $(window).on('load resize', updateCarouselHeight);
+        $(window).on('load resize', updateCarousel);
         // Event handler to scroll page to story copy
         $('.read-story').on('click', smoothScroll);
         $('.carousel-inner').on('click', '.audio-link', playPauseAudio);
+        audio.addEventListener('ended', onAudioEnded);
     }
 
     initPage();

@@ -134,6 +134,20 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
 
   .content {
     margin-top: 40px;
+
+    .stats {
+      text-align: center;
+
+      p {
+        @include gotham();
+      }
+
+      .num {
+        @include gotham(8);
+        color: $ucf-gold;
+        font-size: 46px;
+      }
+    }
   }
 
 }
