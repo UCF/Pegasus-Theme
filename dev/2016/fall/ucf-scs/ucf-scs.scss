@@ -154,8 +154,9 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
   }
 
   .read-story {
+    background-color: rgba(255, 255, 255, .8);
     bottom: 0;
-    color: #fff;
+    color: #000;
     display: inline-block;
     font-family: $font-open-sans-bold;
     font-weight: 500;
