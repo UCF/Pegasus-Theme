@@ -286,7 +286,7 @@ $fp-feature-img-width: 263px;
   .fp-issue {
 
     a {
-      color: #000;
+      color: $black;
     }
 
     @media (min-width: $screen-sm-min) {
@@ -766,10 +766,6 @@ $fp-feature-img-width: 263px;
     text-align: left;
   }
 
-  a {
-    color: $ucf-gold;
-  }
-
   .ipad-app-btn {
     @media (max-width: $screen-xs-max) {
       margin: 0 auto;
@@ -788,6 +784,13 @@ $fp-feature-img-width: 263px;
 
   @media (min-width: $screen-sm-min) {
     margin-top: 0;
+  }
+
+  &,
+  &:hover,
+  &:active,
+  &:focus {
+    color: $ucf-gold;
   }
 
   &:hover {
@@ -820,10 +823,10 @@ $fp-feature-img-width: 263px;
 
   li {
     margin: 0 0 20px;
+  }
 
-    a {
-      color: $white;
-    }
+  a {
+    color: $white;
   }
 }
 
@@ -832,6 +835,10 @@ $fp-feature-img-width: 263px;
   font-size: 10px;
   letter-spacing: .1em;
   text-transform: uppercase;
+
+  a {
+    color: $white;
+  }
 }
 
 .fp-address {
@@ -846,7 +853,7 @@ $fp-feature-img-width: 263px;
   .social-icon {
     background: #525252;
     border-radius: 50%;
-    color: #000;
+    color: $black;
     display: inline-block;
     height: 32px;
     margin: 0 5px;
