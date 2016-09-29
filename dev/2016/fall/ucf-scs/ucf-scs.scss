@@ -16,7 +16,16 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
   h1 {
     @include gotham(8);
     color: #222;
-    font-size: 60px;
+    font-size: 52px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 60px;
+    }
+  }
+
+  .description {
+    display: block;
+    margin-bottom: 20px;
   }
 
   .background {
@@ -29,33 +38,19 @@ $font-open-sans-bold: 'OpenSansCondensedBold', sans-serif;
 
   .audio-link {
     @include gotham(8);
-    color: #ccc;
-    text-decoration: none;
     text-transform: uppercase;
 
-    &:hover {
-      color: #fff;
-    }
-
-    &.play {
-      &:after {
-        content: 'Play Audio';
-      }
-
-      &:before {
-        font-family: FontAwesome;
-        content: ' ';
-      }
+    .pause-text {
+      display: none;
     }
 
     &.pause {
-      &:after {
-        content: 'Pause Audio';
+      .pause-text {
+        display: inline;
       }
 
-      &:before {
-        font-family: FontAwesome;
-        content: ' ';
+      .play-text {
+        display: none;
       }
     }
   }
