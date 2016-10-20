@@ -1377,45 +1377,28 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 * @author RJ Bruneel
 **/
 function display_social_header() {
-	$fb_url = get_theme_option( 'fb_url' );
-	$twitter_url = get_theme_option( 'twitter_url' );
-	$googleplus_url = get_theme_option( 'googleplus_url' );
-	$flickr_url = get_theme_option( 'flickr_url' );
-	$youtube_url = get_theme_option( 'youtube_url' );
+	global $wp;
+
+	$link = home_url( add_query_arg( array(), $wp->request ) );
+	$fb_url = 'http://www.facebook.com/sharer.php?u=' . $link;
+	$twitter_url = 'https://twitter.com/intent/tweet?text=' . urlencode( 'Pegasus Magazine' ) . '&url=' . $link;
+	$googleplus_url = 'https://plus.google.com/share?url=' . $link;
+
 	ob_start();
-	if (
-		!empty( $fb_url ) ||
-		!empty( $twitter_url ) ||
-		!empty( $googleplus_url ) ||
-		!empty( $flickr_url ) ||
-		!empty( $youtube_url )
-	):
-	?>
-		<span class="social-icon-list-heading">Share</span>
-		<ul class="social-icon-list">
-			<?php if ( !empty( $fb_url ) ) { ?>
-			<li class="social-icon-list-item">
-				<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
-			</li>
-			<?php } if ( !empty( $twitter_url ) ) { ?>
-			<li class="social-icon-list-item">
-				<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
-			</li>
-			<?php } if ( !empty( $flickr_url ) ) { ?>
-			<li class="social-icon-list-item">
-				<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url; ?>">Follow UCF on Flickr</a>
-			</li>
-			<?php } if ( !empty( $youtube_url ) ) { ?>
-			<li class="social-icon-list-item">
-				<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
-			</li>
-			<?php } if ( !empty( $googleplus_url ) ) { ?>
-			<li class="social-icon-list-item">
-				<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Follow UCF on Google+</a>
-			</li>
-			<?php } ?>
-		</ul>
-	<?php endif;
+?>
+	<span class="social-icon-list-heading">Share</span>
+	<ul class="social-icon-list">
+		<li class="social-icon-list-item">
+			<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Share Pegasus Magazine on Facebook</a>
+		</li>
+		<li class="social-icon-list-item">
+			<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Share Pegasus Magazine on Twitter</a>
+		</li>
+		<li class="social-icon-list-item">
+			<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Share Pegasus Magazine on Google+</a>
+		</li>
+	</ul>
+<?php
     return ob_get_clean();
 }
 

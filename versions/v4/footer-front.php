@@ -14,7 +14,7 @@
 									?>
 								</div>
 								<div class="col-sm-3 col-sm-offset-1 hidden-xs">
-									<h2 class="fp-subheading-underline fp-footer-heading">About Pegasus Magazine</h2>
+									<h2 class="fp-subheading-underline fp-footer-heading">About</h2>
 									<ul class="list-unstyled">
 									<?php
 									$defaults = array(

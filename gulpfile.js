@@ -107,7 +107,10 @@ gulp.task('watch', function() {
 
   gulp.watch(config.versionsPath + '/**/*.php').on('change', browserSync.reload);
   gulp.watch(config.versionsPath + '/**/*.scss', ['css']);
-  gulp.watch(config.versionsPath + '/**/*.js', ['js']).on('change', browserSync.reload);
+  gulp.watch([config.versionsPath + '/**/*.js', '!' + config.versionsPath + '/**/*.min.js'], ['js']).on('change', browserSync.reload);
+
+  gulp.watch('dev/**/*.html').on('change', browserSync.reload);
+  gulp.watch(['dev/**/*.js', '!' + 'dev/**/*.min.js']).on('change', browserSync.reload);
 
   gulp.watch('dev/**/*.scss', function(event) {
     var src = event.path,
