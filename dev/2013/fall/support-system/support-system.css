@@ -86,14 +86,14 @@ span.first-letter {
 .story-section .caption strong { font-family: Helvetica, sans-serif; }
 
 .story-section .credit {
-	font-family: font-family: Helvetica, sans-serif;
+	font-family: Helvetica, sans-serif;
 	color: #68acaf;
 	font-size: 10px;
 	line-height: 10px;
 	float: right;
 	margin-right: 15px;
 	margin-top: 20px;
-	margin-bottom: 0px;
+	margin-bottom: 0;
 }
 
 #img-bryce { display: block; margin: 30px auto 0 auto; }
