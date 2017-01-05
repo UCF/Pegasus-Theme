@@ -1,7 +1,8 @@
 
 $(function () {
 
-    var $carouselItem = $('#carousel-ucf-scs').find('.item'),
+    var $carousel = $('#carousel-ucf-scs'),
+        $carouselItem = $carousel.find('.item'),
         $header = $('header'),
         audio = new Audio(),
         audioUrl,
@@ -28,7 +29,7 @@ $(function () {
     }
 
     /**
-     * Method to adjust the carousel height, insert image, copy and audio
+     * Method to adjust the carousel height, insert image and audio
      */
     var updateCarousel = debounce(function () {
         var carouselHeight = $(window).height() - ($header.offset().top + $header.height()),
@@ -37,7 +38,6 @@ $(function () {
             var $that = $(this),
                 img = (isMobile) ? carouselObjects[i].img.replace('.jpg','-xs.jpg') : carouselObjects[i].img;
             $that.attr('style', 'min-height:' + carouselHeight + 'px;background-image: url(' + img + ")");
-            $that.find('.copy').text(carouselObjects[i].copy);
             if (carouselObjects[i].audio) {
                 $that.find('.audio-link').attr('data-audio-url', carouselObjects[i].audio);
             }
@@ -81,6 +81,16 @@ $(function () {
     }
 
     /**
+     * method to stop audio
+     */
+    function stopAudio() {
+        if ($currentAudio) {
+            $currentAudio.addClass('play').removeClass('pause');
+            audio.pause();
+        }
+    }
+
+    /**
      * audio ended
      */
     function onAudioEnded() {
@@ -95,7 +105,11 @@ $(function () {
         $(window).on('load resize', updateCarousel);
         // Event handler to scroll page to story copy
         $('.read-story').on('click', smoothScroll);
-        $('.carousel-inner').on('click', '.audio-link', playPauseAudio);
+        // handler to play/pause audio
+        $carousel.find('.carousel-inner').on('click', '.audio-link', playPauseAudio);
+        // Stop audio when advancing to next slide
+        $carousel.on('click', '.carousel-control', stopAudio);
+        // Update link when audio is finished
         audio.addEventListener('ended', onAudioEnded);
     }
 
