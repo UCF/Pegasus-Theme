@@ -3,6 +3,9 @@
 @import '../../../../versions/v4/static/scss/variables';
 @import '../../../../versions/v4/static/scss/mixins';
 
+$font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
+$font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
+
 article.story {
 	h1 {
 		font-family: "MontserratBold", sans-serif;

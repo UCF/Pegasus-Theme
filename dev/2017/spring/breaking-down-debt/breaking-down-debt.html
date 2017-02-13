@@ -27,37 +27,41 @@
                 <h2>A Selective Crisis</h2>
                 <p>The percentage of undergraduates receiving student loans varies greatly between private for-profit, private non-profit and public institutions, such as UCF.</p>
 
-                <canvas id="selective-crisis" width="400" height="400"></canvas>
+                <canvas id="selective-crisis" width="400" height="200"></canvas>
                 <p>U.S. Treasury tabulation of National Student Loan Data Systems data from Adam Looney &amp; Constantine Yannelis, "A Crisis in Student Loans?", 2015</p>
 
                 <h2>Debt In Context</h2>
                 <p>Where average debt is concerned, the type of institution a student attends matters.</p>
 
-                [INSERT CHART HERE]
+                <canvas id="debt-in-context" width="400" height="200"></canvas>
+
+                <p>* 2012 data for for-profit, private, and public. 2014-15 data for Florida and 2016 for UCF.</p>
+                <p>Association of Public &amp; Land-Grant Universities, 2016; The Institute for College Access &amp; Success, 2014; UCF Office of Student Financial Assistance, 2016</p>
 
                 <h2>Brighter Futures</h2>
                 <p>Nearly half of UCF undergraduates carry no debt when they graduate.</p>
 
                 [INSERT CHART HERE]
+
                 <div class="row">
                     <div class="col-md-6">
 
                         <h2>Relative Consequences</h2>
                         <p>Student loan default rates also correlate to the type of institution.</p>
 
-                        [INSERT CHART HERE]
-
+                        <canvas id="relative-consequences" width="400" height="400"></canvas>
+                        <p>2013 cohort data for for-profit, private, and public, not exclusive to college graduates. 2012-15 preliminary data for SUS and UCF.</p>
+                        <p>Association of Public &amp; Land-Grant Universities, 2016; White House Council of Economic Advisors, 2016; Office of Federal Student Aid, 2016; Florida Board of Governors System Survey of University Work Plans, 2016 (Preliminary data)</p>
                     </div>
                     <div class="col-md-6">
 
                         <h2>A Clear Comparison</h2>
                         <p>When compared to national averages, UCF graduates owe less debt overall.</p>
 
-                        [INSERT CHART HERE]
-
+                        <canvas id="clear-comparison" width="400" height="400"></canvas>
+                        <p>Association of Public &amp; Land-Grant Universities, 2016; The Institute for College Access &amp; Success, 2014; UCF Office of Student Financial Assistance, 2016</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -66,31 +70,183 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
 <script>
+    Chart.defaults.global.defaultFontColor = '#000';
+    Chart.defaults.global.defaultFontFamily = "'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif'";
+    Chart.defaults.global.legend.labels.fontFamily = "'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif'";
+    Chart.defaults.global.legend.labels.fontSize = 16;
     var $selectiveCrisis  = $("#selective-crisis"),
-    selectiveCrisis = new Chart($selectiveCrisis, {
-        type: 'bar',
-        data: {
-            labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
-            datasets: [
-                {
-                    type: 'line',
-                    label: 'Private For-Profit',
-                    data: [10, 20, 30, 40, 50],
-                    backgroundColor: 'rgba(212,124,75,0.3)',
-                },
-                {
-                    type: 'line',
-                    label: 'Private Non-Profit',
-                    data: [15, 25, 35, 45, 55],
-                    backgroundColor: 'rgba(90,155,168,0.4)',
-                },
-                {
-                    type: 'line',
-                    label: 'Public (UCF)',
-                    data: [18, 28, 38, 49, 60],
-                    backgroundColor: 'rgba(251,181,55,0.5)',
-                }
-            ]
-        }
-    });
+        selectiveCrisis = new Chart($selectiveCrisis, {
+            type: 'bar',
+            data: {
+                labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
+                datasets: [
+                    {
+                        type: 'line',
+                        label: 'Private For-Profit',
+                        data: [10, 20, 30, 40, 50, 10, 20, 30],
+                        backgroundColor: 'rgba(212,124,75,0.3)',
+                        borderColor: 'rgba(212,124,75,1.0)',
+                        borderDash: [3,15],
+                        borderWidth: 3,
+                    },
+                    {
+                        type: 'line',
+                        label: 'Private Non-Profit',
+                        data: [15, 25, 35, 45, 55, 15, 25, 35],
+                        backgroundColor: 'rgba(90,155,168,0.4)',
+                        borderColor: 'rgba(90,155,168,1.0)',
+                        borderDash: [3,15],
+                        borderWidth: 3,
+                    },
+                    {
+                        type: 'line',
+                        label: 'Public (UCF)',
+                        data: [18, 28, 38, 49, 60, 18, 28, 38],
+                        backgroundColor: 'rgba(251,181,55,0.5)',
+                        borderColor: 'rgba(251,181,55,1.0)',
+                        borderDash: [3,15],
+                        borderWidth: 3,
+                    }
+                ]
+            }
+        });
+    var $debtInContext = $("#debt-in-context"),
+        debtInContext = new Chart($debtInContext, {
+            type: 'horizontalBar',
+            data: {
+                labels: [""],
+                datasets: [
+                    {
+                        label: "UCF*",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                        ],
+                        data: [21824],
+                    },
+                    {
+                        label: "Florida (SUS)",
+                        backgroundColor: [
+                            'rgba(108, 183, 217, 1.0)',
+                        ],
+                        data: [25000],
+                    },
+                    {
+                        label: "Public",
+                        backgroundColor: [
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [25500],
+                    },
+                    {
+                        label: "Private Non-Profit",
+                        backgroundColor: [
+                            'rgba(92, 155, 167, 1.0)'
+                        ],
+                        data: [32300],
+                    },
+                    {
+                        label: "For-Profit",
+                        backgroundColor: [
+                            'rgba(210, 124, 80, 1.0)'
+                        ],
+                        data: [39950],
+                    }
+                ]
+            }
+        });
+    var $relativeConsequences = $("#relative-consequences"),
+        relativeConsequences = new Chart($relativeConsequences, {
+            type: 'bar',
+            data: {
+                labels: [""],
+                datasets: [
+                    {
+                        label: "For-Profit",
+                        backgroundColor: [
+                            'rgba(210, 124, 80, 1.0)'
+                        ],
+                        data: [15],
+                    },
+                    {
+                        label: "Private Non-Profit",
+                        backgroundColor: [
+                            'rgba(92, 155, 167, 1.0)'
+                        ],
+                        data: [10],
+                    },
+                    {
+                        label: "Public",
+                        backgroundColor: [
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [11],
+                    },
+                    {
+                        label: "Florida",
+                        backgroundColor: [
+                            'rgba(108, 183, 217, 1.0)',
+                        ],
+                        data: [5],
+                    },
+                    {
+                        label: "UCF",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                        ],
+                        data: [4],
+                    }
+                ]
+            }
+        });
+    var $clearComparison = $("#clear-comparison"),
+        clearComparison = new Chart($clearComparison, {
+            type: 'horizontalBar',
+            data: {
+                labels: [""],
+                datasets: [
+                    {
+                        label: "$0",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [44, 36],
+                    },
+                    {
+                        label: "$1 - $19,999",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [29, 26],
+                    },
+                    {
+                        label: "$20,000 - $29,999",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [14, 17],
+                    },
+                    {
+                        label: "$30,000 - $49,999",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [11, 15],
+                    },
+                    {
+                        label: "$50,000 +",
+                        backgroundColor: [
+                            'rgba(249, 180, 70, 1.0)',
+                            'rgba(197, 192, 184, 1.0)',
+                        ],
+                        data: [2, 6],
+                    }
+                ]
+            },
+            options: {
+            }
+        });
 </script>
