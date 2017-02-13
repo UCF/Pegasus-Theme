@@ -1,0 +1,36 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+article.story {
+	h1 {
+		font-family: "MontserratBold", sans-serif;
+    	font-weight: normal;
+		font-size: 58px;
+		margin-bottom: 30px;
+		margin-top: 0;
+
+		@media (max-width: 767px) {
+			font-size: 50px;
+		}
+	}
+
+	.social {
+		float: none;
+		margin-top: 20px;
+	}
+
+	.byline {
+		margin-bottom: 20px;
+        margin-top: 20px;
+	}
+
+	.content-container {
+		margin-top: 40px;
+	}
+
+    h2 {
+        text-transform: uppercase;
+    }
+}

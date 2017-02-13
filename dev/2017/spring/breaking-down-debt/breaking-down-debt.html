@@ -1,0 +1,96 @@
+<article class="story story-default">
+
+    <div class="container">
+        <div class="row title-wrap">
+			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+				<h1>Breaking Down Debt</h1>
+			</div>
+		</div>
+        <div class="row description-wrap">
+			<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+				<div class="row">
+					<div class="col-md-8 col-sm-12 col-xs-12 description-col">
+						<span class="description">
+							The story of student debt has grabbed national headlines, but most news reports don’t tell the whole story. Compared to the average debt incurred by students of for-profit institutions, most UCF graduates face a far brighter future thanks to the university’s strong value and programs focused on fiscal responsibility and financial freedom.
+                        </span>
+					</div>
+					<div class="col-md-4 col-sm-12 col-xs-12 description-col">
+                        [social_buttons]
+					</div>
+				</div>
+			</div>
+		</div>
+        <div class="row content-wrap">
+            <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+                <p><em>By Eric Michael '96</em></p>
+
+                <h2>A Selective Crisis</h2>
+                <p>The percentage of undergraduates receiving student loans varies greatly between private for-profit, private non-profit and public institutions, such as UCF.</p>
+
+                <canvas id="selective-crisis" width="400" height="400"></canvas>
+                <p>U.S. Treasury tabulation of National Student Loan Data Systems data from Adam Looney &amp; Constantine Yannelis, "A Crisis in Student Loans?", 2015</p>
+
+                <h2>Debt In Context</h2>
+                <p>Where average debt is concerned, the type of institution a student attends matters.</p>
+
+                [INSERT CHART HERE]
+
+                <h2>Brighter Futures</h2>
+                <p>Nearly half of UCF undergraduates carry no debt when they graduate.</p>
+
+                [INSERT CHART HERE]
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <h2>Relative Consequences</h2>
+                        <p>Student loan default rates also correlate to the type of institution.</p>
+
+                        [INSERT CHART HERE]
+
+                    </div>
+                    <div class="col-md-6">
+
+                        <h2>A Clear Comparison</h2>
+                        <p>When compared to national averages, UCF graduates owe less debt overall.</p>
+
+                        [INSERT CHART HERE]
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</article>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>
+<script>
+    var $selectiveCrisis  = $("#selective-crisis"),
+    selectiveCrisis = new Chart($selectiveCrisis, {
+        type: 'bar',
+        data: {
+            labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
+            datasets: [
+                {
+                    type: 'line',
+                    label: 'Private For-Profit',
+                    data: [10, 20, 30, 40, 50],
+                    backgroundColor: 'rgba(212,124,75,0.3)',
+                },
+                {
+                    type: 'line',
+                    label: 'Private Non-Profit',
+                    data: [15, 25, 35, 45, 55],
+                    backgroundColor: 'rgba(90,155,168,0.4)',
+                },
+                {
+                    type: 'line',
+                    label: 'Public (UCF)',
+                    data: [18, 28, 38, 49, 60],
+                    backgroundColor: 'rgba(251,181,55,0.5)',
+                }
+            ]
+        }
+    });
+</script>
