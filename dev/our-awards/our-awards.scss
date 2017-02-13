@@ -1,0 +1,38 @@
+@import '../../versions/v4/static/scss/mixins';
+@import '../../versions/v4/static/scss/variables';
+
+h1.main-header {
+    @include gotham(8);
+    font-style: normal;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.yellow-label {
+    @include gotham(8);
+    background-color: $ucf-gold;
+    display: inline-block;
+    padding: 5px 15px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.award-count-container {
+    text-align: center;
+
+    .award-count {
+        font-size: 160px;
+        color: #ccc;
+    }
+
+    .award-label {
+        @include gotham(8);
+        font-size: 24px;
+        text-transform: uppercase;
+    }
+}
+
+.fa-trophy {
+    font-size: 30px;
+}
