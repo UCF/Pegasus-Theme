@@ -76,6 +76,10 @@ function initSelectiveCrisis() {
     var options = {
         scales: {
             yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: "PERCENT (%)"
+                },
                 gridLines: {
                     borderDash: [5, 15],
                     drawBorder: false,
@@ -128,9 +132,59 @@ function initDebtInContext() {
         ]
     };
 
+    var isInit = true;
+
+    var animation = function (that) {
+        var self = that,
+            chartInstance = that.chart,
+            ctx = chartInstance.ctx;
+
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = "left";
+
+        Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
+            var meta = self.getDatasetMeta(datasetIndex),
+                total = 0, //total values to compute fraction
+                labelxy = [],
+                offset = Math.PI / 2, //start sector from top
+                radius,
+                centerx,
+                centery,
+                label,
+                lastend = 0; //prev arc's end line: starting with 0
+
+            for (var val of dataset.data) { total += val; }
+
+            Chart.helpers.each(meta.data.forEach((element, index) => {
+                radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
+                centerx = element._model.x;
+                centery = element._model.y;
+                label = element._model.label;
+                var thispart = dataset.data[index],
+                    arcsector = Math.PI * (2 * thispart / total);
+                if (element.hasValue() && dataset.data[index] > 0) {
+                    labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
+                }
+                else {
+                    labelxy.push(-1);
+                }
+                lastend += arcsector;
+
+                ctx.fillStyle = "#fff";
+                ctx.fillText(label, 40, centery + 8);
+                ctx.fillStyle = "#000";
+                ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
+            }), self);
+        }), self);
+    };
+
     var options = {
         scales: {
             xAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: "THOUSANDS OF DOLLARS"
+                },
                 ticks: {
                     beginAtZero: true
                 },
@@ -158,51 +212,18 @@ function initDebtInContext() {
             delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
         },
         animation: {
-            duration: 0,
             onComplete: function () {
-                console.log('complete');
-                var self = this,
-                    chartInstance = this.chart,
-                    ctx = chartInstance.ctx;
-
-                ctx.font = 'bold 20px Arial';
-                ctx.textAlign = "left";
-
-                Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
-                    var meta = self.getDatasetMeta(datasetIndex),
-                        total = 0, //total values to compute fraction
-                        labelxy = [],
-                        offset = Math.PI / 2, //start sector from top
-                        radius,
-                        centerx,
-                        centery,
-                        label,
-                        lastend = 0; //prev arc's end line: starting with 0
-
-                    for (var val of dataset.data) { total += val; }
-
-                    Chart.helpers.each(meta.data.forEach((element, index) => {
-                        radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
-                        centerx = element._model.x;
-                        centery = element._model.y;
-                        label = element._model.label;
-                        var thispart = dataset.data[index],
-                            arcsector = Math.PI * (2 * thispart / total);
-                        if (element.hasValue() && dataset.data[index] > 0) {
-                            labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
-                        }
-                        else {
-                            labelxy.push(-1);
-                        }
-                        lastend += arcsector;
-
-                        ctx.fillStyle = "#fff";
-                        ctx.fillText(label, 40, centery + 8);
-                        ctx.fillStyle = "#000";
-                        ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
-                    }), self);
-                }), self);
-
+                if (isInit) {
+                    var that = this;
+                    isInit = false;
+                    animation(this);
+                }
+            },
+            onProgress: function () {
+                if (!isInit) {
+                    var that = this;
+                    animation(that);
+                }
             }
         }
     };
@@ -237,6 +258,10 @@ function initRelativeConsequences() {
     var options = {
         scales: {
             yAxes: [{
+                scaleLabel: {
+                    display: true,
+                    labelString: "PERCENT (%)"
+                },
                 ticks: {
                     beginAtZero: true
                 },
@@ -278,110 +303,96 @@ function initRelativeConsequences() {
 }
 
 function initClearComparison() {
-    var data = {
-        labels: [""],
-        datasets: [
-            {
-                label: "UCF (2015-16)",
-                backgroundColor: [
-                    'rgb(249, 180, 70)',
-                ],
-                data: [44],
-            },
-            {
-                label: "Public (2011-12)",
-                backgroundColor: [
-                    'rgb(197, 192, 184)',
-                ],
-                data: [36],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(249, 180, 70)',
-                ],
-                data: [29],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(197, 192, 184)',
-                ],
-                data: [26],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(249, 180, 70)',
-                ],
-                data: [14],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(197, 192, 184)',
-                ],
-                data: [17],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(249, 180, 70)',
-                ],
-                data: [11],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(197, 192, 184)',
-                ],
-                data: [15],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(249, 180, 70)',
-                ],
-                data: [2],
-            },
-            {
-                label: "",
-                backgroundColor: [
-                    'rgb(197, 192, 184)',
-                ],
-                data: [6],
-            }
-        ]
-    };
 
     var options = {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        },
-                        gridLines: {
-                            borderDash: [5, 15]
-                        }
-                    }]
+        scales: {
+            xAxes: [{
+                display: false,
+                ticks: {
+                    beginAtZero: true,
+                    max: 50
                 },
-                tooltips: {
-                    callbacks: {
-                        label: function (tooltipItems, data) {
-                            return tooltipItems.xLabel + ' ' + tooltipItems.yLabel + '%';
-                        }
-                    }
-                },
-                deferred: {           // enabled by default
-                    yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
-                    delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                    zeroLineColor: '#fff',
                 }
-            };
+            }],
+            yAxes: [{
+                display: false,
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                    zeroLineColor: '#fff',
+                }
+            }]
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItems, data) {
+                    return tooltipItems.xLabel + ' ' + tooltipItems.yLabel + '%';
+                }
+            }
+        },
+        legend: {
+            display: false
+        },
+        deferred: {           // enabled by default
+            yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
+            delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        }
+    };
 
-    var $clearComparison = $("#clear-comparison"),
-        clearComparison = new Chart($clearComparison, {
+    var setData = function (data) {
+        return {
+            labels: ["", ""],
+            datasets: [
+                {
+                    label: [""],
+                    backgroundColor: [
+                        'rgb(249, 180, 70)',
+                        'rgb(197, 192, 184)',
+                    ],
+                    data: data,
+                }
+            ]
+        };
+    };
+
+    var temp = [44,36, 29, 26, 14, 17, 11, 15, 2, 6];
+
+    var $clearComparison1 = $("#clear-comparison1"),
+        clearComparison1 = new Chart($clearComparison1, {
             type: 'horizontalBar',
-            data: data,
+            data: setData([44,36]),
+            options: options
+        });
+
+    var $clearComparison2 = $("#clear-comparison2"),
+        clearComparison2 = new Chart($clearComparison2, {
+            type: 'horizontalBar',
+            data: setData([29,26]),
+            options: options
+        });
+
+    var $clearComparison3 = $("#clear-comparison3"),
+        clearComparison3 = new Chart($clearComparison3, {
+            type: 'horizontalBar',
+            data: setData([14,17]),
+            options: options
+        });
+
+    var $clearComparison4 = $("#clear-comparison4"),
+        clearComparison4 = new Chart($clearComparison4, {
+            type: 'horizontalBar',
+            data: setData([11,15]),
+            options: options
+        });
+
+    var $clearComparison5 = $("#clear-comparison5"),
+        clearComparison5 = new Chart($clearComparison5, {
+            type: 'horizontalBar',
+            data: setData([2,6]),
             options: options
         });
 }
