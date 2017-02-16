@@ -23,7 +23,7 @@ function formatNumber(nStr) {
     return '$' + x1 + x2;
 }
 
-function init() {
+function setChartDefaults() {
     // Font Defaults
     Chart.defaults.global.defaultFontColor = '#000';
 
@@ -43,7 +43,9 @@ function init() {
     Chart.defaults.global.elements.line.tension = 0;
     Chart.defaults.global.elements.point.radius = 4;
     Chart.defaults.global.elements.point.hitRadius = 5;
+}
 
+function initSelectiveCrisis() {
     var $selectiveCrisis = $("#selective-crisis"),
         selectiveCrisis = new Chart($selectiveCrisis, {
             type: 'line',
@@ -99,7 +101,9 @@ function init() {
                 }
             }
         });
+}
 
+function initDebtInContext() {
     var $debtInContext = $("#debt-in-context"),
         debtInContext = new Chart($debtInContext, {
             type: 'horizontalBar',
@@ -216,7 +220,9 @@ function init() {
                 }
             }
         });
+}
 
+function initRelativeConsequences() {
     var $relativeConsequences = $("#relative-consequences"),
         relativeConsequences = new Chart($relativeConsequences, {
             type: 'bar',
@@ -284,7 +290,9 @@ function init() {
                 }
             }
         });
+}
 
+function initClearComparison() {
     var $clearComparison = $("#clear-comparison"),
         clearComparison = new Chart($clearComparison, {
             type: 'horizontalBar',
@@ -387,6 +395,14 @@ function init() {
                 }
             }
         });
+}
+
+function init() {
+    setChartDefaults();
+    initSelectiveCrisis();
+    initDebtInContext();
+    initRelativeConsequences();
+    initClearComparison();
 }
 
 $(init);
