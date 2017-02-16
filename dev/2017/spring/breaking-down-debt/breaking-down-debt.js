@@ -46,332 +46,315 @@ function setChartDefaults() {
 }
 
 function initSelectiveCrisis() {
+    var data = {
+        labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
+        datasets: [
+            {
+                type: 'line',
+                label: 'Public (UCF)   ',
+                data: [40, 41, 42, 43, 44, 45, 46, 47],
+                backgroundColor: 'rgba(251,181,55,0.7)',
+                borderColor: 'rgba(251,181,55,0.7)'
+            },
+            {
+                type: 'line',
+                label: 'Private Non-Profit   ',
+                data: [60, 60, 61, 60, 59, 60, 61, 62],
+                backgroundColor: 'rgba(90,155,168,0.7)',
+                borderColor: 'rgba(90,155,168,0.7)'
+            },
+            {
+                type: 'line',
+                label: 'Private For-Profit   ',
+                data: [61, 62, 65, 63, 70, 73, 75, 80],
+                backgroundColor: 'rgba(212,124,75,0.7)',
+                borderColor: 'rgba(212,124,75,0.7)'
+            }
+        ]
+    };
+
+    var options = {
+        scales: {
+            yAxes: [{
+                gridLines: {
+                    borderDash: [5, 15],
+                    drawBorder: false,
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                    zeroLineColor: '#ffffff',
+                }
+            }]
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItems, data) {
+                    return tooltipItems.yLabel + '%';
+                }
+            }
+        },
+        deferred: {           // enabled by default
+            yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
+            delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        }
+    };
+
     var $selectiveCrisis = $("#selective-crisis"),
         selectiveCrisis = new Chart($selectiveCrisis, {
             type: 'line',
-            data: {
-                labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
-                datasets: [
-                    {
-                        type: 'line',
-                        label: 'Public (UCF)   ',
-                        data: [40, 41, 42, 43, 44, 45, 46, 47],
-                        backgroundColor: 'rgba(251,181,55,0.7)',
-                        borderColor: 'rgba(251,181,55,0.7)'
-                    },
-                    {
-                        type: 'line',
-                        label: 'Private Non-Profit   ',
-                        data: [60, 60, 61, 60, 59, 60, 61, 62],
-                        backgroundColor: 'rgba(90,155,168,0.7)',
-                        borderColor: 'rgba(90,155,168,0.7)'
-                    },
-                    {
-                        type: 'line',
-                        label: 'Private For-Profit   ',
-                        data: [61, 62, 65, 63, 70, 73, 75, 80],
-                        backgroundColor: 'rgba(212,124,75,0.7)',
-                        borderColor: 'rgba(212,124,75,0.7)'
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        gridLines: {
-                            borderDash: [5, 15]
-                        }
-                    }],
-                    xAxes: [{
-                        gridLines: {
-                            color: "#ffffff"
-                        }
-                    }]
-                },
-                tooltips: {
-                    callbacks: {
-                        label: function (tooltipItems, data) {
-                            return tooltipItems.yLabel + '%';
-                        }
-                    }
-                },
-                deferred: {           // enabled by default
-                    yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
-                    delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
-                }
-            }
+            data: data,
+            options: options
         });
 }
 
 function initDebtInContext() {
+    var data = {
+        labels: ["UCF*", "FLORIDA (SUS)", "PUBLIC", "PRIVATE NON-PROFIT", "FOR-PROFIT"],
+        datasets: [
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                    'rgb(108, 183, 217)',
+                    'rgb(197, 192, 184)',
+                    'rgb(92, 155, 167)',
+                    'rgb(210, 124, 80)'
+                ],
+                data: [21.824, 25.000, 25.500, 32.300, 39.950]
+            }
+        ]
+    };
+
+    var options = {
+        scales: {
+            xAxes: [{
+                ticks: {
+                    beginAtZero: true
+                },
+                gridLines: {
+                    borderDash: [5, 15],
+                    drawBorder: false,
+                    zeroLineColor: '#fff',
+                }
+            }],
+            yAxes: [{
+                display: false,
+                gridLines: {
+                    zeroLineColor: '#fff',
+                }
+            }]
+        },
+        tooltips: {
+            enabled: false
+        },
+        legend: {
+            display: false
+        },
+        deferred: {           // enabled by default
+            yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
+            delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        },
+        animation: {
+            duration: 0,
+            onComplete: function () {
+                console.log('complete');
+                var self = this,
+                    chartInstance = this.chart,
+                    ctx = chartInstance.ctx;
+
+                ctx.font = 'bold 20px Arial';
+                ctx.textAlign = "left";
+
+                Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
+                    var meta = self.getDatasetMeta(datasetIndex),
+                        total = 0, //total values to compute fraction
+                        labelxy = [],
+                        offset = Math.PI / 2, //start sector from top
+                        radius,
+                        centerx,
+                        centery,
+                        label,
+                        lastend = 0; //prev arc's end line: starting with 0
+
+                    for (var val of dataset.data) { total += val; }
+
+                    Chart.helpers.each(meta.data.forEach((element, index) => {
+                        radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
+                        centerx = element._model.x;
+                        centery = element._model.y;
+                        label = element._model.label;
+                        var thispart = dataset.data[index],
+                            arcsector = Math.PI * (2 * thispart / total);
+                        if (element.hasValue() && dataset.data[index] > 0) {
+                            labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
+                        }
+                        else {
+                            labelxy.push(-1);
+                        }
+                        lastend += arcsector;
+
+                        ctx.fillStyle = "#fff";
+                        ctx.fillText(label, 40, centery + 8);
+                        ctx.fillStyle = "#000";
+                        ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
+                    }), self);
+                }), self);
+
+            }
+        }
+    };
+
     var $debtInContext = $("#debt-in-context"),
         debtInContext = new Chart($debtInContext, {
             type: 'horizontalBar',
-            data: {
-                labels: [""],
-                datasets: [
-                    {
-                        label: "UCF*",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [21.824]
-                    },
-                    {
-                        label: "Florida (SUS)",
-                        backgroundColor: [
-                            'rgb(108, 183, 217)',
-                        ],
-                        data: [25.000],
-                    },
-                    {
-                        label: "Public",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [25.500],
-                    },
-                    {
-                        label: "Private Non-Profit",
-                        backgroundColor: [
-                            'rgb(92, 155, 167)'
-                        ],
-                        data: [32.300],
-                    },
-                    {
-                        label: "For-Profit",
-                        backgroundColor: [
-                            'rgb(210, 124, 80)'
-                        ],
-                        data: [39.950],
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    xAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        },
-                        gridLines: {
-                            borderDash: [5, 15],
-                            drawBorder: false,
-                            zeroLineColor: '#fff',
-                        }
-                    }]
-                },
-                tooltips: {
-                    enabled: false
-                },
-                legend: {
-                    display: false
-                },
-                deferred: {           // enabled by default
-                    yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
-                    delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
-                },
-                animation: {
-                    duration: 0,
-                    onComplete: function () {
-                        console.log('complete');
-                        var self = this,
-                            chartInstance = this.chart,
-                            ctx = chartInstance.ctx;
-
-                        ctx.font = 'bold 20px Arial';
-                        ctx.textAlign = "left";
-
-                        Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
-                            var meta = self.getDatasetMeta(datasetIndex),
-                                total = 0, //total values to compute fraction
-                                labelxy = [],
-                                offset = Math.PI / 2, //start sector from top
-                                radius,
-                                centerx,
-                                centery,
-                                label,
-                                lastend = 0; //prev arc's end line: starting with 0
-
-                            for (var val of dataset.data) { total += val; }
-
-                            Chart.helpers.each(meta.data.forEach((element, index) => {
-                                radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
-                                centerx = element._model.x;
-                                centery = element._model.y;
-                                label = element._model.datasetLabel;
-                                var thispart = dataset.data[index],
-                                    arcsector = Math.PI * (2 * thispart / total);
-                                if (element.hasValue() && dataset.data[index] > 0) {
-                                    labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
-                                }
-                                else {
-                                    labelxy.push(-1);
-                                }
-                                lastend += arcsector;
-
-                                ctx.fillStyle = "#fff";
-                                ctx.fillText(label, 40, centery + 8);
-                                ctx.fillStyle = "#000";
-                                ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
-                            }), self);
-                        }), self);
-
-                    }
-                }
-            }
+            data: data,
+            options: options
         });
 }
 
 function initRelativeConsequences() {
+
+    var data = {
+        labels: ["", "", "", "", ""],
+        datasets: [
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(210, 124, 80)',
+                    'rgb(92, 155, 167)',
+                    'rgb(197, 192, 184)',
+                    'rgb(108, 183, 217)',
+                    'rgb(249, 180, 70)',
+                ],
+                data: [15, 10, 11, 5, 4],
+            }
+        ]
+    };
+
+    var options = {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                },
+                gridLines: {
+                    borderDash: [5, 15],
+                    drawBorder: false,
+                }
+            }],
+            xAxes: [{
+                gridLines: {
+                    display: false,
+                    drawBorder: false,
+                    zeroLineColor: '#fff',
+                }
+            }],
+        },
+        tooltips: {
+            callbacks: {
+                label: function (tooltipItems, data) {
+                    return tooltipItems.yLabel + '%';
+                }
+            }
+        },
+        legend: {
+            display: false
+        },
+        deferred: {           // enabled by default
+            yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
+            delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        }
+    };
+
     var $relativeConsequences = $("#relative-consequences"),
         relativeConsequences = new Chart($relativeConsequences, {
             type: 'bar',
-            data: {
-                labels: [""],
-                datasets: [
-                    {
-                        label: "For-Profit     ",
-                        backgroundColor: [
-                            'rgb(210, 124, 80)'
-                        ],
-                        data: [15],
-                    },
-                    {
-                        label: "Private Non-Profit     ",
-                        backgroundColor: [
-                            'rgb(92, 155, 167)'
-                        ],
-                        data: [10],
-                    },
-                    {
-                        label: "Public     ",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [11],
-                    },
-                    {
-                        label: "Florida     ",
-                        backgroundColor: [
-                            'rgb(108, 183, 217)',
-                        ],
-                        data: [5],
-                    },
-                    {
-                        label: "UCF",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [4],
-                    }
-                ]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
-                        },
-                        gridLines: {
-                            borderDash: [5, 15]
-                        }
-                    }]
-                },
-                tooltips: {
-                    callbacks: {
-                        label: function (tooltipItems, data) {
-                            return tooltipItems.yLabel + '%';
-                        }
-                    }
-                },
-                deferred: {           // enabled by default
-                    yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
-                    delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
-                }
-            }
+            data: data,
+            options: options
         });
 }
 
 function initClearComparison() {
-    var $clearComparison = $("#clear-comparison"),
-        clearComparison = new Chart($clearComparison, {
-            type: 'horizontalBar',
-            data: {
-                labels: [""],
-                datasets: [
-                    {
-                        label: "UCF (2015-16)",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [44],
-                    },
-                    {
-                        label: "Public (2011-12)",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [36],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [29],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [26],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [14],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [17],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [11],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [15],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(249, 180, 70)',
-                        ],
-                        data: [2],
-                    },
-                    {
-                        label: "",
-                        backgroundColor: [
-                            'rgb(197, 192, 184)',
-                        ],
-                        data: [6],
-                    }
-                ]
+    var data = {
+        labels: [""],
+        datasets: [
+            {
+                label: "UCF (2015-16)",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                ],
+                data: [44],
             },
-            options: {
+            {
+                label: "Public (2011-12)",
+                backgroundColor: [
+                    'rgb(197, 192, 184)',
+                ],
+                data: [36],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                ],
+                data: [29],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(197, 192, 184)',
+                ],
+                data: [26],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                ],
+                data: [14],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(197, 192, 184)',
+                ],
+                data: [17],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                ],
+                data: [11],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(197, 192, 184)',
+                ],
+                data: [15],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(249, 180, 70)',
+                ],
+                data: [2],
+            },
+            {
+                label: "",
+                backgroundColor: [
+                    'rgb(197, 192, 184)',
+                ],
+                data: [6],
+            }
+        ]
+    };
+
+    var options = {
                 scales: {
                     xAxes: [{
                         ticks: {
@@ -393,7 +376,13 @@ function initClearComparison() {
                     yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
                     delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
                 }
-            }
+            };
+
+    var $clearComparison = $("#clear-comparison"),
+        clearComparison = new Chart($clearComparison, {
+            type: 'horizontalBar',
+            data: data,
+            options: options
         });
 }
 
