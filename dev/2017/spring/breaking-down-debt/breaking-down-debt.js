@@ -1,3 +1,4 @@
+/* jshint ignore:start */
 /*!
  * chartjs-plugin-deferred
  * http://chartjs.org/
@@ -8,6 +9,7 @@
  * https://github.com/chartjs/chartjs-plugin-deferred/blob/master/LICENSE.md
  */
 "use strict";!function(){function e(e,t){var n=parseInt(e,10);return isNaN(n)?0:"string"==typeof e&&e.indexOf("%")!==-1?n/100*t:n}function t(t){var n=t[s],r=t.chart.canvas;if(null===r.offsetParent)return!1;var a=r.getBoundingClientRect(),f=e(n.yOffset||0,a.height),d=e(n.xOffset||0,a.width);return a.right-d>=0&&a.bottom-f>=0&&a.left+d<=window.innerWidth&&a.top+f<=window.innerHeight}function n(e){var t=l.Deferred.defaults,n=e.options.deferred,r=o.getValueOrDefault;return void 0===n?n={}:"boolean"==typeof n&&(n={enabled:n}),{enabled:r(n.enabled,t.enabled),xOffset:r(n.xOffset,t.xOffset),yOffset:r(n.yOffset,t.yOffset),delay:r(n.delay,t.delay),appeared:!1,delayed:!1,loaded:!1,elements:[]}}function r(e){var n=e.target,r=n[i];r.ticking||(r.ticking=!0,l.platform.defer(function(){var e,n,a=r.instances.slice(),f=a.length;for(n=0;n<f;++n)e=a[n],t(e)&&(d(e),e[s].appeared=!0,e.update());r.ticking=!1}))}function a(e){var t=e.nodeType;if(t===Node.ELEMENT_NODE){var n=o.getStyle(e,"overflow-x"),r=o.getStyle(e,"overflow-y");return"auto"===n||"scroll"===n||"auto"===r||"scroll"===r}return e.nodeType===Node.DOCUMENT_NODE}function f(e){for(var t,n,f=e.chart.canvas,d=f.parentElement;d;)a(d)&&(t=d[i]||(d[i]={}),n=t.instances||(t.instances=[]),0===n.length&&d.addEventListener("scroll",r,{passive:!0}),n.push(e),e[s].elements.push(d)),d=d.parentElement||d.ownerDocument}function d(e){e[s].elements.forEach(function(t){var n=t[i].instances;n.splice(n.indexOf(e),1),n.length||(o.removeEvent(t,"scroll",r),delete t[i])}),e[s].elements=[]}var l=window.Chart,o=l.helpers,i="_chartjs_deferred",s="_deferred_model";l.Deferred=l.Deferred||{},l.Deferred.defaults={enabled:!0,xOffset:0,yOffset:0,delay:0},l.platform=o.extend(l.platform||{},{defer:function(e,t,n){var r=function(){e.call(n)};t?window.setTimeout(r,t):o.requestAnimFrame.call(window,r)}}),l.plugins.register({beforeInit:function(e){var t=e[s]=n(e);t.enabled&&f(e)},beforeDatasetsUpdate:function(e){var n=e[s];if(!n.enabled)return!0;if(!n.loaded){if(!n.appeared&&!t(e))return!1;if(n.appeared=!0,n.loaded=!0,d(e),n.delay>0)return n.delayed=!0,l.platform.defer(function(){n.delayed=!1,e.update()},n.delay),!1}return!n.delayed&&void 0}})}();
+/* jshint ignore:end */
 
 // Utility method to add commas to numbers
 function formatNumber(nStr) {
@@ -22,6 +24,78 @@ function formatNumber(nStr) {
     }
     return '$' + x1 + x2;
 }
+
+var addLabels = function (that, chart) {
+    var self = that,
+        chartInstance = that.chart,
+        ctx = chartInstance.ctx;
+
+    ctx.font = 'bold 20px Arial';
+    ctx.textAlign = "left";
+
+    Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
+        var meta = self.getDatasetMeta(datasetIndex),
+            total = 0, //total values to compute fraction
+            labelxy = [],
+            offset = Math.PI / 2, //start sector from top
+            radius,
+            centerx,
+            centery,
+            label,
+            val,
+            first = true,
+            lastend = 0; //prev arc's end line: starting with 0
+
+        Chart.helpers.each(meta.data.forEach((element, index) => {
+            radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
+            centerx = element._model.x;
+            centery = element._model.y;
+            label = element._model.label;
+            val = dataset.data[index];
+            var thispart = dataset.data[index],
+                arcsector = Math.PI * (2 * thispart / total);
+            if (element.hasValue() && dataset.data[index] > 0) {
+                labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
+            }
+            else {
+                labelxy.push(-1);
+            }
+            lastend += arcsector;
+
+            switch (chart) {
+                case "debt":
+                    // whilte labels
+                    ctx.fillStyle = "#fff";
+                    ctx.fillText(label, 40, centery + 8);
+                    // percentages
+                    ctx.fillStyle = "#000";
+                    ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
+                    break;
+                case "relative":
+                    // percentages
+                    ctx.fillStyle = "#000";
+                    ctx.textAlign = "center";
+                    ctx.fillText(val + '%', centerx + 5, centery - 10);
+                    ctx.textAlign = "left";
+                    // white labels
+                    // ctx.fillStyle = "#000";
+                    // ctx.fillText(label, centerx, centery);
+                    // console.log(first);
+                    // console.log(label);
+                    // if (first) {
+                    //     ctx.translate(centerx, centery);
+                    //     ctx.rotate((Math.PI / 180) * 90);
+                    //     ctx.translate(-centerx, -centery);
+                    // }
+                    break;
+                default:
+                    ctx.fillStyle = "#000";
+                    ctx.fillText(val + '%', centerx + 10, centery + 8);
+            }
+            first = false;
+        }), self);
+    }), self);
+};
 
 function setChartDefaults() {
     // Font Defaults
@@ -45,6 +119,7 @@ function setChartDefaults() {
     Chart.defaults.global.elements.point.hitRadius = 5;
 }
 
+// Selective Crisis Chart
 function initSelectiveCrisis() {
     var data = {
         labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
@@ -78,10 +153,11 @@ function initSelectiveCrisis() {
             yAxes: [{
                 scaleLabel: {
                     display: true,
+                    fontColor: 'rgb(130,130,130)',
                     labelString: "PERCENT (%)"
                 },
                 gridLines: {
-                    borderDash: [5, 15],
+                    borderDash: [10, 15],
                     drawBorder: false,
                 }
             }],
@@ -92,6 +168,9 @@ function initSelectiveCrisis() {
                     zeroLineColor: '#ffffff',
                 }
             }]
+        },
+        legend: {
+            display: false
         },
         tooltips: {
             callbacks: {
@@ -114,6 +193,7 @@ function initSelectiveCrisis() {
         });
 }
 
+// Debt in Context Chart
 function initDebtInContext() {
     var data = {
         labels: ["UCF*", "FLORIDA (SUS)", "PUBLIC", "PRIVATE NON-PROFIT", "FOR-PROFIT"],
@@ -134,62 +214,19 @@ function initDebtInContext() {
 
     var isInit = true;
 
-    var animation = function (that) {
-        var self = that,
-            chartInstance = that.chart,
-            ctx = chartInstance.ctx;
-
-        ctx.font = 'bold 20px Arial';
-        ctx.textAlign = "left";
-
-        Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
-            var meta = self.getDatasetMeta(datasetIndex),
-                total = 0, //total values to compute fraction
-                labelxy = [],
-                offset = Math.PI / 2, //start sector from top
-                radius,
-                centerx,
-                centery,
-                label,
-                lastend = 0; //prev arc's end line: starting with 0
-
-            for (var val of dataset.data) { total += val; }
-
-            Chart.helpers.each(meta.data.forEach((element, index) => {
-                radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
-                centerx = element._model.x;
-                centery = element._model.y;
-                label = element._model.label;
-                var thispart = dataset.data[index],
-                    arcsector = Math.PI * (2 * thispart / total);
-                if (element.hasValue() && dataset.data[index] > 0) {
-                    labelxy.push(lastend + arcsector / 2 + Math.PI + offset);
-                }
-                else {
-                    labelxy.push(-1);
-                }
-                lastend += arcsector;
-
-                ctx.fillStyle = "#fff";
-                ctx.fillText(label, 40, centery + 8);
-                ctx.fillStyle = "#000";
-                ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
-            }), self);
-        }), self);
-    };
-
     var options = {
         scales: {
             xAxes: [{
                 scaleLabel: {
                     display: true,
+                    fontColor: 'rgb(130,130,130)',
                     labelString: "THOUSANDS OF DOLLARS"
                 },
                 ticks: {
                     beginAtZero: true
                 },
                 gridLines: {
-                    borderDash: [5, 15],
+                    borderDash: [10, 15],
                     drawBorder: false,
                     zeroLineColor: '#fff',
                 }
@@ -216,13 +253,13 @@ function initDebtInContext() {
                 if (isInit) {
                     var that = this;
                     isInit = false;
-                    animation(this);
+                    addLabels(this, "debt");
                 }
             },
             onProgress: function () {
                 if (!isInit) {
                     var that = this;
-                    animation(that);
+                    addLabels(that, "debt");
                 }
             }
         }
@@ -236,10 +273,11 @@ function initDebtInContext() {
         });
 }
 
+// Relative Consequences Chart
 function initRelativeConsequences() {
 
     var data = {
-        labels: ["", "", "", "", ""],
+        labels: ["FOR-PROFIT", "PRIVATE NON-PROFIT", "PUBLIC", "FLORIDA", "UCF"],
         datasets: [
             {
                 label: "",
@@ -254,23 +292,26 @@ function initRelativeConsequences() {
             }
         ]
     };
+    var isInit = true;
 
     var options = {
         scales: {
             yAxes: [{
                 scaleLabel: {
                     display: true,
+                    fontColor: 'rgb(130,130,130)',
                     labelString: "PERCENT (%)"
                 },
                 ticks: {
                     beginAtZero: true
                 },
                 gridLines: {
-                    borderDash: [5, 15],
+                    borderDash: [10, 15],
                     drawBorder: false,
                 }
             }],
             xAxes: [{
+                display: false,
                 gridLines: {
                     display: false,
                     drawBorder: false,
@@ -279,11 +320,7 @@ function initRelativeConsequences() {
             }],
         },
         tooltips: {
-            callbacks: {
-                label: function (tooltipItems, data) {
-                    return tooltipItems.yLabel + '%';
-                }
-            }
+            enabled: false
         },
         legend: {
             display: false
@@ -291,6 +328,21 @@ function initRelativeConsequences() {
         deferred: {           // enabled by default
             yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
             delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        },
+        animation: {
+            onComplete: function () {
+                if (isInit) {
+                    var that = this;
+                    isInit = false;
+                    addLabels(this, "relative");
+                }
+            },
+            onProgress: function () {
+                if (!isInit) {
+                    var that = this;
+                    addLabels(that, "relative");
+                }
+            }
         }
     };
 
@@ -302,7 +354,10 @@ function initRelativeConsequences() {
         });
 }
 
+// Clear Comparison Chart
 function initClearComparison() {
+
+    var isInit = true;
 
     var options = {
         scales: {
@@ -328,18 +383,29 @@ function initClearComparison() {
             }]
         },
         tooltips: {
-            callbacks: {
-                label: function (tooltipItems, data) {
-                    return tooltipItems.xLabel + ' ' + tooltipItems.yLabel + '%';
-                }
-            }
+            enabled: false
         },
         legend: {
             display: false
         },
-        deferred: {           // enabled by default
-            yOffset: '75%',   // defer until 50% of the canvas height are inside the viewport
+        deferred: {
+            yOffset: '75%',   // defer until 70% of the canvas height are inside the viewport
             delay: 500        // delay of 500 ms after the canvas is considered inside the viewport
+        },
+        animation: {
+            onComplete: function () {
+                if (isInit) {
+                    var that = this;
+                    isInit = false;
+                    addLabels(this);
+                }
+            },
+            onProgress: function () {
+                if (!isInit) {
+                    var that = this;
+                    addLabels(that);
+                }
+            }
         }
     };
 
@@ -358,8 +424,6 @@ function initClearComparison() {
             ]
         };
     };
-
-    var temp = [44,36, 29, 26, 14, 17, 11, 15, 2, 6];
 
     var $clearComparison1 = $("#clear-comparison1"),
         clearComparison1 = new Chart($clearComparison1, {
