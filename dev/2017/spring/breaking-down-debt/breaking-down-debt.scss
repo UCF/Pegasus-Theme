@@ -6,157 +6,248 @@
 $font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
 $font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
 
+// Adds commonly-used Open Sans Condensed Bold.
+@mixin open-sans-condensed() {
+  font-family: "OpenSansCondensedBold", sans-serif;
+}
+
 article.story {
-	h1 {
-		font-family: "MontserratBold", sans-serif;
-    	font-weight: normal;
-		font-size: 58px;
-		margin-bottom: 30px;
-		margin-top: 0;
+  h1 {
+    font-family: "MontserratBold", sans-serif;
+    font-size: 58px;
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top: 0;
 
-		@media (max-width: 767px) {
-			font-size: 50px;
-		}
-	}
+    @media (max-width: 767px) {
+      font-size: 50px;
+    }
+  }
 
-	.social {
-		float: none;
-		margin-top: 20px;
-	}
+  .social {
+    float: none;
+    margin-top: 20px;
+  }
 
-	.byline {
-		margin-bottom: 20px;
-        margin-top: 20px;
-	}
+  .byline {
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
 
-	.content-container {
-		margin-top: 40px;
-	}
+  .content-container {
+    margin-top: 40px;
+  }
 
-    h2 {
-		font-family: $font-family-sans-serif;
-		font-size: 44px;
-		margin-top: 50px;
-        text-transform: uppercase;
+  h2 {
+    @include open-sans-condensed();
+    font-size: 44px;
+    margin-top: 50px;
+    text-transform: uppercase;
+  }
+
+  h3 {
+    font-family: $font-family-sans-serif;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 3px;
+  }
+
+  .chart-description {
+    font-family: $font-family-serif;
+    font-size: 20px;
+    font-weight: bold;
+  }
+
+  .chart-legend {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+  }
+
+  .ucf-legend,
+  .public-legend,
+  .for-profit-legend,
+  .private-non-profit-legend,
+  .florida-legend {
+    display: inline-block;
+    min-height: 15px;
+    width: 50px;
+  }
+
+  .ucf-legend {
+    background-color: rgb(249, 180, 70);
+  }
+
+  .public-legend {
+    background-color: rgb(197, 192, 184);
+  }
+
+  .for-profit-legend {
+    background-color: rgb(210, 124, 80);
+  }
+
+  .private-non-profit-legend {
+    background-color: rgb(92, 155, 167);
+  }
+
+  .florida-legend {
+    background-color: rgb(108, 183, 217);
+  }
+
+  .legend-margin-left {
+    margin-left: 35px;
+  }
+
+  .chart-label-1 {
+    color: #52bd89;
+  }
+
+  .chart-label-2 {
+    color: #7b9179;
+  }
+
+  .chart-label-3 {
+    color: #cd6003;
+  }
+
+  .chart-label-4 {
+    color: #a74a43;
+  }
+
+  .chart-label-5 {
+    color: #ff0001;
+  }
+
+  .chart-footer {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+  }
+
+  .chart-alt-footer {
+    color: #8a8c8e;
+    font-family: $font-family-sans-serif;
+    font-size: 13px;
+  }
+
+  .large-percentage {
+    @include open-sans-condensed();
+    font-size: 90px;
+    text-align: center;
+  }
+
+  .callout-outer {
+    margin-top: 50px;
+  }
+
+
+  .callout {
+    background-color: $ucf-gold;
+
+    .dale {
+
+      @media (min-width: $screen-md-min) {
+        background-image: url('/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/DaleW.png');
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        blockquote p {
+          font-size: 24px;
+          line-height: 36px;
+
+          @media (min-width: $screen-lg-min) {
+            font-size: 33px;
+            line-height: 43px;
+          }
+
+        }
+      }
     }
 
-	h3 {
-		font-family: $font-family-sans-serif;
-		font-size: 22px;
-		font-weight: bold;
-		margin-bottom: 3px;
-	}
+    .student {
 
-	.chart-description {
-		font-family: $font-family-serif;
-		font-size: 20px;
-		font-weight: bold;
-	}
+      @media (min-width: $screen-md-min) {
+        background-image: url('/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Student.png');
+        background-position-x: right;
+        background-repeat: no-repeat;
+        background-size: contain;
 
-	.chart-legend {
-		font-family: $font-family-sans-serif;
-		font-size: 16px;
-	}
+        blockquote p {
+          font-size: 24px;
+          line-height: 36px;
 
-	.ucf-legend,
-	.public-legend,
-	.for-profit-legend,
-	.private-non-profit-legend,
-	.florida-legend {
-		display: inline-block;
-		min-height: 15px;
-		width: 50px;
-	}
+          @media (min-width: $screen-lg-min) {
+            font-size: 33px;
+            line-height: 43px;
+          }
 
-	.ucf-legend {
-		background-color: rgb(249, 180, 70);
-	}
+        }
+      }
+    }
+  }
 
-	.public-legend {
-		background-color: rgb(197, 192, 184);
-	}
+  .survey-copy {
+    font-family: $font-family-sans-serif;
+    font-size: 20px;
+  }
 
-	.for-profit-legend {
-		background-color: rgb(210, 124, 80);
-	}
+  .topics-header,
+  .topics-list {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    list-style: none;
+  }
 
-	.private-non-profit-legend {
-		background-color: rgb(92, 155, 167);
-	}
+  .black-header-container {
+    margin: 40px 0;
 
-	.florida-legend {
-		background-color: rgb(108, 183, 217);
-	}
+    .black-header {
+      background-color: #000;
+      bottom: 0;
+      -webkit-box-decoration-break: clone;
+      box-decoration-break: clone;
+      box-shadow: 0 0 0 .35em #000, -.35em 0 0 0 #000;
+      color: #fff;
+      display: inline;
+      line-height: 1.5;
 
-	.legend-margin-left {
-		margin-left: 35px;
-	}
+      margin-left: 20px;
+      position: relative;
+    }
+  }
 
-	.chart-label-1 {
-		color: #52BD89;
-	}
+  .topics-header {
+    font-weight: bold;
+    margin-top: 30px;
+    text-transform: uppercase;
+  }
 
-	.chart-label-2 {
-		color: #7B9179;
-	}
+  .topics-content {
+    text-align: center;
+  }
 
-	.chart-label-3 {
-		color: #CD6003;
-	}
+  .topics-list {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 30px;
+    margin-top: 0;
+  }
 
-	.chart-label-4 {
-		color: #A74A43;
-	}
+  .download-pdf {
+    border: 3px #000 solid;
+    border-radius: 0;
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    margin-top: 30px;
+    padding: 10px 15px;
+  }
 
-	.chart-label-5 {
-		color: #FF0001;
-	}
+  .learn-more {
+    font-family: $font-family-sans-serif;
+    font-size: 24px;
+    margin-bottom: 20px;
 
-	.chart-footer {
-		font-family: $font-family-sans-serif;
-		font-size: 16px;
-	}
-
-	.chart-alt-footer {
-		font-family: $font-family-sans-serif;
-		font-size: 13px;
-		color: #8a8c8e;
-	}
-
-	.large-percentage {
-		font-family: $font-family-sans-serif;
-		font-size: 70px;
-	}
-
-	.survey-copy {
-		font-family: $font-family-sans-serif;
-		font-size: 16px;
-
-		strong {
-			color: #d47c4b;
-		}
-	}
-
-	.topics-heading,
-	.topics-list {
-		font-family: $font-family-sans-serif;
-		font-size: 16px;
-		list-style: none;
-	}
-
-	.topics-heading {
-		font-weight: bold;
-		margin-top: 30px;
-		text-transform: uppercase;
-	}
-
-	.topics-list li {
-		margin-top: 20px;
-	}
-
-	.learn-more {
-		font-family: $font-family-sans-serif;
-		font-size: 24px;
-		text-align: right;
-	}
+    a {
+      font-weight: bold;
+    }
+  }
 }
