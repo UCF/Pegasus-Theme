@@ -64,12 +64,25 @@ var addLabels = function (that, chart) {
 
             switch (chart) {
                 case "debt":
+                    var viewportWidth = $(window).width(),
+                        paddingLeft = 20,
+                        paddingTop = 6;
+
+                    if (viewportWidth > 550) {
+                        paddingLeft = 30;
+                        paddingTop = 8;
+                    } else {
+                        ctx.font = 'bold 16px Arial';
+                    }
+
                     // whilte labels
                     ctx.fillStyle = "#fff";
-                    ctx.fillText(label, 40, centery + 8);
-                    // percentages
-                    ctx.fillStyle = "#000";
-                    ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
+                    ctx.fillText(label, paddingLeft, centery + paddingTop);
+                    if (viewportWidth > 550) {
+                        // percentages
+                        ctx.fillStyle = "#000";
+                        ctx.fillText(formatNumber(val), centerx - 90, centery + 8);
+                    }
                     break;
                 case "relative":
                     // percentages
@@ -77,16 +90,6 @@ var addLabels = function (that, chart) {
                     ctx.textAlign = "center";
                     ctx.fillText(val + '%', centerx + 5, centery - 10);
                     ctx.textAlign = "left";
-                    // white labels
-                    // ctx.fillStyle = "#000";
-                    // ctx.fillText(label, centerx, centery);
-                    // console.log(first);
-                    // console.log(label);
-                    // if (first) {
-                    //     ctx.translate(centerx, centery);
-                    //     ctx.rotate((Math.PI / 180) * 90);
-                    //     ctx.translate(-centerx, -centery);
-                    // }
                     break;
                 default:
                     ctx.fillStyle = "#000";
@@ -122,26 +125,26 @@ function setChartDefaults() {
 // Selective Crisis Chart
 function initSelectiveCrisis() {
     var data = {
-        labels: ["'01", "'06", "'07", "'08", "'09", "'10", "'11", "'12"],
+        labels: ["'89-'90", "'92-'93", "'99-'00", "'03-'04", "'07-'08", "'11-'12"],
         datasets: [
             {
                 type: 'line',
-                label: 'Public (UCF)   ',
-                data: [40, 41, 42, 43, 44, 45, 46, 47],
+                label: 'Public   ',
+                data: [43.1, 46, 45.7, 51.3, 50.6, 62.6],
                 backgroundColor: 'rgba(251,181,55,0.7)',
                 borderColor: 'rgba(251,181,55,0.7)'
             },
             {
                 type: 'line',
                 label: 'Private Non-Profit   ',
-                data: [60, 60, 61, 60, 59, 60, 61, 62],
+                data: [58, 56.5, 54.3, 59, 58.8, 65.5],
                 backgroundColor: 'rgba(90,155,168,0.7)',
                 borderColor: 'rgba(90,155,168,0.7)'
             },
             {
                 type: 'line',
-                label: 'Private For-Profit   ',
-                data: [61, 62, 65, 63, 70, 73, 75, 80],
+                label: 'For-Profit   ',
+                data: [77.4, 68.1, 80.4, 85.1, 95.8, 79.5],
                 backgroundColor: 'rgba(212,124,75,0.7)',
                 borderColor: 'rgba(212,124,75,0.7)'
             }
@@ -288,7 +291,7 @@ function initRelativeConsequences() {
                     'rgb(108, 183, 217)',
                     'rgb(249, 180, 70)',
                 ],
-                data: [15, 10, 11, 5, 4],
+                data: [15, 11.3, 7, 5.4, 4.9],
             }
         ]
     };
@@ -365,7 +368,7 @@ function initClearComparison() {
                 display: false,
                 ticks: {
                     beginAtZero: true,
-                    max: 50
+                    max: 35
                 },
                 gridLines: {
                     display: false,
@@ -424,13 +427,6 @@ function initClearComparison() {
             ]
         };
     };
-
-    var $clearComparison1 = $("#clear-comparison1"),
-        clearComparison1 = new Chart($clearComparison1, {
-            type: 'horizontalBar',
-            data: setData([44,36]),
-            options: options
-        });
 
     var $clearComparison2 = $("#clear-comparison2"),
         clearComparison2 = new Chart($clearComparison2, {

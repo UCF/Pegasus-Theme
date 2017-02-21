@@ -3,13 +3,9 @@
 @import '../../../../versions/v4/static/scss/variables';
 @import '../../../../versions/v4/static/scss/mixins';
 
-$font-family-sans-serif:       'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
-$font-family-serif:            Georgia, "Times New Roman", Times, serif !default;
-
-// Adds commonly-used Open Sans Condensed Bold.
-@mixin open-sans-condensed() {
-  font-family: "OpenSansCondensedBold", sans-serif;
-}
+$font-family-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
+$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
+$font-family-condensed:  "Whitney Cond A", "Whitney Cond B";
 
 article.story {
   h1 {
@@ -39,8 +35,9 @@ article.story {
   }
 
   h2 {
-    @include open-sans-condensed();
+    font-family: $font-family-condensed;
     font-size: 44px;
+    font-weight: 400;
     margin-top: 50px;
     text-transform: uppercase;
   }
@@ -60,7 +57,12 @@ article.story {
 
   .chart-legend {
     font-family: $font-family-sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+    margin-bottom: 10px;
+
+    @media(min-width: $screen-md-min) {
+      font-size: 16px;
+    }
   }
 
   .ucf-legend,
@@ -70,7 +72,11 @@ article.story {
   .florida-legend {
     display: inline-block;
     min-height: 15px;
-    width: 50px;
+    width: 25px;
+
+    @media(min-width: $screen-md-min) {
+      width: 50px;
+    }
   }
 
   .ucf-legend {
@@ -93,8 +99,20 @@ article.story {
     background-color: rgb(108, 183, 217);
   }
 
+  .legend-text-align {
+    text-align: left;
+
+    @media(min-width: $screen-sm-min) {
+      text-align: center;
+    }
+  }
+
   .legend-margin-left {
-    margin-left: 35px;
+    margin-left: 0;
+
+    @media(min-width: $screen-sm-min) {
+      margin-left: 35px;
+    }
   }
 
   .chart-label-1 {
@@ -129,8 +147,10 @@ article.story {
   }
 
   .large-percentage {
-    @include open-sans-condensed();
-    font-size: 90px;
+    font-family: $font-family-condensed;
+    font-size: 120px;
+    font-weight: 400;
+    line-height: 1;
     text-align: center;
   }
 
@@ -138,14 +158,16 @@ article.story {
     margin-top: 50px;
   }
 
-
   .callout {
     background-color: $ucf-gold;
 
     .dale {
 
+      @media (max-width: $screen-sm-max ) {
+        background: none !important;
+      }
+
       @media (min-width: $screen-md-min) {
-        background-image: url('/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/DaleW.png');
         background-repeat: no-repeat;
         background-size: contain;
 
@@ -163,9 +185,11 @@ article.story {
     }
 
     .student {
+      @media (max-width: $screen-sm-max ) {
+        background: none !important;
+      }
 
       @media (min-width: $screen-md-min) {
-        background-image: url('/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Student.png');
         background-position-x: right;
         background-repeat: no-repeat;
         background-size: contain;

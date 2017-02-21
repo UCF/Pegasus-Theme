@@ -25,8 +25,8 @@
 
                 <h2>A Selective Crisis</h2>
                 <p class="chart-description">The percentage of undergraduates receiving student loans varies greatly between private for-profit, private non-profit and public institutions, such as UCF.</p>
-                <div class="chart-legend text-center">
-                    <span class="for-profit-legend"></span> Private For-Profit <span class="private-non-profit-legend legend-margin-left"></span> Private Non-Profit <span class="ucf-legend legend-margin-left"></span> Public (UCF)
+                <div class="chart-legend legend-text-align">
+                    <span class="for-profit-legend"></span> Private For-Profit<br class="visible-xs">  <span class="private-non-profit-legend legend-margin-left"></span> Private Non-Profit<br class="visible-xs"> <span class="ucf-legend legend-margin-left"></span> Public
                 </div>
                 <canvas id="selective-crisis" width="400" height="200"></canvas>
                 <p class="chart-footer">U.S. Treasury tabulation of National Student Loan Data Systems data from Adam Looney &amp; Constantine Yannelis, "A Crisis in Student Loans?", 2015</p>
@@ -37,7 +37,7 @@
         <div class="callout">
             <div class="container">
                 <div class="row content-wrap">
-                    <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner text-left student">
+                    <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner text-left student"[background-image filename='student']>
                         <div class="row">
                             <div class="col-md-6 col-lg-7">
                                 <blockquote cite="Bryce Nelson">
@@ -65,7 +65,12 @@
                 <h2>Brighter Futures</h2>
                 <p class="chart-description">Nearly half of UCF undergraduates carry no debt when they graduate.</p>
 
-                <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/brighter-futures.svg" alt="" width="80%">
+                <div class="chart-legend">
+                    <span class="for-profit-legend"></span> For-Profit <span class="private-non-profit-legend legend-margin-left"></span> Private Non-Profit
+                    <span class="public-legend"></span> Public <span class="florida-legend legend-margin-left"></span> National <span class="ucf-legend legend-margin-left"></span> UCF *&dagger;
+                </div>
+
+                <img src="[image filename='brighter-futures']" alt="" width="80%">
 
                 <p class="chart-footer">* 2012 data for for-profit, private and public. 2014-15 data for SUS and UCF.<br>&dagger; FTIC students only</p>
                 <p class="chart-alt-footer">Association of Public &amp; Land-Grant Universities, 2016; The Institute for College Access &amp; Success, 2014; Florida Board of Governors System Survey of University Work Plans, 2016</p>
@@ -76,7 +81,7 @@
         <div class="callout">
             <div class="container">
                 <div class="row content-wrap">
-                    <div class="col-md-12 col-sm-10 col-sm-offset-1 callout-inner text-left dale">
+                    <div class="col-md-12 col-sm-10 col-sm-offset-1 callout-inner text-left dale" [background-image filename='dale']>
                         <div class="row">
                             <div class="col-md-5 col-md-offset-5 col-lg-5 col-lg-offset-5">
                                 <blockquote>"Responsible borrowing allows students, who might not otherwise be able to pay for their education, to invest in their future. So, we teach our students to borrow smart."</blockquote>
@@ -107,8 +112,6 @@
                 <div class="chart-legend">
                     <span class="ucf-legend"></span> UCF (2015-16) <span class="public-legend legend-margin-left"></span> Public (2011-12)
                 </div>
-                <h3 class="chart-label-1">$0</h3>
-                <canvas id="clear-comparison1" width="400" height="75"></canvas>
                 <h3 class="chart-label-2">$1 - $19,999</h3>
                 <canvas id="clear-comparison2" width="400" height="75"></canvas>
                 <h3 class="chart-label-3">$20,000 - $29,999</h3>
@@ -149,29 +152,29 @@
                 <div class="topics-header">Topics Include:</div>
                 <div class="row topics-content">
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-01.png" alt="" width="50%">
+                        <img src="[image filename='icon-01']" alt="" width="50%">
                         <h3 class="topics-list">Healthy Spending</h3>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-02.png" alt="" width="50%">
+                        <img src="[image filename='icon-02']" alt="" width="50%">
                         <h3 class="topics-list">Student Loan Management</h3>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-03.png" alt="" width="50%">
+                        <img src="[image filename='icon-03']" alt="" width="50%">
                         <h3 class="topics-list">Protecting Your Credit</h3>
                     </div>
                 </div>
                 <div class="row topics-content">
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-06.png" alt="" width="50%">
+                        <img src="[image filename='icon-06']" alt="" width="50%">
                         <h3 class="topics-list">Planning Investments</h3>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-05.png" alt="" width="50%">
+                        <img src="[image filename='icon-05']" alt="" width="50%">
                         <h3 class="topics-list">Saving for Your Future</h3>
                     </div>
                     <div class="col-md-4 col-sm-4">
-                        <img src="/pegasus/wp-content/themes/Pegasus-Theme/dev/2017/spring/breaking-down-debt/img/Icon-04.png" alt="" width="50%">
+                        <img src="[image filename='icon-04']" alt="" width="50%">
                         <h3 class="topics-list">Understanding Your Earnings</h3>
                     </div>
                 </div>
