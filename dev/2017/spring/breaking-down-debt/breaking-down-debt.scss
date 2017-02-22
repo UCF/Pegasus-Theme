@@ -10,6 +10,11 @@ $font-family-condensed:  'Whitney Cond A', 'Whitney Cond B';
 article.story {
   background-color: #fffaef;
 
+  hr {
+    border-top: 3px solid #000;
+    margin-bottom: 30px;
+  }
+
   h1 {
     font-family: 'MontserratBold', sans-serif;
     font-size: 58px;
@@ -183,15 +188,23 @@ article.story {
   .callout {
     background-color: #e5e5e5;
 
-    .dale {
+    .dale-container {
 
-      @media (max-width: $screen-sm-max) {
-        background: none !important;
+      .dale {
+        display: none;
+        position: absolute;
+
+        @media (min-width: $screen-md-min) {
+          display: block;
+          top: -60px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+          top: -57px;
+        }
       }
 
       @media (min-width: $screen-md-min) {
-        background-repeat: no-repeat;
-        background-size: contain;
 
         blockquote p {
           font-size: 24px;
@@ -201,7 +214,6 @@ article.story {
             font-size: 33px;
             line-height: 43px;
           }
-
         }
       }
     }
@@ -211,11 +223,15 @@ article.story {
       .student {
         position: absolute;
         right: 0;
-        top: -74px;
         display: none;
 
         @media (min-width: $screen-md-min) {
-          display: block
+          display: block;
+          top: -75px;
+        }
+
+        @media (min-width: $screen-lg-min) {
+          top: -74px;
         }
       }
 
