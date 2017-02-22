@@ -4,16 +4,17 @@
 @import '../../../../versions/v4/static/scss/mixins';
 
 $font-family-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
-$font-family-serif:      Georgia, "Times New Roman", Times, serif !default;
-$font-family-condensed:  "Whitney Cond A", "Whitney Cond B";
+$font-family-serif:      Georgia, 'Times New Roman', Times, serif !default;
+$font-family-condensed:  'Whitney Cond A', 'Whitney Cond B';
 
 article.story {
+  background-color: #fffaef;
+
   h1 {
-    font-family: "MontserratBold", sans-serif;
+    font-family: 'MontserratBold', sans-serif;
     font-size: 58px;
     font-weight: normal;
     margin-bottom: 30px;
-    margin-top: 0;
 
     @media (max-width: 767px) {
       font-size: 50px;
@@ -36,10 +37,14 @@ article.story {
 
   h2 {
     font-family: $font-family-condensed;
-    font-size: 44px;
-    font-weight: 400;
+    font-size: 36px;
+    font-weight: 700;
     margin-top: 50px;
     text-transform: uppercase;
+
+    @media(min-width: $screen-md-min) {
+      font-size: 44px;
+    }
   }
 
   h3 {
@@ -51,14 +56,23 @@ article.story {
 
   .chart-description {
     font-family: $font-family-serif;
-    font-size: 20px;
-    font-weight: bold;
+    font-size: 18px;
+
+    @media(min-width: $screen-md-min) {
+      font-size: 20px;
+    }
   }
 
   .chart-legend {
     font-family: $font-family-sans-serif;
     font-size: 14px;
-    margin-bottom: 10px;
+    margin: 10px auto;
+
+    @media(max-width: $screen-xs-max) {
+      &.text-center {
+        text-align: left;
+      }
+    }
 
     @media(min-width: $screen-md-min) {
       font-size: 16px;
@@ -71,13 +85,8 @@ article.story {
   .private-non-profit-legend,
   .florida-legend {
     display: inline-block;
-    margin-left: 20px;
     min-height: 15px;
-    width: 25px;
-
-    @media(min-width: $screen-md-min) {
-      width: 50px;
-    }
+    width: 50px;
   }
 
   .ucf-legend {
@@ -100,19 +109,17 @@ article.story {
     background-color: rgb(108, 183, 217);
   }
 
-  .legend-text-align {
-    text-align: left;
+  .legend-container {
+    display: inline-block;
+    margin: 0 auto;
+    width: 220px;
+    white-space: nowrap;
 
-    @media(min-width: $screen-sm-min) {
-      text-align: center;
-    }
-  }
-
-  .legend-margin-left {
-    margin-left: 20px;
-
-    @media(min-width: $screen-sm-min) {
-      margin-left: 35px;
+    &.width-auto {
+      @media(min-width: $screen-xs-min) {
+        margin: 0 5px;
+        width: auto;
+      }
     }
   }
 
@@ -138,13 +145,27 @@ article.story {
 
   .chart-footer {
     font-family: $font-family-sans-serif;
-    font-size: 16px;
+    font-size: 14px;
+
+    @media(min-width: $screen-md-min) {
+      font-size: 16px;
+    }
   }
 
   .chart-alt-footer {
     color: #8a8c8e;
     font-family: $font-family-sans-serif;
-    font-size: 13px;
+    font-size: 12px;
+
+    @media(min-width: $screen-md-min) {
+      font-size: 13px;
+    }
+  }
+
+  .brighter-futures-chart {
+    @media(min-width: $screen-lg-min) {
+      width: 80%;
+    }
   }
 
   .large-percentage {
@@ -160,11 +181,11 @@ article.story {
   }
 
   .callout {
-    background-color: $ucf-gold;
+    background-color: #e5e5e5;
 
     .dale {
 
-      @media (max-width: $screen-sm-max ) {
+      @media (max-width: $screen-sm-max) {
         background: none !important;
       }
 
@@ -186,7 +207,7 @@ article.story {
     }
 
     .student {
-      @media (max-width: $screen-sm-max ) {
+      @media (max-width: $screen-sm-max) {
         background: none !important;
       }
 
@@ -207,6 +228,15 @@ article.story {
         }
       }
     }
+
+    .student-content {
+      background-color: #e5e5e5;
+      margin-top: 10px;
+    }
+  }
+
+  .background-color-transparent {
+    background-color: transparent;
   }
 
   .survey-copy {
@@ -248,6 +278,15 @@ article.story {
 
   .topics-content {
     text-align: center;
+
+    a {
+      display: inline-block;
+
+      &:hover,
+      &:active {
+        background-color: #e5e5e5;
+      }
+    }
   }
 
   .topics-list {
