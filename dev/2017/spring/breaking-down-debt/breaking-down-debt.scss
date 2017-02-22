@@ -21,8 +21,15 @@ article.story {
     font-weight: normal;
     margin-bottom: 30px;
 
-    @media (max-width: 767px) {
+    @media (min-width: $screen-md-min) {
       font-size: 50px;
+    }
+  }
+
+  .visible-xs-sm {
+
+    @media(min-width: $screen-md-min) {
+      display: none;
     }
   }
 
@@ -196,17 +203,18 @@ article.story {
 
         @media (min-width: $screen-md-min) {
           display: block;
-          top: -60px;
+          top: -42px;
         }
 
         @media (min-width: $screen-lg-min) {
-          top: -57px;
+          top: -31px;
         }
       }
 
-      @media (min-width: $screen-md-min) {
+      blockquote {
+        margin-bottom: 0;
 
-        blockquote p {
+        p {
           font-size: 24px;
           line-height: 36px;
 
@@ -220,6 +228,11 @@ article.story {
 
     .student-container {
 
+      img {
+        margin-bottom: 5px;
+        margin-top: 0;
+      }
+
       .student {
         position: absolute;
         right: 0;
@@ -231,7 +244,7 @@ article.story {
         }
 
         @media (min-width: $screen-lg-min) {
-          top: -74px;
+          top: -73px;
         }
       }
 
@@ -243,13 +256,22 @@ article.story {
         }
       }
 
-      blockquote p {
-        font-size: 27px;
-        line-height: 39px;
+      .cite {
+        margin-right: 10px;
+      }
 
-        @media (min-width: $screen-lg-min) {
-          font-size: 33px;
-          line-height: 43px;
+      blockquote {
+        margin-bottom: 0;
+        padding-bottom: 0;
+
+        p {
+          font-size: 21px;
+          line-height: 34px;
+
+          @media (min-width: $screen-lg-min) {
+            font-size: 30px;
+            line-height: 40px;
+          }
         }
       }
     }
