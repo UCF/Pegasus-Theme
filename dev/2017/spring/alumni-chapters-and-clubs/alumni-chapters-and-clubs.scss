@@ -1,3 +1,5 @@
+@import '../../../../versions/v4/static/scss/variables';
+
 $font-family-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
 $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
 
@@ -5,13 +7,21 @@ h1 {
   color: #fff !important;
   font-family: 'Open Sans Condensed', sans-serif;
   font-weight: 900;
-  font-size: 120px;
+  font-size: 75px;
   letter-spacing: -.05em;
   line-height: .8em;
   margin-top: 0;
   padding-top: 24px;
   text-shadow: 0 0 1px #000;
   text-transform: uppercase;
+
+  @media(min-width: $screen-sm-min) {
+    font-size: 90px;
+  }
+
+  @media(min-width: $screen-md-min) {
+    font-size: 120px;
+  }
 }
 
 .lead {

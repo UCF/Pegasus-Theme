@@ -1,7 +1,11 @@
 var map,
     mapData,
+    center,
     saControl,
     saPosition,
+    $saMessage,
+    $saIcon,
+    isCentered,
     $chapterText,
     $clubText,
     $memberText,
@@ -13,6 +17,8 @@ var init = function() {
   $chapterText = $('#chapters');
   $clubText = $('#clubs');
   $memberText = $('#members');
+  $saMessage = $('#sa-message');
+  $saIcon = $('#sa-icon');
 
   chapterCount = clubCount = memberCount = 0;
 
@@ -39,16 +45,17 @@ var getData = function() {
 };
 
 var initializeMap = function() {
-  var latlng = new google.maps.LatLng(39.905227, -95.419666);
+  center = new google.maps.LatLng(39.905227, -95.419666);
   saPosition = new google.maps.LatLng(23.133774, 45.101088);
   var mapOptions = {
-    center: latlng,
+    center: center,
     zoom: 4,
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     scrollwheel: false
   };
   map = new google.maps.Map(document.getElementById('alumni-map'), mapOptions);
 
+  isCentered = true;
   createControls();
 
   for(var i in mapData) {
@@ -67,13 +74,29 @@ var initializeMap = function() {
 
 var createControls = function() {
   var $sa_control = $('#sa-control').detach()[0];
-  $sa_control.addEventListener('click', function() {
-    map.panTo(saPosition);
-  });
+  $sa_control.addEventListener('click', toggleMapPosition);
   map.controls[google.maps.ControlPosition.RIGHT_TOP].push($sa_control);
 
   var $countControl = $('#alumni-info').detach()[0];
   map.controls[google.maps.ControlPosition.TOP_CENTER].push($countControl);
+};
+
+var toggleMapPosition = function(e) {
+  if (isCentered) {
+    map.panTo(saPosition);
+    $saMessage.text('Back to the U.S.A.');
+    $saIcon
+      .removeClass('fa-arrow-circle-o-right')
+      .addClass('fa-arrow-circle-o-left');
+    isCentered = false;
+  } else {
+    map.panTo(center);
+    $saMessage.text('View Saudi Arabia Chapter');
+    $saIcon
+      .removeClass('fa-arrow-circle-o-left')
+      .addClass('fa-arrow-circle-o-right');
+    isCentered = true;
+  }
 };
 
 var addMarker = function(markerData) {
