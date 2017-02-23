@@ -33,7 +33,7 @@ var init = function() {
 };
 
 var lazyLoadGoogleMap = function() {
-  $.getScript('//maps.google.com/maps/api/js?sensor=false&callback=getData&key=AIzaSyBQtVEuBQkAjfKe1HbdO-In1LgIuu1UEXk')
+  $.getScript('//maps.google.com/maps/api/js?sensor=false&callback=getData&key=AIzaSyBTQqIr2iqXIphR51yd3dCjudO4Z4PKYxM')
     .fail(function(jqxhr, settings, ex) {
       // do nothing  
     });
