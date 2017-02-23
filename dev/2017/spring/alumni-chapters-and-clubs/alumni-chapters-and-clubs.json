@@ -3,252 +3,216 @@
         "name": "Phoenix, AZ",
         "lat": 33.467735,
         "lng": -112.072895,
-        "chapter": true,
-        "count": 475
+        "chapter": true
     },
     {
         "name": "Denver, CO",
         "lat": 39.745778,
         "lng": -104.993134,
-        "chapter": true,
-        "count": 243
+        "chapter": true
     },
     {
         "name": "Los Angeles, CA",
         "lat": 34.036114, 
         "lng": -118.244220,
-        "chapter": false,
-        "count": 55
+        "chapter": false
     },
     {
         "name": "San Diego, CA",
         "lat": 32.699517,
         "lng": -117.161110,
-        "chapter": false,
-        "count": 67
+        "chapter": false
     },
     {
         "name": "San Fransisco, CA",
         "lat": 37.771521,
         "lng": -122.421122,
-        "chapter": false,
-        "count": 212
+        "chapter": false
     },
     {
         "name": "Connecticut",
         "lat": 41.671448,
         "lng": -72.636760,
-        "chapter": false,
-        "count": 12
+        "chapter": false
     },
     {
         "name": "Jacksonville, FL",
         "lat": 30.318613,
         "lng": -81.665558,
-        "chapter": false,
-        "count": 45
+        "chapter": false
     },
     {
         "name": "Lake County, FL",
         "lat": 28.791791,
         "lng": -81.729815,
-        "chapter": false,
-        "count": 123
+        "chapter": false
     },
     {
         "name": "Ocala, FL",
         "lat": 29.183459,
         "lng": -82.139987,
-        "chapter": false,
-        "count": 420
+        "chapter": false
     },
     {
         "name": "Osceola County, FL",
         "lat": 28.072581,
         "lng": -81.108300,
-        "chapter": false,
-        "count": 460
+        "chapter": false
     },
     {
         "name": "Palm Beach County, FL",
         "lat": 26.657846,
         "lng": -80.428497,
-        "chapter": true,
-        "count": 900
+        "chapter": true
     },
     {
         "name": "Panhandle, FL",
         "lat": 30.619987,
         "lng": -85.669745,
-        "chapter": false,
-        "count": 2
+        "chapter": false
     },
     {
         "name": "Polk County, FL",
         "lat": 28.007118,
         "lng": -81.663992,
-        "chapter": false,
-        "count": 120
+        "chapter": false
     },
     {
         "name": "Sarasota, FL",
         "lat": 27.335884,
         "lng": -82.530993,
-        "chapter": false,
-        "count": 45
+        "chapter": false
     },
     {
         "name": "Seminole County, FL",
         "lat": 28.728937,
         "lng": -81.180033,
-        "chapter": false,
-        "count": 320
+        "chapter": false
     },
     {
         "name": "Southeast Florida",
         "lat": 26.602419,
         "lng": -80.364294,
-        "chapter": true,
-        "count": 430
+        "chapter": true
     },
     {
         "name": "Southwest Florida",
         "lat": 26.090474,
         "lng": -81.594763,
-        "chapter": false,
-        "count": 9
+        "chapter": false
     },
     {
         "name": "Space Coast, FL",
         "lat": 28.343494,
         "lng": -80.727041,
-        "chapter": true,
-        "count": 320
+        "chapter": true
     },
     {
         "name": "Tallahassee, FL",
         "lat": 30.434268,
         "lng": -84.278487,
-        "chapter": false,
-        "count": 259
+        "chapter": false
     },
     {
         "name": "Tampa Bay, FL",
         "lat": 27.762067,
         "lng": -82.543860,
-        "chapter": true,
-        "count": 675
+        "chapter": true
     },
     {
         "name": "Volusia/Flagler County, FL",
         "lat": 29.264040,
         "lng": -81.265389,
-        "chapter": false,
-        "count": 222
+        "chapter": false
     },
     {
         "name": "Atlanta, GA",
         "lat": 33.744572,
         "lng": -84.390050,
-        "chapter": true,
-        "count": 420
+        "chapter": true
     },
     {
         "name": "Chicago, IL",
         "lat": 41.870984,
         "lng": -87.630538,
-        "chapter": true,
-        "count": 126
+        "chapter": true
     },
     {
         "name": "Baltimore, MD",
         "lat": 39.283622,
         "lng": -76.613965,
-        "chapter": false,
-        "count": 261
+        "chapter": false
     },
     {
         "name": "Boston, MA",
         "lat": 42.355735,
         "lng": -71.060935,
-        "chapter": false,
-        "count": 23
+        "chapter": false
     },
     {
         "name": "Las Vegas, NV",
         "lat": 36.163178,
         "lng": -115.139988,
-        "chapter": false,
-        "count": 1
+        "chapter": false
     },
     {
         "name": "New York, NY",
         "lat": 40.705044,
         "lng": -74.012342,
-        "chapter": false,
-        "count": 93
+        "chapter": false
     },
     {
         "name": "Charolette, NC",
         "lat": 35.219903,
         "lng": -80.831596,
-        "chapter": false,
-        "count": 23
+        "chapter": false
     },
     {
         "name": "Cincinnati, OH",
         "lat": 39.096833,
         "lng": -84.516376,
-        "chapter": false,
-        "count": 43
+        "chapter": false
     },
     {
         "name": "Portland, OR",
         "lat": 45.517337,
         "lng": -122.681894,
-        "chapter": false,
-        "count": 48
+        "chapter": false
     },
     {
         "name": "Philadelphia, PA",
         "lat": 39.945735,
         "lng": -75.166105,
-        "chapter": false,
-        "count": 89
+        "chapter": false
     },
     {
         "name": "Austin, TX",
         "lat": 30.259651,
         "lng": -97.743801,
-        "chapter": false,
-        "count": 701
+        "chapter": false
     },
     {
         "name": "Dallas/Ft. Worth, TX",
         "lat": 32.770370,
         "lng": -96.799325,
-        "chapter": false,
-        "count": 103
+        "chapter": false
     },
     {
         "name": "Houston, TX",
         "lat": 29.745366,
         "lng": -95.368362,
-        "chapter": false,
-        "count": 22
+        "chapter": false
     },
     {
         "name": "Washington, D.C.",
         "lat": 38.903603,
         "lng": -77.036884,
-        "chapter": true,
-        "count": 230
+        "chapter": true
     },
     {
         "name": "Saudi Arabia",
         "lat": 23.133774,
         "lng": 45.101088,
-        "chapter": false,
-        "count": 45
+        "chapter": true
     }
 ]

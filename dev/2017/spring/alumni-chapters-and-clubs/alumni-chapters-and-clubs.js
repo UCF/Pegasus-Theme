@@ -13,7 +13,8 @@ var map,
     clubCount,
     memberCount,
     chapterMarker,
-    clubMarker;
+    clubMarker,
+    activeInfoWindows;
 
 var init = function() {
   $chapterText = $('#chapters');
@@ -21,7 +22,7 @@ var init = function() {
   $memberText = $('#members');
   $saMessage = $('#sa-message');
   $saIcon = $('#sa-icon');
-
+  activeInfoWindows = [];
   chapterCount = clubCount = memberCount = 0;
 
   if(window.google && google.maps) {
@@ -40,11 +41,11 @@ var lazyLoadGoogleMap = function() {
 
 var getData = function() {
   var $container = $('#alumni-map'),
-      dataUrl = $container.data('map'),
-      chapterMarker = $container.data('chapter-marker');
+      dataUrl = $container.data('map');
   $.getJSON(dataUrl, function(data) {
     mapData = data;
     initializeMap();
+    initializeTables();
   });
 };
 
@@ -61,6 +62,9 @@ var initializeMap = function() {
 
   isCentered = true;
   createControls();
+
+  chapterMarker = $('#alumni-map').data('chapter-marker');
+  clubMarker = $('#alumni-map').data('club-marker');
 
   for(var i in mapData) {
     var d = mapData[i];
@@ -86,6 +90,9 @@ var createControls = function() {
 };
 
 var toggleMapPosition = function(e) {
+  if (map.getZoom() !== 4) {
+    map.setZoom(4);
+  }
   if (isCentered) {
     map.panTo(saPosition);
     $saMessage.text('Back to the U.S.A.');
@@ -108,19 +115,29 @@ var addMarker = function(markerData) {
     position: new google.maps.LatLng(markerData.lat, markerData.lng),
     title: markerData.name,
     animation: google.maps.Animation.DROP,
-    icon: chapterMarker
+    icon: markerData.chapter ? chapterMarker : clubMarker
   });
 
-  marker.addListener('click', function() {
-    var infoWindow = createInfoWindow(markerData.name, markerData.count);
+  marker.addListener('mouseover', function() {
+    var infoWindow = createInfoWindow(markerData);
+    activeInfoWindows.push(infoWindow);
     infoWindow.open(map, marker);
+  });
+
+  marker.addListener('mouseout', function() {
+    for(var i in activeInfoWindows) {
+      var infoWindow = activeInfoWindows[i];
+      infoWindow.close();
+      $(infoWindow).remove();
+    }
   });
   
   marker.setMap(map);
 };
 
-var createInfoWindow = function(name, memberCount) {
-  var content = '<div class="infoWindow"><h2>' + name + '</h2><p>Members: <span class="member-count">' + memberCount + '</span></p></div>';
+var createInfoWindow = function(data) {
+  var pClass = data.chapter ? 'chapter' : 'club';
+  var content = '<div class="infoWindow"><p class="'+ pClass + '">' + data.name + '</h2></p>';
   var infoWindow = new google.maps.InfoWindow({
     content: content
   });
@@ -132,6 +149,34 @@ var updateLabels = function(x, y, z) {
   $chapterText.text(x);
   $clubText.text(y);
   $memberText.text(z);
+};
+
+var initializeTables = function() {
+  var _data = mapData.sort(alphaSort),
+      $chapterTable = $('#chapter-table'),
+      $clubTable    = $('#club-table');
+
+  for(var i in _data) {
+    var item = _data[i];
+    if ( item.chapter ) {
+      $chapterTable.append($('<tr><td>' + item.name + '</td></tr>'));
+    } else {
+      $clubTable.append($('<tr><td>' + item.name + '</td></tr>'));
+    }
+  }
+};
+
+var alphaSort = function(a, b) {
+  a = a.name.toLowerCase();
+  b = b.name.toLowerCase();
+
+  if (a < b) {
+    return -1;
+  }
+  if (a > b) {
+    return 1;
+  }
+  return 0;
 };
 
 jQuery(document).ready(function() {
