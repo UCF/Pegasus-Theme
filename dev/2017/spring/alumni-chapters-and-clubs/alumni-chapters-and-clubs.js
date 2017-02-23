@@ -7,7 +7,9 @@ var map,
     $memberText,
     chapterCount,
     clubCount,
-    memberCount;
+    memberCount,
+    chapterMarker,
+    clubMarker;
 
 var init = function() {
   $chapterText = $('#chapters');
@@ -31,7 +33,9 @@ var lazyLoadGoogleMap = function() {
 };
 
 var getData = function() {
-  var dataUrl = $('#alumni-map').data('map');
+  var $container = $('#alumni-map'),
+      dataUrl = $container.data('map'),
+      chapterMarker = $container.data('chapter-marker');
   $.getJSON(dataUrl, function(data) {
     mapData = data;
     initializeMap();
@@ -80,7 +84,8 @@ var addMarker = function(markerData) {
   var marker = new google.maps.Marker({
     position: new google.maps.LatLng(markerData.lat, markerData.lng),
     title: markerData.name,
-    animation: google.maps.Animation.DROP
+    animation: google.maps.Animation.DROP,
+    icon: chapterMarker
   });
 
   marker.addListener('click', function() {
