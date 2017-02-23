@@ -108,9 +108,17 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
     }
   }
 
-  .well-ucf-gold {
+  .callout-ucf-gold {
     background: #fc0;
     margin-bottom: 0;
+    padding: 12px 0 0;
   }
 
+  .long-email {
+    font-size: .8em;
+
+    @media(min-width: $screen-sm-min) {
+      font-size: 1em;
+    }
+  }
 }

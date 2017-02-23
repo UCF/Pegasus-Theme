@@ -35,7 +35,7 @@ var init = function() {
 var lazyLoadGoogleMap = function() {
   $.getScript('//maps.google.com/maps/api/js?sensor=false&callback=getData&key=AIzaSyBQtVEuBQkAjfKe1HbdO-In1LgIuu1UEXk')
     .fail(function(jqxhr, settings, ex) {
-      console.log(ex);
+      // do nothing  
     });
 };
 
@@ -81,9 +81,9 @@ var initializeMap = function() {
 };
 
 var createControls = function() {
-  var $sa_control = $('#sa-control').detach()[0];
-  $sa_control.addEventListener('click', toggleMapPosition);
-  map.controls[google.maps.ControlPosition.RIGHT_TOP].push($sa_control);
+  var $saControl = $('#sa-control').detach()[0];
+  $saControl.addEventListener('click', toggleMapPosition);
+  map.controls[google.maps.ControlPosition.RIGHT_TOP].push($saControl);
 
   var $countControl = $('#alumni-info').detach()[0];
   map.controls[google.maps.ControlPosition.TOP_CENTER].push($countControl);
@@ -137,7 +137,7 @@ var addMarker = function(markerData) {
 
 var createInfoWindow = function(data) {
   var pClass = data.chapter ? 'chapter' : 'club';
-  var content = '<div class="infoWindow"><p class="'+ pClass + '">' + data.name + '</h2></p>';
+  var content = '<div class="infoWindow"><p class="'+ pClass + '">' + data.name + '</p></div>';
   var infoWindow = new google.maps.InfoWindow({
     content: content
   });
