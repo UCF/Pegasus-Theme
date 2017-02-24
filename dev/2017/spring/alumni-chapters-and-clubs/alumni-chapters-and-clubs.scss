@@ -1,0 +1,124 @@
+@import '../../../../versions/v4/static/scss/variables';
+
+$font-family-sans-serif: 'Gotham SSm 8r', 'Gotham SSm A', 'Gotham SSm B', Arial, Gadget, sans-serif;
+$font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
+
+#intro {
+  padding: 18px 0;
+}
+
+.chapter,
+.club {
+  margin-bottom: 0 !important;
+}
+
+.chapter {
+  color: #c90;
+}
+
+#knights-kingdom {
+  p {
+    font-family: $font-family-serif;
+    font-size: 18px;
+  }
+
+  .font-sans-serif {
+    font-family: $font-family-sans-serif;
+    font-size: 18px !important;
+    font-weight: 700;
+  }
+
+  h1 {
+    color: $white !important;
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 75px;
+    font-weight: 900;
+    letter-spacing: -.05em;
+    line-height: .8em;
+    margin-top: 0;
+    padding-top: 24px;
+    text-shadow: 0 0 1px $black;
+    text-transform: uppercase;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 90px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      font-size: 120px;
+    }
+  }
+
+  .lead {
+    font-family: $font-family-serif;
+    margin-top: 24px;
+
+    &::first-letter {
+      color: $ucf-gold;
+    }
+  }
+
+  #alumni-map {
+    min-height: 600px;
+  }
+
+  .sa-control {
+    background: $ucf-gold;
+    border: 1px solid #333;
+    font-family: $font-family-sans-serif;
+    margin: 12px 12px 0;
+    width: 325px;
+    padding: 12px 24px;
+    text-align: center;
+
+    h2 {
+      font-weight: 700;
+    }
+
+    p {
+      font-family: $font-family-serif;
+    }
+
+    .arrow-icon {
+      font-size: 24px;
+    }
+  }
+
+  .alumni-info {
+    background: #333;
+    border: 1px solid #333;
+    border-radius: 0 0 32px 32px;
+    text-align: center;
+    width: 380px;
+
+    ul {
+      margin-bottom: 0;
+      padding-top: 6px;
+    }
+
+    li {
+      color: $white;
+      font-family: $font-family-sans-serif;
+      margin: 0 2px 6px;
+      text-transform: uppercase;
+    }
+
+    .stat {
+      color: $ucf-gold;
+    }
+  }
+
+  .callout-ucf-gold {
+    background: $ucf-gold;
+    margin-bottom: 0;
+    padding: 12px 0 0;
+  }
+
+  .long-email {
+    font-size: .8em;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 1em;
+    }
+  }
+}
