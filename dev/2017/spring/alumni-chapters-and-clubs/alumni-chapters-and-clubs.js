@@ -59,7 +59,7 @@ var initializeMap = function() {
     mapTypeId: google.maps.MapTypeId.SATELLITE,
     scrollwheel: false
   };
-  map = new google.maps.Map(document.getElementById('alumni-map'), mapOptions);
+  map = new google.maps.Map($alumniMap.get(0), mapOptions);
 
   isCentered = true;
   createControls();
