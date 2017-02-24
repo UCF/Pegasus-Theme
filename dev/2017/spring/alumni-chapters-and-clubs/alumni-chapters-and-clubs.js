@@ -14,7 +14,8 @@ var map,
     memberCount,
     chapterMarker,
     clubMarker,
-    activeInfoWindows;
+    activeInfoWindows,
+    $alumniMap;
 
 var init = function() {
   $chapterText = $('#chapters');
@@ -24,6 +25,7 @@ var init = function() {
   $saIcon = $('#sa-icon');
   activeInfoWindows = [];
   chapterCount = clubCount = memberCount = 0;
+  $alumniMap = $('#alumni-map');
 
   if(window.google && google.maps) {
     getData();
@@ -35,13 +37,12 @@ var init = function() {
 var lazyLoadGoogleMap = function() {
   $.getScript('//maps.google.com/maps/api/js?sensor=false&callback=getData&key=AIzaSyBTQqIr2iqXIphR51yd3dCjudO4Z4PKYxM')
     .fail(function(jqxhr, settings, ex) {
-      // do nothing  
+      // do nothing
     });
 };
 
 var getData = function() {
-  var $container = $('#alumni-map'),
-      dataUrl = $container.data('map');
+  var dataUrl = $alumniMap.data('map');
   $.getJSON(dataUrl, function(data) {
     mapData = data;
     initializeMap();
@@ -63,8 +64,8 @@ var initializeMap = function() {
   isCentered = true;
   createControls();
 
-  chapterMarker = $('#alumni-map').data('chapter-marker');
-  clubMarker = $('#alumni-map').data('club-marker');
+  chapterMarker = $alumniMap.data('chapter-marker');
+  clubMarker = $alumniMap.data('club-marker');
 
   for(var i in mapData) {
     var d = mapData[i];
@@ -131,7 +132,7 @@ var addMarker = function(markerData) {
       $(infoWindow).remove();
     }
   });
-  
+
   marker.setMap(map);
 };
 
@@ -145,7 +146,7 @@ var createInfoWindow = function(data) {
   return infoWindow;
 };
 
-var updateLabels = function(x, y, z) { 
+var updateLabels = function(x, y, z) {
   $chapterText.text(x);
   $clubText.text(y);
   $memberText.text(z);
@@ -179,6 +180,4 @@ var alphaSort = function(a, b) {
   return 0;
 };
 
-jQuery(document).ready(function() {
-  init();
-});
+$(init);
