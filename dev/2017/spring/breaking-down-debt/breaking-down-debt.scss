@@ -16,9 +16,9 @@ article.story {
   }
 
   h1 {
-    font-family: 'MontserratBold', sans-serif;
-    font-size: 58px;
-    font-weight: normal;
+    font-family: $font-family-sans-serif;
+    font-size: 44px;
+    font-weight: bold;
     margin-bottom: 30px;
 
     @media (min-width: $screen-md-min) {
@@ -128,10 +128,8 @@ article.story {
     white-space: nowrap;
 
     &.width-auto {
-      @media(min-width: $screen-xs-min) {
-        margin: 0 5px;
-        width: auto;
-      }
+      margin: 0 5px;
+      width: auto;
     }
   }
 
@@ -297,6 +295,10 @@ article.story {
     font-family: $font-family-sans-serif;
     font-size: 16px;
     list-style: none;
+  }
+
+  .topics-images {
+     width: 50%;
   }
 
   .black-header-container {
