@@ -199,7 +199,7 @@ function initSelectiveCrisis() {
 // Debt in Context Chart
 function initDebtInContext() {
     var data = {
-        labels: ["UCF*", "FLORIDA (SUS)", "PUBLIC", "PRIVATE NON-PROFIT", "FOR-PROFIT"],
+        labels: ["UCF", "FLORIDA", "PUBLIC", "PRIVATE NON-PROFIT", "FOR-PROFIT"],
         datasets: [
             {
                 label: "",
@@ -210,7 +210,7 @@ function initDebtInContext() {
                     'rgb(92, 155, 167)',
                     'rgb(210, 124, 80)'
                 ],
-                data: [21.824, 25.000, 25.500, 32.300, 39.950]
+                data: [21.824, 24.947, 25.500, 32.300, 39.950]
             }
         ]
     };
