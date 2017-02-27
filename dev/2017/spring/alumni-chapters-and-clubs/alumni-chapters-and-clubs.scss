@@ -17,6 +17,12 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
 }
 
 #knights-kingdom {
+  .social-buttons {
+    clear: both;
+    margin-bottom: 1em;
+    min-height: 32px;
+  }
+
   p {
     font-family: $font-family-serif;
     font-size: 18px;
