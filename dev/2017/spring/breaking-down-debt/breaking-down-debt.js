@@ -33,7 +33,7 @@ var addLabels = function (that, chart) {
     ctx.font = 'bold 20px Arial';
     ctx.textAlign = "left";
 
-    Chart.helpers.each(self.data.datasets.forEach((dataset, datasetIndex) => {
+    Chart.helpers.each(self.data.datasets.forEach(function(dataset, datasetIndex) {
         var meta = self.getDatasetMeta(datasetIndex),
             total = 0, //total values to compute fraction
             labelxy = [],
@@ -46,7 +46,7 @@ var addLabels = function (that, chart) {
             first = true,
             lastend = 0; //prev arc's end line: starting with 0
 
-        Chart.helpers.each(meta.data.forEach((element, index) => {
+        Chart.helpers.each(meta.data.forEach(function(element, index) {
             radius = 0.9 * element._model.outerRadius - element._model.innerRadius;
             centerx = element._model.x;
             centery = element._model.y;
@@ -136,7 +136,7 @@ function initSelectiveCrisis() {
             },
             {
                 type: 'line',
-                label: 'Private Non-Profit   ',
+                label: 'Private NonProfit   ',
                 data: [58, 56.5, 54.3, 59, 58.8, 65.5],
                 backgroundColor: 'rgba(90,155,168,0.7)',
                 borderColor: 'rgba(90,155,168,0.7)'
@@ -199,7 +199,7 @@ function initSelectiveCrisis() {
 // Debt in Context Chart
 function initDebtInContext() {
     var data = {
-        labels: ["UCF¹", "FLORIDA³", "PUBLIC²", "PRIVATE NON-PROFIT²", "FOR-PROFIT²"],
+        labels: ["UCF¹", "FLORIDA³", "PUBLIC²", "PRIVATE NONPROFIT²", "FOR-PROFIT²"],
         datasets: [
             {
                 label: "",
@@ -210,7 +210,7 @@ function initDebtInContext() {
                     'rgb(92, 155, 167)',
                     'rgb(210, 124, 80)'
                 ],
-                data: [21.824, 24.947, 25.500, 32.300, 39.950]
+                data: [21.824, 23.379, 25.500, 32.300, 39.950]
             }
         ]
     };
@@ -280,7 +280,7 @@ function initDebtInContext() {
 function initRelativeConsequences() {
 
     var data = {
-        labels: ["FOR-PROFIT¹", "PUBLIC¹", "PRIVATE NON-PROFIT¹", "FLORIDA²", "UCF²"],
+        labels: ["FOR-PROFIT¹", "PUBLIC¹", "PRIVATE NONPROFIT¹", "FLORIDA²", "UCF²"],
         datasets: [
             {
                 label: "",
@@ -445,7 +445,7 @@ function initClearComparison() {
     var $clearComparison4 = $("#clear-comparison4"),
         clearComparison4 = new Chart($clearComparison4, {
             type: 'horizontalBar',
-            data: setData([11,15]),
+            data: setData([11,16]),
             options: options
         });
 
