@@ -35,16 +35,15 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
   }
 
   h1 {
-    color: $white !important;
+    color: $white;
     font-family: 'Open Sans Condensed', sans-serif;
     font-size: 75px;
     font-weight: 900;
     letter-spacing: -.05em;
-    line-height: .8em;
+    line-height: .8;
     margin-top: 0;
     padding-top: 24px;
     text-shadow: 0 0 1px $black;
-    text-transform: uppercase;
 
     @media (min-width: $screen-sm-min) {
       font-size: 90px;
@@ -73,9 +72,9 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
     border: 1px solid #333;
     font-family: $font-family-sans-serif;
     margin: 12px 12px 0;
-    width: 325px;
     padding: 12px 24px;
     text-align: center;
+    width: 325px;
 
     h2 {
       font-weight: 700;
@@ -87,6 +86,11 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
 
     .arrow-icon {
       font-size: 24px;
+    }
+
+    #sa-message,
+    .arrow-icon {
+      cursor: pointer;
     }
   }
 
@@ -117,7 +121,23 @@ $font-family-serif: "Archer 8r", "Archer A", "Archer B", serif;
   .callout-ucf-gold {
     background: $ucf-gold;
     margin-bottom: 0;
-    padding: 12px 0 0;
+    padding: 15px 0;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 45px 0;
+    }
+  }
+
+  .question {
+    padding: 15px 0;
+
+    @media (min-width: $screen-sm-min) {
+      padding: 15px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      padding: 15px 30px;
+    }
   }
 
   .long-email {
