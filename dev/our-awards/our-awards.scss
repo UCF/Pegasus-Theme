@@ -13,7 +13,8 @@ h1.main-header {
     background-color: $ucf-gold;
     display: inline-block;
     padding: 5px 15px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    min-width: 175px;
     text-transform: uppercase;
     text-align: center;
 }
@@ -24,6 +25,8 @@ h1.main-header {
     .award-count {
         font-size: 160px;
         color: #ccc;
+        line-height: 175px;
+        margin-top: 40px;
     }
 
     .award-label {
@@ -33,6 +36,47 @@ h1.main-header {
     }
 }
 
+.award-gold {
+    color: #c29d2e;
+}
+
+.award-silver {
+    color: #8c959d;
+}
+
+.award-bronze {
+    color: #b16c35;
+}
+
+.award-judge {
+    color: #52a5cb;
+}
+
+.award-gold,
+.award-silver,
+.award-bronze,
+.award-judge {
+    text-transform: uppercase;
+}
+
+.contest {
+    @include gotham(8);
+    font-size: 13px;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+}
+
+.award-category {
+    font-size: 13px;
+    list-style: none;
+    margin-bottom: 3px;
+}
+
+.trophy-title {
+    @include gotham(8);
+    font-size: 12px;
+}
+
 .fa-trophy {
-    font-size: 30px;
+    font-size: 36px;
 }
