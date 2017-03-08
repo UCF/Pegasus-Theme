@@ -12,6 +12,7 @@ h1.main-header {
 .yellow-label {
   @include gotham(8);
   background-color: $ucf-gold;
+  color: #000;
   display: inline-block;
   font-weight: 600;
   padding: 5px 15px;
@@ -19,6 +20,10 @@ h1.main-header {
   min-width: 175px;
   text-transform: uppercase;
   text-align: center;
+
+  &:hover {
+    color: #000;
+  }
 }
 
 .award-count-container {
