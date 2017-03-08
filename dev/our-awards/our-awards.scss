@@ -1,82 +1,101 @@
+@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
 @import '../../versions/v4/static/scss/mixins';
 @import '../../versions/v4/static/scss/variables';
 
 h1.main-header {
-    @include gotham(8);
-    font-style: normal;
-    text-align: left;
-    text-transform: uppercase;
+  @include gotham(8);
+  font-style: normal;
+  text-align: left;
+  text-transform: uppercase;
 }
 
 .yellow-label {
-    @include gotham(8);
-    background-color: $ucf-gold;
-    display: inline-block;
-    padding: 5px 15px;
-    margin-bottom: 25px;
-    min-width: 175px;
-    text-transform: uppercase;
-    text-align: center;
+  @include gotham(8);
+  background-color: $ucf-gold;
+  display: inline-block;
+  font-weight: 600;
+  padding: 5px 15px;
+  margin-bottom: 25px;
+  min-width: 175px;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 .award-count-container {
-    text-align: center;
+  text-align: center;
 
-    .award-count {
-        font-size: 160px;
-        color: #ccc;
-        line-height: 175px;
-        margin-top: 40px;
-    }
+  .award-count {
+    color: #ccc;
+    font-family: OpenSansCondensedBold,sans-serif;
+    font-size: 200px;
+    letter-spacing: -7px;
+    line-height: 205px;
+    margin-top: 40px;
+  }
 
-    .award-label {
-        @include gotham(8);
-        font-size: 24px;
-        text-transform: uppercase;
-    }
+  .award-label {
+    @include gotham(8);
+    font-size: 24px;
+    text-transform: uppercase;
+  }
 }
 
 .award-gold {
-    color: #c29d2e;
+  color: #c29d2e;
 }
 
 .award-silver {
-    color: #8c959d;
+  color: #8c959d;
 }
 
 .award-bronze {
-    color: #b16c35;
+  color: #b16c35;
 }
 
 .award-judge {
-    color: #52a5cb;
+  color: #52a5cb;
 }
 
 .award-gold,
 .award-silver,
 .award-bronze,
 .award-judge {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .contest {
-    @include gotham(8);
-    font-size: 13px;
-    margin: 0 0 5px;
-    text-transform: uppercase;
+  @include gotham(8);
+  font-size: 13px;
+  margin: 0 0 5px;
+  text-transform: uppercase;
 }
 
 .award-category {
-    font-size: 13px;
-    list-style: none;
-    margin-bottom: 3px;
+  @include archer();
+  font-size: 13px;
+  list-style: none;
+  margin-bottom: 20px;
+
+  li {
+    margin-bottom: 2px;
+  }
 }
 
 .trophy-title {
-    @include gotham(8);
-    font-size: 12px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 12px;
+  line-height: 14px;
+  margin-top: 4px;
 }
 
 .fa-trophy {
-    font-size: 36px;
+  font-size: 36px;
+}
+
+.font-style-italic {
+  font-style: italic;
+}
+
+.margin-bottom-fourty {
+  margin-bottom: 40px;
 }
