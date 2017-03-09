@@ -4,25 +4,13 @@
 
 h1.main-header {
   @include gotham(8);
+  font-size: 32px;
   font-style: normal;
   text-align: left;
   text-transform: uppercase;
-}
 
-.yellow-label {
-  @include gotham(8);
-  background-color: $ucf-gold;
-  color: #000;
-  display: inline-block;
-  font-weight: 600;
-  padding: 5px 15px;
-  margin-bottom: 25px;
-  min-width: 175px;
-  text-transform: uppercase;
-  text-align: center;
-
-  &:hover {
-    color: #000;
+  @media (min-width: $screen-md-min) {
+    font-size: 36px;
   }
 }
 
@@ -44,56 +32,91 @@ h1.main-header {
   }
 }
 
-.award-gold {
-  color: #c29d2e;
+.issue-cover {
+  margin: 15px auto;
+  width: 100%;
 }
 
-.award-silver {
-  color: #8c959d;
-}
+// Trophy
+.trophy-container {
+  float: left;
+  max-width: 110px;
 
-.award-bronze {
-  color: #b16c35;
-}
+  .fa-trophy {
+    font-size: 36px;
+    padding-left: 5px;
+  }
 
-.award-judge {
-  color: #52a5cb;
-}
+  .trophy-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    line-height: 14px;
+    margin-top: 4px;
+  }
 
-.award-gold,
-.award-silver,
-.award-bronze,
-.award-judge {
-  text-transform: uppercase;
-}
+  .award-gold {
+    color: #c29d2e;
+  }
 
-.contest {
-  @include gotham(8);
-  font-size: 13px;
-  margin: 0 0 5px;
-  text-transform: uppercase;
-}
+  .award-silver {
+    color: #8c959d;
+  }
 
-.award-category {
-  @include archer();
-  font-size: 13px;
-  list-style: none;
-  margin-bottom: 20px;
+  .award-bronze {
+    color: #b16c35;
+  }
 
-  li {
-    margin-bottom: 2px;
+  .award-judge {
+    color: #52a5cb;
+  }
+
+  .award-gold,
+  .award-silver,
+  .award-bronze,
+  .award-judge {
+    text-transform: uppercase;
   }
 }
 
-.trophy-title {
-  font-family: 'Roboto', sans-serif;
-  font-size: 12px;
-  line-height: 14px;
-  margin-top: 4px;
+// Awards
+.award-container {
+  float: left;
+
+  .contest {
+    @include gotham(8);
+    font-size: 13px;
+    margin: 0 0 5px;
+    text-transform: uppercase;
+  }
+
+  .award-category {
+    @include archer();
+    font-size: 13px;
+    list-style: none;
+    margin-bottom: 20px;
+
+    li {
+      margin-bottom: 2px;
+    }
+  }
 }
 
-.fa-trophy {
-  font-size: 36px;
+// Utility
+.yellow-label {
+  @include gotham(8);
+  background-color: $ucf-gold;
+  color: #000;
+  display: inline-block;
+  font-weight: 600;
+  margin-bottom: 25px;
+  min-width: 175px;
+  padding: 5px 15px;
+  text-align: center;
+  text-transform: uppercase;
+
+  &:hover {
+    color: #000;
+  }
 }
 
 .font-style-italic {
