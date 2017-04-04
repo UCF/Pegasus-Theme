@@ -32,9 +32,14 @@ h1.main-header {
   }
 }
 
-.issue-cover {
-  margin: 15px auto;
-  width: 100%;
+.issue-cover-link {
+  display: block;
+  text-align: center;
+
+  .issue-cover {
+    margin: 15px auto;
+    width: 80%;
+  }
 }
 
 // Trophy
