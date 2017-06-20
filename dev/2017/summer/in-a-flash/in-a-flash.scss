@@ -1,0 +1,116 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Mono');
+@import url('https://fonts.googleapis.com/css?family=Special+Elite');
+
+// scss-lint:disable UrlFormat
+$wood-texture: '//placehold.it/300x300';
+$wood-texture-sm: '//placehold.it/767x767';
+$paper-texture: 'https://www.ucf.edu/pegasus/files/2017/06/paper_fibers.png';
+// scss-lint:enable UrlFormat
+
+// scss-lint:disable QualifyingElement
+article.story {
+// scss-lint:enable QualifyingElement
+  background-attachment: fixed;
+  background-image: url($wood-texture);
+
+  @media (min-width: $screen-sm-min) {
+    background-image: url($wood-texture-sm);
+    padding-bottom: 60px;
+  }
+
+  &,
+  ol,
+  p,
+  ul,
+  h1,
+  .h1,
+  h2,
+  .h2,
+  h3,
+  .h3,
+  h4,
+  .h4,
+  h5,
+  .h5,
+  h6,
+  .h6 {
+    font-family: 'Special Elite', 'Courier New', monospace;
+  }
+
+  p {
+    font-size: 14px;
+    line-height: 1.75;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 18px;
+    }
+  }
+
+  .title {
+    font-size: 42px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 60px;
+    }
+  }
+
+  .description {
+    background-color: $black;
+    color: $white;
+    display: inline-block;
+    font-family: 'Ubuntu Mono', monospace;
+    font-style: normal;
+    letter-spacing: -.035em;
+    line-height: 1.2;
+    padding: 6px 20px;
+    text-transform: uppercase;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 16px;
+    }
+  }
+
+  .author {
+    font-size: 16px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 21px;
+    }
+  }
+
+  .social {
+    @include clearfix();
+    margin-bottom: 30px;
+  }
+
+  .paper {
+    background-color: $white;
+    background-image: url($paper-texture);
+    box-shadow: 0 0 25px rgba(0, 0, 0, .4);
+    margin: 30px 0;
+    padding: 20px;
+
+    @media (min-width: $screen-sm-min) {
+      margin: 45px 0;
+      padding: 50px 75px;
+    }
+  }
+
+  .short-story-title {
+    @media (min-width: $screen-sm-min) {
+      font-size: 44px;
+    }
+  }
+
+  .short-story-details {
+    margin-top: 40px;
+
+    p {
+      font-size: 90%;
+    }
+  }
+}
