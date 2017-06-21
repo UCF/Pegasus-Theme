@@ -6,8 +6,7 @@
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
 // scss-lint:disable UrlFormat
-$wood-texture: '//placehold.it/300x300';
-$wood-texture-sm: '//placehold.it/767x767';
+$wood-texture: 'https://www.ucf.edu/pegasus/files/2017/06/Tiled-Wood-Texture.jpg';
 $paper-texture: 'https://www.ucf.edu/pegasus/files/2017/06/paper_fibers.png';
 // scss-lint:enable UrlFormat
 
@@ -18,7 +17,6 @@ article.story {
   background-image: url($wood-texture);
 
   @media (min-width: $screen-sm-min) {
-    background-image: url($wood-texture-sm);
     padding-bottom: 60px;
   }
 
