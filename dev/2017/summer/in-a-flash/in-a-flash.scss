@@ -111,4 +111,15 @@ article.story {
       font-size: 90%;
     }
   }
+
+  .text-flipped {
+    display: inline-block;
+    transform: scale(-1, 1);
+  }
+
+  // scss-lint:disable QualifyingElement
+  i.text-flipped {
+    transform: scale(-1, 1) skewx(25deg);
+  }
+  // scss-lint:enable QualifyingElement
 }
