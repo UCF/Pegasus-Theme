@@ -1480,10 +1480,19 @@ function active_issue_endpoint_callback( $request ) {
 		'post_status' => 'publish',
 		'date_query'  => array(
 			array(
-				'before' => $current_issue->post_date
+				'before'    => $current_issue->post_date,
+				'inclusive' => true
 			)
 		)
 	);
+
+	if ( isset( $_GET['offset'] ) ) {
+		$args['offset'] = $_GET['offset'];
+	}
+
+	if ( isset( $_GET['limit'] ) ) {
+		$args['posts_per_page'] = $_GET['limit'];
+	}
 
 	$issues_all = new WP_Query( $args );
 
