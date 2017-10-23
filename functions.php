@@ -1448,7 +1448,65 @@ function get_front_page_issue_stories() {
 	return get_current_issue_stories( $issue_stories_exclude, 12 );
 }
 
+/**
+ * Add custom endpoint for active issues
+ * @author Jim Barnes
+ * @since 4.1.3
+ **/
+function add_active_issue_endpoint() {
+	register_rest_route( 'wp/v2', 'issue/active', array(
+		'methods'  => 'GET',
+		'callback' => 'active_issue_endpoint_callback'
+	) );
+}
 
+add_action( 'rest_api_init', 'add_active_issue_endpoint' );
+
+/**
+ * The function for the active issue endpoint
+ * @author Jim Barnes
+ * @since 4.1.3
+ * @param WP_Rest_Request $request The request object
+ * @param WP_Rest_Response The response object
+ **/
+function active_issue_endpoint_callback( $request ) {
+	$current_issue = get_current_issue();
+
+	$args = array(
+		'post_type'   => 'issue',
+		'numberposts' => -1,
+		'orderby'     => 'post_date',
+		'order'       => 'desc',
+		'post_status' => 'publish',
+		'date_query'  => array(
+			array(
+				'before'    => $current_issue->post_date,
+				'inclusive' => true
+			)
+		)
+	);
+
+	if ( isset( $_GET['offset'] ) ) {
+		$args['offset'] = $_GET['offset'];
+	}
+
+	if ( isset( $_GET['limit'] ) ) {
+		$args['posts_per_page'] = $_GET['limit'];
+	}
+
+	$issues_all = new WP_Query( $args );
+
+	$retval = array();
+
+	$controller = new WP_REST_Posts_Controller( 'issue' );
+
+	foreach( $issues_all->posts as $issue ) {
+		$data = $controller->prepare_item_for_response( $issue, $request );
+		$retval[] = $controller->prepare_response_for_collection( $data );
+	}
+
+	return new WP_REST_Response( $retval, 200 );
+}
 
 /****************************************************************************
  *
