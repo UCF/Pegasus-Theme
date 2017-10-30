@@ -121,3 +121,13 @@ article {
 .mt-7 {
   margin-top: 7rem;
 }
+
+// SVG Styles
+.target-button {
+  transform-origin: 50% 50%;
+  transition: transform .5s ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
