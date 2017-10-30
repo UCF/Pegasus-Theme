@@ -1,0 +1,123 @@
+$sans-serif: 'Arial Black', arial;
+$sans-serif-cond: 'Open Sans Condensed', arial;
+$story-red: #c63;
+$story-white: #fff;
+$story-black: #333;
+$story-gray: #666;
+$story-back: #ccc;
+
+// Resets
+article {
+  background-color: $story-back;
+
+  &.story .story-header-image {
+    height: 1035px;
+  }
+
+  p {
+    font-size: 19px;
+    margin-bottom: .25rem;
+    text-indent: 1rem;
+  }
+}
+
+.heading-text {
+  color: $story-red;
+  font-family: $sans-serif;
+  font-size: 5em;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -.075em;
+  text-transform: uppercase;
+}
+
+.heading-subtitle {
+  color: $story-white;
+  font-family: $sans-serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1.2em;
+  text-transform: uppercase;
+
+  .heading-subtitle-highlight {
+    color: $story-red;
+  }
+}
+
+.heading-byline {
+  color: $story-black;
+  font-family: $sans-serif-cond;
+  font-size: 1.2em;
+  font-weight: 700;
+  text-transform: uppercase;
+
+  .heading-byline-highlight {
+    color: $story-gray;
+  }
+}
+
+.initial-capital {
+  text-indent: 0;
+
+  &::first-letter {
+    background: $story-black;
+    color: $story-red;
+    display: inline-block;
+    float: left;
+    font-family: $sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 1rem 1rem 0;
+    padding: 1rem 2rem;
+  }
+}
+
+.custom-blockquote {
+  border-bottom: 1rem solid $story-red;
+  border-top: 1rem solid $story-red;
+  margin-right: 1rem;
+
+  p {
+    color: $story-red;
+    font-family: $sans-serif;
+    font-size: 2.8rem;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -.05rem;
+    line-height: 3.1rem;
+    text-indent: 0;
+  }
+}
+
+.story-wide-image {
+  height: auto;
+  width: 100%;
+}
+
+.double-rule {
+  border-bottom: 1px solid $story-gray;
+  border-top: 1px solid $story-gray;
+  height: 8px;
+  margin-bottom: 4rem;
+}
+
+// Utilities
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-7 {
+  margin-top: 7rem;
+}
