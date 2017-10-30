@@ -1,6 +1,6 @@
 $sans-serif: 'Arial Black', arial;
 $sans-serif-cond: 'Open Sans Condensed', arial;
-$story-red: #c63;
+$story-red: #d6553a;
 $story-white: #fff;
 $story-black: #333;
 $story-gray: #666;
@@ -99,6 +99,25 @@ article {
   border-top: 1px solid $story-gray;
   height: 8px;
   margin-bottom: 4rem;
+}
+
+// Modal styles
+.description-wrap {
+  padding: 6rem 2rem;
+  text-align: center;
+
+  .large-number {
+    color: $story-red;
+    font-family: $sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+  }
+
+  .modal-description {
+    display: block;
+    font-family: $sans-serif-cond;
+    white-space: normal;
+  }
 }
 
 // Utilities
