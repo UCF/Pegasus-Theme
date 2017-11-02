@@ -35,6 +35,14 @@ article {
   }
 }
 
+.modal-header {
+  border-bottom: 0;
+
+  .close {
+    transform: scale(3);
+  }
+}
+
 .heading-text {
   color: $story-red;
   font-family: $sans-serif;
