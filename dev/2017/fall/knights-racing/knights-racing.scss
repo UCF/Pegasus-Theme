@@ -21,10 +21,6 @@ article {
       @media(min-width: $screen-sm-min) {
         min-height: 450px;
       }
-
-      @media(min-width: $screen-md-min) {
-        height: 1035px;
-      }
     }
 
     p {
@@ -87,10 +83,8 @@ article {
 
 .heading-byline {
   color: $story-black;
-  font-family: $sans-serif-cond;
-  font-size: 1.2em;
+  font-style: italic;
   font-weight: 700;
-  text-transform: uppercase;
 
   .heading-byline-highlight {
     color: $story-gray;
