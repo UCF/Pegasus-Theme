@@ -326,16 +326,18 @@ add_shortcode( 'sidebar', 'sc_sidebar' );
 /**
  * Display social buttons for the current page/post.
  **/
-function sc_social_buttons($attr) {
+function sc_social_buttons( $attr ) {
 	global $post;
 
-	$title = $attr['title'] ? $attr['title'] : $post->post_title;
-	$url = $attr['url'] ? $attr['url'] : get_permalink($post->ID);
+	$attr = shortcode_atts( array(
+		'title' => $post->post_title,
+		'url'   => get_permalink( $post->ID )
+	), $attr, 'social_buttons' );
 
-	$html = display_social($url, $title);
+	$html = display_social( $attr['url'], $attr['title'] );
 	return $html;
 }
-add_shortcode('social_buttons', 'sc_social_buttons');
+add_shortcode( 'social_buttons', 'sc_social_buttons' );
 
 
 /**
