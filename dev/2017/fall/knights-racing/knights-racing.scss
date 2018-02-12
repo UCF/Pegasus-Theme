@@ -1,0 +1,170 @@
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+$sans-serif: 'Arial Black', arial;
+$sans-serif-cond: 'Open Sans Condensed', arial;
+$story-red: #d6553a;
+$story-white: #fff;
+$story-black: #333;
+$story-gray: #4d4d4d;
+$story-back: #d3d6db;
+
+// Resets
+article {
+  &.story {
+    @include no-font-smoothing();
+    background-color: $story-back;
+
+    .story-header-image {
+      min-height: 300px;
+
+      @media(min-width: $screen-sm-min) {
+        min-height: 450px;
+      }
+    }
+
+    p {
+      font-size: 19px;
+    }
+
+    .custom-blockquote {
+      border-bottom: 1rem solid $story-red;
+      border-top: 1rem solid $story-red;
+      margin-right: 1rem;
+
+      p {
+        color: $story-red;
+        font-family: $sans-serif;
+        font-size: 2.8rem;
+        font-style: normal;
+        font-weight: 700;
+        letter-spacing: -.05rem;
+        line-height: 3.1rem;
+        text-indent: 0;
+      }
+    }
+
+    .modal-header {
+      border-bottom: 0;
+
+      .close {
+        transform: scale(3);
+      }
+    }
+  }
+}
+
+.heading-text {
+  color: $story-red;
+  font-family: $sans-serif;
+  font-size: 4em;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: -.075em;
+  text-transform: uppercase;
+
+  @media(min-width: $screen-sm-min) {
+    font-size: 5em;
+  }
+}
+
+.heading-subtitle {
+  color: $story-white;
+  font-family: $sans-serif;
+  font-size: 1.8em;
+  font-weight: 700;
+  line-height: 1.2em;
+  text-transform: uppercase;
+
+  .heading-subtitle-highlight {
+    color: $story-red;
+  }
+}
+
+.heading-byline {
+  color: $story-black;
+  font-style: italic;
+  font-weight: 700;
+
+  .heading-byline-highlight {
+    color: $story-gray;
+  }
+}
+
+.initial-capital {
+  text-indent: 0;
+
+  &::first-letter {
+    background: $story-black;
+    color: $story-red;
+    display: inline-block;
+    float: left;
+    font-family: $sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    margin: 0 1rem 1rem 0;
+    padding: 1rem 2rem;
+  }
+}
+
+.story-wide-image {
+  height: auto;
+  width: 100%;
+}
+
+.double-rule {
+  border-bottom: 1px solid $story-gray;
+  border-top: 1px solid $story-gray;
+  height: 8px;
+  margin-bottom: 4rem;
+}
+
+// Modal styles
+.description-wrap {
+  padding: 6rem 2rem;
+  text-align: center;
+
+  .large-number {
+    color: $story-red;
+    font-family: $sans-serif;
+    font-size: 8rem;
+    font-weight: 900;
+  }
+
+  .modal-description {
+    display: block;
+    font-family: $sans-serif-cond;
+    white-space: normal;
+  }
+}
+
+// Utilities
+.mb-1 {
+  margin-bottom: 1rem;
+}
+
+.mb-2 {
+  margin-bottom: 2rem;
+}
+
+.mt-1 {
+  margin-top: 1rem;
+}
+
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-7 {
+  margin-top: 7rem;
+}
+
+// SVG Styles
+.target-button {
+  transform-origin: 50% 50%;
+  transition: transform .5s ease-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
