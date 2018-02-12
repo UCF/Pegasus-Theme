@@ -1,0 +1,17 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+.story {
+  .poem {
+
+  }
+
+  .author-notes {
+    @include gotham();
+    color: $gray;
+    font-size: 12px;
+    text-align: center;
+  }
+}
