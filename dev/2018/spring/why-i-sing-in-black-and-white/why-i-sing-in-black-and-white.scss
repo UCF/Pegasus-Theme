@@ -1,17 +1,61 @@
 @import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
 @import '../../../../versions/v4/static/scss/variables';
 @import '../../../../versions/v4/static/scss/mixins';
 
 
-.story {
-  .poem {
+// scss-lint:disable QualifyingElement
+article.story {
+  .story-header-image {
+    background-repeat: repeat;
+    background-size: auto;
 
+    @media (min-width: $screen-sm-min) {
+      height: auto;
+      min-height: 490px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      min-height: 600px;
+    }
+
+    img {
+      clip: unset;
+      height: auto;
+      margin: 0 auto;
+      position: static;
+      visibility: visible;
+      width: auto;
+    }
+  }
+
+  .story-header-inner {
+    padding-bottom: 30px;
+    padding-top: 30px;
+
+    @media (min-width: $screen-md-min) {
+      padding-bottom: 50px;
+      padding-top: 50px;
+    }
+
+    .social {
+      @include clearfix();
+      display: inline-block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  .poem {
+    margin-top: 30px;
   }
 
   .author-notes {
     @include gotham();
     color: $gray;
     font-size: 12px;
+    margin-top: 30px;
     text-align: center;
   }
 }
+// scss-lint:enable QualifyingElement
