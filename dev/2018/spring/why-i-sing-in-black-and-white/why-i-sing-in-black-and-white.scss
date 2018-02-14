@@ -7,8 +7,7 @@
 // scss-lint:disable QualifyingElement
 article.story {
   .story-header-image {
-    background-repeat: repeat;
-    background-size: auto;
+    background-color: #111;
 
     @media (min-width: $screen-sm-min) {
       height: auto;
@@ -29,28 +28,53 @@ article.story {
     }
   }
 
-  .story-header-inner {
-    padding-bottom: 30px;
-    padding-top: 30px;
+  .poem-credits {
+    font-size: 4vw;
+    margin-bottom: 1.25em;
+    margin-top: 2.5em;
 
-    @media (min-width: $screen-md-min) {
-      padding-bottom: 50px;
-      padding-top: 50px;
+    @media (min-width: 480px) {
+      font-size: 3vw;
     }
 
-    .social {
-      @include clearfix();
-      display: inline-block;
-      margin-left: auto;
-      margin-right: auto;
+    @media (min-width: $screen-sm-min) {
+      font-size: 24px;
     }
   }
 
-  .poem {
-    margin-top: 30px;
+  .social {
+    @include clearfix();
+  }
 
-    @media (min-width: $screen-md-min) {
-      margin-top: 50px;
+  .poem {
+    margin-top: 2.5em;
+
+    &,
+    p {
+      font-size: 4vw;
+      line-height: 1.2;
+
+      @media (min-width: 480px) {
+        font-size: 3vw;
+      }
+
+      @media (min-width: $screen-sm-min) {
+        font-size: 24px;
+        line-height: 1.35;
+      }
+    }
+
+    p {
+      margin-bottom: 2.5em;
+    }
+
+    span {
+      display: block;
+      margin-bottom: .6em;
+    }
+
+    br {
+      display: none;
     }
   }
 
@@ -58,8 +82,8 @@ article.story {
     @include gotham();
     color: $gray;
     font-size: 12px;
+    line-height: 1.6;
     margin-top: 30px;
-    text-align: center;
 
     @media (min-width: $screen-md-min) {
       margin-top: 50px;
