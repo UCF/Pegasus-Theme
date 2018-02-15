@@ -49,6 +49,7 @@ article.story {
 
     &.byline {
       color: $story-gray;
+      font-style: italic;
       text-transform: uppercase;
     }
   }
