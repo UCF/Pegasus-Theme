@@ -1,0 +1,199 @@
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400');
+
+$serif: 'IM Fell Great Primer', 'Georgia', serif;
+$sans-serif: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+$sans-serif-cond: 'Oswald', arial;
+$story-gold: #dcaa27;
+$story-white: #f1f1f1;
+$story-black: #252525;
+$story-gray: #9d9fa2;
+
+article.story {
+  @include no-font-smoothing();
+
+  .story-header {
+    background-color: $story-black;
+
+    img {
+      margin: 0;
+    }
+  }
+
+  .story-deck {
+    background-color: $story-gold;
+    font-family: $serif;
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+
+      @media(min-width: $screen-sm-min) {
+        font-size: 40px;
+      }
+    }
+  }
+
+  p {
+    font-size: 18px;
+    line-height: 1.5;
+
+    &.story-intro {
+      @media(min-width: $screen-sm-min) {
+        font-size: 19px;
+        line-height: 1.5;
+      }
+    }
+
+    &.byline {
+      color: $story-gray;
+      text-transform: uppercase;
+    }
+  }
+
+  h3 {
+    color: $story-gold;
+    font-family: $sans-serif-cond;
+    font-size: 28px;
+  }
+
+  .story-dropcap {
+    background-position: 0 30px;
+    background-repeat: no-repeat;
+    background-size: 102px 143px;
+  }
+
+  .kings-court {
+    background-color: $story-black;
+    color: $story-white;
+    padding-bottom: 3rem;
+
+    h3 {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      color: $story-black;
+      font-family: $serif;
+      font-size: 32px;
+      margin: -28px -20px;
+      padding: 10px;
+
+      @media(min-width: $screen-sm-min) {
+        left: calc(50% - 179px);
+        margin: 0;
+        padding: 30px;
+        position: absolute;
+        text-transform: uppercase;
+        top: -40px;
+        transform: rotate(-3deg);
+        width: 358px;
+      }
+    }
+
+    ul {
+      font-family: $sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: left;
+
+      @media(min-width: $screen-sm-min) {
+        font-size: 13px;
+        text-align: center;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+  }
+
+  .splatter-left {
+    left: -290px;
+    position: absolute;
+    top: -60px;
+  }
+
+  .splatter-right {
+    position: absolute;
+    right: -290px;
+    top: -60px;
+    transform: scaleX(-1);
+  }
+
+  figcaption {
+    font-family: $serif;
+    font-size: 38px;
+    line-height: 1;
+    text-align: center;
+    text-transform: uppercase;
+
+    .quoteby {
+      font-family: $sans-serif;
+      font-size: 15px;
+    }
+  }
+
+  .story-montage-image {
+    background-size: 140%;
+    min-height: 280px;
+
+    @media(min-width: $screen-xs-min) {
+      background-size: 100%;
+      min-height: 450px;
+    }
+  }
+
+  .quoteby {
+    display: inline-block;
+    font-weight: 700;
+  }
+
+  .closing {
+    background-color: $story-black;
+    color: $story-white;
+    margin-top: -140px;
+    padding: 150px 0 50px;
+
+    @media(min-width: $screen-xs-min) {
+      margin-top: -240px;
+      padding: 200px 0 100px;
+    }
+
+    @media(min-width: $screen-sm-min) {
+      margin-top: -280px;
+      padding: 280px 0 100px;
+    }
+  }
+}
+
+// Utilities
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+
+  @media(max-width: $screen-sm-min) {
+    margin-top: 3rem;
+  }
+}
+
+.mt-7 {
+  margin-top: 7rem;
+
+  @media(max-width: $screen-sm-min) {
+    margin-top: 5rem;
+  }
+}
+
+// removes float on mobile in order to center image
+@media(max-width: $screen-xs-min) {
+  .pull-right,
+  .pull-left {
+    float: none !important;
+  }
+}
