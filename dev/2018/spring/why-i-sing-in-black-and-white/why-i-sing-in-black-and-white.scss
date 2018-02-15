@@ -8,9 +8,11 @@
 article.story {
   .story-header-image {
     background-color: #000;
+    margin-bottom: 20px;
 
     @media (min-width: $screen-sm-min) {
       height: auto;
+      margin-bottom: 50px;
       min-height: 490px;
     }
 
@@ -28,24 +30,6 @@ article.story {
     }
   }
 
-  .poem-credits {
-    font-size: 4vw;
-    margin-bottom: 1.25em;
-    margin-top: 2.5em;
-
-    @media (min-width: 480px) {
-      font-size: 3vw;
-    }
-
-    @media (min-width: $screen-sm-min) {
-      font-size: 24px;
-    }
-  }
-
-  .social {
-    @include clearfix();
-  }
-
   .poem {
     margin-top: 2.5em;
 
@@ -59,7 +43,7 @@ article.story {
       }
 
       @media (min-width: $screen-sm-min) {
-        font-size: 24px;
+        font-size: 21px;
         line-height: 1.35;
       }
     }
