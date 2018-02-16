@@ -32,6 +32,12 @@ article.story {
     }
   }
 
+  .heading {
+    color: $story-gold;
+    font-family: $sans-serif-cond;
+    font-size: 28px;
+  }
+
   p {
     font-size: 18px;
     line-height: 1.5;
@@ -41,13 +47,6 @@ article.story {
         font-size: 19px;
         line-height: 1.5;
       }
-    }
-
-    &.heading {
-      color: $story-gold;
-      font-family: $sans-serif-cond;
-      font-size: 28px;
-      margin-bottom: 0;
     }
 
     &.byline {
@@ -69,7 +68,7 @@ article.story {
     color: $story-white;
     padding-bottom: 3rem;
 
-    h3 {
+    .kings-court-header {
       background-position: 50% 50%;
       background-repeat: no-repeat;
       color: $story-black;
