@@ -5,7 +5,7 @@
 
 $serif: 'IM Fell Great Primer', 'Georgia', serif;
 $sans-serif: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-$sans-serif-cond: 'Oswald', arial;
+$sans-serif-cond: 'Oswald', 'Arial Narrow', sans-serif;
 $story-gold: #dcaa27;
 $story-white: #f1f1f1;
 $story-black: #252525;
@@ -15,11 +15,7 @@ article.story {
   @include no-font-smoothing();
 
   .story-header {
-    background-color: $story-black;
-
-    img {
-      margin: 0;
-    }
+    margin: 0;
   }
 
   .story-deck {
@@ -64,8 +60,8 @@ article.story {
   .story-dropcap {
     background-repeat: no-repeat;
     background-size: 102px 143px;
-    padding-top: 10px;
     margin-top: 10px;
+    padding-top: 10px;
   }
 
   .kings-court {
@@ -94,6 +90,12 @@ article.story {
       }
     }
 
+    img {
+      @media(max-width: $screen-sm-min) {
+        max-width: 100px;
+      }
+    }
+
     ul {
       font-family: $sans-serif;
       font-size: 12px;
@@ -102,7 +104,7 @@ article.story {
       margin-bottom: 2rem;
       text-align: left;
 
-      @media(min-width: $screen-sm-min) {
+      @media(min-width: $screen-xs-min) {
         font-size: 13px;
         text-align: center;
       }
