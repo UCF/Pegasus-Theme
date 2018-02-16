@@ -44,6 +44,14 @@ article.story-default {
     @media (min-width: $screen-sm-min) {
       margin-top: 50px;
     }
+
+    + .person-list {
+      margin-top: 0;
+
+      @media (min-width: $screen-md-min) {
+        margin-top: 30px;
+      }
+    }
   }
 
   .col-md-20p {
