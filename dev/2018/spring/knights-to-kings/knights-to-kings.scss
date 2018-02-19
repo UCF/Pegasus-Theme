@@ -39,20 +39,17 @@ article.story {
   }
 
   p {
-    font-size: 18px;
+    font-size: 16px;
     line-height: 1.5;
 
     &.story-intro {
       @media(min-width: $screen-sm-min) {
-        font-size: 19px;
-        line-height: 1.5;
+        font-size: 18px;
       }
     }
 
     &.byline {
-      color: $story-gray;
       font-style: italic;
-      text-transform: uppercase;
     }
   }
 
