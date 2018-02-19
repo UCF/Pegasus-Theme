@@ -178,6 +178,14 @@ article.story {
       padding: 290px 0 80px;
     }
   }
+
+  // removes float on mobile in order to center image
+  @media(max-width: $screen-xs-min) {
+    .pull-right,
+    .pull-left {
+      float: none !important;
+    }
+  }
 }
 
 // Utilities
@@ -198,13 +206,5 @@ article.story {
 
   @media(max-width: $screen-sm-min) {
     margin-top: 5rem;
-  }
-}
-
-// removes float on mobile in order to center image
-@media(max-width: $screen-xs-min) {
-  .pull-right,
-  .pull-left {
-    float: none !important;
   }
 }
