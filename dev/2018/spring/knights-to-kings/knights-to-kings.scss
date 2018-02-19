@@ -9,11 +9,8 @@ $sans-serif-cond: 'Oswald', 'Arial Narrow', sans-serif;
 $story-gold: #dcaa27;
 $story-white: #f1f1f1;
 $story-black: #252525;
-$story-gray: #9d9fa2;
 
 article.story {
-  @include no-font-smoothing();
-
   .story-header {
     margin: 0;
   }
