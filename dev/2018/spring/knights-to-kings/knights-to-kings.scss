@@ -34,8 +34,11 @@ article.story {
 
   .heading {
     color: $story-gold;
+    display: inline-block;
     font-family: $sans-serif-cond;
     font-size: 28px;
+    line-height: 1;
+    margin-bottom: 14px;
   }
 
   p {
@@ -125,16 +128,22 @@ article.story {
     transform: scaleX(-1);
   }
 
-  figcaption {
-    font-family: $serif;
-    font-size: 30px;
-    line-height: 1;
-    text-align: center;
-    text-transform: uppercase;
+  figure {
+    &.pull-left + p {
+      margin-bottom: 0;
+    }
 
-    .quoteby {
-      font-family: $sans-serif;
-      font-size: 15px;
+    figcaption {
+      font-family: $serif;
+      font-size: 30px;
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+
+      .quoteby {
+        font-family: $sans-serif;
+        font-size: 15px;
+      }
     }
   }
 
