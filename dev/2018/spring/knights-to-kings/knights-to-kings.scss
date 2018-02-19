@@ -40,7 +40,7 @@ article.story {
 
   p {
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.4;
 
     &.story-intro {
       @media(min-width: $screen-sm-min) {
@@ -144,8 +144,17 @@ article.story {
 
     @media(min-width: $screen-xs-min) {
       background-size: 100%;
-      min-height: 450px;
+      min-height: 400px;
     }
+
+    @media(min-width: $screen-md-min) {
+      min-height: 540px;
+    }
+
+    @media(min-width: 1200px) {
+      min-height: 680px;
+    }
+
   }
 
   .quoteby {
