@@ -11,6 +11,8 @@ $story-white: #f1f1f1;
 $story-black: #252525;
 
 article.story {
+  overflow-x: hidden;
+
   .story-header {
     margin: 0;
   }
@@ -31,15 +33,26 @@ article.story {
 
   .heading {
     color: $story-gold;
-    display: inline-block;
     font-family: $sans-serif-cond;
     font-size: 28px;
     line-height: 1;
-    margin-bottom: 14px;
+    margin-top: 5px;
   }
 
-  p {
+  blockquote {
+    display: inline;
+    margin: 0;
+    padding: 0;
+
+    cite {
+      font-style: normal;
+    }
+  }
+
+  p,
+  blockquote p {
     font-size: 16px;
+    font-style: normal;
     line-height: 1.4;
 
     &.story-intro {
@@ -65,7 +78,7 @@ article.story {
     color: $story-white;
     padding-bottom: 3rem;
 
-    .kings-court-header {
+    h2 {
       background-position: 50% 50%;
       background-repeat: no-repeat;
       color: $story-black;
@@ -74,6 +87,7 @@ article.story {
       font-size: 32px;
       margin: -28px -20px;
       padding: 10px;
+      text-align: center;
 
       @media(min-width: $screen-sm-min) {
         left: calc(50% - 179px);
@@ -93,7 +107,7 @@ article.story {
       }
     }
 
-    ul {
+    .story-players {
       font-family: $sans-serif;
       font-size: 12px;
       font-weight: 400;
@@ -101,13 +115,26 @@ article.story {
       margin-bottom: 2rem;
       text-align: left;
 
-      @media(min-width: $screen-xs-min) {
+      @media(min-width: $screen-sm-min) {
         font-size: 13px;
         text-align: center;
       }
 
-      li {
-        margin-bottom: 5px;
+      h3 {
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      dt,
+      dd {
+        display: inline;
+      }
+
+      dd:after {
+        display: block;
+        content: '';
       }
     }
   }
@@ -140,6 +167,7 @@ article.story {
       .quoteby {
         font-family: $sans-serif;
         font-size: 15px;
+        margin-left: 0;
       }
     }
   }
