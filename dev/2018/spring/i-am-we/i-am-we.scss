@@ -1,0 +1,99 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+$iaw-red: #ce1f26;
+
+// scss-lint:disable QualifyingElement
+article.story-default {
+  .story-header-image {
+    @media (min-width: $screen-sm-min) {
+      height: 600px;
+      overflow: hidden;
+      position: relative;
+      z-index: 0;
+    }
+
+    @media (min-width: $screen-lg-min) {
+      height: 800px;
+    }
+
+    br {
+      display: none;
+    }
+
+    video {
+      height: auto;
+      width: 100%;
+
+      @media (min-width: $screen-sm-min) {
+        height: calc(100% + 1px); // add 1px to prevent subpixel gaps between media background and edges of parent elem
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: calc(100% + 1px); // add 1px to prevent subpixel gaps between media background and edges of parent elem
+        z-index: -1;
+      }
+    }
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote {
+    color: $iaw-red;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .lead::first-letter {
+    @include gotham(8);
+  }
+
+  h1 {
+    font-size: 40px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 60px;
+    }
+  }
+
+  hr {
+    border-top: 6px solid $iaw-red;
+    margin-bottom: 30px;
+    margin-top: 30px;
+    max-width: 300px;
+    width: 50%;
+  }
+
+  .social {
+    margin-bottom: 0;
+  }
+
+  .dropcap {
+    @include gotham(8);
+    background-color: $iaw-red;
+    color: #fff;
+    display: block;
+    float: left;
+    font-size: 30px;
+    line-height: 0;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding-bottom: 25px;
+    padding-top: 25px;
+    text-align: center;
+    width: 50px;
+  }
+}
+// scss-lint:enable QualifyingElement

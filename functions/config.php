@@ -634,9 +634,11 @@ if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 
 Config::$links = array(
 	// NOTE: canonical is handled in functions/base.php
-	array( 'rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico', ),
 	array( 'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'), )
 );
+if ( !has_site_icon() ) {
+	array_push( Config::$links, array( 'rel' => 'shortcut icon', 'href' => THEME_IMG_URL.'/favicon.ico' ) );
+}
 
 Config::$styles = array(
 	array('name' => 'admin-css', 'src' => THEME_CSS_URL.'/admin.css', 'admin' => True),
@@ -741,3 +743,12 @@ function enqueue_backend_theme_assets() {
 	}
 }
 add_action( 'admin_enqueue_scripts', 'enqueue_backend_theme_assets' );
+
+
+/**
+ * Add support for WordPress site icons.
+ */
+function site_icon_support() {
+	wp_site_icon();
+}
+add_action( 'wp_head', 'site_icon_support' );
