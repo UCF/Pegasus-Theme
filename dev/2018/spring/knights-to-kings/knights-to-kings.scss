@@ -113,11 +113,10 @@ article.story {
       font-weight: 400;
       list-style: none;
       margin-bottom: 2rem;
-      text-align: left;
+      text-align: center;
 
       @media(min-width: $screen-sm-min) {
         font-size: 13px;
-        text-align: center;
       }
 
       h3 {
