@@ -173,22 +173,8 @@ article.story {
   }
 
   .story-montage-image {
-    background-size: 140%;
-    min-height: 280px;
-
-    @media(min-width: $screen-xs-min) {
-      background-size: 100%;
-      min-height: 400px;
-    }
-
-    @media(min-width: $screen-md-min) {
-      min-height: 540px;
-    }
-
-    @media(min-width: 1200px) {
-      min-height: 680px;
-    }
-
+    background-position: top left;
+    background-repeat: repeat-x;
   }
 
   .quoteby {
@@ -197,28 +183,9 @@ article.story {
   }
 
   .closing {
-    background: linear-gradient(to bottom,#fff 0,#fff 5%,#252525 5%,#252525 100%);
+    background-color: #252525;
     color: $story-white;
     padding-bottom: 30px;
-
-
-    @media(min-width: $screen-xs-min) {
-      background: linear-gradient(to bottom,#fff 0,#fff 17.5%,#252525 17.5%,#252525 100%);
-    }
-
-    @media(min-width: $screen-sm-min) {
-      background: linear-gradient(to bottom,#fff 0,#fff 23.5%,#252525 23.5%,#252525 100%);
-      padding-bottom: 50px;
-    }
-
-    @media(min-width: $screen-md-min) {
-      background: linear-gradient(to bottom,#fff 0,#fff 26.4%,#252525 26.4%,#252525 100%);
-    }
-
-    @media(min-width: 1200px) {
-      background: linear-gradient(to bottom,#fff 0,#fff 29.8%,#252525 29.8%,#252525 100%);
-    }
-
   }
 
   // removes float on mobile in order to center image
