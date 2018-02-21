@@ -120,7 +120,7 @@ article.story {
       }
 
       h3 {
-        color: white;
+        color: $white;
         font-size: 13px;
         font-weight: 700;
         margin-bottom: 8px;
@@ -134,6 +134,15 @@ article.story {
       dd:after {
         display: block;
         content: '';
+      }
+
+      a {
+        color: $story-white;
+        text-decoration: underline;
+
+        &:hover {
+          color: $white;
+        }
       }
     }
   }
