@@ -1,0 +1,106 @@
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/variables';
+@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap/mixins';
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+
+
+// scss-lint:disable QualifyingElement
+article.story-default {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  blockquote,
+  .lead::first-letter {
+    color: #967b26;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .lead::first-letter {
+    font-family: "OpenSansCondensedBold", sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    letter-spacing: normal;
+  }
+
+  h1 {
+    font-size: 40px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 60px;
+    }
+  }
+
+  .person-list {
+    margin-top: 30px;
+
+    @media (min-width: $screen-sm-min) {
+      margin-top: 50px;
+    }
+
+    + .person-list {
+      margin-top: 0;
+
+      @media (min-width: $screen-md-min) {
+        margin-top: 30px;
+      }
+    }
+  }
+
+  .col-md-20p {
+    @include make-md-column(2.4, 20px);
+  }
+
+  .person {
+    align-items: flex-start;
+    display: flex;
+    margin-top: 15px;
+
+    @media (min-width: $screen-md-min) {
+      flex-direction: column;
+    }
+  }
+
+  .person-photo {
+    margin-right: 20px;
+    margin-top: 0;
+    max-width: 30%;
+
+    @media (min-width: $screen-md-min) {
+      margin-right: 0;
+      max-width: 100%;
+    }
+  }
+
+  .person-details {
+    flex: 1;
+  }
+
+  .person-name {
+    @include gotham(6);
+    color: #000;
+    font-size: 14px;
+
+    @media (min-width: $screen-sm-min) {
+      font-size: 16px;
+    }
+
+    @media (min-width: $screen-md-min) {
+      margin-top: 0;
+    }
+  }
+
+  .person-title {
+    @include gotham(4);
+    font-size: 12px;
+    text-transform: uppercase;
+  }
+}
+// scss-lint:enable QualifyingElement

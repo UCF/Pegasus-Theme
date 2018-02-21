@@ -1,0 +1,218 @@
+@import '../../../../versions/v4/static/scss/variables';
+@import '../../../../versions/v4/static/scss/mixins';
+@import url('https://fonts.googleapis.com/css?family=IM+Fell+Great+Primer');
+@import url('https://fonts.googleapis.com/css?family=Oswald:400');
+
+$serif: 'IM Fell Great Primer', 'Georgia', serif;
+$sans-serif: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
+$sans-serif-cond: 'Oswald', 'Arial Narrow', sans-serif;
+$story-gold: #dcaa27;
+$story-white: #f1f1f1;
+$story-black: #252525;
+
+article.story {
+  overflow-x: hidden;
+
+  .story-header {
+    margin: 0;
+  }
+
+  .story-deck {
+    background-color: $story-gold;
+    font-family: $serif;
+
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+
+      @media(min-width: $screen-sm-min) {
+        font-size: 40px;
+      }
+    }
+  }
+
+  .heading {
+    color: $story-gold;
+    font-family: $sans-serif-cond;
+    font-size: 28px;
+    line-height: 1;
+    margin-top: 5px;
+  }
+
+  blockquote {
+    display: inline;
+    margin: 0;
+    padding: 0;
+
+    cite {
+      font-style: normal;
+    }
+  }
+
+  p,
+  blockquote p {
+    font-size: 16px;
+    font-style: normal;
+    line-height: 1.4;
+
+    &.story-intro {
+      @media(min-width: $screen-sm-min) {
+        font-size: 18px;
+      }
+    }
+
+    &.byline {
+      font-style: italic;
+    }
+  }
+
+  .story-dropcap {
+    background-repeat: no-repeat;
+    background-size: 102px 143px;
+    margin-top: 10px;
+    padding-top: 10px;
+  }
+
+  .kings-court {
+    background-color: $story-black;
+    color: $story-white;
+    padding-bottom: 3rem;
+
+    h2 {
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      color: $story-black;
+      display: block;
+      font-family: $serif;
+      font-size: 32px;
+      margin: -28px -20px;
+      padding: 10px;
+      text-align: center;
+
+      @media(min-width: $screen-sm-min) {
+        left: calc(50% - 179px);
+        margin: 0;
+        padding: 30px;
+        position: absolute;
+        text-transform: uppercase;
+        top: -40px;
+        transform: rotate(-3deg);
+        width: 358px;
+      }
+    }
+
+    img {
+      @media(max-width: $screen-sm-min) {
+        max-width: 100px;
+      }
+    }
+
+    .story-players {
+      font-family: $sans-serif;
+      font-size: 12px;
+      font-weight: 400;
+      list-style: none;
+      margin-bottom: 2rem;
+      text-align: center;
+
+      @media(min-width: $screen-sm-min) {
+        font-size: 13px;
+      }
+
+      h3 {
+        color: white;
+        font-size: 13px;
+        font-weight: 700;
+        margin-bottom: 8px;
+      }
+
+      dt,
+      dd {
+        display: inline;
+      }
+
+      dd:after {
+        display: block;
+        content: '';
+      }
+    }
+  }
+
+  .splatter-left {
+    left: -290px;
+    position: absolute;
+    top: -140px;
+  }
+
+  .splatter-right {
+    position: absolute;
+    right: -290px;
+    top: -60px;
+    transform: scaleX(-1);
+  }
+
+  figure {
+    &.pull-left + p {
+      margin-bottom: 0;
+    }
+
+    figcaption {
+      font-family: $serif;
+      font-size: 30px;
+      line-height: 1;
+      text-align: center;
+      text-transform: uppercase;
+
+      .quoteby {
+        font-family: $sans-serif;
+        font-size: 15px;
+        margin-left: 0;
+      }
+    }
+  }
+
+  .story-montage-image {
+    background-position: top left;
+    background-repeat: repeat-x;
+  }
+
+  .quoteby {
+    display: inline-block;
+    font-weight: 700;
+  }
+
+  .closing {
+    background-color: #252525;
+    color: $story-white;
+    padding-bottom: 30px;
+  }
+
+  // removes float on mobile in order to center image
+  @media(max-width: $screen-xs-min) {
+    .pull-right,
+    .pull-left {
+      float: none !important;
+    }
+  }
+}
+
+// Utilities
+.mt-2 {
+  margin-top: 2rem;
+}
+
+.mt-5 {
+  margin-top: 5rem;
+
+  @media(max-width: $screen-sm-min) {
+    margin-top: 3rem;
+  }
+}
+
+.mt-7 {
+  margin-top: 7rem;
+
+  @media(max-width: $screen-sm-min) {
+    margin-top: 5rem;
+  }
+}
