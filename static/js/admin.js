@@ -458,8 +458,6 @@ WebcomAdmin.sliderMetaBoxes = function($) {
       $('label[for^="ss_slide_image["]', newSlide)
         .parent('th')
           .next('td')
-            .find('a')
-              .attr('href', attachment_url)
               .find('img')
                 .attr('src', attachment_url)
                 .siblings('span')

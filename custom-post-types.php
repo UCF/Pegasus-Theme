@@ -834,11 +834,11 @@ class PhotoEssay extends CustomPostType {
 								$slide_image_id = '';
 							}
 						?>
-						<a target="_blank" href="<?=$url?>">
-							<img src="<?=$url?>" style="max-width: 400px; height: auto;" /><br/>
+
+							<img src="<?php echo $url; ?>" style="max-width: 400px; height: auto;" /><br/>
 							<span><?php if (!empty($slide_image)) { print $slide_image->post_title; }?></span>
-						</a><br />
-						<input type="text" id="file_img_<?=$slide_image_id?>" value="<?=$slide_image_id?>" name="ss_slide_image[<?=$id?>]">
+						<br />
+						<input type="text" id="file_img_<?php echo $slide_image_id; ?>" value="<?php echo $slide_image_id; ?>" name="ss_slide_image[<?php echo $id; ?>]">
 					</td>
 				</tr>
 				<tr>
