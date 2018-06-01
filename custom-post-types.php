@@ -747,6 +747,11 @@ class PhotoEssay extends CustomPostType {
 	public static function get_single_slide_meta() {
 		$single_slide_meta = array(
 			array(
+				'id'	=> 'ss_slide_alt',
+				'val'	=> $_POST['ss_slide_alt'],
+				'type'  => 'text',
+			),
+			array(
 				'id'	=> 'ss_slide_title',
 				'val'	=> $_POST['ss_slide_title'],
 				'type'  => 'text',
@@ -771,6 +776,7 @@ class PhotoEssay extends CustomPostType {
 	 **/
 	public static function display_cloneable_fieldset($fields, $id=null) {
 		$id             = $id !== null ? intval($id) : 'xxxxxx';
+		$slide_alt    	= $fields['slide_alt'][$id] ? $fields['slide_alt'][$id] : '';
 		$slide_title    = $fields['slide_title'][$id]   ? $fields['slide_title'][$id] : '';
 		$slide_caption  = $fields['slide_caption'][$id] ? $fields['slide_caption'][$id] : '';
 		$slide_image_id = !is_string($id) ? intval($fields['slide_image'][$id]) : $id;
@@ -784,9 +790,9 @@ class PhotoEssay extends CustomPostType {
 			<table class="form-table">
 			<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
 				<tr>
-					<th><label for="ss_slide_title[<?=$id?>]">Title</label></th>
+					<th><label for="ss_slide_alt[<?php echo $id; ?>]">Image Alt Text</label></th>
 					<td>
-						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" value="<?=$slide_title?>" />
+						<input type="text" name="ss_slide_alt[<?php echo $id; ?>]" id="ss_slide_alt[<?php echo $id; ?>]" value="<?php echo $slide_alt; ?>" />
 					</td>
 				</tr>
 				<tr>
@@ -834,6 +840,13 @@ class PhotoEssay extends CustomPostType {
 						<input type="text" id="file_img_<?=$slide_image_id?>" value="<?=$slide_image_id?>" name="ss_slide_image[<?=$id?>]">
 					</td>
 				</tr>
+				<tr>
+					<th><label for="ss_slide_title[<?php echo $id; ?>]">DEPRECATED: Title</label></th>
+					<td>
+						<p class="description"><strong><em>This feature is deprecated and is left in place for backward compatibility. You can now use the Alt Text field above to add alt text to each slide image.</em></strong></p>
+						<input type="text" name="ss_slide_title[<?php echo $id; ?>]" id="ss_slide_title[<?php echo $id; ?>]" value="<?php echo $slide_title; ?>" />
+					</td>
+				</tr>
 			</table>
 			<a class="repeatable-remove button" href="#">Remove Slide</a>
 		</li>
@@ -846,14 +859,16 @@ class PhotoEssay extends CustomPostType {
 	 **/
 	public static function display_slide_meta_fields($post) {
 		// Get any already-existing values for these fields:
+		$slide_alt		= get_post_meta($post->ID, 'ss_slide_alt', TRUE);
 		$slide_title	= get_post_meta($post->ID, 'ss_slide_title', TRUE);
 		$slide_caption	= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
 		$slide_image	= get_post_meta($post->ID, 'ss_slide_image', TRUE);
 		$slide_order    = get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
 		$args = array(
-			'slide_title' => $slide_title,
+			'slide_alt' 	=> $slide_alt,
+			'slide_title' 	=> $slide_title,
 			'slide_caption' => $slide_caption,
-			'slide_image' => $slide_image
+			'slide_image' 	=> $slide_image
 		);
 		?>
 		<div id="ss_slides_wrapper">
