@@ -781,11 +781,12 @@ class PhotoEssay extends CustomPostType {
 		$slide_caption  = $fields['slide_caption'][$id] ? $fields['slide_caption'][$id] : '';
 		$slide_image_id = !is_string($id) ? intval($fields['slide_image'][$id]) : $id;
 		$slide_image    = !is_string($slide_image_id) ? get_post($slide_image_id) : null;
+		$slide_header   = $fields['slide_title'][$id] ? $fields['slide_title'][$id] : get_the_title($slide_image);
 	?>
 		<li class="custom_repeatable postbox<?php if (is_string($id)) {?> cloner" style="display:none;<?php } ?>">
 			<div class="handlediv" title="Click to toggle"> </div>
 				<h3 class="hndle">
-				<span>Slide - </span><span class="slide-handle-header"><?=$slide_title?></span>
+				<span>Slide - </span><span class="slide-handle-header"><?php echo $slide_header; ?></span>
 			</h3>
 			<table class="form-table">
 			<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
