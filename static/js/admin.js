@@ -423,6 +423,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
       var attachment_id = attachment.attributes.id,
           attachment_filename = attachment.attributes.filename,
           attachment_url = attachment.attributes.url,
+          attachment_alt = attachment.attributes.alt,
           attachment_title = attachment.attributes.title,
           attachment_caption = attachment.attributes.caption;
 
@@ -464,6 +465,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 .siblings('span')
                   .text(attachment_filename);
 
+      $('input[id^="ss_slide_alt"]', newSlide).attr('value', attachment_alt);
       $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachment_caption);
       $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
       newSlide.insertAfter(newSlideSibling).show();
