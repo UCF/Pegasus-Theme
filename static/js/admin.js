@@ -464,7 +464,6 @@ WebcomAdmin.sliderMetaBoxes = function($) {
                 .siblings('span')
                   .text(attachment_filename);
 
-      $('input[id^="ss_slide_title"]', newSlide).attr('value', attachment_title);
       $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachment_caption);
       $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
       newSlide.insertAfter(newSlideSibling).show();
