@@ -251,8 +251,8 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		$image_thumb_url = $image_thumb[0];
 		$caption = wptexturize( do_shortcode( $captions[$i] ) );
 		$title = wptexturize( $titles[$i] );
-		$item_id = 'photo-' . sanitize_title( $title );
 		$alt = wptexturize( $alts[$i] ? $alts[$i] : $titles[$i] );
+		$item_id = 'photo-' . sanitize_title( $title ? $title : $i );
 		$orientation = '';
 		$alternate = false;
 
