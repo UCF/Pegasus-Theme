@@ -348,6 +348,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 	// Get rid of blank array entries
 	$slide_order = array_filter( explode( ',', $slide_order ), 'strlen' );
 	$slide_caption = get_post_meta( $photo_essay->ID, 'ss_slide_caption', TRUE );
+	$slide_alt = get_post_meta( $photo_essay->ID, 'ss_slide_alt', TRUE );
 	$slide_title = get_post_meta( $photo_essay->ID, 'ss_slide_title', TRUE );
 	$slide_image = get_post_meta( $photo_essay->ID, 'ss_slide_image', TRUE );
 
@@ -385,10 +386,11 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 
 				$s = $slide_order[$i];
 				$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
+				$alt = $slide_alt[$s] ? $slide_alt[$s] : $slide_title[$s];
 				?>
 				<div class="ss-slide-wrapper">
 					<div class="ss-slide<?php echo $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : ''; ?><?php echo $i == $slide_count - 1 ? ' ss-last-slide' : ''; ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-						<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
+						<img src="<?php echo $image[0]; ?>" alt="<?php echo $alt; ?>" title="<?php echo $slide_title[$s]; ?>" />
 					</div>
 				</div>
 			<?php
