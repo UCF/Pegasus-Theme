@@ -175,7 +175,7 @@ add_filter( 'wp_kses_allowed_html', 'v4_add_kses_whitelisted_attributes', 11, 2 
 /**
  * Displays a full photo essay or photo essay story.
  **/
-function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $caption, $alternate=false ) {
+function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $alt, $caption, $alternate=false ) {
 	ob_start();
 ?>
 	<figure class="photo-essay-item photo-essay-item-<?php echo $orientation; ?> <?php if ( $alternate ) { ?>alternate<?php } ?>" id="<?php echo $item_id; ?>">
@@ -185,7 +185,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		?>
 			<div class="row">
 				<div class="img-col col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1 <?php if ( $alternate ) { ?>col-md-push-5<?php } ?>">
-					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 					<div class="carat"></div>
 				</div>
 				<div class="caption-col col-md-4 col-sm-12 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1<?php } else { ?>col-md-offset-0<?php  } ?>">
@@ -202,7 +202,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		?>
 			<div class="row">
 				<div class="img-col col-md-12">
-					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 					<div class="carat"></div>
 				</div>
 				<div class="caption-col col-md-12">
@@ -236,6 +236,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	$slide_order = array_filter( explode( ',', $slide_order ), 'strlen' );
 	$captions = get_post_meta( $photo_essay->ID, 'ss_slide_caption', TRUE );
 	$titles = get_post_meta( $photo_essay->ID, 'ss_slide_title', TRUE );
+	$alts = get_post_meta( $photo_essay->ID, 'ss_slide_alt', TRUE );
 	$images = get_post_meta( $photo_essay->ID, 'ss_slide_image', TRUE );
 	$photo_essay_markup = '';
 	$nav_markup = '';
@@ -251,6 +252,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		$caption = wptexturize( do_shortcode( $captions[$i] ) );
 		$title = wptexturize( $titles[$i] );
 		$item_id = 'photo-' . sanitize_title( $title );
+		$alt = wptexturize( $alts[$i] ? $alts[$i] : $titles[$i] );
 		$orientation = '';
 		$alternate = false;
 
@@ -269,7 +271,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 			$alternate = true;
 		}
 
-		$photo_essay_markup .= display_photo_essay_item( $orientation, $item_id, $image_url, $title, $caption, $alternate );
+		$photo_essay_markup .= display_photo_essay_item( $orientation, $item_id, $image_url, $title, $alt, $caption, $alternate );
 
 		$nav_markup .= display_photo_essay_navitem( $item_id, $image_thumb_url );
 
