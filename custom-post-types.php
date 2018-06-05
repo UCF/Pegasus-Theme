@@ -834,7 +834,6 @@ class PhotoEssay extends CustomPostType {
 								$slide_image_id = '';
 							}
 						?>
-
 							<img src="<?php echo $url; ?>" style="max-width: 400px; height: auto;" /><br/>
 							<span><?php if (!empty($slide_image)) { print $slide_image->post_title; }?></span>
 						<br />
@@ -860,11 +859,11 @@ class PhotoEssay extends CustomPostType {
 	 **/
 	public static function display_slide_meta_fields($post) {
 		// Get any already-existing values for these fields:
-		$slide_alt		= get_post_meta($post->ID, 'ss_slide_alt', TRUE);
+		$slide_alt  	= get_post_meta($post->ID, 'ss_slide_alt', TRUE);
 		$slide_title	= get_post_meta($post->ID, 'ss_slide_title', TRUE);
 		$slide_caption	= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
 		$slide_image	= get_post_meta($post->ID, 'ss_slide_image', TRUE);
-		$slide_order    = get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order	= get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
 		$args = array(
 			'slide_alt' 	=> $slide_alt,
 			'slide_title' 	=> $slide_title,
