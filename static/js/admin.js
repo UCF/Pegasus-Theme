@@ -253,7 +253,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
             inputID = getInputID(slide.find(keyField).attr('name')),
             inputs = slide.find('input[name*="['+inputID+']"]'),
             textareas = slide.find('textarea[name*="['+inputID+']"]'),
-            fields = [inputs, textareas];
+            fields = inputs.add(textareas);
 
         $.each(fields, function() {
           if (($(this).val() && typeof $(this).val() !== 'undefined' && $(this).val !== '') || $(this).hasClass('has-value')) {
