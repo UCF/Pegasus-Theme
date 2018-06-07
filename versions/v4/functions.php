@@ -388,7 +388,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 				?>
 				<div class="ss-slide-wrapper">
 					<div class="ss-slide<?php echo $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : ''; ?><?php echo $i == $slide_count - 1 ? ' ss-last-slide' : ''; ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-						<img src="<?php echo $image[0]; ?>" alt="<?php echo $alt; ?>" title="<?php echo $slide_title[$s]; ?>" />
+						<img src="<?php echo $image[0]; ?>" alt="<?php echo $alt; ?>" />
 					</div>
 				</div>
 			<?php
