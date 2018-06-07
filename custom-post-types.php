@@ -775,20 +775,15 @@ class PhotoEssay extends CustomPostType {
 		$slide_caption  = $fields['slide_caption'][$id] ? $fields['slide_caption'][$id] : '';
 		$slide_image_id = !is_string($id) ? intval($fields['slide_image'][$id]) : $id;
 		$slide_image    = !is_string($slide_image_id) ? get_post($slide_image_id) : null;
+		$slide_header   = $fields['slide_title'][$id] ? $fields['slide_title'][$id] : get_the_title($slide_image);
 	?>
 		<li class="custom_repeatable postbox<?php if (is_string($id)) {?> cloner" style="display:none;<?php } ?>">
 			<div class="handlediv" title="Click to toggle"> </div>
 				<h3 class="hndle">
-				<span>Slide - </span><span class="slide-handle-header"><?=$slide_title?></span>
+				<span>Slide - </span><span class="slide-handle-header"><?php echo $slide_header; ?></span>
 			</h3>
 			<table class="form-table">
 			<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
-				<tr>
-					<th><label for="ss_slide_title[<?=$id?>]">Title</label></th>
-					<td>
-						<input type="text" name="ss_slide_title[<?=$id?>]" id="ss_slide_title[<?=$id?>]" value="<?=$slide_title?>" />
-					</td>
-				</tr>
 				<tr>
 					<th><label for="ss_slide_caption[<?=$id?>]">Slide Caption</label></th>
 					<td>
@@ -827,11 +822,17 @@ class PhotoEssay extends CustomPostType {
 								$slide_image_id = '';
 							}
 						?>
-						<a target="_blank" href="<?=$url?>">
-							<img src="<?=$url?>" style="max-width: 400px; height: auto;" /><br/>
-							<span><?php if (!empty($slide_image)) { print $slide_image->post_title; }?></span>
-						</a><br />
-						<input type="text" id="file_img_<?=$slide_image_id?>" value="<?=$slide_image_id?>" name="ss_slide_image[<?=$id?>]">
+						<img src="<?php echo $url; ?>" style="max-width: 400px; height: auto;" /><br/>
+						<span><?php if (!empty($slide_image)) { print $slide_image->post_title; }?></span>
+						<br />
+						<input type="text" id="file_img_<?php echo $slide_image_id; ?>" value="<?php echo $slide_image_id; ?>" name="ss_slide_image[<?php echo $id; ?>]">
+					</td>
+				</tr>
+				<tr>
+					<th><label for="ss_slide_title[<?php echo $id; ?>]">DEPRECATED: Title</label></th>
+					<td>
+						<p class="description"><strong><em>This feature is deprecated and is left in place for backward compatibility. Edit the image's alt text from the Media Library.</em></strong></p>
+						<input type="text" name="ss_slide_title[<?php echo $id; ?>]" id="ss_slide_title[<?php echo $id; ?>]" value="<?php echo $slide_title; ?>" />
 					</td>
 				</tr>
 			</table>
@@ -849,11 +850,11 @@ class PhotoEssay extends CustomPostType {
 		$slide_title	= get_post_meta($post->ID, 'ss_slide_title', TRUE);
 		$slide_caption	= get_post_meta($post->ID, 'ss_slide_caption', TRUE);
 		$slide_image	= get_post_meta($post->ID, 'ss_slide_image', TRUE);
-		$slide_order    = get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order	= get_post_meta($post->ID, 'ss_slider_slideorder', TRUE);
 		$args = array(
-			'slide_title' => $slide_title,
+			'slide_title' 	=> $slide_title,
 			'slide_caption' => $slide_caption,
-			'slide_image' => $slide_image
+			'slide_image' 	=> $slide_image
 		);
 		?>
 		<div id="ss_slides_wrapper">
