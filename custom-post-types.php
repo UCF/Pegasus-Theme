@@ -831,7 +831,7 @@ class PhotoEssay extends CustomPostType {
 				<tr>
 					<th><label for="ss_slide_title[<?php echo $id; ?>]">DEPRECATED: Title</label></th>
 					<td>
-						<p class="description"><strong><em>This feature is deprecated and is left in place for backward compatibility. This feature is deprecated and is left in place for backward compatibility. Edit the image's alt text from the Media Library.</em></strong></p>
+						<p class="description"><strong><em>This feature is deprecated and is left in place for backward compatibility. Edit the image's alt text from the Media Library.</em></strong></p>
 						<input type="text" name="ss_slide_title[<?php echo $id; ?>]" id="ss_slide_title[<?php echo $id; ?>]" value="<?php echo $slide_title; ?>" />
 					</td>
 				</tr>
