@@ -806,6 +806,12 @@ iframe {
   &.pull-right {
     margin-left: 15px;
   }
+
+  &.pull-center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 .story figure,
