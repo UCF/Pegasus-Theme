@@ -1382,7 +1382,6 @@ function display_social_header() {
 	$link = home_url( add_query_arg( array(), $wp->request ) );
 	$fb_url = 'http://www.facebook.com/sharer.php?u=' . $link;
 	$twitter_url = 'https://twitter.com/intent/tweet?text=' . urlencode( 'Pegasus Magazine' ) . '&url=' . $link;
-	$googleplus_url = 'https://plus.google.com/share?url=' . $link;
 
 	ob_start();
 ?>
@@ -1393,9 +1392,6 @@ function display_social_header() {
 		</li>
 		<li class="social-icon-list-item">
 			<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Share Pegasus Magazine on Twitter</a>
-		</li>
-		<li class="social-icon-list-item">
-			<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Share Pegasus Magazine on Google+</a>
 		</li>
 	</ul>
 <?php
