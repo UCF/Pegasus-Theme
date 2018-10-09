@@ -64,13 +64,11 @@
 			<?php
 			$fb_url = get_theme_option( 'fb_url' );
 			$twitter_url = get_theme_option( 'twitter_url' );
-			$googleplus_url = get_theme_option( 'googleplus_url' );
 			$flickr_url = get_theme_option( 'flickr_url' );
 			$youtube_url = get_theme_option( 'youtube_url' );
 			if (
 				!empty( $fb_url ) ||
 				!empty( $twitter_url ) ||
-				!empty( $googleplus_url ) ||
 				!empty( $flickr_url ) ||
 				!empty( $youtube_url )
 			):
@@ -95,10 +93,6 @@
 								<?php } if ( !empty( $youtube_url ) ) { ?>
 								<li>
 									<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
-								</li>
-								<?php } if ( !empty( $googleplus_url ) ) { ?>
-								<li>
-									<a target="_blank" class="sprite googleplus" href="<?php echo $googleplus_url; ?>">Follow UCF on Google+</a>
 								</li>
 								<?php } ?>
 							</ul>
