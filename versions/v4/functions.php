@@ -66,9 +66,6 @@ function display_social($url, $title) {
         <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
             Tweet "<?=$title?>" on Twitter
         </a>
-        <a class="share-googleplus" target="_blank" data-button-target="<?=$url?>" href="https://plus.google.com/share?url=<?=$url?>" title="Share this story on Google+">
-            Share "<?=$title?>" on Google+
-        </a>
     </aside>
     <?php
     return ob_get_clean();
