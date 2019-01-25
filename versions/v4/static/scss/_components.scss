@@ -848,6 +848,11 @@ iframe {
   }
 }
 
+.centered-embed > * {
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
 
 // Jumbotrons
 .jumbotron p {
