@@ -495,14 +495,21 @@ add_filter('post_type_link', 'modify_story_permalinks', 10, 2);
  * Add a rewrite rule to handle the new Issue post type permalink structure
  */
 function cpt_slug_init() {
-	$issue_slugs = array_map(
-		create_function('$i', 'return preg_quote($i->post_name);'),
-		get_posts(array('post_type' => 'issue', 'numberposts' => -1)
-	));
-	$story_slugs = array_map(
-		create_function('$i', 'return preg_quote($i->post_name);'),
-		get_posts(array('post_type' => 'story', 'numberposts' => -1)
-	));
+	$issue_slugs = array_map( function( $i ) {
+		return preg_quote($i->post_name);
+	},
+	get_posts( array(
+		'post_type' => 'issue',
+		'numberposts' => -1
+	)));
+
+	$story_slugs = array_map( function( $i ) {
+			return preg_quote($i->post_name);
+		},
+		get_posts( array(
+			'post_type' => 'story',
+			'numberposts' => -1
+		)));
 
 	add_rewrite_rule('^('.implode('|', $issue_slugs).')$', 'index.php?issue=$matches[1]', 'top');
 	add_rewrite_rule('^('.implode('|', $story_slugs).')$', 'index.php?story=$matches[1]', 'top');
@@ -867,7 +874,9 @@ add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
  * Prevent WordPress from wrapping images with captions with a
  * [caption] shortcode.
  **/
-add_filter('disable_captions', create_function('$a', 'return true;'));
+add_filter('disable_captions', function( $a ) {
+	return true;
+});
 
 
 /**

@@ -49,7 +49,9 @@ function get_navigation_stories($issue=null) {
 	}
 
 	$top_stories     = get_issue_stories($issue, array('exclude' => $exclude, 'numberposts' => 4));
-	$top_stories_ids = array_merge(array_map(create_function('$p', 'return $p->ID;'), $top_stories), $exclude);
+	$top_stories_ids = array_merge( array_map( function( $p ) {
+		return $p->ID;
+	}, $top_stories ), $exclude );
 	$bottom_stories  = get_issue_stories($issue, array('exclude' => $top_stories_ids, 'numberposts' => 6));
 	return array('top_stories' => $top_stories, 'bottom_stories' => $bottom_stories);
 }
