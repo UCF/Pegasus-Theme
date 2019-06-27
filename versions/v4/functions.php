@@ -421,4 +421,21 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 	return ob_get_clean();
 }
 
+/*
+ * Wrap YouTube, Facebook, Twitter and Instagram embeds
+ */
+function wrap_social_embeds( $html, $url ) {
+	if ( strpos( $url, 'youtube.com' ) !== false || strpos( $url, 'youtu.be' ) !== false ) {
+		return '<div class="embed-responsive embed-responsive-16by9">' . $html . '</div>';
+	} elseif ( strpos( $url, 'facebook.com' ) !== false ) {
+		return '<div class="text-center">' . $html . '</div>';
+	} elseif ( strpos( $url, 'twitter.com' ) !== false
+		|| strpos( $url, 'instagram.com' ) !== false ) {
+		return '<div class="centered-embed">' . $html . '</div>';
+	} else {
+		return $html;
+	}
+}
+add_filter( 'embed_oembed_html', 'wrap_social_embeds', 10, 3 );
+
 ?>
