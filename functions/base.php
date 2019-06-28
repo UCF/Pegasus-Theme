@@ -743,7 +743,7 @@ function get_search_results(
 	if ( strlen( $query ) > 0 ) {
 		$query_string = http_build_query( $arguments );
 		$url          = $search_url.'?'.$query_string;
-		$response     = file_get_contents( $url );
+		$response     = wp_remote_retrieve_body( wp_remote_get( $url ) );
 
 		if ( $response ) {
 			$xml   = simplexml_load_string( $response );

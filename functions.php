@@ -929,11 +929,11 @@ function display_markup_or_template($post) {
 
 		// Uploaded HTML file should always take priority over dev directory contents
 		if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
-			print apply_filters('the_content', file_get_contents($uploaded_html_url));
+			print apply_filters( 'the_content', wp_remote_retrieve_body( wp_remote_get( $uploaded_html_url ) ) );
 		}
 		else {
 			if (curl_exists($dev_directory_html_url)) {
-				$content = file_get_contents($dev_directory_html_url);
+				$content = wp_remote_retrieve_body( wp_remote_get( $dev_directory_html_url ) );
 				print apply_filters('the_content', $content);
 			}
 		}
@@ -952,7 +952,7 @@ function display_markup_or_template($post) {
 					// If an uploaded HTML file is present, use it.  Otherwise, use
 					// any content available in the WYSIWYG editor
 					if (!empty($uploaded_html) && !empty($uploaded_html_url)) {
-						print apply_filters('the_content', file_get_contents($uploaded_html_url));
+						print apply_filters( 'the_content', wp_remote_retrieve_body( wp_remote_get( $uploaded_html_url ) ) );
 					}
 					else {
 						the_content();
