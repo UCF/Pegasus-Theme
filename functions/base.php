@@ -1206,9 +1206,9 @@ function get_canonical_href( $link=null ) {
 function installed_custom_post_types() {
 	$installed = Config::$custom_post_types;
 
-	return array_map( create_function( '$class', '
+	return array_map( function( $class ) {
 		return new $class;
-	' ), $installed );
+	}, $installed );
 }
 
 /**
@@ -1218,9 +1218,9 @@ function installed_custom_post_types() {
 function installed_custom_taxonomies() {
 	$installed = Config::$custom_taxonomies;
 
-	return array_map( create_function( '$class', '
+	return array_map( function( $class ) {
 		return new $class;
-	' ), $installed );
+	}, $installed );
 }
 
 
