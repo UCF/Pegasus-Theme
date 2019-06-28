@@ -50,7 +50,7 @@ function fetch_with_timeout( $url ) {
 	);
 	$context = stream_context_create( $opts );
 	// Grab the file
-	return file_get_contents( $url, false, $context );
+	return wp_remote_retrieve_body( wp_remote_get( $url ) );
 }
 
 
