@@ -3,9 +3,9 @@ function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
-		<?get_search_form()?>
+		<?php get_search_form(); ?>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -405,13 +405,13 @@ function sc_post_type_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count']); ?>,
+				<?php echo json_encode($params['column_width']); ?>,
+				<?php echo json_encode($search_data); ?>
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -477,13 +477,13 @@ function sc_post_type_search($params=array(), $content='') {
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
-		<? if($params['show_sorting']) { ?>
+		<?php if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
 			<button class="btn btn-default<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
 			<button class="btn btn-default<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
 		</div>
-		<? } ?>
-	<?
+		<?php } ?>
+	<?php
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -500,36 +500,36 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
+		<div class="<?=$id?>"<?php if($hide) echo ' style="display:none;"'; ?>>
+			<?php foreach($section as $section_title => $section_posts) { ?>
+				<?php if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
 						<h3><?=esc_html($section_title)?></h3>
 						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
+							<?php if(count($section_posts) > 0) { ?>
+								<?php $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
+								<?php foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
+									<?php $start = $column_index * $posts_per_column; ?>
+									<?php $end   = $start + $posts_per_column; ?>
+									<?php if(count($section_posts) > $start) { ?>
 									<div class="<?=$params['column_width']?>">
 										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+										<?php foreach(array_slice($section_posts, $start, $end) as $post) { ?>
 											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
+										<?php } ?>
 										</ul>
 									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
+									<?php } ?>
+								<?php } ?>
+							<?php } ?>
 						</div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php } ?>
+			<?php } ?>
 		</div>
-		<?
+		<?php
 	}
-	?> </div> <?
+	?> </div> <?php
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -586,7 +586,7 @@ function sc_archive_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Get posts, split them up by issue:
 	global $theme_options;
@@ -695,7 +695,7 @@ function sc_archive_search($params=array(), $content='') {
 								<?php } ?>
 							</a>
 						</li>
-					<? } ?>
+					<?php } ?>
 					</ul>
 				</div>
 				<?php if ( $issue_count < count( $issues_sorted ) ): ?>
@@ -704,13 +704,13 @@ function sc_archive_search($params=array(), $content='') {
 				</div>
 				<?php endif; ?>
 			</div>
-			<?
+			<?php
 			}
 		}
 		?>
 		</div>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
