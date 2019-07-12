@@ -4,7 +4,7 @@
 	<div class="search">
 		<?php get_search_form()?>
 	</div>
-	<?php 
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -24,7 +24,7 @@ function sc_image($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -82,7 +82,7 @@ function sc_get_media($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -383,7 +383,7 @@ function sc_post_type_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?php 
+	<?php
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -455,7 +455,7 @@ function sc_post_type_search($params=array(), $content='') {
 			<button class="btn<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
 		<?php  } ?>
-	<?php 
+	<?php
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -499,9 +499,9 @@ function sc_post_type_search($params=array(), $content='') {
 				<?php  } ?>
 			<?php  } ?>
 		</div>
-		<?php 
+		<?php
 	}
-	?> </div> <?php 
+	?> </div> <?php
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -558,7 +558,7 @@ function sc_archive_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?php 
+	<?php
 
 	// Get posts, split them up by issue:
 	global $theme_options;
@@ -616,7 +616,7 @@ function sc_archive_search($params=array(), $content='') {
 		</div>
 		<div class="span12 post-type-search-results"></div>
 		<div class="span10 offset1 post-type-search-term">
-		<?php 
+		<?php
 		foreach($issues_sorted as $key => $posts) {
 			$issue = get_page_by_title($key, 'OBJECT', 'issue');
 			$featured_article_id = intval(get_post_meta($issue->ID, 'issue_cover_story', TRUE));
@@ -666,13 +666,13 @@ function sc_archive_search($params=array(), $content='') {
 				</div>
 				<hr class="span10" />
 			</div>
-			<?php 
+			<?php
 			}
 		}
 		?>
 		</div>
 	</div>
-	<?php 
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
@@ -734,7 +734,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				</div>
 
 				<div class="ss-slides-wrapper">
-				<?php 
+				<?php
 				$slide_count = count($slide_order);
 				$ss_half = floor($slide_count/2) + 1;
 				$end = false;
@@ -862,7 +862,7 @@ function sc_remarketing_tag( $attr ) {
 			<img height="1" width="1" style="border-style:none;" alt="" src="<?php echo $img_src; ?>" />
 		</div>
 	</noscript>
-	<?php 
+	<?php
 	return ob_get_clean();
 }
 
