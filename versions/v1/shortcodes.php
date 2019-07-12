@@ -640,7 +640,7 @@ function sc_archive_search($params=array(), $content='') {
 							<h4><?php echo $featured_article->post_title?></h4>
 							<?php if ( $f_desc = get_post_meta($featured_article->ID, 'story_description', true ) ) : ?>
 								<span class="description"><?php echo $f_desc?></span>
-							<?php else if ( $f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', true ) ) : ?>
+							<?php elseif ( $f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', true ) ) : ?>
 								<span class="description"><?php echo $f_subtitle?></span>
 							<?php endif; ?>
 						</a>
