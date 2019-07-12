@@ -78,7 +78,7 @@ function display_social($url, $title) {
  * get_default_template_font_styles().
  **/
 function get_default_template_font_css( $font ) {
-	$output .= '
+	$output = '
 		article.story h1,
 		article.story h2,
 		article.story h3,
