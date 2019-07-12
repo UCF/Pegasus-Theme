@@ -14,8 +14,7 @@
 										</div>
 										<div class="span12">
 						                    <ul class="thumbnails">
-						                    <?php
-						                    extract( get_navigation_stories() );
+						                    <?php 						                    extract( get_navigation_stories() );
 						                    foreach( $top_stories as $story ) : ?>
 						                        <li class="span3">
 						                            <a href="<?php echo get_permalink($story->ID); ?>">
@@ -89,8 +88,7 @@
 						</span>
 						<?php endif; ?>
 
-						<?php
-						$defaults = array(
+						<?php 						$defaults = array(
 							'theme_location'  => 'footer-menu',
 							'container'       => false,
 							'menu_class'      => 'navigation',

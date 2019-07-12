@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 function js_css_path() {
 	echo '<script>var THEME_CSS_URL = "' . THEME_CSS_URL . '";</script>';
 }
@@ -85,12 +84,10 @@ function add_shortcode_interface_modal() {
 					<div class="col-left">
 						<select name="shortcode-select" id="shortcode-select">
 							<option value="">--Choose Shortcode--</option>
-							<?php
-		foreach ( $shortcodes as $name ):
+							<?php 		foreach ( $shortcodes as $name ):
 ?>
 								<option class="shortcode" value="<?php echo $name; ?>" <?php if ( isset( $enclosing[$name] ) ) { ?>data-enclosing="<?php echo $enclosing[$name]; ?>"<?php } ?>><?php echo $name; ?></option>
-							<?php
-		endforeach;
+							<?php 		endforeach;
 ?>
 						</select>
 					</div>
@@ -268,8 +265,7 @@ function add_shortcode_interface_modal() {
 						<select name="photo-essay-select" id="photo-essay-select" data-parameter="slug">
 							<option value="">--Choose Photo Essay--</option>
 
-							<?php
-		$photo_essays = get_posts( array(
+							<?php 		$photo_essays = get_posts( array(
 				'posts_per_page' => -1,
 				'post_type' => 'photo_essay',
 			) );
@@ -278,8 +274,7 @@ function add_shortcode_interface_modal() {
 
 							<option class="shortcode" value="<?php echo $photo_essay->post_name; ?>"><?php echo $photo_essay->post_title; ?></option>
 
-							<?php
-		endforeach;
+							<?php 		endforeach;
 ?>
 
 						</select>
@@ -291,8 +286,7 @@ function add_shortcode_interface_modal() {
 						<select name="photo-essay-select" id="photo-essay-select" data-parameter="slug">
 							<option value="">--Choose Photo Essay--</option>
 
-							<?php
-		$photo_essays = get_posts( array(
+							<?php 		$photo_essays = get_posts( array(
 				'posts_per_page' => -1,
 				'post_type' => 'photo_essay',
 			) );
@@ -301,8 +295,7 @@ function add_shortcode_interface_modal() {
 
 							<option class="shortcode" value="<?php echo $photo_essay->post_name; ?>"><?php echo $photo_essay->post_title; ?></option>
 
-							<?php
-		endforeach;
+							<?php 		endforeach;
 ?>
 
 						</select>
@@ -325,8 +318,7 @@ function add_shortcode_interface_modal() {
 				<button class="button-primary">Insert into Post</button>
 			</div>
 		</div>
-	<?php
-	}
+	<?php 	}
 }
 add_action( 'admin_footer', 'add_shortcode_interface_modal' );
 
@@ -340,8 +332,7 @@ add_action( 'admin_footer', 'add_shortcode_interface_modal' );
 function login_scripts() {
 	ob_start();?>
 	<link rel="stylesheet" href="<?php echo THEME_CSS_URL; ?>/admin.css" type="text/css" media="screen" charset="utf-8" />
-	<?php
-	$out = ob_get_clean();
+	<?php 	$out = ob_get_clean();
 	print $out;
 }
 if ( is_login() ) {

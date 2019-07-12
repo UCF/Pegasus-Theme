@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US">
 	<head>
-		<?="\n".header_()."\n"?>
+		<?php echo "\n".header_()."\n"?>
 		<!--[if lte IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
@@ -12,7 +12,7 @@
 			var _sf_startpt = (new Date()).getTime();
 			<?php if(GA_ACCOUNT):?>
 
-			var GA_ACCOUNT = '<?=GA_ACCOUNT?>';
+			var GA_ACCOUNT = '<?php echo GA_ACCOUNT?>';
 			var _gaq = _gaq || [];
 			_gaq.push(['_setAccount', GA_ACCOUNT]);
 			_gaq.push(['_setDomainName', 'none']);
@@ -21,16 +21,16 @@
 			<?php endif;?>
 			<?php if(CB_UID):?>
 
-			var CB_UID = '<?=CB_UID?>';
-			var CB_DOMAIN = '<?=CB_DOMAIN?>';
+			var CB_UID = '<?php echo CB_UID?>';
+			var CB_DOMAIN = '<?php echo CB_DOMAIN?>';
 			<?php endif?>
 		</script>
 		<?php endif;?>
 
 		<script type="text/javascript">
-			var IPAD_DEPLOYED = <?=ipad_deployed() ? 'true' : 'false'?>;
-			var PROTOCOL = '<?=is_ssl() ? "https://" : "http://"?>';
-			var THEME_COMPONENTS_URL = PROTOCOL + '<?=str_replace(array("http://", "https://"), "", THEME_COMPONENTS_URL)?>';
+			var IPAD_DEPLOYED = <?php echo ipad_deployed() ? 'true' : 'false'?>;
+			var PROTOCOL = '<?php echo is_ssl() ? "https://" : "http://"?>';
+			var THEME_COMPONENTS_URL = PROTOCOL + '<?php echo str_replace(array("http://", "https://"), "", THEME_COMPONENTS_URL)?>';
 
 			var PostTypeSearchDataManager = {
                 'searches' : [],
@@ -45,13 +45,13 @@
             }
 		</script>
 
-		<?=output_header_markup($post);?>
+		<?php echo output_header_markup($post);?>
 
 	</head>
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
-	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
+	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -75,7 +75,7 @@
 						</div>
 					</div>
 				</div>
-				<?=display_story_list($relevant_issue)?>
+				<?php echo display_story_list($relevant_issue)?>
 				<div class="controls">
 					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
 					<a class="backward icon icon-caret-left" href="#">Back</a>
@@ -90,26 +90,26 @@
 					<nav class="col-md-12 col-sm-12" role="navigation">
 						<?php if ( is_home() || $post->post_type == 'issue' ) { ?>
 						<h1 class="header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
+							<a href="<?php echo get_site_url()?>">Pegasus</a>
 						</h1>
 						<?php } else { ?>
 						<span class="header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
+							<a href="<?php echo get_site_url()?>">Pegasus</a>
 						</span>
 						<?php } ?>
 
 						<ul class="navigation">
 							<li id="nav-about">
-								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
+								<a href="<?php echo get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
 							</li>
 							<li id="nav-mobile">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"></a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?php echo get_permalink($relevant_issue)?>"></a>
 							</li>
 							<li id="nav-issue">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>">In This Issue</a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?php echo get_permalink($relevant_issue)?>">In This Issue</a>
 							</li>
 							<li id="nav-archives">
-								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+								<a href="<?php echo get_permalink(get_page_by_title('Archives'))?>">Archives</a>
 							</li>
 						</ul>
 					</nav>

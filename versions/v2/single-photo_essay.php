@@ -1,9 +1,8 @@
 <?php disallow_direct_load('page.php');?>
 <?php get_version_header(); the_post();?>
-<article class="container-wide<?= true ? ' ss-photo-essay' : '' ?>">
+<article class="container-wide<?php echo  true ? ' ss-photo-essay' : '' ?>">
 	<section class='ss-content'>
-		<?php
-
+		<?php 
 		$slide_order = trim(get_post_meta($post->ID, 'ss_slider_slideorder', TRUE));
 		// Get rid of blank array entries
 		$slide_order = array_filter( explode(',', $slide_order), 'strlen' );
@@ -21,8 +20,7 @@
 			</div>
 			<div class='ss-slides-wrapper'>
 
-			<?php
-
+			<?php 
 			$slide_count = count($slide_order);
 			$ss_half = floor($slide_count/2) + 1;
 			$end = false;
@@ -40,34 +38,30 @@
 				$image = wp_get_attachment_image_src( $images[$s], 'full' );
 				?>
 				<div class="ss-slide-wrapper">
-					<div class="ss-slide<?= $i == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-						<img src="<?=$image[0]; ?>" alt="<?=$titles[$s]; ?>" />
+					<div class="ss-slide<?php echo  $i == 0 ? ' ss-first-slide ss-current' : '' ?><?php echo  $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?php echo $i + 1?>" data-width="<?php echo $image[1]?>" data-height="<?php echo $image[2]?>">
+						<img src="<?php echo $image[0]; ?>" alt="<?php echo $titles[$s]; ?>" />
 					</div>
 				</div>
-			<?php
-				$i++;
+			<?php 				$i++;
 			}
 			?>
 			</div>
 
-			<?php
-			// Make sure at least one caption exists before adding caption wrapper.
+			<?php 			// Make sure at least one caption exists before adding caption wrapper.
 			if (array_filter($captions)) { ?>
 			<div class='ss-captions-wrapper' style="height: 20%;">
-			<?php
-				$data_id = 0;
+			<?php 				$data_id = 0;
 				foreach ($slide_order as $s) {
 					if ($s !== '') {
 						$data_id++;
 
 						?>
 
-						<div class='ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?=$data_id; ?>'>
-							<p class="caption"><?=$captions[$s]; ?></p>
+						<div class='ss-caption <?php echo  $data_id == 1 ? ' ss-current' : '' ?>' data-id='<?php echo $data_id; ?>'>
+							<p class="caption"><?php echo $captions[$s]; ?></p>
 						</div>
 
-						<?php
-					}
+						<?php 					}
 				}
 			}
 			?>
@@ -77,7 +71,7 @@
 			<div class="ss-closing-overlay" style="display: none;">
 				<div class="ss-slide" data-id="restart-slide">
 					<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY:</div></a>
-					<? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
+					<?php  if ($is_fullscreen): ?><div class="ss-title"><?php echo $post->post_title; ?></div><?php endif; ?>
 				</div>
 			</div>
 		</div>

@@ -1,11 +1,10 @@
-<?php
-function sc_search_form() {
+<?php function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
-		<?get_search_form()?>
+		<?php get_search_form()?>
 	</div>
-	<?
+	<?php 
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -378,13 +377,13 @@ function sc_post_type_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php 
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -446,17 +445,17 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="span3" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
-		<? if($params['show_sorting']) { ?>
+		<?php  if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
-			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
+			<button class="btn<?php if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
+			<button class="btn<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
-		<? } ?>
-	<?
+		<?php  } ?>
+	<?php 
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -473,36 +472,36 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
+		<div class="<?php echo $id?>"<?php  if($hide) echo ' style="display:none;"'; ?>>
+			<?php  foreach($section as $section_title => $section_posts) { ?>
+				<?php  if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
-						<h3><?=esc_html($section_title)?></h3>
+						<h3><?php echo esc_html($section_title)?></h3>
 						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?>">
+							<?php  if(count($section_posts) > 0) { ?>
+								<?php  $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
+								<?php  foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
+									<?php  $start = $column_index * $posts_per_column; ?>
+									<?php  $end   = $start + $posts_per_column; ?>
+									<?php  if(count($section_posts) > $start) { ?>
+									<div class="<?php echo $params['column_width']?>">
 										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
+										<?php  foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+											<li data-post-id="<?php echo $post->ID?>"><?php echo $post_type->toHTML($post)?></li>
+										<?php  } ?>
 										</ul>
 									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
+									<?php  } ?>
+								<?php  } ?>
+							<?php  } ?>
 						</div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php  } ?>
+			<?php  } ?>
 		</div>
-		<?
+		<?php 
 	}
-	?> </div> <?
+	?> </div> <?php 
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -553,13 +552,13 @@ function sc_archive_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php 
 
 	// Get posts, split them up by issue:
 	global $theme_options;
@@ -610,14 +609,14 @@ function sc_archive_search($params=array(), $content='') {
 	?>
 	<div class="row post-type-search" id="archives">
 		<div class="span8 offset2 post-type-search-header">
-			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
+			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' )?>">
 				<label for="s">Search</label>
-				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" name="s" class="search-field" id="s" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="span12 post-type-search-results"></div>
 		<div class="span10 offset1 post-type-search-term">
-		<?
+		<?php 
 		foreach($issues_sorted as $key => $posts) {
 			$issue = get_page_by_title($key, 'OBJECT', 'issue');
 			$featured_article_id = intval(get_post_meta($issue->ID, 'issue_cover_story', TRUE));
@@ -627,22 +626,22 @@ function sc_archive_search($params=array(), $content='') {
 		?>
 			<div class="row issue">
 				<div class="span4">
-					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
+					<h2 id="<?php echo $issue->post_name?>"><a href="<?php echo get_permalink($issue->ID)?>"><?php echo $issue->post_title?></a></h2>
 
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
-						<a href="<?=get_permalink($issue->ID)?>">
-							<?=$thumbnail?>
+						<a href="<?php echo get_permalink($issue->ID)?>">
+							<?php echo $thumbnail?>
 						</a>
 					<?php } ?>
 
 					<?php if ($featured_article_id) { ?>
 						<h3>Featured Story</h3>
-						<a class="featured-story" href="<?=get_permalink($featured_article->ID)?>">
-							<h4><?=$featured_article->post_title?></h4>
+						<a class="featured-story" href="<?php echo get_permalink($featured_article->ID)?>">
+							<h4><?php echo $featured_article->post_title?></h4>
 							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
-								<span class="description"><?=$f_desc?></span>
+								<span class="description"><?php echo $f_desc?></span>
 							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
-								<span class="description"><?=$f_subtitle?></span>
+								<span class="description"><?php echo $f_subtitle?></span>
 							<?php } ?>
 						</a>
 					<?php } ?>
@@ -650,31 +649,30 @@ function sc_archive_search($params=array(), $content='') {
 				<div class="span6">
 					<h3>More in This Issue</h3>
 					<ul>
-					<? foreach($posts as $post) { ?>
-						<li data-post-id="<?=$post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
-							<a href="<?=get_permalink($post->ID)?>">
-								<h4><?=$post->post_title?></h4>
-								<span class="results-story-issue"><?=$issue->post_title?></span>
+					<?php  foreach($posts as $post) { ?>
+						<li data-post-id="<?php echo $post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
+							<a href="<?php echo get_permalink($post->ID)?>">
+								<h4><?php echo $post->post_title?></h4>
+								<span class="results-story-issue"><?php echo $issue->post_title?></span>
 								<?php if ($desc = get_post_meta($post->ID, 'story_description', TRUE)) { ?>
-									<span class="description"><?=$desc?></span>
+									<span class="description"><?php echo $desc?></span>
 								<?php } else if ($subtitle = get_post_meta($post->ID, 'story_subtitle', TRUE)) { ?>
-									<span class="description"><?=$subtitle?></span>
+									<span class="description"><?php echo $subtitle?></span>
 								<?php } ?>
 							</a>
 						</li>
-					<? } ?>
+					<?php  } ?>
 					</ul>
 				</div>
 				<hr class="span10" />
 			</div>
-			<?
+			<?php 
 			}
 		}
 		?>
 		</div>
 	</div>
-	<?php
-	return ob_get_clean();
+	<?php 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
 
@@ -735,8 +733,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				</div>
 
 				<div class="ss-slides-wrapper">
-				<?php
-
+				<?php 
 				$slide_count = count( $slide_order );
 				$ss_half = floor( $slide_count / 2 ) + 1;
 				$end = false;
@@ -783,24 +780,21 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					?>
 					<div class="ss-slide-wrapper">
 						<div class="ss-slide<?php echo $i + $photo_essay_offset === 0 ? ' ss-first-slide ss-current' : '' ?><?php echo $i === $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
-							<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+							<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 						</div>
 					</div>
-				<?php
-					$i++;
+				<?php 					$i++;
 				endwhile;
 				?>
 				</div>
 
 				<div class="ss-captions-wrapper">
-				<?php
-				$data_id = 0;
+				<?php 				$data_id = 0;
 				if ($is_fullscreen) {
 					$data_id++;
 				?>
 					<div class="ss-caption ss-current" data-id="<?php echo $data_id; ?>"></div>
-				<?php
-				}
+				<?php 				}
 				foreach ($slide_order as $s) :
 					if ($s !== '') :
 						$data_id++;
@@ -808,8 +802,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					<div class="ss-caption <?php echo $data_id === 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
 						<p class="caption"<?php if ($caption_color) : ?> style="color: <?php echo $caption_color; ?>;"<?php endif; ?>><?php echo $slide_caption[$s]; ?></p>
 					</div>
-				<?php
-					endif;
+				<?php 					endif;
 				endforeach;
 				?>
 				</div>
@@ -825,8 +818,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 			</div>
 		</section>
 
-		<?php
-	}
+		<?php 	}
 
 	return ob_get_clean();
 
@@ -870,8 +862,7 @@ function sc_remarketing_tag( $attr ) {
 			<img height="1" width="1" style="border-style:none;" alt="" src="<?php echo $img_src; ?>" />
 		</div>
 	</noscript>
-	<?php
-
+	<?php 
 	return ob_get_clean();
 }
 

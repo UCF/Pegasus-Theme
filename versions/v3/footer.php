@@ -1,7 +1,6 @@
 			</main>
 
-			<?php
-			$issue = get_relevant_issue( $post );
+			<?php 			$issue = get_relevant_issue( $post );
 			$args = array();
 
 			if ( $post->post_type == 'story' ) {
@@ -23,8 +22,7 @@
 				</div>
 				<div class="container story-list-grid hidden-sm hidden-xs">
 					<div class="row">
-					<?php
-					$count = 0;
+					<?php 					$count = 0;
 					if ( $stories ) {
 						foreach ( $stories as $story ) {
 							if ( $count % $perrow == 0 && $count !== 0 ) {
@@ -47,8 +45,7 @@
 								<?php } ?>
 							</a>
 						</article>
-					<?php
-						}
+					<?php 						}
 					}
 					?>
 					</div>
@@ -61,8 +58,7 @@
 			</aside>
 			<?php endif; ?>
 
-			<?php
-			$fb_url = get_theme_option( 'fb_url' );
+			<?php 			$fb_url = get_theme_option( 'fb_url' );
 			$twitter_url = get_theme_option( 'twitter_url' );
 			$flickr_url = get_theme_option( 'flickr_url' );
 			$youtube_url = get_theme_option( 'youtube_url' );
@@ -120,8 +116,7 @@
 							</span>
 	                        <?php } ?>
 
-							<?php
-							$defaults = array(
+							<?php 							$defaults = array(
 								'theme_location' => 'footer-menu',
 								'container'      => false,
 								'menu_class'     => 'navigation',

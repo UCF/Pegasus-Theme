@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /**
  * Abstract class for defining custom post types.
  *
@@ -243,15 +242,14 @@ abstract class CustomPostType{
 
 		ob_start();
 		?>
-		<ul class="<?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
+		<ul class="<?php if($css_classes):?><?php echo $css_classes?><?php else:?><?php echo $class->options('name')?>-list<?php endif;?>">
 			<?php foreach($objects as $o):?>
 			<li>
-				<?=$class->toHTML($o)?>
+				<?php echo $class->toHTML($o)?>
 			</li>
 			<?php endforeach;?>
 		</ul>
-		<?php
-		$html = ob_get_clean();
+		<?php 		$html = ob_get_clean();
 		return $html;
 	}
 
@@ -639,15 +637,14 @@ class Issue extends CustomPostType {
 
 		ob_start();
 		?>
-		<ul class="<?php if($css_classes):?><?=$css_classes?><?php else:?><?=$class->options('name')?>-list<?php endif;?>">
+		<ul class="<?php if($css_classes):?><?php echo $css_classes?><?php else:?><?php echo $class->options('name')?>-list<?php endif;?>">
 			<?php foreach($objects as $o):?>
 			<li>
-				<?=$class->toHTML($o)?>
+				<?php echo $class->toHTML($o)?>
 			</li>
 			<?php endforeach;?>
 		</ul>
-		<?php
-		$html = ob_get_clean();
+		<?php 		$html = ob_get_clean();
 		return $html;
 	}
 
@@ -783,11 +780,11 @@ class PhotoEssay extends CustomPostType {
 				<span>Slide - </span><span class="slide-handle-header"><?php echo $slide_header; ?></span>
 			</h3>
 			<table class="form-table">
-			<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
+			<input type="hidden" name="meta_box_nonce" value="<?php echo wp_create_nonce('nonce-content')?>"/>
 				<tr>
-					<th><label for="ss_slide_caption[<?=$id?>]">Slide Caption</label></th>
+					<th><label for="ss_slide_caption[<?php echo $id?>]">Slide Caption</label></th>
 					<td>
-                        <div id="wysihtml5-toolbar[<?=$id?>]" style="display: none;">
+                        <div id="wysihtml5-toolbar[<?php echo $id?>]" style="display: none;">
                             <a class="wysihtml5-strong" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="strong">strong</a>
                             <a class="wysihtml5-em" data-wysihtml5-command="formatInline" data-wysihtml5-command-value="em">em</a>
                             <a class="wysihtml5-u" data-wysihtml5-command="underline" data-wysihtml5-command-value="u">underline</a>
@@ -804,14 +801,13 @@ class PhotoEssay extends CustomPostType {
                             </div>
                             <a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
                         </div>
-						<textarea name="ss_slide_caption[<?=$id?>]" id="ss_slide_caption[<?=$id?>]" cols="60" rows="4"><?=$slide_caption?></textarea>
+						<textarea name="ss_slide_caption[<?php echo $id?>]" id="ss_slide_caption[<?php echo $id?>]" cols="60" rows="4"><?php echo $slide_caption?></textarea>
 					</td>
 				</tr>
 				<tr>
-					<th><label for="ss_slide_image[<?=$id?>]">Slide Image</label></th>
+					<th><label for="ss_slide_image[<?php echo $id?>]">Slide Image</label></th>
 					<td>
-						<?php
-							if (!empty($slide_image)) {
+						<?php 							if (!empty($slide_image)) {
 								$url = wp_get_attachment_url($slide_image->ID);
 							} else {
 								$url = False;
@@ -838,8 +834,7 @@ class PhotoEssay extends CustomPostType {
 			</table>
 			<a class="repeatable-remove button" href="#">Remove Slide</a>
 		</li>
-	<?php
-	}
+	<?php 	}
 
 
 	/**
@@ -860,8 +855,7 @@ class PhotoEssay extends CustomPostType {
 		<div id="ss_slides_wrapper">
 			<a class="button-primary" id="slide_modal_toggle" href="#">Create New Slides</a>
 			<ul id="ss_slides_all">
-				<?php
-				// Print a cloner slide
+				<?php 				// Print a cloner slide
 				PhotoEssay::display_cloneable_fieldset($args);
 
 				// Loop through slides_array for existing slides.
@@ -876,8 +870,7 @@ class PhotoEssay extends CustomPostType {
 				?>
 			</ul>
 		</div>
-		<?php
-	}
+		<?php 	}
 
  	// Individual slide container:
 	public function show_meta_box_slide_all($post) {
@@ -893,15 +886,13 @@ class PhotoEssay extends CustomPostType {
 		// Use one nonce for Slider post:
 		?>
 		<table class="form-table">
-		<input type="hidden" name="meta_box_nonce" value="<?=wp_create_nonce('nonce-content')?>"/>
-		<?php
-			foreach( $meta_box['fields'] as $field ) {
+		<input type="hidden" name="meta_box_nonce" value="<?php echo wp_create_nonce('nonce-content')?>"/>
+		<?php 			foreach( $meta_box['fields'] as $field ) {
 				display_meta_box_field( $post->ID, $field );
 			}
 		?>
 		</table>
-	<?php
-	}
+	<?php 	}
 
 
 	public function register_metaboxes(){

@@ -1,7 +1,6 @@
 		</main>
 
-		<?php
-		$issue = get_relevant_issue($post);
+		<?php 		$issue = get_relevant_issue($post);
 		$args = array();
 
 		if ($post->post_type == 'story') {
@@ -23,8 +22,7 @@
 			</div>
 			<div class="container story-list-grid hidden-tablet hidden-phone">
 				<div class="row">
-				<?php
-				$count = 0;
+				<?php 				$count = 0;
 				if ($stories) {
 					foreach ($stories as $story) {
 						if ($count % $perrow == 0 && $count !== 0) {
@@ -37,23 +35,22 @@
 						$thumb = get_featured_image_url($story->ID);
 				?>
 					<article class="span4">
-						<a href="<?=get_permalink($story)?>">
+						<a href="<?php echo get_permalink($story)?>">
 							<?php if ($thumb) { ?>
-							<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+							<img class="lazy" data-original="<?php echo $thumb?>" alt="<?php echo $title?>" title="<?php echo $title?>" />
 							<?php } ?>
-							<h3 class="story-title"><?=$title?></h3>
+							<h3 class="story-title"><?php echo $title?></h3>
 							<?php if (!empty($subtitle)) { ?>
-							<span class="subtitle"><?=$subtitle?></span>
+							<span class="subtitle"><?php echo $subtitle?></span>
 							<?php } ?>
 						</a>
 					</article>
-				<?php
-					}
+				<?php 					}
 				}
 				?>
 				</div>
 			</div>
-			<?=display_story_list($issue, 'hidden-desktop')?>
+			<?php echo display_story_list($issue, 'hidden-desktop')?>
 			<div class="controls hidden-desktop">
 				<a class="backward icon-caret-left" href="#">Back</a>
 				<a class="forward icon-caret-right" href="#">Forward</a>
@@ -61,8 +58,7 @@
 		</aside>
 		<?php endif; ?>
 
-		<?php
-		$fb_url = get_theme_option('fb_url');
+		<?php 		$fb_url = get_theme_option('fb_url');
 		$twitter_url = get_theme_option('twitter_url');
 		$flickr_url = get_theme_option('flickr_url');
 		$youtube_url = get_theme_option('youtube_url');
@@ -80,19 +76,19 @@
 						<ul>
 							<?php if (!empty($fb_url)) { ?>
 							<li>
-								<a target="_blank" class="sprite facebook" href="<?=$fb_url?>">Follow UCF on Facebook</a>
+								<a target="_blank" class="sprite facebook" href="<?php echo $fb_url?>">Follow UCF on Facebook</a>
 							</li>
 							<?php } if (!empty($twitter_url)) { ?>
 							<li>
-								<a target="_blank" class="sprite twitter" href="<?=$twitter_url?>">Follow UCF on Twitter</a>
+								<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url?>">Follow UCF on Twitter</a>
 							</li>
 							<?php } if (!empty($flickr_url)) { ?>
 							<li>
-								<a target="_blank" class="sprite flickr" href="<?=$flickr_url?>">Follow UCF on Flickr</a>
+								<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url?>">Follow UCF on Flickr</a>
 							</li>
 							<?php } if (!empty($youtube_url)) { ?>
 							<li>
-								<a target="_blank" class="sprite youtube" href="<?=$youtube_url?>">Follow UCF on YouTube</a>
+								<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url?>">Follow UCF on YouTube</a>
 							</li>
 							<?php } ?>
 						</ul>
@@ -107,21 +103,20 @@
 				<div class="row">
 					<div class="span12">
 						<span class="footer-logo <?php if(ipad_deployed()) { ?>pull-left<?php } ?>">
-							<a class="sprite logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?=get_site_url()?>">
+							<a class="sprite logo-large-white <?php if(ipad_deployed()) { ?>pull-right<?php } ?>" href="<?php echo get_site_url()?>">
 								Pegasus Magazine
 							</a>
 						</span>
 
-						<? if(ipad_deployed()) {?>
+						<?php  if(ipad_deployed()) {?>
 						<span class="footer-ipad-app pull-right">
-							<a class="sprite ipad-app-btn pull-left" href="<?=get_theme_option('ipad_app_url')?>">
+							<a class="sprite ipad-app-btn pull-left" href="<?php echo get_theme_option('ipad_app_url')?>">
 								Download on the App Store
 							</a>
 						</span>
-                        <?}?>
+                        <?php }?>
 
-						<?php
-						$defaults = array(
+						<?php 						$defaults = array(
 							'theme_location'  => 'footer-menu',
 							'container'       => false,
 							'menu_class'      => 'navigation',
@@ -130,15 +125,15 @@
 						wp_nav_menu( $defaults );
 						?>
 						<p class="copyright">
-							&copy; <?=get_theme_option('org_name')?>
+							&copy; <?php echo get_theme_option('org_name')?>
 						</p>
 						<p class="address">
-							<?=nl2br(get_theme_option('org_address'))?>
+							<?php echo nl2br(get_theme_option('org_address'))?>
 						</p>
 					</div>
 				</div>
 			</div>
 		</footer>
 	</body>
-	<?="\n".footer_()."\n"?>
+	<?php echo "\n".footer_()."\n"?>
 </html>
