@@ -679,23 +679,23 @@ function sc_archive_search($params=array(), $content='') {
 						</a>
 					</h2>
 
-					<?php if ( $thumbnail = get_the_post_thumbnail( $issue->ID, 'issue-thumbnail' ) ) { ?>
+					<?php if ( $thumbnail = get_the_post_thumbnail( $issue->ID, 'issue-thumbnail' ) ) : ?>
 						<a href="<?php echo get_permalink( $issue->ID ); ?>">
 							<?php echo $thumbnail; ?>
 						</a>
-					<?php } ?>
+					<?php endif; ?>
 
-					<?php if ( $featured_article_id ) { ?>
+					<?php if ( $featured_article ) : ?>
 						<h3>Featured Story</h3>
 						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
 							<h4><?php echo wptexturize( $featured_article->post_title ); ?></h4>
-							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
+							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', true ) ) : ?>
 								<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
+							<?php else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) : ?>
 								<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } ?>
+							<?php endif; ?>
 						</a>
-					<?php } ?>
+						<?php endif; ?>
 				</div>
 				<div class="col-md-7 col-sm-7">
 					<h3>More in This Issue</h3>
