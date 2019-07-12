@@ -3,7 +3,7 @@
 		<h1>Pegasus Magazine Site Help - for Content Creators</h1>
 
 		<?php if ($updated):?>
-		<div class="updated fade"><p><strong><?=__( 'Options saved' ); ?></strong></p></div>
+		<div class="updated fade"><p><strong><?php echo __( 'Options saved' ); ?></strong></p></div>
 		<?php endif; ?>
 
 		<div class="sections">
@@ -268,7 +268,7 @@
 					</p>
 
 					<h4 id="stories-issue-tags">Assign an Issue, Tags</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-tags-issue.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-tags-issue.jpg" />
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e.
 						Fall/Spring/Summer, and the year) and add any appropriate tags in the Tags metabox.  When picking
@@ -276,7 +276,7 @@
 					</p>
 
 					<h4 id="stories-add-thumbnail">Add a Thumbnail</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-featured-image.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-featured-image.jpg" />
 					<p>
 						The story’s thumbnail should be uploaded as the story’s Featured Image.  To do so, click the “Set featured
 						image” link in the Featured Image metabox on the right side of the screen.  Upload or select an image as
@@ -327,7 +327,7 @@
 						content.  View the screenshot below for an example of what these headings are.
 					</p>
 
-					<img src="<?=THEME_HELP_IMG_URL?>/headings.png" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/headings.png" />
 					<p class="caption">
 						A sample story with structured headings for each section and subsection.
 					</p>
@@ -368,7 +368,7 @@
 					</div>
 
 					<h4 id="stories-add-headings">Adding Headings</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-add-heading.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-add-heading.jpg" />
 					<p>
 						To add a heading or make an existing line of text a heading, highlight the text you want to modify in the editor,
 						and from the “Paragraph” dropdown in the Kitchen Sink, select from the Heading 2 through Heading 6 options.  This
@@ -383,7 +383,7 @@
 						how to achieve various effects with these tools:
 					</p>
 
-					<img src="<?=THEME_HELP_IMG_URL?>/story-kitchen-sink.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-kitchen-sink.jpg" />
 
 					<p><strong>Font Family</strong></p>
 					<p>
@@ -486,11 +486,11 @@
 							will figure out the rest for you.
 						</p>
 					</div>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-add-media.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-add-media.jpg" />
 					<p>
 						Media can be added to the post content by clicking on the Add Media button under the story title.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-media-modal.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-media-modal.jpg" />
 					<p>
 						In the window that appears, you can either browse existing media or upload a new file.  Click on a file’s thumbnail
 						to select it (if you just uploaded the file, it’ll be selected for you.)
@@ -578,11 +578,11 @@
 						other stylized content.  Please visit the <a href="#shortcodes">Shortcodes documentation section</a> for
 						information about what shortcodes are available and what options they provide.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-add-shortcode.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-add-shortcode.jpg" />
 					<p>
 						To add a shortcode to your story content, click the “Add Shortcode” button just under the title field.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-shortcode-modal.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-shortcode-modal.jpg" />
 					<p>
 						In the window that appears, select a shortcode, and update any available options if necessary.  Click the “Insert into
 						Post” button to insert the shortcode where your cursor was last at in the editor.
@@ -602,7 +602,7 @@
 						Slideshows can be added to story content in two ways—the entire story can be a full-screen slideshow, or a small
 						slideshow (an "embedded" slideshow) can be added between other content.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-photoessay-comparison.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-photoessay-comparison.jpg" />
 					<p class="caption">
 						Note the differences between a story with an embedded slideshow, and a full-screen Photo Essay story.  For full-screen
 						Photo Essay stories, the Story Template field must be set to "Photo essay".
@@ -614,7 +614,7 @@
 					</p>
 
 					<h3 id="stories-customization">Story Subtitle, Description, and Customization:</h3>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-fields.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-fields.jpg" />
 					<p>
 						The Story Fields metabox, located underneath the story content editor, contains set of extra fields that add custom
 						settings to your story.  Most of these fields are straightforward and provide descriptions.
@@ -646,7 +646,7 @@
 					</div>
 
 					<h3 id="stories-saving">Saving a Story:</h3>
-					<img src="<?=THEME_HELP_IMG_URL?>/story-save.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/story-save.jpg" />
 					<p>
 						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish
 						metabox.
@@ -712,7 +712,7 @@
 					</p>
 
 					<h4 id="photo-essays-issue">Assign an Issue</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-issue.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-issue.jpg" />
 					<p>
 						On the right-hand side of the screen, select an Issue from the Issues metabox (select the season, i.e.
 						Fall/Spring/Summer, AND the year.)
@@ -720,17 +720,17 @@
 
 
 					<h3 id="photo-essays-creating-slides">Creating Slides</h3>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-create-slides.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-create-slides.jpg" />
 					<p>
 						The Photo Essay editor has been revamped to allow for faster and more efficient slide creation.  To create your first slide(s),
 						click the "Create New Slides" button at the top of the screen.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-create-modal.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-create-modal.jpg" />
 					<p>
 						The window that appears is just like the window that you select media from when creating stories.  You can either upload new
 						images under the "Upload Files" section, or select one or more existing images from the Media Library.
 					</p>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-modal-select.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-modal-select.jpg" />
 					<p>
 						To select more than one image from the Media Library for slide creation, click the first thumbnail in the set you want to select,
 						then hold the Shift key and click the last thumbnail in the set.  All the thumbnails between the first and last thumbnail will
@@ -746,7 +746,7 @@
 					</p>
 
 					<h4 id="photo-essays-slide-content">Title and Caption</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-title-caption.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-title-caption.jpg" />
 					<p>
 						When a slide is created from an image in the Media Library, whatever title and caption were set for that image are pulled
 						automatically as the default title and caption for that slide.  To override these without modifying the title/caption of the
@@ -779,13 +779,13 @@
 					</div>
 
 					<h4 id="photo-essays-order-slides">Ordering Slides</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-move.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-move.jpg" />
 					<p>
 						To re-order a slide, click and drag the top bar of the slide's metabox up or down to re-order it.
 					</p>
 
 					<h4 id="photo-essays-delete-slide">Delete a Slide</h4>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-delete-slide.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-delete-slide.jpg" />
 					<p>
 						To delete a single slide, click the "Remove Slide" button on the bottom-left of any single slide metabox.  Note that this
 						button will not appear if only one slide is left on the screen.  Also note that this does not delete the image from the Media
@@ -801,7 +801,7 @@
 
 
 					<h3 id="photo-essays-save">Saving a Photo Essay</h3>
-					<img src="<?=THEME_HELP_IMG_URL?>/photo_essay-save.jpg" />
+					<img src="<?php echo THEME_HELP_IMG_URL?>/photo_essay-save.jpg" />
 					<p>
 						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish
 						metabox.

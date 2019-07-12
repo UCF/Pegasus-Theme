@@ -3,8 +3,7 @@
 
 <article class="container-wide ss-photo-essay">
 	<section class="ss-content">
-		<?php
-		$slide_order = trim( get_post_meta( $post->ID, 'ss_slider_slideorder', TRUE ) );
+		<?php 		$slide_order = trim( get_post_meta( $post->ID, 'ss_slider_slideorder', TRUE ) );
 		// Get rid of blank array entries
 		$slide_order = array_filter( explode( ',', $slide_order ), 'strlen' );
 		$captions = get_post_meta( $post->ID, 'ss_slide_caption', TRUE );
@@ -21,8 +20,7 @@
 			</div>
 			<div class="ss-slides-wrapper">
 
-			<?php
-
+			<?php 
 			$slide_count = count( $slide_order );
 			$ss_half = floor( $slide_count/2 ) + 1;
 			$end = false;
@@ -44,18 +42,15 @@
 						<img src="<?php echo $image[0]; ?>" alt="<?php echo $titles[$s]; ?>" />
 					</div>
 				</div>
-			<?php
-				$i++;
+			<?php 				$i++;
 			}
 			?>
 			</div>
 
-			<?php
-			// Make sure at least one caption exists before adding caption wrapper.
+			<?php 			// Make sure at least one caption exists before adding caption wrapper.
 			if ( array_filter( $captions ) ) { ?>
 			<div class="ss-captions-wrapper" style="height: 20%;">
-			<?php
-				$data_id = 0;
+			<?php 				$data_id = 0;
 				foreach ($slide_order as $s) {
 					if ($s !== '') {
 						$data_id++;
@@ -65,8 +60,7 @@
 							<p class="caption"><?php echo wptexturize( $captions[$s] ); ?></p>
 						</div>
 
-						<?php
-					}
+						<?php 					}
 				}
 			}
 			?>

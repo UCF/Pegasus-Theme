@@ -1,7 +1,6 @@
 <?php disallow_direct_load( 'front-page.php' ); ?>
 
-<?php
-if ( 'page' !== get_option( 'show_on_front' ) ):
+<?php if ( 'page' !== get_option( 'show_on_front' ) ):
 	get_version_front_page();
 else:
 ?>
@@ -50,8 +49,7 @@ else:
 					<span class="fp-today-feed-more pull-right hidden-xs hidden-sm">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o ucf-gold"></span></span>
 					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
 				</a>
-				<?php
-				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
+				<?php 				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
 
 				if ( $articles ):
 				?>
@@ -88,8 +86,7 @@ else:
 				<?php endif; ?>
 			</aside>
 		</div>
-		<?php
-		if ( $twitter_url = get_theme_option( 'twitter_url' ) ):
+		<?php 		if ( $twitter_url = get_theme_option( 'twitter_url' ) ):
 		?>
 			<div class="col-sm-5 col-md-4 hidden-xs">
 				<aside class="fp-trending-feed">
@@ -116,8 +113,7 @@ else:
 		</div>
 		<div class="col-sm-9">
 			<div class="row">
-				<?php
-				$current_issue_stories = get_front_page_issue_stories();
+				<?php 				$current_issue_stories = get_front_page_issue_stories();
 
 				if ( $current_issue_stories ):
 				?>
@@ -148,8 +144,7 @@ else:
 		<div class="col-sm-6">
 			<h2 class="fp-heading fp-events-heading">Events</h2>
 			<div class="fp-events">
-				<?php
-				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
+				<?php 				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
 				if ( $events ) {
 					foreach ( $events as $event ) {
 						echo display_front_page_event( $event );

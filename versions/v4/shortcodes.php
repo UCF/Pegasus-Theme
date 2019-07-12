@@ -1,12 +1,10 @@
-<?php
-function sc_search_form() {
+<?php function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
 		<?php get_search_form(); ?>
 	</div>
-	<?php
-	return ob_get_clean();
+	<?php 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
 
@@ -436,8 +434,7 @@ function sc_post_type_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?php
-
+	<?php 
 	// Split up this post type's posts by term
 	$by_term = array();
 	foreach(get_terms($params['taxonomy']) as $term) {
@@ -498,18 +495,17 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="col-md-3 col-sm-3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="col-md-3 col-sm-3" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
 		<?php if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn btn-default<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
-			<button class="btn btn-default<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
+			<button class="btn btn-default<?php if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
+			<button class="btn btn-default<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
 		</div>
 		<?php } ?>
-	<?php
-
+	<?php 
 	foreach($sections as $id => $section) {
 		$hide = false;
 		switch($id) {
@@ -525,11 +521,11 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<?php if($hide) echo ' style="display:none;"'; ?>>
+		<div class="<?php echo $id?>"<?php if($hide) echo ' style="display:none;"'; ?>>
 			<?php foreach($section as $section_title => $section_posts) { ?>
 				<?php if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
-						<h3><?=esc_html($section_title)?></h3>
+						<h3><?php echo esc_html($section_title)?></h3>
 						<div class="row">
 							<?php if(count($section_posts) > 0) { ?>
 								<?php $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
@@ -537,10 +533,10 @@ function sc_post_type_search($params=array(), $content='') {
 									<?php $start = $column_index * $posts_per_column; ?>
 									<?php $end   = $start + $posts_per_column; ?>
 									<?php if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?>">
+									<div class="<?php echo $params['column_width']?>">
 										<ul>
 										<?php foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
+											<li data-post-id="<?php echo $post->ID?>"><?php echo $post_type->toHTML($post)?></li>
 										<?php } ?>
 										</ul>
 									</div>
@@ -552,10 +548,8 @@ function sc_post_type_search($params=array(), $content='') {
 				<?php } ?>
 			<?php } ?>
 		</div>
-		<?php
-	}
-	?> </div> <?php
-	return ob_get_clean();
+		<?php 	}
+	?> </div> <?php 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
 
@@ -605,14 +599,13 @@ function sc_archive_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?php
-
+	<?php 
 	// Get posts, split them up by issue:
 	global $theme_options;
 
@@ -669,8 +662,7 @@ function sc_archive_search($params=array(), $content='') {
 		</div>
 		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
 		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
-		<?php
-		$issue_count = 0;
+		<?php 		$issue_count = 0;
 		foreach( $issues_sorted as $key => $posts ) {
 			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
 			$featured_article_id = intval( get_post_meta( $issue->ID, 'issue_cover_story', TRUE ) );
@@ -729,14 +721,12 @@ function sc_archive_search($params=array(), $content='') {
 				</div>
 				<?php endif; ?>
 			</div>
-			<?php
-			}
+			<?php 			}
 		}
 		?>
 		</div>
 	</div>
-	<?php
-	return ob_get_clean();
+	<?php 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
 
@@ -872,8 +862,7 @@ function sc_remarketing_tag( $attr ) {
 			<img height="1" width="1" style="border-style:none;" alt="" src="<?php echo $img_src; ?>" />
 		</div>
 	</noscript>
-	<?php
-
+	<?php 
 	return ob_get_clean();
 }
 
@@ -921,8 +910,7 @@ function sc_button( $attr, $content='' ) {
 	<a class="btn <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
 		<?php echo do_shortcode( $content ); ?>
 	</a>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'button', 'sc_button' );
 
@@ -970,8 +958,7 @@ function sc_header_callout( $attr, $content='' ) {
 		</div>
 		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 	<?php endif; ?>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'header-callout', 'sc_header_callout' );
 
@@ -997,8 +984,7 @@ function sc_chart( $attr ) {
 
 	?>
 		<div id="<?php echo $id; ?>" class="<?php echo $class; ?>" data-chart-type="<?php echo $type; ?>" data-chart-data="<?php echo $json; ?>" <?php echo $options ? 'data-chart-options="' . $options . '"' : ''; ?>></div>
-	<?php
-
+	<?php 
 	return ob_get_clean();
 }
 add_shortcode( 'chart', 'sc_chart' );
@@ -1022,8 +1008,7 @@ function sc_well( $attr, $content='' ) {
 	<div class="well <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
 		<?php echo do_shortcode( $content ); ?>
 	</div>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'well', 'sc_well' );
 

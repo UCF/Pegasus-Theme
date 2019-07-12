@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 Config::$body_classes = array();
 
 

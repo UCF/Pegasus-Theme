@@ -6,7 +6,7 @@
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
-	<body class="<?=body_classes()?> <? if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
+	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -30,7 +30,7 @@
 						</div>
 					</div>
 				</div>
-				<?=display_story_list($relevant_issue)?>
+				<?php echo display_story_list($relevant_issue)?>
 				<div class="controls">
 					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
 					<a class="backward icon icon-caret-left" href="#">Back</a>
@@ -45,26 +45,26 @@
 					<nav class="col-md-12 col-sm-12" role="navigation">
 						<?php if ( is_home() || $post->post_type == 'issue' ) { ?>
 						<h1 class="header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
+							<a href="<?php echo get_site_url()?>">Pegasus</a>
 						</h1>
 						<?php } else { ?>
 						<span class="header-logo">
-							<a href="<?=get_site_url()?>">Pegasus</a>
+							<a href="<?php echo get_site_url()?>">Pegasus</a>
 						</span>
 						<?php } ?>
 
 						<ul class="navigation">
 							<li id="nav-about">
-								<a href="<?=get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
+								<a href="<?php echo get_permalink(get_page_by_title('About the Magazine'))?>">The Magazine of the University of Central Florida</a>
 							</li>
 							<li id="nav-mobile">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>"></a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?php echo get_permalink($relevant_issue)?>"></a>
 							</li>
 							<li id="nav-issue">
-								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?=get_permalink($relevant_issue)?>">In This Issue</a>
+								<a class="pulldown-toggle" data-pulldown-container=".pulldown-stories" href="<?php echo get_permalink($relevant_issue)?>">In This Issue</a>
 							</li>
 							<li id="nav-archives">
-								<a href="<?=get_permalink(get_page_by_title('Archives'))?>">Archives</a>
+								<a href="<?php echo get_permalink(get_page_by_title('Archives'))?>">Archives</a>
 							</li>
 						</ul>
 					</nav>

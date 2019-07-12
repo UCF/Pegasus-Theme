@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /**
  * Abstract class for defining custom taxonomies.
  *

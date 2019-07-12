@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 Config::$body_classes = array();
 
 
@@ -77,12 +76,10 @@ function v4_hook_frontend_theme_scripts() {
         }
 	</script>
 
-	<?php
-	global $post;
+	<?php 	global $post;
 	echo output_header_markup( $post );
 	?>
-<?php
-	echo ob_get_clean();
+<?php 	echo ob_get_clean();
 }
 add_action( 'wp_head', 'v4_hook_frontend_theme_scripts' );
 

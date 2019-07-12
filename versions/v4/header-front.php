@@ -31,8 +31,7 @@
 
 				<div class="row">
 					<div class="col-xs-6 col-sm-3 col-md-2 text-center">
-						<?php
-						$current_issue = get_current_issue();
+						<?php 						$current_issue = get_current_issue();
 						$current_issue_title = wptexturize( $current_issue->post_title );
 						?>
 						<a class="fp-header-link fp-header-link-issue hidden-xs" href="<?php echo get_permalink( $current_issue->ID ); ?>">
