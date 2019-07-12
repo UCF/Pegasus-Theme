@@ -127,6 +127,7 @@ $template_font_styles_base_array = array(
 	'size-desktop' => '60px',
 	'size-tablet' => '60px',
 	'size-mobile' => '40px',
+	'text-transform' => 'none'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
 
