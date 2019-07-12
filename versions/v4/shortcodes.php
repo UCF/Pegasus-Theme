@@ -103,14 +103,22 @@ add_shortcode('media', 'sc_get_media');
  * Note: 'title' param is unused.
  **/
 function sc_photo($attr, $content) {
-	$css_classes = $attr['css_class'] ? $attr['css_class'] : '';
-	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
-	$content = $content ? $content : '';
-	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
-	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
+	$attr = shortcode_atts( array(
+		'css_class'  => '',
+		'inline_css' => '',
+		'filename'   => null,
+		'id'         => null,
+		'alt'        => $content,
+		'position'   => '',
+		'width'      => null
+	), $attr );
 
-	$alt = $attr['alt'] ? $attr['alt'] : $content;
-	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
+	$css_classes = $attr['css_class'];
+	$inline_css = $attr['inline_css'];
+	$filename = $attr['filename'];
+	$attachment_id = $attr['id'];
+	$alt = $attr['alt'];
+	$position = $attr['position'] === ( 'left' || 'right' || 'center' ) ? 'pull-' . $attr['position'] : '';
 
 	// Set a fallback width if none is provided. Only add position
 	// class to img/figure elements if width doesn't fall back to 100%:
@@ -211,11 +219,19 @@ add_shortcode('lead', 'sc_lead');
  * Wrap arbitrary text in <blockquote>
  **/
 function sc_blockquote( $attr, $content = '' ) {
-	$source = $attr['source'] ? $attr['source'] : null;
-	$cite = $attr['cite'] ? $attr['cite'] : null;
-	$color = $attr['color'] ? $attr['color'] : null;
-	$class = $attr['css_class'] ? $attr['css_class'] : '';
-	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
+	$attr = shortcode_atts( array(
+		'source'     => null,
+		'cite'       => null,
+		'color'      => null,
+		'css_class'  => '',
+		'inline_css' => ''
+	), $attr );
+
+	$source = $attr['source'];
+	$cite = $attr['cite'];
+	$color = $attr['color'];
+	$class = $attr['css_class'];
+	$inline_css = $attr['inline_css'];
 
 	if ( $color ) {
 		$inline_css .= ' color: ' . $color . ';';
@@ -252,11 +268,20 @@ add_shortcode( 'blockquote', 'sc_blockquote' );
  **/
 function sc_callout( $attr, $content ) {
 	global $post;
-	$bgcolor = $attr['background'] ? $attr['background'] : '#f0f0f0';
+
+	$attr = shortcode_atts( array(
+		'background' => '#f0f0f0',
+		'content_align' => '',
+		'css_class' => '',
+		'inline_css' => '',
+		'affix' => false
+	), $attr );
+
+	$bgcolor = $attr['background'];
 	$content_align = $attr['content_align'] ? 'text-' . $attr['content_align'] : '';
-	$css_class = $attr['css_class'] ? $attr['css_class'] : '';
-	$inline_css = $attr['inline_css'] ? $attr['inline_css'] : '';
-	$affix = $attr['affix'] ? filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN ) : false;
+	$css_class = $attr['css_class'];
+	$inline_css = $attr['inline_css'];
+	$affix = filter_var( $attr['affix'], FILTER_VALIDATE_BOOLEAN );
 	$content = do_shortcode( $content );
 
 	$inline_css = 'background-color: ' . $bgcolor . ';' . $inline_css;
