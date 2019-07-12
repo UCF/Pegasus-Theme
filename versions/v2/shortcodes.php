@@ -634,17 +634,17 @@ function sc_archive_search($params=array(), $content='') {
 						</a>
 					<?php } ?>
 
-					<?php if ($featured_article_id) { ?>
+					<?php if ( $featured_article ) : ?>
 						<h3>Featured Story</h3>
-						<a class="featured-story" href="<?php echo get_permalink($featured_article->ID)?>">
+						<a class="featured-story" href="<?php echo get_permalink($featured_article->ID); ?>">
 							<h4><?php echo $featured_article->post_title?></h4>
-							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
+							<?php if ( $f_desc = get_post_meta($featured_article->ID, 'story_description', true ) ) : ?>
 								<span class="description"><?php echo $f_desc?></span>
-							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
+							<?php else if ( $f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', true ) ) : ?>
 								<span class="description"><?php echo $f_subtitle?></span>
-							<?php } ?>
+							<?php endif; ?>
 						</a>
-					<?php } ?>
+						<?php endif; ?>
 				</div>
 				<div class="span6">
 					<h3>More in This Issue</h3>
