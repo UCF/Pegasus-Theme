@@ -23,7 +23,7 @@ function sc_image($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -81,7 +81,7 @@ function sc_get_media($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -434,7 +434,7 @@ function sc_post_type_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?php 
+	<?php
 	// Split up this post type's posts by term
 	$by_term = array();
 	foreach(get_terms($params['taxonomy']) as $term) {
@@ -505,7 +505,7 @@ function sc_post_type_search($params=array(), $content='') {
 			<button class="btn btn-default<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
 		</div>
 		<?php } ?>
-	<?php 
+	<?php
 	foreach($sections as $id => $section) {
 		$hide = false;
 		switch($id) {
@@ -605,7 +605,7 @@ function sc_archive_search($params=array(), $content='') {
 			));
 		}
 	</script>
-	<?php 
+	<?php
 	// Get posts, split them up by issue:
 	global $theme_options;
 
@@ -862,7 +862,7 @@ function sc_remarketing_tag( $attr ) {
 			<img height="1" width="1" style="border-style:none;" alt="" src="<?php echo $img_src; ?>" />
 		</div>
 	</noscript>
-	<?php 
+	<?php
 	return ob_get_clean();
 }
 
@@ -984,7 +984,7 @@ function sc_chart( $attr ) {
 
 	?>
 		<div id="<?php echo $id; ?>" class="<?php echo $class; ?>" data-chart-type="<?php echo $type; ?>" data-chart-data="<?php echo $json; ?>" <?php echo $options ? 'data-chart-options="' . $options . '"' : ''; ?>></div>
-	<?php 
+	<?php
 	return ob_get_clean();
 }
 add_shortcode( 'chart', 'sc_chart' );
