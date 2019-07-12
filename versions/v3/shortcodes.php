@@ -1,11 +1,10 @@
-<?php
-function sc_search_form() {
+<?php function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
-		<?get_search_form()?>
+		<?php get_search_form()?>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -25,7 +24,7 @@ function sc_image($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -83,7 +82,7 @@ function sc_get_media($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -408,13 +407,13 @@ function sc_post_type_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -476,17 +475,17 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="col-md-3 col-sm-3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="col-md-3 col-sm-3" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
-		<? if($params['show_sorting']) { ?>
+		<?php  if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn btn-default<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
-			<button class="btn btn-default<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
+			<button class="btn btn-default<?php if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon icon-list-alt"></i></button>
+			<button class="btn btn-default<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon icon-font"></i></button>
 		</div>
-		<? } ?>
-	<?
+		<?php  } ?>
+	<?php
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -503,36 +502,36 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
+		<div class="<?php echo $id?>"<?php  if($hide) echo ' style="display:none;"'; ?>>
+			<?php  foreach($section as $section_title => $section_posts) { ?>
+				<?php  if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
-						<h3><?=esc_html($section_title)?></h3>
+						<h3><?php echo esc_html($section_title)?></h3>
 						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?>">
+							<?php  if(count($section_posts) > 0) { ?>
+								<?php  $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
+								<?php  foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
+									<?php  $start = $column_index * $posts_per_column; ?>
+									<?php  $end   = $start + $posts_per_column; ?>
+									<?php  if(count($section_posts) > $start) { ?>
+									<div class="<?php echo $params['column_width']?>">
 										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
+										<?php  foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+											<li data-post-id="<?php echo $post->ID?>"><?php echo $post_type->toHTML($post)?></li>
+										<?php  } ?>
 										</ul>
 									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
+									<?php  } ?>
+								<?php  } ?>
+							<?php  } ?>
 						</div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php  } ?>
+			<?php  } ?>
 		</div>
-		<?
+		<?php
 	}
-	?> </div> <?
+	?> </div> <?php
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -583,13 +582,13 @@ function sc_archive_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Get posts, split them up by issue:
 	global $theme_options;
@@ -647,8 +646,7 @@ function sc_archive_search($params=array(), $content='') {
 		</div>
 		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
 		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
-		<?php
-		$issue_count = 0;
+		<?php 		$issue_count = 0;
 		foreach( $issues_sorted as $key => $posts ) {
 			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
 			$featured_article_id = intval( get_post_meta( $issue->ID, 'issue_cover_story', TRUE ) );
@@ -671,17 +669,17 @@ function sc_archive_search($params=array(), $content='') {
 						</a>
 					<?php } ?>
 
-					<?php if ( $featured_article_id ) { ?>
+					<?php if ( $featured_article ) : ?>
 						<h3>Featured Story</h3>
 						<a class="featured-story" href="<?php echo get_permalink( $featured_article->ID ); ?>">
 							<h4><?php echo wptexturize( $featured_article->post_title ); ?></h4>
-							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', TRUE ) ) { ?>
+							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', true ) ) : ?>
 								<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } else if ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) { ?>
+							<?php elseif ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', true ) ) : ?>
 								<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } ?>
+							<?php endif; ?>
 						</a>
-					<?php } ?>
+						<?php endif; ?>
 				</div>
 				<div class="col-md-7 col-sm-7">
 					<h3>More in This Issue</h3>
@@ -698,7 +696,7 @@ function sc_archive_search($params=array(), $content='') {
 								<?php } ?>
 							</a>
 						</li>
-					<? } ?>
+					<?php  } ?>
 					</ul>
 				</div>
 				<?php if ( $issue_count < count( $issues_sorted ) ): ?>
@@ -707,13 +705,13 @@ function sc_archive_search($params=array(), $content='') {
 				</div>
 				<?php endif; ?>
 			</div>
-			<?
+			<?php
 			}
 		}
 		?>
 		</div>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
@@ -776,7 +774,6 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 				<div class="ss-slides-wrapper">
 				<?php
-
 				$slide_count = count( $slide_order );
 				$ss_half = floor( $slide_count / 2 ) + 1;
 				$end = false;
@@ -796,8 +793,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					if ( $is_fullscreen && $i == 0 ) {
 					?>
 						<div class="ss-slide-wrapper">
-							<?php
-								if ( !empty( $slide_order ) ):
+							<?php 								if ( !empty( $slide_order ) ):
 									$s = $slide_order[0];
 									$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
 							?>
@@ -816,12 +812,10 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 									</div>
 								</div>
 							</div>
-							<?php
-								endif;
+							<?php 								endif;
 							?>
 						</div>
-						<?php
-					}
+						<?php 					}
 
 					$s = $slide_order[$i];
 					$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
@@ -831,21 +825,18 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 							<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 						</div>
 					</div>
-				<?php
-					$i++;
+				<?php 					$i++;
 				}
 				?>
 				</div>
 
 				<div class="ss-captions-wrapper">
-				<?php
-				$data_id = 0;
+				<?php 				$data_id = 0;
 				if ( $is_fullscreen ) {
 					$data_id++;
 				?>
 					<div class="ss-caption ss-current" data-id="<?php echo $data_id; ?>"></div>
-				<?php
-				}
+				<?php 				}
 				foreach ( $slide_order as $s ) {
 					if ( $s !== '' ) {
 						$data_id++;
@@ -853,8 +844,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 					<div class="ss-caption <?php echo $data_id == 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
 						<p class="caption"<?php if ( $caption_color ) { ?> style="color: <?php echo $caption_color; ?>;"<?php } ?>><?php echo wptexturize( $slide_caption[$s] ); ?></p>
 					</div>
-				<?php
-					}
+				<?php 					}
 				}
 				?>
 				</div>
@@ -868,8 +858,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 			</div>
 		</section>
 
-		<?php
-	}
+		<?php 	}
 
 	return ob_get_clean();
 
@@ -922,7 +911,6 @@ function sc_remarketing_tag( $attr ) {
 		</div>
 	</noscript>
 	<?php
-
 	return ob_get_clean();
 }
 
@@ -970,8 +958,7 @@ function sc_button( $attr, $content='' ) {
 	<a class="btn <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>" href="<?php echo $attrs['href']; ?>" <?php echo $link_attrs; ?>>
 		<?php echo do_shortcode( $content ); ?>
 	</a>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'button', 'sc_button' );
 
@@ -1019,8 +1006,7 @@ function sc_header_callout( $attr, $content='' ) {
 		</div>
 		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 	<?php endif; ?>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'header-callout', 'sc_header_callout' );
 
@@ -1047,7 +1033,6 @@ function sc_chart( $attr ) {
 	?>
 		<div id="<?php echo $id; ?>" class="<?php echo $class; ?>" data-chart-type="<?php echo $type; ?>" data-chart-data="<?php echo $json; ?>" <?php echo $options ? 'data-chart-options="' . $options . '"' : ''; ?>></div>
 	<?php
-
 	return ob_get_clean();
 }
 add_shortcode( 'chart', 'sc_chart' );
@@ -1070,8 +1055,7 @@ function sc_well( $attr, $content='' ) {
 	<div class="well <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
 		<?php echo do_shortcode( $content ); ?>
 	</div>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 add_shortcode( 'well', 'sc_well' );
 

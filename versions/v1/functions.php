@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /**
  * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
  *
@@ -68,9 +67,8 @@ function display_story_list($issue, $class=null) {
 		ob_start();
 
 		if ($stories) { ?>
-			<div class="story-list <?=$class?>">
-			<?php
-			$count = 0;
+			<div class="story-list <?php echo $class?>">
+			<?php 			$count = 0;
 			foreach ($stories as $story) {
 				$count++;
 
@@ -79,27 +77,24 @@ function display_story_list($issue, $class=null) {
 				$thumb = get_featured_image_url($story->ID);
 			?>
 				<article<?php if ($count == count($stories)) { ?> class="last-child"<?php } ?>>
-					<a href="<?=get_permalink($story)?>">
+					<a href="<?php echo get_permalink($story)?>">
 						<?php if ($thumb) { ?>
-						<img class="lazy" data-original="<?=$thumb?>" alt="<?=$title?>" title="<?=$title?>" />
+						<img class="lazy" data-original="<?php echo $thumb?>" alt="<?php echo $title?>" title="<?php echo $title?>" />
 						<?php } ?>
-						<h3 class="story-title"><?=$title?></h3>
+						<h3 class="story-title"><?php echo $title?></h3>
 						<?php if (!empty($subtitle)) { ?>
-						<span class="subtitle"><?=$subtitle?></span>
+						<span class="subtitle"><?php echo $subtitle?></span>
 						<?php } ?>
 					</a>
 				</article>
-			<?php
-			}
+			<?php 			}
 			?>
 			</div>
-		<?php
-		}
+		<?php 		}
 		else {
 		?>
 			<p>No stories found.</p>
-		<?php
-		}
+		<?php 		}
 
 		return ob_get_clean();
 	}
@@ -118,15 +113,14 @@ function display_social($url, $title) {
     $tweet_title = urlencode('Pegasus Magazine: '.$title);
     ob_start(); ?>
     <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-            Like "<?=$title?>" on Facebook
+        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
+            Like "<?php echo $title?>" on Facebook
         </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-            Tweet "<?=$title?>" on Twitter
+        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
+            Tweet "<?php echo $title?>" on Twitter
         </a>
     </aside>
-    <?php
-    return ob_get_clean();
+    <?php     return ob_get_clean();
 }
 
 

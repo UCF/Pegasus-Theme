@@ -1,5 +1,4 @@
-<?php
-/*
+<?php /*
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
@@ -11,8 +10,7 @@ function display_story_list( $issue, $class=null ) {
 
 		if ( $stories ) { ?>
 			<div class="story-list <?php echo $class; ?>">
-			<?php
-			$count = 0;
+			<?php 			$count = 0;
 			foreach ( $stories as $story ) {
 				$count++;
 
@@ -31,17 +29,14 @@ function display_story_list( $issue, $class=null ) {
 						<?php } ?>
 					</a>
 				</article>
-			<?php
-			}
+			<?php 			}
 			?>
 			</div>
-		<?php
-		}
+		<?php 		}
 		else {
 		?>
 			<p>No stories found.</p>
-		<?php
-		}
+		<?php 		}
 
 		return ob_get_clean();
 	}
@@ -60,15 +55,14 @@ function display_social($url, $title) {
     $tweet_title = urlencode('Pegasus Magazine: '.$title);
     ob_start(); ?>
     <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-            Like "<?=$title?>" on Facebook
+        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
+            Like "<?php echo $title?>" on Facebook
         </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-            Tweet "<?=$title?>" on Twitter
+        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
+            Tweet "<?php echo $title?>" on Twitter
         </a>
     </aside>
-    <?php
-    return ob_get_clean();
+    <?php     return ob_get_clean();
 }
 
 
@@ -78,7 +72,7 @@ function display_social($url, $title) {
  * get_default_template_font_styles().
  **/
 function get_default_template_font_css( $font ) {
-	$output .= '
+	$output = '
 		article.story h1,
 		article.story h2,
 		article.story h3,

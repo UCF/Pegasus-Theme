@@ -1,11 +1,10 @@
-<?php
-function sc_search_form() {
+<?php function sc_search_form() {
 	ob_start();
 	?>
 	<div class="search">
-		<?get_search_form()?>
+		<?php get_search_form()?>
 	</div>
-	<?
+	<?php
 	return ob_get_clean();
 }
 add_shortcode('search_form', 'sc_search_form');
@@ -25,7 +24,7 @@ function sc_image($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -83,7 +82,7 @@ function sc_get_media($attr) {
 
 	$url = '';
 	if(isset($attr['filename']) && $attr['filename'] != '') {
-		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, $wpdb->escape($attr['filename']), $post_id);
+		$sql = sprintf('SELECT * FROM %s WHERE post_title="%s" AND post_parent=%d ORDER BY post_date DESC', $wpdb->posts, esc_sql( $attr['filename'] ), $post_id);
 		$rows = $wpdb->get_results($sql);
 		if(count($rows) > 0) {
 			$obj = $rows[0];
@@ -378,13 +377,13 @@ function sc_post_type_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Split up this post type's posts by term
 	$by_term = array();
@@ -446,17 +445,17 @@ function sc_post_type_search($params=array(), $content='') {
 		<div class="post-type-search-header">
 			<form class="post-type-search-form" action="." method="get">
 				<label style="display:none;">Search</label>
-				<input type="text" class="span3" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" class="span3" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="post-type-search-results "></div>
-		<? if($params['show_sorting']) { ?>
+		<?php  if($params['show_sorting']) { ?>
 		<div class="btn-group post-type-search-sorting">
-			<button class="btn<?if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
-			<button class="btn<?if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
+			<button class="btn<?php if($params['default_sorting'] == 'term') echo ' active';?>"><i class="icon-list-alt"></i></button>
+			<button class="btn<?php if($params['default_sorting'] == 'alpha') echo ' active';?>"><i class="icon-font"></i></button>
 		</div>
-		<? } ?>
-	<?
+		<?php  } ?>
+	<?php
 
 	foreach($sections as $id => $section) {
 		$hide = false;
@@ -473,36 +472,36 @@ function sc_post_type_search($params=array(), $content='') {
 				break;
 		}
 		?>
-		<div class="<?=$id?>"<? if($hide) echo ' style="display:none;"'; ?>>
-			<? foreach($section as $section_title => $section_posts) { ?>
-				<? if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
+		<div class="<?php echo $id?>"<?php  if($hide) echo ' style="display:none;"'; ?>>
+			<?php  foreach($section as $section_title => $section_posts) { ?>
+				<?php  if(count($section_posts) > 0 || $params['show_empty_sections']) { ?>
 					<div>
-						<h3><?=esc_html($section_title)?></h3>
+						<h3><?php echo esc_html($section_title)?></h3>
 						<div class="row">
-							<? if(count($section_posts) > 0) { ?>
-								<? $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
-								<? foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
-									<? $start = $column_index * $posts_per_column; ?>
-									<? $end   = $start + $posts_per_column; ?>
-									<? if(count($section_posts) > $start) { ?>
-									<div class="<?=$params['column_width']?>">
+							<?php  if(count($section_posts) > 0) { ?>
+								<?php  $posts_per_column = ceil(count($section_posts) / $params['column_count']); ?>
+								<?php  foreach(range(0, $params['column_count'] - 1) as $column_index) { ?>
+									<?php  $start = $column_index * $posts_per_column; ?>
+									<?php  $end   = $start + $posts_per_column; ?>
+									<?php  if(count($section_posts) > $start) { ?>
+									<div class="<?php echo $params['column_width']?>">
 										<ul>
-										<? foreach(array_slice($section_posts, $start, $end) as $post) { ?>
-											<li data-post-id="<?=$post->ID?>"><?=$post_type->toHTML($post)?></li>
-										<? } ?>
+										<?php  foreach(array_slice($section_posts, $start, $end) as $post) { ?>
+											<li data-post-id="<?php echo $post->ID?>"><?php echo $post_type->toHTML($post)?></li>
+										<?php  } ?>
 										</ul>
 									</div>
-									<? } ?>
-								<? } ?>
-							<? } ?>
+									<?php  } ?>
+								<?php  } ?>
+							<?php  } ?>
 						</div>
 					</div>
-				<? } ?>
-			<? } ?>
+				<?php  } ?>
+			<?php  } ?>
 		</div>
-		<?
+		<?php
 	}
-	?> </div> <?
+	?> </div> <?php
 	return ob_get_clean();
 }
 add_shortcode('post-type-search', 'sc_post_type_search');
@@ -553,13 +552,13 @@ function sc_archive_search($params=array(), $content='') {
 	<script type="text/javascript">
 		if(typeof PostTypeSearchDataManager != 'undefined') {
 			PostTypeSearchDataManager.register(new PostTypeSearchData(
-				<?=json_encode($params['column_count'])?>,
-				<?=json_encode($params['column_width'])?>,
-				<?=json_encode($search_data)?>
+				<?php echo json_encode($params['column_count'])?>,
+				<?php echo json_encode($params['column_width'])?>,
+				<?php echo json_encode($search_data)?>
 			));
 		}
 	</script>
-	<?
+	<?php
 
 	// Get posts, split them up by issue:
 	global $theme_options;
@@ -610,14 +609,14 @@ function sc_archive_search($params=array(), $content='') {
 	?>
 	<div class="row post-type-search" id="archives">
 		<div class="span8 offset2 post-type-search-header">
-			<form class="post-type-search-form search-form" role="search" method="get" action="<?=home_url( '/' )?>">
+			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' )?>">
 				<label for="s">Search</label>
-				<input type="text" name="s" class="search-field" id="s" placeholder="<?=$params['default_search_text']?>" />
+				<input type="text" name="s" class="search-field" id="s" placeholder="<?php echo $params['default_search_text']?>" />
 			</form>
 		</div>
 		<div class="span12 post-type-search-results"></div>
 		<div class="span10 offset1 post-type-search-term">
-		<?
+		<?php
 		foreach($issues_sorted as $key => $posts) {
 			$issue = get_page_by_title($key, 'OBJECT', 'issue');
 			$featured_article_id = intval(get_post_meta($issue->ID, 'issue_cover_story', TRUE));
@@ -627,54 +626,53 @@ function sc_archive_search($params=array(), $content='') {
 		?>
 			<div class="row issue">
 				<div class="span4">
-					<h2 id="<?=$issue->post_name?>"><a href="<?=get_permalink($issue->ID)?>"><?=$issue->post_title?></a></h2>
+					<h2 id="<?php echo $issue->post_name?>"><a href="<?php echo get_permalink($issue->ID)?>"><?php echo $issue->post_title?></a></h2>
 
 					<?php if ($thumbnail = get_the_post_thumbnail($issue->ID, 'issue-thumbnail')) { ?>
-						<a href="<?=get_permalink($issue->ID)?>">
-							<?=$thumbnail?>
+						<a href="<?php echo get_permalink($issue->ID)?>">
+							<?php echo $thumbnail?>
 						</a>
 					<?php } ?>
 
-					<?php if ($featured_article_id) { ?>
+					<?php if ( $featured_article ) : ?>
 						<h3>Featured Story</h3>
-						<a class="featured-story" href="<?=get_permalink($featured_article->ID)?>">
-							<h4><?=$featured_article->post_title?></h4>
-							<?php if ($f_desc = get_post_meta($featured_article->ID, 'story_description', TRUE)) { ?>
-								<span class="description"><?=$f_desc?></span>
-							<?php } else if ($f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', TRUE)) { ?>
-								<span class="description"><?=$f_subtitle?></span>
-							<?php } ?>
+						<a class="featured-story" href="<?php echo get_permalink($featured_article->ID)?>">
+							<h4><?php echo $featured_article->post_title?></h4>
+							<?php if ( $f_desc = get_post_meta($featured_article->ID, 'story_description', true ) ) : ?>
+								<span class="description"><?php echo $f_desc?></span>
+							<?php elseif ( $f_subtitle = get_post_meta($featured_article->ID, 'story_subtitle', true ) ) : ?>
+								<span class="description"><?php echo $f_subtitle?></span>
+							<?php endif; ?>
 						</a>
-					<?php } ?>
+						<?php endif; ?>
 				</div>
 				<div class="span6">
 					<h3>More in This Issue</h3>
 					<ul>
-					<? foreach($posts as $post) { ?>
-						<li data-post-id="<?=$post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
-							<a href="<?=get_permalink($post->ID)?>">
-								<h4><?=$post->post_title?></h4>
-								<span class="results-story-issue"><?=$issue->post_title?></span>
+					<?php  foreach($posts as $post) { ?>
+						<li data-post-id="<?php echo $post->ID?>"<?php if ($post->ID == $featured_article_id) {?> class="featured-story"<?php } ?>>
+							<a href="<?php echo get_permalink($post->ID)?>">
+								<h4><?php echo $post->post_title?></h4>
+								<span class="results-story-issue"><?php echo $issue->post_title?></span>
 								<?php if ($desc = get_post_meta($post->ID, 'story_description', TRUE)) { ?>
-									<span class="description"><?=$desc?></span>
+									<span class="description"><?php echo $desc?></span>
 								<?php } else if ($subtitle = get_post_meta($post->ID, 'story_subtitle', TRUE)) { ?>
-									<span class="description"><?=$subtitle?></span>
+									<span class="description"><?php echo $subtitle?></span>
 								<?php } ?>
 							</a>
 						</li>
-					<? } ?>
+					<?php  } ?>
 					</ul>
 				</div>
 				<hr class="span10" />
 			</div>
-			<?
+			<?php
 			}
 		}
 		?>
 		</div>
 	</div>
-	<?
-	return ob_get_clean();
+	<?php 	return ob_get_clean();
 }
 add_shortcode('archive-search', 'sc_archive_search');
 
@@ -685,22 +683,22 @@ add_shortcode('archive-search', 'sc_archive_search');
 function sc_photo_essay_slider( $atts, $content = null ) {
 	$slug 		   = @$atts['slug'];
 	$caption_color = $atts['caption_color'] ? $atts['caption_color'] : null;
-	$recent 	   = get_posts(array(
+	$recent 	   = get_posts( array(
 		'numberposts' => 1,
-		'post_type' => 'photo_essay',
+		'post_type'   => 'photo_essay',
 		'post_status' => 'publish',
-	));
+	) );
 
 	$mostrecent = $recent[0];
 
-	if (is_string($slug)) {
+	if ( is_string( $slug ) ) {
 		$essays = get_posts(array(
 			'name' => $slug,
 			'post_type' => 'photo_essay',
 			'post_status' => 'publish',
 			'posts_per_page' => 1
-		));
-		if ($essays) {
+		) );
+		if ( $essays ) {
 			$essay = $essays[0];
 		}
 	} else {
@@ -709,23 +707,23 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 	global $post;
 	$is_fullscreen = false;
-	if ($post->post_type == 'story' && get_post_meta($post->ID, 'story_template', TRUE) == 'photo_essay') {
+	if ( $post->post_type === 'story' && get_post_meta( $post->ID, 'story_template', true ) === 'photo_essay' ) {
 		$is_fullscreen = true;
 	}
 
 	ob_start();
 
-	if( $essay ) {
+	if ( $essay ) {
 
-		$slide_order 	= get_post_meta($essay->ID, 'ss_slider_slideorder', TRUE);
+		$slide_order 	= get_post_meta( $essay->ID, 'ss_slider_slideorder', true );
 		// Get rid of blank array entries
-		$slide_order	= array_filter(explode(",", $slide_order), 'strlen' );
-		$slide_title 	= get_post_meta($essay->ID, 'ss_slide_title', TRUE);
-		$slide_caption 	= get_post_meta($essay->ID, 'ss_slide_caption', TRUE);
-		$slide_image	= get_post_meta($essay->ID, 'ss_slide_image', TRUE);
+		$slide_order	= array_filter( explode( ",", $slide_order ), 'strlen' );
+		$slide_title 	= get_post_meta( $essay->ID, 'ss_slide_title', true );
+		$slide_caption 	= get_post_meta( $essay->ID, 'ss_slide_caption', true);
+		$slide_image	= get_post_meta( $essay->ID, 'ss_slide_image', true);
 		?>
 
-		<section class="ss-content" id="<?=$slug?>">
+		<section class="ss-content" id="<?php echo $slug; ?>">
 			<div class="ss-nav-wrapper">
 				<div class="ss-arrow-wrapper ss-arrow-wrapper-left">
 					<a class="ss-arrow ss-arrow-prev ss-last"><div>&lsaquo;</div></a>
@@ -736,104 +734,96 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 
 				<div class="ss-slides-wrapper">
 				<?php
-
-				$slide_count = count($slide_order);
-				$ss_half = floor($slide_count/2) + 1;
+				$slide_count = count( $slide_order );
+				$ss_half = floor( $slide_count / 2 ) + 1;
 				$end = false;
 				$i = $ss_half;
-				if ($is_fullscreen) {
+				if ( $is_fullscreen ) {
 					$photo_essay_offset = 1;
 				}
-				while ($end == false) {
-					if ($i == $slide_count) {
+				while ( $end == false ) :
+					if ( $i === $slide_count ) {
 						$i = 0;
 					}
 
-					if ($i == $ss_half - 1) {
+					if ( $i === $ss_half - 1 ) {
 						$end = true;
 					}
 
-					if ($is_fullscreen && $i == 0) {
-					?>
+					if ( $is_fullscreen && $i == 0 ) : ?>
 						<div class="ss-slide-wrapper">
-							<?php
-								if (!empty($slide_order)):
+							<?php if ( ! empty( $slide_order ) ) :
 									$s = $slide_order[0];
-									$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+									$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
 							?>
-							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
+							<div class="ss-slide ss-first-slide ss-current ss-essay-intro-wrapper" data-id="1" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
 
-								<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+								<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 
 								<div class="ss-essay-intro">
 									<div class="title-wrap">
-										<h1><?=$post->post_title?></h1>
+										<h1><?php echo $post->post_title; ?></h1>
 									</div>
 									<div class="description-wrap">
-										<span class="description"><?=get_post_meta($post->ID, 'story_description', TRUE)?></span>
+										<span class="description"><?php echo get_post_meta( $post->ID, 'story_description', true ); ?></span>
 										<a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
-										<?=display_social(get_permalink($post), $post->post_title)?>
+										<?php echo display_social( get_permalink( $post ), $post->post_title ); ?>
 									</div>
 								</div>
 							</div>
-							<?php
-								endif;
-							?>
+							<?php endif; ?>
 						</div>
-						<?php
-					}
+					<?php endif;
 
 					$s = $slide_order[$i];
-					$image = wp_get_attachment_image_src($slide_image[$s], 'full');
+					$image = wp_get_attachment_image_src( $slide_image[$s], 'full' );
 					?>
 					<div class="ss-slide-wrapper">
-						<div class="ss-slide<?= $i + $photo_essay_offset == 0 ? ' ss-first-slide ss-current' : '' ?><?= $i == $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?=$i + 1 + $photo_essay_offset?>" data-width="<?=$image[1]?>" data-height="<?=$image[2]?>">
-							<img src="<?=$image[0]; ?>" alt="<?=$slide_title[$s]; ?>" />
+						<div class="ss-slide<?php echo $i + $photo_essay_offset === 0 ? ' ss-first-slide ss-current' : '' ?><?php echo $i === $slide_count - 1 ? ' ss-last-slide' : '' ?>" data-id="<?php echo $i + 1 + $photo_essay_offset; ?>" data-width="<?php echo $image[1]; ?>" data-height="<?php echo $image[2]; ?>">
+							<img src="<?php echo $image[0]; ?>" alt="<?php echo $slide_title[$s]; ?>" />
 						</div>
 					</div>
-				<?php
-					$i++;
-				}
+				<?php 					$i++;
+				endwhile;
 				?>
 				</div>
 
 				<div class="ss-captions-wrapper">
-				<?php
-				$data_id = 0;
+				<?php 				$data_id = 0;
 				if ($is_fullscreen) {
 					$data_id++;
 				?>
-					<div class="ss-caption ss-current" data-id="<?=$data_id?>"></div>
-				<?php
-				}
-				foreach ($slide_order as $s) {
-					if ($s !== '') {
+					<div class="ss-caption ss-current" data-id="<?php echo $data_id; ?>"></div>
+				<?php 				}
+				foreach ($slide_order as $s) :
+					if ($s !== '') :
 						$data_id++;
 				?>
-					<div class="ss-caption <?= $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?=$data_id?>">
-						<p class="caption"<?php if ($caption_color) { ?> style="color: <?=$caption_color?>;"<?php } ?>><?=$slide_caption[$s]; ?></p>
+					<div class="ss-caption <?php echo $data_id === 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
+						<p class="caption"<?php if ($caption_color) : ?> style="color: <?php echo $caption_color; ?>;"<?php endif; ?>><?php echo $slide_caption[$s]; ?></p>
 					</div>
-				<?php
-					}
-				}
+				<?php 					endif;
+				endforeach;
 				?>
 				</div>
 
 				<div class="ss-closing-overlay" style="display: none;">
 					<div class="ss-slide" data-id="restart-slide">
-						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?= $is_fullscreen ? ':' : '' ?></div></a>
-						<? if ($is_fullscreen): ?><div class="ss-title"><?=$post->post_title; ?></div><?php endif; ?>
+						<a class="ss-control ss-restart" href="#1"><i class="repeat-alt-icon"></i><div>REPLAY<?php echo $is_fullscreen ? ':' : ''; ?></div></a>
+						<?php if ($is_fullscreen) : ?>
+							<div class="ss-title"><?php echo $post->post_title; ?></div>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>
 		</section>
 
-		<?php
-	}
+		<?php 	}
 
 	return ob_get_clean();
 
 }
+
 add_shortcode('slideshow', 'sc_photo_essay_slider');
 
 
@@ -873,7 +863,6 @@ function sc_remarketing_tag( $attr ) {
 		</div>
 	</noscript>
 	<?php
-
 	return ob_get_clean();
 }
 

@@ -1,7 +1,6 @@
 <?php disallow_direct_load('default.php');?>
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
-<?php
-	$fallback_featured_stories = get_issue_stories($post, array('numberposts'=>3));
+<?php 	$fallback_featured_stories = get_issue_stories($post, array('numberposts'=>3));
 	$story_1_id = intval(get_post_meta($post->ID, 'issue_story_1', TRUE));
 	$story_2_id = intval(get_post_meta($post->ID, 'issue_story_2', TRUE));
 	$story_3_id = intval(get_post_meta($post->ID, 'issue_story_3', TRUE));
@@ -111,8 +110,7 @@
 				<h2>More in this Issue</h2>
 			</div>
 		</div>
-		<?php
-		$count = 0;
+		<?php 		$count = 0;
 		if ( $other_stories ):
 			foreach ($other_stories as $story):
 				$classes = '';
@@ -128,8 +126,7 @@
 					<h3><?php echo $story->post_title; ?></h3>
 				</div>
 			</article>
-			<?php
-				$count++;
+			<?php 				$count++;
 			endforeach;
 		endif;
 		?>
@@ -140,8 +137,7 @@
 				<h2>Recent Issues of Pegasus Magazine</h2>
 			</div>
 		</div>
-		<?php
-		$count = 0;
+		<?php 		$count = 0;
 		$per_row = 5;
 		if ( $past_issues ):
 			foreach ($past_issues as $issue):
@@ -154,8 +150,7 @@
 			<div class="thumb <?php echo $classes; ?>">
 				<a href="<?php echo get_permalink( $issue->ID ); ?>"><img src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="<?php echo $issue->post_title; ?>" title="<?php echo $issue->post_title; ?>" /></a>
 			</div>
-			<?php
-				$count++;
+			<?php 				$count++;
 			endforeach;
 		endif;
 		?>

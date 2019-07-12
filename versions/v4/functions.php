@@ -1,5 +1,4 @@
-<?php
-/*
+<?php /*
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
@@ -11,8 +10,7 @@ function display_story_list( $issue, $class=null ) {
 
 		if ( $stories ) { ?>
 			<div class="story-list <?php echo $class; ?>">
-			<?php
-			$count = 0;
+			<?php 			$count = 0;
 			foreach ( $stories as $story ) {
 				$count++;
 
@@ -31,17 +29,14 @@ function display_story_list( $issue, $class=null ) {
 						<?php } ?>
 					</a>
 				</article>
-			<?php
-			}
+			<?php 			}
 			?>
 			</div>
-		<?php
-		}
+		<?php 		}
 		else {
 		?>
 			<p>No stories found.</p>
-		<?php
-		}
+		<?php 		}
 
 		return ob_get_clean();
 	}
@@ -60,15 +55,14 @@ function display_social($url, $title) {
     $tweet_title = urlencode('Pegasus Magazine: '.$title);
     ob_start(); ?>
     <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?=$url?>" href="http://www.facebook.com/sharer.php?u=<?=$url?>" title="Like this story on Facebook">
-            Like "<?=$title?>" on Facebook
+        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
+            Like "<?php echo $title?>" on Facebook
         </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?=$url?>" href="https://twitter.com/intent/tweet?text=<?=$tweet_title?>&url=<?=$url?>" title="Tweet this story">
-            Tweet "<?=$title?>" on Twitter
+        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
+            Tweet "<?php echo $title?>" on Twitter
         </a>
     </aside>
-    <?php
-    return ob_get_clean();
+    <?php     return ob_get_clean();
 }
 
 
@@ -78,7 +72,7 @@ function display_social($url, $title) {
  * get_default_template_font_styles().
  **/
 function get_default_template_font_css( $font ) {
-	$output .= '
+	$output = '
 		article.story h1,
 		article.story h2,
 		article.story h3,
@@ -176,8 +170,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 	ob_start();
 ?>
 	<figure class="photo-essay-item photo-essay-item-<?php echo $orientation; ?> <?php if ( $alternate ) { ?>alternate<?php } ?>" id="<?php echo $item_id; ?>">
-		<?php
-		switch ( $orientation ):
+		<?php 		switch ( $orientation ):
 			case 'portrait':
 		?>
 			<div class="row">
@@ -191,8 +184,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 					</figcaption>
 				</div>
 			</div>
-		<?php
-				break;
+		<?php 				break;
 			case 'landscape':
 			case 'square':
 			default:
@@ -208,13 +200,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 					</figcaption>
 				</div>
 			</div>
-		<?php
-				break;
+		<?php 				break;
 		endswitch;
 		?>
 	</figure>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 function display_photo_essay_navitem( $item_id, $image_thumb_url ) {
@@ -223,8 +213,7 @@ function display_photo_essay_navitem( $item_id, $image_thumb_url ) {
 	<a class="photo-essay-nav-link" href="#<?php echo $item_id; ?>">
 		<img class="photo-essay-nav-thumb" src="<?php echo $image_thumb_url; ?>" alt="Jump to image" title="Jump to image">
 	</a>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 function display_photo_essay( $photo_essay, $story=null ) {
@@ -277,8 +266,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	ob_start();
 ?>
 
-	<?php
-	if ( $story ) {
+	<?php 	if ( $story ) {
 		$header_img_id = get_post_meta( $story->ID, 'story_default_header_img', TRUE );
 		$header_img = wp_get_attachment_url( get_post($header_img_id)->ID );
 	}
@@ -331,8 +319,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	</section>
 
 	<div id="photo-essay-bottom"></div>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 
@@ -369,8 +356,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 			</div>
 
 			<div class="ss-slides-wrapper">
-			<?php
-			while ( $end == false ) {
+			<?php 			while ( $end == false ) {
 				if ( $i == $slide_count ) {
 					$i = 0;
 				}
@@ -388,15 +374,13 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 						<img src="<?php echo $image[0]; ?>" alt="<?php echo $alt; ?>" />
 					</div>
 				</div>
-			<?php
-				$i++;
+			<?php 				$i++;
 			}
 			?>
 			</div>
 
 			<div class="ss-captions-wrapper">
-			<?php
-			$data_id = 0;
+			<?php 			$data_id = 0;
 			foreach ( $slide_order as $s ) {
 				if ( $s !== '' ) {
 					$data_id++;
@@ -404,8 +388,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 				<div class="ss-caption <?php echo $data_id == 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
 					<p class="caption"<?php if ( $caption_color ) { ?> style="color: <?php echo $caption_color; ?>;"<?php } ?>><?php echo wptexturize( $slide_caption[$s] ); ?></p>
 				</div>
-			<?php
-				}
+			<?php 				}
 			}
 			?>
 			</div>
@@ -417,8 +400,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 			</div>
 		</div>
 	</section>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 /*

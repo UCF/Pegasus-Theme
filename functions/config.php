@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /****************************************************************************
  *
  * START theme constants here
@@ -22,18 +21,17 @@ define('THEME_FONT_URL', THEME_STATIC_URL.'/fonts');
 define('THEME_DEV_URL', THEME_URL.'/dev');
 define('THEME_COMPONENTS_URL', THEME_STATIC_URL.'/components');
 define('THEME_OPTIONS_GROUP', 'settings');
-define('THEME_OPTIONS_NAME', 'theme');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
-define('GA_ACCOUNT', $theme_options['ga_account']);
-define('CB_UID', $theme_options['cb_uid']);
-define('CB_DOMAIN', $theme_options['cb_domain']);
+define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null ) ;
+define('CB_UID', isset( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
+define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
 // Timeout for data grabbed from feeds
 define( 'FEED_FETCH_TIMEOUT', 10 ); // seconds
 
-define('DEV_MODE', intval($theme_options['dev_mode'])); # Never leave this activated in a production environment!
+define('DEV_MODE', isset( $theme_options['dev_mode'] ) ? intval($theme_options['dev_mode'] ) : null ); # Never leave this activated in a production environment!
 
 
 /**
@@ -128,6 +126,7 @@ $template_font_styles_base_array = array(
 	'size-desktop' => '60px',
 	'size-tablet' => '60px',
 	'size-mobile' => '40px',
+	'text-transform' => 'none'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
 
@@ -352,42 +351,42 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[gw_verify]',
 			'description' => 'Example: <em>9Wsa3fspoaoRE8zx8COo48-GCMdi5Kd-1qFpQTTXSIw</em>',
 			'default'     => null,
-			'value'       => $theme_options['gw_verify'],
+			'value'       => isset( $theme_options['gw_verify'] ) ? $theme_options['gw_verify'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Yahoo! Site Explorer',
 			'id'          => THEME_OPTIONS_NAME.'[yw_verify]',
 			'description' => 'Example: <em>3236dee82aabe064</em>',
 			'default'     => null,
-			'value'       => $theme_options['yw_verify'],
+			'value'       => isset( $theme_options['yw_verify'] ) ? $theme_options['yw_verify'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Bing Webmaster Center',
 			'id'          => THEME_OPTIONS_NAME.'[bw_verify]',
 			'description' => 'Example: <em>12C1203B5086AECE94EB3A3D9830B2E</em>',
 			'default'     => null,
-			'value'       => $theme_options['bw_verify'],
+			'value'       => isset( $theme_options['bw_verify'] ) ? $theme_options['bw_verify'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Google Analytics Account',
 			'id'          => THEME_OPTIONS_NAME.'[ga_account]',
 			'description' => 'Example: <em>UA-9876543-21</em>. Leave blank for development.',
 			'default'     => null,
-			'value'       => $theme_options['ga_account'],
+			'value'       => isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Chartbeat UID',
 			'id'          => THEME_OPTIONS_NAME.'[cb_uid]',
 			'description' => 'Example: <em>1842</em>',
 			'default'     => null,
-			'value'       => $theme_options['cb_uid'],
+			'value'       => isset( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Chartbeat Domain',
 			'id'          => THEME_OPTIONS_NAME.'[cb_domain]',
 			'description' => 'Example: <em>some.domain.com</em>',
 			'default'     => null,
-			'value'       => $theme_options['cb_domain'],
+			'value'       => isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null,
 		)),
 	),
 	'Front Page' => array(
@@ -397,7 +396,7 @@ Config::$theme_settings = array(
 			'description' => 'The top featured story to display on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_story_1'],
+			'value'       => isset( $theme_options['front_page_featured_story_1'] ) ? $theme_options['front_page_featured_story_1'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Featured Story #2',
@@ -405,7 +404,7 @@ Config::$theme_settings = array(
 			'description' => 'First of four featured stories underneath the top story on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_story_2'],
+			'value'       => isset( $theme_options['front_page_featured_story_2'] ) ? $theme_options['front_page_featured_story_2'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Featured Story #3',
@@ -413,7 +412,7 @@ Config::$theme_settings = array(
 			'description' => 'Second of four featured stories underneath the top story on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_story_3'],
+			'value'       => isset( $theme_options['front_page_featured_story_3'] ) ? $theme_options['front_page_featured_story_3'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Featured Story #4',
@@ -421,7 +420,7 @@ Config::$theme_settings = array(
 			'description' => 'Third of four featured stories underneath the top story on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_story_4'],
+			'value'       => isset( $theme_options['front_page_featured_story_4'] ) ? $theme_options['front_page_featured_story_4'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Featured Story #5',
@@ -429,7 +428,7 @@ Config::$theme_settings = array(
 			'description' => 'Last of four featured stories underneath the top story on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_story_5'],
+			'value'       => isset( $theme_options['front_page_featured_story_5'] ) ? $theme_options['front_page_featured_story_5'] : null,
 		)),
 		new SelectField(array(
 			'name'        => 'Featured Gallery',
@@ -437,13 +436,13 @@ Config::$theme_settings = array(
 			'description' => 'Featured gallery displayed next to events on the front page.',
 			'choices'     => $story_options,
 			'default'     => '',
-			'value'       => $theme_options['front_page_featured_gallery_1'],
+			'value'       => isset( $theme_options['front_page_featured_gallery_1'] ) ? $theme_options['front_page_featured_gallery_1'] : null,
 		)),
 		new TextareaField(array(
 			'name'        => 'Banner Ad Contents',
 			'id'          => THEME_OPTIONS_NAME.'[front_page_ad_contents]',
 			'description' => 'HTML for banner ad content to be displayed underneath list of issue stories on the front page. Accepts shortcode content.',
-			'value'       => $theme_options['front_page_ad_contents'],
+			'value'       => isset( $theme_options['front_page_ad_contents'] ) ? $theme_options['front_page_ad_contents'] : null,
 			'default'     => '',
 		)),
 		new TextField(array(
@@ -451,14 +450,14 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[front_page_today_feed_url]',
 			'description' => 'URL to the RSS feed for stories to display in "The Feed" section of the front page.',
 			'default'     => 'http://today.ucf.edu/feed/',
-			'value'       => $theme_options['front_page_today_feed_url'],
+			'value'       => isset( $theme_options['front_page_today_feed_url'] ) ? $theme_options['front_page_today_feed_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'UCF Events JSON Feed URL',
 			'id'          => THEME_OPTIONS_NAME.'[front_page_events_feed_url]',
 			'description' => 'URL to the JSON feed for events to display in the Events section of the front page.',
 			'default'     => 'http://events.ucf.edu/upcoming/feed.json',
-			'value'       => $theme_options['front_page_events_feed_url'],
+			'value'       => isset( $theme_options['front_page_events_feed_url'] ) ? $theme_options['front_page_events_feed_url'] : null,
 		))
 	),
 	'Search' => array(
@@ -471,21 +470,21 @@ Config::$theme_settings = array(
 				'On'  => 1,
 				'Off' => 0,
 			),
-			'value'       => $theme_options['enable_google'],
+			'value'       => isset( $theme_options['enable_google'] ) ? $theme_options['enable_google'] : null,
 	    )),
 		new TextField(array(
 			'name'        => 'Search Domain',
 			'id'          => THEME_OPTIONS_NAME.'[search_domain]',
 			'description' => 'Domain to use for the built-in google search.  Useful for development or if the site needs to search a domain other than the one it occupies. Example: <em>some.domain.com</em>',
 			'default'     => null,
-			'value'       => $theme_options['search_domain'],
+			'value'       => isset( $theme_options['search_domain'] ) ? $theme_options['search_domain'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Search Results Per Page',
 			'id'          => THEME_OPTIONS_NAME.'[search_per_page]',
 			'description' => 'Number of search results to show per page of results',
 			'default'     => 10,
-			'value'       => $theme_options['search_per_page'],
+			'value'       => isset( $theme_options['search_per_page'] ) ? $theme_options['search_per_page'] : null,
 		)),
 	),
 	'Social' => array(
@@ -494,42 +493,42 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[fb_url]',
 			'description' => 'URL of the Facebook page related to this site. If this field is left empty, this social media link will not appear in the footer.',
 			'default'     => 'http://www.facebook.com/UCF',
-			'value'       => $theme_options['fb_url'],
+			'value'       => isset( $theme_options['fb_url'] ) ? $theme_options['fb_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Twitter URL',
 			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
 			'description' => 'URL of the Twitter page related to this site. If this field is left empty, this social media link will not appear in the footer.',
 			'default'     => 'http://twitter.com/UCF',
-			'value'       => $theme_options['twitter_url'],
+			'value'       => isset( $theme_options['twitter_url'] ) ? $theme_options['twitter_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Flickr URL',
 			'id'          => THEME_OPTIONS_NAME.'[flickr_url]',
 			'description' => 'URL of the Flickr page related to this site. If this field is left empty, this social media link will not appear in the footer.',
 			'default'     => 'http://www.flickr.com/groups/ucf/',
-			'value'       => $theme_options['flickr_url'],
+			'value'       => isset( $theme_options['flickr_url'] ) ? $theme_options['flickr_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'YouTube URL',
 			'id'          => THEME_OPTIONS_NAME.'[youtube_url]',
 			'description' => 'URL of the YouTube page related to this site. If this field is left empty, this social media link will not appear in the footer.',
 			'default'     => 'http://www.youtube.com/user/UCF',
-			'value'       => $theme_options['youtube_url'],
+			'value'       => isset( $theme_options['youtube_url'] ) ? $theme_options['youtube_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Instagram URL',
 			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
 			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
 			'default'     => '',
-			'value'       => $theme_options['instagram_url'],
+			'value'       => isset( $theme_options['instagram_url'] ) ? $theme_options['instagram_url'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Share URL',
 			'id'          => THEME_OPTIONS_NAME.'[share_url]',
 			'description' => 'URL of the Share page related to this site. If this field is left empty, this share link will not appear in the footer.',
 			'default'     => '',
-			'value'       => $theme_options['share_url'],
+			'value'       => isset( $theme_options['share_url'] ) ? $theme_options['share_url'] : null,
 		)),
 	),
 	'Devices' => array(
@@ -538,7 +537,7 @@ Config::$theme_settings = array(
 			'id'          => THEME_OPTIONS_NAME.'[ipad_app_url]',
 			'description' => 'URL of the Pegasus Magazine iPad app in the iTunes store. Used for the iPad modal. The modal and footer link will not be displayed if this field is blank.',
 			'default'     => '',
-			'value'       => $theme_options['ipad_app_url'],
+			'value'       => isset( $theme_options['ipad_app_url'] ) ? $theme_options['ipad_app_url'] : null,
 		))
 	),
 	'Issues' => array(
@@ -548,7 +547,7 @@ Config::$theme_settings = array(
 			'description' => 'Specify the current active issue. If a custom front page layout is enabled, this issue\'s stories will be used on the front page where the list of 12 stories in the issue is displayed.<br><br>The issue cover will be used as the front page if a custom front page is disabled (Settings > Reading > Front page displays is set to "Your latest posts").',
 			'choices'     => $issue_cover_array,
 			'default'     => $issue_cover_first,
-			'value'       => $theme_options['current_issue_cover'],
+			'value'       => isset( $theme_options['current_issue_cover'] ) ? $theme_options['current_issue_cover'] : null,
 		)),
 	),
 	'Contact Information' => array(
@@ -556,14 +555,14 @@ Config::$theme_settings = array(
 			'name' => 'Organization Name',
 			'id' => THEME_OPTIONS_NAME.'[org_name]',
 			'description' => 'The name for your organization, used when displaying your organization\'s address.',
-			'value' => $theme_options['org_name'],
+			'value' => isset( $theme_options['org_name'] ) ? $theme_options['org_name'] : null,
 			'default'	=> 'University of Central Florida',
 		)),
 		new TextareaField(array(
 			'name' => 'Organization Address',
 			'id' => THEME_OPTIONS_NAME.'[org_address]',
 			'description' => 'The address for your organization.',
-			'value' => $theme_options['org_address'],
+			'value' => isset( $theme_options['org_address'] ) ? $theme_options['org_address'] : null,
 			'default'	=> '4000 Central Florida Blvd.
 Orlando, FL 32816',
 		)),
@@ -577,7 +576,7 @@ Orlando, FL 32816',
 								project has been configured to deliver fonts to this site\'s domain.<br/>
 								See the <a target="_blank" href="http://www.typography.com/cloud/user-guide/managing-domains">Cloud.Typography docs on managing domains</a> for more info.',
 			'default'     => '//cloud.typography.com/730568/702404/css/fonts.css', /* CSS Key relative to PROD project */
-			'value'       => $theme_options['cloud_font_key'],
+			'value'       => isset( $theme_options['cloud_font_key'] ) ? $theme_options['cloud_font_key'] : null,
 		))
 	),
 	'Developers' => array(
@@ -591,7 +590,7 @@ Orlando, FL 32816',
 				'On'  => 1,
 				'Off' => 0,
 			),
-			'value'       => $theme_options['dev_mode'],
+			'value'       => isset( $theme_options['dev_mode'] ) ? $theme_options['dev_mode'] : null,
 	    )),
 	),
 );
@@ -613,14 +612,14 @@ if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
 				'On'  => 1,
 				'Off' => 0,
 			),
-			'value'       => $theme_options['enable_og'],
+			'value'       => isset( $theme_options['enable_og'] ) ? $theme_options['enable_og'] : null,
 	    )),
 		new TextField(array(
 			'name'        => 'Facebook Admins',
 			'id'          => THEME_OPTIONS_NAME.'[fb_admins]',
 			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
 			'default'     => null,
-			'value'       => $theme_options['fb_admins'],
+			'value'       => isset( $theme_options['fb_admins'] ) ? $theme_options['fb_admins'] : null,
 		))
 	);
 }
@@ -663,7 +662,7 @@ Config::$metas = array(
 	array( 'http-equiv' => 'X-UA-Compatible', 'content' => 'IE=Edge' ),
 	array( 'name' => 'viewport', 'content' => 'width=device-width, initial-scale=1.0' ),
 );
-if ( $theme_options['gw_verify'] ) {
+if ( isset( $theme_options['gw_verify'] ) && $theme_options['gw_verify'] ) {
 	Config::$metas[] = array(
 		'name'    => 'google-site-verification',
 		'content' => htmlentities( $theme_options['gw_verify'] ),

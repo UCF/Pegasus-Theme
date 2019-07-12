@@ -4,8 +4,7 @@
 							<div class="row">
 								<div class="col-sm-3 col-sm-offset-1 col-md-offset-1 col-sm-push-8">
 									<h2 class="fp-subheading-underline fp-footer-heading">Connect</h2>
-									<?php
-									$defaults = array(
+									<?php 									$defaults = array(
 										'theme_location' => 'footer-menu',
 										'container'      => false,
 										'menu_class'     => 'fp-footer-menu list-unstyled',
@@ -16,8 +15,7 @@
 								<div class="col-sm-3 col-sm-offset-1 hidden-xs">
 									<h2 class="fp-subheading-underline fp-footer-heading">About</h2>
 									<ul class="list-unstyled">
-									<?php
-									$defaults = array(
+									<?php 									$defaults = array(
 										'theme_location' => 'footer-middle-menu',
 										'container'      => false,
 										'menu_class'     => 'fp-footer-menu list-unstyled',
@@ -37,8 +35,7 @@
 										<?php echo nl2br( get_theme_option( 'org_address' ) ); ?>
 									</p>
 
-									<?php
-									$fb_url = get_theme_option( 'fb_url' );
+									<?php 									$fb_url = get_theme_option( 'fb_url' );
 									$twitter_url = get_theme_option( 'twitter_url' );
 									$instagram_url = get_theme_option( 'instagram_url' );
 									$share_url = get_theme_option( 'share_url' );

@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 /**
  * READ ME, PLEASE:
  *
@@ -1282,8 +1281,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		</div>
 	</div>
 </article>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 
@@ -1303,8 +1301,7 @@ function display_front_page_today_story( $article ) {
 		<?php echo $title; ?>
 	</a>
 </article>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 
@@ -1336,8 +1333,7 @@ function display_front_page_event( $event ) {
 		</div>
 	</div>
 </div>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 
@@ -1374,8 +1370,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 			<?php endif; ?>
 		</a>
 	</article>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 
@@ -1403,8 +1398,7 @@ function display_social_header() {
 			<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Share Pegasus Magazine on Twitter</a>
 		</li>
 	</ul>
-<?php
-    return ob_get_clean();
+<?php     return ob_get_clean();
 }
 
 
@@ -1433,8 +1427,7 @@ function display_front_page_issue_details() {
 		<?php echo $current_issue_title; ?>
 	</div>
 	<?php endif; ?>
-<?php
-	return ob_get_clean();
+<?php 	return ob_get_clean();
 }
 
 

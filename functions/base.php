@@ -1,4 +1,5 @@
-<?php
+<?php 
+define('THEME_OPTIONS_NAME', 'theme');
 
 /***************************************************************************
  * CLASSES
@@ -149,8 +150,7 @@ abstract class Field {
 		ob_start();
 ?>
 		<label class="block" for="<?php echo htmlentities( $this->id )?>"><?php echo __( $this->name )?></label>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 
 	function input_html() {
@@ -163,8 +163,7 @@ abstract class Field {
 		<?php if ( $this->description ):?>
 		<p class="description"><?php echo __( $this->description )?></p>
 		<?php endif;?>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 
 	function html() {
@@ -213,8 +212,7 @@ class TextField extends Field{
 		ob_start();
 ?>
 		<input type="<?php echo $this->type_attr?>" id="<?php echo htmlentities( $this->id )?>" name="<?php echo htmlentities( $this->id )?>" value="<?php echo htmlentities( $this->value )?>">
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -242,8 +240,7 @@ class TextareaField extends Field{
 		ob_start();
 ?>
 		<textarea cols="60" rows="4" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>"><?php echo $this->value; ?></textarea>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -272,8 +269,7 @@ class WysiwygField extends Field {
 			<a class="wysihtml5-html" data-wysihtml5-action="change_view">HTML</a>
 		</div>
 		<textarea name="<?php echo htmlentities( $this->id ); ?>" id="<?php echo htmlentities( $this->id ); ?>" cols="48" rows="8"><?php echo $this->value; ?></textarea>
-	<?php
-		return ob_get_clean();
+	<?php 		return ob_get_clean();
 	}
 }
 
@@ -293,8 +289,7 @@ class SelectField extends ChoicesField{
 			<option<?php if ( $this->value == $value ):?> selected="selected"<?php endif;?> value="<?php echo htmlentities( $value )?>"><?php echo htmlentities( $key )?></option>
 			<?php endforeach;?>
 		</select>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -314,8 +309,7 @@ class MultiselectField extends ChoicesField{
 			<option<?php if ( is_array( $this->value ) && in_array( $value, $this->value ) || $value == $this->value ) : ?> selected="selected"<?php endif; ?> value="<?php echo htmlentities( $value ); ?>"><?php echo htmlentities( $key ); ?></option>
 			<?php endforeach;?>
 		</select>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -338,8 +332,7 @@ class RadioField extends ChoicesField{
 			</li>
 			<?php endforeach;?>
 		</ul>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -362,8 +355,7 @@ class CheckboxField extends ChoicesField{
 			</li>
 			<?php endforeach;?>
 		</ul>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -415,8 +407,7 @@ class FileField extends Field {
 
 			<input class="meta-file-field" id="<?php echo htmlentities( $this->id ); ?>" name="<?php echo htmlentities( $this->id ); ?>" type="hidden" value="<?php echo htmlentities( $this->value ); ?>">
 		</div>
-		<?php
-		return ob_get_clean();
+		<?php 		return ob_get_clean();
 	}
 }
 
@@ -1407,14 +1398,12 @@ function show_meta_boxes( $post ) {
 ?>
 	<input type="hidden" name="meta_box_nonce" value="<?php echo wp_create_nonce( basename( __FILE__ ) ); ?>">
 	<table class="form-table">
-	<?php
-	foreach ( $meta_box['fields'] as $field ) {
+	<?php 	foreach ( $meta_box['fields'] as $field ) {
 		display_meta_box_field( $post->ID, $field );
 	}
 	?>
 	</table>
-<?php
-	echo ob_get_clean();
+<?php 	echo ob_get_clean();
 }
 
 
@@ -1477,8 +1466,7 @@ function display_meta_box_field( $post_id, $field ) {
 				<?php echo $field_obj->input_html(); ?>
 			</td>
 		</tr>
-	<?php
-		$markup = ob_get_clean();
+	<?php 		$markup = ob_get_clean();
 	}
 	else {
 		$markup = '<tr><th></th><td>Don\'t know how to handle field of type '. $field['type'] .'</td></tr>';

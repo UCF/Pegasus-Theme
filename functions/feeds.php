@@ -1,5 +1,4 @@
-<?php
-/**
+<?php /**
  * Return the URL of a feed item's thumbnail, or the first image in the item's content
  * if a thumbnail doesn't exist.
  **/
@@ -181,8 +180,7 @@ class FeedManager {
 /* Modified for main site theme (for JSON instead of RSS feed): */
 function display_events( $start = null, $limit = null ) {
 ?>
-	<?php
-	$options = get_option( THEME_OPTIONS_NAME );
+	<?php 	$options = get_option( THEME_OPTIONS_NAME );
 	$qstring = (bool) strpos( $options['events_url'], '?' );
 	$url     = $options['events_url'];
 	if ( !$qstring ) {
@@ -208,8 +206,7 @@ function display_events( $start = null, $limit = null ) {
 				<td>Description</td>
 			</thead>
 			<tbody class="vcalendar">
-				<?php
-		foreach ( $events as $item ):
+				<?php 		foreach ( $events as $item ):
 			$start    = new DateTime( $item['starts'] );
 			$day      = $start->format( 'M d' );
 			$time     = $start->format( 'h:i a' );
@@ -238,14 +235,12 @@ function display_events( $start = null, $limit = null ) {
 	<?php else: ?>
 		<p>Events could not be retrieved at this time.  Please try again later.</p>
 	<?php endif; ?>
-<?php
-}
+<?php }
 
 
 function display_news() {
 ?>
-	<?php
-	$options = get_option( THEME_OPTIONS_NAME );
+	<?php 	$options = get_option( THEME_OPTIONS_NAME );
 	$count   = $options['news_max_items'];
 	$news    = get_news( 0, ( $count ) ? $count : 3 );
 	if ( $news !== NULL && count( $news ) ):
@@ -283,11 +278,9 @@ function display_news() {
 		<div class="clearfix"></div>
 	<?php else: ?>
 		<p>News items could not be retrieved at this time.  Please try again later.</p>
-	<?php
-	endif;
+	<?php 	endif;
 ?>
-<?php
-}
+<?php }
 
 
 /* Modified function for main site theme: */
