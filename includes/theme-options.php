@@ -1,5 +1,5 @@
 <?php 	# Check for settings updated or updated, varies between wp versions
-	$updated  = (bool)($_GET['settings-updated'] or $_GET['updated']);
+	$updated  = isset( $_GET['settings-updated'] ) ? filter_var( $_GET['settings-updated'], FILTER_VALIDATE_BOOLEAN ) : false;
 	$settings = array_filter(Config::$theme_settings, 'is_array');
 	$misc     = array_filter(Config::$theme_settings, 'is_object');
 	if (count($misc)){ $settings['Miscellaneous'] = $misc;}
