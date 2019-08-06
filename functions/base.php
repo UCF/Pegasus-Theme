@@ -1,4 +1,4 @@
-<?php 
+<?php
 define('THEME_OPTIONS_NAME', 'theme');
 
 /***************************************************************************
@@ -1334,7 +1334,7 @@ function save_meta_data( $post_id ) {
 	}
 
 	// check permissions
-	if ( 'page' == $_POST['post_type'] ) {
+	if ( isset( $_POST['post_type'] ) && 'page' === $_POST['post_type'] ) {
 		if ( !current_user_can( 'edit_page', $post_id ) ) {
 			return $post_id;
 		}
