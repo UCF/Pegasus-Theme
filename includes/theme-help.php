@@ -2,10 +2,6 @@
 	<div class="container">
 		<h1>Pegasus Magazine Site Help - for Content Creators</h1>
 
-		<?php if ($updated):?>
-		<div class="updated fade"><p><strong><?php echo __( 'Options saved' ); ?></strong></p></div>
-		<?php endif; ?>
-
 		<div class="sections">
 			<ul>
 				<li class="section"><a href="#intro">Intro</a></li>
