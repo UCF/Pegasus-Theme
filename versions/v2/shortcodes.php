@@ -798,15 +798,17 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				?>
 					<div class="ss-caption ss-current" data-id="<?php echo $data_id?>"></div>
 				<?php 				}
-				foreach ($slide_order as $s) {
-					if ($s !== '') {
+				foreach ($slide_order as $s) :
+					if ($s !== '') :
 						$data_id++;
 				?>
+					<?php if ( isset( $slide_caption[$s] ) ) : ?>
 					<div class="ss-caption <?php echo  $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?php echo $data_id?>">
 						<p class="caption"<?php if ($caption_color) { ?> style="color: <?php echo $caption_color?>;"<?php } ?>><?php echo $slide_caption[$s]; ?></p>
 					</div>
-				<?php 					}
-				}
+					<?php endif; ?>
+				<?php endif;
+				endforeach;
 				?>
 				</div>
 
