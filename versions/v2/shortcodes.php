@@ -104,11 +104,11 @@ add_shortcode('media', 'sc_get_media');
 function sc_photo($attr, $content) {
 	$css_classes = '';
 	$content = $content ? $content : '';
-	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
-	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
+	$filename = ( isset( $attr['filename'] ) && $attr['filename'] != '') ? $attr['filename'] : null;
+	$attachment_id = isset( $attr['id'] ) ? intval($attr['id']) : null;
 
-	$alt = $attr['alt'] ? $attr['alt'] : $content;
-	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
+	$alt = isset( $attr['alt'] ) ? $attr['alt'] : $content;
+	$position = ( isset( $attr['position'] ) && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
 
 	// Set a fallback width if none is provided. Only add position
 	// class to img/figure elements if width doesn't fall back to 100%:
