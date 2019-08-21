@@ -203,9 +203,9 @@ add_shortcode('lead', 'sc_lead');
  * Wrap arbitrary text in <blockquote>
  **/
 function sc_blockquote($attr, $content='') {
-	$source = $attr['source'] ? $attr['source'] : null;
-	$cite = $attr['cite'] ? $attr['cite'] : null;
-	$color = $attr['color'] ? $attr['color'] : null;
+	$source = isset( $attr['source'] ) ? $attr['source'] : null;
+	$cite = isset( $attr['cite'] ) ? $attr['cite'] : null;
+	$color = isset( $attr['color'] ) ? $attr['color'] : null;
 
 	$html = '<blockquote';
 	if ($source) {
