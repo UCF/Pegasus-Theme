@@ -1,7 +1,8 @@
 <?php disallow_direct_load('default.php');?>
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php 	$header_img_id = get_post_meta($post->ID, 'story_default_header_img', TRUE);
-	$header_img = wp_get_attachment_url(get_post($header_img_id)->ID);
+	$attachment = get_post( $header_img_id );
+	$header_img = $attachment !== null ? wp_get_attachment_url( $attachment->ID ) : '';
 	$header_img_background_color = get_post_meta($post->ID, 'story_default_header_img_background_color', TRUE);
 ?>
 
