@@ -104,11 +104,11 @@ add_shortcode('media', 'sc_get_media');
 function sc_photo($attr, $content) {
 	$css_classes = '';
 	$content = $content ? $content : '';
-	$filename = ($attr['filename'] && $attr['filename'] != '') ? $attr['filename'] : null;
-	$attachment_id = $attr['id'] ? intval($attr['id']) : null;
+	$filename = ( isset( $attr['filename'] ) && $attr['filename'] != '') ? $attr['filename'] : null;
+	$attachment_id = isset( $attr['id'] ) ? intval($attr['id']) : null;
 
-	$alt = $attr['alt'] ? $attr['alt'] : $content;
-	$position = ($attr['position'] && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
+	$alt = isset( $attr['alt'] ) ? $attr['alt'] : $content;
+	$position = ( isset( $attr['position'] ) && $attr['position'] == ('left' || 'right' || 'center')) ? 'pull-'.$attr['position'] : '';
 
 	// Set a fallback width if none is provided. Only add position
 	// class to img/figure elements if width doesn't fall back to 100%:
@@ -203,9 +203,9 @@ add_shortcode('lead', 'sc_lead');
  * Wrap arbitrary text in <blockquote>
  **/
 function sc_blockquote($attr, $content='') {
-	$source = $attr['source'] ? $attr['source'] : null;
-	$cite = $attr['cite'] ? $attr['cite'] : null;
-	$color = $attr['color'] ? $attr['color'] : null;
+	$source = isset( $attr['source'] ) ? $attr['source'] : null;
+	$cite = isset( $attr['cite'] ) ? $attr['cite'] : null;
+	$color = isset( $attr['color'] ) ? $attr['color'] : null;
 
 	$html = '<blockquote';
 	if ($source) {
@@ -798,15 +798,17 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 				?>
 					<div class="ss-caption ss-current" data-id="<?php echo $data_id?>"></div>
 				<?php 				}
-				foreach ($slide_order as $s) {
-					if ($s !== '') {
+				foreach ($slide_order as $s) :
+					if ($s !== '') :
 						$data_id++;
 				?>
+					<?php if ( isset( $slide_caption[$s] ) ) : ?>
 					<div class="ss-caption <?php echo  $data_id == 1 ? ' ss-current' : '' ?>" data-id="<?php echo $data_id?>">
 						<p class="caption"<?php if ($caption_color) { ?> style="color: <?php echo $caption_color?>;"<?php } ?>><?php echo $slide_caption[$s]; ?></p>
 					</div>
-				<?php 					}
-				}
+					<?php endif; ?>
+				<?php endif;
+				endforeach;
 				?>
 				</div>
 
