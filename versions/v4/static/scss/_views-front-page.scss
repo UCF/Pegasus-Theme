@@ -279,28 +279,10 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-issue-wrapper {
-  @media (min-width: $screen-sm-min) {
-    position: relative;
-  }
-
   .fp-issue {
-
     a {
       color: $black;
     }
-
-    @media (min-width: $screen-sm-min) {
-      position: absolute;
-    }
-
-    &.affix {
-
-      @media (min-width: $screen-sm-min) {
-        position: fixed;
-        top: 0;
-      }
-    }
-
   }
 }
 
