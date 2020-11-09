@@ -49,7 +49,8 @@
 @mixin gotham($weight: 4, $font-style: normal) {
   font-family: 'Gotham SSm #{$weight}r', 'Gotham SSm A', 'Gotham SSm B';
   font-style: $font-style;
-  font-weight: #{$weight}00;
+  $weight-calculated: $weight * 100;
+  font-weight: $weight-calculated;
 }
 
 // Adds Archer font family styles to an element.
@@ -62,5 +63,6 @@
     font-family: 'Archer #{$weight}i', 'Archer A', 'Archer B';
   }
   font-style: $font-style;
-  font-weight: #{$weight}00;
+  $weight-calculated: $weight * 100;
+  font-weight: $weight-calculated;
 }
