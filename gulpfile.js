@@ -34,6 +34,7 @@ gulp.task('css-main-build', function() {
   switch (config.version) {
     case 'v3':
     case 'v4':
+    case 'v5':
       gulp.src(config.versionsPath + '/static/scss/style.scss')
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
@@ -71,6 +72,7 @@ gulp.task('js-build', function() {
   switch (config.version) {
     case 'v3':
     case 'v4':
+    case 'v5':
       var minified = [
         config.componentsPath + '/bootstrap-sass-3.3.4/assets/javascripts/bootstrap.js',
         config.versionsPath + '/static/js/webcom-base.js',
