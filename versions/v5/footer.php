@@ -1,6 +1,7 @@
 			</main>
 
-			<?php 			$issue = get_relevant_issue( $post );
+			<?php
+			$issue = get_relevant_issue( $post );
 			$args = array();
 
 			if ( $post->post_type == 'story' ) {
@@ -22,7 +23,8 @@
 				</div>
 				<div class="container story-list-grid hidden-sm hidden-xs">
 					<div class="row">
-					<?php 					$count = 0;
+					<?php
+					$count = 0;
 					if ( $stories ) {
 						foreach ( $stories as $story ) {
 							if ( $count % $perrow == 0 && $count !== 0 ) {
@@ -32,12 +34,12 @@
 
 							$title = $story->post_title;
 							$subtitle = get_post_meta( $story->ID, 'story_subtitle', TRUE );
-							$thumb = get_featured_image_url( $story->ID );
+							$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
 					?>
 						<article class="col-md-4 col-sm-4">
 							<a href="<?php echo get_permalink( $story ); ?>">
 								<?php if ( $thumb ) { ?>
-								<img class="lazy" data-original="<?php echo $thumb; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+								<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
 								<?php } ?>
 								<h3 class="story-title"><?php echo wptexturize( $title ); ?></h3>
 								<?php if ( !empty( $subtitle ) ) { ?>
@@ -45,7 +47,8 @@
 								<?php } ?>
 							</a>
 						</article>
-					<?php 						}
+					<?php
+						}
 					}
 					?>
 					</div>
@@ -58,7 +61,8 @@
 			</aside>
 			<?php endif; ?>
 
-			<?php 			$fb_url = get_theme_option( 'fb_url' );
+			<?php
+			$fb_url = get_theme_option( 'fb_url' );
 			$twitter_url = get_theme_option( 'twitter_url' );
 			$flickr_url = get_theme_option( 'flickr_url' );
 			$youtube_url = get_theme_option( 'youtube_url' );
@@ -114,9 +118,10 @@
 									Download on the App Store
 								</a>
 							</span>
-	                        <?php } ?>
+							<?php } ?>
 
-							<?php 							$defaults = array(
+							<?php
+							$defaults = array(
 								'theme_location' => 'footer-menu',
 								'container'      => false,
 								'menu_class'     => 'navigation',
