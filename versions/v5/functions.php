@@ -10,18 +10,19 @@ function display_story_list( $issue, $class=null ) {
 
 		if ( $stories ) { ?>
 			<div class="story-list <?php echo $class; ?>">
-			<?php 			$count = 0;
+			<?php
+			$count = 0;
 			foreach ( $stories as $story ) {
 				$count++;
 
 				$title = wptexturize( $story->post_title );
 				$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
-				$thumb = get_featured_image_url( $story->ID );
+				$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
 			?>
 				<article<?php if ( $count == count( $stories ) ) { ?> class="last-child"<?php } ?>>
 					<a href="<?php echo get_permalink( $story ); ?>">
 						<?php if ( $thumb ) { ?>
-						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
 						<?php } ?>
 						<h3 class="story-title"><?php echo $title; ?></h3>
 						<?php if ( !empty( $subtitle ) ) { ?>
@@ -29,14 +30,16 @@ function display_story_list( $issue, $class=null ) {
 						<?php } ?>
 					</a>
 				</article>
-			<?php 			}
+			<?php
+			}
 			?>
 			</div>
-		<?php 		}
-		else {
+		<?php
+		} else {
 		?>
 			<p>No stories found.</p>
-		<?php 		}
+		<?php
+		}
 
 		return ob_get_clean();
 	}

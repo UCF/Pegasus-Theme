@@ -66,7 +66,8 @@ $other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_i
 					$story_1,
 					'fp-feature-top',
 					false,
-					'issue-cover-feature-3x2'
+					'issue-cover-feature-3x2',
+					'h2'
 				);
 			endif;
 			?>
@@ -76,14 +77,26 @@ $other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_i
 					<div class="col-sm-6 col-md-12">
 					<?php
 					if ( $story_2 ):
-						echo display_front_page_story( $story_2 );
+						echo display_front_page_story(
+							$story_2,
+							'',
+							false,
+							'frontpage-story-thumbnail',
+							'h2'
+						);
 					endif;
 					?>
 					</div>
 					<div class="col-sm-6 col-md-12">
 					<?php
 					if ( $story_3 ):
-						echo display_front_page_story( $story_3 );
+						echo display_front_page_story(
+							$story_3,
+							'',
+							false,
+							'frontpage-story-thumbnail',
+							'h2'
+						);
 					endif;
 					?>
 					</div>
