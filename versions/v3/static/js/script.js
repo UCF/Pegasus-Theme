@@ -1,3 +1,8 @@
+// =require bootstrap-sass-3.3.4/assets/javascripts/bootstrap.js
+// =require ./webcom-base.js
+// =require ./generic-base.js
+
+
 // Define globals for JSHint validation:
 /* global console, IPAD_DEPLOYED, _gaq, Chart */
 
