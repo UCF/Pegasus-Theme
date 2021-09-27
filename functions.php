@@ -1353,7 +1353,7 @@ function display_front_page_event( $event ) {
 /**
  * Displays a single featured gallery on the front page.
  **/
-function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
+function display_front_page_gallery( $gallery, $css_class='' ) {
 	if ( !$gallery ) { return false; }
 
 	$title = wptexturize( $gallery->post_title );
@@ -1364,13 +1364,28 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 		$vertical = wptexturize( $vertical->name );
 	}
 
-	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
 	$thumbnail = null;
+	if ( get_relevant_version( $gallery ) >= 5 ) {
+		// Version 5+: fetch featured image ID
+		$thumbnail_id = get_post_thumbnail_id( $gallery );
+		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
+	} else {
+		// Version 4 and prior: get the ID from the
+		// `story_frontpage_gallery_thumb` meta field
+		$thumbnail_id = intval( get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true ) );
+		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
+	}
+
 	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-featured-gallery-thumbnail' );
-		if ( $thumbnail ) {
-			$thumbnail = $thumbnail[0];
-		}
+		$thumbnail = wp_get_attachment_image(
+			$thumbnail_id,
+			$thumbnail_size,
+			false,
+			array(
+				'class' => 'img-responsive center-block fp-gallery-img',
+				'alt' => '' // Intentionally blank to avoid redundant story title announcement
+			)
+		);
 	}
 
 	ob_start();
@@ -1379,7 +1394,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
 			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
 			<?php if ( $thumbnail ): ?>
-			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+				<?php echo $thumbnail; ?>
 			<?php endif; ?>
 		</a>
 	</article>

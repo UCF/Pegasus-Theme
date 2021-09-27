@@ -117,8 +117,8 @@ else:
 		</div>
 		<div class="col-sm-9">
 			<div class="row">
-				<?php 				$current_issue_stories = get_front_page_issue_stories();
-
+				<?php
+				$current_issue_stories = get_front_page_issue_stories();
 				if ( $current_issue_stories ):
 				?>
 					<?php $i = 1; ?>
@@ -148,7 +148,8 @@ else:
 		<div class="col-sm-6">
 			<h2 class="fp-heading fp-events-heading">Events</h2>
 			<div class="fp-events">
-				<?php 				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
+				<?php
+				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
 				if ( $events ) {
 					foreach ( $events as $event ) {
 						echo display_front_page_event( $event );
