@@ -1,4 +1,4 @@
-<?php 
+<?php
 /****************************************************************************
  *
  * START theme constants here
@@ -687,6 +687,7 @@ function __init__(){
 	add_image_size( 'single-post-thumbnail', 220, 230, true );
 	add_image_size( 'issue-thumbnail', 190, 248 );
 	add_image_size( 'issue-cover-feature', 768, 432, true );
+	add_image_size( 'story-featured-image', 1200, 800, true );
 	register_nav_menu( 'footer-menu', __( 'Footer Menu' ) );
 	register_nav_menu( 'footer-middle-menu', __( 'Footer Middle Menu' ) );
 }

@@ -9,7 +9,10 @@ else:
 
 <div class="container">
 	<?php if ( $feature_1 = get_theme_option( 'front_page_featured_story_1' ) ): ?>
-	<?php echo display_front_page_story( get_post( $feature_1 ), 'fp-feature-top', false, 'full' ); ?>
+		<?php
+		$feature_1_thumb_size = get_relevant_version() >= 5 ? 'story-featured-image' : 'full';
+		echo display_front_page_story( get_post( $feature_1 ), 'fp-feature-top', false, $feature_1_thumb_size );
+		?>
 	<?php endif; ?>
 
 	<hr class="fp-divider visible-xs-block">

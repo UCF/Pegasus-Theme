@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * READ ME, PLEASE:
  *
@@ -1226,13 +1226,26 @@ add_action( 'rest_api_init', 'register_api_story_meta' );
 function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) { return false; }
 
-	$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
 	$thumbnail = null;
+	if ( get_relevant_version( $story ) >= 5 ) {
+		// Version 5+: fetch featured image ID
+		$thumbnail_id = get_post_thumbnail_id( $story );
+	} else {
+		// Version 4 and prior: get the ID from the
+		// `story_frontpage_thumb` meta field
+		$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
+	}
+
 	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
-		if ( $thumbnail ) {
-			$thumbnail = $thumbnail[0];
-		}
+		$thumbnail = wp_get_attachment_image(
+			$thumbnail_id,
+			$thumbnail_size,
+			false,
+			array(
+				'class' => 'fp-feature-img center-block img-responsive',
+				'alt' => '' // Intentionally blank to avoid redundant story title announcement
+			)
+		);
 	}
 
 	$title = wptexturize( $story->post_title );
@@ -1260,7 +1273,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php if ( $thumbnail ): ?>
 		<div class="fp-feature-img-wrap">
-			<img class="fp-feature-img center-block img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<?php echo $thumbnail; ?>
 
 			<?php if ( $show_vertical && $vertical ): ?>
 			<span class="fp-vertical">
