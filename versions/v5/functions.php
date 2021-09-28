@@ -357,7 +357,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 
 			<div class="ss-slides-wrapper">
 			<?php
-			while ( $end == false ) {
+			while ( $end === false ) {
 				if ( $i == $slide_count ) {
 					$i = 0;
 				}
