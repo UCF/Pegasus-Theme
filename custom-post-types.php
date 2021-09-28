@@ -506,6 +506,8 @@ class Issue extends CustomPostType {
 	public function fields() {
 		global $post;
 
+		$issue_version = get_relevant_version( $post );
+
 		$prefix = $this->options('name').'_';
 
 		$story_options = array();
@@ -598,26 +600,30 @@ class Issue extends CustomPostType {
 				'id'   => $prefix.'javascript_home',
 				'type' => 'file',
 			),
+		);
 
-			array(
+		// Show issue-wide asset fields for v1 issues only:
+		if ( $issue_version === 1 ) {
+			$fields[] = array(
 				'name' => '<strong>DEPRECATED:</strong> Issue-Wide Stylesheet',
 				'desc' => '<strong><em>This feature is deprecated as of Spring 2014 and is left in place for backward compatibility.
 							This field will have no effect on issues or stories from Spring 2014 onward.</em></strong><br/>
 							Stylesheet that will affect all stories for this issue.',
 				'id'   => $prefix.'stylesheet_issue',
 				'type' => 'file',
-			),
-			array(
+			);
+			$fields[] = array(
 				'name' => '<strong>DEPRECATED:</strong> Issue-Wide JavaScript File',
 				'desc' => '<strong><em>This feature is deprecated as of Spring 2014 and is left in place for backward compatibility.
 							This field will have no effect on issues or stories from Spring 2014 onward.</em></strong><br/>
 							JavaScript file that runs on all stories for this issue, including the home page.',
 				'id'   => $prefix.'javascript_issue',
 				'type' => 'file',
-			),
-		);
+			);
+		}
 
-		if (DEV_MODE == 1) {
+		// Show developer mode options if developer mode is enabled:
+		if ( DEV_MODE === 1 ) {
 			array_unshift($fields, array(
 				'name' => '<strong>Developer Mode:</strong> Issue Cover Asset Directory',
 				'desc' => 'Directory to this issue\'s cover page assets in the theme\'s dev folder (include trailing slash).  Properly named html, css and javascript files
