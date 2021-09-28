@@ -1,4 +1,4 @@
-<?php 
+<?php
 Config::$body_classes = array();
 
 
@@ -17,19 +17,19 @@ array_push( Config::$scripts,
 /**
  * Register extra frontend scripts and stylesheets.
  **/
-function v4_enqueue_frontend_theme_assets() {
+function v5_enqueue_frontend_theme_assets() {
 	// Re-register jquery in document head
 	wp_deregister_script( 'jquery' );
 	wp_register_script( 'jquery', '//code.jquery.com/jquery-1.11.2.min.js' );
 	wp_enqueue_script( 'jquery' );
 }
-add_action( 'wp_enqueue_scripts', 'v4_enqueue_frontend_theme_assets' );
+add_action( 'wp_enqueue_scripts', 'v5_enqueue_frontend_theme_assets' );
 
 
 /**
  * Hook frontend theme script output into wp_head().
  **/
-function v4_hook_frontend_theme_scripts() {
+function v5_hook_frontend_theme_scripts() {
 	ob_start();
 ?>
 	<!--[if lte IE 9]>
@@ -81,7 +81,7 @@ function v4_hook_frontend_theme_scripts() {
 	?>
 <?php 	echo ob_get_clean();
 }
-add_action( 'wp_head', 'v4_hook_frontend_theme_scripts' );
+add_action( 'wp_head', 'v5_hook_frontend_theme_scripts' );
 
 /**
  * Add ID attribute to registered University Header script.
