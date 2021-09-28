@@ -192,9 +192,19 @@
 
   // Past Issues
   .home-past-issues {
-    .thumb a {
-      position: static;
-      text-indent: 0;
+    .past-issue {
+      margin-bottom: 25px;
+    }
+
+    .past-issue-thumb {
+      height: auto;
+      width: 100%;
+    }
+
+    .past-issue-title {
+      color: #000;
+      font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+      font-weight: 700;
     }
 
     .archives-link {
