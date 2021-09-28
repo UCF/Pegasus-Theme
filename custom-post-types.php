@@ -425,7 +425,7 @@ class Story extends CustomPostType {
 		if ( $story_version < 5 ) {
 			$default_header_img_desc = 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px';
 		} else {
-			$default_header_img_desc = '(Optional) Large feature image to go at the very top of the story.  Replaces the featured image, if provided.  Recommended dimensions: 1200x800px';
+			$default_header_img_desc = '(Optional) Large header image displayed at the top of the single story template.  Replaces the featured image, if provided.  Recommended dimensions: 1200x800px';
 		}
 		$fields[] = array(
 			'name' => '<strong>Default Templates:</strong> Header Image',
