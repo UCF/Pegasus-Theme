@@ -478,7 +478,7 @@ function display_story_header_contents( $post, $header_img_id=0, $deck='' ) {
 		'story-featured-image',
 		false,
 		array(
-			'class' => 'img-responsive',
+			'class' => 'story-header-image',
 			'alt' => ''
 		)
 	);

@@ -47,44 +47,11 @@ article.photo-essay {
   }
 
   .story-header-image {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    height: 600px;
-    margin: 0 auto 10px;
-    position: relative;
-
-    @media (max-width: $screen-sm-max) {
-      height: 490px;
-      // max-width: 980px;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      background-size: 100% auto;
-      height: auto;
-      margin-bottom: 5px;
-    }
-
-    img {
-      clip: rect(1px, 1px, 1px, 1px);
-      height: 1px;
-      left: 0;
-      position: absolute;
-      top: 0;
-      width: 1px;
-
-      @media (max-width: $screen-xs-max) {
-        height: auto;
-        margin: 0;
-        position: static;
-        visibility: hidden;
-        width: 100%;
-      }
-    }
-
-    + .container .title-wrap {
-      margin-top: 0;
-    }
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0;
+    max-width: 100%;
   }
 
   .title-wrap {
