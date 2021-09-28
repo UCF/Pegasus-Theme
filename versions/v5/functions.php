@@ -423,4 +423,35 @@ function wrap_social_embeds( $html, $url ) {
 }
 add_filter( 'embed_oembed_html', 'wrap_social_embeds', 10, 3 );
 
+
+/**
+ * Returns an attachment ID corresponding to the determined
+ * header image for the given story.
+ *
+ * @since 5.0.0
+ * @author Jo Dickson
+ * @param object $story WP_Post object
+ * @return int|null Attachment ID, or null if no image is available
+ */
+function get_story_header_image_id( $story ) {
+	if ( ! $story instanceof WP_Post ) { return null; }
+
+	$header_img_id   = intval( get_post_meta( $story->ID, 'story_default_header_img', true ) );
+	$featured_img_id = get_post_thumbnail_id( $story );
+	$img_id          = null;
+
+	// Make sure the attachment corresponding to the ID in
+	// `story_default_header_img` still exists/hasn't been deleted:
+	if ( $header_img_id ) {
+		$header_img_attachment = get_post( $header_img_id );
+		if ( $header_img_attachment ) {
+			$img_id = $header_img_id;
+		}
+	} else {
+		$img_id = $featured_img_id;
+	}
+
+	return $img_id;
+}
+
 ?>
