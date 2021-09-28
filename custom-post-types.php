@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Abstract class for defining custom post types.
  *
@@ -328,103 +328,22 @@ class Story extends CustomPostType {
 	}
 
 	public function fields() {
+		global $post;
+
+		$story_version = get_relevant_version( $post );
+
 		$font_options = array();
 		foreach (unserialize(TEMPLATE_FONT_STYLES) as $key => $val) {
 			$font_options[$key] = $key;
 		}
 
 		$prefix = $this->options('name').'_';
-		$fields = array(
-			array(
-				'name' => 'Story Template',
-				'desc' => 'The type of template to use for this story.  Stories <em>not</em> set to "Custom" use a premade template and can be created/edited
-							via the WYSIWYG editor above.',
-				'id'   => $prefix.'template',
-				'type'    => 'select',
-				'options' => array(
-					'Photo essay' => 'photo_essay',
-					'Custom story (requires custom CSS/JS)' => 'custom',
-				),
-				'default' => 'Default'
-			),
-			array(
-				'name' => 'Story Subtitle',
-				'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer and archives.',
-				'id'   => $prefix.'subtitle',
-				'type' => 'textarea',
-			),
-			array(
-				'name' => 'Front Page Small Featured Stories Thumbnail',
-				'desc' => 'Displayed in the small featured stories, as well as the stories in the "In This Issue" section.  Recommended dimensions: 263x175; if using this story as the top featured story on the front page, recommended dimensions are 1140x515px.',
-				'id'   => $prefix.'frontpage_thumb',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'Front Page Gallery Thumbnail',
-				'desc' => 'Thumbnail displayed in the bottom right of the front page.  Recommended dimensions: 515x390px.',
-				'id'   => $prefix.'frontpage_gallery_thumb',
-				'type' => 'file',
-			),
-			array(
-				'name' => 'Default Issue Template Featured Story Thumbnail',
-				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 768x432px',
-				'id'   => $prefix.'issue_featured_thumb',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Default Templates:</strong> Story Description',
-				'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
-				'id'   => $prefix.'description',
-				'type' => 'wysiwyg',
-			),
-			array(
-				'name' => '<strong>Default Templates:</strong> Header Font Family',
-				'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
-				'id'   => $prefix.'default_font',
-				'type'    => 'select',
-				'options' => $font_options,
-			),
-			array(
-				'name' => '<strong>Default Templates:</strong> Header Font Color',
-				'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
-				'id'   => $prefix.'default_color',
-				'type' => 'text',
-			),
-			array(
-				'name' => '<strong>Default Templates:</strong> Header Image',
-				'desc' => 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px',
-				'id'   => $prefix.'default_header_img',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Story Template:</strong> HTML File',
-				'desc' => '',
-				'id'   => $prefix.'html',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Story Template:</strong> Stylesheet',
-				'desc' => '',
-				'id'   => $prefix.'stylesheet',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Story Template:</strong> JavaScript File',
-				'desc' => '',
-				'id'   => $prefix.'javascript',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Story Template:</strong> Font Includes',
-				'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant
-							(functions/config.php).  Fonts should be referenced by name and be comma-separated.  (Fonts from Cloud.Typography do not need to be included
-							here.)',
-				'id'   => $prefix.'fonts',
-				'type' => 'textarea',
-			),
-		);
-		if (DEV_MODE == 1) {
-			array_unshift($fields, array(
+
+		$fields = array();
+
+		// Show developer mode options if developer mode is enabled:
+		if ( DEV_MODE === 1 ) {
+			$fields[] = array(
 				'name' => '<strong>Developer Mode:</strong> Directory URL',
 				'desc' => 'Directory to this story in the theme\'s dev folder (include trailing slash, relative to <code>/dev/</code>).  Properly named html, css and javascript files
 							(story-slug.html/css/js) in this directory will be automatically referenced for this story if they are available.<br/><br/>
@@ -439,8 +358,109 @@ class Story extends CustomPostType {
 							<code>'.THEME_DEV_URL.'/...</code>',
 				'id'   => $prefix.'dev_directory',
 				'type' => 'text',
-			));
+			);
 		}
+
+		$fields[] = array(
+			'name' => 'Story Template',
+			'desc' => 'The type of template to use for this story.  Stories <em>not</em> set to "Custom" use a premade template and can be created/edited
+						via the WYSIWYG editor above.',
+			'id'   => $prefix.'template',
+			'type'    => 'select',
+			'options' => array(
+				'Photo essay' => 'photo_essay',
+				'Custom story (requires custom CSS/JS)' => 'custom',
+			),
+			'default' => 'Default'
+		);
+		$fields[] = array(
+			'name' => 'Story Subtitle',
+			'desc' => 'A subtitle for the story.  This will be displayed next to the story title where stories are listed; i.e., the site header and footer and archives.',
+			'id'   => $prefix.'subtitle',
+			'type' => 'textarea',
+		);
+
+		// Show extended thumbnail options for v4 and prior:
+		if ( $story_version < 5 ) {
+			$fields[] = array(
+				'name' => 'Front Page Small Featured Stories Thumbnail',
+				'desc' => 'Displayed in the small featured stories, as well as the stories in the "In This Issue" section.  Recommended dimensions: 263x175; if using this story as the top featured story on the front page, recommended dimensions are 1140x515px.',
+				'id'   => $prefix.'frontpage_thumb',
+				'type' => 'file',
+			);
+			$fields[] = array(
+				'name' => 'Front Page Gallery Thumbnail',
+				'desc' => 'Thumbnail displayed in the bottom right of the front page.  Recommended dimensions: 515x390px.',
+				'id'   => $prefix.'frontpage_gallery_thumb',
+				'type' => 'file',
+			);
+			$fields[] = array(
+				'name' => 'Default Issue Template Featured Story Thumbnail',
+				'desc' => 'Thumbnail for default Issue template\'s featured story slots.  Recommended dimensions: 768x432px',
+				'id'   => $prefix.'issue_featured_thumb',
+				'type' => 'file',
+			);
+		}
+
+		$fields[] = array(
+			'name' => '<strong>Default Templates:</strong> Story Description',
+			'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
+			'id'   => $prefix.'description',
+			'type' => 'wysiwyg',
+		);
+		$fields[] = array(
+			'name' => '<strong>Default Templates:</strong> Header Font Family',
+			'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
+			'id'   => $prefix.'default_font',
+			'type'    => 'select',
+			'options' => $font_options,
+		);
+		$fields[] = array(
+			'name' => '<strong>Default Templates:</strong> Header Font Color',
+			'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
+			'id'   => $prefix.'default_color',
+			'type' => 'text',
+		);
+
+		if ( $story_version < 5 ) {
+			$default_header_img_desc = 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px';
+		} else {
+			$default_header_img_desc = '(Optional) Large feature image to go at the very top of the story.  Replaces the featured image, if provided.  Recommended dimensions: 1200x800px';
+		}
+		$fields[] = array(
+			'name' => '<strong>Default Templates:</strong> Header Image',
+			'desc' => $default_header_img_desc,
+			'id'   => $prefix.'default_header_img',
+			'type' => 'file',
+		);
+
+		$fields[] = array(
+			'name' => '<strong>Custom Story Template:</strong> HTML File',
+			'desc' => '',
+			'id'   => $prefix.'html',
+			'type' => 'file',
+		);
+		$fields[] = array(
+			'name' => '<strong>Custom Story Template:</strong> Stylesheet',
+			'desc' => '',
+			'id'   => $prefix.'stylesheet',
+			'type' => 'file',
+		);
+		$fields[] = array(
+			'name' => '<strong>Custom Story Template:</strong> JavaScript File',
+			'desc' => '',
+			'id'   => $prefix.'javascript',
+			'type' => 'file',
+		);
+		$fields[] = array(
+			'name' => '<strong>Custom Story Template:</strong> Font Includes',
+			'desc' => 'Fonts from the static/fonts directory to include for this story.  All fonts here must be defined in the CUSTOM_AVAILABLE_FONTS constant
+						(functions/config.php).  Fonts should be referenced by name and be comma-separated.  (Fonts from Cloud.Typography do not need to be included
+						here.)',
+			'id'   => $prefix.'fonts',
+			'type' => 'textarea',
+		);
+
 		return $fields;
 	}
 }
