@@ -118,7 +118,7 @@ $other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_i
 		?>
 			<div class="col-sm-4 col-md-3">
 				<?php
-				echo display_front_page_story( $story );
+				echo display_front_page_story( $story, '', true );
 				$count++;
 				?>
 			</div>
