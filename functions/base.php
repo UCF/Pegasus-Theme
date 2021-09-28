@@ -71,12 +71,17 @@ class Config {
 
 		$is_admin = ( is_admin() or is_login() );
 
+		$theme         = wp_get_theme( 'Pegasus-Theme' );
+		$theme_version = ( $theme instanceof WP_Theme ) ? $theme->get( 'Version' ) : false;
+		$root_url      = get_home_url();
+		$cache_bust    = $theme_version && strpos( $attr['src'], $root_url ) !== false ? $theme_version : null;
+
 		if (
 			( $attr['admin'] and $is_admin ) or
 			( !$attr['admin'] and !$is_admin )
 		) {
 			wp_deregister_style( $attr['name'] );
-			wp_enqueue_style( $attr['name'], $attr['src'], null, null, $attr['media'] );
+			wp_enqueue_style( $attr['name'], $attr['src'], null, $cache_bust, $attr['media'] );
 		}
 	}
 
@@ -112,13 +117,18 @@ class Config {
 
 		$is_admin = ( is_admin() or is_login() );
 
+		$theme         = wp_get_theme( 'Pegasus-Theme' );
+		$theme_version = ( $theme instanceof WP_Theme ) ? $theme->get( 'Version' ) : false;
+		$root_url      = get_home_url();
+		$cache_bust    = $theme_version && strpos( $attr['src'], $root_url ) !== false ? $theme_version : null;
+
 		if (
 			( $attr['admin'] and $is_admin ) or
 			( !$attr['admin'] and !$is_admin )
 		) {
 			// Override previously defined scripts
 			wp_deregister_script( $attr['name'] );
-			wp_enqueue_script( $attr['name'], $attr['src'], null, null, True );
+			wp_enqueue_script( $attr['name'], $attr['src'], null, $cache_bust, True );
 		}
 	}
 }
