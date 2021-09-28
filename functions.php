@@ -81,6 +81,7 @@ function get_relevant_version( $the_post=null ) {
 
 					$post_issue = get_page_by_path( $url_path , OBJECT, array( 'issue' ) );
 					$post_story = get_page_by_path( $url_path , OBJECT, array( 'story' ) );
+					$post_photo_essay = get_page_by_path( $url_path , OBJECT, array( 'photo_essay' ) );
 
 					if ( $post_issue ) {
 						$the_post = $post_issue;
@@ -88,10 +89,13 @@ function get_relevant_version( $the_post=null ) {
 					else if ( $post_story ) {
 						$the_post = $post_story;
 					}
+					else if ( $post_photo_essay ) {
+						$the_post = $post_photo_essay;
+					}
 					else {
-						// The requested content isn't a story or issue.  Set $the_post to
-						// null here so that get_relevant_issue() will return a fallback value
-						// (the latest issue).
+						// The requested content isn't a story, issue or photo essay.
+						// Set $the_post to null here so that get_relevant_issue()
+						// will return a fallback value (the latest issue).
 						$the_post = null;
 					}
 				}
