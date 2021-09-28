@@ -71,12 +71,14 @@ class Config {
 
 		$is_admin = ( is_admin() or is_login() );
 
+		$cache_bust = get_cache_bust( $attr['src'] ) ?: null;
+
 		if (
 			( $attr['admin'] and $is_admin ) or
 			( !$attr['admin'] and !$is_admin )
 		) {
 			wp_deregister_style( $attr['name'] );
-			wp_enqueue_style( $attr['name'], $attr['src'], null, null, $attr['media'] );
+			wp_enqueue_style( $attr['name'], $attr['src'], null, $cache_bust, $attr['media'] );
 		}
 	}
 
@@ -112,13 +114,15 @@ class Config {
 
 		$is_admin = ( is_admin() or is_login() );
 
+		$cache_bust = get_cache_bust( $attr['src'] ) ?: null;
+
 		if (
 			( $attr['admin'] and $is_admin ) or
 			( !$attr['admin'] and !$is_admin )
 		) {
 			// Override previously defined scripts
 			wp_deregister_script( $attr['name'] );
-			wp_enqueue_script( $attr['name'], $attr['src'], null, null, True );
+			wp_enqueue_script( $attr['name'], $attr['src'], null, $cache_bust, True );
 		}
 	}
 }
@@ -920,6 +924,49 @@ function set_defaults_for_options(){
 			update_option(THEME_OPTIONS_NAME, $values);
 		}
 	}
+}
+
+
+/**
+ * Returns a cache busting string for theme-enqueued
+ * stylesheets and scripts.
+ *
+ * @since 5.0.0
+ * @author Jo Dickson
+ * @param string $asset_url URL for an enqueued asset
+ * @return string
+ */
+function get_cache_bust( $asset_url ) {
+	$theme         = wp_get_theme( 'Pegasus-Theme' );
+	$theme_version = ( $theme instanceof WP_Theme ) ? $theme->get( 'Version' ) : false;
+	$root_url      = get_home_url();
+
+	return $theme_version && strpos( $asset_url, $root_url ) !== false ? $theme_version : '';
+}
+
+
+/**
+ * Returns the provided asset URL with cache busting applied.
+ *
+ * @since 5.0.0
+ * @author Jo Dickson
+ * @param string $asset_url URL for an enqueued asset
+ * @return string
+ */
+function cache_bust_url( $asset_url ) {
+	$cache_busted_url = $asset_url;
+	$cache_bust = get_cache_bust( $asset_url );
+
+	if ( $cache_bust ) {
+		$cache_busted_url = add_query_arg(
+			array(
+				'ver' => $cache_bust
+			),
+			$cache_busted_url
+		);
+	}
+
+	return $cache_busted_url;
 }
 
 

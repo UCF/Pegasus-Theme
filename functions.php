@@ -762,7 +762,17 @@ function output_header_markup($post) {
 		$fonts = unserialize( TEMPLATE_FONT_URLS );
 		if ( $fonts ) {
 			foreach ( $fonts as $name => $url ) {
-				$output .= '<link rel="stylesheet" href="'.$url.'" type="text/css" media="all" />';
+				// Our font handles should all use the naming convention
+				// `font-[slug]`. Try to create a stylesheet handle on the
+				// fly and compare with it, since `wp_style_is()` can't
+				// compare via asset URL:
+				$approximated_handle = 'font-' . sanitize_title( $name );
+
+				// Try to avoid loading fonts twice:
+				if ( ! wp_style_is( $approximated_handle, 'enqueued' ) ) {
+					$url = cache_bust_url( $url );
+					$output .= '<link rel="stylesheet" href="'.$url.'" type="text/css" media="all" />';
+				}
 			}
 		}
 
@@ -775,6 +785,7 @@ function output_header_markup($post) {
 	if ( $post->post_type == 'page' ) {
 		$page_stylesheet_url = Page::get_stylesheet_url( $post );
 		if ( !empty( $page_stylesheet_url ) ) {
+			$page_stylesheet_url = cache_bust_url( $page_stylesheet_url );
 			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
 		}
 	}
@@ -806,7 +817,8 @@ function output_header_markup($post) {
 					foreach ($fonts as $font) {
 						trim($font);
 						if (array_key_exists($font, $available_fonts)) {
-							$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
+							$font_url = cache_bust_url( $available_fonts[$font] );
+							$output .= '<link rel="stylesheet" href="'.$font_url.'" type="text/css" media="all" />';
 						}
 					}
 				}
@@ -824,13 +836,13 @@ function output_header_markup($post) {
 
 		// 3. Custom issue page-specific stylesheet
 		if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
-			$home_stylesheet_url = Issue::get_home_stylesheet_url($post);
+			$home_stylesheet_url = cache_bust_url( Issue::get_home_stylesheet_url($post) );
 			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
 			if (!empty($home_stylesheet_url)) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
+				$dev_home_stylesheet_url = cache_bust_url( THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css' );
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -839,13 +851,13 @@ function output_header_markup($post) {
 
 		// 4. Custom story stylesheet
 		if( $post->post_type == 'story' && uses_custom_template($post) ) {
-			$story_stylesheet_url = Story::get_stylesheet_url($post);
+			$story_stylesheet_url = cache_bust_url( Story::get_stylesheet_url($post) );
 			$dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
 			if ( !empty($story_stylesheet_url) ) {
 				$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( (DEV_MODE == 1) && !empty($dev_issue_directory) ) {
-				$dev_story_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+				$dev_story_stylesheet_url = cache_bust_url( THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css' );
 				if (curl_exists($dev_story_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_story_stylesheet_url.'" type="text/css" media="all" />';
 				}
