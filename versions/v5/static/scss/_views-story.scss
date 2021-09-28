@@ -1,5 +1,6 @@
 // Stories - General
-article.story {
+article.story,
+article.photo-essay {
   p {
     margin-bottom: 16px;
   }
@@ -86,35 +87,6 @@ article.story {
     }
   }
 
-  .description {
-    font-size: 22px;
-    font-style: italic;
-    line-height: 32px;
-    white-space: normal;
-
-    @media (max-width: $screen-xs-max) {
-      font-size: 18px;
-      line-height: 28px;
-    }
-
-    em,
-    i {
-      font-style: normal;
-    }
-  }
-
-  .lead {
-    margin-bottom: 30px;
-  }
-
-  .caption {
-    margin-bottom: 20px;
-  }
-}
-
-
-// Story - Default Template
-article.story-default {
   .title-wrap {
     margin-bottom: 15px;
     margin-top: 10px;
@@ -153,9 +125,23 @@ article.story-default {
 
   .description {
     display: block;
+    font-size: 22px;
+    font-style: italic;
+    line-height: 32px;
+    white-space: normal;
+
+    @media (max-width: $screen-xs-max) {
+      font-size: 18px;
+      line-height: 28px;
+    }
 
     @media (max-width: $screen-sm-max) {
       margin-bottom: 20px;
+    }
+
+    em,
+    i {
+      font-style: normal;
     }
   }
 
@@ -167,6 +153,14 @@ article.story-default {
       float: left;
       margin-bottom: 0;
     }
+  }
+
+  .lead {
+    margin-bottom: 30px;
+  }
+
+  .caption {
+    margin-bottom: 20px;
   }
 }
 
@@ -192,80 +186,8 @@ article.photo-essay {
     }
   }
 
-  .photo-essay-header {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    display: table;
-    position: relative;
-    width: 100%;
-
-    &:before {
-      // Force a min-height
-      content: '';
-      display: block;
-      height: 440px;
-    }
-
-    &:after {
-      background-color: rgba(0, 0, 0, .7);
-      bottom: 0;
-      content: '';
-      display: block;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: 0;
-      z-index: 1;
-    }
-  }
-
-  .photo-essay-header-inner {
-    display: table-cell;
-    padding: 40px 0 60px;
-    position: relative;
-    vertical-align: middle;
-    z-index: 2;
-  }
-
-  .photo-essay-title,
-  .photo-essay-description {
-    color: #fff;
-    text-align: center;
-  }
-
-  .photo-essay-description {
-    font-family: "Gotham SSm 4r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-    font-size: 18px;
-    font-style: normal;
-    font-weight: 400;
-    margin-bottom: 40px;
-    margin-top: 30px;
-
-    strong {
-      font-family: "Gotham SSm 6r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-      font-weight: 600;
-    }
-
-    em {
-      font-style: italic;
-    }
-  }
-
-  .social {
-    text-align: center;
-
-    .share-twitter,
-    .share-facebook,
-    .share-googleplus {
-      display: inline-block;
-      float: none;
-      margin-right: 0;
-    }
-  }
-
   .photo-essay-contents {
-    margin: auto;
+    margin: 30px auto 0;
     max-width: $container-lg - $grid-gutter-width;
   }
 
