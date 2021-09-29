@@ -116,7 +116,8 @@ a.repeatable-remove { margin-left: 10px !important; }
 #ss_slides_all .custom_repeatable { padding-bottom: 15px; margin: 0 0 15px 0; }
 #slider-slides { background: transparent !important; border-color: transparent !important; box-shadow: 0 0 0 transparent !important; }
 #slider-slides .inside { margin: 0; padding: 0; }
-#slider-slides > .postbox-header { display: none; }
+#slider-slides > .postbox-header,
+#slider-slides > h2.hndle { display: none; }
 #slider-slides .handlediv { position: absolute; top: 0; right: 0; }
 #slider-slides > .handlediv { display: none; }
 #slider-slides .form-table th { padding-left: 10px; }
