@@ -1,4 +1,5 @@
-<?php /*
+<?php
+/*
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
@@ -10,18 +11,19 @@ function display_story_list( $issue, $class=null ) {
 
 		if ( $stories ) { ?>
 			<div class="story-list <?php echo $class; ?>">
-			<?php 			$count = 0;
+			<?php
+			$count = 0;
 			foreach ( $stories as $story ) {
 				$count++;
 
 				$title = wptexturize( $story->post_title );
 				$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
-				$thumb = get_featured_image_url( $story->ID );
+				$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
 			?>
 				<article<?php if ( $count == count( $stories ) ) { ?> class="last-child"<?php } ?>>
 					<a href="<?php echo get_permalink( $story ); ?>">
 						<?php if ( $thumb ) { ?>
-						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
+						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
 						<?php } ?>
 						<h3 class="story-title"><?php echo $title; ?></h3>
 						<?php if ( !empty( $subtitle ) ) { ?>
@@ -29,14 +31,16 @@ function display_story_list( $issue, $class=null ) {
 						<?php } ?>
 					</a>
 				</article>
-			<?php 			}
+			<?php
+			}
 			?>
 			</div>
-		<?php 		}
-		else {
+		<?php
+		} else {
 		?>
 			<p>No stories found.</p>
-		<?php 		}
+		<?php
+		}
 
 		return ob_get_clean();
 	}
@@ -144,7 +148,7 @@ function get_default_template_font_css( $font ) {
  **/
 global $allowedposttags;
 
-function v4_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
+function v5_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	if ( $context == 'post' ) {
 		// $allowedposttags['h3'] = array(
 		// 	'data-elevation-image' => true
@@ -160,62 +164,75 @@ function v4_add_kses_whitelisted_attributes( $allowedposttags, $context ) {
 	}
 	return $allowedposttags;
 }
-add_filter( 'wp_kses_allowed_html', 'v4_add_kses_whitelisted_attributes', 11, 2 );
+add_filter( 'wp_kses_allowed_html', 'v5_add_kses_whitelisted_attributes', 11, 2 );
 
 
 /**
- * Displays a full photo essay or photo essay story.
+ * Displays a single photo in a full photo essay or photo essay story.
  **/
 function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $alt, $caption, $alternate=false ) {
 	ob_start();
 ?>
 	<figure class="photo-essay-item photo-essay-item-<?php echo $orientation; ?> <?php if ( $alternate ) { ?>alternate<?php } ?>" id="<?php echo $item_id; ?>">
-		<?php 		switch ( $orientation ):
-			case 'portrait':
-		?>
-			<div class="row">
-				<div class="img-col col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1 <?php if ( $alternate ) { ?>col-md-push-5<?php } ?>">
-					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
-					<div class="carat"></div>
-				</div>
-				<div class="caption-col col-md-4 col-sm-12 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1<?php } else { ?>col-md-offset-0<?php  } ?>">
-					<figcaption class="photo-essay-caption">
-						<?php echo $caption; ?>
-					</figcaption>
-				</div>
+	<?php
+	switch ( $orientation ):
+		case 'portrait':
+	?>
+		<div class="row">
+			<div class="img-col col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1 <?php if ( $alternate ) { ?>col-md-push-5<?php } ?>">
+				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
+				<div class="carat"></div>
 			</div>
-		<?php 				break;
-			case 'landscape':
-			case 'square':
-			default:
-		?>
-			<div class="row">
-				<div class="img-col col-md-12">
-					<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
-					<div class="carat"></div>
-				</div>
-				<div class="caption-col col-md-12">
-					<figcaption class="photo-essay-caption">
-						<?php echo $caption; ?>
-					</figcaption>
-				</div>
+			<div class="caption-col col-md-4 col-sm-12 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1<?php } else { ?>col-md-offset-0<?php  } ?>">
+				<figcaption class="photo-essay-caption">
+					<?php echo $caption; ?>
+				</figcaption>
 			</div>
-		<?php 				break;
-		endswitch;
-		?>
+		</div>
+	<?php
+			break;
+		case 'landscape':
+		case 'square':
+		default:
+	?>
+		<div class="row">
+			<div class="img-col col-md-12">
+				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
+				<div class="carat"></div>
+			</div>
+			<div class="caption-col col-md-12">
+				<figcaption class="photo-essay-caption">
+					<?php echo $caption; ?>
+				</figcaption>
+			</div>
+		</div>
+	<?php
+			break;
+	endswitch;
+	?>
 	</figure>
-<?php 	return ob_get_clean();
+<?php
+	return ob_get_clean();
 }
 
+
+/**
+ * Displays a jump link on a photo essay.
+ */
 function display_photo_essay_navitem( $item_id, $image_thumb_url ) {
 	ob_start();
 ?>
 	<a class="photo-essay-nav-link" href="#<?php echo $item_id; ?>">
 		<img class="photo-essay-nav-thumb" src="<?php echo $image_thumb_url; ?>" alt="Jump to image" title="Jump to image">
 	</a>
-<?php 	return ob_get_clean();
+<?php
+	return ob_get_clean();
 }
 
+
+/**
+ * Displays a scrollable full photo essay or photo essay story.
+ */
 function display_photo_essay( $photo_essay, $story=null ) {
 	$slide_order = trim( get_post_meta( $photo_essay->ID, 'ss_slider_slideorder', TRUE ) );
 	// Get rid of blank array entries
@@ -263,39 +280,21 @@ function display_photo_essay( $photo_essay, $story=null ) {
 		$count++;
 	}
 
+	if ( $story ) {
+		$header_contents = display_story_header_contents( $story );
+	} else {
+		$header_img_id = $images[$slide_order[0]];
+		$deck = wptexturize( $photo_essay->post_content );
+
+		$header_contents = display_story_header_contents( $photo_essay, $header_img_id, $deck );
+	}
+
 	ob_start();
 ?>
 
-	<?php 	if ( $story ) {
-		$header_img_id = get_post_meta( $story->ID, 'story_default_header_img', TRUE );
-		$header_img = wp_get_attachment_url( get_post($header_img_id)->ID );
-	}
-
-	if( $header_img ) {
-		$head_slide_image_url = $header_img;
-	} else {
-		$head_slide_image = wp_get_attachment_image_src( $images[$slide_order[0]], 'full' );
-		$head_slide_image_url = $head_slide_image[0];
-	}
-	?>
-
-	<section id="photo-essay-top" class="photo-essay-header clearfix" style="background-image: url('<?php echo $head_slide_image_url; ?>')">
-		<div class="photo-essay-header-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-10 col-md-offset-1 col-sm-10 col-sm-offset-1">
-						<h1 class="photo-essay-title"><?php echo wptexturize( $photo_essay->post_title ); ?></h1>
-
-						<?php if ( $story ): ?>
-						<div class="photo-essay-description">
-							<?php echo wptexturize( get_post_meta( $story->ID, 'story_description', TRUE ) ); ?>
-						</div>
-
-						<?php echo display_social( get_permalink( $story ), $story->post_title ); ?>
-						<?php endif; ?>
-					</div>
-				</div>
-			</div>
+	<section id="photo-essay-top" class="clearfix">
+		<div class="container">
+			<?php echo $header_contents; ?>
 		</div>
 	</section>
 
@@ -319,7 +318,8 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	</section>
 
 	<div id="photo-essay-bottom"></div>
-<?php 	return ob_get_clean();
+<?php
+	return ob_get_clean();
 }
 
 
@@ -356,7 +356,8 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 			</div>
 
 			<div class="ss-slides-wrapper">
-			<?php 			while ( $end == false ) {
+			<?php
+			while ( $end === false ) {
 				if ( $i == $slide_count ) {
 					$i = 0;
 				}
@@ -374,13 +375,15 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 						<img src="<?php echo $image[0]; ?>" alt="<?php echo $alt; ?>" />
 					</div>
 				</div>
-			<?php 				$i++;
+			<?php
+				$i++;
 			}
 			?>
 			</div>
 
 			<div class="ss-captions-wrapper">
-			<?php 			$data_id = 0;
+			<?php
+			$data_id = 0;
 			foreach ( $slide_order as $s ) {
 				if ( $s !== '' ) {
 					$data_id++;
@@ -388,7 +391,8 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 				<div class="ss-caption <?php echo $data_id == 1 ? ' ss-current' : ''; ?>" data-id="<?php echo $data_id; ?>">
 					<p class="caption"<?php if ( $caption_color ) { ?> style="color: <?php echo $caption_color; ?>;"<?php } ?>><?php echo wptexturize( $slide_caption[$s] ); ?></p>
 				</div>
-			<?php 				}
+			<?php
+				}
 			}
 			?>
 			</div>
@@ -402,6 +406,7 @@ function display_photo_essay_slideshow( $photo_essay, $slug=null, $caption_color
 	</section>
 <?php 	return ob_get_clean();
 }
+
 
 /*
  * Wrap YouTube, Facebook, Twitter and Instagram embeds
@@ -419,5 +424,94 @@ function wrap_social_embeds( $html, $url ) {
 	}
 }
 add_filter( 'embed_oembed_html', 'wrap_social_embeds', 10, 3 );
+
+
+/**
+ * Returns an attachment ID corresponding to the determined
+ * header image for the given story.
+ *
+ * @since 5.0.0
+ * @author Jo Dickson
+ * @param object $story WP_Post object
+ * @return int|null Attachment ID, or null if no image is available
+ */
+function get_story_header_image_id( $story ) {
+	if ( ! $story instanceof WP_Post ) { return null; }
+
+	$header_img_id   = intval( get_post_meta( $story->ID, 'story_default_header_img', true ) );
+	$featured_img_id = get_post_thumbnail_id( $story );
+	$img_id          = null;
+
+	// Make sure the attachment corresponding to the ID in
+	// `story_default_header_img` still exists/hasn't been deleted:
+	if ( $header_img_id ) {
+		$header_img_attachment = get_post( $header_img_id );
+		if ( $header_img_attachment ) {
+			$img_id = $header_img_id;
+		}
+	} else {
+		$img_id = $featured_img_id;
+	}
+
+	return $img_id;
+}
+
+
+/**
+ * Returns markup for inner header contents for stories.
+ * Header image ID and deck are overridable to support usage
+ * on single photo essays.
+ *
+ * @since 5.0.0
+ * @author Jo Dickson
+ * @param object $post WP_Post object
+ * @param int $header_img_id Custom attachment ID to reference when fetching the post's header image
+ * @param string $deck Custom deck content to display for this post
+ * @return string HTML content
+ */
+function display_story_header_contents( $post, $header_img_id=0, $deck='' ) {
+	if ( ! $header_img_id ) {
+		$header_img_id = get_story_header_image_id( $post );
+	}
+	$header_img = wp_get_attachment_image(
+		$header_img_id,
+		'story-featured-image',
+		false,
+		array(
+			'class' => 'story-header-image',
+			'alt' => ''
+		)
+	);
+	if ( ! $deck ) {
+		$deck = wptexturize( get_post_meta( $post->ID, 'story_description', true ) );
+	}
+
+	ob_start();
+?>
+	<?php echo $header_img; ?>
+	<div class="row title-wrap">
+		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
+		</div>
+	</div>
+	<div class="row description-wrap">
+		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+			<div class="row">
+				<div class="col-md-8 col-sm-12 col-xs-12 description-col">
+					<span class="description">
+						<?php echo $deck; ?>
+					</span>
+				</div>
+				<div class="col-md-4 col-sm-12 col-xs-12 description-col">
+					<div class="social-wrap">
+						<?php echo display_social( get_permalink( $post->ID ), $post->post_title ); ?>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<?php
+	return ob_get_clean();
+}
 
 ?>
