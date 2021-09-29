@@ -144,9 +144,11 @@ a.repeatable-remove { margin-left: 10px !important; }
 
 #select-shortcode-form-inner #shortcode-descriptions { margin-top: 0; }
 #select-shortcode-form-inner #shortcode-descriptions li { margin-top: 5px; }
+#select-shortcode-form-inner #shortcode-descriptions li::before { content: ""; margin: 0; }
 
 #select-shortcode-form-inner #shortcode-editors { margin: 25px 0; }
 #select-shortcode-form-inner #shortcode-editors li { border-bottom: 1px solid #f0f0f0; padding: 0 0 25px 0; }
+#select-shortcode-form-inner #shortcode-editors li::before { content: ""; margin: 0; }
 
 
 /* Slideshows */
