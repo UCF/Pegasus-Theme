@@ -1223,6 +1223,14 @@ function register_api_story_meta() {
 			'schema'          => null,
 		)
 	);
+	register_rest_field( 'story',
+		'story_thumbnail',
+		array(
+			'get_callback'    => 'api_story_get_thumbnail',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
 }
 
 function api_story_get_subtitle( $object, $field_name, $request ) {
@@ -1233,7 +1241,49 @@ function api_story_get_description( $object, $field_name, $request ) {
 	return get_post_meta( $object['id'], $field_name, true );
 }
 
+function api_story_get_thumbnail( $object, $field_name, $request ) {
+	$thumbnail_data = array();
+
+	$thumbnail_id = get_front_page_story_thumbnail_id( $object['id'] );
+	$thumbnail_data_raw = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-story-thumbnail' );
+	if ( ! $thumbnail_data_raw ) {
+		// If this story is really old and doesn't have this
+		// thumbnail size, grab a vanilla image size instead:
+		$thumbnail_data_raw = wp_get_attachment_image_src( $thumbnail_id, 'medium' );
+	}
+	if ( $thumbnail_data_raw ) {
+		$thumbnail_data['url'] = $thumbnail_data_raw[0];
+		$thumbnail_data['width'] = $thumbnail_data_raw[1];
+		$thumbnail_data['height'] = $thumbnail_data_raw[2];
+	}
+
+	return $thumbnail_data;
+}
+
 add_action( 'rest_api_init', 'register_api_story_meta' );
+
+
+/**
+ * Returns the ID for a story thumbnail to display
+ * on the front page.
+ */
+function get_front_page_story_thumbnail_id( $story ) {
+	$thumbnail_id = null;
+	if ( ! $story instanceof WP_Post ) {
+		$story = get_post( $story );
+	}
+
+	if ( get_relevant_version( $story ) >= 5 ) {
+		// Version 5+: fetch featured image ID
+		$thumbnail_id = get_post_thumbnail_id( $story );
+	} else {
+		// Version 4 and prior: get the ID from the
+		// `story_frontpage_thumb` meta field
+		$thumbnail_id = intval( get_post_meta( $story->ID, 'story_frontpage_thumb', true ) );
+	}
+
+	return $thumbnail_id;
+}
 
 
 /**
@@ -1243,14 +1293,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	if ( !$story ) { return false; }
 
 	$thumbnail = null;
-	if ( get_relevant_version( $story ) >= 5 ) {
-		// Version 5+: fetch featured image ID
-		$thumbnail_id = get_post_thumbnail_id( $story );
-	} else {
-		// Version 4 and prior: get the ID from the
-		// `story_frontpage_thumb` meta field
-		$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
-	}
+	$thumbnail_id = get_front_page_story_thumbnail_id( $story );
 
 	if ( $thumbnail_id ) {
 		$thumbnail = wp_get_attachment_image(
