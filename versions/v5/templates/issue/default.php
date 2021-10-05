@@ -116,12 +116,20 @@ $other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_i
 		if ( $other_stories ):
 			foreach ( $other_stories as $story ):
 		?>
-			<div class="col-sm-4 col-md-3">
+			<div class="col-sm-6 col-md-3">
 				<?php
 				echo display_front_page_story( $story, '', true );
 				$count++;
 				?>
 			</div>
+
+			<?php if ( $count !== count( $other_stories ) && $count % 2 === 0 ): ?>
+			<div class="clearfix hidden-xs hidden-md hidden-lg"></div>
+			<?php endif; ?>
+
+			<?php if ( $count !== count( $other_stories ) && $count % 4 === 0 ): ?>
+			<div class="clearfix hidden-xs hidden-sm"></div>
+			<?php endif; ?>
 		<?php
 			endforeach;
 		endif;
