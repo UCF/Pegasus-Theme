@@ -403,36 +403,42 @@ class Story extends CustomPostType {
 		}
 
 		$fields[] = array(
-			'name' => '<strong>Default Templates:</strong> Story Description',
+			'name' => 'Story Description',
 			'desc' => 'A one to two sentence description for the story.  This will be displayed underneath the story\'s title in default story templates.',
 			'id'   => $prefix.'description',
 			'type' => 'wysiwyg',
 		);
 		$fields[] = array(
-			'name' => '<strong>Default Templates:</strong> Header Font Family',
+			'name' => 'Header Font Family',
 			'desc' => 'The font family to use for headings and dropcaps in this story.  Font sizes/line heights are determined automatically based on the font selected.',
 			'id'   => $prefix.'default_font',
 			'type'    => 'select',
 			'options' => $font_options,
 		);
 		$fields[] = array(
-			'name' => '<strong>Default Templates:</strong> Header Font Color',
+			'name' => 'Header Font Color',
 			'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
 			'id'   => $prefix.'default_color',
 			'type' => 'text',
 		);
 
-		if ( $story_version < 5 ) {
-			$default_header_img_desc = 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px';
-		} else {
-			$default_header_img_desc = '(Optional) Large header image displayed at the top of the single story template.  Replaces the featured image, if provided.  Recommended dimensions: 1200x800px';
+		if (
+			$story_version < 5
+			|| $story_version >= 5 && ! get_post_meta( $post->ID, 'story_template', true )
+		) {
+			if ( $story_version < 5 ) {
+				$default_header_img_desc = 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px';
+			} else {
+				$default_header_img_desc = '(Optional) Large header image displayed at the top of the Default story template (not used in the "Photo essay" template).  Replaces the featured image, if provided.  Recommended dimensions: 1200x800px';
+			}
+
+			$fields[] = array(
+				'name' => 'Header Image',
+				'desc' => $default_header_img_desc,
+				'id'   => $prefix.'default_header_img',
+				'type' => 'file',
+			);
 		}
-		$fields[] = array(
-			'name' => '<strong>Default Templates:</strong> Header Image',
-			'desc' => $default_header_img_desc,
-			'id'   => $prefix.'default_header_img',
-			'type' => 'file',
-		);
 
 		$fields[] = array(
 			'name' => '<strong>Custom Story Template:</strong> HTML File',
