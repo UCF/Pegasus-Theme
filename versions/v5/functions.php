@@ -283,10 +283,8 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	if ( $story ) {
 		$header_contents = display_story_header_contents( $story );
 	} else {
-		$header_img_id = $images[$slide_order[0]];
 		$deck = wptexturize( $photo_essay->post_content );
-
-		$header_contents = display_story_header_contents( $photo_essay, $header_img_id, $deck );
+		$header_contents = display_story_header_contents( $photo_essay, $deck );
 	}
 
 	ob_start();
@@ -436,7 +434,18 @@ add_filter( 'embed_oembed_html', 'wrap_social_embeds', 10, 3 );
  * @return int|null Attachment ID, or null if no image is available
  */
 function get_story_header_image_id( $story ) {
-	if ( ! $story instanceof WP_Post ) { return null; }
+	// Only return an image ID for Story posts using the
+	// default story template:
+	if (
+		! $story instanceof WP_Post
+		|| ! (
+			$story instanceof WP_Post
+			&& $story->post_type === 'story'
+			&& ! get_post_meta( $story->ID, 'story_template', true )
+		)
+	) {
+		return null;
+	}
 
 	$header_img_id   = intval( get_post_meta( $story->ID, 'story_default_header_img', true ) );
 	$featured_img_id = get_post_thumbnail_id( $story );
@@ -459,36 +468,41 @@ function get_story_header_image_id( $story ) {
 
 /**
  * Returns markup for inner header contents for stories.
- * Header image ID and deck are overridable to support usage
- * on single photo essays.
+ * Deck is overridable to support usage on single photo essays.
  *
  * @since 5.0.0
  * @author Jo Dickson
  * @param object $post WP_Post object
- * @param int $header_img_id Custom attachment ID to reference when fetching the post's header image
  * @param string $deck Custom deck content to display for this post
  * @return string HTML content
  */
-function display_story_header_contents( $post, $header_img_id=0, $deck='' ) {
-	if ( ! $header_img_id ) {
-		$header_img_id = get_story_header_image_id( $post );
+function display_story_header_contents( $post, $deck='' ) {
+	$header_img = '';
+	$header_img_id = get_story_header_image_id( $post );
+	if ( $header_img_id ) {
+		$header_img = wp_get_attachment_image(
+			$header_img_id,
+			'story-featured-image',
+			false,
+			array(
+				'class' => 'story-header-image',
+				'alt' => ''
+			)
+		);
 	}
-	$header_img = wp_get_attachment_image(
-		$header_img_id,
-		'story-featured-image',
-		false,
-		array(
-			'class' => 'story-header-image',
-			'alt' => ''
-		)
-	);
 	if ( ! $deck ) {
 		$deck = wptexturize( get_post_meta( $post->ID, 'story_description', true ) );
 	}
 
 	ob_start();
 ?>
-	<?php echo $header_img; ?>
+	<?php if ( $header_img ) : ?>
+	<div class="row header-img-wrap">
+		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+			<?php echo $header_img; ?>
+		</div>
+	</div>
+	<?php endif; ?>
 	<div class="row title-wrap">
 		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
