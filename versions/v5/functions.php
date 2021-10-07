@@ -488,7 +488,11 @@ function display_story_header_contents( $post, $header_img_id=0, $deck='' ) {
 
 	ob_start();
 ?>
-	<?php echo $header_img; ?>
+	<div class="row header-img-wrap">
+		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+			<?php echo $header_img; ?>
+		</div>
+	</div>
 	<div class="row title-wrap">
 		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
