@@ -47,7 +47,12 @@ $other_stories = get_issue_stories(
 
 // Make sure the 2nd and 3rd featured stories are at
 // the front of the $other_stories list:
-array_unshift( $other_stories, $story_2, $story_3 );
+if ( $story_3 ) {
+	array_unshift( $other_stories, $story_3 );
+}
+if ( $story_2 ) {
+	array_unshift( $other_stories, $story_2 );
+}
 ?>
 
 <div class="container-wide" id="home">
