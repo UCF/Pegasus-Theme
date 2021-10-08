@@ -2,11 +2,9 @@
 <?php add_filter( 'the_content', 'kill_empty_p_tags', 999 ); ?>
 
 <?php
-$fallback_featured_stories = get_issue_stories( $post, array( 'numberposts' => 3 ) );
 $story_1_id = intval( get_post_meta( $post->ID, 'issue_story_1', TRUE ) );
 $story_2_id = intval( get_post_meta( $post->ID, 'issue_story_2', TRUE ) );
 $story_3_id = intval( get_post_meta( $post->ID, 'issue_story_3', TRUE ) );
-$featured_stories = array( $story_1_id, $story_2_id, $story_3_id );
 $past_issues = get_posts( array(
 	'post_type' => 'issue',
 	'numberposts' => 5,
@@ -19,91 +17,54 @@ $past_issues = get_posts( array(
 	)
 ));
 
-// Make sure story 1, 2, and 3 IDs are set.  If not, grab the first posts
-// that appear in $fallback_featured_stories and set them as the featured stories.
-// NOTE: IDs set previously are replaced with post objects here.
-$count = 0;
-if ( !empty( $featured_stories ) ) {
-	foreach ( $featured_stories as $key=>$val ) {
-		if ( $val !== 0 ) {
-			$story = get_post( $val );
-			$featured_stories[$key] = $story;
-		}
-		else {
-			$featured_stories[$key] = null;
-		}
+// Grab the three featured stories for this issue:
+if ( $story_1_id ) {
+	$story_1 = get_post( $story_1_id );
+} else {
+	$fallback_story = get_issue_stories( $post, array( 'numberposts' => 1 ) );
+	if ( $fallback_story ) {
+		$story_1 = $fallback_story[0];
+		$story_1_id = $story_1->ID;
 	}
 }
-else {
-	for ( $i = 0; $i < 3; $i++ ) {
-		if ( isset( $fallback_featured_stories[$i] ) ) {
-			$story = $fallback_featured_stories[$i];
-			$featured_stories[$i] = $story;
-		}
-		else {
-			$featured_stories[$i] = null;
-		}
-	}
-}
+$story_2 = $story_2_id ? get_post( $story_2_id ) : null;
+$story_3 = $story_3_id ? get_post( $story_3_id ) : null;
 
-$story_1 = $featured_stories[0];
-$story_2 = $featured_stories[1];
-$story_3 = $featured_stories[2];
-$story_1_id = $story_1 ? $story_1->ID : 0;
-$story_2_id = $story_2 ? $story_2->ID : 0;
-$story_3_id = $story_3 ? $story_3->ID : 0;
+// Fetch stories for "More in this Issue" in alphabetical order.
+// Exclude the three featured stories:
+$other_stories = get_issue_stories(
+	$post,
+	array(
+		'exclude' => array(
+			$story_1_id,
+			$story_2_id,
+			$story_3_id
+		),
+		'orderby' => 'title',
+		'order'   => 'ASC'
+	)
+);
 
-$other_stories = get_issue_stories( $post, array( 'exclude' => array( $story_1_id, $story_2_id, $story_3_id ) ) );
+// Make sure the 2nd and 3rd featured stories are at
+// the front of the $other_stories list:
+array_unshift( $other_stories, $story_2, $story_3 );
 ?>
 
 <div class="container-wide" id="home">
+	<?php if ( $story_1 ) : ?>
 	<section class="container home-hero">
-		<div class="row">
-			<div class="col-md-9 col-xs-12">
-			<?php
-			if ( $story_1 ):
-				echo display_front_page_story(
-					$story_1,
-					'fp-feature-top',
-					false,
-					'issue-cover-feature-3x2',
-					'h2'
-				);
-			endif;
-			?>
-			</div>
-			<div class="col-md-3 col-xs-12">
-				<div class="row">
-					<div class="col-sm-6 col-md-12">
-					<?php
-					if ( $story_2 ):
-						echo display_front_page_story(
-							$story_2,
-							'',
-							false,
-							'frontpage-story-thumbnail',
-							'h2'
-						);
-					endif;
-					?>
-					</div>
-					<div class="col-sm-6 col-md-12">
-					<?php
-					if ( $story_3 ):
-						echo display_front_page_story(
-							$story_3,
-							'',
-							false,
-							'frontpage-story-thumbnail',
-							'h2'
-						);
-					endif;
-					?>
-					</div>
-				</div>
-			</div>
-		</div>
+		<?php
+		echo display_front_page_story(
+			$story_1,
+			'fp-feature-top',
+			false,
+			'issue-cover-feature-3x2',
+			'h2'
+		);
+		?>
 	</section>
+	<?php endif; ?>
+
 	<section class="container home-stories">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 heading-wrap">
