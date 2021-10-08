@@ -566,46 +566,58 @@ class Issue extends CustomPostType {
 					'Custom (requires custom CSS/JS)' => 'custom',
 				),
 				'default' => 'Default'
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Featured Story #1',
-				'desc' => 'The story that appears in the top-left featured story slot of the default Issue template.',
-				'id'   => $prefix.'story_1',
-				'type' => 'select',
-				'options' => $story_options,
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Featured Story #2',
-				'desc' => 'The story that appears in the top-right featured story slot of the default Issue template.',
-				'id'   => $prefix.'story_2',
-				'type' => 'select',
-				'options' => $story_options,
-			),
-			array(
-				'name' => '<strong>Default Template:</strong> Featured Story #3',
-				'desc' => 'The story that appears in the bottom-right featured story slot of the default Issue template.',
-				'id'   => $prefix.'story_3',
-				'type' => 'select',
-				'options' => $story_options,
-			),
-			array(
-				'name' => '<strong>Custom Issue Template:</strong> Issue Cover HTML File',
-				'desc' => 'HTML markup specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
-				'id'   => $prefix.'html',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Issue Template:</strong> Issue Cover Stylesheet',
-				'desc' => 'Stylesheet specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
-				'id'   => $prefix.'stylesheet_home',
-				'type' => 'file',
-			),
-			array(
-				'name' => '<strong>Custom Issue Template:</strong> Issue Cover JavaScript File',
-				'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
-				'id'   => $prefix.'javascript_home',
-				'type' => 'file',
-			),
+			)
+		);
+
+		if ( $issue_version < 5 ) {
+			$story_1_desc = 'The story that appears in the top-left featured story slot of the default Issue template.';
+			$story_2_desc = 'The story that appears in the top-right featured story slot of the default Issue template.';
+			$story_3_desc = 'The story that appears in the bottom-right featured story slot of the default Issue template.';
+		} else {
+			$story_1_desc = 'The story to display at the top of the default Issue template.';
+			$story_2_desc = 'The first story to display in the "More in this Issue" list in the default Issue template.';
+			$story_3_desc = 'The second story to display in the "More in this Issue" list in the default Issue template.';
+		}
+
+		$fields[] = array(
+			'name' => 'Featured Story #1',
+			'desc' => $story_1_desc,
+			'id'   => $prefix.'story_1',
+			'type' => 'select',
+			'options' => $story_options,
+		);
+		$fields[] = array(
+			'name' => 'Featured Story #2',
+			'desc' => $story_2_desc,
+			'id'   => $prefix.'story_2',
+			'type' => 'select',
+			'options' => $story_options,
+		);
+		$fields[] = array(
+			'name' => 'Featured Story #3',
+			'desc' => $story_3_desc,
+			'id'   => $prefix.'story_3',
+			'type' => 'select',
+			'options' => $story_options,
+		);
+
+		$fields[] = array(
+			'name' => '<strong>Custom Issue Template:</strong> Issue Cover HTML File',
+			'desc' => 'HTML markup specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
+			'id'   => $prefix.'html',
+			'type' => 'file',
+		);
+		$fields[] =  array(
+			'name' => '<strong>Custom Issue Template:</strong> Issue Cover Stylesheet',
+			'desc' => 'Stylesheet specifically for the issue cover. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
+			'id'   => $prefix.'stylesheet_home',
+			'type' => 'file',
+		);
+		$fields[] = array(
+			'name' => '<strong>Custom Issue Template:</strong> Issue Cover JavaScript File',
+			'desc' => 'JavaScript file that runs exclusively on the issue cover for this issue. Also used on the front page if this issue is the latest issue, and a custom front page is not enabled.',
+			'id'   => $prefix.'javascript_home',
+			'type' => 'file',
 		);
 
 		// Show issue-wide asset fields for v1 issues only:
