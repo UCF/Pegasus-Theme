@@ -56,6 +56,14 @@ if ( $story_2 ) {
 ?>
 
 <div class="container-wide" id="home">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12 col-sm-12 heading-wrap">
+				<h2><span><?php echo $post->post_title; ?></span></h2>
+			</div>
+		</div>
+	</div>
+
 	<?php if ( $story_1 ) : ?>
 	<section class="container home-hero">
 		<?php
@@ -63,8 +71,7 @@ if ( $story_2 ) {
 			$story_1,
 			'fp-feature-top',
 			false,
-			'issue-cover-feature-3x2',
-			'h2'
+			'issue-cover-feature-3x2'
 		);
 		?>
 	</section>
