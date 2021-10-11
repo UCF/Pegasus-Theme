@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * READ ME, PLEASE:
  *
@@ -81,6 +81,7 @@ function get_relevant_version( $the_post=null ) {
 
 					$post_issue = get_page_by_path( $url_path , OBJECT, array( 'issue' ) );
 					$post_story = get_page_by_path( $url_path , OBJECT, array( 'story' ) );
+					$post_photo_essay = get_page_by_path( $url_path , OBJECT, array( 'photo_essay' ) );
 
 					if ( $post_issue ) {
 						$the_post = $post_issue;
@@ -88,10 +89,13 @@ function get_relevant_version( $the_post=null ) {
 					else if ( $post_story ) {
 						$the_post = $post_story;
 					}
+					else if ( $post_photo_essay ) {
+						$the_post = $post_photo_essay;
+					}
 					else {
-						// The requested content isn't a story or issue.  Set $the_post to
-						// null here so that get_relevant_issue() will return a fallback value
-						// (the latest issue).
+						// The requested content isn't a story, issue or photo essay.
+						// Set $the_post to null here so that get_relevant_issue()
+						// will return a fallback value (the latest issue).
 						$the_post = null;
 					}
 				}
@@ -762,7 +766,17 @@ function output_header_markup($post) {
 		$fonts = unserialize( TEMPLATE_FONT_URLS );
 		if ( $fonts ) {
 			foreach ( $fonts as $name => $url ) {
-				$output .= '<link rel="stylesheet" href="'.$url.'" type="text/css" media="all" />';
+				// Our font handles should all use the naming convention
+				// `font-[slug]`. Try to create a stylesheet handle on the
+				// fly and compare with it, since `wp_style_is()` can't
+				// compare via asset URL:
+				$approximated_handle = 'font-' . sanitize_title( $name );
+
+				// Try to avoid loading fonts twice:
+				if ( ! wp_style_is( $approximated_handle, 'enqueued' ) ) {
+					$url = cache_bust_url( $url );
+					$output .= '<link rel="stylesheet" href="'.$url.'" type="text/css" media="all" />';
+				}
 			}
 		}
 
@@ -775,6 +789,7 @@ function output_header_markup($post) {
 	if ( $post->post_type == 'page' ) {
 		$page_stylesheet_url = Page::get_stylesheet_url( $post );
 		if ( !empty( $page_stylesheet_url ) ) {
+			$page_stylesheet_url = cache_bust_url( $page_stylesheet_url );
 			$output .= '<link rel="stylesheet" href="'.$page_stylesheet_url.'" type="text/css" media="all" />';
 		}
 	}
@@ -806,7 +821,8 @@ function output_header_markup($post) {
 					foreach ($fonts as $font) {
 						trim($font);
 						if (array_key_exists($font, $available_fonts)) {
-							$output .= '<link rel="stylesheet" href="'.$available_fonts[$font].'" type="text/css" media="all" />';
+							$font_url = cache_bust_url( $available_fonts[$font] );
+							$output .= '<link rel="stylesheet" href="'.$font_url.'" type="text/css" media="all" />';
 						}
 					}
 				}
@@ -824,13 +840,13 @@ function output_header_markup($post) {
 
 		// 3. Custom issue page-specific stylesheet
 		if ( (is_home() || $post->post_type == 'issue') && (uses_custom_template($post)) ) {
-			$home_stylesheet_url = Issue::get_home_stylesheet_url($post);
+			$home_stylesheet_url = cache_bust_url( Issue::get_home_stylesheet_url($post) );
 			$dev_issue_home_directory = get_post_meta($post->ID, 'issue_dev_home_asset_directory', TRUE);
 			if (!empty($home_stylesheet_url)) {
 				$output .= '<link rel="stylesheet" href="'.$home_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( DEV_MODE == 1 && !empty($dev_issue_home_directory) ) {
-				$dev_home_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css';
+				$dev_home_stylesheet_url = cache_bust_url( THEME_DEV_URL.'/'.$dev_issue_home_directory.'issue-cover.css' );
 				if (curl_exists($dev_home_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_home_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -839,13 +855,13 @@ function output_header_markup($post) {
 
 		// 4. Custom story stylesheet
 		if( $post->post_type == 'story' && uses_custom_template($post) ) {
-			$story_stylesheet_url = Story::get_stylesheet_url($post);
+			$story_stylesheet_url = cache_bust_url( Story::get_stylesheet_url($post) );
 			$dev_issue_directory = get_post_meta($post->ID, 'story_dev_directory', TRUE);
 			if ( !empty($story_stylesheet_url) ) {
 				$output .= '<link rel="stylesheet" href="'.$story_stylesheet_url.'" type="text/css" media="all" />';
 			}
 			elseif ( (DEV_MODE == 1) && !empty($dev_issue_directory) ) {
-				$dev_story_stylesheet_url = THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css';
+				$dev_story_stylesheet_url = cache_bust_url( THEME_DEV_URL.'/'.$dev_issue_directory.$post->post_name.'.css' );
 				if (curl_exists($dev_story_stylesheet_url)) {
 					$output .= '<link rel="stylesheet" href="'.$dev_story_stylesheet_url.'" type="text/css" media="all" />';
 				}
@@ -1207,6 +1223,14 @@ function register_api_story_meta() {
 			'schema'          => null,
 		)
 	);
+	register_rest_field( 'story',
+		'story_thumbnail',
+		array(
+			'get_callback'    => 'api_story_get_thumbnail',
+			'update_callback' => null,
+			'schema'          => null,
+		)
+	);
 }
 
 function api_story_get_subtitle( $object, $field_name, $request ) {
@@ -1217,7 +1241,49 @@ function api_story_get_description( $object, $field_name, $request ) {
 	return get_post_meta( $object['id'], $field_name, true );
 }
 
+function api_story_get_thumbnail( $object, $field_name, $request ) {
+	$thumbnail_data = array();
+
+	$thumbnail_id = get_front_page_story_thumbnail_id( $object['id'] );
+	$thumbnail_data_raw = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-story-thumbnail' );
+	if ( ! $thumbnail_data_raw ) {
+		// If this story is really old and doesn't have this
+		// thumbnail size, grab a vanilla image size instead:
+		$thumbnail_data_raw = wp_get_attachment_image_src( $thumbnail_id, 'medium' );
+	}
+	if ( $thumbnail_data_raw ) {
+		$thumbnail_data['url'] = $thumbnail_data_raw[0];
+		$thumbnail_data['width'] = $thumbnail_data_raw[1];
+		$thumbnail_data['height'] = $thumbnail_data_raw[2];
+	}
+
+	return $thumbnail_data;
+}
+
 add_action( 'rest_api_init', 'register_api_story_meta' );
+
+
+/**
+ * Returns the ID for a story thumbnail to display
+ * on the front page.
+ */
+function get_front_page_story_thumbnail_id( $story ) {
+	$thumbnail_id = null;
+	if ( ! $story instanceof WP_Post ) {
+		$story = get_post( $story );
+	}
+
+	if ( get_relevant_version( $story ) >= 5 ) {
+		// Version 5+: fetch featured image ID
+		$thumbnail_id = get_post_thumbnail_id( $story );
+	} else {
+		// Version 4 and prior: get the ID from the
+		// `story_frontpage_thumb` meta field
+		$thumbnail_id = intval( get_post_meta( $story->ID, 'story_frontpage_thumb', true ) );
+	}
+
+	return $thumbnail_id;
+}
 
 
 /**
@@ -1226,13 +1292,19 @@ add_action( 'rest_api_init', 'register_api_story_meta' );
 function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) { return false; }
 
-	$thumbnail_id = get_post_meta( $story->ID, 'story_frontpage_thumb', true );
 	$thumbnail = null;
+	$thumbnail_id = get_front_page_story_thumbnail_id( $story );
+
 	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, $thumbnail_size );
-		if ( $thumbnail ) {
-			$thumbnail = $thumbnail[0];
-		}
+		$thumbnail = wp_get_attachment_image(
+			$thumbnail_id,
+			$thumbnail_size,
+			false,
+			array(
+				'class' => 'fp-feature-img center-block img-responsive',
+				'alt' => '' // Intentionally blank to avoid redundant story title announcement
+			)
+		);
 	}
 
 	$title = wptexturize( $story->post_title );
@@ -1260,7 +1332,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php if ( $thumbnail ): ?>
 		<div class="fp-feature-img-wrap">
-			<img class="fp-feature-img center-block img-responsive" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+			<?php echo $thumbnail; ?>
 
 			<?php if ( $show_vertical && $vertical ): ?>
 			<span class="fp-vertical">
@@ -1340,7 +1412,7 @@ function display_front_page_event( $event ) {
 /**
  * Displays a single featured gallery on the front page.
  **/
-function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
+function display_front_page_gallery( $gallery, $css_class='' ) {
 	if ( !$gallery ) { return false; }
 
 	$title = wptexturize( $gallery->post_title );
@@ -1351,13 +1423,28 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 		$vertical = wptexturize( $vertical->name );
 	}
 
-	$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
 	$thumbnail = null;
+	if ( get_relevant_version( $gallery ) >= 5 ) {
+		// Version 5+: fetch featured image ID
+		$thumbnail_id = get_post_thumbnail_id( $gallery );
+		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
+	} else {
+		// Version 4 and prior: get the ID from the
+		// `story_frontpage_gallery_thumb` meta field
+		$thumbnail_id = intval( get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true ) );
+		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
+	}
+
 	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image_src( $thumbnail_id, 'frontpage-featured-gallery-thumbnail' );
-		if ( $thumbnail ) {
-			$thumbnail = $thumbnail[0];
-		}
+		$thumbnail = wp_get_attachment_image(
+			$thumbnail_id,
+			$thumbnail_size,
+			false,
+			array(
+				'class' => 'img-responsive center-block fp-gallery-img',
+				'alt' => '' // Intentionally blank to avoid redundant story title announcement
+			)
+		);
 	}
 
 	ob_start();
@@ -1366,7 +1453,7 @@ function display_front_page_gallery( $gallery, $css_class='', $heading='h2' ) {
 		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
 			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
 			<?php if ( $thumbnail ): ?>
-			<img class="img-responsive center-block fp-gallery-img" src="<?php echo $thumbnail; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>">
+				<?php echo $thumbnail; ?>
 			<?php endif; ?>
 		</a>
 	</article>
