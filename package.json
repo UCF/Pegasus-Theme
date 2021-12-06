@@ -1,12 +1,12 @@
 {
   "private": true,
   "devDependencies": {
-    "@babel/cli": "^7.15.7",
-    "@babel/core": "^7.15.5",
-    "@babel/preset-env": "^7.15.6",
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
     "babel-eslint": "^10.0.3",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.2",
-    "browser-sync": "^2.27.5",
+    "browser-sync": "^2.27.7",
     "eslint": "^7.32.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
@@ -23,6 +23,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "merge": "^2.1.1",
-    "sass": "^1.42.1"
+    "sass": "^1.44.0",
+    "ucf-athena-framework": "^1.1.0"
   }
 }
