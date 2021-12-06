@@ -2,6 +2,6 @@
 @import 'variables';
 
 // Combine vendor assets and our theme:
-@import '../../../../static/components/bootstrap-sass-3.3.4/assets/stylesheets/bootstrap';
-@import '../../../../static/components/font-awesome-4.3.0/scss/font-awesome';
+@import './ucf-athena-framework/src/scss/framework';
+
 @import 'base';

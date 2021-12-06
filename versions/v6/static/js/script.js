@@ -1,4 +1,15 @@
-// =require bootstrap-sass-3.3.4/assets/javascripts/bootstrap.js
+//
+// Import vendor assets
+//
+
+// =require ucf-athena-framework/dist/js/framework.min.js
+
+
+
+//
+// Import our assets
+//
+
 // =require ./webcom-base.js
 // =require ./generic-base.js
 
