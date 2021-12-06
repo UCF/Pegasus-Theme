@@ -145,6 +145,13 @@ function serverServe(done) {
 // Installation of components/dependencies
 //
 
+// Copy Font Awesome 4 files
+gulp.task('move-components-fontawesome-4', (done) => {
+  gulp.src(`${config.packagesPath}/font-awesome-4/fonts/**/*`)
+    .pipe(gulp.dest(`${config.dist.fontPath}/font-awesome-4`));
+  done();
+});
+
 // Athena Framework web font processing
 gulp.task('move-components-athena-fonts', (done) => {
   gulp.src([`${config.packagesPath}/ucf-athena-framework/dist/fonts/**/*`])
@@ -154,6 +161,7 @@ gulp.task('move-components-athena-fonts', (done) => {
 
 // Run all component-related tasks
 gulp.task('components', gulp.parallel(
+  'move-components-fontawesome-4',
   'move-components-athena-fonts'
 ));
 
@@ -172,8 +180,13 @@ gulp.task('scss-build-version', () => {
   return buildCSS(`${config.versionPath}/static/scss/style.scss`);
 });
 
+// Compile Font Awesome v4 stylesheet
+gulp.task('scss-build-fa4', () => {
+  return buildCSS(`${config.src.scssPath}/font-awesome-4.scss`);
+});
+
 // All theme css-related tasks
-gulp.task('css', gulp.series('scss-lint-version', 'scss-build-version'));
+gulp.task('css', gulp.series('scss-lint-version', 'scss-build-version', 'scss-build-fa4'));
 
 
 //

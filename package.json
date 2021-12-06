@@ -8,6 +8,7 @@
     "babel-plugin-transform-es2015-modules-strip": "^0.1.2",
     "browser-sync": "^2.27.7",
     "eslint": "^7.32.0",
+    "font-awesome-4": "github:FortAwesome/Font-Awesome#v4.7.0",
     "gulp": "^4.0.2",
     "gulp-autoprefixer": "^8.0.0",
     "gulp-babel": "^8.0.0",
