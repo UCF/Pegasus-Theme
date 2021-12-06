@@ -1,0 +1,732 @@
+// Header Pulldown Menu: General
+#pulldown,
+.pulldown-container {
+  position: relative;
+}
+
+#pulldown {
+  background-color: #f0f0f0;
+  height: 0;
+  overflow-y: hidden;
+  -webkit-transition: height .5s ease-in-out;
+  transition: height .5s ease-in-out;
+  z-index: 999;
+}
+
+.pulldown-container {
+  height: 0;
+  opacity: 0;
+  padding: 0 0 30px;
+  -webkit-transition: opacity .4s ease-in-out;
+  transition: opacity .4s ease-in-out;
+  // Prevent list item jump in Firefox:
+  -webkit-transition-delay: .35s;
+  transition-delay: .35s;
+  z-index: 5;
+
+  &.active {
+    height: auto;
+    opacity: 1;
+  }
+}
+
+
+// Header Pulldown Menu: Story lists (also used for subfooter nav)
+.story-list,
+.story-list-grid {
+  article {
+    .story-title {
+      @include font-smoothing();
+      color: #333;
+      @include gotham(7);
+      font-size: 16px;
+      line-height: 18px;
+      margin-top: 0;
+    }
+
+    &:hover .story-title,
+    &:active .story-title {
+      text-decoration: underline;
+    }
+  }
+
+  .subtitle {
+    color: #222;
+    font-family: $font-family-serif;
+    font-size: 13px;
+    line-height: 18px;
+
+    em,
+    i {
+      font-style: normal;
+    }
+  }
+}
+
+.story-list {
+  @include list-unstyled();
+  display: block;
+  margin-bottom: 0;
+  -webkit-overflow-scrolling: touch;
+  overflow-x: scroll;
+  padding-bottom: 30px;
+  white-space: nowrap;
+  width: 100%;
+
+  article {
+    display: inline-block;
+    margin-bottom: 25px;
+    margin-left: 20px;
+    vertical-align: top;
+    white-space: normal;
+    width: 140px;
+
+    &.last-child {
+      margin-right: 80px;
+
+      @media (max-width: $screen-xs-max) {
+        margin-right: 20px;
+      }
+    }
+
+    img {
+      // Fixed width/height required for lazyload
+      height: 120px;
+      width: 188px;
+
+      @media (max-width: $screen-sm-max) {
+        height: 97px;
+        width: 146px;
+      }
+    }
+
+    .story-title,
+    .subtitle {
+      clear: both;
+      display: block;
+      float: left;
+      width: 100%;
+    }
+
+    .story-title {
+      margin-bottom: 4px;
+      margin-top: 15px;
+    }
+  }
+
+  // Pulldown controls
+  + .controls {
+    background: #fff;
+    display: block;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    text-align: center;
+    top: 0;
+    width: 60px;
+    z-index: 6;
+
+    @media (max-width: $screen-xs-max) {
+      display: none !important;
+    }
+
+    a {
+      background-image: none !important;
+      color: #696969;
+      display: block;
+      font-size: 28px;
+      // height: 30px;
+      left: 0;
+      overflow: hidden;
+      position: absolute;
+      right: 0;
+      text-indent: 100%;
+      white-space: nowrap;
+      width: auto;
+
+      &:hover,
+      &:active {
+        color: #ffc904;
+        text-decoration: none;
+      }
+
+      &:before {
+        background-image: none;
+        left: 0;
+        position: absolute;
+        right: 0;
+        text-align: center;
+        text-indent: 0;
+        top: 0;
+      }
+
+      &.close {
+        filter: alpha(opacity=100);
+        font-size: 36px;
+        opacity: 1;
+        top: 10%;
+
+        &:before {
+          content: '×';
+        }
+      }
+
+      &.backward {
+        right: 2px;
+        top: 38%;
+      }
+
+      &.forward {
+        left: 4px;
+        top: 60%;
+      }
+    }
+  }
+}
+
+.pulldown-stories .story-list article {
+  width: 180px;
+
+  @media (max-width: $screen-sm-max) {
+    width: 140px;
+
+    img {
+      // Fixed width/height required for lazyload
+      height: 93px;
+      width: 140px;
+    }
+  }
+}
+
+.story-list-grid {
+  article {
+    margin-bottom: 20px;
+
+    &.last-child {
+      margin-right: 80px; // Assign class via jquery; :last-child doesn't work in ie8
+    }
+
+    img {
+      // Fixed width/height required for lazyload
+      height: 53px;
+      width: 80px;
+    }
+
+    .story-title,
+    .subtitle {
+      padding-left: 100px;
+    }
+
+    // .story-title {
+    //   margin-top: 15px;
+    // }
+
+  }
+}
+
+
+// Header Navigation: General - nav, nav ul
+#header-navigation {
+  background-color: #fff;
+  height: 40px;
+  position: relative;
+  z-index: 999;
+
+  nav {
+    height: 40px;
+    position: relative;
+    top: 0;
+    z-index: 1;
+  }
+
+  ul {
+    @include list-unstyled();
+    height: 100%;
+    text-align: right;
+
+    @media (max-width: $screen-xs-max) {
+      text-align: center;
+    }
+  }
+
+  li {
+    display: block;
+    line-height: 40px;
+    position: relative;
+
+    a:hover,
+    a:active,
+    a:focus,
+    a.active {
+      color: #d7a900;
+    }
+  }
+
+  // Pegasus title logo
+  .header-logo {
+    @include sprite();
+    background-position: 0 0;
+    float: left;
+    height: 15px;
+    margin-right: 15px;
+    margin-top: 0;
+    position: relative;
+    top: 12.5px;
+    width: 97px;
+
+    @media (max-width: $screen-xs-max) {
+      left: 0;
+      margin: auto;
+      position: absolute;
+      right: 0;
+      top: 12.5px;
+      z-index: 2;
+    }
+
+    a {
+      display: block;
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+
+
+// General - Mobile nav, Issue, Archives list items
+li#nav-issue,
+li#nav-archives,
+li#nav-give {
+  display: inline-block;
+}
+
+li#nav-issue,
+li#nav-archives {
+  #header-navigation ul.mobile-nav-visible & {
+    @media (max-width: $screen-xs-max) {
+      display: inline-block;
+      float: none;
+    }
+  }
+
+  a {
+    &:before {
+      margin-right: 5px;
+      position: relative;
+      top: 1px;
+    }
+  }
+}
+
+li#nav-about,
+li#nav-issue,
+li#nav-archives,
+li#nav-give,
+#header-navigation .header-logo.mobile-nav-visible {
+  @media (max-width: $screen-xs-max) {
+    display: none;
+  }
+}
+
+li#nav-mobile {
+  display: none;
+  float: left;
+  height: 40px;
+  text-align: left;
+  width: 40px;
+
+  @media (max-width: $screen-xs-max) {
+    display: block;
+  }
+
+  a {
+    @include font-smoothing();
+    color: #222;
+    display: block;
+    filter: alpha(opacity=100);
+    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-size: 18px;
+    height: 100%;
+    line-height: 40px;
+    opacity: 1;
+    text-decoration: none;
+    width: 100%;
+
+    &:before {
+      @include font-smoothing();
+      content: '\e602';
+      display: block;
+      font-family: 'icomoon';
+      font-weight: normal;
+    }
+
+    &.active:before {
+      content: '×';
+      font-family: $font-family-sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+      position: relative;
+      top: -2px;
+    }
+
+    &.active:after {
+      display: none;
+    }
+  }
+}
+
+li#nav-issue {
+  @media (max-width: $screen-xs-max) {
+    margin-left: -30px;
+  }
+
+  a {
+    &:before {
+      content: '\e600';
+    }
+
+    &.active:after {
+      left: 30px;
+    }
+  }
+}
+
+li#nav-archives {
+  a {
+    &:before {
+      content: '\e601';
+    }
+
+    &.active:after {
+      left: 11px;
+    }
+  }
+}
+
+li#nav-issue,
+li#nav-archives {
+  margin-right: 15px;
+
+  a:before {
+    @include font-smoothing();
+    font-family: 'icomoon';
+    font-weight: normal;
+  }
+}
+
+li#nav-give {
+  a {
+    border-bottom-width: 3px;
+    border-top: 2px solid transparent;
+    padding: 4px 10px;
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: #222;
+    }
+  }
+}
+
+li#nav-issue a,
+li#nav-archives a,
+li#nav-give a {
+  @include font-smoothing();
+  color: #222;
+  font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 14px;
+  text-decoration: none;
+
+  @media (max-width: $screen-sm-max) {
+    font-size: 13px;
+    line-height: 13px;
+  }
+
+  @include body-prefix('.ie8') {
+    font-weight: normal;
+  };
+}
+
+
+// Issue, Archives active styling
+.pulldown-toggle.active:after {
+  border-bottom: 15px solid #fff;
+  border-left: 30px solid transparent;
+  border-right: 30px solid transparent;
+  content: '';
+  display: block;
+  height: 0;
+  left: 12px;
+  position: absolute;
+  top: -15px;
+  width: 0;
+  z-index: 6;
+}
+
+
+// About Pegasus Magazine link
+li#nav-about {
+  float: left;
+
+  a {
+    color: #222;
+    font-family: $font-family-serif;
+    font-size: 12px;
+    font-style: italic;
+
+    @media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
+      font-size: 11px;
+    }
+  }
+}
+
+
+// Subfooter - More Stories
+#more-stories {
+  margin-bottom: 80px;
+  margin-top: 50px;
+  position: relative;
+
+  @media (max-width: $screen-sm-max) {
+    margin-bottom: 40px;
+  }
+
+  article {
+    a {
+      display: block;
+      overflow: hidden;
+
+      &:hover,
+      &:active {
+        text-decoration: none;
+      }
+    }
+
+    .story-title,
+    .subtitle {
+      display: block;
+    }
+  }
+
+  .story-list-grid article img {
+    float: left;
+    margin: 0 20px 20px 0;
+  }
+}
+
+
+// Subfooter - Social Links
+#footer-social {
+  // "hide" .border-top border on default issue template
+  margin-top: -1px;
+
+  .border-top {
+    border-top: 1px solid #e5e5e5;
+    padding: 20px 0;
+  }
+}
+
+.social-icon-list-heading {
+  @include gotham(6);
+  color: $gray-medium;
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.social-icon-list {
+  @include list-unstyled();
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.social-icon-list-item {
+  display: inline-block;
+  padding: 0 3px;
+
+  a {
+    @include sprite();
+    height: 32px;
+    width: 35px;
+
+    &.facebook {
+      background-position: 3px -114px;
+    }
+
+    &.twitter {
+      background-position: -63px -113px;
+    }
+
+    &.flickr {
+      background-position: -30px -114px;
+    }
+
+    &.youtube {
+      background-position: -98px -114px;
+    }
+
+    &.googleplus {
+      background-position: -131px -114px;
+    }
+  }
+}
+
+
+// Footer - General
+#footer-navigation {
+  background-color: #222;
+  padding-bottom: 60px;
+  padding-top: 60px;
+
+  @media (max-width: $screen-xs-max) {
+    padding-bottom: 25px;
+    padding-top: 40px;
+  }
+
+  &,
+  & p,
+  & a {
+    @include font-smoothing();
+    color: #fff;
+    font-family: 'Gotham SSm A', 'Gotham SSm B', serif;
+    font-size: 14px;
+    font-weight: 700;
+
+    .ie8 & {
+      font-weight: normal;
+    }
+  }
+
+  a {
+    font-size: 18px;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 13px;
+    }
+  }
+
+
+  // Footer logo positioning
+  .footer-logo.pull-left,
+  .footer-ipad-app {
+    display: block;
+    padding-bottom: 60px;
+    width: 48%;
+  }
+
+  .footer-logo,
+  .footer-ipad-app {
+    @media (max-width: $screen-sm-max) {
+      padding-bottom: 30px;
+    }
+  }
+
+  .footer-logo {
+    display: block;
+    margin-top: 5px;
+    padding-bottom: 60px;
+    width: 100%;
+
+    @media (max-width: $screen-sm-max) {
+      margin-top: 8px;
+    }
+
+    a {
+      margin: auto;
+    }
+
+    &,
+    &.pull-left {
+      @media (max-width: $screen-xs-max) {
+        padding-bottom: 20px;
+        width: 100%;
+      }
+    }
+
+    &,
+    &.pull-left,
+    a {
+      @media (max-width: $screen-xs-max) {
+        clear: both;
+        float: left !important;
+      }
+    }
+  }
+
+  .footer-ipad-app {
+    &,
+    &.pull-right {
+      @media (max-width: $screen-xs-max) {
+        clear: both;
+        float: left !important;
+      }
+    }
+  }
+
+
+  // Footer navigation
+  ul {
+    @include list-unstyled();
+    clear: both;
+    margin-bottom: 0;
+    text-align: center;
+
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+    }
+  }
+
+  li {
+    display: inline-block;
+
+    @media (max-width: $screen-xs-max) {
+      line-height: 32px;
+      width: 100%;
+    }
+
+    &:before {
+      color: #5c5c5c;
+      content: '|';
+      font-size: 18px;
+      padding: 0 6px;
+
+      @media (max-width: $screen-sm-max) {
+        font-size: 16px;
+      }
+
+      @media (max-width: $screen-xs-max) {
+        content: '';
+        padding: 0;
+      }
+    }
+
+    &:first-child:before {
+      content: '';
+    }
+  }
+
+  // Footer copyright line
+  .copyright,
+  .address {
+    margin: 0;
+    text-align: center;
+
+    @media (max-width: $screen-sm-max) {
+      font-size: 13px;
+    }
+
+    @media (max-width: $screen-xs-max) {
+      text-align: left;
+    }
+  }
+
+  .copyright {
+    padding-top: 60px;
+
+    @media (max-width: $screen-xs-max) {
+      padding-top: 30px;
+    }
+  }
+}
