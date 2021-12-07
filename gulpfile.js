@@ -148,7 +148,7 @@ function serverServe(done) {
 // Copy Font Awesome 4 files
 gulp.task('move-components-fontawesome-4', (done) => {
   gulp.src(`${config.packagesPath}/font-awesome-4/fonts/**/*`)
-    .pipe(gulp.dest(`${config.dist.fontPath}/font-awesome-4`));
+    .pipe(gulp.dest(`${config.fontPath}/font-awesome-4`));
   done();
 });
 
@@ -182,7 +182,7 @@ gulp.task('scss-build-version', () => {
 
 // Compile Font Awesome v4 stylesheet
 gulp.task('scss-build-fa4', () => {
-  return buildCSS(`${config.src.scssPath}/font-awesome-4.scss`);
+  return buildCSS(`${config.versionPath}/static/scss/font-awesome-4.scss`);
 });
 
 // All theme css-related tasks
