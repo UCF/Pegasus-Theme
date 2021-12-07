@@ -4,7 +4,7 @@ const gulp         = require('gulp');
 const autoprefixer = require('gulp-autoprefixer');
 const cleanCSS     = require('gulp-clean-css');
 const include      = require('gulp-include');
-const eslint       = require('gulp-eslint');
+const eslint       = require('gulp-eslint-new');
 const babel        = require('gulp-babel');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass')(require('sass'));
@@ -22,7 +22,7 @@ let config = {
   packagesPath: './node_modules',
   sync: false,
   target: 'http://localhost/',
-  version: 'v5',
+  version: 'v6',
   versionPath: ''
 };
 
@@ -66,6 +66,9 @@ function buildCSS(src, dest, renameMinified = true) {
       doBless = true;
       break;
     case 'v5':
+      versionBrowsersList = ['last 2 versions'];
+      break;
+    case 'v6':
       versionBrowsersList = ['last 2 versions'];
       break;
     default:
@@ -139,6 +142,31 @@ function serverServe(done) {
 
 
 //
+// Installation of components/dependencies
+//
+
+// Copy Font Awesome 4 files
+gulp.task('move-components-fontawesome-4', (done) => {
+  gulp.src(`${config.packagesPath}/font-awesome-4/fonts/**/*`)
+    .pipe(gulp.dest(`${config.fontPath}/font-awesome-4`));
+  done();
+});
+
+// Athena Framework web font processing
+gulp.task('move-components-athena-fonts', (done) => {
+  gulp.src([`${config.packagesPath}/ucf-athena-framework/dist/fonts/**/*`])
+    .pipe(gulp.dest(config.fontPath));
+  done();
+});
+
+// Run all component-related tasks
+gulp.task('components', gulp.parallel(
+  'move-components-fontawesome-4',
+  'move-components-athena-fonts'
+));
+
+
+//
 // CSS
 //
 
@@ -152,8 +180,13 @@ gulp.task('scss-build-version', () => {
   return buildCSS(`${config.versionPath}/static/scss/style.scss`);
 });
 
+// Compile Font Awesome v4 stylesheet
+gulp.task('scss-build-fa4', () => {
+  return buildCSS(`${config.versionPath}/static/scss/font-awesome-4.scss`);
+});
+
 // All theme css-related tasks
-gulp.task('css', gulp.series('scss-lint-version', 'scss-build-version'));
+gulp.task('css', gulp.series('scss-lint-version', 'scss-build-version', 'scss-build-fa4'));
 
 
 //
@@ -223,4 +256,4 @@ gulp.task('watch', (done) => {
 //
 // Default task
 //
-gulp.task('default', gulp.series('css', 'js'));
+gulp.task('default', gulp.series('components', 'css', 'js'));
