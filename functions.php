@@ -141,10 +141,10 @@ add_action( 'init', 'setup_version_files', 3 );
 
 
 /**
- * Loads version-specific Front Page and CPT templates instead of templates
+ * Loads version-specific Front Page, Page and CPT templates instead of templates
  * from the theme's root directory.
  *
- * Note: Pages and Posts should always use templates from the root directory
+ * Note: Posts should always use templates from the root directory
  * (they are not modified per-version).
  **/
 function by_version_template( $template ) {
@@ -152,6 +152,8 @@ function by_version_template( $template ) {
 
 	if ( is_front_page() ) {
 		$new_template = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	} elseif ( $post->post_type === 'page' ) {
+		$new_template = locate_template( array( get_version_file_path( 'page.php' ) ) );
 	}
 
 	if ( in_array( $post->post_type, array( 'story', 'issue', 'photo_essay' ) ) ) {
@@ -161,6 +163,7 @@ function by_version_template( $template ) {
 	if ( !empty( $new_template ) ) {
 		return $new_template;
 	}
+
 	return $template;
 }
 add_filter( 'template_include', 'by_version_template', 99 );
