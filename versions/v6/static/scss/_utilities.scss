@@ -1,26 +1,3 @@
-// Disable responsiveness in IE8:
-.ie8 {
-  // Create grid for IE8 because it doesn't understand media queries
-  @include make-grid(md);
-
-  // Fix .visible-, .hidden- classes
-  .hidden-md {
-    display: none !important;
-  }
-
-  .visible-md-block {
-    display: block !important;
-  }
-
-  .visible-md-inline {
-    display: inline !important;
-  }
-
-  .visible-md-inline-block {
-    display: inline-block !important;
-  }
-}
-
 .container {
   // Override Bootstrap's default padding of $grid-gutter-width / 2
   padding-left: $grid-gutter-width;
@@ -37,24 +14,28 @@
 
 // Creates columns that are 20% wide
 .col-lg-20percent {
-  @include make-lg-column(2.4);
+
+  @include media-breakpoint-up(lg) {
+    @include make-col(2.4);
+  }
 }
 
 .col-md-20percent {
-  @include make-md-column(2.4);
-
-  @include body-prefix('.ie8') {
-    // Call -xs here to generate width value not wrapped in a media query
-    @extend .col-xs-20percent;
+  @include media-breakpoint-up(md) {
+    @include make-col(2.4);
   }
 }
 
 .col-sm-20percent {
-  @include make-sm-column(2.4);
+  @include media-breakpoint-up(sm) {
+    @include make-col(2.4);
+  }
 }
 
 .col-xs-20percent {
-  @include make-xs-column(2.4);
+  @include media-breakpoint-up(xs) {
+    @include make-col(2.4);
+  }
 }
 
 

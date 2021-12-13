@@ -128,7 +128,7 @@
   .issue {
     margin-bottom: 30px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       margin-bottom: 0;
     }
 
@@ -196,7 +196,7 @@
         top: -15px;
         width: 0;
 
-        @media (max-width: $screen-xs-max) {
+        @include media-breakpoint-down(xs) {
           right: 0;
         }
       }
@@ -233,7 +233,7 @@
       float: left;
       width: 45%;
 
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         clear: both;
         margin-bottom: 20px;
         margin-left: 20px;
@@ -241,7 +241,7 @@
       }
 
       a {
-        @media (max-width: $screen-xs-max) {
+        @include media-breakpoint-down(xs) {
           display: block;
           padding-right: 20px;
         }
@@ -251,14 +251,14 @@
         clear: right;
         float: right;
 
-        @media (max-width: $screen-xs-max) {
+        @include media-breakpoint-down(xs) {
           clear: left;
           float: left;
         }
       }
 
       &.featured-story {
-        @media (max-width: $screen-xs-max) {
+        @include media-breakpoint-down(xs) {
           display: block;
         }
       }
