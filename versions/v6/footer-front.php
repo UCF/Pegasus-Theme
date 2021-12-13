@@ -2,7 +2,7 @@
 					<footer class="front-page-footer">
 						<div class="container">
 							<div class="row">
-								<div class="col-sm-3 col-sm-offset-1 col-md-offset-1 col-sm-push-8">
+								<div class="col-md-3 offset-md-1 flex-md-last">
 									<h2 class="fp-subheading-underline fp-footer-heading">Connect</h2>
 									<?php 									$defaults = array(
 										'theme_location' => 'footer-menu',
@@ -12,7 +12,7 @@
 									wp_nav_menu( $defaults );
 									?>
 								</div>
-								<div class="col-sm-3 col-sm-offset-1 hidden-xs">
+								<div class="col-md-3 offset-md-1 d-none d-md-block">
 									<h2 class="fp-subheading-underline fp-footer-heading">About</h2>
 									<ul class="list-unstyled">
 									<?php 									$defaults = array(
@@ -23,7 +23,7 @@
 									wp_nav_menu( $defaults );
 									?>
 								</div>
-								<div class="col-sm-4 col-sm-pull-8">
+								<div class="col-md-4 flex-md-first">
 									<a class="fp-footer-logo" href="<?php echo get_site_url(); ?>">
 										Pegasus
 									</a>

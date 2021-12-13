@@ -84,7 +84,7 @@
     &.last-child {
       margin-right: 80px;
 
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         margin-right: 20px;
       }
     }
@@ -94,7 +94,7 @@
       height: 120px;
       width: 188px;
 
-      @media (max-width: $screen-sm-max) {
+      @include media-breakpoint-down(sm) {
         height: 97px;
         width: 146px;
       }
@@ -126,7 +126,7 @@
     width: 60px;
     z-index: 6;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       display: none !important;
     }
 
@@ -187,7 +187,7 @@
 .pulldown-stories .story-list article {
   width: 180px;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     width: 140px;
 
     img {
@@ -244,7 +244,7 @@
     height: 100%;
     text-align: right;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       text-align: center;
     }
   }
@@ -274,7 +274,7 @@
     top: 12.5px;
     width: 97px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       left: 0;
       margin: auto;
       position: absolute;
@@ -302,7 +302,7 @@ li#nav-give {
 li#nav-issue,
 li#nav-archives {
   #header-navigation ul.mobile-nav-visible & {
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       display: inline-block;
       float: none;
     }
@@ -322,7 +322,7 @@ li#nav-issue,
 li#nav-archives,
 li#nav-give,
 #header-navigation .header-logo.mobile-nav-visible {
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(xs) {
     display: none;
   }
 }
@@ -334,7 +334,7 @@ li#nav-mobile {
   text-align: left;
   width: 40px;
 
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(xs) {
     display: block;
   }
 
@@ -375,7 +375,7 @@ li#nav-mobile {
 }
 
 li#nav-issue {
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(xs) {
     margin-left: -30px;
   }
 
@@ -438,7 +438,7 @@ li#nav-give a {
   line-height: 14px;
   text-decoration: none;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     font-size: 13px;
     line-height: 13px;
   }
@@ -475,7 +475,7 @@ li#nav-about {
     font-size: 12px;
     font-style: italic;
 
-    @media (max-width: $screen-sm-max) and (min-width: $screen-sm-min) {
+    @include media-breakpoint-down(sm) {
       font-size: 11px;
     }
   }
@@ -488,7 +488,7 @@ li#nav-about {
   margin-top: 50px;
   position: relative;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     margin-bottom: 40px;
   }
 
@@ -580,7 +580,7 @@ li#nav-about {
   padding-bottom: 60px;
   padding-top: 60px;
 
-  @media (max-width: $screen-xs-max) {
+  @include media-breakpoint-down(xs) {
     padding-bottom: 25px;
     padding-top: 40px;
   }
@@ -602,7 +602,7 @@ li#nav-about {
   a {
     font-size: 18px;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       font-size: 13px;
     }
   }
@@ -618,7 +618,7 @@ li#nav-about {
 
   .footer-logo,
   .footer-ipad-app {
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       padding-bottom: 30px;
     }
   }
@@ -629,7 +629,7 @@ li#nav-about {
     padding-bottom: 60px;
     width: 100%;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       margin-top: 8px;
     }
 
@@ -639,7 +639,7 @@ li#nav-about {
 
     &,
     &.pull-left {
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         padding-bottom: 20px;
         width: 100%;
       }
@@ -648,7 +648,7 @@ li#nav-about {
     &,
     &.pull-left,
     a {
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         clear: both;
         float: left !important;
       }
@@ -658,7 +658,7 @@ li#nav-about {
   .footer-ipad-app {
     &,
     &.pull-right {
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         clear: both;
         float: left !important;
       }
@@ -673,7 +673,7 @@ li#nav-about {
     margin-bottom: 0;
     text-align: center;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       text-align: left;
     }
   }
@@ -681,7 +681,7 @@ li#nav-about {
   li {
     display: inline-block;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       line-height: 32px;
       width: 100%;
     }
@@ -692,11 +692,11 @@ li#nav-about {
       font-size: 18px;
       padding: 0 6px;
 
-      @media (max-width: $screen-sm-max) {
+      @include media-breakpoint-down(sm) {
         font-size: 16px;
       }
 
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(xs) {
         content: '';
         padding: 0;
       }
@@ -713,11 +713,11 @@ li#nav-about {
     margin: 0;
     text-align: center;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       font-size: 13px;
     }
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       text-align: left;
     }
   }
@@ -725,7 +725,7 @@ li#nav-about {
   .copyright {
     padding-top: 60px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(xs) {
       padding-top: 30px;
     }
   }
