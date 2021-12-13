@@ -141,14 +141,20 @@ add_action( 'init', 'setup_version_files', 3 );
 
 
 /**
- * Loads version-specific CPT templates instead of templates from the theme's
- * root directory.
+ * Loads version-specific Front Page, Page and CPT templates instead of templates
+ * from the theme's root directory.
  *
- * Note: Pages and Posts should always use templates from the root directory
+ * Note: Posts should always use templates from the root directory
  * (they are not modified per-version).
  **/
 function by_version_template( $template ) {
 	global $post;
+
+	if ( is_front_page() ) {
+		$new_template = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	} elseif ( $post->post_type === 'page' ) {
+		$new_template = locate_template( array( get_version_file_path( 'page.php' ) ) );
+	}
 
 	if ( in_array( $post->post_type, array( 'story', 'issue', 'photo_essay' ) ) ) {
 		$new_template = locate_template( array( get_version_file_path( 'single-' . $post->post_type . '.php' ) ) );
@@ -157,6 +163,7 @@ function by_version_template( $template ) {
 	if ( !empty( $new_template ) ) {
 		return $new_template;
 	}
+
 	return $template;
 }
 add_filter( 'template_include', 'by_version_template', 99 );
@@ -195,27 +202,6 @@ function get_version_footer( $template_name='' ) {
 	$new_template = locate_template( array( get_version_file_path( 'footer' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
 		return load_template( $new_template );
-	}
-}
-
-
-/**
- * Loads front-page.php or home.php using the relevant version's template.
- * Falls back to loading root index.php if no templates are found.
- **/
-function get_version_front_page() {
-	$new_template_front = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
-	$new_template_home = locate_template( array( get_version_file_path( 'home.php' ) ) );
-
-	if ( !empty( $new_template_front ) ) {
-		return load_template( $new_template_front );
-	}
-	elseif ( !empty( $new_template_home ) ) {
-		return load_template( $new_template_home );
-	}
-	else {
-		// something is very wrong--fall back to root index.php
-		return load_template( get_stylesheet_directory() . '/index.php' );
 	}
 }
 
