@@ -32,7 +32,7 @@ $fp-feature-img-width: 263px;
   font-size: 34px;
   letter-spacing: -.02em;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     font-size: 36px;
   }
 }
@@ -104,12 +104,12 @@ $fp-feature-img-width: 263px;
 .fp-header-link-issue {
   float: left;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     float: none;
     margin: 65px 0 0;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     margin-top: 85px;
   }
 }
@@ -117,12 +117,12 @@ $fp-feature-img-width: 263px;
 .fp-header-link-archives {
   float: right;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     float: none;
     margin: 73px 0 0;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     margin-top: 93px;
   }
 }
@@ -133,12 +133,12 @@ $fp-feature-img-width: 263px;
   max-width: 384px;
   width: 85%;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin: 50px auto 20px;
     padding: 0 20px;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     padding: 0;
   }
 }
@@ -157,11 +157,11 @@ $fp-feature-img-width: 263px;
     color: $black;
   }
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     font-size: 13px;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     font-size: 15px;
   }
 }
@@ -174,11 +174,11 @@ $fp-feature-img-width: 263px;
     display: inline;
   }
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     display: block;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     display: inline;
   }
 }
@@ -187,7 +187,7 @@ $fp-feature-img-width: 263px;
   display: inline-block;
   margin: 30px auto 10px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     display: block;
     margin: 15px 0 0;
   }
@@ -223,9 +223,6 @@ $fp-feature-img-width: 263px;
       background-position: -67px -76px;
     }
 
-    &.googleplus {
-      background-position: -88px -76px;
-    }
   }
 }
 
@@ -237,7 +234,7 @@ $fp-feature-img-width: 263px;
   height: 13px;
   margin: 50px 0 20px;
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     margin-top: 70px;
   }
 }
@@ -252,7 +249,7 @@ $fp-feature-img-width: 263px;
   text-align: center;
   width: 90%;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     max-width: none;
     width: 100%;
   }
@@ -301,12 +298,12 @@ $fp-feature-img-width: 263px;
   max-width: none;
   width: 100%;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     position: relative;
   }
 
   .fp-feature-text-wrap {
-    @media (min-width: $screen-sm-min) {
+    @include media-breakpoint-up(md) {
       background-color: rgba(0, 0, 0, .6);
       bottom: 0;
       left: 0;
@@ -324,13 +321,13 @@ $fp-feature-img-width: 263px;
   .fp-feature-link:focus {
     @include gotham(7);
 
-    @media (min-width: $screen-sm-min) {
+    @include media-breakpoint-up(md) {
       color: $white;
     }
   }
 
   .fp-feature-title {
-    @media (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
       font-size: 36px;
     }
   }
@@ -342,7 +339,7 @@ $fp-feature-img-width: 263px;
     padding-left: 30px;
     padding-right: 30px;
 
-    @media (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
       font-size: 22px;
       line-height: 1.2;
     }
@@ -409,14 +406,14 @@ $fp-feature-img-width: 263px;
     linear-gradient(to right, rgba(221,221,221,0.65) 0%,rgba(238,238,238,0.54) 3%,rgba(239,239,239,0.5) 4%,rgba(242,242,242,0.48) 6%,rgba(242,242,242,0) 50%,rgba(242,242,242,0.48) 94%,rgba(239,239,239,0.5) 96%,rgba(238,238,238,0.54) 97%,rgba(221,221,221,0.65) 100%);
   padding: 0 25px 30px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     background: transparent;
     padding: 0;
   }
 
   .fp-today-feed-item {
 
-    @media (min-width: $screen-md-min) {
+    @include media-breakpoint-up(lg) {
       min-height: 150px;
     }
 
@@ -455,19 +452,19 @@ $fp-feature-img-width: 263px;
 .fp-today-feed-wrap {
   margin-top: 30px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     display: table;
     margin-top: 15px;
     width: 100%;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     margin-top: 30px;
   }
 }
 
 .fp-today-feed-col {
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     background: $gray-lightest;  // ie9 fallback
     background:
       linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 40%),
@@ -478,16 +475,16 @@ $fp-feature-img-width: 263px;
     width: 50%;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     width: 25%;
   }
 
-  @media (min-width: $screen-lg-min) {
+  @include media-breakpoint-up(xl) {
     width: 20%;
   }
 
   &:after {
-    @media (min-width: $screen-sm-min) {
+    @include media-breakpoint-up(md) {
       background:
         linear-gradient(to right, $ucf-gold 0%, $ucf-gold 90%, darken($ucf-gold, 5%) 100%);
       bottom: 0;
@@ -507,7 +504,7 @@ $fp-feature-img-width: 263px;
   font-weight: 500;
   line-height: 1.4;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     font-size: 13px;
   }
 
@@ -525,7 +522,7 @@ $fp-feature-img-width: 263px;
   margin-top: 15px;
   width: 100%;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-bottom: 20px;
     margin-left: 0;
     margin-top: 20px;
@@ -561,19 +558,17 @@ $fp-feature-img-width: 263px;
 .fp-issue-img {
   text-align: center;
 
-  @media (min-width: $screen-xs-min) {
-    max-width: 250px;
-  }
+  max-width: 250px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     max-width: 150px;
   }
 
-  @media (min-width: $screen-md-min) {
+  @include media-breakpoint-up(lg) {
     max-width: 200px;
   }
 
-  @media (min-width: $screen-lg-min) {
+  @include media-breakpoint-up(xl) {
     max-width: 250px;
   }
 
@@ -586,7 +581,7 @@ $fp-feature-img-width: 263px;
 .fp-banner {
   margin-bottom: 30px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-bottom: 60px;
     margin-top: 30px;
   }
@@ -600,7 +595,7 @@ $fp-feature-img-width: 263px;
   border-bottom: 3px solid $ucf-gold;
   margin-bottom: 10px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     border-bottom: 1px solid $gray-light-alt;
     margin-top: 15px;
     padding-bottom: 10px;
@@ -667,7 +662,7 @@ $fp-feature-img-width: 263px;
   line-height: 1.2;
   margin: 10px 0;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-bottom: 5px;
   }
 }
@@ -695,7 +690,7 @@ $fp-feature-img-width: 263px;
   margin-top: 30px;
   padding: 15px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-top: 0;
   }
 }
@@ -727,7 +722,7 @@ $fp-feature-img-width: 263px;
   border: 5px solid $ucf-gold;
   margin-top: 10px;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     border: 0 solid transparent;
   }
 }
@@ -743,13 +738,13 @@ $fp-feature-img-width: 263px;
   padding: 40px 0;
   text-align: center;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     padding: 60px 0 80px;
     text-align: left;
   }
 
   .ipad-app-btn {
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-up(sm) {
       margin: 0 auto;
     }
   }
@@ -764,7 +759,7 @@ $fp-feature-img-width: 263px;
   margin-top: 30px;
   text-transform: uppercase;
 
-  @media (min-width: $screen-sm-min) {
+  @include media-breakpoint-up(md) {
     margin-top: 0;
   }
 
@@ -790,7 +785,7 @@ $fp-feature-img-width: 263px;
   &:after {
     width: 35px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(sm) {
       left: 50%;
       transform: translateX(-50%);
     }
