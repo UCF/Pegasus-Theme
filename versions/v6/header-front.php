@@ -44,7 +44,6 @@
 					<div class="col-6 col-md-3 flex-md-last col-lg-2 text-right text-md-center">
 						<a class="fp-header-link fp-header-link-archives" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">Archives</a>
 					</div>
-					<div class="clearfix d-md-none"></div>
 					<div class="col-md-6 col-lg-8 text-center">
 						<h1 class="fp-header-title">
 							<img class="img-fluid fp-header-title-img" src="<?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray.png" srcset="<?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray.png 384w, <?php echo THE_POST_VERSION_URL; ?>/static/img/pegasus-gray-r.png 769w" alt="Pegasus" title="Pegasus">
