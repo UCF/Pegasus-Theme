@@ -13,6 +13,7 @@ const uglify       = require('gulp-uglify');
 const merge        = require('merge');
 const bless        = require('gulp-bless');
 const gulpIf       = require('gulp-if');
+const del          = require('del');
 
 
 let config = {
@@ -20,11 +21,18 @@ let config = {
   fontPath: './static/fonts',
   componentsPath: './static/components',
   packagesPath: './node_modules',
+  packageLock: {},
   sync: false,
   target: 'http://localhost/',
   version: 'v6',
   versionPath: ''
 };
+
+/* eslint-disable no-sync */
+if (fs.existsSync('./package-lock.json')) {
+  config.packageLock = JSON.parse(fs.readFileSync('./package-lock.json'));
+}
+/* eslint-enable no-sync */
 
 /* eslint-disable no-sync */
 if (fs.existsSync('./gulp-config.json')) {
@@ -39,6 +47,12 @@ config.versionPath = `./versions/${config.version}`;
 //
 // Helper functions
 //
+
+// Convenience method that returns current
+// version of Font Awesome 5
+function getFA5Version() {
+  return config.packageLock['dependencies']['@fortawesome/fontawesome-free']['version'] || null;
+}
 
 // Base SCSS linting function
 function lintSCSS(src) {
@@ -152,6 +166,23 @@ gulp.task('move-components-fontawesome-4', (done) => {
   done();
 });
 
+// Copy Font Awesome 5 files
+gulp.task('move-components-fontawesome-5', (done) => {
+  // Delete existing font files
+  del(`${config.fontPath}/font-awesome-5/**/*`);
+
+  // Move font files
+  const fa5Version = getFA5Version();
+  if (fa5Version) {
+    gulp.src(`${config.packagesPath}/@fortawesome/fontawesome-free/webfonts/**/*`)
+      .pipe(gulp.dest(`${config.fontPath}/font-awesome-5/${fa5Version}`));
+  } else {
+    console.log('Could not move Font Awesome 5 fonts--version not found');
+  }
+
+  done();
+});
+
 // Athena Framework web font processing
 gulp.task('move-components-athena-fonts', (done) => {
   gulp.src([`${config.packagesPath}/ucf-athena-framework/dist/fonts/**/*`])
@@ -161,7 +192,7 @@ gulp.task('move-components-athena-fonts', (done) => {
 
 // Run all component-related tasks
 gulp.task('components', gulp.parallel(
-  'move-components-fontawesome-4',
+  'move-components-fontawesome-5',
   'move-components-athena-fonts'
 ));
 
@@ -183,6 +214,23 @@ gulp.task('scss-build-version', () => {
 // Compile Font Awesome v4 stylesheet
 gulp.task('scss-build-fa4', () => {
   return buildCSS(`${config.versionPath}/static/scss/font-awesome-4.scss`);
+});
+
+// Compile Font Awesome v5 stylesheet
+gulp.task('scss-build-fa5', (done) => {
+  const fa5Version = getFA5Version();
+
+  if (!fa5Version) {
+    console.log('Could not build Font Awesome 5 CSS--version not found');
+    done();
+  }
+  return buildCSS(
+    `${config.versionPath}/static/scss/_font-awesome-5.scss`,
+    null,
+    {
+      'fa-font-path': `../fonts/font-awesome-5/${fa5Version}`
+    }
+  );
 });
 
 // All theme css-related tasks
