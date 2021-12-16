@@ -21,7 +21,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container story-list-grid hidden-sm hidden-xs">
+				<div class="container story-list-grid d-none d-md-block">
 					<div class="row">
 					<?php
 					$count = 0;
@@ -53,8 +53,8 @@
 					?>
 					</div>
 				</div>
-				<?php echo display_story_list( $issue, 'hidden-md hidden-lg' ); ?>
-				<div class="controls hidden-md hidden-lg">
+				<?php echo display_story_list( $issue, 'd-lg-none' ); ?>
+				<div class="controls d-lg-none">
 					<a class="backward icon icon-caret-left" href="#">Back</a>
 					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>

@@ -6,18 +6,18 @@ article.photo-essay {
   }
 
   h2 {
-    font-size: 36px;
+    font-size: 30px;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 30px;
+    @include media-breakpoint-up(sm) {
+      font-size: 36px;
     }
   }
 
   h3 {
-    font-size: 26px;
+    font-size: 25px;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 25px;
+    @include media-breakpoint-up(sm) {
+      font-size: 26px;
     }
   }
 
@@ -55,26 +55,23 @@ article.photo-essay {
   }
 
   .title-wrap {
-    margin-bottom: 15px;
-    margin-top: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
 
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 5px;
-      margin-top: 5px;
+    @include media-breakpoint-up(sm) {
+      margin-bottom: 15px;
+      margin-top: 10px;
     }
   }
 
   .description-wrap {
-    margin-bottom: 45px;
+    margin-bottom: 30px;
     white-space: nowrap;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-up(sm) {
       display: block;
       white-space: normal;
-    }
-
-    @media (max-width: $screen-xs-max) {
-      margin-bottom: 30px;
+      margin-bottom: 45px;
     }
   }
 
@@ -84,7 +81,7 @@ article.photo-essay {
     float: none;
     vertical-align: bottom;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       display: block;
       float: left;
     }
@@ -92,17 +89,17 @@ article.photo-essay {
 
   .description {
     display: block;
-    font-size: 22px;
     font-style: italic;
-    line-height: 32px;
     white-space: normal;
+    font-size: 18px;
+    line-height: 28px;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 18px;
-      line-height: 28px;
+    @include media-breakpoint-up(sm) {
+      font-size: 22px;
+      line-height: 32px;
     }
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       margin-bottom: 20px;
     }
 
@@ -116,7 +113,7 @@ article.photo-essay {
     float: right;
     margin-bottom: 8px;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       float: left;
       margin-bottom: 0;
     }
@@ -142,7 +139,7 @@ article.photo-essay {
       margin-bottom: 0;
       padding: 0;
 
-      @media (min-width: $screen-lg-min) {
+      @include media-breakpoint-up(lg) {
         font-size: 24px;
       }
     }
@@ -170,7 +167,7 @@ article.photo-essay {
 
   .img-col,
   .caption-col {
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-up(down) {
       padding-left: 0;
       padding-right: 0;
     }
@@ -227,7 +224,7 @@ article.photo-essay {
   }
 
   .photo-essay-caption {
-    @media (min-width: $screen-lg-min) {
+    @include media-breakpoint-up(lg) {
       font-size: 18px;
     }
   }
@@ -248,7 +245,7 @@ article.photo-essay {
       .carat {
         @include carat-top-left();
 
-        @media (max-width: $screen-sm-max) {
+        @include media-breakpoint-down(sm) {
           @include carat-bottom-center();
         }
       }
@@ -256,7 +253,7 @@ article.photo-essay {
       .photo-essay-caption {
         padding: 60px 30px 0 0;
 
-        @media (max-width: $screen-sm-max) {
+        @include media-breakpoint-down(sm) {
           padding: 30px 8.333% 60px;
         }
       }
@@ -265,7 +262,7 @@ article.photo-essay {
     .carat {
       @include carat-top-right();
 
-      @media (max-width: $screen-sm-max) {
+      @include media-breakpoint-down(sm) {
         @include carat-bottom-center();
       }
     }
@@ -273,17 +270,18 @@ article.photo-essay {
     .photo-essay-caption {
       padding: 60px 0 0 30px;
 
-      @media (max-width: $screen-sm-max) {
+      @include media-breakpoint-down(sm) {
         padding: 30px 8.333% 60px;
       }
     }
   }
 
   .navbar-col {
+    display: none;
     padding-left: 0;
 
-    @media (max-width: $screen-xs-max) {
-      display: none;
+    @include media-breakpoint-up(sm) {
+      display: block;
     }
   }
 
@@ -296,12 +294,12 @@ article.photo-essay {
     text-align: center;
     width: 120px;
 
-    @media (min-width: $screen-lg-min) {
+    @include media-breakpoint-up(lg) {
       margin-left: 30px;
       width: 150px;
     }
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       margin-left: 20px;
       width: 100px;
     }
@@ -342,19 +340,19 @@ article.photo-essay {
     box-shadow: 0 5px 8px rgba(0, 0, 0, .4);
     color: #000;
     display: block;
-    font-size: 11px;
+    font-size: 10px;
     font-style: italic;
-    height: 70px;
-    padding: 10px 20px;
+    height: 50px;
+    padding: 6px;
     text-align: center;
-    width: 70px;
+    width: 50px;
     z-index: 999;
 
-    @media (max-width: $screen-xs-max) {
-      font-size: 10px;
-      height: 50px;
-      padding: 6px;
-      width: 50px;
+    @include media-breakpoint-up(sm) {
+      font-size: 11px;
+      height: 70px;
+      padding: 10px 20px;
+      width: 70px;
     }
 
     &:hover,
@@ -366,12 +364,12 @@ article.photo-essay {
 
     .fa {
       display: block;
-      font-size: 30px;
-      margin-bottom: 4px;
+      font-size: 20px;
+      margin-bottom: 2px;
 
-      @media (max-width: $screen-xs-max) {
-        font-size: 20px;
-        margin-bottom: 2px;
+      @include media-breakpoint-up(sm) {
+        font-size: 30px;
+        margin-bottom: 4px;
       }
     }
   }

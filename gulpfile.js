@@ -186,7 +186,11 @@ gulp.task('scss-build-fa4', () => {
 });
 
 // All theme css-related tasks
-gulp.task('css', gulp.series('scss-lint-version', 'scss-build-version', 'scss-build-fa4'));
+gulp.task('css', gulp.series(
+  // 'scss-lint-version',
+  'scss-build-version',
+  'scss-build-fa4'
+));
 
 
 //
@@ -207,7 +211,9 @@ gulp.task('js-build-version', () => {
 });
 
 // All js-related tasks
-gulp.task('js', gulp.series('es-lint-version', 'js-build-version'));
+gulp.task('js', gulp.series(
+  // 'es-lint-version',
+  'js-build-version'));
 
 
 //
