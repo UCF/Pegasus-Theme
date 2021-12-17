@@ -7,7 +7,7 @@
 /**
  * Displays a single story on the front page.
  **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3', $heading_class='h4' ) {
 	if ( !$story ) { return false; }
 
 	$thumbnail = null;
@@ -47,7 +47,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 	ob_start();
 ?>
 <article class="text-center <?php echo $css_class; ?>">
-	<a class="" href="<?php echo get_permalink( $story->ID ); ?>">
+	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php if ( $thumbnail ): ?>
 		<div class="fp-feature-img-wrap">
 			<?php echo $thumbnail; ?>
@@ -61,14 +61,14 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		<?php endif; ?>
 	</a>
 	<div class="fp-feature-text-wrap">
-		<<?php echo $heading; ?> class="h4">
-			<a class="text-secondary stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<<?php echo $heading; ?> class="<?php echo $heading_class; ?>">
+			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 				<?php echo $title; ?>
 			</a>
 		</<?php echo $heading; ?>>
-		<div class="font-size-sm">
+		<p class="fp-feature-description font-size-sm">
 			<?php echo $description; ?>
-		</div>
+		</p>
 	</div>
 </article>
 <?php 	return ob_get_clean();
