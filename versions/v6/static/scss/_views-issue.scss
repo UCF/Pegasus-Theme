@@ -7,7 +7,6 @@
 
   .heading-wrap {
     h2 {
-      @include font-smoothing();
       border-bottom: 1px solid #828282;
       color: #828282;
       display: block;

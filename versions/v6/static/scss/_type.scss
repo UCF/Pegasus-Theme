@@ -1,5 +1,4 @@
 article {
-  @include font-smoothing();
   color: #000;
 
   &,
@@ -162,7 +161,6 @@ blockquote {
 
 
 .section-title {
-  @include font-smoothing();
   color: #222;
   font-family: $font-family-serif;
   font-size: 32px;

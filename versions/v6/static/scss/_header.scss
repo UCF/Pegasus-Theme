@@ -1,0 +1,154 @@
+//
+// Front Page Header
+//
+.fp-header-link {
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .06em;
+  margin: 15px 0 25px;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+}
+
+.fp-header-link-issue {
+  float: left;
+
+  @include media-breakpoint-up(md) {
+    float: none;
+    margin: 65px 0 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 85px;
+  }
+}
+
+.fp-header-link-archives {
+  float: right;
+
+  @include media-breakpoint-up(md) {
+    float: none;
+    margin: 73px 0 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 93px;
+  }
+}
+
+.fp-header-title {
+  display: block;
+  margin: 0 auto 15px;
+  max-width: 384px;
+  width: 85%;
+
+  @include media-breakpoint-up(md) {
+    margin: 50px auto 20px;
+    padding: 0 20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+  }
+}
+
+.fp-header-subtitle {
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 13px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 15px;
+  }
+}
+
+.fp-header-subtitle-pre {
+  // Force a line break in subtitle at certain screen sizes
+  display: block;
+
+  @media (min-width: 480px) {
+    display: inline;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: inline;
+  }
+}
+
+.fp-social-links {
+  display: inline-block;
+  margin: 30px auto 10px;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    margin: 15px 0 0;
+  }
+
+  .social-icon-list-heading,
+  .social-icon-list {
+    float: left;
+  }
+
+  .social-icon-list-heading {
+    line-height: 20px;
+    margin-right: 10px;
+  }
+
+  .social-icon-list-item a {
+    background-size: 128px auto;
+    height: 20px;
+    width: 20px;
+
+    &.facebook {
+      background-position: 0 -76px;
+    }
+
+    &.twitter {
+      background-position: -44px -75px;
+    }
+
+    &.flickr {
+      background-position: -21px -76px;
+    }
+
+    &.youtube {
+      background-position: -67px -76px;
+    }
+
+  }
+}
+
+.fp-header-border {
+  border-bottom: 7px solid $black;
+  border-top: 1px solid $gray-light-alt;
+  bottom: 0;
+  display: block;
+  height: 13px;
+  margin: 50px 0 20px;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 70px;
+  }
+}
