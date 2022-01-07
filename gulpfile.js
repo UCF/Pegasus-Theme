@@ -237,7 +237,7 @@ gulp.task('scss-build-fa5', (done) => {
 gulp.task('css', gulp.series(
   // 'scss-lint-version',
   'scss-build-version',
-  'scss-build-fa4'
+  'scss-build-fa5'
 ));
 
 

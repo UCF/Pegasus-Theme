@@ -1287,7 +1287,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			$thumbnail_size,
 			false,
 			array(
-				'class' => 'fp-feature-img center-block img-responsive',
+				'class' => 'fp-feature-img center-block img-fluid',
 				'alt' => '' // Intentionally blank to avoid redundant story title announcement
 			)
 		);

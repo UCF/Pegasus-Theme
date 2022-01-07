@@ -837,14 +837,6 @@ iframe {
   }
 }
 
-.mobile-img-fluid,
-.mobile-img-fluid img {
-  @include media-breakpoint-down(sm) {
-    max-width: 100% !important;
-    width: 100% !important;
-  }
-}
-
 .centered-embed > * {
   margin-left: auto !important;
   margin-right: auto !important;

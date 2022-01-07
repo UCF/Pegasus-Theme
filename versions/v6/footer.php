@@ -21,7 +21,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container story-list-grid d-none d-md-block">
+				<div class="container story-list-grid d-none d-lg-block">
 					<div class="row">
 					<?php
 					$count = 0;
@@ -76,7 +76,7 @@
 			<aside class="container-wide" id="footer-social">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 border-top">
+						<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 border-top">
 							<ul class="social-icon-list">
 								<?php if ( !empty( $fb_url ) ) { ?>
 								<li class="social-icon-list-item">

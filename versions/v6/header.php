@@ -25,7 +25,7 @@
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-12 col-sm-12">
+						<div class="col-lg-12 col-md-12">
 							<h2 class="section-title">In This Issue</h2>
 						</div>
 					</div>
@@ -42,7 +42,7 @@
 		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
-					<nav class="col-md-12 col-sm-12" role="navigation">
+					<nav class="col-lg-12 col-md-12" role="navigation">
 						<?php if ( is_home() || $post->post_type == 'issue' ) { ?>
 						<h1 class="header-logo">
 							<a href="<?php echo get_site_url()?>">Pegasus</a>

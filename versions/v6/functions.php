@@ -179,11 +179,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		case 'portrait':
 	?>
 		<div class="row">
-			<div class="img-col col-md-7 col-md-offset-0 col-sm-10 col-sm-offset-1 <?php if ( $alternate ) { ?>col-md-push-5<?php } ?>">
+			<div class="img-col col-lg-7 offset-lg-0 col-md-10 offset-md-1 <?php if ( $alternate ) { ?>col-lg-push-5<?php } ?>">
 				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 				<div class="carat"></div>
 			</div>
-			<div class="caption-col col-md-4 col-sm-12 <?php if ( $alternate ) { ?>col-md-pull-7 col-md-offset-1<?php } else { ?>col-md-offset-0<?php  } ?>">
+			<div class="caption-col col-lg-4 col-md-12 <?php if ( $alternate ) { ?>col-lg-pull-7 offset-lg-1<?php } else { ?>offset-lg-0<?php  } ?>">
 				<figcaption class="photo-essay-caption">
 					<?php echo $caption; ?>
 				</figcaption>
@@ -196,11 +196,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		default:
 	?>
 		<div class="row">
-			<div class="img-col col-md-12">
+			<div class="img-col col-lg-12">
 				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 				<div class="carat"></div>
 			</div>
-			<div class="caption-col col-md-12">
+			<div class="caption-col col-lg-12">
 				<figcaption class="photo-essay-caption">
 					<?php echo $caption; ?>
 				</figcaption>
@@ -299,10 +299,10 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	<section class="photo-essay-contents">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-10 col-sm-10">
+				<div class="col-lg-10 col-md-10">
 					<?php echo $photo_essay_markup; ?>
 				</div>
-				<div class="col-md-2 col-sm-2 navbar-col">
+				<div class="col-lg-2 col-md-2 navbar-col">
 					<nav id="photo-essay-navbar" class="photo-essay-nav">
 						<?php echo $nav_markup; ?>
 						<a class="photo-essay-jump photo-essay-nav-link" id="photo-essay-jump-top" href="#">
@@ -498,25 +498,25 @@ function display_story_header_contents( $post, $deck='' ) {
 ?>
 	<?php if ( $header_img ) : ?>
 	<div class="row header-img-wrap">
-		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
 			<?php echo $header_img; ?>
 		</div>
 	</div>
 	<?php endif; ?>
 	<div class="row title-wrap">
-		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
 			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
 		</div>
 	</div>
 	<div class="row description-wrap">
-		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
 			<div class="row">
-				<div class="col-md-8 col-sm-12 col-xs-12 description-col">
+				<div class="col-lg-8 description-col">
 					<span class="description">
 						<?php echo $deck; ?>
 					</span>
 				</div>
-				<div class="col-md-4 col-sm-12 col-xs-12 description-col">
+				<div class="col-lg-4 description-col">
 					<div class="social-wrap">
 						<?php echo display_social( get_permalink( $post->ID ), $post->post_title ); ?>
 					</div>
