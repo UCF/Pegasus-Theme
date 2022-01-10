@@ -152,15 +152,17 @@ function sc_photo($attr, $content) {
 	$html = '';
 
 	// Attempt to get url by attachment ID first.
-	if ($attachment_id) {
-		$url = wp_get_attachment_image_src($attachment_id, 'full');
-		$url = $url[0];
+	if ( $attachment_id ) {
+		$url = wp_get_attachment_image_src( $attachment_id, 'full' );
+		if( $url ) {
+			$url = $url[0];
+		}
 	}
-	else if ($filename) {
-		$url = sc_image(array('filename' => $filename));
+	else if ( $filename ) {
+		$url = sc_image( array( 'filename' => $filename ) );
 	}
-	if ($url) {
-		if ($content) {
+	if ( $url ) {
+		if ( $content ) {
 			$html .= '<figure class="'.$css_classes.'" style="height: auto;';
 			if ( $width ) {
 				$html .= ' max-width: '.$width.';';
