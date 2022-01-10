@@ -79,7 +79,7 @@ article.photo-essay {
   .description-col {
     display: inline-block;
     float: none;
-    vertical-align: bottom;
+    align-self: flex-end;
 
     @include media-breakpoint-down(md) {
       display: block;
