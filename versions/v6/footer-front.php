@@ -48,13 +48,13 @@
 									?>
 									<div class="fp-footer-social-links">
 										<?php if ( !empty( $fb_url ) ) { ?>
-											<a target="_blank" class="social-icon" href="<?php echo $fb_url; ?>"><span class="fab fa-facebook-f"></span><span class="sr-only">Follow UCF on Facebook</span></a>
+											<a target="_blank" class="social-icon" href="<?php echo $fb_url; ?>"><span class="fab fa-facebook-f" aria-hidden="true"></span><span class="sr-only">Follow UCF on Facebook</span></a>
 										<?php } if ( !empty( $twitter_url ) ) { ?>
-											<a target="_blank" class="social-icon" href="<?php echo $twitter_url; ?>"><span class="fab fa-twitter"></span><span class="sr-only">Follow UCF on Twitter</span></a>
+											<a target="_blank" class="social-icon" href="<?php echo $twitter_url; ?>"><span class="fab fa-twitter" aria-hidden="true"></span><span class="sr-only">Follow UCF on Twitter</span></a>
 										<?php } if ( !empty( $instagram_url ) ) { ?>
-											<a target="_blank" class="social-icon" href="<?php echo $instagram_url; ?>"><span class="fab fa-instagram"></span><span class="sr-only">Follow UCF on Instagram</span></a>
+											<a target="_blank" class="social-icon" href="<?php echo $instagram_url; ?>"><span class="fab fa-instagram" aria-hidden="true"></span><span class="sr-only">Follow UCF on Instagram</span></a>
 										<?php } if ( !empty( $share_url ) ) { ?>
-											<a target="_blank" class="social-icon" href="<?php echo $share_url; ?>"><span class="fas fa-share-alt"></span><span class="sr-only">Share</span></a>
+											<a target="_blank" class="social-icon" href="<?php echo $share_url; ?>"><span class="fas fa-share-alt" aria-hidden="true"></span><span class="sr-only">Share</span></a>
 										<?php } ?>
 									</div>
 									<?php endif; ?>
