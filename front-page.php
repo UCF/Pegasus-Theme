@@ -1,5 +1,8 @@
 <?php disallow_direct_load( 'front-page.php' ); ?>
-<?php get_version_header( 'front' ); ?>
+<?php get_version_header( 'front' );
+
+$events = get_home_events( $post->ID );
+?>
 
 <div class="container">
 	<!-- TODO: Athena-ize -->
@@ -142,21 +145,10 @@
 	<?php endif; ?>
 
 	<div class="row">
-		<div class="col-sm-6">
-			<h2 class="fp-heading fp-events-heading">Events</h2>
-			<div class="fp-events">
-				<?php
-				$events = get_events( 0, 3, get_theme_option( 'front_page_events_feed_url' ) );
-				if ( $events ) {
-					foreach ( $events as $event ) {
-						echo display_front_page_event( $event );
-					}
-				}
-				else {
-					echo 'Events could not be loaded. Please try again later.';
-				}
-				?>
-			</div>
+		<div class="col-lg pt-lg-4 mb-5 mb-lg-0 <?php if ( $featured_gallery ) { ?>pr-lg-5<?php } ?>">
+			<h2 class="font-weight-black">Events</h2>
+			<hr role="presentation">
+			<?php echo $events; ?>
 		</div>
 
 		<?php if ( $gallery_1 = get_theme_option( 'front_page_featured_gallery_1' ) ): ?>

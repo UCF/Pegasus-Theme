@@ -234,4 +234,33 @@ function display_front_page_issue_details() {
 	<?php endif; ?>
 <?php 	return ob_get_clean();
 }
-?>
+
+
+/**
+ * Displays events markup for the Pegasus homepage.
+ * Ported over from Today-Child-Theme
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ * @param int $post_id ID of the Pegasus homepage post
+ * @return string HTML markup for the events list
+ */
+function get_home_events( $post_id ) {
+	$content   = '';
+	$attrs     = array_filter( array(
+		'feed_url' => get_theme_option( 'front_page_events_feed_url', '' ),
+		'layout'   => 'modern_date',
+		'limit'    => 3
+	) );
+	$attr_str  = '';
+
+	$attrs['title'] = '';
+
+	foreach ( $attrs as $key => $val ) {
+		$attr_str .= ' ' . $key . '="' . $val . '"';
+	}
+
+	$content = do_shortcode( '[ucf-events' . $attr_str . ']No events found.[/ucf-events]' );
+
+	return $content;
+}

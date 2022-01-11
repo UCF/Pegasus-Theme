@@ -25,6 +25,12 @@ require_once( 'custom-post-types.php' ); # Where post types are defined
 require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
 
 
+// Plugin extras/overrides
+
+if ( class_exists( 'UCF_Events_Common' ) ) {
+	include_once 'includes/ucf-events-functions.php';
+}
+
 /****************************************************************************
  *
  * START version configuration, backward compatibility functions here
@@ -1354,8 +1360,10 @@ function active_issue_endpoint_callback( $request ) {
 **/
 if ( get_relevant_version() <= 5 ) {
 	require_once( 'functions/v5-display-logic.php' );
+	require_once( 'functions/v5-feeds.php' );
 } else {
 	require_once( 'functions/display-logic.php' );
+	require_once( 'functions/feeds.php' );
 }
 
 

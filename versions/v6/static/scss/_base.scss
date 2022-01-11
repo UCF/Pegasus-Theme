@@ -13,8 +13,8 @@
 // // Styles for our base header/footer templates and specific, per-view templates
 @import 'layout';
 
-@import 'views-issue';
-@import 'views-story';
+
+@import 'components/ucf-events';
 
 @import 'pages/page';
 @import 'pages/front-page';
