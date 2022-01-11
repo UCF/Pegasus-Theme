@@ -14,35 +14,43 @@ $events = get_home_events( $post->ID );
 		?>
 	<?php endif; ?>
 
-	<hr class="fp-divider visible-xs-block">
+	<div class="row justify-content-center hidden-sm-up">
+		<div class="col-10">
+			<hr class="hr-primary hr-2 w-75">
+		</div>
+	</div>
 
-	<div class="row">
+	<div class="row justify-content-center">
 		<?php if ( $feature_2 = get_theme_option( 'front_page_featured_story_2' ) ): ?>
-		<div class="col-sm-3">
+		<div class="col-9 col-sm-3">
 			<?php echo display_front_page_story( get_post( $feature_2 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_3 = get_theme_option( 'front_page_featured_story_3' ) ): ?>
-		<div class="col-sm-3">
+		<div class="col-9 col-sm-3">
 			<?php echo display_front_page_story( get_post( $feature_3 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_4 = get_theme_option( 'front_page_featured_story_4' ) ): ?>
-		<div class="col-sm-3">
+		<div class="col-9 col-sm-3">
 			<?php echo display_front_page_story( get_post( $feature_4 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_5 = get_theme_option( 'front_page_featured_story_5' ) ): ?>
-		<div class="col-sm-3">
+		<div class="col-9 col-sm-3">
 			<?php echo display_front_page_story( get_post( $feature_5 ) ); ?>
 		</div>
 		<?php endif; ?>
 	</div>
 
-	<hr class="fp-divider visible-xs-block">
+	<div class="row justify-content-center hidden-sm-up">
+		<div class="col-10">
+			<hr class="hr-primary hr-2 w-75">
+		</div>
+	</div>
 
 	<div class="row">
 		<div class="col-sm-7 col-md-8">
@@ -112,7 +120,7 @@ $events = get_home_events( $post->ID );
 		<div class="col-sm-3 text-center fp-issue-wrapper">
 			<div class="fp-issue">
 				<?php echo display_front_page_issue_details(); ?>
-				<hr class="fp-divider fp-divider-short">
+				<hr class="hr-primary hr-3 w-25 w-sm-50">
 			</div>
 		</div>
 		<div class="col-sm-9">
