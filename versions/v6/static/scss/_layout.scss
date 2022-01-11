@@ -84,7 +84,7 @@
     &.last-child {
       margin-right: 80px;
 
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         margin-right: 20px;
       }
     }
@@ -94,7 +94,7 @@
       height: 120px;
       width: 188px;
 
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         height: 97px;
         width: 146px;
       }
@@ -126,7 +126,7 @@
     width: 60px;
     z-index: 6;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       display: none !important;
     }
 
@@ -187,7 +187,7 @@
 .pulldown-stories .story-list article {
   width: 180px;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     width: 140px;
 
     img {
@@ -244,7 +244,7 @@
     height: 100%;
     text-align: right;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       text-align: center;
     }
   }
@@ -274,7 +274,7 @@
     top: 12.5px;
     width: 97px;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       left: 0;
       margin: auto;
       position: absolute;
@@ -302,7 +302,7 @@ li#nav-give {
 li#nav-issue,
 li#nav-archives {
   #header-navigation ul.mobile-nav-visible & {
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       display: inline-block;
       float: none;
     }
@@ -322,7 +322,7 @@ li#nav-issue,
 li#nav-archives,
 li#nav-give,
 #header-navigation .header-logo.mobile-nav-visible {
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     display: none;
   }
 }
@@ -334,7 +334,7 @@ li#nav-mobile {
   text-align: left;
   width: 40px;
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     display: block;
   }
 
@@ -375,7 +375,7 @@ li#nav-mobile {
 }
 
 li#nav-issue {
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     margin-left: -30px;
   }
 
@@ -438,7 +438,7 @@ li#nav-give a {
   line-height: 14px;
   text-decoration: none;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     font-size: 13px;
     line-height: 13px;
   }
@@ -475,7 +475,7 @@ li#nav-about {
     font-size: 12px;
     font-style: italic;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 11px;
     }
   }
@@ -488,7 +488,7 @@ li#nav-about {
   margin-top: 50px;
   position: relative;
 
-  @include media-breakpoint-down(sm) {
+  @include media-breakpoint-down(md) {
     margin-bottom: 40px;
   }
 
@@ -580,7 +580,7 @@ li#nav-about {
   padding-bottom: 60px;
   padding-top: 60px;
 
-  @include media-breakpoint-down(xs) {
+  @include media-breakpoint-down(sm) {
     padding-bottom: 25px;
     padding-top: 40px;
   }
@@ -602,7 +602,7 @@ li#nav-about {
   a {
     font-size: 18px;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 13px;
     }
   }
@@ -618,7 +618,7 @@ li#nav-about {
 
   .footer-logo,
   .footer-ipad-app {
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       padding-bottom: 30px;
     }
   }
@@ -629,7 +629,7 @@ li#nav-about {
     padding-bottom: 60px;
     width: 100%;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       margin-top: 8px;
     }
 
@@ -639,7 +639,7 @@ li#nav-about {
 
     &,
     &.pull-left {
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         padding-bottom: 20px;
         width: 100%;
       }
@@ -648,7 +648,7 @@ li#nav-about {
     &,
     &.pull-left,
     a {
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         clear: both;
         float: left !important;
       }
@@ -658,7 +658,7 @@ li#nav-about {
   .footer-ipad-app {
     &,
     &.pull-right {
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         clear: both;
         float: left !important;
       }
@@ -673,7 +673,7 @@ li#nav-about {
     margin-bottom: 0;
     text-align: center;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       text-align: left;
     }
   }
@@ -681,7 +681,7 @@ li#nav-about {
   li {
     display: inline-block;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       line-height: 32px;
       width: 100%;
     }
@@ -692,11 +692,11 @@ li#nav-about {
       font-size: 18px;
       padding: 0 6px;
 
-      @include media-breakpoint-down(sm) {
+      @include media-breakpoint-down(md) {
         font-size: 16px;
       }
 
-      @include media-breakpoint-down(xs) {
+      @include media-breakpoint-down(sm) {
         content: '';
         padding: 0;
       }
@@ -713,11 +713,11 @@ li#nav-about {
     margin: 0;
     text-align: center;
 
-    @include media-breakpoint-down(sm) {
+    @include media-breakpoint-down(md) {
       font-size: 13px;
     }
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       text-align: left;
     }
   }
@@ -725,7 +725,7 @@ li#nav-about {
   .copyright {
     padding-top: 60px;
 
-    @include media-breakpoint-down(xs) {
+    @include media-breakpoint-down(sm) {
       padding-top: 30px;
     }
   }

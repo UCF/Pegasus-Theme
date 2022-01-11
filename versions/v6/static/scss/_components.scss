@@ -38,7 +38,7 @@
   white-space: normal;
   width: 48.5%;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     width: 100%;
   }
 }
@@ -47,7 +47,7 @@
   clear: left;
   float: left;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     clear: none;
     float: none;
     margin-bottom: 10px;
@@ -58,7 +58,7 @@
   clear: right;
   float: right;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     clear: none;
     float: none;
   }
@@ -72,7 +72,7 @@
   height: 31px;
   width: 193px;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     background-position: 0 -16px;
     height: 23px;
     width: 147px;
@@ -239,15 +239,15 @@ article.ss-photo-essay {
   top: 0;
   white-space: nowrap;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     height: 65%;
   }
 
   .ss-photo-essay & {
-    height: 80%;
+    height: 50%;
 
-    @media (max-width: $screen-xs-max) {
-      height: 50%;
+    @include media-breakpoint-up(sm) {
+      height: 80%;
     }
 
     @media (max-width: 320px) {
@@ -256,10 +256,10 @@ article.ss-photo-essay {
   }
 
   .ss-embed & {
-    height: 360px;
+    height: 280px;
 
-    @media (max-width: $screen-xs-max) {
-      height: 280px;
+    @include media-breakpoint-up(sm) {
+      height: 360px;
     }
 
     @media (max-width: 320px) {
@@ -290,14 +290,14 @@ article.ss-photo-essay {
     color: #fff;
     -ms-filter: 'progid:DXImageTransform.Microsoft.Alpha(Opacity=100)';
     filter: alpha(opacity=100);
-    margin-top: 100px;
     -khtml-opacity: 1;
     -moz-opacity: 1;
+    margin-top: 25px;
     opacity: 1;
     text-align: center;
 
-    @media (max-width: $screen-xs-max) {
-      margin-top: 25px;
+    @include media-breakpoint-up(sm) {
+      margin-top: 100px;
     }
 
     @media (max-width: 480px) {
@@ -310,21 +310,21 @@ article.ss-photo-essay {
   }
 
   > .ss-slide {
-    width: 500px;
+    width: 80%;
 
-    @media (max-width: $screen-xs-max) {
-      width: 80%;
+    @include media-breakpoint-up(sm) {
+      width: 500px;
     }
 
     .ss-title {
-      font-size: 30px;
-      line-height: 30px;
-      margin-top: 20px;
+      font-size: 16px;
+      line-height: 16px;
+      margin-top: 10px;
 
-      @media (max-width: $screen-xs-max) {
-        font-size: 16px;
-        line-height: 16px;
-        margin-top: 10px;
+      @include media-breakpoint-up(sm) {
+        font-size: 30px;
+        line-height: 30px;
+        margin-top: 20px;
       }
     }
   }
@@ -332,10 +332,10 @@ article.ss-photo-essay {
 
 .ss-control {
   color: #fff;
-  font-size: 16px;
+  font-size: 11px;
 
-  @media (max-width: $screen-xs-max) {
-    font-size: 11px;
+  @include media-breakpoint-up(sm) {
+    font-size: 16px;
   }
 
   &:hover {
@@ -350,15 +350,14 @@ article.ss-photo-essay {
     border-width: 1px;
     color: #fff;
     display: inline-block;
-    font-size: 50px;
-    margin-bottom: 20px;
-    padding: 20px;
+    font-size: 30px;
+    margin-bottom: 10px;
+    padding: 10px;
 
-    @media (max-width: $screen-xs-max) {
-      background-color: #000;
-      font-size: 30px;
-      margin-bottom: 10px;
-      padding: 10px;
+    @include media-breakpoint-up(sm) {
+      font-size: 50px;
+      margin-bottom: 20px;
+      padding: 20px;
     }
 
     &:hover {
@@ -369,7 +368,7 @@ article.ss-photo-essay {
   &.ss-play i {
     line-height: 15px;
 
-    @media (max-width: $screen-xs-max) {
+    @include media-breakpoint-down(sm) {
       font-size: 35px;
       line-height: 13px;
       margin-bottom: 0;
@@ -378,10 +377,10 @@ article.ss-photo-essay {
   }
 
   &.ss-restart i {
-    line-height: 50px;
+    line-height: 30px;
 
-    @media (max-width: $screen-xs-max) {
-      line-height: 30px;
+    @include media-breakpoint-up(sm) {
+      line-height: 50px;
     }
   }
 }
@@ -472,7 +471,7 @@ article.ss-photo-essay {
     position: absolute;
     top: 40%;
 
-    @media (max-width: $screen-sm-max) {
+    @include media-breakpoint-down(sm) {
       top: 20%;
     }
 
@@ -487,10 +486,10 @@ article.ss-photo-essay {
     }
 
     .ss-embed & {
-      top: 180px;
+      top: 140px;
 
-      @media (max-width: $screen-xs-max) {
-        top: 140px;
+      @include media-breakpoint-up(sm) {
+        top: 180px;
       }
 
       @media (max-width: 320px) {
@@ -527,7 +526,7 @@ article.ss-photo-essay {
   position: relative;
   width: 56%;
 
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     height: 30%;
   }
 
@@ -537,12 +536,12 @@ article.ss-photo-essay {
 
   .ss-photo-essay & {
     bottom: 0;
-    height: 20%;
+      height: 50%;
     padding-top: 0;
     position: absolute;
 
-    @media (max-width: $screen-xs-max) {
-      height: 50%;
+    @include media-breakpoint-up(sm) {
+      height: 20%;
     }
   }
 }
@@ -581,23 +580,23 @@ article.ss-photo-essay {
 .sidebar {
   margin-bottom: 20px;
 
-  &.pull-left {
-    padding-left: 0;
-    padding-right: $grid-gutter-width;
-  }
-
-  &.pull-right {
-    padding-left: $grid-gutter-width;
-    padding-right: 0;
-  }
-
   &.pull-left,
   &.pull-right {
-    @media (max-width: $screen-xs-max) {
-      float: left;
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    width: 100%;
+  }
+
+  @include media-breakpoint-up(sm) {
+    &.pull-left {
       padding-left: 0;
+      padding-right: $grid-gutter-width;
+    }
+
+    &.pull-right {
+      padding-left: $grid-gutter-width;
       padding-right: 0;
-      width: 100%;
     }
   }
 }
@@ -618,7 +617,7 @@ article.ss-photo-essay {
         position: relative;
         top: 0;
 
-        @media (max-width: $screen-sm-max) {
+        @include media-breakpoint-down(sm) {
           font-size: 26px;
           line-height: 36px;
         }
@@ -630,7 +629,7 @@ article.ss-photo-essay {
       font-size: 28px;
       line-height: 38px;
 
-      @media (max-width: $screen-sm-max) {
+      @include media-breakpoint-down(sm) {
         font-size: 26px;
         line-height: 36px;
       }
@@ -664,12 +663,10 @@ article.ss-photo-essay {
 
     h1,
     h1 > span {
-      @media (max-width: $screen-sm-max) {
-        font-size: 85%;
-      }
+      font-size: 36px !important;  // Necessary to override inline css
 
-      @media (max-width: $screen-xs-max) {
-        font-size: 36px !important;  // Necessary to override inline css
+      @include media-breakpoint-down(sm) {
+        font-size: 85%;
       }
     }
 
@@ -681,16 +678,16 @@ article.ss-photo-essay {
 
     .lead,
     .lead > span {
-      @media (max-width: $screen-xs-max) {
+      @include media-breakpoint-down(sm) {
         font-size: 18px !important;  // Necessary to override inline css
       }
     }
 
     .well {
-      width: 80%;
+      width: 100%;
 
-      @media (max-width: $screen-xs-max) {
-        width: 100%;
+      @include media-breakpoint-up(sm) {
+        width: 80%;
       }
     }
   }
@@ -774,7 +771,7 @@ body:not(.ie8) .wp-video-shortcode,
 body:not(.ie8) .mejs-overlay,
 body:not(.ie8) .mejs-poster,
 iframe {
-  @media (max-width: $screen-sm-max) {
+  @include media-breakpoint-down(sm) {
     height: 280px !important;
   }
 
@@ -837,14 +834,6 @@ iframe {
 
   img {
     margin-top: 0;
-  }
-}
-
-.mobile-img-fluid,
-.mobile-img-fluid img {
-  @media (max-width: $screen-xs-max) {
-    max-width: 100% !important;
-    width: 100% !important;
   }
 }
 

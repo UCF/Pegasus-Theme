@@ -261,8 +261,7 @@ gulp.task('js-build-version', () => {
 // All js-related tasks
 gulp.task('js', gulp.series(
   'es-lint-version',
-  'js-build-version'
-));
+  'js-build-version'));
 
 
 //

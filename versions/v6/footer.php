@@ -21,7 +21,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="container story-list-grid hidden-sm hidden-xs">
+				<div class="container story-list-grid d-none d-lg-block">
 					<div class="row">
 					<?php
 					$count = 0;
@@ -53,8 +53,8 @@
 					?>
 					</div>
 				</div>
-				<?php echo display_story_list( $issue, 'hidden-md hidden-lg' ); ?>
-				<div class="controls hidden-md hidden-lg">
+				<?php echo display_story_list( $issue, 'd-lg-none' ); ?>
+				<div class="controls d-lg-none">
 					<a class="backward icon icon-caret-left" href="#">Back</a>
 					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>
@@ -76,7 +76,7 @@
 			<aside class="container-wide" id="footer-social">
 				<div class="container">
 					<div class="row">
-						<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 border-top">
+						<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 border-top">
 							<ul class="social-icon-list">
 								<?php if ( !empty( $fb_url ) ) { ?>
 								<li class="social-icon-list-item">
