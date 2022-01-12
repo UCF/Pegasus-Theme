@@ -1,7 +1,8 @@
 <?php disallow_direct_load( 'front-page.php' ); ?>
 <?php get_version_header( 'front' );
 
-$events = get_home_events( $post->ID );
+$events = get_home_events();
+$featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gallery_1' ) );
 ?>
 
 <div class="container">
@@ -159,9 +160,9 @@ $events = get_home_events( $post->ID );
 			<?php echo $events; ?>
 		</div>
 
-		<?php if ( $gallery_1 = get_theme_option( 'front_page_featured_gallery_1' ) ): ?>
-		<div class="col-sm-6">
-			<?php echo display_front_page_gallery( get_post( $gallery_1 ) ); ?>
+		<?php if ( $featured_gallery ) : ?>
+		<div class="col-lg">
+			<?php echo $featured_gallery; ?>
 		</div>
 		<?php endif; ?>
 	</div>
