@@ -57,8 +57,8 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 		<div class="col-sm-7 col-md-8">
 			<aside class="fp-today-feed">
 				<a href="https://today.ucf.edu/">
-					<span class="fp-today-feed-more pull-right hidden-xs hidden-sm">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o ucf-gold"></span></span>
-					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
+					<span class="fp-today-feed-more pull-right hidden-xs hidden-sm">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o text-primary"></span></span>
+					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right text-primary"></span></h2>
 				</a>
 				<?php
 				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
