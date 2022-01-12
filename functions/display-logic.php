@@ -238,14 +238,13 @@ function display_front_page_issue_details() {
 
 /**
  * Displays events markup for the Pegasus homepage.
- * Ported over from Today-Child-Theme
+ * Ported over from Today-Child-Theme.
  *
  * @since 6.0.0
  * @author Jo Dickson
- * @param int $post_id ID of the Pegasus homepage post
  * @return string HTML markup for the events list
  */
-function get_home_events( $post_id ) {
+function get_home_events() {
 	$content   = '';
 	$attrs     = array_filter( array(
 		'feed_url' => get_theme_option( 'front_page_events_feed_url', '' ),
