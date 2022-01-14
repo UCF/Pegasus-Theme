@@ -291,7 +291,6 @@
   }
 }
 
-
 // General - Mobile nav, Issue, Archives list items
 li#nav-issue,
 li#nav-archives,
@@ -343,7 +342,7 @@ li#nav-mobile {
     color: #222;
     display: block;
     filter: alpha(opacity=100);
-    font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+    font-family: $font-family-sans-serif;
     font-size: 18px;
     height: 100%;
     line-height: 40px;
@@ -432,7 +431,7 @@ li#nav-archives a,
 li#nav-give a {
   @include font-smoothing();
   color: #222;
-  font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
+  font-family: $font-family-sans-serif;
   font-size: 14px;
   font-weight: 700;
   line-height: 14px;
@@ -477,256 +476,6 @@ li#nav-about {
 
     @include media-breakpoint-down(md) {
       font-size: 11px;
-    }
-  }
-}
-
-
-// Subfooter - More Stories
-#more-stories {
-  margin-bottom: 80px;
-  margin-top: 50px;
-  position: relative;
-
-  @include media-breakpoint-down(md) {
-    margin-bottom: 40px;
-  }
-
-  article {
-    a {
-      display: block;
-      overflow: hidden;
-
-      &:hover,
-      &:active {
-        text-decoration: none;
-      }
-    }
-
-    .story-title,
-    .subtitle {
-      display: block;
-    }
-  }
-
-  .story-list-grid article img {
-    float: left;
-    margin: 0 20px 20px 0;
-  }
-}
-
-
-// Subfooter - Social Links
-#footer-social {
-  // "hide" .border-top border on default issue template
-  margin-top: -1px;
-
-  .border-top {
-    border-top: 1px solid #e5e5e5;
-    padding: 20px 0;
-  }
-}
-
-.social-icon-list-heading {
-  @include gotham(6);
-  color: $gray-medium;
-  display: block;
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-}
-
-.social-icon-list {
-  @include list-unstyled();
-  margin-bottom: 0;
-  text-align: center;
-}
-
-.social-icon-list-item {
-  display: inline-block;
-  padding: 0 3px;
-
-  a {
-    @include sprite();
-    height: 32px;
-    width: 35px;
-
-    &.facebook {
-      background-position: 3px -114px;
-    }
-
-    &.twitter {
-      background-position: -63px -113px;
-    }
-
-    &.flickr {
-      background-position: -30px -114px;
-    }
-
-    &.youtube {
-      background-position: -98px -114px;
-    }
-
-    &.googleplus {
-      background-position: -131px -114px;
-    }
-  }
-}
-
-
-// Footer - General
-#footer-navigation {
-  background-color: #222;
-  padding-bottom: 60px;
-  padding-top: 60px;
-
-  @include media-breakpoint-down(sm) {
-    padding-bottom: 25px;
-    padding-top: 40px;
-  }
-
-  &,
-  & p,
-  & a {
-    @include font-smoothing();
-    color: #fff;
-    font-family: 'Gotham SSm A', 'Gotham SSm B', serif;
-    font-size: 14px;
-    font-weight: 700;
-
-    .ie8 & {
-      font-weight: normal;
-    }
-  }
-
-  a {
-    font-size: 18px;
-
-    @include media-breakpoint-down(md) {
-      font-size: 13px;
-    }
-  }
-
-
-  // Footer logo positioning
-  .footer-logo.pull-left,
-  .footer-ipad-app {
-    display: block;
-    padding-bottom: 60px;
-    width: 48%;
-  }
-
-  .footer-logo,
-  .footer-ipad-app {
-    @include media-breakpoint-down(md) {
-      padding-bottom: 30px;
-    }
-  }
-
-  .footer-logo {
-    display: block;
-    margin-top: 5px;
-    padding-bottom: 60px;
-    width: 100%;
-
-    @include media-breakpoint-down(md) {
-      margin-top: 8px;
-    }
-
-    a {
-      margin: auto;
-    }
-
-    &,
-    &.pull-left {
-      @include media-breakpoint-down(sm) {
-        padding-bottom: 20px;
-        width: 100%;
-      }
-    }
-
-    &,
-    &.pull-left,
-    a {
-      @include media-breakpoint-down(sm) {
-        clear: both;
-        float: left !important;
-      }
-    }
-  }
-
-  .footer-ipad-app {
-    &,
-    &.pull-right {
-      @include media-breakpoint-down(sm) {
-        clear: both;
-        float: left !important;
-      }
-    }
-  }
-
-
-  // Footer navigation
-  ul {
-    @include list-unstyled();
-    clear: both;
-    margin-bottom: 0;
-    text-align: center;
-
-    @include media-breakpoint-down(sm) {
-      text-align: left;
-    }
-  }
-
-  li {
-    display: inline-block;
-
-    @include media-breakpoint-down(sm) {
-      line-height: 32px;
-      width: 100%;
-    }
-
-    &:before {
-      color: #5c5c5c;
-      content: '|';
-      font-size: 18px;
-      padding: 0 6px;
-
-      @include media-breakpoint-down(md) {
-        font-size: 16px;
-      }
-
-      @include media-breakpoint-down(sm) {
-        content: '';
-        padding: 0;
-      }
-    }
-
-    &:first-child:before {
-      content: '';
-    }
-  }
-
-  // Footer copyright line
-  .copyright,
-  .address {
-    margin: 0;
-    text-align: center;
-
-    @include media-breakpoint-down(md) {
-      font-size: 13px;
-    }
-
-    @include media-breakpoint-down(sm) {
-      text-align: left;
-    }
-  }
-
-  .copyright {
-    padding-top: 60px;
-
-    @include media-breakpoint-down(sm) {
-      padding-top: 30px;
     }
   }
 }
