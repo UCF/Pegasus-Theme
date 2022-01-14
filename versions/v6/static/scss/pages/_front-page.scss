@@ -27,6 +27,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-heading {
+  @include gotham(8);
   color: $black;
   font-size: 34px;
   letter-spacing: -.02em;
@@ -38,6 +39,7 @@ $fp-feature-img-width: 263px;
 
 .fp-subheading,
 .fp-vertical {
+  @include gotham(6);
   color: $black;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -48,6 +50,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-subheading-underline {
+  @include gotham(6);
   color: $black;
   display: block;
   font-size: 14px;
@@ -76,6 +79,164 @@ $fp-feature-img-width: 263px;
   letter-spacing: .1em;
   max-width: 100%;
   padding: 3px 15px;
+}
+
+
+//
+// Header
+//
+.fp-header-link {
+  @include gotham(6);
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .06em;
+  margin: 15px 0 25px;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+}
+
+.fp-header-link-issue {
+  float: left;
+
+  @include media-breakpoint-up(md) {
+    float: none;
+    margin: 65px 0 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 85px;
+  }
+}
+
+.fp-header-link-archives {
+  float: right;
+
+  @include media-breakpoint-up(md) {
+    float: none;
+    margin: 73px 0 0;
+  }
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 93px;
+  }
+}
+
+.fp-header-title {
+  display: block;
+  margin: 0 auto 15px;
+  max-width: 384px;
+  width: 85%;
+
+  @include media-breakpoint-up(md) {
+    margin: 50px auto 20px;
+    padding: 0 20px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    padding: 0;
+  }
+}
+
+.fp-header-subtitle {
+  @include archer();
+  color: $black;
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: .125em;
+  text-transform: uppercase;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: $black;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 13px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 15px;
+  }
+}
+
+.fp-header-subtitle-pre {
+  // Force a line break in subtitle at certain screen sizes
+  display: block;
+
+  @media (min-width: 480px) {
+    display: inline;
+  }
+
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+
+  @include media-breakpoint-up(lg) {
+    display: inline;
+  }
+}
+
+.fp-social-links {
+  display: inline-block;
+  margin: 30px auto 10px;
+
+  @include media-breakpoint-up(md) {
+    display: block;
+    margin: 15px 0 0;
+  }
+
+  .social-icon-list-heading,
+  .social-icon-list {
+    float: left;
+  }
+
+  .social-icon-list-heading {
+    line-height: 20px;
+    margin-right: 10px;
+  }
+
+  .social-icon-list-item a {
+    background-size: 128px auto;
+    height: 20px;
+    width: 20px;
+
+    &.facebook {
+      background-position: 0 -76px;
+    }
+
+    &.twitter {
+      background-position: -44px -75px;
+    }
+
+    &.flickr {
+      background-position: -21px -76px;
+    }
+
+    &.youtube {
+      background-position: -67px -76px;
+    }
+
+  }
+}
+
+.fp-header-border {
+  border-bottom: 7px solid $black;
+  border-top: 1px solid $gray-light-alt;
+  bottom: 0;
+  display: block;
+  height: 13px;
+  margin: 50px 0 20px;
+
+  @include media-breakpoint-up(lg) {
+    margin-top: 70px;
+  }
 }
 
 
@@ -133,7 +294,61 @@ $fp-feature-img-width: 263px;
 
 
 
+.fp-feature-top {
+  max-width: none;
+  width: 100%;
 
+  @include media-breakpoint-up(md) {
+    position: relative;
+  }
+
+  .fp-feature-text-wrap {
+    @include media-breakpoint-up(md) {
+      background-color: rgba(0, 0, 0, .6);
+      bottom: 0;
+      left: 0;
+      padding: 10px 30px 30px;
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  .fp-feature-title,
+  .fp-feature-description,
+  .fp-feature-link,
+  .fp-feature-link:hover,
+  .fp-feature-link:active,
+  .fp-feature-link:focus {
+    @include gotham(7);
+
+    @include media-breakpoint-up(md) {
+      color: $white;
+    }
+  }
+
+  .fp-feature-title {
+    @include media-breakpoint-up(lg) {
+      font-size: 36px;
+    }
+  }
+
+  .fp-feature-description {
+    font-family: $font-family-serif;
+    font-weight: normal;
+    line-height: 1.3;
+    padding-left: 30px;
+    padding-right: 30px;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 22px;
+      line-height: 1.2;
+    }
+  }
+
+  .fp-feature-img {
+    width: 100%;
+  }
+}
 
 .fp-feature-link {
   &,
@@ -164,6 +379,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-feature-title {
+  @include gotham(7);
   font-size: 22px;
   margin: 15px 0 8px;
 }
@@ -202,6 +418,7 @@ $fp-feature-img-width: 263px;
     }
 
     .publish-date {
+      @include gotham(8);
       color: #337ab7;
       font-size: 12px;
       font-weight: 900;
@@ -212,6 +429,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-today-feed-more {
+  @include gotham(6);
   color: $gray-medium;
   font-size: 12px;
   letter-spacing: .06em;
@@ -422,6 +640,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-event-date {
+  @include archer();
   color: $gray-medium;
   font-size: 60px;
   letter-spacing: -.04em;
@@ -532,6 +751,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-footer-logo {
+  @include gotham(4);
   display: block;
   font-size: 40px;
   letter-spacing: .06em;
@@ -573,6 +793,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-footer-menu {
+  @include gotham();
   font-size: 11px;
   letter-spacing: .06em;
   text-transform: uppercase;
@@ -587,6 +808,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-copyright {
+  @include gotham();
   font-size: 10px;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -597,6 +819,7 @@ $fp-feature-img-width: 263px;
 }
 
 .fp-address {
+  @include archer();
   font-size: 16px;
   margin-top: 20px;
 }
@@ -627,58 +850,5 @@ $fp-feature-img-width: 263px;
         padding: 4px 8px;
       }
     }
-  }
-}
-
-
-.fp-feature-top {
-  max-width: none;
-  width: 100%;
-
-  @include media-breakpoint-up(md) {
-    position: relative;
-  }
-
-  .fp-feature-text-wrap {
-    @include media-breakpoint-up(md) {
-      background-color: rgba(0, 0, 0, .6);
-      bottom: 0;
-      left: 0;
-      padding: 10px 30px 30px;
-      position: absolute;
-      right: 0;
-    }
-  }
-
-  .fp-feature-title,
-  .fp-feature-description,
-  .fp-feature-link,
-  .fp-feature-link:hover,
-  .fp-feature-link:active,
-  .fp-feature-link:focus {
-
-    @include media-breakpoint-up(md) {
-      color: $white;
-    }
-  }
-
-  .fp-feature-title {
-    @include media-breakpoint-up(lg) {
-      // font-size: 36px;
-    }
-  }
-
-  .fp-feature-description {
-    // padding-left: 30px;
-    // padding-right: 30px;
-
-    @include media-breakpoint-up(lg) {
-      // font-size: 22px;
-      // line-height: 1.2;
-    }
-  }
-
-  .fp-feature-img {
-    // width: 100%;
   }
 }

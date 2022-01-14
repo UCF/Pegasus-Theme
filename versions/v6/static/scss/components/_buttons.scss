@@ -1,0 +1,59 @@
+// Buttons
+.btn {
+  font-family: $font-family-sans-serif;
+}
+
+.btn-give,
+.btn-gold {
+  border-bottom: 4px solid #eab700;
+  border-left: 0;
+  border-radius: 0;
+  border-right: 0;
+  border-top: 0;
+  font-size: 22px;
+  line-height: 1.1;
+  padding: 25px 20px;
+}
+
+.btn-gold {
+  background-color: #fc0;
+  color: #000;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background-color: darken(#fc0, 8%);
+    border-bottom: 4px solid darken(#eab700, 8%);
+  }
+}
+
+.btn-left,
+.btn-right {
+  white-space: normal;
+  width: 48.5%;
+
+  @include media-breakpoint-down(sm) {
+    width: 100%;
+  }
+}
+
+.btn-left {
+  clear: left;
+  float: left;
+
+  @include media-breakpoint-down(sm) {
+    clear: none;
+    float: none;
+    margin-bottom: 10px;
+  }
+}
+
+.btn-right {
+  clear: right;
+  float: right;
+
+  @include media-breakpoint-down(sm) {
+    clear: none;
+    float: none;
+  }
+}
