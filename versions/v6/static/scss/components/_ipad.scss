@@ -1,0 +1,14 @@
+// iPad App button
+.ipad-app-btn {
+  @include sprite();
+  background-position: 0 -72px;
+  height: 42px;
+  width: 135px;
+}
+
+
+// iPad Modal
+#ipad {
+  display: none;
+  text-align: center;
+}

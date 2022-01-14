@@ -2,18 +2,19 @@
 
 // // Base mixins, utility styles
 @import 'mixins';
-@import 'utilities';
+@import 'utils';
 
 // // Base styles for typography, tables, forms, and images
 @import 'type';
-// @import 'forms';
+@import 'header';
+@import 'footer';
 
-// // Styles for components and Bootstrap component overrides
 @import 'components';
 
-// // Styles for our base header/footer templates and specific, per-view templates
-@import 'layout';
-@import 'views-page';
-@import 'views-front-page';
-@import 'views-issue';
-@import 'views-story';
+// Templates
+@import 'templates/issue';
+@import 'templates/page';
+@import 'templates/story';
+
+// Pages
+@import 'pages/front-page';
