@@ -10,6 +10,7 @@ array_push( Config::$styles,
 array_push( Config::$scripts,
 	array('name' => 'inview', 'src' => THEME_COMPONENTS_URL . '/inview.js',),
 	array('name' => 'lazyload', 'src' => THEME_COMPONENTS_URL . '/jquery.lazyload.min.js',),
+	array('name' => 'tether', 'src' => 'https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.7/js/tether.min.js',),
 	array('name' => 'version-script', 'src' => THE_POST_VERSION_URL . '/static/js/script.min.js',)
 );
 
