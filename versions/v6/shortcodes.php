@@ -581,7 +581,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
 		'taxonomy' => 'issues',
-		'column_width' => 'col-md-10 col-sm-10 offset-md-1 offset-sm-1',
+		'column_width' => 'col-md-10 offset-md-1',
 		'column_count' => '1',
 		'order_by' => 'title',
 		'order' => 'ASC',
@@ -656,14 +656,14 @@ function sc_archive_search($params=array(), $content='') {
 	ob_start();
 	?>
 	<div class="row post-type-search">
-		<div class="col-md-8 col-sm-8 offset-md-2 offset-sm-2 post-type-search-header">
+		<div class="col-md-8 offset-md-2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<label for="s">Search</label>
 				<input type="text" name="s" class="search-field" id="s" placeholder="<?php echo $params['default_search_text']; ?>" />
 			</form>
 		</div>
-		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
-		<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 post-type-search-term">
+		<div class="col-md-12 post-type-search-results"></div>
+		<div class="col-md-10 offset-md-1 post-type-search-term">
 		<?php 		$issue_count = 0;
 		foreach( $issues_sorted as $key => $posts ) {
 			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
