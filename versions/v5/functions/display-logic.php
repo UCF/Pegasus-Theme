@@ -1,13 +1,8 @@
 <?php
 /**
- * Display logic for version 6+.
- */
-
-
-/**
  * Displays a single story on the front page.
  **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3', $heading_class='h4' ) {
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) return false;
 
 	$thumbnail = null;
@@ -19,7 +14,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			$thumbnail_size,
 			false,
 			array(
-				'class' => 'img-fluid mb-3',
+				'class' => 'fp-feature-img center-block img-fluid',
 				'alt' => '' // Intentionally blank to avoid redundant story title announcement
 			)
 		);
@@ -46,7 +41,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 	ob_start();
 ?>
-<article class="text-center <?php echo $css_class; ?>">
+<article class="fp-feature <?php echo $css_class; ?>">
 	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php if ( $thumbnail ): ?>
 		<div class="fp-feature-img-wrap">
@@ -61,7 +56,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		<?php endif; ?>
 	</a>
 	<div class="fp-feature-text-wrap">
-		<<?php echo $heading; ?> class="<?php echo $heading_class; ?>">
+		<<?php echo $heading; ?> class="fp-feature-title">
 			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
 				<?php echo $title; ?>
 			</a>
@@ -131,7 +126,7 @@ function display_front_page_event( $event ) {
  * Displays a single featured gallery on the front page.
  **/
 function display_front_page_gallery( $gallery, $css_class='' ) {
-	if ( !$gallery ) return false;
+	if ( !$gallery ) { return false; }
 
 	$title = wptexturize( $gallery->post_title );
 
@@ -234,83 +229,3 @@ function display_front_page_issue_details() {
 	<?php endif; ?>
 <?php 	return ob_get_clean();
 }
-
-
-/**
- * Displays events markup for the Pegasus homepage.
- * Ported over from Today-Child-Theme.
- *
- * @since 6.0.0
- * @author Jo Dickson
- * @return string HTML markup for the events list
- */
-function get_home_events() {
-	$content   = '';
-	$attrs     = array_filter( array(
-		'feed_url' => get_theme_option( 'front_page_events_feed_url', '' ),
-		'layout'   => 'modern_date',
-		'limit'    => 3
-	) );
-	$attr_str  = '';
-
-	$attrs['title'] = '';
-
-	foreach ( $attrs as $key => $val ) {
-		$attr_str .= ' ' . $key . '="' . $val . '"';
-	}
-
-	$content = do_shortcode( '[ucf-events' . $attr_str . ']No events found.[/ucf-events]' );
-
-	return $content;
-}
-
-
-/**
- * Displays Featured Gallery markup for the Pegasus homepage.
- * Ported over from the Today-Child-Theme.
- *
- * @since 6.0.0
- * @author Jo Dickson
- * @return string HTML markup for the featured gallery
- */
-function get_home_gallery( $gallery ) {
-
-	ob_start();
-?>
-	<?php
-	if ( $gallery ) :
-		$vertical       = get_the_category( $gallery->ID )[0] ?? '';
-		$thumbnail      = '';
-		$thumbnail_id   = get_post_thumbnail_id( $gallery );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
-
-		if ( $thumbnail_id ) {
-			$thumbnail = wp_get_attachment_image(
-				$thumbnail_id,
-				$thumbnail_size,
-				false,
-				array(
-					'class' => 'img-responsive center-block fp-gallery-img',
-					'alt' => '' // Intentionally blank to avoid redundant story title announcement
-				)
-			);
-		}
-	?>
-	<div class="card border-0 bg-faded mx-auto">
-		<div class="card-block p-4">
-			<a href="<?php echo get_permalink( $gallery ); ?>">
-				<h2 class="text-secondary"><?php echo $gallery->post_title; ?></h2>
-
-				<?php if ( $vertical ) : ?>
-				<span class="badge badge-primary"><?php echo wptexturize( $vertical->name ); ?></span>
-				<?php endif; ?>
-
-				<?php echo $thumbnail; ?>
-			</a>
-		</div>
-	</div>
-	<?php endif; ?>
-<?php
-	return trim( ob_get_clean() );
-}
-

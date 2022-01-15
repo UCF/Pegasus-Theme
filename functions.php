@@ -18,7 +18,6 @@
 
 
 require_once( 'functions/base.php' );    # Base theme functions
-require_once( 'functions/feeds.php' );   # Feed-related functions
 require_once( 'functions/admin.php' );   # Admin/login functions
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
 require_once( 'custom-post-types.php' ); # Where post types are defined
@@ -1352,20 +1351,6 @@ function active_issue_endpoint_callback( $request ) {
 	return new WP_REST_Response( $retval, 200 );
 }
 
-/**
-* Include display logic depending on what version is being loaded.
-*
-* This was implemented in v6.0.0 in order to ensure backwards-compatibility
-* with stories/pages when the relevant version is below 6.
-**/
-if ( get_relevant_version() <= 5 ) {
-	require_once( 'functions/v5-display-logic.php' );
-	require_once( 'functions/v5-feeds.php' );
-} else {
-	require_once( 'functions/display-logic.php' );
-	require_once( 'functions/feeds.php' );
-}
-
 
 /****************************************************************************
  *
@@ -1375,9 +1360,23 @@ if ( get_relevant_version() <= 5 ) {
  *
  ****************************************************************************/
 
+
+/**
+ * Requires certain functions files depending on what the relevant
+ * version is set to.
+ *
+ * This was updated in v6.0.0 in order to ensure backwards-compatibility
+ * with stories/pages when the relevant version is below 6.
+ **/
 function require_version_functions() {
+	$functions_dir = trailingslashit( get_template_directory() ) . 'functions/';
+
+	if ( get_relevant_version() <= 5 ) {
+		$functions_dir = trailingslashit( get_template_directory() ) . 'versions/v5/functions/';
+	}
+
+	require_once( $functions_dir . 'feeds.php' );
+	require_once( $functions_dir . 'display-logic.php' );
 	require_once( get_version_file_path( 'functions.php' ) );
 }
 add_action( 'init', 'require_version_functions' );
-
-?>

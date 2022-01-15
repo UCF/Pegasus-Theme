@@ -139,11 +139,11 @@ function sc_photo($attr, $content) {
 		if ( $width !== '100%' ) {
 			$width_px = intval( str_replace( 'px', '', $width ) );
 			if ( $width_px > 140 ) {
-				$css_classes .= ' mobile-img-fluid';
+				$css_classes .= ' img-fluid';
 			}
 		}
 		else {
-			$css_classes .= ' mobile-img-fluid';
+			$css_classes .= ' img-fluid';
 		}
 	}
 
@@ -152,15 +152,17 @@ function sc_photo($attr, $content) {
 	$html = '';
 
 	// Attempt to get url by attachment ID first.
-	if ($attachment_id) {
-		$url = wp_get_attachment_image_src($attachment_id, 'full');
-		$url = $url[0];
+	if ( $attachment_id ) {
+		$url = wp_get_attachment_image_src( $attachment_id, 'full' );
+		if( $url ) {
+			$url = $url[0];
+		}
 	}
-	else if ($filename) {
-		$url = sc_image(array('filename' => $filename));
+	else if ( $filename ) {
+		$url = sc_image( array( 'filename' => $filename ) );
 	}
-	if ($url) {
-		if ($content) {
+	if ( $url ) {
+		if ( $content ) {
 			$html .= '<figure class="'.$css_classes.'" style="height: auto;';
 			if ( $width ) {
 				$html .= ' max-width: '.$width.';';
@@ -303,11 +305,11 @@ function sc_callout( $attr, $content ) {
 		$html = '</div></div></div>';
 		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
-		$html .= '<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner ' . $content_align . '">';
+		$html .= '<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 callout-inner ' . $content_align . '">';
 		$html .= $content;
 		$html .= '</div></div></div></div></div>';
 		// Reopen standard .container, .row and .span
-		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">';
+		$html .= '<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1">';
 	}
 
 	return $html;
@@ -579,7 +581,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
 		'taxonomy' => 'issues',
-		'column_width' => 'col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1',
+		'column_width' => 'col-md-10 offset-md-1',
 		'column_count' => '1',
 		'order_by' => 'title',
 		'order' => 'ASC',
@@ -654,14 +656,14 @@ function sc_archive_search($params=array(), $content='') {
 	ob_start();
 	?>
 	<div class="row post-type-search">
-		<div class="col-md-8 col-sm-8 col-md-offset-2 col-sm-offset-2 post-type-search-header">
+		<div class="col-md-8 offset-md-2 post-type-search-header">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<label for="s">Search</label>
 				<input type="text" name="s" class="search-field" id="s" placeholder="<?php echo $params['default_search_text']; ?>" />
 			</form>
 		</div>
-		<div class="col-md-12 col-sm-12 post-type-search-results"></div>
-		<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 post-type-search-term">
+		<div class="col-md-12 post-type-search-results"></div>
+		<div class="col-md-10 offset-md-1 post-type-search-term">
 		<?php 		$issue_count = 0;
 		foreach( $issues_sorted as $key => $posts ) {
 			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
@@ -950,13 +952,13 @@ function sc_header_callout( $attr, $content='' ) {
 		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
 			<div class="container">
 				<div class="row content-wrap">
-					<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 callout-inner <?php echo $attrs['content_align']; ?>">
+					<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 callout-inner <?php echo $attrs['content_align']; ?>">
 						<?php echo do_shortcode( $content ); ?>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
+		<div class="container"><div class="row content-wrap"><div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1">
 	<?php endif; ?>
 <?php 	return ob_get_clean();
 }
