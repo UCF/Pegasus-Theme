@@ -2,7 +2,7 @@
 <?php disallow_direct_load('index.php');?>
 <?php get_version_header();?>
 
-<div class="container page-content" id="post-list">
+<div class="container" id="post-list">
 	<div class="row">
 		<div class="col-lg-9">
 			<?php while(have_posts()): the_post(); ?>
