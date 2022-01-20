@@ -1,9 +1,9 @@
 <?php disallow_direct_load( 'single.php' ); ?>
 <?php get_version_header(); the_post(); ?>
 
-<div class="container page-content" id="<?php echo $post->post_name; ?>">
+<div class="container" id="<?php echo $post->post_name; ?>">
 	<div class="row my-4">
-		<div class="col-md-9">
+		<div class="col-lg-9">
 			<article>
 				<?php if ( ! is_front_page() ) : ?>
 					<h1><?php the_title(); ?></h1>
