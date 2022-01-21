@@ -572,11 +572,10 @@
 // Banner Ad section
 //
 .fp-banner {
-  margin-bottom: 30px;
+  margin: 2rem 0;
 
   @include media-breakpoint-up(md) {
-    margin-bottom: 60px;
-    margin-top: 30px;
+    margin: 4rem 0;
   }
 }
 
