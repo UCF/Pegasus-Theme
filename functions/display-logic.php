@@ -207,7 +207,7 @@ function get_home_gallery( $gallery ) {
 				$thumbnail_size,
 				false,
 				array(
-					'class' => 'img-fluid fp-gallery-img hover-child-filter-brightness',
+					'class' => 'img-fluid fp-gallery-img hover-child-filter-brightness d-block mx-auto mt-2',
 					'alt' => '' // Intentionally blank to avoid redundant story title announcement
 				)
 			);
