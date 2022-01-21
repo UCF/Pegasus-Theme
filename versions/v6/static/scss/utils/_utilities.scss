@@ -1,8 +1,4 @@
 .container {
-  // Override Bootstrap's default padding of $grid-gutter-width / 2
-  padding-left: $grid-gutter-width;
-  padding-right: $grid-gutter-width;
-
   // Disable responsiveness in IE8:
   // Force fixed width for containers
   @include body-prefix('.ie8') {
@@ -12,37 +8,6 @@
 }
 
 
-// Creates columns that are 20% wide
-.col-lg-20percent {
-
-  @include media-breakpoint-up(lg) {
-    @include make-col(2.4);
-  }
-}
-
-.col-md-20percent {
-  @include media-breakpoint-up(md) {
-    @include make-col(2.4);
-  }
-}
-
-.col-sm-20percent {
-  @include media-breakpoint-up(sm) {
-    @include make-col(2.4);
-  }
-}
-
-.col-xs-20percent {
-  @include media-breakpoint-up(xs) {
-    @include make-col(2.4);
-  }
-}
-
-
 .container-wide {
   width: 100%;
-}
-
-.container-tall {
-  height: 100%;
 }

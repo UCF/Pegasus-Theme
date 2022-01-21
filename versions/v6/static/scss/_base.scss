@@ -1,14 +1,13 @@
 // Import individual components for our theme here:
 
-// // Base mixins, utility styles
+// Base mixins, utility styles
 @import 'mixins';
 @import 'utils';
 
-// // Base styles for typography, tables, forms, and images
+// Base styles for typography, header, footer and components
 @import 'type';
 @import 'header';
 @import 'footer';
-
 @import 'components';
 
 // Templates
