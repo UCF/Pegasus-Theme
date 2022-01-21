@@ -1,9 +1,3 @@
-@import 'https://fonts.googleapis.com/css?family=Roboto:400,500,700';
-
-
-$fp-feature-img-width: 263px;
-
-
 //
 // General
 //
@@ -245,7 +239,6 @@ $fp-feature-img-width: 263px;
 //
 .fp-feature {
   margin: 0 auto 30px;
-  max-width: $fp-feature-img-width;
   text-align: center;
   width: 90%;
 

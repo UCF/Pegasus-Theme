@@ -6,7 +6,6 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 ?>
 
 <div class="container">
-	<!-- TODO: Athena-ize -->
 	<?php if ( $feature_1 = get_theme_option( 'front_page_featured_story_1' ) ): ?>
 		<?php
 		$feature_1_post = get_post( $feature_1 );
