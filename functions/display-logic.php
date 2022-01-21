@@ -187,15 +187,16 @@ function get_home_events() {
  *
  * @since 6.0.0
  * @author Jo Dickson
+ * @param string Post ID for gallery
  * @return string HTML markup for the featured gallery
  */
 function get_home_gallery( $gallery ) {
-	$gallery = get_post( $gallery );
 
 	ob_start();
 ?>
 	<?php
 	if ( $gallery ) :
+		$gallery        = get_post( $gallery );
 		$vertical       = get_the_category( $gallery->ID )[0] ?? '';
 		$thumbnail      = '';
 		$thumbnail_id   = get_post_thumbnail_id( $gallery );
