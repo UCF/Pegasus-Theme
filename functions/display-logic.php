@@ -96,38 +96,7 @@ function display_front_page_today_story( $article ) {
 
 
 /**
- * Displays a single event item on the front page.
- **/
-function display_front_page_event( $event ) {
-	$start = strtotime( $event['starts'] );
-	$description = substr( strip_tags( $event['description'] ), 0, 250 );
-	if ( strlen( $description ) === 250 ) {
-		$description .= '...';
-	}
-
-	ob_start();
-?>
-<div class="fp-event">
-	<div class="fp-event-when">
-		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
-		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
-		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
-	</div>
-	<div class="fp-event-content">
-		<span class="fp-vertical"><?php echo $event['category']; ?></span>
-		<span class="fp-event-title">
-			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
-		</span>
-		<div class="fp-event-description">
-			<?php echo $description; ?>
-		</div>
-	</div>
-</div>
-<?php 	return ob_get_clean();
-}
-
-
-/**
+ * TO BE DELETED:
  * Displays a single featured gallery on the front page.
  **/
 function display_front_page_gallery( $gallery, $css_class='' ) {
