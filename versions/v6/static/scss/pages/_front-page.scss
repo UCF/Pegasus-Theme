@@ -678,39 +678,6 @@
 //
 // Featured Gallery section
 //
-.fp-gallery {
-  background-color: $gray-lightest;
-  margin-top: 30px;
-  padding: 15px;
-
-  @include media-breakpoint-up(md) {
-    margin-top: 0;
-  }
-}
-
-.fp-gallery-link {
-  &:hover,
-  &:active,
-  &:focus {
-    text-decoration: none;
-
-    .fp-gallery-heading {
-      text-decoration: underline;
-    }
-  }
-
-  .fp-vertical {
-    font-size: 13px;
-    vertical-align: super;
-  }
-}
-
-.fp-gallery-heading {
-  display: inline-block;
-  margin-right: 15px;
-  margin-top: 0;
-}
-
 .fp-gallery-img {
   border: 5px solid $ucf-gold;
   margin-top: 10px;

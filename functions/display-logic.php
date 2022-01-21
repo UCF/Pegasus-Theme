@@ -96,59 +96,6 @@ function display_front_page_today_story( $article ) {
 
 
 /**
- * TO BE DELETED:
- * Displays a single featured gallery on the front page.
- **/
-function display_front_page_gallery( $gallery, $css_class='' ) {
-	if ( !$gallery ) return false;
-
-	$title = wptexturize( $gallery->post_title );
-
-	$vertical = get_the_category( $gallery->ID );
-	if ( $vertical ) {
-		$vertical = $vertical[0];
-		$vertical = wptexturize( $vertical->name );
-	}
-
-	$thumbnail = null;
-	if ( get_relevant_version( $gallery ) >= 5 ) {
-		// Version 5+: fetch featured image ID
-		$thumbnail_id = get_post_thumbnail_id( $gallery );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
-	} else {
-		// Version 4 and prior: get the ID from the
-		// `story_frontpage_gallery_thumb` meta field
-		$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
-	}
-
-	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image(
-			$thumbnail_id,
-			$thumbnail_size,
-			false,
-			array(
-				'class' => 'img-responsive center-block fp-gallery-img',
-				'alt' => '' // Intentionally blank to avoid redundant story title announcement
-			)
-		);
-	}
-
-	ob_start();
-?>
-	<article class="fp-gallery <?php echo $css_class; ?>">
-		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
-			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
-			<?php if ( $thumbnail ): ?>
-				<?php echo $thumbnail; ?>
-			<?php endif; ?>
-		</a>
-	</article>
-<?php 	return ob_get_clean();
-}
-
-
-/**
 * Displays social buttons (Facebook, Twitter, G+) for front page header.
 *
 * @return string
@@ -243,6 +190,7 @@ function get_home_events() {
  * @return string HTML markup for the featured gallery
  */
 function get_home_gallery( $gallery ) {
+	$gallery = get_post( $gallery );
 
 	ob_start();
 ?>
@@ -259,22 +207,23 @@ function get_home_gallery( $gallery ) {
 				$thumbnail_size,
 				false,
 				array(
-					'class' => 'img-responsive center-block fp-gallery-img',
+					'class' => 'img-fluid fp-gallery-img hover-child-filter-brightness',
 					'alt' => '' // Intentionally blank to avoid redundant story title announcement
 				)
 			);
 		}
 	?>
-	<div class="card border-0 bg-faded mx-auto">
+	<div class="card border-0 bg-faded mx-auto hover-parent">
 		<div class="card-block p-4">
-			<a href="<?php echo get_permalink( $gallery ); ?>">
+			<a class="stretched-link" href="<?php echo get_permalink( $gallery ); ?>">
 				<h2 class="text-secondary"><?php echo $gallery->post_title; ?></h2>
+			</a>
 
-				<?php if ( $vertical ) : ?>
-				<span class="badge badge-primary"><?php echo wptexturize( $vertical->name ); ?></span>
-				<?php endif; ?>
+			<?php if ( $vertical ) : ?>
+			<span class="badge badge-primary"><?php echo wptexturize( $vertical->name ); ?></span>
+			<?php endif; ?>
 
-				<?php echo $thumbnail; ?>
+			<?php echo $thumbnail; ?>
 			</a>
 		</div>
 	</div>
