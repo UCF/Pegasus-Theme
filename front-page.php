@@ -3,6 +3,7 @@
 
 $events = get_home_events();
 $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gallery_1' ) );
+$twitter_url = get_theme_option( 'twitter_url' );
 ?>
 
 <div class="container">
@@ -14,34 +15,34 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 		?>
 	<?php endif; ?>
 
-	<div class="row justify-content-center hidden-sm-up">
+	<div class="row justify-content-center hidden-md-up">
 		<div class="col-10">
-			<hr class="hr-primary hr-2 w-75">
+			<hr class="hr-primary hr-2 w-75 mt-0 mb-4">
 		</div>
 	</div>
 
 	<div class="row justify-content-center">
 		<?php if ( $feature_2 = get_theme_option( 'front_page_featured_story_2' ) ): ?>
-		<div class="col-9 col-sm-3">
-			<?php echo display_front_page_story( get_post( $feature_2 ) ); ?>
+		<div class="col-8 col-sm-6 col-md-3">
+			<?php echo display_front_page_story( get_post( $feature_2 ), 'fp-feature-secondary' ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_3 = get_theme_option( 'front_page_featured_story_3' ) ): ?>
-		<div class="col-9 col-sm-3">
-			<?php echo display_front_page_story( get_post( $feature_3 ) ); ?>
+		<div class="col-8 col-sm-6 col-md-3">
+			<?php echo display_front_page_story( get_post( $feature_3 ), 'fp-feature-secondary' ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_4 = get_theme_option( 'front_page_featured_story_4' ) ): ?>
-		<div class="col-9 col-sm-3">
-			<?php echo display_front_page_story( get_post( $feature_4 ) ); ?>
+		<div class="col-8 col-sm-6 col-md-3">
+			<?php echo display_front_page_story( get_post( $feature_4 ), 'fp-feature-secondary' ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_5 = get_theme_option( 'front_page_featured_story_5' ) ): ?>
-		<div class="col-9 col-sm-3">
-			<?php echo display_front_page_story( get_post( $feature_5 ) ); ?>
+		<div class="col-8 col-sm-6 col-md-3">
+			<?php echo display_front_page_story( get_post( $feature_5 ), 'fp-feature-secondary' ); ?>
 		</div>
 		<?php endif; ?>
 	</div>
@@ -52,13 +53,13 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 		</div>
 	</div>
 
-	<div class="row">
-		<div class="col-sm-7 col-md-8">
+	<div class="row align-items-start mb-4 mb-md-5">
+		<div class="col d-md-flex flex-md-column mb-5 mb-md-0 <?php if ( $twitter_url ) {?>pt-md-4<?php } ?>">
+			<div class="d-md-flex align-items-center justify-content-between mb-4">
+				<h2 class="font-weight-black mb-0 ml-sm-2">The Feed<span class="fa fa-caret-right text-primary ml-2" aria-hidden="true"></span></h2>
+				<a class="text-default-aw text-uppercase font-size-sm font-weight-bold" href="https://www.ucf.edu/news/">Check out more stories at <span class="text-secondary">UCFToday</span> <span class="fas fa-share-square text-primary" aria-hidden="true"></span></a>
+			</div>
 			<aside class="fp-today-feed">
-				<a href="https://today.ucf.edu/">
-					<span class="fp-today-feed-more pull-right hidden-xs hidden-sm">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o text-primary"></span></span>
-					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right text-primary"></span></h2>
-				</a>
 				<?php
 				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
 
@@ -69,24 +70,24 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 						<?php echo display_front_page_today_story( $articles[0] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[5] ); ?>
-						<hr class="fp-divider fp-today-feed-divider visible-xs-block">
+						<hr class="fp-divider fp-today-feed-divider hidden-md-up">
 					</div>
 					<div class="fp-today-feed-col">
 						<?php echo display_front_page_today_story( $articles[1] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[6] ); ?>
 					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm">
+					<div class="fp-today-feed-col hidden-md-down">
 						<?php echo display_front_page_today_story( $articles[2] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[7] ); ?>
 					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm">
+					<div class="fp-today-feed-col hidden-md-down">
 						<?php echo display_front_page_today_story( $articles[3] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[8] ); ?>
 					</div>
-					<div class="fp-today-feed-col hidden-xs hidden-sm hidden-md">
+					<div class="fp-today-feed-col hidden-lg-down">
 						<?php echo display_front_page_today_story( $articles[4] ); ?>
 						<hr class="fp-divider fp-today-feed-divider">
 						<?php echo display_front_page_today_story( $articles[9] ); ?>
@@ -97,46 +98,41 @@ $featured_gallery = get_home_gallery( get_theme_option( 'front_page_featured_gal
 				<?php endif; ?>
 			</aside>
 		</div>
-		<?php
-		if ( $twitter_url = get_theme_option( 'twitter_url' ) ):
-		?>
-			<div class="col-sm-5 col-md-4 hidden-xs">
-				<aside class="fp-trending-feed">
-					<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
-					<div class="twitter-widget">
-						<a class="twitter-timeline"
-							href="<?php echo $twitter_url; ?>"
-							height="428"
-							data-chrome="nofooter noborders">
-							Tweets by @UCF
-						</a>
-					</div>
-				</aside>
+		<?php if ( $twitter_url ) : ?>
+		<div class="col-md-6 col-lg-4">
+			<div class="card border-0 bg-faded h-100">
+				<div class="card-block px-4 pt-4 pb-2">
+					<h2 class="h6 heading-underline letter-spacing-2 mb-4">What's Trending</h2>
+					<a class="twitter-timeline"
+						href="<?php echo $twitter_url; ?>"
+						height="428"
+						data-chrome="nofooter noborders">
+						Tweets by @UCF
+					</a>
+				</div>
 			</div>
+		</div>
 		<?php endif; ?>
 	</div>
 
-	<div class="row fp-issue-story">
-		<div class="col-sm-3 text-center fp-issue-wrapper">
-			<div class="fp-issue">
-				<?php echo display_front_page_issue_details(); ?>
-				<hr class="hr-primary hr-3 w-25 w-sm-50">
-			</div>
+	<div class="row fp-issue-story justify-content-center">
+		<div class="col-10 col-md-3 text-center fp-issue-wrapper">
+			<?php echo display_front_page_issue_details(); ?>
 		</div>
-		<div class="col-sm-9">
-			<div class="row">
+		<div class="col-md-9">
+			<div class="row justify-content-center justify-content-sm-start">
 				<?php
 				$current_issue_stories = get_front_page_issue_stories();
 				if ( $current_issue_stories ):
 				?>
 					<?php $i = 1; ?>
 					<?php foreach ( $current_issue_stories as $issue_story ): ?>
-						<div class="col-sm-4">
+						<div class="col-8 col-sm-6 col-md-4">
 							<?php echo display_front_page_story( $issue_story, 'fp-issue-list-item', true ); ?>
 						</div>
 
 						<?php if ( $i !== count( $current_issue_stories ) && $i % 3 === 0 ): ?>
-							<div class="clearfix hidden-xs"></div>
+							<div class="clearfix hidden-sm-down"></div>
 						<?php endif; ?>
 
 						<?php $i++; ?>

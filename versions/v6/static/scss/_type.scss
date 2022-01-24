@@ -1,18 +1,17 @@
 article {
-  @include font-smoothing();
   color: #000;
 
-  &,
-  p,
-  ol,
-  ul {
-    font-family: $font-family-serif;
-    font-size: 16px;
+  // &,
+  // p,
+  // ol,
+  // ul {
+  //   font-family: $font-family-serif;
+  //   font-size: 16px;
 
-    @include media-breakpoint-down(sm) {
-      font-size: 15px;
-    }
-  }
+  //   @include media-breakpoint-down(sm) {
+  //     font-size: 15px;
+  //   }
+  // }
 
   p {
     &:empty {
@@ -166,7 +165,6 @@ blockquote {
 
 
 .section-title {
-  @include font-smoothing();
   color: #222;
   font-family: $font-family-serif;
   font-size: 32px;

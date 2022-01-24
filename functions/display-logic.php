@@ -7,7 +7,7 @@
 /**
  * Displays a single story on the front page.
  **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3', $heading_class='h4' ) {
+function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( !$story ) return false;
 
 	$thumbnail = null;
@@ -19,7 +19,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			$thumbnail_size,
 			false,
 			array(
-				'class' => 'img-fluid mb-3',
+				'class' => 'img-fluid hover-child-filter-brightness',
 				'alt' => '' // Intentionally blank to avoid redundant story title announcement
 			)
 		);
@@ -46,23 +46,10 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 	ob_start();
 ?>
-<article class="text-center <?php echo $css_class; ?>">
-	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
-		<?php if ( $thumbnail ): ?>
-		<div class="fp-feature-img-wrap">
-			<?php echo $thumbnail; ?>
-
-			<?php if ( $show_vertical && $vertical ): ?>
-			<span class="fp-vertical">
-				<?php echo $vertical; ?>
-			</span>
-			<?php endif; ?>
-		</div>
-		<?php endif; ?>
-	</a>
+<article class="fp-feature text-center <?php echo $css_class; ?> hover-parent">
 	<div class="fp-feature-text-wrap">
-		<<?php echo $heading; ?> class="<?php echo $heading_class; ?>">
-			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<<?php echo $heading; ?> class="fp-feature-title">
+			<a class="fp-feature-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
 				<?php echo $title; ?>
 			</a>
 		</<?php echo $heading; ?>>
@@ -70,6 +57,19 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			<?php echo $description; ?>
 		</div>
 	</div>
+	<?php if ( $thumbnail ): ?>
+	<div class="fp-feature-img-wrap">
+		<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php echo $thumbnail; ?>
+
+		<?php if ( $show_vertical && $vertical ): ?>
+		<span class="fp-vertical badge badge-primary">
+			<?php echo $vertical; ?>
+		</span>
+		<?php endif; ?>
+		</a>
+	</div>
+	<?php endif; ?>
 </article>
 <?php 	return ob_get_clean();
 }
@@ -85,10 +85,14 @@ function display_front_page_today_story( $article ) {
 
 	ob_start();
 ?>
-<article class="fp-today-feed-item">
-	<a class="fp-today-item-link" href="<?php echo $url; ?>">
-		<div class="publish-date"><?php echo $publish_date; ?></div>
-		<?php echo $title; ?>
+<article class="fp-today-feed-item" aria-label="<?php echo $title; ?>">
+	<a class="fp-today-item-link text-secondary" href="<?php echo $url; ?>">
+		<time class="publish-date text-info-aw" datetime="<?php echo $publish_date; ?>">
+			<?php echo $publish_date; ?>
+		</time>
+		<strong>
+			<?php echo $title; ?>
+		</strong>
 	</a>
 </article>
 <?php 	return ob_get_clean();
@@ -135,20 +139,24 @@ function display_front_page_issue_details() {
 
 	ob_start();
 ?>
-	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
+	<div class="fp-issue position-relative mb-4 mb-md-0 hover-parent">
+		<h2 class="fp-issue-title text-uppercase my-3">In This Issue</h2>
 
 		<?php if ( $current_issue_thumbnail ): ?>
-		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
+		<img class="img-fluid hover-child-filter-brightness" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?> Cover Image">
 		<?php endif; ?>
-	</a>
 
-	<?php if ( $current_issue_title ): ?>
-	<div class="fp-issue-title">
-		<?php echo $current_issue_title; ?>
+		<?php if ( $current_issue_title ): ?>
+		<a class="fp-issue-title stretched-link d-block font-weight-bold text-secondary text-uppercase my-2 my-lg-3" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+			<?php echo $current_issue_title; ?>
+		</a>
+		<?php endif; ?>
+
+		<hr class="hr-primary hr-3 w-25 w-sm-50 mt-0">
 	</div>
-	<?php endif; ?>
-<?php 	return ob_get_clean();
+
+<?php
+	return ob_get_clean();
 }
 
 

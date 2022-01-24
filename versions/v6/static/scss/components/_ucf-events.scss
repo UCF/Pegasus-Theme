@@ -1,6 +1,6 @@
 .ucf-events-modern-date {
   .ucf-event-row {
-    @include make-row();
+    @include make-row;
     flex-wrap: nowrap;
     padding-bottom: $grid-gutter-width-base / 2;
     padding-top: $grid-gutter-width-base / 2;
@@ -11,7 +11,7 @@
   }
 
   .ucf-event-when {
-    @include make-col-ready();
+    @include make-col-ready;
     flex: 0 0 6rem;
     max-width: 6rem;
     padding-top: .25rem;
@@ -43,7 +43,7 @@
   }
 
   .ucf-event-details {
-    @include make-col-ready();
+    @include make-col-ready;
     flex: 1 1 auto;
     max-width: 100%;
     width: auto;
