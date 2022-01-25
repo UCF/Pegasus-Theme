@@ -209,33 +209,33 @@ blockquote {
 }
 
 
-.lead {
-  font-size: 20px;
-  line-height: 28px;
-  margin-bottom: 30px;
+// .lead {
+//   font-size: 20px;
+//   line-height: 28px;
+//   margin-bottom: 30px;
 
-  @include media-breakpoint-down(sm) {
-    font-size: 17px;
-    line-height: 27px;
-  }
+//   @include media-breakpoint-down(sm) {
+//     font-size: 17px;
+//     line-height: 27px;
+//   }
 
-  // These must be declared separately to work properly.
-  &::first-letter {
-    display: block;
-    float: left;
-    font-size: 60px;
-    line-height: 36px;
-    margin: 8px 8px 0 0;
-  }
+//   // These must be declared separately to work properly.
+//   &::first-letter {
+//     display: block;
+//     float: left;
+//     font-size: 60px;
+//     line-height: 36px;
+//     margin: 8px 8px 0 0;
+//   }
 
-  &:first-letter {
-    display: block;
-    float: left;
-    font-size: 60px;
-    line-height: 36px;
-    margin: 8px 8px 0 0;
-  }
-}
+//   &:first-letter {
+//     display: block;
+//     float: left;
+//     font-size: 60px;
+//     line-height: 36px;
+//     margin: 8px 8px 0 0;
+//   }
+// }
 
 
 .caption {
