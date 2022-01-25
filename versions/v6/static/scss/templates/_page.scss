@@ -1,39 +1,4 @@
 // Subpages - General
-.subpage {
-  main {
-    @include font-smoothing();
-    color: #000;
-    display: block;
-    margin-bottom: 40px;
-    margin-top: 40px;
-  }
-
-  h1 {
-    @include font-smoothing();
-    color: #222;
-    font-family: $font-family-serif;
-    font-size: 36px;
-    font-style: italic;
-    font-weight: normal;
-    line-height: 36px;
-    margin-bottom: 25px;
-    text-align: center;
-  }
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    > span {
-      // allow line-height to reset properly
-      display: block;
-      letter-spacing: initial;
-    }
-  }
-}
-
 
 // Archives
 #archives {
