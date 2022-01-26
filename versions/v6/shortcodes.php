@@ -665,7 +665,7 @@ function sc_archive_search($params=array(), $content='') {
 			</form>
 		</div>
 		<div class="col-lg-12 post-type-search-results"></div>
-		<div class="col-lg-10 offset-md-1 post-type-search-term">
+		<div class="col-lg-10 offset-lg-1 post-type-search-term">
 		<?php
 		$issue_count = 0;
 
@@ -709,10 +709,11 @@ function sc_archive_search($params=array(), $content='') {
 					<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-2 mb-lg-3 text-uppercase">More in This Issue</h3>
 					<ul class="list-unstyled">
 					<?php foreach( $posts as $post ) { ?>
-						<li data-post-id="<?php echo $post->ID; ?>" class="more-listing-story position-relative mb-3<?php if ( $post->ID == $featured_article_id ) : ?> d-none<?php endif; ?>">
+						<li data-post-id="<?php echo $post->ID; ?>" class="story-list-item position-relative<?php if ( $post->ID == $featured_article_id ) : ?> d-none<?php endif; ?>">
 							<a class="stretched-link" href="<?php echo get_permalink( $post->ID ); ?>">
-								<h4 class="font-slab-serif font-weight-bold mb-1"><?php echo wptexturize( $post->post_title ); ?></h4>
+								<h4 class="listing-title mb-1"><?php echo wptexturize( $post->post_title ); ?></h4>
 							</a>
+							<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
 							<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
 								<span class="description"><?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?></span>
 							<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
