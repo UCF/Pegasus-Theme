@@ -3,7 +3,7 @@
  * Displays a single story on the front page.
  **/
 function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
-	if ( !$story ) { return false; }
+	if ( !$story ) return false;
 
 	$thumbnail = null;
 	$thumbnail_id = get_front_page_story_thumbnail_id( $story );
@@ -96,7 +96,7 @@ function display_front_page_today_story( $article ) {
 function display_front_page_event( $event ) {
 	$start = strtotime( $event['starts'] );
 	$description = substr( strip_tags( $event['description'] ), 0, 250 );
-	if ( strlen( $description ) == 250 ) {
+	if ( strlen( $description ) === 250 ) {
 		$description .= '...';
 	}
 
@@ -144,7 +144,7 @@ function display_front_page_gallery( $gallery, $css_class='' ) {
 	} else {
 		// Version 4 and prior: get the ID from the
 		// `story_frontpage_gallery_thumb` meta field
-		$thumbnail_id = intval( get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true ) );
+		$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
 		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
 	}
 

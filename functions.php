@@ -24,6 +24,12 @@ require_once( 'custom-post-types.php' ); # Where post types are defined
 require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
 
 
+// Plugin extras/overrides
+
+if ( class_exists( 'UCF_Events_Common' ) ) {
+	include_once 'includes/ucf-events-functions.php';
+}
+
 /****************************************************************************
  *
  * START version configuration, backward compatibility functions here
@@ -1270,7 +1276,6 @@ function get_front_page_story_thumbnail_id( $story ) {
 	return $thumbnail_id;
 }
 
-
 /**
  * Returns an array of Story objects for use in the "In This Issue" section of
  * the front page.
@@ -1346,11 +1351,12 @@ function active_issue_endpoint_callback( $request ) {
 	return new WP_REST_Response( $retval, 200 );
 }
 
+
 /****************************************************************************
  *
- * END site-level functions.  Don't add anything else below this line.
+ * END site-level functions. Don't add anything else below this line.
  *
- * START version-level functions here
+ * START version-level functions here.
  *
  ****************************************************************************/
 

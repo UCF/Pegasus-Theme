@@ -1,0 +1,13 @@
+.contribute-col {
+  &:nth-of-type(1) {
+    @include media-breakpoint-down(md) {
+      padding-right: .25rem;
+    }
+  }
+
+  &:nth-of-type(2) {
+    @include media-breakpoint-down(md) {
+      padding-left: .25rem;
+    }
+  }
+}

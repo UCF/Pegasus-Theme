@@ -9,6 +9,7 @@ const babel        = require('gulp-babel');
 const rename       = require('gulp-rename');
 const sass         = require('gulp-sass')(require('sass'));
 const sassLint     = require('gulp-sass-lint');
+const sassVars     = require('gulp-sass-vars');
 const uglify       = require('gulp-uglify');
 const merge        = require('merge');
 const bless        = require('gulp-bless');
@@ -63,8 +64,9 @@ function lintSCSS(src) {
 }
 
 // Base SCSS compile function
-function buildCSS(src, dest, renameMinified = true) {
+function buildCSS(src, dest, renameMinified = true, vars) {
   dest = dest || `${config.versionPath}/static/css`;
+  vars = vars || {};
 
   let versionBrowsersList = [];
   let versionCleanCSSOptions = {};
@@ -90,6 +92,7 @@ function buildCSS(src, dest, renameMinified = true) {
   }
 
   return gulp.src(src)
+    .pipe(sassVars(vars))
     .pipe(sass({
       includePaths: [`${config.versionPath}/static/scss`, config.componentsPath, config.packagesPath]
     })
@@ -225,10 +228,11 @@ gulp.task('scss-build-fa5', (done) => {
     done();
   }
   return buildCSS(
-    `${config.versionPath}/static/scss/_font-awesome-5.scss`,
+    `${config.versionPath}/static/scss/font-awesome-5.scss`,
     null,
+    true,
     {
-      'fa-font-path': `../fonts/font-awesome-5/${fa5Version}`
+      'fa-font-path': `../../../../${config.fontPath}/font-awesome-5/${fa5Version}`
     }
   );
 });
@@ -236,8 +240,8 @@ gulp.task('scss-build-fa5', (done) => {
 // All theme css-related tasks
 gulp.task('css', gulp.series(
   'scss-lint-version',
-  'scss-build-fa5',
-  'scss-build-version'
+  'scss-build-version',
+  'scss-build-fa5'
 ));
 
 
