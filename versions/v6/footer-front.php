@@ -37,7 +37,8 @@
 							<?php echo nl2br( get_theme_option( 'org_address' ) ); ?>
 						</p>
 
-						<?php 									$fb_url = get_theme_option( 'fb_url' );
+						<?php
+						$fb_url = get_theme_option( 'fb_url' );
 						$twitter_url = get_theme_option( 'twitter_url' );
 						$instagram_url = get_theme_option( 'instagram_url' );
 						$share_url = get_theme_option( 'share_url' );
@@ -46,7 +47,7 @@
 							!empty( $twitter_url ) ||
 							!empty( $instagram_url ) ||
 							!empty( $share_url )
-						):
+						) :
 						?>
 						<div class="fp-footer-social-links">
 							<?php if ( !empty( $fb_url ) ) { ?>
@@ -61,13 +62,13 @@
 						</div>
 						<?php endif; ?>
 
-						<?php if ( ipad_deployed() ) { ?>
+						<?php if ( ipad_deployed() ) : ?>
 						<span class="footer-ipad-app">
 							<a class="ipad-app-btn" href="<?php echo get_theme_option( 'ipad_app_url' ); ?>">
 								Download the Digital Edition
 							</a>
 						</span>
-						<?php } ?>
+						<?php endif; ?>
 					</div>
 				</div>
 			</div>

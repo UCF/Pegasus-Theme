@@ -1,7 +1,7 @@
 <?php
 /**
  * Template Name: Full Width
- * Template Post Type: page, post
+ * Template Post Type: page
  */
 ?>
 <?php disallow_direct_load('page.php');?>

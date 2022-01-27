@@ -709,7 +709,7 @@ function sc_archive_search($params=array(), $content='') {
 					<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-2 mb-lg-3 text-uppercase">More in This Issue</h3>
 					<ul class="list-unstyled">
 					<?php foreach( $posts as $post ) { ?>
-						<li data-post-id="<?php echo $post->ID; ?>" class="story-list-item position-relative<?php if ( $post->ID == $featured_article_id ) : ?> d-none<?php endif; ?>">
+						<li data-post-id="<?php echo $post->ID; ?>" class="story-list-item position-relative<?php if ( $post->ID === $featured_article_id ) : ?> d-none<?php endif; ?>">
 							<a class="stretched-link" href="<?php echo get_permalink( $post->ID ); ?>">
 								<h4 class="listing-title mb-1"><?php echo wptexturize( $post->post_title ); ?></h4>
 							</a>
