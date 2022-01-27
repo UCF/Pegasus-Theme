@@ -292,7 +292,7 @@ function sc_callout( $attr, $content ) {
 	if ( $post->post_type == 'page' ) {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-12 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -303,7 +303,7 @@ function sc_callout( $attr, $content ) {
 	else {
 		// Close out our existing .span, .row and .container
 		$html = '</div></div></div>';
-		$html .= '<div class="container-wide callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
+		$html .= '<div class="callout-outer"><div class="callout ' . $css_class . '" style="' . $inline_css . '">';
 		$html .= '<div class="container"><div class="row content-wrap">';
 		$html .= '<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 callout-inner ' . $content_align . '">';
 		$html .= $content;
@@ -942,7 +942,7 @@ function sc_header_callout( $attr, $content='' ) {
 ?>
 	<?php if ( $post->post_type == 'page' ): ?>
 		</div></div></div>
-		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+		<div class="callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
 			<div class="container">
 				<div class="row content-wrap">
 					<div class="col-md-12 callout-inner <?php echo $attrs['content_align']; ?>">
@@ -954,7 +954,7 @@ function sc_header_callout( $attr, $content='' ) {
 		<div class="container"><div class="row content-wrap"><div class="col-md-12">
 	<?php else: ?>
 		</div></div></div>
-		<div class="container-wide callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
+		<div class="callout callout-header <?php echo $attrs['css_class']; ?>" style="<?php echo $attrs['inline_css']; ?>">
 			<div class="container">
 				<div class="row content-wrap">
 					<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 callout-inner <?php echo $attrs['content_align']; ?>">
