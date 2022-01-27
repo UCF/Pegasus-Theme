@@ -38,7 +38,7 @@ add_filter( 'ucf_events_display_modern_date_before', 'pegasus_events_display_mod
 
 // Modern Date - main loop
 function pegasus_events_display_modern_date( $content, $items, $args, $display_type, $fallback_message='' ) {
-	if ( $items && ! is_array( $items ) ) { $items = array( $items ); }
+	if ( $items && ! is_array( $items ) ) $items = array( $items );
 	ob_start();
 ?>
 	<div class="ucf-events-list">

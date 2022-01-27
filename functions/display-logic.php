@@ -46,7 +46,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 	ob_start();
 ?>
-<article class="fp-feature text-center <?php echo $css_class; ?> hover-parent">
+<article class="fp-feature <?php echo $css_class; ?> hover-parent">
 	<div class="fp-feature-text-wrap">
 		<<?php echo $heading; ?> class="fp-feature-title">
 			<a class="fp-feature-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
@@ -143,7 +143,7 @@ function display_front_page_issue_details() {
 		<h2 class="fp-issue-title text-uppercase my-3">In This Issue</h2>
 
 		<?php if ( $current_issue_thumbnail ): ?>
-		<img class="img-fluid hover-child-filter-brightness" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?> Cover Image">
+		<img class="img-fluid hover-child-filter-brightness" src="<?php echo $current_issue_thumbnail; ?>" alt="">
 		<?php endif; ?>
 
 		<?php if ( $current_issue_title ): ?>
