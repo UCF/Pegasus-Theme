@@ -9,7 +9,7 @@
 
 <section class="container" id="search-results">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10 offset-md-1">
 			<h1>Search Results</h1>
 			<?php echo get_search_form()?>
 
@@ -59,7 +59,7 @@
 
 <section class="container" id="search-results">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-1">
+		<div class="col-md-10 offset-md-1">
 			<h1>Search Results</h1>
 			<?php echo get_search_form()?>
 
