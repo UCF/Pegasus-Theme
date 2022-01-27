@@ -6,7 +6,7 @@
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
-	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
+	<body <?php echo body_class(); ?>>
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
