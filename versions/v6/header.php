@@ -21,7 +21,7 @@
 			</div>
 		</div>
 
-		<aside class="container-wide" id="pulldown">
+		<aside id="pulldown">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
@@ -39,7 +39,7 @@
 			</div>
 		</aside>
 
-		<header class="container-wide" id="header-navigation">
+		<header id="header-navigation">
 			<div class="container">
 				<div class="row">
 					<nav class="col-lg-12 col-md-12" role="navigation">

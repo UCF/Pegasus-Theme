@@ -13,7 +13,7 @@
 
 			if ( $post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home() ):
 			?>
-			<aside class="container-wide" id="more-stories">
+			<aside id="more-stories">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
@@ -73,7 +73,7 @@
 				!empty( $youtube_url )
 			):
 			?>
-			<aside class="container-wide" id="footer-social">
+			<aside id="footer-social">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 border-top">
@@ -102,7 +102,7 @@
 			</aside>
 			<?php endif; ?>
 
-			<footer class="container-wide" id="footer-navigation">
+			<footer id="footer-navigation">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
