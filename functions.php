@@ -17,8 +17,7 @@
  **/
 
 
-require_once( 'functions/base.php' );    # Base theme functions
-require_once( 'functions/admin.php' );   # Admin/login functions
+require_once( 'functions/base.php' );    # Base theme functions (all versions)
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
 require_once( 'custom-post-types.php' ); # Where post types are defined
 require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
@@ -44,11 +43,26 @@ function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
 		$request_uri = untrailingslashit( $_SERVER['REQUEST_URI'] );
 
-		// If the home page has been requested, always return the current issue
 		if ( $request_uri === get_site_url( get_current_blog_id(), '', 'relative' ) ) {
+			// If the home page has been requested, always return the current issue
 			$the_post = get_current_issue();
-		}
-		else {
+		} else if ( is_admin() ) {
+			// If we're on an admin screen, grab the post ID from the URL
+			// if we're on a post/page edit screen, and determine the version
+			// from that.  Otherwise, just assume the latest version
+			$request_uri_params_str = wp_parse_url( $request_uri, PHP_URL_QUERY );
+			parse_str( $request_uri_params_str, $request_uri_params );
+
+			if (
+				array_key_exists( 'post', $request_uri_params )
+				&& strpos( $request_uri, '/post.php' ) !== false
+			) {
+				$uri_post_id = $request_uri_params['post'];
+				$the_post = get_post( $uri_post_id );
+			} else {
+				$the_post = null;
+			}
+		} else {
 			global $post;
 
 			// If global $post hasn't been set yet, try fishing the requested url for
@@ -1370,13 +1384,16 @@ function active_issue_endpoint_callback( $request ) {
  **/
 function require_version_functions() {
 	$functions_dir = trailingslashit( get_template_directory() ) . 'functions/';
+	$version = get_relevant_version();
 
-	if ( get_relevant_version() <= 5 ) {
+	if ( $version <= 5 ) {
 		$functions_dir = trailingslashit( get_template_directory() ) . 'versions/v5/functions/';
 	}
 
+	require_once( $functions_dir . 'admin.php' );
 	require_once( $functions_dir . 'feeds.php' );
 	require_once( $functions_dir . 'display-logic.php' );
 	require_once( get_version_file_path( 'functions.php' ) );
 }
-add_action( 'init', 'require_version_functions' );
+
+add_action( 'init', 'require_version_functions', 5 );

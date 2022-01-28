@@ -1,7 +1,7 @@
 <?php
 array_push( Config::$styles,
-	array('name' => 'style-css', 'src' => THE_POST_VERSION_URL . '/static/css/style.min.css'),
-	array('name' => 'style-fa', 'src' => THE_POST_VERSION_URL . '/static/css/font-awesome-5.min.css')
+	array('name' => 'style-fa', 'src' => THE_POST_VERSION_URL . '/static/css/font-awesome-5.min.css'),
+	array('name' => 'style-css', 'src' => THE_POST_VERSION_URL . '/static/css/style.min.css')
 );
 
 

@@ -33,3 +33,4 @@ gulp-config.json
 # visual studio code
 jsconfig.json
 **/typings
+.vscode

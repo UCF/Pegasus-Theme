@@ -651,7 +651,7 @@ if (!empty($theme_options['cloud_font_key'])) {
 
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
-	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
+	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js', 'deps' => array( 'jquery', 'iris' )),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array( 'name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1', ),
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
@@ -748,3 +748,9 @@ function site_icon_support() {
 	wp_site_icon();
 }
 add_action( 'wp_head', 'site_icon_support' );
+
+
+/**
+ * Remove paragraph tag from excerpts
+ * */
+remove_filter( 'the_excerpt', 'wpautop' );
