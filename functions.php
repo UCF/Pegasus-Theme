@@ -1396,4 +1396,4 @@ function require_version_functions() {
 	require_once( get_version_file_path( 'functions.php' ) );
 }
 
-add_action( 'init', 'require_version_functions' );
+add_action( 'init', 'require_version_functions', 5 );
