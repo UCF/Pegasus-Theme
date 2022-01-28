@@ -6,7 +6,7 @@
 
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
-	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
+	<body <?php echo body_class(); ?>>
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -21,7 +21,7 @@
 			</div>
 		</div>
 
-		<aside class="container-wide" id="pulldown">
+		<aside id="pulldown">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
@@ -39,7 +39,7 @@
 			</div>
 		</aside>
 
-		<header class="container-wide" id="header-navigation">
+		<header id="header-navigation">
 			<div class="container">
 				<div class="row">
 					<nav class="col-lg-12 col-md-12" role="navigation">

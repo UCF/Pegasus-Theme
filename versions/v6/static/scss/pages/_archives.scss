@@ -1,0 +1,147 @@
+// Archives
+.page-archives {
+
+  h2 {
+    font-size: 2.15rem;
+    line-height: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .description {
+    display: block;
+    font-style: italic;
+    font-family: $font-family-serif;
+  }
+
+  .featured-story {
+    &:hover {
+      text-decoration: none;
+
+      h4 {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  .results-story-issue {
+    display: none;
+  }
+
+  .listing-title {
+    font-family: $font-family-slab-serif;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+
+  .story-list-item {
+    margin-bottom: 1.25rem;
+  }
+
+  // Search results
+  .post-type-search-results {
+    background: #f0f0f0;
+    margin-bottom: 3rem;
+
+    > div,
+    > p {
+      // Handle either results div or no results found <p>
+      margin-bottom: 0;
+      margin-top: 0;
+      position: relative;
+
+      &:before {
+        border-bottom: 15px solid #f0f0f0;
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        content: '';
+        display: block;
+        height: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: -20px; // Account for .row margins
+        top: -15px;
+        width: 0;
+
+        @include media-breakpoint-down(sm) {
+          right: 0;
+        }
+      }
+    }
+
+    > p {
+      text-align: center;
+    }
+
+    ul {
+      margin-bottom: 0;
+      overflow: auto;
+      padding: 80px 0 30px;
+      position: relative;
+      list-style: none;
+
+      &:before {
+        content: 'Search Results';
+        display: block;
+        left: 0;
+        position: absolute;
+        text-align: center;
+        top: 30px;
+        width: 100%;
+        color: $gray-dark;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+    }
+
+    li {
+      clear: left;
+      display: block;
+      float: left;
+      width: 45%;
+      margin-bottom: 1.5rem;
+
+      @include media-breakpoint-down(sm) {
+        clear: both;
+        margin-bottom: 1.25rem;
+        margin-left: 1.25rem;
+        width: auto;
+      }
+
+      .results-story-issue {
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: .8rem;
+        color: $gray-dark;
+        margin-bottom: .25rem;
+      }
+
+      a {
+        @include media-breakpoint-down(sm) {
+          display: block;
+          padding-right: 1.25rem;
+        }
+      }
+
+      &:nth-child(2n) {
+        clear: right;
+        float: right;
+
+        @include media-breakpoint-down(sm) {
+          clear: left;
+          float: left;
+        }
+      }
+
+      &.featured-story {
+        @include media-breakpoint-down(sm) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .post-type-search-message {
+    padding: 1.25rem;
+  }
+}

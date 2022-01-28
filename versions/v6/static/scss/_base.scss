@@ -1,15 +1,15 @@
 // Import individual components for our theme here:
 
-// // Base mixins, utility styles
+// Base mixins
 @import 'mixins';
-@import 'utils';
 
-// // Base styles for typography, tables, forms, and images
+// Base styles for typography, header, footer and components
 @import 'type';
 @import 'header';
 @import 'footer';
 
-@import 'components';
+@import 'components/ucf-events';
+// @import 'components';
 
 // Templates
 @import 'templates/issue';
@@ -18,3 +18,6 @@
 
 // Pages
 @import 'pages/front-page';
+@import 'pages/our-awards';
+@import 'pages/contribute';
+@import 'pages/archives';

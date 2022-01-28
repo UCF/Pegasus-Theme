@@ -1,5 +1,10 @@
 <?php
 /**
+ * Display logic for version 6+.
+ */
+
+
+/**
  * Displays a single story on the front page.
  **/
 function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
@@ -14,7 +19,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			$thumbnail_size,
 			false,
 			array(
-				'class' => 'fp-feature-img center-block img-fluid',
+				'class' => 'img-fluid hover-child-filter-brightness',
 				'alt' => '' // Intentionally blank to avoid redundant story title announcement
 			)
 		);
@@ -41,23 +46,10 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 
 	ob_start();
 ?>
-<article class="fp-feature <?php echo $css_class; ?>">
-	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
-		<?php if ( $thumbnail ): ?>
-		<div class="fp-feature-img-wrap">
-			<?php echo $thumbnail; ?>
-
-			<?php if ( $show_vertical && $vertical ): ?>
-			<span class="fp-vertical">
-				<?php echo $vertical; ?>
-			</span>
-			<?php endif; ?>
-		</div>
-		<?php endif; ?>
-	</a>
+<article class="fp-feature <?php echo $css_class; ?> hover-parent">
 	<div class="fp-feature-text-wrap">
 		<<?php echo $heading; ?> class="fp-feature-title">
-			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+			<a class="fp-feature-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
 				<?php echo $title; ?>
 			</a>
 		</<?php echo $heading; ?>>
@@ -65,6 +57,19 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			<?php echo $description; ?>
 		</div>
 	</div>
+	<?php if ( $thumbnail ): ?>
+	<div class="fp-feature-img-wrap">
+		<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php echo $thumbnail; ?>
+
+		<?php if ( $show_vertical && $vertical ): ?>
+		<span class="fp-vertical badge badge-primary">
+			<?php echo $vertical; ?>
+		</span>
+		<?php endif; ?>
+		</a>
+	</div>
+	<?php endif; ?>
 </article>
 <?php 	return ob_get_clean();
 }
@@ -80,96 +85,16 @@ function display_front_page_today_story( $article ) {
 
 	ob_start();
 ?>
-<article class="fp-today-feed-item">
-	<a class="fp-today-item-link" href="<?php echo $url; ?>">
-		<div class="publish-date"><?php echo $publish_date; ?></div>
-		<?php echo $title; ?>
+<article class="fp-today-feed-item" aria-label="<?php echo $title; ?>">
+	<a class="fp-today-item-link text-secondary" href="<?php echo $url; ?>">
+		<time class="publish-date text-info-aw" datetime="<?php echo $publish_date; ?>">
+			<?php echo $publish_date; ?>
+		</time>
+		<strong>
+			<?php echo $title; ?>
+		</strong>
 	</a>
 </article>
-<?php 	return ob_get_clean();
-}
-
-
-/**
- * Displays a single event item on the front page.
- **/
-function display_front_page_event( $event ) {
-	$start = strtotime( $event['starts'] );
-	$description = substr( strip_tags( $event['description'] ), 0, 250 );
-	if ( strlen( $description ) === 250 ) {
-		$description .= '...';
-	}
-
-	ob_start();
-?>
-<div class="fp-event">
-	<div class="fp-event-when">
-		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
-		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
-		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
-	</div>
-	<div class="fp-event-content">
-		<span class="fp-vertical"><?php echo $event['category']; ?></span>
-		<span class="fp-event-title">
-			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
-		</span>
-		<div class="fp-event-description">
-			<?php echo $description; ?>
-		</div>
-	</div>
-</div>
-<?php 	return ob_get_clean();
-}
-
-
-/**
- * Displays a single featured gallery on the front page.
- **/
-function display_front_page_gallery( $gallery, $css_class='' ) {
-	if ( !$gallery ) return false;
-
-	$title = wptexturize( $gallery->post_title );
-
-	$vertical = get_the_category( $gallery->ID );
-	if ( $vertical ) {
-		$vertical = $vertical[0];
-		$vertical = wptexturize( $vertical->name );
-	}
-
-	$thumbnail = null;
-	if ( get_relevant_version( $gallery ) >= 5 ) {
-		// Version 5+: fetch featured image ID
-		$thumbnail_id = get_post_thumbnail_id( $gallery );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
-	} else {
-		// Version 4 and prior: get the ID from the
-		// `story_frontpage_gallery_thumb` meta field
-		$thumbnail_id = get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
-	}
-
-	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image(
-			$thumbnail_id,
-			$thumbnail_size,
-			false,
-			array(
-				'class' => 'img-responsive center-block fp-gallery-img',
-				'alt' => '' // Intentionally blank to avoid redundant story title announcement
-			)
-		);
-	}
-
-	ob_start();
-?>
-	<article class="fp-gallery <?php echo $css_class; ?>">
-		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
-			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
-			<?php if ( $thumbnail ): ?>
-				<?php echo $thumbnail; ?>
-			<?php endif; ?>
-		</a>
-	</article>
 <?php 	return ob_get_clean();
 }
 
@@ -214,18 +139,105 @@ function display_front_page_issue_details() {
 
 	ob_start();
 ?>
-	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
+	<div class="fp-issue position-relative mb-4 mb-md-0 hover-parent">
+		<h2 class="fp-issue-title text-uppercase my-3">In This Issue</h2>
 
 		<?php if ( $current_issue_thumbnail ): ?>
-		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
+		<img class="img-fluid hover-child-filter-brightness" src="<?php echo $current_issue_thumbnail; ?>" alt="">
 		<?php endif; ?>
-	</a>
 
-	<?php if ( $current_issue_title ): ?>
-	<div class="fp-issue-title">
-		<?php echo $current_issue_title; ?>
+		<?php if ( $current_issue_title ): ?>
+		<a class="fp-issue-title stretched-link d-block font-weight-bold text-secondary text-uppercase my-2 my-lg-3" href="<?php echo get_permalink( $current_issue->ID ); ?>">
+			<?php echo $current_issue_title; ?>
+		</a>
+		<?php endif; ?>
+
+		<hr class="hr-primary hr-3 w-25 w-sm-50 mt-0">
+	</div>
+
+<?php
+	return ob_get_clean();
+}
+
+
+/**
+ * Displays events markup for the Pegasus homepage.
+ * Ported over from Today-Child-Theme.
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ * @return string HTML markup for the events list
+ */
+function get_home_events() {
+	$content   = '';
+	$attrs     = array_filter( array(
+		'feed_url' => get_theme_option( 'front_page_events_feed_url', '' ),
+		'layout'   => 'modern_date',
+		'limit'    => 3
+	) );
+	$attr_str  = '';
+
+	$attrs['title'] = '';
+
+	foreach ( $attrs as $key => $val ) {
+		$attr_str .= ' ' . $key . '="' . $val . '"';
+	}
+
+	$content = do_shortcode( '[ucf-events' . $attr_str . ']No events found.[/ucf-events]' );
+
+	return $content;
+}
+
+
+/**
+ * Displays Featured Gallery markup for the Pegasus homepage.
+ * Ported over from the Today-Child-Theme.
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ * @param string Post ID for gallery
+ * @return string HTML markup for the featured gallery
+ */
+function get_home_gallery( $gallery ) {
+
+	ob_start();
+?>
+	<?php
+	if ( $gallery ) :
+		$gallery        = get_post( $gallery );
+		$vertical       = get_the_category( $gallery->ID )[0] ?? '';
+		$thumbnail      = '';
+		$thumbnail_id   = get_post_thumbnail_id( $gallery );
+		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
+
+		if ( $thumbnail_id ) {
+			$thumbnail = wp_get_attachment_image(
+				$thumbnail_id,
+				$thumbnail_size,
+				false,
+				array(
+					'class' => 'img-fluid fp-gallery-img hover-child-filter-brightness d-block mx-auto mt-2',
+					'alt' => '' // Intentionally blank to avoid redundant story title announcement
+				)
+			);
+		}
+	?>
+	<div class="card border-0 bg-faded mx-auto hover-parent">
+		<div class="card-block p-4">
+			<a class="stretched-link" href="<?php echo get_permalink( $gallery ); ?>">
+				<h2 class="text-secondary"><?php echo $gallery->post_title; ?></h2>
+			</a>
+
+			<?php if ( $vertical ) : ?>
+			<span class="badge badge-primary"><?php echo wptexturize( $vertical->name ); ?></span>
+			<?php endif; ?>
+
+			<?php echo $thumbnail; ?>
+			</a>
+		</div>
 	</div>
 	<?php endif; ?>
-<?php 	return ob_get_clean();
+<?php
+	return trim( ob_get_clean() );
 }
+
