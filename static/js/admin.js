@@ -703,7 +703,9 @@ WebcomAdmin.fileUploader = function($) {
 (function($){
 	WebcomAdmin.__init__($);
 	WebcomAdmin.themeOptions($);
-	WebcomAdmin.shortcodeInterfaceTool($);
+  if (USE_SC_INTERFACE) {
+    WebcomAdmin.shortcodeInterfaceTool($);
+  }
   WebcomAdmin.wysiwygFields($);
   WebcomAdmin.sliderMetaBoxes($);
   WebcomAdmin.storyFieldToggle($);
