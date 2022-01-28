@@ -1,6 +1,11 @@
 <?php
 
-function add_acf_fields() {
+/**
+ * Adds the ACF fields for the related stories.
+ * @author Jim Barnes
+ * @since 6.0.0
+ */
+function add_related_stories_acf_fields() {
 	$fields = array();
 
 	// Add List Type Field
@@ -175,4 +180,108 @@ function add_acf_fields() {
 	acf_add_local_field_group( $group );
 }
 
-add_action( 'acf/init', 'add_acf_fields', 10, 0 );
+add_action( 'acf/init', 'add_related_stories_acf_fields', 10, 0 );
+
+/**
+ * Gets the related stories for a particular post
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param int $post_id The post ID to retrieve stories for
+ * @return array|false The stories array or false if there is an error
+ */
+function related_stories_get_stories( $post_id = null ) {
+	if ( ! $post_id  ) {
+		$post_id = get_the_ID();
+	}
+
+	if ( ! $post_id ) return false;
+
+	$list_type = get_field( 'related_stories_list_type', $post_id );
+
+	switch( $list_type ) {
+		case 'pegasus-tag':
+			$tag_id = get_field( 'related_stories_pegasus_tag', $post_id );
+			return get_pegasus_stories( $tag );
+		case 'today-feed':
+			$feed_url = get_field( 'today_section_topic', $post_id );
+			return get_today_feed( $feed_url );
+		case 'curated':
+			$stories = get_field( 'related_stories_curated_stories', $post_id );
+			return get_curated_stories( $stories );
+		case 'auto':
+		default:
+			return get_default_related_stories( $post_id );
+	}
+}
+
+/**
+ * Gets related stories using the first
+ * few tags assigned to the story
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param int $post_id The post ID to get related stories for
+ * @return array
+ */
+function get_default_related_stories( $post_id ) {
+	$terms = wp_get_post_terms( $post_id, 'post_tag' );
+	$rand_idx = rand( 0, count( $terms ) - 1 );
+
+	$related_term = $terms[$rand_idx];
+
+	$args = array(
+		'post_type'      => 'story',
+		'post__not_in'   => array( $post_id ),
+		'tag_id'         => $related_term->term_id,
+		'posts_per_page' => 3
+	);
+
+	$posts = get_posts( $args );
+
+	$retval = array();
+
+	foreach( $posts as $p ) {
+		$retval[] = array(
+			'title'     => $p->post_title,
+			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
+			'url'       => get_permalink( $p ),
+			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
+		);
+	}
+
+	return $retval;
+}
+
+/**
+ * Gets pegasus stories based on the tag
+ * passed in.
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param int $tag_id The tag ID to get stories for
+ * @return array
+ */
+function get_pegasus_stories( $tag_id ) {
+
+}
+
+/**
+ * Gets a list of today stories based on the
+ * feed URL passed in.
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param string $url The URL to find stories on
+ * @return array
+ */
+function get_today_feed( $url ) {
+
+}
+
+/**
+ * Returns an array of formatted stories.
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param array The array of stories from ACF
+ * @return array
+ */
+function get_curated_stories( $stories ) {
+
+}
