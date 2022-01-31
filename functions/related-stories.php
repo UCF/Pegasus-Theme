@@ -244,7 +244,6 @@ function get_default_related_stories( $post_id ) {
 	foreach( $posts as $p ) {
 		$retval[] = array(
 			'title'     => $p->post_title,
-			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
 			'url'       => get_permalink( $p ),
 			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
 		);
@@ -279,7 +278,6 @@ function get_pegasus_stories( $post_id, $tag_id ) {
 	foreach( $posts as $p ) {
 		$retval[] = array(
 			'title'     => $p->post_title,
-			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
 			'url'       => get_permalink( $p ),
 			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
 		);
@@ -351,7 +349,6 @@ function get_today_feed( $url ) {
 	foreach( $stories as $story ) {
 		$retval[] = array(
 			'title'     => $story->title->rendered,
-			'deck'      => $story->excerpt->rendered,
 			'url'       => $story->link,
 			'thumbnail' => $story->thumbnail
 		);
@@ -378,7 +375,6 @@ function get_curated_stories( $stories ) {
 				$p = $story['pegasus_story'];
 				$retval[] = array(
 					'title'     => $p->post_title,
-					'deck'      => get_post_meta( $p->ID, 'story_description', true ),
 					'url'       => get_permalink( $p ),
 					'thumbnail' => get_the_post_thumbnail_url( $p->ID )
 				);
@@ -444,7 +440,6 @@ function get_today_story_from_url( $story_url ) {
 
 	return array(
 		'title'     => $story->title->rendered,
-		'deck'      => $story->excerpt->rendered,
 		'url'       => $story->link,
 		'thumbnail' => $story->thumbnail
 	);
