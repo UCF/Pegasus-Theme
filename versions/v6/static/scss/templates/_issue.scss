@@ -1,40 +1,29 @@
 // Issue Cover - Default Template
-#home {
+.issue-template-default {
   background-color: #e5e5e5;
-  overflow: hidden;
-  padding-bottom: 40px;
-  padding-top: 11px;
 
   .heading-wrap {
     h2 {
-      @include font-smoothing();
-      border-bottom: 1px solid #828282;
-      color: #828282;
+      border-bottom: 1px solid $gray-darker;
+      color: $gray-darker;
       display: block;
-      font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: -.03em;
-      margin-bottom: 30px;
-      margin-top: 10px;
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
       position: relative;
 
       @include media-breakpoint-down(sm) {
-        margin-bottom: 15px;
-        margin-top: 15px;
+        margin-bottom: 1.25rem;
       }
 
       span {
         background: #e5e5e5;
-        padding-left: $grid-gutter-width / 2;
-        padding-right: $grid-gutter-width / 2;
         position: relative;
-        top: 10px;
-        left: ($grid-gutter-width / 2) * -1;
+        padding-right: .5rem;
+        top: .625rem; // half of what the h2 font-size is set to above
 
         @include media-breakpoint-down(sm) {
           display: block;
-          padding-bottom: 5px;
+          padding-bottom: .35rem;
           top: 0;
         }
       }
@@ -205,17 +194,6 @@
       color: #000;
       font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
       font-weight: 700;
-    }
-
-    .archives-link {
-      margin-top: 8px;
-
-      a {
-        color: #000;
-        font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-        font-size: 14px;
-        font-weight: 700;
-      }
     }
   }
 }

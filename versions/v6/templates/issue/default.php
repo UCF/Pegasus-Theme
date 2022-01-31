@@ -55,13 +55,9 @@ if ( $story_2 ) {
 }
 ?>
 
-<div id="home">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span><?php echo $post->post_title; ?></span></h2>
-			</div>
-		</div>
+<div class="container pt-4 pb-4 pb-lg-5">
+	<div class="heading-wrap">
+		<h2><span><?php echo $post->post_title; ?></span></h2>
 	</div>
 
 	<?php if ( $story_1 ) : ?>
@@ -77,11 +73,9 @@ if ( $story_2 ) {
 	</section>
 	<?php endif; ?>
 
-	<section class="container home-stories">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span>More in this Issue</span></h2>
-			</div>
+	<section>
+		<div class="heading-wrap">
+			<h2><span>More in this Issue</span></h2>
 		</div>
 		<div class="row">
 		<?php
@@ -109,10 +103,9 @@ if ( $story_2 ) {
 		?>
 		</div>
 	</section>
-	<section class="container home-past-issues">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span>Recent Issues of Pegasus Magazine</span></h2>
+	<section class="home-past-issues">
+		<div class="heading-wrap">
+			<h2><span>Recent Issues of Pegasus Magazine</span></h2>
 			</div>
 		</div>
 		<div class="row">
@@ -139,12 +132,10 @@ if ( $story_2 ) {
 		endif;
 		?>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<span class="pull-right archives-link">
-					<a href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">View Archives &raquo;</a>
-				</span>
-			</div>
+		<div class="text-right">
+			<a class="text-secondary font-weight-bold font-size-sm" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">
+				View Archives <span class="fas fa-angle-double-right" aria-hidden="true"></span>
+			</a>
 		</div>
 	</section>
 </div>
