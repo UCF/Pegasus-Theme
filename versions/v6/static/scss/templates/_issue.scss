@@ -177,30 +177,3 @@
   .home-article-h1 .description h2 {
     line-height: 28px;
   }
-
-
-  // Past Issues
-  .home-past-issues {
-    .past-issue {
-      margin-bottom: 25px;
-    }
-
-    .past-issue-thumb {
-      height: auto;
-      width: 100%;
-    }
-
-    .past-issue-title {
-      color: #000;
-      font-family: 'Gotham SSm 7r', 'Gotham SSm A', 'Gotham SSm B', sans-serif;
-      font-weight: 700;
-    }
-  }
-}
-
-
-// Thanks IE.  http://stackoverflow.com/a/15034224
-.ie #home .thumb a,
-#home .home-article-1 a {
-  background: url('about:blank');
-}

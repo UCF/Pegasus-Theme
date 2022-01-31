@@ -103,29 +103,25 @@ if ( $story_2 ) {
 		?>
 		</div>
 	</section>
-	<section class="home-past-issues">
+	<section>
 		<div class="heading-wrap">
 			<h2><span>Recent Issues of Pegasus Magazine</span></h2>
-			</div>
 		</div>
 		<div class="row">
 		<?php
 		$count = 0;
-		$per_row = 5;
+
 		if ( $past_issues ):
 			foreach ( $past_issues as $issue ):
 		?>
-				<div class="col-md-20percent col-sm-20percent col-xs-4">
-					<div class="past-issue">
-						<a href="<?php echo get_permalink( $issue->ID ); ?>">
-							<img class="past-issue-thumb" src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="" />
-							<h3 class="past-issue-title"><?php echo wptexturize( $issue->post_title ); ?></h3>
-						</a>
-					</div>
+			<div class="col-4 col-lg-auto">
+				<div class="position-static mb-4">
+					<img class="img-fluid" src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="">
+					<a class="stretched-link" href="<?php echo get_permalink( $issue->ID ); ?>">
+						<h3 class="h5 text-secondary mt-1 mt-md-3"><?php echo wptexturize( $issue->post_title ); ?></h3>
+					</a>
 				</div>
-				<?php if ( $count === 2 ): ?>
-				<div class="clearfix hidden-sm hidden-md hidden-lg"></div>
-				<?php endif; ?>
+			</div>
 		<?php
 				$count++;
 			endforeach;
