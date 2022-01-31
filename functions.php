@@ -21,6 +21,7 @@ require_once( 'functions/base.php' );    # Base theme functions (all versions)
 require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
 require_once( 'custom-post-types.php' ); # Where post types are defined
 require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
+require_once( 'functions/acf-fields.php' );
 
 
 // Plugin extras/overrides
