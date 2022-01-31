@@ -223,6 +223,8 @@ function related_stories_get_stories( $post_id = null ) {
  * @return array
  */
 function get_default_related_stories( $post_id ) {
+	$options = get_option(THEME_OPTIONS_NAME);
+
 	$terms = wp_get_post_terms( $post_id, 'post_tag' );
 	$rand_idx = rand( 0, count( $terms ) - 1 );
 
@@ -232,7 +234,7 @@ function get_default_related_stories( $post_id ) {
 		'post_type'      => 'story',
 		'post__not_in'   => array( $post_id ),
 		'tag_id'         => $related_term->term_id,
-		'posts_per_page' => 3
+		'posts_per_page' => (int)$options['related_stories_count']
 	);
 
 	$posts = get_posts( $args );
@@ -260,11 +262,13 @@ function get_default_related_stories( $post_id ) {
  * @return array
  */
 function get_pegasus_stories( $post_id, $tag_id ) {
+	$options = get_option( THEME_OPTIONS_NAME );
+
 	$args = array(
 		'post_type'      => 'story',
 		'post__not_in'   => array( $post_id ),
 		'tag_id'         => $tag_id,
-		'posts_per_page' => 3
+		'posts_per_page' => (int)$options['related_stories_count']
 	);
 
 	$posts = get_posts( $args );
@@ -292,7 +296,67 @@ function get_pegasus_stories( $post_id, $tag_id ) {
  * @return array
  */
 function get_today_feed( $url ) {
+	$options = get_option(THEME_OPTIONS_NAME);
 
+	$path = parse_url( $url, PHP_URL_PATH );
+	$split = explode( '/', $path );
+	$retval = array();
+
+	$is_tag = false;
+	$term = false;
+
+	foreach( $split as $part ) {
+		switch( $part ) {
+			case '':
+			case 'news':
+				break;
+			case 'tag':
+				$is_tag = true;
+				break;
+			default:
+				$term = $part;
+				break;
+		}
+	}
+
+	$params = array();
+
+	if ( ! $term ) return $retval;
+
+	if ( $is_tag ) {
+		$params['tag_slugs'] = $term;
+	} else {
+		$params['category_slugs'] = $term;
+	}
+
+	$params['per_page'] = (int)$options['related_stories_count'];
+
+	$feed_url = $options['news_api_base_url'];
+
+	$param_string = http_build_query( $params );
+
+	$url = "$feed_url?$param_string";
+
+	$args = array(
+		'timeout' => 5
+	);
+
+	$response = wp_remote_get( $url, $args );
+
+	if ( wp_remote_retrieve_response_code( $response ) >= 400 ) return $retval;
+
+	$stories = json_decode( wp_remote_retrieve_body( $response ) );
+
+	foreach( $stories as $story ) {
+		$retval[] = array(
+			'title'     => $story->title->rendered,
+			'deck'      => $story->excerpt->rendered,
+			'url'       => $story->link,
+			'thumbnail' => $story->thumbnail
+		);
+	}
+
+	return $retval;
 }
 
 /**

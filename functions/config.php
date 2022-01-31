@@ -579,6 +579,22 @@ Orlando, FL 32816',
 			'value'       => isset( $theme_options['cloud_font_key'] ) ? $theme_options['cloud_font_key'] : null,
 		))
 	),
+	'News Feeds' => array(
+		new TextField(array(
+			'name'        => 'UCF Today API Base URL',
+			'id'          => THEME_OPTIONS_NAME.'[news_api_base_url]',
+			'description' => 'The base URL for the UCF Today wp-json feed.',
+			'default'     => 'https://www.ucf.edu/news/wp-json/wp/v2/posts/',
+			'value'       => isset( $theme_options['news_api_base_url'] ) ? $theme_options['news_api_base_url'] : null,
+		)),
+		new TextField(array(
+			'name'        => 'Default Related Story Count',
+			'id'          => THEME_OPTIONS_NAME.'[related_stories_count]',
+			'description' => 'The max number of stories to list in the related stories section.',
+			'default'     => 3,
+			'value'       => isset( $theme_options['related_stories_count'] ) ? $theme_options['related_stories_count'] : null
+		)),
+	),
 	'Developers' => array(
 		new RadioField(array(
 			'name'        => 'Enable Developer Mode',
