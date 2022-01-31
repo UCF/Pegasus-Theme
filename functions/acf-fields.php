@@ -263,6 +263,9 @@ function get_default_related_stories( $post_id ) {
  */
 function get_pegasus_stories( $post_id, $tag_id ) {
 	$options = get_option( THEME_OPTIONS_NAME );
+	$retval = array();
+
+	if ( ! $tag_id ) return $retval;
 
 	$args = array(
 		'post_type'      => 'story',
@@ -272,8 +275,6 @@ function get_pegasus_stories( $post_id, $tag_id ) {
 	);
 
 	$posts = get_posts( $args );
-
-	$retval = array();
 
 	foreach( $posts as $p ) {
 		$retval[] = array(
