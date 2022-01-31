@@ -60,7 +60,7 @@ function add_related_stories_acf_fields() {
 		'label'        => 'Today Section/Topic',
 		'name'         => 'today_section_topic',
 		'type'         => 'url',
-		'instructions' => 'The URL of the UCF Today section or topic to pull stories from.',
+		'instructions' => 'The URL of the UCF Today section or topic to pull stories from, e.g. https://www.ucf.edu/news/arts/ or https://www.ucf.edu/news/tag/health/.',
 		'required'     => 0,
 		'conditional_logic' => array(
 			array(
@@ -124,7 +124,7 @@ function add_related_stories_acf_fields() {
 		'label'             => 'Today Story',
 		'name'              => 'today_story_url',
 		'type'              => 'url',
-		'instructions'      => 'The URL of the Today story',
+		'instructions'      => 'The published URL of the today story to include, e.g. https://www.ucf.edu/news/what-is-kwanzaa/.',
 		'conditional_logic' => array(
 			array(
 				array(
@@ -244,7 +244,6 @@ function get_default_related_stories( $post_id ) {
 	foreach( $posts as $p ) {
 		$retval[] = array(
 			'title'     => $p->post_title,
-			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
 			'url'       => get_permalink( $p ),
 			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
 		);
@@ -279,7 +278,6 @@ function get_pegasus_stories( $post_id, $tag_id ) {
 	foreach( $posts as $p ) {
 		$retval[] = array(
 			'title'     => $p->post_title,
-			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
 			'url'       => get_permalink( $p ),
 			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
 		);
@@ -351,7 +349,6 @@ function get_today_feed( $url ) {
 	foreach( $stories as $story ) {
 		$retval[] = array(
 			'title'     => $story->title->rendered,
-			'deck'      => $story->excerpt->rendered,
 			'url'       => $story->link,
 			'thumbnail' => $story->thumbnail
 		);
@@ -368,5 +365,82 @@ function get_today_feed( $url ) {
  * @return array
  */
 function get_curated_stories( $stories ) {
+	$options = get_option(THEME_OPTIONS_NAME);
 
+	$retval = array();
+
+	foreach( $stories as $story ) {
+		switch( $story['story_type'] ) {
+			case 'pegasus':
+				$p = $story['pegasus_story'];
+				$retval[] = array(
+					'title'     => $p->post_title,
+					'url'       => get_permalink( $p ),
+					'thumbnail' => get_the_post_thumbnail_url( $p->ID )
+				);
+				break;
+			case 'today':
+				$post_array = get_today_story_from_url( $story['today_story_url'] );
+				if ( $post_array ) $retval[] = $post_array;
+				break;
+		}
+	}
+
+	return $retval;
+}
+
+/**
+ * Retrieves the JSON for a today story
+ * based on the URL passed to it.
+ * @author Jim Barnes
+ * @since 6.0.0
+ * @param string $story_url The URL of the story to retrieve
+ * @return array|false Returns the story array or false if it cannot.
+ */
+function get_today_story_from_url( $story_url ) {
+	$options = get_option(THEME_OPTIONS_NAME);
+
+	$path = parse_url( $story_url,  PHP_URL_PATH );
+	$split_path = explode( '/', $path );
+
+	$story_slug = false;
+
+	foreach( $split_path as $part ) {
+		switch( $part ) {
+			case '':
+			case 'news':
+				break;
+			default:
+				$story_slug = $part;
+				break;
+		}
+	}
+
+	if ( ! $story_slug ) return false;
+
+	$args = array(
+		'timeout' => 5
+	);
+
+	$params = array(
+		'slug' => $story_slug
+	);
+
+	$param_string = http_build_query( $params );
+	$feed_url = $options['news_api_base_url'];
+	$url = "$feed_url?$param_string";
+
+	$response = wp_remote_get( $url, $args );
+	if ( wp_remote_retrieve_response_code( $response ) >= 400 ) return false;
+
+	$stories = json_decode( wp_remote_retrieve_body( $response ) );
+	if ( count( $stories ) < 1) return false;
+
+	$story = $stories[0];
+
+	return array(
+		'title'     => $story->title->rendered,
+		'url'       => $story->link,
+		'thumbnail' => $story->thumbnail
+	);
 }
