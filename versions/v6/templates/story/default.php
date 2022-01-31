@@ -6,7 +6,7 @@
 		<?php echo display_story_header_contents( $post ); ?>
 
 		<div class="row content-wrap">
-			<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
+			<div class="col-md-10 offset-md-1">
 				<?php echo the_content(); ?>
 			</div>
 		</div>

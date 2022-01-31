@@ -3,19 +3,6 @@
  * Latest-version admin functions
  */
 
-/**
- * Force enable/disable various content/WYSIWYG formatting options
- * provided by the Athena Shortcode plugin.
- *
- * @since 6.0.0
- * @author Jo Dickson
- */
-add_filter( 'option_athena_sc_enable_tinymce_formatting', '__return_true' );
-add_filter( 'option_athena_sc_enable_optin_classes', '__return_true' );
-add_filter( 'option_athena_sc_enable_responsive_embeds', '__return_true' );
-add_filter( 'option_athena_sc_remove_image_dims', '__return_false' );
-
-
 function set_admin_js_vars() {
 	ob_start();
 ?>
