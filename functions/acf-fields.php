@@ -224,8 +224,10 @@ function related_stories_get_stories( $post_id = null ) {
  */
 function get_default_related_stories( $post_id ) {
 	$options = get_option(THEME_OPTIONS_NAME);
+	$retval = array();
 
 	$terms = wp_get_post_terms( $post_id, 'post_tag' );
+	if ( count( $terms ) < 1 ) return $retval;
 	$rand_idx = rand( 0, count( $terms ) - 1 );
 
 	$related_term = $terms[$rand_idx];
@@ -238,8 +240,6 @@ function get_default_related_stories( $post_id ) {
 	);
 
 	$posts = get_posts( $args );
-
-	$retval = array();
 
 	foreach( $posts as $p ) {
 		$retval[] = array(
