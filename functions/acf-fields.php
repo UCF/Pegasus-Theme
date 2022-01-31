@@ -201,7 +201,7 @@ function related_stories_get_stories( $post_id = null ) {
 	switch( $list_type ) {
 		case 'pegasus-tag':
 			$tag_id = get_field( 'related_stories_pegasus_tag', $post_id );
-			return get_pegasus_stories( $tag );
+			return get_pegasus_stories( $post_id, $tag_id );
 		case 'today-feed':
 			$feed_url = get_field( 'today_section_topic', $post_id );
 			return get_today_feed( $feed_url );
@@ -259,8 +259,28 @@ function get_default_related_stories( $post_id ) {
  * @param int $tag_id The tag ID to get stories for
  * @return array
  */
-function get_pegasus_stories( $tag_id ) {
+function get_pegasus_stories( $post_id, $tag_id ) {
+	$args = array(
+		'post_type'      => 'story',
+		'post__not_in'   => array( $post_id ),
+		'tag_id'         => $tag_id,
+		'posts_per_page' => 3
+	);
 
+	$posts = get_posts( $args );
+
+	$retval = array();
+
+	foreach( $posts as $p ) {
+		$retval[] = array(
+			'title'     => $p->post_title,
+			'deck'      => get_post_meta( $p->ID, 'story_description', true ),
+			'url'       => get_permalink( $p ),
+			'thumbnail' => get_the_post_thumbnail_url( $p->ID )
+		);
+	}
+
+	return $retval;
 }
 
 /**
