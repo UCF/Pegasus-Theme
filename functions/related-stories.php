@@ -60,7 +60,7 @@ function add_related_stories_acf_fields() {
 		'label'        => 'Today Section/Topic',
 		'name'         => 'today_section_topic',
 		'type'         => 'url',
-		'instructions' => 'The URL of the UCF Today section or topic to pull stories from.',
+		'instructions' => 'The URL of the UCF Today section or topic to pull stories from, e.g. https://www.ucf.edu/news/arts/ or https://www.ucf.edu/news/tag/health/.',
 		'required'     => 0,
 		'conditional_logic' => array(
 			array(
@@ -124,7 +124,7 @@ function add_related_stories_acf_fields() {
 		'label'             => 'Today Story',
 		'name'              => 'today_story_url',
 		'type'              => 'url',
-		'instructions'      => 'The URL of the Today story',
+		'instructions'      => 'The published URL of the today story to include, e.g. https://www.ucf.edu/news/what-is-kwanzaa/.',
 		'conditional_logic' => array(
 			array(
 				array(
