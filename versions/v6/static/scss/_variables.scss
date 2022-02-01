@@ -2,6 +2,26 @@ $gray-light-alt: #ddd;
 $gray-lightest: #f7f7f7;
 $gray-medium: #bbb;
 
+$fp-today-row-bg-bottom: linear-gradient(
+  to right,
+  rgba(252, 252, 252, 1) 0%,
+  rgba(238, 238, 238, 1) 90%,
+  rgba(221, 221, 221, 1) 100%
+);
+$fp-today-row-bg-top: linear-gradient(
+  to bottom,
+  rgba(255, 255, 255, .8) 0%,
+  rgba(255, 255, 255, 0) 40%
+),
+$fp-today-row-bg-bottom;
+$fp-today-row-bg-bottom-border: linear-gradient(
+  to right,
+  #fc0 0,
+  #fc0 90%,
+  darken(#fc0, 5%) 100%
+);
+
+
 // Bootstrap overrides
 
 $screen-xs-min:              480px !default;

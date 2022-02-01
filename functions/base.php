@@ -66,6 +66,7 @@ class Config {
 			'name'  => self::generate_name( $attr['src'], '.css' ),
 			'media' => 'all',
 			'admin' => False,
+			'deps'  => null
 		);
 		$attr = array_merge( $default, $attr );
 
@@ -78,7 +79,7 @@ class Config {
 			( !$attr['admin'] and !$is_admin )
 		) {
 			wp_deregister_style( $attr['name'] );
-			wp_enqueue_style( $attr['name'], $attr['src'], null, $cache_bust, $attr['media'] );
+			wp_enqueue_style( $attr['name'], $attr['src'], $attr['deps'], $cache_bust, $attr['media'] );
 		}
 	}
 
@@ -109,6 +110,7 @@ class Config {
 		$default = array(
 			'name'  => self::generate_name( $attr['src'], '.js' ),
 			'admin' => False,
+			'deps'  => null
 		);
 		$attr = array_merge( $default, $attr );
 
@@ -122,7 +124,7 @@ class Config {
 		) {
 			// Override previously defined scripts
 			wp_deregister_script( $attr['name'] );
-			wp_enqueue_script( $attr['name'], $attr['src'], null, $cache_bust, True );
+			wp_enqueue_script( $attr['name'], $attr['src'], $attr['deps'], $cache_bust, True );
 		}
 	}
 }

@@ -217,96 +217,179 @@
 // "The Feed" Today stories
 //
 
-.fp-today-feed {
-  background:
-    linear-gradient(to bottom, $white 0%, $white 10%, rgba(255,255,255,0) 40%),
-    linear-gradient(to bottom, rgba(255,255,255,0) 80%, $white 100%),
-    linear-gradient(to right, rgba(221,221,221,0.65) 0%,rgba(238,238,238,0.54) 3%,rgba(239,239,239,0.5) 4%,rgba(242,242,242,0.48) 6%,rgba(242,242,242,0) 50%,rgba(242,242,242,0.48) 94%,rgba(239,239,239,0.5) 96%,rgba(238,238,238,0.54) 97%,rgba(221,221,221,0.65) 100%);
-  padding: 0 1.25rem 1.9rem;
+.fp-today-feed-row {
+  // sass-lint:disable-block indentation
+  @include make-row();
+  background: $fp-today-row-bg-top;
 
-  @include media-breakpoint-up(md) {
-    background: transparent;
-    padding: 0;
+  @include media-breakpoint-up(sm) {
+    margin-left: 0;
+    margin-right: 0;
   }
 
-  .fp-today-feed-item {
-
-    @include media-breakpoint-up(lg) {
-      min-height: 150px;
-    }
-
-    .publish-date {
-      display: block;
-      font-size: .8rem;
-      font-weight: 700;
-      margin-bottom: .5rem;
-    }
-  }
-}
-
-.fp-today-feed-wrap {
   @include media-breakpoint-up(md) {
-    display: table;
-    width: 100%;
+    background: #eee;
+    height: 100%;
   }
 }
 
 .fp-today-feed-col {
-  @include media-breakpoint-up(md) {
-    background: $gray-lightest;  // ie9 fallback
-    background:
-      linear-gradient(to bottom, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 40%),
-      linear-gradient(to right, rgba(252,252,252,1) 0%,rgba(238,238,238,1) 90%,rgba(221,221,221,1) 100%);
-    display: table-cell;
-    padding: 2.75rem 1.25rem;
-    position: relative;
-    width: 50%;
+  // prep with base .col styles:
+  @include make-col-ready();
+  padding-bottom: 1.25rem;
+  padding-top: 1.25rem;
+
+  // "divider" between cols
+  &::before {
+    background-color: $brand-primary;
+    content: '';
+    display: none;
+    height: $border-width-thickest;
+    left: $grid-gutter-width-base / 2;
+    position: absolute;
+    right: $grid-gutter-width-base / 2;
+    top: -$border-width-thickest / 2;
   }
 
-  @include media-breakpoint-up(lg) {
-    width: 25%;
+  // thick bottom "border", for use on bottom row cols
+  &::after {
+    background: $fp-today-row-bg-bottom-border;
+    bottom: 0;
+    content: '';
+    display: none;
+    height: 12px;
+    left: 0;
+    position: absolute;
+    right: 0;
+  }
+
+  // show "divider"s between each article from -xs-sm
+  @include media-breakpoint-between(xs, sm) {
+    &:not(:first-child) {
+      &::before {
+        display: block;
+      }
+    }
+  }
+
+  // show a max of 4 columns from -xs to -md:
+  @include media-breakpoint-between(xs, md) {
+    &:nth-child(n+5) {
+      display: none;
+    }
+  }
+
+  @include media-breakpoint-up(sm) {
+    padding-left: $grid-gutter-width-base / 1.5;
+    padding-right: $grid-gutter-width-base / 1.5;
+
+    &::before {
+      left: $grid-gutter-width-base / 1.5;
+      right: $grid-gutter-width-base / 1.5;
+    }
+  }
+
+  @include media-breakpoint-up(md) {
+    min-height: 50%;
+    padding-bottom: 1.75rem;
+    padding-top: 1.75rem;
+  }
+
+  @include media-breakpoint-only(md) {
+    // sass-lint:disable-block indentation
+    @include make-col(6);
+
+    // top row:
+    &:nth-child(-n+2) {
+      background: $fp-today-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+3) {
+      background: $fp-today-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 65%;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
+  }
+
+  @include media-breakpoint-only(lg) {
+    @include make-col(3);
+
+    // show a max of 8 columns at -lg:
+    &:nth-child(n+9) {
+      display: none;
+    }
+
+    // top row:
+    &:nth-child(-n+4) {
+      background: $fp-today-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+5) {
+      background: $fp-today-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
+      &::after {
+        display: block;
+      }
+    }
   }
 
   @include media-breakpoint-up(xl) {
-    width: 20%;
-  }
+    @include make-col(2, 10);
 
-  &:after {
-    @include media-breakpoint-up(md) {
-      background:
-        linear-gradient(to right, $ucf-gold 0%, $ucf-gold 90%, darken($ucf-gold, 5%) 100%);
-      bottom: 0;
-      content: '';
-      display: block;
-      height: 12px;
-      left: 0;
-      position: absolute;
-      right: 0;
+    // top row:
+    &:nth-child(-n+5) {
+      background: $fp-today-row-bg-top;
+      padding-top: 2.5rem;
+    }
+
+    // bottom row:
+    &:nth-child(n+6) {
+      background: $fp-today-row-bg-bottom;
+      padding-bottom: 3rem;
+
+      &::before {
+        display: block;
+        right: 60%;
+      }
+
+      &::after {
+        display: block;
+      }
     }
   }
 }
 
-.fp-today-item-link {
+.fp-today-item-date {
+  display: block;
+  font-size: .8rem;
+  font-weight: 700;
+  margin-bottom: .5rem;
+}
+
+.fp-today-item-title {
   color: $brand-secondary;
   display: block;
   font-size: .8rem;
-  font-weight: 500;
   letter-spacing: -.0125em;
   line-height: 1.35;
-}
-
-.fp-today-feed-divider {
-  border-top-width: 5px;
-  margin-bottom: 15px;
-  margin-top: 15px;
-  width: 100%;
-
-  @include media-breakpoint-up(md) {
-    margin-bottom: 20px;
-    margin-left: 0;
-    margin-top: 20px;
-    width: 35%;
-  }
 }
 
 

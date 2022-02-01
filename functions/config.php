@@ -579,6 +579,22 @@ Orlando, FL 32816',
 			'value'       => isset( $theme_options['cloud_font_key'] ) ? $theme_options['cloud_font_key'] : null,
 		))
 	),
+	'News Feeds' => array(
+		new TextField(array(
+			'name'        => 'UCF Today API Base URL',
+			'id'          => THEME_OPTIONS_NAME.'[news_api_base_url]',
+			'description' => 'The base URL for the UCF Today wp-json feed.',
+			'default'     => 'https://www.ucf.edu/news/wp-json/wp/v2/posts/',
+			'value'       => isset( $theme_options['news_api_base_url'] ) ? $theme_options['news_api_base_url'] : null,
+		)),
+		new TextField(array(
+			'name'        => 'Default Related Story Count',
+			'id'          => THEME_OPTIONS_NAME.'[related_stories_count]',
+			'description' => 'The max number of stories to list in the related stories section.',
+			'default'     => 3,
+			'value'       => isset( $theme_options['related_stories_count'] ) ? $theme_options['related_stories_count'] : null
+		)),
+	),
 	'Developers' => array(
 		new RadioField(array(
 			'name'        => 'Enable Developer Mode',
@@ -651,7 +667,7 @@ if (!empty($theme_options['cloud_font_key'])) {
 
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
-	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
+	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js', 'deps' => array( 'jquery', 'iris' )),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array( 'name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1', ),
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
@@ -748,3 +764,9 @@ function site_icon_support() {
 	wp_site_icon();
 }
 add_action( 'wp_head', 'site_icon_support' );
+
+
+/**
+ * Remove paragraph tag from excerpts
+ * */
+remove_filter( 'the_excerpt', 'wpautop' );
