@@ -85,17 +85,18 @@ function display_front_page_today_story( $article ) {
 
 	ob_start();
 ?>
-<article class="fp-today-feed-item" aria-label="<?php echo $title; ?>">
-	<a class="fp-today-item-link text-secondary" href="<?php echo $url; ?>">
-		<time class="publish-date text-info-aw" datetime="<?php echo $publish_date; ?>">
+<article aria-label="<?php echo esc_attr( $title ); ?>">
+	<a href="<?php echo $url; ?>">
+		<time class="fp-today-item-date" datetime="<?php echo $publish_date; ?>">
 			<?php echo $publish_date; ?>
 		</time>
-		<strong>
+		<strong class="fp-today-item-title">
 			<?php echo $title; ?>
 		</strong>
 	</a>
 </article>
-<?php 	return ob_get_clean();
+<?php
+	return ob_get_clean();
 }
 
 

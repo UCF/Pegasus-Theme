@@ -65,33 +65,12 @@ $twitter_url = get_theme_option( 'twitter_url' );
 
 				if ( $articles ):
 				?>
-				<div class="fp-today-feed-wrap">
+				<div class="fp-today-feed-row">
+					<?php foreach ( $articles as $article ) : ?>
 					<div class="fp-today-feed-col">
-						<?php echo display_front_page_today_story( $articles[0] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[5] ); ?>
-						<hr class="fp-divider fp-today-feed-divider hidden-md-up">
+						<?php echo display_front_page_today_story( $article ); ?>
 					</div>
-					<div class="fp-today-feed-col">
-						<?php echo display_front_page_today_story( $articles[1] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[6] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-md-down">
-						<?php echo display_front_page_today_story( $articles[2] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[7] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-md-down">
-						<?php echo display_front_page_today_story( $articles[3] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[8] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-lg-down">
-						<?php echo display_front_page_today_story( $articles[4] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[9] ); ?>
-					</div>
+					<?php endforeach; ?>
 				</div>
 				<?php else: ?>
 				News articles could not be loaded. Please try again later.
