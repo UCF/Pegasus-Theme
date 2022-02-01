@@ -53,11 +53,11 @@ $twitter_url = get_theme_option( 'twitter_url' );
 		</div>
 	</div>
 
-	<div class="row align-items-start mb-4 mb-md-5">
+	<div class="row align-items-start my-4 my-sm-5">
 		<div class="col d-md-flex flex-md-column mb-5 mb-md-0 <?php if ( $twitter_url ) {?>pt-md-4<?php } ?>">
-			<div class="d-md-flex align-items-center justify-content-between mb-4">
-				<h2 class="font-weight-black mb-0 ml-sm-2">The Feed<span class="fa fa-caret-right text-primary ml-2" aria-hidden="true"></span></h2>
-				<a class="text-default-aw text-uppercase font-size-sm font-weight-bold" href="https://www.ucf.edu/news/">Check out more stories at <span class="text-secondary">UCFToday</span> <span class="fas fa-share-square text-primary" aria-hidden="true"></span></a>
+			<div class="d-lg-flex align-items-center justify-content-between mb-4">
+				<h2 class="font-weight-black mb-1 mb-md-2 mb-lg-0 ml-sm-2">The Feed<span class="fa fa-caret-right text-primary ml-2" aria-hidden="true"></span></h2>
+				<a class="text-default-aw text-uppercase font-size-sm font-weight-bold d-inline-block ml-sm-2" href="https://www.ucf.edu/news/">Check out more stories at <span class="text-secondary">UCFToday</span> <span class="fas fa-share-square text-primary" aria-hidden="true"></span></a>
 			</div>
 			<aside class="fp-today-feed">
 				<?php
@@ -65,33 +65,12 @@ $twitter_url = get_theme_option( 'twitter_url' );
 
 				if ( $articles ):
 				?>
-				<div class="fp-today-feed-wrap">
+				<div class="fp-today-feed-row">
+					<?php foreach ( $articles as $article ) : ?>
 					<div class="fp-today-feed-col">
-						<?php echo display_front_page_today_story( $articles[0] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[5] ); ?>
-						<hr class="fp-divider fp-today-feed-divider hidden-md-up">
+						<?php echo display_front_page_today_story( $article ); ?>
 					</div>
-					<div class="fp-today-feed-col">
-						<?php echo display_front_page_today_story( $articles[1] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[6] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-md-down">
-						<?php echo display_front_page_today_story( $articles[2] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[7] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-md-down">
-						<?php echo display_front_page_today_story( $articles[3] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[8] ); ?>
-					</div>
-					<div class="fp-today-feed-col hidden-lg-down">
-						<?php echo display_front_page_today_story( $articles[4] ); ?>
-						<hr class="fp-divider fp-today-feed-divider">
-						<?php echo display_front_page_today_story( $articles[9] ); ?>
-					</div>
+					<?php endforeach; ?>
 				</div>
 				<?php else: ?>
 				News articles could not be loaded. Please try again later.
@@ -148,7 +127,7 @@ $twitter_url = get_theme_option( 'twitter_url' );
 	</div>
 	<?php endif; ?>
 
-	<div class="row">
+	<div class="row my-4 my-sm-5">
 		<div class="col-lg pt-lg-4 mb-5 mb-lg-0 <?php if ( $featured_gallery ) { ?>pr-lg-5<?php } ?>">
 			<h2 class="font-weight-black">Events</h2>
 			<hr role="presentation">
