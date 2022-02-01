@@ -10,8 +10,7 @@ $twitter_url = get_theme_option( 'twitter_url' );
 	<?php if ( $feature_1 = get_theme_option( 'front_page_featured_story_1' ) ): ?>
 		<?php
 		$feature_1_post = get_post( $feature_1 );
-		$feature_1_thumb_size = get_relevant_version( $feature_1_post ) >= 5 ? 'story-featured-image' : 'full';
-		echo display_front_page_story( $feature_1_post, 'fp-feature-top', false, $feature_1_thumb_size );
+		echo display_story_callout( $feature_1_post, 'story-callout-overlay', false, 'full' );
 		?>
 	<?php endif; ?>
 
@@ -24,25 +23,25 @@ $twitter_url = get_theme_option( 'twitter_url' );
 	<div class="row justify-content-center">
 		<?php if ( $feature_2 = get_theme_option( 'front_page_featured_story_2' ) ): ?>
 		<div class="col-8 col-sm-6 col-md-3">
-			<?php echo display_front_page_story( get_post( $feature_2 ), 'fp-feature-secondary' ); ?>
+			<?php echo display_story_callout( get_post( $feature_2 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_3 = get_theme_option( 'front_page_featured_story_3' ) ): ?>
 		<div class="col-8 col-sm-6 col-md-3">
-			<?php echo display_front_page_story( get_post( $feature_3 ), 'fp-feature-secondary' ); ?>
+			<?php echo display_story_callout( get_post( $feature_3 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_4 = get_theme_option( 'front_page_featured_story_4' ) ): ?>
 		<div class="col-8 col-sm-6 col-md-3">
-			<?php echo display_front_page_story( get_post( $feature_4 ), 'fp-feature-secondary' ); ?>
+			<?php echo display_story_callout( get_post( $feature_4 ) ); ?>
 		</div>
 		<?php endif; ?>
 
 		<?php if ( $feature_5 = get_theme_option( 'front_page_featured_story_5' ) ): ?>
 		<div class="col-8 col-sm-6 col-md-3">
-			<?php echo display_front_page_story( get_post( $feature_5 ), 'fp-feature-secondary' ); ?>
+			<?php echo display_story_callout( get_post( $feature_5 ) ); ?>
 		</div>
 		<?php endif; ?>
 	</div>
@@ -128,7 +127,7 @@ $twitter_url = get_theme_option( 'twitter_url' );
 					<?php $i = 1; ?>
 					<?php foreach ( $current_issue_stories as $issue_story ): ?>
 						<div class="col-8 col-sm-6 col-md-4">
-							<?php echo display_front_page_story( $issue_story, 'fp-issue-list-item', true ); ?>
+							<?php echo display_story_callout( $issue_story, '', true ); ?>
 						</div>
 
 						<?php if ( $i !== count( $current_issue_stories ) && $i % 3 === 0 ): ?>

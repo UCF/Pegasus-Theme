@@ -5,10 +5,14 @@
 
 
 /**
- * Displays a single story on the front page.
+ * Displays a story callout/link.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @return string HTML markup for the story
  **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
-	if ( !$story ) return false;
+function display_story_callout( $story, $css_class='', $show_category=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
+	if ( ! $story ) return false;
 
 	$thumbnail = null;
 	$thumbnail_id = get_front_page_story_thumbnail_id( $story );
@@ -19,7 +23,7 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 			$thumbnail_size,
 			false,
 			array(
-				'class' => 'img-fluid hover-child-filter-brightness',
+				'class' => 'img-fluid w-100 hover-child-filter-brightness',
 				'alt' => '' // Intentionally blank to avoid redundant story title announcement
 			)
 		);
@@ -35,43 +39,44 @@ function display_front_page_story( $story, $css_class='', $show_vertical=false, 
 		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
 	}
 
-	$vertical = null;
-	if ( $show_vertical ) {
-		$vertical = get_the_category( $story->ID );
-		if ( $vertical ) {
-			$vertical = $vertical[0];
-			$vertical = wptexturize( $vertical->name );
+	$category = null;
+	if ( $show_category ) {
+		$category = get_the_category( $story->ID );
+		if ( $category ) {
+			$category = $category[0];
+			$category = wptexturize( $category->name );
 		}
 	}
 
 	ob_start();
 ?>
-<article class="fp-feature <?php echo $css_class; ?> hover-parent">
-	<div class="fp-feature-text-wrap">
-		<<?php echo $heading; ?> class="fp-feature-title">
-			<a class="fp-feature-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
+<article class="story-callout <?php echo $css_class; ?> hover-parent">
+	<div class="story-callout-text-wrap">
+		<<?php echo $heading; ?> class="story-callout-title">
+			<a class="story-callout-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
 				<?php echo $title; ?>
 			</a>
 		</<?php echo $heading; ?>>
-		<div class="fp-feature-description">
+		<div class="story-callout-description">
 			<?php echo $description; ?>
 		</div>
 	</div>
 	<?php if ( $thumbnail ): ?>
-	<div class="fp-feature-img-wrap">
-		<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
+	<div class="story-callout-img-wrap">
+		<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php echo $thumbnail; ?>
 
-		<?php if ( $show_vertical && $vertical ): ?>
-		<span class="fp-vertical badge badge-primary">
-			<?php echo $vertical; ?>
+		<?php if ( $show_category && $category ): ?>
+		<span class="story-callout-category badge badge-primary">
+			<?php echo $category; ?>
 		</span>
 		<?php endif; ?>
 		</a>
 	</div>
 	<?php endif; ?>
 </article>
-<?php 	return ob_get_clean();
+<?php
+return ob_get_clean();
 }
 
 

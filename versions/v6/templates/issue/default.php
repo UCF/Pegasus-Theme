@@ -61,13 +61,13 @@ if ( $story_2 ) {
 	</div>
 
 	<?php if ( $story_1 ) : ?>
-	<section class="container home-hero">
+	<section>
 		<?php
-		echo display_front_page_story(
+		echo display_story_callout(
 			$story_1,
-			'fp-feature-top',
+			'story-callout-overlay',
 			false,
-			'issue-cover-feature-3x2'
+			'full'
 		);
 		?>
 	</section>
@@ -77,15 +77,15 @@ if ( $story_2 ) {
 		<div class="heading-wrap">
 			<h2><span>More in this Issue</span></h2>
 		</div>
-		<div class="row">
+		<div class="row justify-content-center justify-content-sm-start">
 		<?php
 		$count = 0;
 		if ( $other_stories ):
 			foreach ( $other_stories as $story ):
 		?>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-8 col-sm-6 col-md-3">
 				<?php
-				echo display_front_page_story( $story, '', true );
+				echo display_story_callout( $story, '', true );
 				$count++;
 				?>
 			</div>
