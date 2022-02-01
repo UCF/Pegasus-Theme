@@ -373,7 +373,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         var textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
         var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
             toolbar: toolbar.attr('id'), // id of toolbar element
-            stylesheets: [THEME_CSS_URL + "/editor.css"],
+            stylesheets: [THEME_CSS_URL + "/wysihtml5.css"],
             parserRules: wysihtml5ParserRules, // defined in parser rules set
         });
       }
@@ -397,7 +397,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
         var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
             toolbar: toolbar.attr('id'), // id of toolbar element
-            stylesheets: [THEME_CSS_URL + "editor.css"],
+          stylesheets: [THEME_CSS_URL + "wysihtml5.css"],
             parserRules: wysihtml5ParserRules, // defined in parser rules set
         });
       },
@@ -469,7 +469,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
             var editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
               toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
-              stylesheets:  [THEME_CSS_URL + "editor.css"],
+              stylesheets: [THEME_CSS_URL + "wysihtml5.css"],
               parserRules:  wysihtml5ParserRules, // defined in parser rules set
             });
 
