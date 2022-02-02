@@ -30,7 +30,7 @@ WebcomAdmin.shortcodeInterfaceTool = function ($) {
   this.shortcodeEditors = this.shortcodeForm.find('#shortcode-editors');
   this.shortcodeDescriptions = this.shortcodeForm.find('#shortcode-descriptions');
 
-  this.shortcodeInsert = function (shortcode, parameters, enclosingText) {
+  this.shortcodeInsert = (shortcode, parameters, enclosingText) => {
     let text = `[${shortcode}`;
 
     if (parameters) {
@@ -49,7 +49,7 @@ WebcomAdmin.shortcodeInterfaceTool = function ($) {
     send_to_editor(text);
   };
 
-  this.shortcodeAction = function () {
+  this.shortcodeAction = () => {
     const selected = this.shortcodeSelect.find(':selected');
     if (selected.length < 1 || selected.val() === '') {
       return;
@@ -85,7 +85,7 @@ WebcomAdmin.shortcodeInterfaceTool = function ($) {
     this.shortcodeInsert(selected.val(), parameters, enclosingText);
   };
 
-  this.shortcodeSelectAction = function () {
+  this.shortcodeSelectAction = () => {
     this.shortcodeSelected = this.shortcodeSelect.val();
 
     this.shortcodeEditors.find('li').hide();
