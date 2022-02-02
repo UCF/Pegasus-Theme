@@ -17,7 +17,6 @@
 }
 
 .fp-heading {
-  @include gotham(8);
   color: $black;
   font-size: 34px;
   letter-spacing: -.02em;
@@ -32,7 +31,6 @@
 }
 
 .fp-subheading-underline {
-  @include gotham(6);
   color: $black;
   display: block;
   font-size: 14px;
@@ -59,7 +57,6 @@
 // Header
 //
 .fp-header-link {
-  @include gotham(6);
   color: $black;
   display: inline-block;
   font-size: 12px;
@@ -117,9 +114,9 @@
 }
 
 .fp-header-subtitle {
-  @include archer();
   color: $black;
   display: inline-block;
+  font-family: $font-family-slab-serif;
   font-size: 12px;
   letter-spacing: .125em;
   text-transform: uppercase;
@@ -446,7 +443,6 @@
 }
 
 .fp-footer-logo {
-  @include gotham(4);
   display: block;
   font-size: 40px;
   letter-spacing: .06em;
@@ -512,7 +508,7 @@
 }
 
 .fp-address {
-  @include archer();
+  font-family: $font-family-slab-serif;
   font-size: 16px;
   margin-top: 20px;
 }

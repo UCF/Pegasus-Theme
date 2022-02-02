@@ -13,11 +13,11 @@
   @include media-breakpoint-up(sm) {
     &.pull-left {
       padding-left: 0;
-      padding-right: $grid-gutter-width;
+      padding-right: $grid-gutter-width-base;
     }
 
     &.pull-right {
-      padding-left: $grid-gutter-width;
+      padding-left: $grid-gutter-width-base;
       padding-right: 0;
     }
   }

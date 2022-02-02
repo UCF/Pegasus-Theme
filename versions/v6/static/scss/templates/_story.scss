@@ -152,12 +152,12 @@ article.photo-essay {
 
   .photo-essay-contents {
     margin: 30px auto 0;
-    max-width: $container-lg - $grid-gutter-width;
+    max-width: map-get($container-max-widths, 'xl') - $grid-gutter-width-base;
   }
 
   .photo-essay-item {
     margin-bottom: 0;
-    margin-top: $grid-gutter-width / 2;
+    margin-top: $grid-gutter-width-base / 2;
   }
 
   .img-col {
@@ -290,7 +290,7 @@ article.photo-essay {
     margin-left: 40px;
     min-height: 100vh;
     -webkit-overflow-scrolling: touch;
-    padding: ($grid-gutter-width / 2);
+    padding: ($grid-gutter-width-base / 2);
     text-align: center;
     width: 120px;
 
@@ -312,7 +312,7 @@ article.photo-essay {
 
   .photo-essay-nav-link {
     display: block;
-    margin: 0 auto ($grid-gutter-width / 2);
+    margin: 0 auto ($grid-gutter-width-base / 2);
 
     &:hover,
     &:active,

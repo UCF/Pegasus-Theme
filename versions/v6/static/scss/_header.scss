@@ -36,9 +36,7 @@
 .story-list-grid {
   article {
     .story-title {
-      @include font-smoothing();
       color: #333;
-      @include gotham(7);
       font-size: 16px;
       line-height: 18px;
       margin-top: 0;
@@ -338,7 +336,6 @@ li#nav-mobile {
   }
 
   a {
-    @include font-smoothing();
     color: #222;
     display: block;
     filter: alpha(opacity=100);
@@ -429,7 +426,6 @@ li#nav-give {
 li#nav-issue a,
 li#nav-archives a,
 li#nav-give a {
-  @include font-smoothing();
   color: #222;
   font-family: $font-family-sans-serif;
   font-size: 14px;
@@ -441,10 +437,6 @@ li#nav-give a {
     font-size: 13px;
     line-height: 13px;
   }
-
-  @include body-prefix('.ie8') {
-    font-weight: normal;
-  };
 }
 
 

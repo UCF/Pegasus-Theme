@@ -4,7 +4,6 @@
   position: relative;
 
   &:before {
-    @include font-smoothing();
     // Search field icon
     color: #d1d1d1;
     content: '\e605';
