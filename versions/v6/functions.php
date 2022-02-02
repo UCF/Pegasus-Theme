@@ -183,7 +183,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 				<div class="carat"></div>
 			</div>
-			<div class="caption-col col-lg-4 col-md-12 <?php if ( $alternate ) { ?>pull-lg-7 offset-lg-1<?php } else { ?>offset-lg-0<?php  } ?>">
+			<div class="caption-col col-lg-4 <?php if ( $alternate ) { ?>pull-lg-7 offset-lg-1<?php } else { ?>offset-lg-0<?php  } ?>">
 				<figcaption class="photo-essay-caption">
 					<?php echo $caption; ?>
 				</figcaption>
