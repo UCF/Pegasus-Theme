@@ -179,7 +179,7 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		case 'portrait':
 	?>
 		<div class="row">
-			<div class="img-col col-lg-7 offset-lg-0 col-md-10 offset-md-1 <?php if ( $alternate ) { ?>push-lg-5<?php } ?>">
+			<div class="img-col col-md-10 offset-md-1 col-lg-7 offset-lg-0 <?php if ( $alternate ) { ?>push-lg-5<?php } ?>">
 				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 				<div class="carat"></div>
 			</div>
@@ -306,7 +306,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 					<nav id="photo-essay-navbar" class="photo-essay-nav">
 						<?php echo $nav_markup; ?>
 						<a class="photo-essay-jump photo-essay-nav-link" id="photo-essay-jump-top" href="#">
-							<span class="fas fa-long-arrow-alt-up fa-3x d-block"></span>
+							<span class="fas fa-long-arrow-alt-up fa-3x d-block" aria-hidden="true"></span>
 							<span class="sr-only">Jump </span>to top
 						</a>
 					</nav>
