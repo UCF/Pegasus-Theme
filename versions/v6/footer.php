@@ -17,7 +17,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<h2 class="section-title">More UCF Stories</h2>
+							<h2 class="font-serif font-italic font-weight-normal my-4 py-2">More UCF Stories</h2>
 						</div>
 					</div>
 				</div>
