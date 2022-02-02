@@ -2,3 +2,85 @@
 // Stories - Default template
 //
 
+.story-default {
+  .story-header-image {
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 45px;
+    max-width: 100%;
+  }
+
+  .title-wrap {
+    margin-bottom: 5px;
+    margin-top: 5px;
+
+    @include media-breakpoint-up(md) {
+      margin-bottom: 15px;
+      margin-top: 10px;
+    }
+  }
+
+  .description-wrap {
+    margin-bottom: 30px;
+    white-space: nowrap;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+      white-space: normal;
+      margin-bottom: 45px;
+    }
+  }
+
+  // Allows social btns to be bottom-right aligned
+  .description-col {
+    display: inline-block;
+    float: none;
+    align-self: flex-end;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      float: left;
+    }
+  }
+
+  .description {
+    display: block;
+    font-style: italic;
+    white-space: normal;
+    font-size: 18px;
+    line-height: 28px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 22px;
+      line-height: 32px;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+
+    em,
+    i {
+      font-style: normal;
+    }
+  }
+
+  .social {
+    float: right;
+    margin-bottom: 8px;
+
+    @include media-breakpoint-down(md) {
+      float: left;
+      margin-bottom: 0;
+    }
+  }
+
+  .lead {
+    margin-bottom: 30px;
+  }
+
+  .caption {
+    margin-bottom: 20px;
+  }
+}
