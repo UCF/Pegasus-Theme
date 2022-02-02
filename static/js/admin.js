@@ -399,7 +399,7 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
 
 
     // Toggle slide with header click
-    $('#slider_slides').delegate('.custom_repeatable .hndle', 'click', function () {
+    $('#slider_slides').on('click', '.custom_repeatable .hndle', function () {
       $(this).siblings('.inside').toggle().end().parent()
         .toggleClass('closed');
     });
