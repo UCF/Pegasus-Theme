@@ -306,7 +306,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 					<nav id="photo-essay-navbar" class="photo-essay-nav">
 						<?php echo $nav_markup; ?>
 						<a class="photo-essay-jump photo-essay-nav-link" id="photo-essay-jump-top" href="#">
-							<span class="fas fa-long-arrow-alt-up fa-3x d-block"></span>
+							<span class="fas fa-long-arrow-alt-up fa-3x d-block" aria-hidden="true"></span>
 							<span class="sr-only">Jump </span>to top
 						</a>
 					</nav>
