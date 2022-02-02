@@ -1,37 +1,37 @@
+/* eslint-disable camelcase */
+/* eslint-disable sort-vars */
 // Define globals for JSHint validation:
-/* global console, PostTypeSearchDataManager */
+/* global PostTypeSearchDataManager */
 
+const Generic = {};
 
-var Generic = {};
-
-Generic.PostTypeSearch = function($) {
+Generic.PostTypeSearch = function ($) {
   $('.post-type-search')
-    .each(function(post_type_search_index, post_type_search) {
-        post_type_search     = $(post_type_search);
-        var form             = post_type_search.find('.post-type-search-form'),
-            field            = form.find('input[type="text"]'),
-            results          = post_type_search.find('.post-type-search-results'),
-            by_term          = post_type_search.find('.post-type-search-term'),
-            by_alpha         = post_type_search.find('.post-type-search-alpha'),
-            sorting          = post_type_search.find('.post-type-search-sorting'),
-            sorting_by_term  = sorting.find('button:eq(0)'),
-            sorting_by_alpha = sorting.find('button:eq(1)'),
+    // eslint-disable-next-line consistent-return
+    .each((post_type_search_index, post_type_search) => {
+      post_type_search = $(post_type_search);
 
-            post_type_search_data  = null,
-            search_data_set        = null,
-            column_count           = null,
-            column_width           = null,
+      const form                    = post_type_search.find('.post-type-search-form'),
+        field                       = form.find('input[type="text"]'),
+        results                     = post_type_search.find('.post-type-search-results'),
+        by_term                     = post_type_search.find('.post-type-search-term'),
+        by_alpha                    = post_type_search.find('.post-type-search-alpha'),
+        sorting                     = post_type_search.find('.post-type-search-sorting'),
+        sorting_by_term             = sorting.find('button:eq(0)'),
+        sorting_by_alpha            = sorting.find('button:eq(1)'),
+        typing_delay                = 300, // milliseconds
+        MINIMUM_SEARCH_MATCH_LENGTH = 2;
 
-            typing_timer = null,
-            typing_delay = 300, // milliseconds
-
-            prev_post_id_sum = null, // Sum of result post IDs. Used to cache results
-
-            MINIMUM_SEARCH_MATCH_LENGTH = 2;
+      let post_type_search_data  = null,
+        typing_timer             = null,
+        search_data_set          = null,
+        column_count             = null,
+        column_width             = null,
+        prev_post_id_sum         = null; // Sum of result post IDs. Used to cache results
 
       // Get the post data for this search
       post_type_search_data = PostTypeSearchDataManager.searches[post_type_search_index];
-      if(typeof post_type_search_data === 'undefined') { // Search data missing
+      if (typeof post_type_search_data === 'undefined') { // Search data missing
         return false;
       }
 
@@ -39,20 +39,20 @@ Generic.PostTypeSearch = function($) {
       column_count    = post_type_search_data.column_count;
       column_width    = post_type_search_data.column_width;
 
-      if(column_count === 0 || column_width === '') { // Invalid dimensions
+      if (column_count === 0 || column_width === '') { // Invalid dimensions
         return false;
       }
 
       // Sorting toggle
-      sorting_by_term.click(function() {
-        by_alpha.fadeOut('fast', function() {
+      sorting_by_term.click(() => {
+        by_alpha.fadeOut('fast', () => {
           by_term.fadeIn();
           sorting_by_alpha.removeClass('active');
           sorting_by_term.addClass('active');
         });
       });
-      sorting_by_alpha.click(function() {
-        by_term.fadeOut('fast', function() {
+      sorting_by_alpha.click(() => {
+        by_term.fadeOut('fast', () => {
           by_alpha.fadeIn();
           sorting_by_term.removeClass('active');
           sorting_by_alpha.addClass('active');
@@ -61,107 +61,110 @@ Generic.PostTypeSearch = function($) {
 
       // Search form
       form
-        .submit(function(event) {
+        .submit((event) => {
           // Don't allow the form to be submitted
           event.preventDefault();
           perform_search(field.val());
         });
       field
-        .keyup(function() {
+        .keyup(() => {
           // Use a timer to determine when the user is done typing
-          if(typing_timer !== null) { clearTimeout(typing_timer); }
-          typing_timer = setTimeout(function() {form.trigger('submit');}, typing_delay);
+          if (typing_timer !== null) {
+            clearTimeout(typing_timer);
+          }
+          typing_timer = setTimeout(() => {
+            form.trigger('submit');
+          }, typing_delay);
         });
 
       function display_search_message(message) {
         results.empty();
-        results.append($('<p class="post-type-search-message"><big>' + message + '</big></p>'));
+        results.append($(`<p class="post-type-search-message"><big>${message}</big></p>`));
         results.show();
       }
 
       function perform_search(search_term) {
-        var matches             = [],
+        const matches         = [],
           elements            = [],
-          elements_per_column = null,
-          columns             = [],
-          post_id_sum         = 0;
+          columns             = [];
 
-        if(search_term.length < MINIMUM_SEARCH_MATCH_LENGTH) {
+        let post_id_sum         = 0,
+          elements_per_column   = null;
+
+        if (search_term.length < MINIMUM_SEARCH_MATCH_LENGTH) {
           results.empty();
           results.hide();
           return;
         }
         // Find the search matches
-        $.each(search_data_set, function(post_id, search_data) {
-          $.each(search_data, function(search_data_index, term) {
-            if(term.toLowerCase().indexOf(search_term.toLowerCase()) !== -1) {
+        $.each(search_data_set, (post_id, search_data) => {
+          $.each(search_data, (_, term) => {
+            if (term.toLowerCase().indexOf(search_term.toLowerCase()) !== -1) {
               matches.push(post_id);
               return false;
             }
+            return true;
           });
         });
-        if(matches.length === 0) {
+        if (matches.length === 0) {
           display_search_message('No results were found.');
         } else {
 
           // Copy the associated elements
-          $.each(matches, function(match_index, post_id) {
+          $.each(matches, (match_index, post_id) => {
 
-            var element     = by_term.find('li[data-post-id="' + post_id + '"]:eq(0)'),
+            const element     = by_term.find(`li[data-post-id="${post_id}"]:eq(0)`),
               post_id_int = parseInt(post_id, 10);
             post_id_sum += post_id_int;
-            if(element.length === 1) {
+            if (element.length === 1) {
               elements.push(element.clone());
             }
           });
 
-          if(elements.length === 0) {
+          if (elements.length === 0) {
             display_search_message('No results were found.');
-          } else {
-
+          } else if (post_id_sum !== prev_post_id_sum) {
             // Are the results the same as last time?
-            if(post_id_sum !== prev_post_id_sum) {
-              results.empty();
-              prev_post_id_sum = post_id_sum;
+            results.empty();
+            prev_post_id_sum = post_id_sum;
 
 
-              // Slice the elements into their respective columns
-              elements_per_column = Math.ceil(elements.length / column_count);
-              for(var i = 0; i < column_count; i++) {
-                var start = i * elements_per_column,
-                  end   = start + elements_per_column;
-                if(elements.length > start) {
-                  columns[i] = elements.slice(start, end);
-                }
+            // Slice the elements into their respective columns
+            elements_per_column = Math.ceil(elements.length / column_count);
+            for (let i = 0; i < column_count; i++) {
+              const start = i * elements_per_column,
+                end   = start + elements_per_column;
+              if (elements.length > start) {
+                columns[i] = elements.slice(start, end);
               }
-
-              // Setup results HTML
-              results.append($('<div class="row"></div>'));
-              $.each(columns, function(column_index, column_elements) {
-                var column_wrap = $('<div class="' + column_width + '"><ul></ul></div>'),
-                  column_list = column_wrap.find('ul');
-
-                $.each(column_elements, function(element_index, element) {
-                  column_list.append($(element));
-                });
-                results.find('div[class="row"]').append(column_wrap);
-              });
-              results.show();
             }
+
+            // Setup results HTML
+            results.append($('<div class="row"></div>'));
+            $.each(columns, (column_index, column_elements) => {
+              const column_wrap = $(`<div class="${column_width}"><ul></ul></div>`),
+                column_list = column_wrap.find('ul');
+
+              $.each(column_elements, (element_index, element) => {
+                column_list.append($(element));
+              });
+              results.find('div[class="row"]').append(column_wrap);
+            });
+            results.show();
           }
         }
       }
     });
 };
 
-Generic.defaultMenuSeparators = function($) {
+Generic.defaultMenuSeparators = function ($) {
   // Because IE sucks, we're removing the last stray separator
   // on default navigation menus for browsers that don't
   // support the :last-child CSS property
   $('.menu.horizontal li:last-child').addClass('last');
 };
 
-Generic.removeExtraGformStyles = function($) {
+Generic.removeExtraGformStyles = function ($) {
   // Since we're re-registering the Gravity Form stylesheet
   // manually and we can't dequeue the stylesheet GF adds
   // by default, we're removing the reference to the script if
@@ -169,41 +172,50 @@ Generic.removeExtraGformStyles = function($) {
   $('link#gforms_css-css').remove();
 };
 
-Generic.addBodyClasses = function($) {
+Generic.addBodyClasses = function ($) {
   // Assign browser-specific body classes on page load
-    var bodyClass = '';
-    // Old IE:
-    if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { //test for MSIE x.x;
-            var ieversion = Number(RegExp.$1); // capture x.x portion and store as a number
+  let bodyClass = '';
+  // Old IE:
+  if (/MSIE (\d+\.\d+);/.test(navigator.userAgent)) { // test for MSIE x.x;
+    const ieversion = Number(RegExp.$1); // capture x.x portion and store as a number
 
-            if (ieversion >= 10)     { bodyClass = 'ie ie10'; }
-            else if (ieversion >= 9) { bodyClass = 'ie ie9'; }
-            else if (ieversion >= 8) { bodyClass = 'ie ie8'; }
-            else if (ieversion >= 7) { bodyClass = 'ie ie7'; }
+    if (ieversion >= 10) {
+      bodyClass = 'ie ie10';
+    } else if (ieversion >= 9) {
+      bodyClass = 'ie ie9';
+    } else if (ieversion >= 8) {
+      bodyClass = 'ie ie8';
+    } else if (ieversion >= 7) {
+      bodyClass = 'ie ie7';
     }
-     // IE11+:
-    else if (navigator.appName === 'Netscape' && !!navigator.userAgent.match(/Trident\/7.0/)) { bodyClass = 'ie ie11'; }
-    // iOS:
-    else if (navigator.userAgent.match(/iPhone/i)) { bodyClass = 'iphone'; }
-    else if (navigator.userAgent.match(/iPad/i))   { bodyClass = 'ipad'; }
-    else if (navigator.userAgent.match(/iPod/i))   { bodyClass = 'ipod'; }
-    // Android:
-    else if (navigator.userAgent.match(/Android/i)) { bodyClass = 'android'; }
+  } else if (navigator.appName === 'Netscape' && Boolean(navigator.userAgent.match(/Trident\/7.0/))) {
+    // IE11+:
+    bodyClass = 'ie ie11';
+  } else if (navigator.userAgent.match(/iPhone/i)) {
+  // iOS:
+    bodyClass = 'iphone';
+  } else if (navigator.userAgent.match(/iPad/i)) {
+    bodyClass = 'ipad';
+  } else if (navigator.userAgent.match(/iPod/i)) {
+    bodyClass = 'ipod';
+  } else if (navigator.userAgent.match(/Android/i)) {
+  // Android:
+    bodyClass = 'android';
+  }
 
-    $('body').addClass(bodyClass);
+  $('body').addClass(bodyClass);
 };
 
 
-if (typeof jQuery !== 'undefined'){
-  (function(){
-    $(document).ready(function() {
+if (typeof jQuery !== 'undefined') {
+  (function () {
+    $(document).ready(() => {
       Generic.PostTypeSearch($);
       Generic.defaultMenuSeparators($);
       Generic.removeExtraGformStyles($);
       Generic.addBodyClasses($);
     });
-  })(jQuery);
-}
-else {
+  }(jQuery));
+} else {
   console.log('jQuery dependency failed to load');
 }
