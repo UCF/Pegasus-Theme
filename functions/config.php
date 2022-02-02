@@ -703,6 +703,7 @@ function __init__(){
 	add_image_size( 'frontpage-featured-gallery-thumbnail-3x2', 515, 343, true ); // 3x2
 	add_image_size( 'single-post-thumbnail', 220, 230, true ); // almost 1x1
 	add_image_size( 'single-post-thumbnail-3x2', 220, 147, true ); // 3x2
+	add_image_size( 'single-post-thumbnail-300x200', 300, 200, true ); // 3x2
 	add_image_size( 'issue-thumbnail', 190, 248 ); // almost 10x13 (but does not crop)
 	add_image_size( 'issue-cover-feature', 768, 432, true ); // 16x9
 	add_image_size( 'issue-cover-feature-3x2', 768, 512, true ); // 3x2
