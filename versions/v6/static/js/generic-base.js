@@ -209,7 +209,7 @@ Generic.addBodyClasses = function ($) {
 
 if (typeof jQuery !== 'undefined') {
   (function () {
-    $(document).ready(() => {
+    $(() => {
       Generic.PostTypeSearch($);
       Generic.defaultMenuSeparators($);
       Generic.removeExtraGformStyles($);
