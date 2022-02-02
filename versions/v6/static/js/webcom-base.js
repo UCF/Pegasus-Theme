@@ -124,7 +124,7 @@ Webcom.loadMoreSearchResults = function ($) {
 
 if (typeof jQuery !== 'undefined') {
   (function () {
-    $(document).ready(() => {
+    $(() => {
       Webcom.analytics();
       Webcom.handleExternalLinks($);
       Webcom.loadMoreSearchResults($);

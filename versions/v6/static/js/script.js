@@ -463,7 +463,7 @@ const twitterWidget = function () {
 
 if (typeof jQuery !== 'undefined') {
   (function () {
-    $(document).ready(() => {
+    $(() => {
       togglePulldown($);
       loadPulldownMenus($);
       pulldownMenuScroll($);
