@@ -9,18 +9,16 @@
 @import 'mixins';
 
 // Base styles for typography, header, footer and components
-// @import 'type';
 @import 'header';
 @import 'footer';
 
+@import 'components/buttons';
 @import 'components/iframes';
 @import 'components/ucf-events';
 @import 'components/story-callout';
-// @import 'components';
 
 // Templates
 @import 'templates/issue';
-@import 'templates/page';
 @import 'templates/story';
 
 // Pages
