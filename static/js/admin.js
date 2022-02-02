@@ -112,8 +112,8 @@ WebcomAdmin.themeOptions = function ($) {
   this.buttonWrap = $('.i-am-a-fancy-admin .sections');
   this.sectionLinks = $('.i-am-a-fancy-admin .fields .section a[href^="#"]');
 
-  this.showSection = function () {
-    const button  = $(this);
+  this.showSection = (e) => {
+    const button  = $(e.target);
     const href    = button.attr('href');
     const section = $(href);
 
@@ -134,7 +134,7 @@ WebcomAdmin.themeOptions = function ($) {
     return false;
   };
 
-  this.__init__ = function () {
+  this.__init__ = () => {
     this.active = this.sections.first();
     this.sections.not(this.active).hide();
     this.buttons.first().addClass('active');
