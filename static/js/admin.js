@@ -192,7 +192,8 @@ WebcomAdmin.wysiwygFields = function ($) {
 
     // Initialize the wysihtml5 editor
     if ($(textarea).length > 0) {
-      wysihtml5.Editor(textarea, { // id of textarea element or DOM node
+      // eslint-disable-next-line no-new
+      new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
         toolbar: toolbarID, // id of toolbar element
         parserRules: wysihtml5ParserRules // defined in parser rules set
       });
@@ -358,7 +359,8 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
       if (slideContent.find('div[id^="wysihtml5-toolbar["]').attr('id').indexOf('xxxxxx') === -1) {
         const toolbar = slideContent.find('div[id^="wysihtml5-toolbar["]');
         const textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
-        wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+        // eslint-disable-next-line no-new
+        new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
           toolbar: toolbar.attr('id'), // id of toolbar element
           stylesheets: [`${THEME_CSS_URL}/editor.css`],
           parserRules: wysihtml5ParserRules // defined in parser rules set
@@ -382,7 +384,8 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
         html5iframe.remove();
         toolbar.hide();
 
-        wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+        // eslint-disable-next-line no-new
+        new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
           toolbar: toolbar.attr('id'), // id of toolbar element
           stylesheets: [`${THEME_CSS_URL}editor.css`],
           parserRules: wysihtml5ParserRules // defined in parser rules set
@@ -455,7 +458,8 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
       $('input[id^="file_img_"]', newSlide).attr('value', attachmentId);
       newSlide.insertAfter(newSlideSibling).show();
 
-      wysihtml5.Editor(`ss_slide_caption[${attachmentId}]`, { // id of textarea element
+      // eslint-disable-next-line no-new
+      new wysihtml5.Editor(`ss_slide_caption[${attachmentId}]`, { // id of textarea element
         toolbar:      `wysihtml5-toolbar[${attachmentId}]`, // id of toolbar element
         stylesheets:  [`${THEME_CSS_URL}editor.css`],
         parserRules:  wysihtml5ParserRules // defined in parser rules set
