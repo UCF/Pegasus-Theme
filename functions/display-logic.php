@@ -246,4 +246,3 @@ function get_home_gallery( $gallery ) {
 <?php
 	return trim( ob_get_clean() );
 }
-
