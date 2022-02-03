@@ -28,7 +28,7 @@ function add_story_sidebar_acf_fields() {
 		'post_type'     => array(
 			0 => 'ucf_spotlight',
 		),
-		'return_format' => 'id',
+		'return_format' => 'object',
 		'ui'            => 1,
 	);
 
