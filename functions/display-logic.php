@@ -112,24 +112,7 @@ function display_front_page_today_story( $article ) {
 * @author RJ Bruneel
 **/
 function display_social_header() {
-	global $wp;
-
-	$link = home_url( add_query_arg( array(), $wp->request ) );
-	$fb_url = 'http://www.facebook.com/sharer.php?u=' . $link;
-	$twitter_url = 'https://twitter.com/intent/tweet?text=' . urlencode( 'Pegasus Magazine' ) . '&url=' . $link;
-
-	ob_start();
-?>
-	<span class="social-icon-list-heading">Share</span>
-	<ul class="social-icon-list">
-		<li class="social-icon-list-item">
-			<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Share Pegasus Magazine on Facebook</a>
-		</li>
-		<li class="social-icon-list-item">
-			<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Share Pegasus Magazine on Twitter</a>
-		</li>
-	</ul>
-<?php     return ob_get_clean();
+	return do_shortcode( '[ucf-social-links]' );
 }
 
 
