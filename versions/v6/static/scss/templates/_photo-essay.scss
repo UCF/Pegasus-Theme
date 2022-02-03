@@ -1,0 +1,315 @@
+article.photo-essay {
+  .description-wrap {
+    margin-bottom: 30px;
+    white-space: nowrap;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+      white-space: normal;
+      margin-bottom: 45px;
+    }
+  }
+
+  // Allows social btns to be bottom-right aligned
+  .description-col {
+    display: inline-block;
+    float: none;
+    align-self: flex-end;
+
+    @include media-breakpoint-down(md) {
+      display: block;
+      float: left;
+    }
+  }
+
+  .description {
+    display: block;
+    font-style: italic;
+    white-space: normal;
+    font-size: 18px;
+    line-height: 28px;
+
+    @include media-breakpoint-up(md) {
+      font-size: 22px;
+      line-height: 32px;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-bottom: 20px;
+    }
+
+    em,
+    i {
+      font-style: normal;
+    }
+  }
+
+  .social {
+    float: right;
+    margin-bottom: 8px;
+
+    @include media-breakpoint-down(md) {
+      float: left;
+      margin-bottom: 0;
+    }
+  }
+
+  .lead {
+    margin-bottom: 30px;
+  }
+
+  .caption {
+    margin-bottom: 20px;
+  }
+}
+
+
+// Story - Photo Essay Template
+article.photo-essay {
+  blockquote {
+    &,
+    p {
+      font-size: 21px;
+      line-height: 1.3;
+      margin-bottom: 0;
+      padding: 0;
+
+      @include media-breakpoint-up(xl) {
+        font-size: 24px;
+      }
+    }
+
+    small {
+      font-family: 'OpenSansCondensedBold', sans-serif;
+      font-style: italic;
+    }
+  }
+
+  .photo-essay-contents {
+    margin: 30px auto 0;
+    max-width: $container-lg - $grid-gutter-width;
+  }
+
+  .photo-essay-item {
+    margin-bottom: 0;
+    margin-top: $grid-gutter-width / 2;
+  }
+
+  .img-col {
+    position: relative;
+    z-index: 1;
+  }
+
+  .img-col,
+  .caption-col {
+    @include media-breakpoint-up(md) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+  .photo-essay-img {
+    margin: 0;
+    width: 100%;
+
+    &.pull-right {
+      margin-left: 0;
+    }
+
+    &.pull-left {
+      margin-right: 0;
+    }
+  }
+
+  .carat {
+    border-style: solid;
+    height: 0;
+    position: absolute;
+    width: 0;
+    z-index: 2;
+  }
+
+  @mixin carat-top-left {
+    border-color: transparent transparent transparent #fff;
+    border-width: 35px 0 35px 25px;
+    bottom: auto;
+    left: 0;
+    margin: unset;
+    right: auto;
+    top: 50px;
+  }
+
+  @mixin carat-top-right {
+    border-color: transparent #fff;
+    border-width: 35px 25px 35px 0;
+    left: auto;
+    margin: unset;
+    right: 0;
+    top: 50px;
+  }
+
+  @mixin carat-bottom-center {
+    border-color: transparent transparent #fff;
+    border-width: 0 35px 25px;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    right: 0;
+    top: auto;
+  }
+
+  .photo-essay-caption {
+    @include media-breakpoint-up(xl) {
+      font-size: 18px;
+    }
+  }
+
+  .photo-essay-item-landscape,
+  .photo-essay-item-square {
+    .carat {
+      @include carat-bottom-center();
+    }
+
+    .photo-essay-caption {
+      padding: 30px 8.333% 60px;
+    }
+  }
+
+  .photo-essay-item-portrait {
+    &.alternate {
+      .carat {
+        @include carat-top-left();
+
+        @include media-breakpoint-down(md) {
+          @include carat-bottom-center();
+        }
+      }
+
+      .photo-essay-caption {
+        padding: 60px 30px 0 0;
+
+        @include media-breakpoint-down(md) {
+          padding: 30px 8.333% 60px;
+        }
+      }
+    }
+
+    .carat {
+      @include carat-top-right();
+
+      @include media-breakpoint-down(md) {
+        @include carat-bottom-center();
+      }
+    }
+
+    .photo-essay-caption {
+      padding: 60px 0 0 30px;
+
+      @include media-breakpoint-down(md) {
+        padding: 30px 8.333% 60px;
+      }
+    }
+  }
+
+  .navbar-col {
+    display: none;
+    padding-left: 0;
+
+    @include media-breakpoint-up(md) {
+      display: block;
+    }
+  }
+
+  .photo-essay-nav {
+    background-color: #f0f0f0;
+    margin-left: 40px;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+    padding: ($grid-gutter-width / 2);
+    text-align: center;
+    width: 120px;
+
+    @include media-breakpoint-up(xl) {
+      margin-left: 30px;
+      width: 150px;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-left: 20px;
+      width: 100px;
+    }
+
+    &.affix {
+      position: fixed !important; // wtf?
+      top: 0;
+    }
+  }
+
+  .photo-essay-nav-link {
+    display: block;
+    margin: 0 auto ($grid-gutter-width / 2);
+
+    &:hover,
+    &:active,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  .photo-essay-nav-thumb {
+    margin: 0;
+    opacity: .6;
+    transition: opacity .2s ease-in-out;
+    width: 100%;
+
+    &:hover,
+    &:active,
+    &:focus {
+      opacity: 1;
+    }
+  }
+
+  .photo-essay-jump {
+    background-color: #fff;
+    border-radius: 100%;
+    box-shadow: 0 5px 8px rgba(0, 0, 0, .4);
+    color: #000;
+    display: block;
+    font-size: 10px;
+    font-style: italic;
+    height: 50px;
+    padding: 6px;
+    text-align: center;
+    width: 50px;
+    z-index: 999;
+
+    @include media-breakpoint-up(md) {
+      font-size: 11px;
+      height: 70px;
+      padding: 10px;
+      width: 70px;
+    }
+
+    &:hover,
+    &:active,
+    &:focus {
+      background-color: #fafafa;
+      text-decoration: none;
+    }
+
+    .fa {
+      display: block;
+      font-size: 20px;
+      margin-bottom: 2px;
+
+      @include media-breakpoint-up(md) {
+        font-size: 30px;
+        margin-bottom: 4px;
+      }
+    }
+  }
+
+  #photo-essay-jump-top {
+    margin-top: 20px;
+  }
+}
