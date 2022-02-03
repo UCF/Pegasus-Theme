@@ -69,7 +69,7 @@ const togglePulldown = function ($) {
     // If toggle is a close button, always remove .active classes and tabbability.
     if (toggle.hasClass('close')) {
       $('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
-        .andSelf()
+        .addBack()
         .removeClass('active');
       pulldownWrap
         .find('a')
