@@ -61,7 +61,7 @@
 			</aside>
 			<?php endif; ?>
 
-			<aside id="footer-social">
+			<aside id="footer-social" aria-label="Follow UCF on social media">
 				<?php echo do_shortcode( '[ucf-social-icons]' ); ?>
 			</aside>
 
