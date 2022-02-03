@@ -21,6 +21,7 @@ require_once( 'functions/base.php' );            # Base theme functions
 require_once( 'custom-taxonomies.php' );         # Where taxonomies are defined
 require_once( 'custom-post-types.php' );         # Where post types are defined
 require_once( 'functions/config.php' );          # Where site-level configuration settings are defined
+require_once( 'functions/acf-functions.php' ); # Where related stories ACF fields and functions are defined
 require_once( 'functions/related-stories.php' ); # Where related stories ACF fields and functions are defined
 
 
@@ -893,11 +894,18 @@ add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 /**
  * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * [caption] shortcode in versions 5-.
  **/
-add_filter('disable_captions', function( $a ) {
-	return true;
-});
+function pegasus_disable_captions() {
+    $version = get_relevant_version();
+
+	if ( $version <= 5 ) {
+		return true;
+	}
+
+	return false;
+}
+add_filter( 'disable_captions', 'pegasus_disable_captions' );
 
 
 /**
