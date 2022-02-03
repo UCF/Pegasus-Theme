@@ -1,6 +1,6 @@
 //
-// Generic component for displaying a link to a story,
-// with thumbnail, title and deck.
+// Generic component for displaying a link to a story
+// with image, title and deck.
 //
 
 .story-callout {
@@ -45,6 +45,10 @@
   font-size: .85rem;
 }
 
+
+// .story-callout modifier that puts title, deck
+// in a translucent overlay hugging the bottom of
+// the image
 .story-callout-overlay {
   position: relative;
 
