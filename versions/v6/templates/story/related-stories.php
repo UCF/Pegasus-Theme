@@ -1,6 +1,5 @@
 <?php
 
-$thumbnail_src = $story['thumbnail'];
 $related_stories = related_stories_get_stories( $post->ID );
 
 if ( $related_stories ) :
@@ -9,7 +8,7 @@ if ( $related_stories ) :
 	<h2 id="related-stories" class="mb-3 mb-lg-4">Related Stories</h2>
 	<?php foreach( $related_stories as $story ) : ?>
 		<article class="row align-items-center position-relative mb-4">
-			<?php if ( $thumbnail_src ) : ?>
+			<?php if ( $thumbnail_src = $story['thumbnail'] ) : ?>
 			<div class="col-sm-4 col-lg-12">
 				<img class="img-fluid w-100 d-block mb-2 mb-sm-0 mb-lg-2" src="<?php echo $thumbnail_src; ?>" alt="" aria-hidden="true" width="300" height="200">
 			</div>
