@@ -15,7 +15,7 @@ $spotlight = get_field( 'sidebar_spotlight', $post );
 			<div class="story-sidebar col-lg-4 col-xl-3 flex-lg-first">
 				<div class="row mb-4 mb-lg-5">
 					<div class="col-6 col-lg-12 byline-issue mb-lg-5">
-						<span class="d-block mb-2">By Jenna Marina Lee</span>
+						<span class="d-block mb-2">TODO: Create byline field</span>
 						<a class="text-secondary font-weight-bold" href="<?php echo get_permalink( get_relevant_issue( $post ) ); ?>">Fall 2021</a>
 					</div>
 					<div class="col-6 col-lg-12 social-wrap">
