@@ -22,9 +22,11 @@ $spotlight = get_field( 'sidebar_spotlight', $post );
 						TODO: Add social links
 					</div>
 				</div>
+				<?php if ( $spotlight ) : ?>
 				<div class="mb-4 mb-lg-5">
 					<?php echo do_shortcode( '[ucf-spotlight slug="' . $spotlight->post_name . '"]' ); ?>
 				</div>
+				<?php endif; ?>
 				<?php include 'related-stories.php'; ?>
 			</div>
 		</div>
