@@ -19,7 +19,7 @@ array_push( Config::$scripts,
 function v6_enqueue_frontend_theme_assets() {
 	// Re-register jquery in document head
 	wp_deregister_script( 'jquery' );
-	wp_register_script( 'jquery', '//code.jquery.com/jquery-1.11.2.min.js' );
+	wp_register_script( 'jquery', '//code.jquery.com/jquery-3.6.0.min.js' );
 	wp_enqueue_script( 'jquery' );
 }
 add_action( 'wp_enqueue_scripts', 'v6_enqueue_frontend_theme_assets' );
