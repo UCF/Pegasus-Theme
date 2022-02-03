@@ -894,11 +894,18 @@ add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 /**
  * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * [caption] shortcode in versions 5-.
  **/
-add_filter('disable_captions', function( $a ) {
-	return true;
-});
+function pegasus_disable_captions() {
+    $version = get_relevant_version();
+
+	if ( $version <= 5 ) {
+		return true;
+	}
+
+	return false;
+}
+add_filter( 'disable_captions', 'pegasus_disable_captions' );
 
 
 /**
