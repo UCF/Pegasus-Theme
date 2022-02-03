@@ -123,9 +123,9 @@ $template_font_styles_base_array = array(
 	'text-align' => 'left',
 	'font-style' => 'normal',
 	'letter-spacing' => '-0.012em',
-	'size-desktop' => '60px',
-	'size-tablet' => '60px',
-	'size-mobile' => '40px',
+	'size-desktop' => '3.75rem',
+	'size-tablet' => '3.75rem',
+	'size-mobile' => '2.5rem',
 	'text-transform' => 'none'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
