@@ -90,8 +90,6 @@ function get_default_template_font_css( $font ) {
 		article.story blockquote {
 			color: '.$font['color'].';
 		}
-		article.story .lead::first-letter { color: '.$font['color'].'; }
-		article.story .lead:first-letter { color: '.$font['color'].'; }
 		article.story h1 {
 			font-size: '.$font['size-desktop'].';
 		}
@@ -360,7 +358,7 @@ function display_story_header_contents( $post, $deck='' ) {
 			'story-featured-image',
 			false,
 			array(
-				'class' => 'story-header-image',
+				'class' => 'img-fluid',
 				'alt' => ''
 			)
 		);
@@ -371,23 +369,16 @@ function display_story_header_contents( $post, $deck='' ) {
 
 	ob_start();
 ?>
-	<?php if ( $header_img ) : ?>
-	<div class="row header-img-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
-			<?php echo $header_img; ?>
-		</div>
-	</div>
-	<?php endif; ?>
 	<div class="row title-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
-			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
+		<div class="col-lg-10 offset-lg-1">
+			<h1 class="mb-2 mb-md-3"><?php echo wptexturize( $post->post_title ); ?></h1>
 		</div>
 	</div>
-	<div class="row description-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
+	<div class="row description-wrap mb-4">
+		<div class="col-lg-10 offset-lg-1">
 			<div class="row">
-				<div class="col-lg-8 description-col">
-					<span class="description">
+				<div class="col-12 description-col">
+					<span class="description lead">
 						<?php echo $deck; ?>
 					</span>
 				</div>
@@ -399,6 +390,13 @@ function display_story_header_contents( $post, $deck='' ) {
 			</div>
 		</div>
 	</div>
+	<?php if ( $header_img ) : ?>
+	<div class="row header-img-wrap mb-4">
+		<div class="col-12">
+			<?php echo $header_img; ?>
+		</div>
+	</div>
+	<?php endif; ?>
 <?php
 	return ob_get_clean();
 }
