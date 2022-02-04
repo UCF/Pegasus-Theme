@@ -228,22 +228,19 @@ const lazyLoadAssets = function ($) {
 const socialButtonTracking = function ($) {
   // Track social media button clicks, using GA's integrated
   // _trackSocial method.
-  $('aside.social a').click(function () {
-    const link = $(this),
-      target = link.attr('data-button-target');
+  $('.ucf-social-links .btn').on('click', function () {
+    const link = $(this);
+    const target = window.location;
 
-    let network = '',
-      socialAction = '';
+    let network = '';
+    let socialAction = '';
 
-    if (link.hasClass('share-facebook')) {
+    if (link.hasClass('btn-facebook')) {
       network = 'Facebook';
       socialAction = 'Like';
-    } else if (link.hasClass('share-twitter')) {
+    } else if (link.hasClass('btn-twitter')) {
       network = 'Twitter';
       socialAction = 'Tweet';
-    } else if (link.hasClass('share-googleplus')) {
-      network = 'Google+';
-      socialAction = 'Share';
     }
 
     // eslint-disable-next-line no-undef
