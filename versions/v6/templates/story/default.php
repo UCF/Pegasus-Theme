@@ -19,7 +19,7 @@ $spotlight = get_field( 'sidebar_spotlight', $post );
 						<a class="text-secondary font-weight-bold" href="<?php echo get_permalink( get_relevant_issue( $post ) ); ?>">Fall 2021</a>
 					</div>
 					<div class="col-6 col-lg-12 social-wrap">
-						TODO: Add social links
+						<?php echo do_shortcode( '[ucf-social-links]' ); ?>
 					</div>
 				</div>
 				<?php if ( $spotlight ) : ?>
