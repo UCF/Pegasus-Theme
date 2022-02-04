@@ -49,28 +49,6 @@ function display_story_list( $issue, $class=null ) {
 
 
 /**
-* Displays social buttons (Facebook, Twitter, G+) for a post.
-* Accepts a post URL and title as arguments.
-*
-* @return string
-* @author Jo Dickson
-**/
-function display_social($url, $title) {
-    $tweet_title = urlencode('Pegasus Magazine: '.$title);
-    ob_start(); ?>
-    <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
-            Like "<?php echo $title?>" on Facebook
-        </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
-            Tweet "<?php echo $title?>" on Twitter
-        </a>
-    </aside>
-    <?php     return ob_get_clean();
-}
-
-
-/**
  * Used in output_header_markup() to print default story template
  * style declarations.  $font is expected to be a value returned from
  * get_default_template_font_styles().
@@ -179,11 +157,11 @@ function display_photo_essay_item( $orientation, $item_id, $image_url, $title, $
 		case 'portrait':
 	?>
 		<div class="row">
-			<div class="img-col col-lg-7 offset-lg-0 col-md-10 offset-md-1 <?php if ( $alternate ) { ?>col-lg-push-5<?php } ?>">
+			<div class="img-col col-md-10 offset-md-1 col-lg-7 offset-lg-0 <?php if ( $alternate ) { ?>push-lg-5<?php } ?>">
 				<img class="photo-essay-img" src="<?php echo $image_url; ?>" alt="<?php echo $alt; ?>" title="<?php echo $title; ?>">
 				<div class="carat"></div>
 			</div>
-			<div class="caption-col col-lg-4 col-md-12 <?php if ( $alternate ) { ?>col-lg-pull-7 offset-lg-1<?php } else { ?>offset-lg-0<?php  } ?>">
+			<div class="caption-col col-lg-4 <?php if ( $alternate ) { ?>pull-lg-7 offset-lg-1<?php } else { ?>offset-lg-0<?php  } ?>">
 				<figcaption class="photo-essay-caption">
 					<?php echo $caption; ?>
 				</figcaption>
@@ -306,7 +284,7 @@ function display_photo_essay( $photo_essay, $story=null ) {
 					<nav id="photo-essay-navbar" class="photo-essay-nav">
 						<?php echo $nav_markup; ?>
 						<a class="photo-essay-jump photo-essay-nav-link" id="photo-essay-jump-top" href="#">
-							<span class="fa fa-long-arrow-up"></span>
+							<span class="fas fa-long-arrow-alt-up fa-3x d-block" aria-hidden="true"></span>
 							<span class="sr-only">Jump </span>to top
 						</a>
 					</nav>
@@ -414,8 +392,8 @@ function display_story_header_contents( $post, $deck='' ) {
 					</span>
 				</div>
 				<div class="col-lg-4 description-col">
-					<div class="social-wrap">
-						<?php echo display_social( get_permalink( $post->ID ), $post->post_title ); ?>
+					<div class="social-wrap text-right">
+						<?php echo do_shortcode( '[ucf-social-links]' ); ?>
 					</div>
 				</div>
 			</div>

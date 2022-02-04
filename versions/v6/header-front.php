@@ -20,18 +20,11 @@
 		</div>
 
 		<header class="front-page-header">
-			<div class="container">
-				<div class="row d-none d-md-block">
-					<div class="col-md-12 d-flex">
-						<div class="fp-social-links ml-auto">
-							<?php echo display_social_header(); ?>
-						</div>
-					</div>
-				</div>
-
+			<div class="container mt-4 mt-lg-5 mb-5 mb-md-0">
 				<div class="row">
 					<div class="col-6 col-md-3 col-lg-2 text-md-center">
-						<?php 						$current_issue = get_current_issue();
+						<?php
+						$current_issue = get_current_issue();
 						$current_issue_title = wptexturize( $current_issue->post_title );
 						?>
 						<a class="fp-header-link fp-header-link-issue d-none d-md-block" href="<?php echo get_permalink( $current_issue->ID ); ?>">
@@ -51,12 +44,6 @@
 						<a class="fp-header-subtitle" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
 							<span class="fp-header-subtitle-pre">The Magazine of </span>the University of Central Florida
 						</a>
-					</div>
-				</div>
-
-				<div class="d-md-none text-center">
-					<div class="fp-social-links">
-						<?php echo display_social_header(); ?>
 					</div>
 				</div>
 

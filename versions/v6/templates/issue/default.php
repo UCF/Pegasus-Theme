@@ -55,43 +55,37 @@ if ( $story_2 ) {
 }
 ?>
 
-<div id="home">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span><?php echo $post->post_title; ?></span></h2>
-			</div>
-		</div>
+<div class="container pt-4 pb-4 pb-lg-5">
+	<div class="heading-wrap">
+		<h2><span><?php echo $post->post_title; ?></span></h2>
 	</div>
 
 	<?php if ( $story_1 ) : ?>
-	<section class="container home-hero">
+	<section>
 		<?php
-		echo display_front_page_story(
+		echo display_story_callout(
 			$story_1,
-			'fp-feature-top',
+			'story-callout-overlay',
 			false,
-			'issue-cover-feature-3x2'
+			'full'
 		);
 		?>
 	</section>
 	<?php endif; ?>
 
-	<section class="container home-stories">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span>More in this Issue</span></h2>
-			</div>
+	<section>
+		<div class="heading-wrap">
+			<h2><span>More in this Issue</span></h2>
 		</div>
-		<div class="row">
+		<div class="row justify-content-center justify-content-sm-start">
 		<?php
 		$count = 0;
 		if ( $other_stories ):
 			foreach ( $other_stories as $story ):
 		?>
-			<div class="col-sm-6 col-md-3">
+			<div class="col-8 col-sm-6 col-md-3">
 				<?php
-				echo display_front_page_story( $story, '', true );
+				echo display_story_callout( $story, '', true );
 				$count++;
 				?>
 			</div>
@@ -109,42 +103,35 @@ if ( $story_2 ) {
 		?>
 		</div>
 	</section>
-	<section class="container home-past-issues">
-		<div class="row">
-			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h2><span>Recent Issues of Pegasus Magazine</span></h2>
-			</div>
+	<section>
+		<div class="heading-wrap">
+			<h2><span>Recent Issues of Pegasus Magazine</span></h2>
 		</div>
 		<div class="row">
 		<?php
 		$count = 0;
-		$per_row = 5;
+
 		if ( $past_issues ):
 			foreach ( $past_issues as $issue ):
 		?>
-				<div class="col-md-20percent col-sm-20percent col-xs-4">
-					<div class="past-issue">
-						<a href="<?php echo get_permalink( $issue->ID ); ?>">
-							<img class="past-issue-thumb" src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="" />
-							<h3 class="past-issue-title"><?php echo wptexturize( $issue->post_title ); ?></h3>
-						</a>
-					</div>
+			<div class="col-4 col-lg-auto">
+				<div class="position-static mb-4">
+					<img class="img-fluid" src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="">
+					<a class="stretched-link" href="<?php echo get_permalink( $issue->ID ); ?>">
+						<h3 class="h5 text-secondary mt-1 mt-md-3"><?php echo wptexturize( $issue->post_title ); ?></h3>
+					</a>
 				</div>
-				<?php if ( $count === 2 ): ?>
-				<div class="clearfix hidden-sm hidden-md hidden-lg"></div>
-				<?php endif; ?>
+			</div>
 		<?php
 				$count++;
 			endforeach;
 		endif;
 		?>
 		</div>
-		<div class="row">
-			<div class="col-md-12 col-sm-12">
-				<span class="pull-right archives-link">
-					<a href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">View Archives &raquo;</a>
-				</span>
-			</div>
+		<div class="text-right">
+			<a class="text-secondary font-weight-bold font-size-sm" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">
+				View Archives <span class="fas fa-angle-double-right" aria-hidden="true"></span>
+			</a>
 		</div>
 	</section>
 </div>

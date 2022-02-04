@@ -449,7 +449,24 @@ function get_featured_image_url($id, $size=null) {
  */
 function get_theme_option($key) {
 	global $theme_options;
-	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
+
+	// Added switch case in v6.0.0 for backward compatibility
+	// with UCF Social plugin:
+	switch ( $key ) {
+		case 'fb_url':
+			return get_option( 'ucf_social_facebook_url' );
+		case 'twitter_url':
+			return get_option( 'ucf_social_twitter_url' );
+		case 'instagram_url':
+			return get_option( 'ucf_social_instagram_url' );
+		case 'youtube_url':
+			return get_option( 'ucf_social_youtube_url' );
+		case 'flickr_url':
+		case 'share_url':
+			return null;
+		default:
+			return isset( $theme_options[$key] ) ? $theme_options[$key] : null;
+	}
 }
 
 
