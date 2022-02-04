@@ -49,28 +49,6 @@ function display_story_list( $issue, $class=null ) {
 
 
 /**
-* Displays social buttons (Facebook, Twitter, G+) for a post.
-* Accepts a post URL and title as arguments.
-*
-* @return string
-* @author Jo Dickson
-**/
-function display_social($url, $title) {
-    $tweet_title = urlencode('Pegasus Magazine: '.$title);
-    ob_start(); ?>
-    <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
-            Like "<?php echo $title?>" on Facebook
-        </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
-            Tweet "<?php echo $title?>" on Twitter
-        </a>
-    </aside>
-    <?php     return ob_get_clean();
-}
-
-
-/**
  * Used in output_header_markup() to print default story template
  * style declarations.  $font is expected to be a value returned from
  * get_default_template_font_styles().

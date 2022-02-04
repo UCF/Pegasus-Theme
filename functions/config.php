@@ -487,50 +487,6 @@ Config::$theme_settings = array(
 			'value'       => isset( $theme_options['search_per_page'] ) ? $theme_options['search_per_page'] : null,
 		)),
 	),
-	'Social' => array(
-		new TextField(array(
-			'name'        => 'Facebook URL',
-			'id'          => THEME_OPTIONS_NAME.'[fb_url]',
-			'description' => 'URL of the Facebook page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.facebook.com/UCF',
-			'value'       => isset( $theme_options['fb_url'] ) ? $theme_options['fb_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Twitter URL',
-			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
-			'description' => 'URL of the Twitter page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://twitter.com/UCF',
-			'value'       => isset( $theme_options['twitter_url'] ) ? $theme_options['twitter_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Flickr URL',
-			'id'          => THEME_OPTIONS_NAME.'[flickr_url]',
-			'description' => 'URL of the Flickr page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.flickr.com/groups/ucf/',
-			'value'       => isset( $theme_options['flickr_url'] ) ? $theme_options['flickr_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'YouTube URL',
-			'id'          => THEME_OPTIONS_NAME.'[youtube_url]',
-			'description' => 'URL of the YouTube page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.youtube.com/user/UCF',
-			'value'       => isset( $theme_options['youtube_url'] ) ? $theme_options['youtube_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Instagram URL',
-			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
-			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => '',
-			'value'       => isset( $theme_options['instagram_url'] ) ? $theme_options['instagram_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Share URL',
-			'id'          => THEME_OPTIONS_NAME.'[share_url]',
-			'description' => 'URL of the Share page related to this site. If this field is left empty, this share link will not appear in the footer.',
-			'default'     => '',
-			'value'       => isset( $theme_options['share_url'] ) ? $theme_options['share_url'] : null,
-		)),
-	),
 	'Devices' => array(
 		new TextField(array(
 			'name'        => 'iTunes Store iPad App URL',
@@ -610,35 +566,6 @@ Orlando, FL 32816',
 	    )),
 	),
 );
-
-/**
- * If Yoast SEO is activated, assume we're handling ALL SEO-related
- * modifications with it.  Don't add Facebook Opengraph theme options.
- **/
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-	array_unshift( Config::$theme_settings['Social'],
-		new RadioField(array(
-			'name'        => 'Enable OpenGraph',
-			'id'          => THEME_OPTIONS_NAME.'[enable_og]',
-			'description' => 'Turn on the opengraph meta information used by Facebook.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => isset( $theme_options['enable_og'] ) ? $theme_options['enable_og'] : null,
-	    )),
-		new TextField(array(
-			'name'        => 'Facebook Admins',
-			'id'          => THEME_OPTIONS_NAME.'[fb_admins]',
-			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
-			'default'     => null,
-			'value'       => isset( $theme_options['fb_admins'] ) ? $theme_options['fb_admins'] : null,
-		))
-	);
-}
 
 Config::$links = array(
 	// NOTE: canonical is handled in functions/base.php

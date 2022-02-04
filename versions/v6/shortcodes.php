@@ -1,22 +1,5 @@
 <?php
 /**
- * Display social buttons for the current page/post.
- **/
-function sc_social_buttons( $attr ) {
-	global $post;
-
-	$attr = shortcode_atts( array(
-		'title' => $post->post_title,
-		'url'   => get_permalink( $post->ID )
-	), $attr, 'social_buttons' );
-
-	$html = display_social( $attr['url'], $attr['title'] );
-	return $html;
-}
-add_shortcode( 'social_buttons', 'sc_social_buttons' );
-
-
-/**
  * Returns the site URL.
  **/
 function sc_site_url( $attr ) {
