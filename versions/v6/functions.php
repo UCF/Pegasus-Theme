@@ -392,7 +392,7 @@ function display_story_header_contents( $post, $deck='' ) {
 					</span>
 				</div>
 				<div class="col-lg-4 description-col">
-					<div class="social-wrap">
+					<div class="social-wrap text-right">
 						<?php echo do_shortcode( '[ucf-social-links]' ); ?>
 					</div>
 				</div>

@@ -62,7 +62,15 @@
 			<?php endif; ?>
 
 			<aside id="footer-social" aria-label="Follow UCF on social media">
-				<?php echo do_shortcode( '[ucf-social-icons]' ); ?>
+				<div class="bg-secondary">
+					<div class="container py-4 text-center">
+						<?php if ( ! is_singular( 'issue' ) ) : ?>
+						<hr class="w-75 mb-4" role="presentation">
+						<?php endif; ?>
+
+						<?php echo do_shortcode( '[ucf-social-icons]' ); ?>
+					</div>
+				</div>
 			</aside>
 
 			<footer id="footer-navigation">
