@@ -106,17 +106,6 @@ function display_front_page_today_story( $article ) {
 
 
 /**
-* Displays social buttons (Facebook, Twitter, G+) for front page header.
-*
-* @return string
-* @author RJ Bruneel
-**/
-function display_social_header() {
-	return do_shortcode( '[ucf-social-links]' );
-}
-
-
-/**
  * Displays the current issue's thumbnail and description, for use in the
  * "In This Issue" section of the front page.
  **/
