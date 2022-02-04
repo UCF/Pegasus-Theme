@@ -1,123 +1,135 @@
 // Define globals for JSHint validation:
-/* global console, GA_ACCOUNT */
+/* global GA_ACCOUNT */
+/* eslint-disable camelcase */
+/* eslint-disable sort-vars */
 
+const Webcom = {};
 
-var Webcom = {};
+if (!window.console) {
+  window.console = {
+    log: function () {
+      return;
+    }
+  };
+}
 
-if(!window.console ) { window.console = { log: function() { return; } }; }
-
-Webcom.analytics = function(){
-  if ((typeof GA_ACCOUNT !== 'undefined') && Boolean(GA_ACCOUNT)){
-    (function(){
-      var ga   = document.createElement('script');
+Webcom.analytics = function () {
+  if (typeof GA_ACCOUNT !== 'undefined' && Boolean(GA_ACCOUNT)) {
+    (function () {
+      const ga   = document.createElement('script');
       ga.type  = 'text/javascript';
       ga.async = true;
-      ga.src   = ('https:' === document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-      var s    = document.getElementsByTagName('script')[0];
+      ga.src   = `${document.location.protocol === 'https:' ? 'https://ssl' : 'http://www'}.google-analytics.com/ga.js`;
+      const s    = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(ga, s);
-    })();
+    }());
   }
 };
 
-Webcom.handleExternalLinks = function($){
-  $('a:not(.ignore-external)').each(function(){
-    var url  = $(this).attr('href');
-    var host = window.location.host.toLowerCase();
+Webcom.handleExternalLinks = function ($) {
+  $('a:not(.ignore-external)').each(function () {
+    const url  = $(this).attr('href');
+    const host = window.location.host.toLowerCase();
 
-    if (url && url.search(host) < 0 && url.search('http') > -1){
+    if (url && url.search(host) < 0 && url.search('http') > -1) {
       $(this).attr('target', '_blank');
       $(this).addClass('external');
     }
   });
 };
 
-Webcom.loadMoreSearchResults = function($){
-  var more        = '#search-results .more';
-  var items       = '#search-results .result-list .item';
-  var list        = '#search-results .result-list';
-  var start_class = 'new-start';
+Webcom.loadMoreSearchResults = function ($) {
+  const more        = '#search-results .more';
+  const items       = '#search-results .result-list .item';
+  const list        = '#search-results .result-list';
+  const start_class = 'new-start';
 
-  var next = null;
-  var sema = null;
+  let next = null;
+  let sema = null;
 
-  var load = (function(){
-    if (sema){
-      setTimeout(function(){load();}, 100);
+  const load = function () {
+    if (sema) {
+      setTimeout(() => {
+        load();
+      }, 100);
       return;
     }
 
-    if (next === null){return;}
+    if (next === null) {
+      return;
+    }
 
     // Grab results content and append to current results
-    var results = $(next).find(items);
+    const results = $(next).find(items);
 
     // Add navigation class for scroll
-    $('.' + start_class).removeClass(start_class);
+    $(`.${start_class}`).removeClass(start_class);
     $(results[0]).addClass(start_class);
 
     $(list).append(results);
 
     // Grab new more link and replace current with new
-    var anchor = $(next).find(more);
-    if (anchor.length < 1){
+    const anchor = $(next).find(more);
+    if (anchor.length < 1) {
       $(more).remove();
     }
     $(more).attr('href', anchor.attr('href'));
 
     next = null;
-  });
+  };
 
-  var prefetch = (function(){
+  const prefetch = function () {
     sema = true;
     // Fetch url for href via ajax
-    var url = $(more).attr('href');
-    if (url){
+    const url = $(more).attr('href');
+    if (url) {
       $.ajax({
-        'url'     : url,
-        'success' : function(data){
+        url     : url,
+        success : function (data) {
           next = data;
         },
-        'complete' : function(){
+        complete : function () {
           sema = false;
         }
       });
     }
-  });
+  };
 
-  var load_and_prefetch = (function(){
+  const load_and_prefetch = function () {
     load();
     prefetch();
-  });
+  };
 
-  if ($(more).length > 0){
+  if ($(more).length > 0) {
     load_and_prefetch();
 
-    $(more).click(function(){
+    $(more).click(() =>  {
       load_and_prefetch();
-      var scroll_to = $('.' + start_class).offset().top - 10;
+      const scroll_to = $(`.${start_class}`).offset().top - 10;
 
-      var element = 'body';
+      let element = 'body';
 
-      if($.browser.mozilla || $.browser.msie){
+      if ($.browser.mozilla || $.browser.msie) {
         element = 'html';
       }
 
-      $(element).animate({'scrollTop' : scroll_to}, 1000);
+      $(element).animate({
+        scrollTop : scroll_to
+      }, 1000);
       return false;
     });
   }
 };
 
 
-if (typeof jQuery !== 'undefined'){
-  (function(){
-    $(document).ready(function() {
+if (typeof jQuery !== 'undefined') {
+  (function () {
+    $(() => {
       Webcom.analytics();
       Webcom.handleExternalLinks($);
       Webcom.loadMoreSearchResults($);
     });
-  })(jQuery);
-}
-else {
+  }(jQuery));
+} else {
   console.log('jQuery dependency failed to load');
 }

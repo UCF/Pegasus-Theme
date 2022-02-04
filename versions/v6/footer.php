@@ -61,46 +61,17 @@
 			</aside>
 			<?php endif; ?>
 
-			<?php
-			$fb_url = get_theme_option( 'fb_url' );
-			$twitter_url = get_theme_option( 'twitter_url' );
-			$flickr_url = get_theme_option( 'flickr_url' );
-			$youtube_url = get_theme_option( 'youtube_url' );
-			if (
-				!empty( $fb_url ) ||
-				!empty( $twitter_url ) ||
-				!empty( $flickr_url ) ||
-				!empty( $youtube_url )
-			):
-			?>
-			<aside id="footer-social">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-10 col-sm-10 offset-md-1 offset-sm-1 border-top">
-							<ul class="social-icon-list">
-								<?php if ( !empty( $fb_url ) ) { ?>
-								<li class="social-icon-list-item">
-									<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Follow UCF on Facebook</a>
-								</li>
-								<?php } if ( !empty( $twitter_url ) ) { ?>
-								<li class="social-icon-list-item">
-									<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Follow UCF on Twitter</a>
-								</li>
-								<?php } if ( !empty( $flickr_url ) ) { ?>
-								<li class="social-icon-list-item">
-									<a target="_blank" class="sprite flickr" href="<?php echo $flickr_url; ?>">Follow UCF on Flickr</a>
-								</li>
-								<?php } if ( !empty( $youtube_url ) ) { ?>
-								<li class="social-icon-list-item">
-									<a target="_blank" class="sprite youtube" href="<?php echo $youtube_url; ?>">Follow UCF on YouTube</a>
-								</li>
-								<?php } ?>
-							</ul>
-						</div>
+			<aside id="footer-social" aria-label="Follow UCF on social media">
+				<div class="bg-secondary">
+					<div class="container py-4 text-center">
+						<?php if ( ! is_singular( 'issue' ) ) : ?>
+						<hr class="w-75 mb-4" role="presentation">
+						<?php endif; ?>
+
+						<?php echo do_shortcode( '[ucf-social-icons]' ); ?>
 					</div>
 				</div>
 			</aside>
-			<?php endif; ?>
 
 			<footer id="footer-navigation">
 				<div class="container">

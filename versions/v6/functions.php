@@ -49,28 +49,6 @@ function display_story_list( $issue, $class=null ) {
 
 
 /**
-* Displays social buttons (Facebook, Twitter, G+) for a post.
-* Accepts a post URL and title as arguments.
-*
-* @return string
-* @author Jo Dickson
-**/
-function display_social($url, $title) {
-    $tweet_title = urlencode('Pegasus Magazine: '.$title);
-    ob_start(); ?>
-    <aside class="social">
-        <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
-            Like "<?php echo $title?>" on Facebook
-        </a>
-        <a class="share-twitter" target="_blank" data-button-target="<?php echo $url?>" href="https://twitter.com/intent/tweet?text=<?php echo $tweet_title?>&url=<?php echo $url?>" title="Tweet this story">
-            Tweet "<?php echo $title?>" on Twitter
-        </a>
-    </aside>
-    <?php     return ob_get_clean();
-}
-
-
-/**
  * Used in output_header_markup() to print default story template
  * style declarations.  $font is expected to be a value returned from
  * get_default_template_font_styles().
@@ -112,8 +90,6 @@ function get_default_template_font_css( $font ) {
 		article.story blockquote {
 			color: '.$font['color'].';
 		}
-		article.story .lead::first-letter { color: '.$font['color'].'; }
-		article.story .lead:first-letter { color: '.$font['color'].'; }
 		article.story h1 {
 			font-size: '.$font['size-desktop'].';
 		}
@@ -382,7 +358,7 @@ function display_story_header_contents( $post, $deck='' ) {
 			'story-featured-image',
 			false,
 			array(
-				'class' => 'story-header-image',
+				'class' => 'img-fluid',
 				'alt' => ''
 			)
 		);
@@ -393,34 +369,29 @@ function display_story_header_contents( $post, $deck='' ) {
 
 	ob_start();
 ?>
-	<?php if ( $header_img ) : ?>
-	<div class="row header-img-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
-			<?php echo $header_img; ?>
-		</div>
-	</div>
-	<?php endif; ?>
 	<div class="row title-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
-			<h1><?php echo wptexturize( $post->post_title ); ?></h1>
+		<div class="col-lg-10 offset-lg-1">
+			<h1 class="mb-2 mb-md-3"><?php echo wptexturize( $post->post_title ); ?></h1>
 		</div>
 	</div>
-	<div class="row description-wrap">
-		<div class="col-lg-10 col-md-10 offset-lg-1 offset-md-1">
+	<div class="row description-wrap mb-4">
+		<div class="col-lg-10 offset-lg-1">
 			<div class="row">
-				<div class="col-lg-8 description-col">
-					<span class="description">
+				<div class="col-12 description-col">
+					<span class="description lead">
 						<?php echo $deck; ?>
 					</span>
-				</div>
-				<div class="col-lg-4 description-col">
-					<div class="social-wrap">
-						<?php echo display_social( get_permalink( $post->ID ), $post->post_title ); ?>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+	<?php if ( $header_img ) : ?>
+	<div class="row header-img-wrap mb-4">
+		<div class="col-12">
+			<?php echo $header_img; ?>
+		</div>
+	</div>
+	<?php endif; ?>
 <?php
 	return ob_get_clean();
 }

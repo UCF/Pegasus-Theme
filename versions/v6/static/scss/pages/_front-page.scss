@@ -160,49 +160,6 @@
   }
 }
 
-.fp-social-links {
-  display: inline-block;
-  margin: 30px auto 10px;
-
-  @include media-breakpoint-up(md) {
-    display: block;
-    margin: 15px 0 0;
-  }
-
-  .social-icon-list-heading,
-  .social-icon-list {
-    float: left;
-  }
-
-  .social-icon-list-heading {
-    line-height: 20px;
-    margin-right: 10px;
-  }
-
-  .social-icon-list-item a {
-    background-size: 128px auto;
-    height: 20px;
-    width: 20px;
-
-    &.facebook {
-      background-position: 0 -76px;
-    }
-
-    &.twitter {
-      background-position: -44px -75px;
-    }
-
-    &.flickr {
-      background-position: -21px -76px;
-    }
-
-    &.youtube {
-      background-position: -67px -76px;
-    }
-
-  }
-}
-
 .fp-header-border {
   border-bottom: 7px solid $black;
   border-top: 1px solid $gray-light-alt;
@@ -518,33 +475,4 @@
   font-family: $font-family-slab-serif;
   font-size: 16px;
   margin-top: 20px;
-}
-
-.fp-footer-social-links {
-  margin: 25px -5px;
-
-  .social-icon {
-    background: #525252;
-    border-radius: 50%;
-    color: $black;
-    display: inline-block;
-    height: 32px;
-    margin: 0 5px;
-    text-align: center;
-    vertical-align: middle;
-    width: 32px;
-
-    &:hover {
-      background-color: lighten(#525252, 10);
-    }
-
-    span {
-      font-size: 20px;
-      padding: 6px;
-
-      &.fa-linkedin {
-        padding: 4px 8px;
-      }
-    }
-  }
 }

@@ -1,9 +1,9 @@
 {
   "private": true,
   "devDependencies": {
-    "@babel/cli": "^7.16.8",
-    "@babel/core": "^7.16.12",
-    "@babel/eslint-parser": "^7.16.5",
+    "@babel/cli": "^7.17.0",
+    "@babel/core": "^7.17.0",
+    "@babel/eslint-parser": "^7.17.0",
     "@babel/preset-env": "^7.16.11",
     "babel-plugin-transform-es2015-modules-strip": "^0.1.2",
     "browser-sync": "^2.27.7",
@@ -26,7 +26,7 @@
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "merge": "^2.1.1",
-    "sass": "^1.49.4",
+    "sass": "^1.49.7",
     "ucf-athena-framework": "^1.1.0"
   }
 }

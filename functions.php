@@ -21,6 +21,7 @@ require_once( 'functions/base.php' );            # Base theme functions
 require_once( 'custom-taxonomies.php' );         # Where taxonomies are defined
 require_once( 'custom-post-types.php' );         # Where post types are defined
 require_once( 'functions/config.php' );          # Where site-level configuration settings are defined
+require_once( 'functions/acf-functions.php' ); # Where related stories ACF fields and functions are defined
 require_once( 'functions/related-stories.php' ); # Where related stories ACF fields and functions are defined
 
 
@@ -449,7 +450,24 @@ function get_featured_image_url($id, $size=null) {
  */
 function get_theme_option($key) {
 	global $theme_options;
-	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
+
+	// Added switch case in v6.0.0 for backward compatibility
+	// with UCF Social plugin:
+	switch ( $key ) {
+		case 'fb_url':
+			return get_option( 'ucf_social_facebook_url' );
+		case 'twitter_url':
+			return get_option( 'ucf_social_twitter_url' );
+		case 'instagram_url':
+			return get_option( 'ucf_social_instagram_url' );
+		case 'youtube_url':
+			return get_option( 'ucf_social_youtube_url' );
+		case 'flickr_url':
+		case 'share_url':
+			return null;
+		default:
+			return isset( $theme_options[$key] ) ? $theme_options[$key] : null;
+	}
 }
 
 
@@ -893,11 +911,18 @@ add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 /**
  * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * [caption] shortcode in versions 5-.
  **/
-add_filter('disable_captions', function( $a ) {
-	return true;
-});
+function pegasus_disable_captions() {
+    $version = get_relevant_version();
+
+	if ( $version <= 5 ) {
+		return true;
+	}
+
+	return false;
+}
+add_filter( 'disable_captions', 'pegasus_disable_captions' );
 
 
 /**
