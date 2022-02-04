@@ -435,7 +435,7 @@ function theme_options_sanitize( $input ) {
  * */
 function editor_styles( $css ) {
 	$css   = array_map( 'trim', explode( ',', $css ) );
-	$css[] = THEME_CSS_URL.'/formatting.php';
+	$css[] = THEME_URL . '/versions/v5/static/css/formatting.php';
 	$css   = implode( ',', $css );
 	return $css;
 }

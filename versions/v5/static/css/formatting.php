@@ -39,5 +39,5 @@ ul.list-inline-styled > :first-child:before {
 	margin: 0;
 }
 
-<?php require('../../../../../wp-load.php'); ?>
+<?php require('../../../../../../../wp-load.php'); ?>
 <?php echo get_all_font_classes(); ?>
