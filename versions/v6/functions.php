@@ -3,48 +3,48 @@
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
-function display_story_list( $issue, $class=null ) {
-	$class = !empty( $class ) ? $class : '';
-	if ( $issue ) {
-		$stories = get_issue_stories( $issue );
-		ob_start();
+function display_story_list( $issue, $class='', $stories=array() ) {
+	if ( ! $issue ) return '';
 
-		if ( $stories ) { ?>
-			<div class="story-list <?php echo $class; ?>">
-			<?php
-			$count = 0;
-			foreach ( $stories as $story ) {
-				$count++;
+	$class   = ! empty( $class ) ? $class : '';
+	$stories = ! empty( $stories ) ? $stories : get_issue_stories( $issue );
 
-				$title = wptexturize( $story->post_title );
-				$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
-				$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
-			?>
-				<article<?php if ( $count == count( $stories ) ) { ?> class="last-child"<?php } ?>>
-					<a href="<?php echo get_permalink( $story ); ?>">
-						<?php if ( $thumb ) { ?>
-						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
-						<?php } ?>
-						<h3 class="story-title"><?php echo $title; ?></h3>
-						<?php if ( !empty( $subtitle ) ) { ?>
-						<span class="subtitle"><?php echo $subtitle; ?></span>
-						<?php } ?>
-					</a>
-				</article>
-			<?php
-			}
-			?>
-			</div>
+	ob_start();
+?>
+	<?php if ( $stories ) : ?>
+	<div class="story-list <?php echo $class; ?>">
 		<?php
-		} else {
+		foreach ( $stories as $story ) :
+			$title = wptexturize( $story->post_title );
+			$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
+			$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
 		?>
-			<p>No stories found.</p>
-		<?php
-		}
+		<article>
+			<div class="position-relative">
+				<?php if ( $thumb ) : ?>
+				<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
+				<?php endif; ?>
 
-		return ob_get_clean();
-	}
-	else { return null; }
+				<h3 class="story-title">
+					<a class="stretched-link text-secondary" href="<?php echo get_permalink( $story ); ?>">
+						<?php echo $title; ?>
+					</a>
+				</h3>
+
+				<?php if ( ! empty( $subtitle ) ) : ?>
+				<span class="subtitle">
+					<?php echo $subtitle; ?>
+				</span>
+				<?php endif; ?>
+			</div>
+		</article>
+		<?php endforeach; ?>
+	</div>
+	<?php else: ?>
+	<p>No stories found.</p>
+	<?php endif; ?>
+<?php
+	return ob_get_clean();
 }
 
 
