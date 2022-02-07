@@ -34,16 +34,16 @@
 
     @include media-breakpoint-up(md) {
       display: block;
-      white-space: normal;
       margin-bottom: 45px;
+      white-space: normal;
     }
   }
 
   // Allows social btns to be bottom-right aligned
   .description-col {
+    align-self: flex-end;
     display: inline-block;
     float: none;
-    align-self: flex-end;
 
     @include media-breakpoint-down(md) {
       display: block;
@@ -53,14 +53,14 @@
 
   .description {
     display: block;
-    font-style: italic;
-    white-space: normal;
     font-size: 18px;
-    line-height: 28px;
+    font-style: italic;
+    line-height: 1.5;
+    white-space: normal;
 
     @include media-breakpoint-up(md) {
       font-size: 22px;
-      line-height: 32px;
+      line-height: 1.45;
     }
 
     @include media-breakpoint-down(md) {

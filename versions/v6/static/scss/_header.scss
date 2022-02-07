@@ -13,7 +13,6 @@
   background-color: #f0f0f0;
   height: 0;
   overflow-y: hidden;
-  -webkit-transition: height .5s ease-in-out;
   transition: height .5s ease-in-out;
   z-index: 999;
 }
@@ -22,10 +21,8 @@
   height: 0;
   opacity: 0;
   padding: 0 0 30px;
-  -webkit-transition: opacity .4s ease-in-out;
   transition: opacity .4s ease-in-out;
   // Prevent list item jump in Firefox:
-  -webkit-transition-delay: .35s;
   transition-delay: .35s;
   z-index: 5;
 
@@ -58,7 +55,7 @@
     color: #222;
     font-family: $font-family-serif;
     font-size: 13px;
-    line-height: 18px;
+    line-height: 1.4;
 
     em,
     i {
@@ -69,9 +66,9 @@
 
 .story-list {
   @include list-unstyled();
+  -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-vendor-prefixes
   display: block;
   margin-bottom: 0;
-  -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
   padding-bottom: 30px;
   white-space: nowrap;
@@ -139,7 +136,6 @@
       color: #696969;
       display: block;
       font-size: 28px;
-      // height: 30px;
       left: 0;
       overflow: hidden;
       position: absolute;
@@ -206,8 +202,8 @@
   article {
     margin-bottom: 20px;
 
-    &.last-child {
-      margin-right: 80px; // Assign class via jquery; :last-child doesn't work in ie8
+    &:last-child {
+      margin-right: 80px;
     }
 
     img {
@@ -220,11 +216,6 @@
     .subtitle {
       padding-left: 100px;
     }
-
-    // .story-title {
-    //   margin-top: 15px;
-    // }
-
   }
 }
 
@@ -436,12 +427,11 @@ li#nav-give a {
   font-family: $font-family-sans-serif;
   font-size: 14px;
   font-weight: 700;
-  line-height: 14px;
+  line-height: 1;
   text-decoration: none;
 
   @include media-breakpoint-down(md) {
     font-size: 13px;
-    line-height: 13px;
   }
 }
 

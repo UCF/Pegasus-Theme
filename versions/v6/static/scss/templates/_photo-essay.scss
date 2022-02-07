@@ -139,10 +139,10 @@
   }
 
   .photo-essay-nav {
+    -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-vendor-prefixes
     background-color: #f0f0f0;
     margin-left: 40px;
     min-height: 100vh;
-    -webkit-overflow-scrolling: touch;
     padding: ($grid-gutter-width-base / 2);
     text-align: center;
     width: 120px;

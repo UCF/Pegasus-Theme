@@ -12,8 +12,8 @@
 
   .description {
     display: block;
-    font-style: italic;
     font-family: $font-family-serif;
+    font-style: italic;
   }
 
   .featured-story {
@@ -32,8 +32,8 @@
 
   .listing-title {
     font-family: $font-family-slab-serif;
-    font-weight: bold;
     font-size: 1.25rem;
+    font-weight: bold;
   }
 
   .story-list-item {
@@ -77,23 +77,23 @@
     }
 
     ul {
+      list-style: none;
       margin-bottom: 0;
       overflow: auto;
       padding: 80px 0 30px;
       position: relative;
-      list-style: none;
 
       &:before {
+        color: $gray-dark;
         content: 'Search Results';
         display: block;
         left: 0;
+        letter-spacing: 1px;
         position: absolute;
         text-align: center;
+        text-transform: uppercase;
         top: 30px;
         width: 100%;
-        color: $gray-dark;
-        text-transform: uppercase;
-        letter-spacing: 1px;
       }
     }
 
@@ -101,8 +101,8 @@
       clear: left;
       display: block;
       float: left;
-      width: 45%;
       margin-bottom: 1.5rem;
+      width: 45%;
 
       @include media-breakpoint-down(sm) {
         clear: both;
@@ -112,11 +112,11 @@
       }
 
       .results-story-issue {
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: .8rem;
         color: $gray-dark;
+        display: inline-block;
+        font-size: .8rem;
         margin-bottom: .25rem;
+        text-transform: uppercase;
       }
 
       a {
