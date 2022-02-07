@@ -140,7 +140,7 @@
 
   .photo-essay-nav {
     -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-vendor-prefixes
-    background-color: #f0f0f0;
+    background-color: darken($body-bg, 3%); // match .bg-faded
     margin-left: 40px;
     min-height: 100vh;
     padding: ($grid-gutter-width-base / 2);

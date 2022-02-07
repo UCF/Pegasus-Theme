@@ -10,7 +10,7 @@
 }
 
 #pulldown {
-  background-color: #f0f0f0;
+  background-color: darken($body-bg, 3%); // match .bg-faded
   height: 0;
   overflow-y: hidden;
   transition: height .5s ease-in-out;
