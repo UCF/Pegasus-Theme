@@ -1,47 +1,22 @@
-// Archives
+//
+// Archives page - unique styles
+//
+
 .page-archives {
 
-  h2 {
-    font-size: 2.15rem;
-    line-height: 1;
-    margin-bottom: 1.25rem;
-  }
-
-  .description {
-    display: block;
-    font-style: italic;
-    font-family: $font-family-serif;
-  }
-
-  .featured-story {
-    &:hover {
-      text-decoration: none;
-
-      h4 {
-        text-decoration: underline;
-      }
+  // Main archive list by issue
+  .post-type-search-term {
+    .story-list-item-featured {
+      display: none;
     }
-  }
 
-  .results-story-issue {
-    display: none;
-  }
-
-  .listing-title {
-    font-family: $font-family-slab-serif;
-    font-weight: bold;
-    font-size: 1.25rem;
-  }
-
-  .story-list-item {
-    margin-bottom: 1.25rem;
+    .results-story-issue {
+      display: none;
+    }
   }
 
   // Search results
   .post-type-search-results {
-    background: #f0f0f0;
-    margin-bottom: 3rem;
-
     > div,
     > p {
       // Handle either results div or no results found <p>
@@ -50,7 +25,8 @@
       position: relative;
 
       &:before {
-        border-bottom: 15px solid #f0f0f0;
+        // Triangle caret shape above results box
+        border-bottom: 15px solid darken($body-bg, 3%); // match .bg-faded
         border-left: 50px solid transparent;
         border-right: 50px solid transparent;
         content: '';
@@ -59,7 +35,7 @@
         left: 0;
         margin: auto;
         position: absolute;
-        right: -20px; // Account for .row margins
+        right: 0;
         top: -15px;
         width: 0;
 
@@ -74,70 +50,44 @@
     }
 
     ul {
-      margin-bottom: 0;
-      overflow: auto;
-      padding: 80px 0 30px;
-      position: relative;
+      @include make-row();
       list-style: none;
+      margin-bottom: 0;
+      padding: 7.5rem 0 3rem;
+      position: relative;
 
       &:before {
+        color: $gray-dark;
         content: 'Search Results';
         display: block;
         left: 0;
+        letter-spacing: .05em;
         position: absolute;
         text-align: center;
-        top: 30px;
-        width: 100%;
-        color: $gray-dark;
         text-transform: uppercase;
-        letter-spacing: 1px;
+        top: 3rem;
+        width: 100%;
       }
     }
 
     li {
-      clear: left;
-      display: block;
-      float: left;
-      width: 45%;
+      @include make-col-ready();
+      @include make-col(12);
       margin-bottom: 1.5rem;
 
-      @include media-breakpoint-down(sm) {
-        clear: both;
-        margin-bottom: 1.25rem;
-        margin-left: 1.25rem;
-        width: auto;
+      @include media-breakpoint-up(md) {
+        @include make-col(6);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
       }
+    }
 
-      .results-story-issue {
-        display: inline-block;
-        text-transform: uppercase;
-        font-size: .8rem;
-        color: $gray-dark;
-        margin-bottom: .25rem;
-      }
-
-      a {
-        @include media-breakpoint-down(sm) {
-          display: block;
-          padding-right: 1.25rem;
-        }
-      }
-
-      &:nth-child(2n) {
-        clear: right;
-        float: right;
-
-        @include media-breakpoint-down(sm) {
-          clear: left;
-          float: left;
-        }
-      }
-
-      &.featured-story {
-        @include media-breakpoint-down(sm) {
-          display: block;
-        }
-      }
+    .results-story-issue {
+      color: $gray-dark;
+      display: inline-block;
+      font-size: .8rem;
+      margin-bottom: .25rem;
+      text-transform: uppercase;
     }
   }
 

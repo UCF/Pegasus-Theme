@@ -33,7 +33,7 @@ function sc_archive_search($params=array(), $content='') {
 	// Set rest of non-user-editable params
 	$params = array_merge($params, array(
 		'taxonomy' => 'issues',
-		'column_width' => 'col-md-10 offset-md-1',
+		'column_width' => 'col-sm-10 offset-sm-1',
 		'column_count' => '1',
 		'order_by' => 'title',
 		'order' => 'ASC',
@@ -108,7 +108,7 @@ function sc_archive_search($params=array(), $content='') {
 	ob_start();
 	?>
 	<div class="row post-type-search">
-		<div class="col-lg-8 offset-md-2 post-type-search-header mb-4 mb-lg-5">
+		<div class="col-md-8 offset-md-2 post-type-search-header mb-4 mb-lg-5">
 			<form class="post-type-search-form search-form" role="search" method="get" action="<?php echo home_url( '/' ); ?>">
 				<div class="form-group mb-0">
 					<label class="form-control-label sr-only" for="s">Search</label>
@@ -116,12 +116,12 @@ function sc_archive_search($params=array(), $content='') {
 				</div>
 			</form>
 		</div>
-		<div class="col-lg-12 post-type-search-results"></div>
+		<div class="col-lg-12 post-type-search-results bg-faded mb-5"></div>
 		<div class="col-lg-10 offset-lg-1 post-type-search-term">
 		<?php
 		$issue_count = 0;
 
-		foreach( $issues_sorted as $key => $posts ) :
+		foreach ( $issues_sorted as $key => $posts ) :
 			$issue = get_page_by_title( $key, 'OBJECT', 'issue' );
 			$featured_article_id = intval( get_post_meta( $issue->ID, 'issue_cover_story', TRUE ) );
 			$featured_article = get_post( $featured_article_id );
@@ -130,9 +130,9 @@ function sc_archive_search($params=array(), $content='') {
 			if ( $posts ) :
 		?>
 			<div class="row issue">
-				<div class="col-lg-5">
+				<div class="col-md-5 pr-md-4 pr-lg-5">
 					<div class="position-relative mb-4">
-						<h2 id="<?php echo $issue->post_name; ?>">
+						<h2 class="mb-4" id="<?php echo $issue->post_name; ?>">
 							<a class="stretched-link text-secondary" href="<?php echo get_permalink( $issue->ID ); ?>">
 								<?php echo wptexturize( $issue->post_title ); ?>
 							</a>
@@ -144,50 +144,74 @@ function sc_archive_search($params=array(), $content='') {
 					</div>
 
 					<?php if ( $featured_article ) : ?>
-						<div class="mb-4 mb-lg-0">
-							<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-2 text-uppercase">Featured Story</h3>
-							<a class="featured-story text-secondary" href="<?php echo get_permalink( $featured_article->ID ); ?>">
-								<h4 class="font-slab-serif font-weight-bold"><?php echo wptexturize( $featured_article->post_title ); ?></h4>
-								<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', true ) ) : ?>
-									<span class="description"><?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?></span>
-								<?php elseif ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) : ?>
-									<span class="description"><?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?></span>
-								<?php endif; ?>
-							</a>
+					<div class="mb-5 mb-md-0">
+						<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-2 mb-md-3 text-uppercase">
+							Featured Story
+						</h3>
+						<div class="position-relative">
+							<h4 class="font-slab-serif font-weight-bold">
+								<a class="stretched-link text-secondary"  href="<?php echo get_permalink( $featured_article->ID ); ?>">
+									<?php echo wptexturize( $featured_article->post_title ); ?>
+								</a>
+							</h4>
+
+							<?php if ( $f_desc = get_post_meta( $featured_article->ID, 'story_description', true ) ) : ?>
+							<div>
+								<?php echo wptexturize( strip_tags( $f_desc, '<b><em><i><u><strong>' ) ); ?>
+							</div>
+							<?php elseif ( $f_subtitle = get_post_meta( $featured_article->ID, 'story_subtitle', TRUE ) ) : ?>
+							<div>
+								<?php echo wptexturize( strip_tags( $f_subtitle, '<b><em><i><u><strong>' ) ); ?>
+							</div>
+							<?php endif; ?>
 						</div>
+					</div>
 					<?php endif; ?>
 				</div>
-				<div class="col-lg-7">
-					<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-2 mb-lg-3 text-uppercase">More in This Issue</h3>
+				<div class="col-md-7">
+					<h3 class="text-default-aw font-size-sm font-weight-normal letter-spacing-1 mb-3 text-uppercase">
+						More in This Issue
+					</h3>
 					<ul class="list-unstyled">
-					<?php foreach( $posts as $post ) { ?>
-						<li data-post-id="<?php echo $post->ID; ?>" class="story-list-item position-relative<?php if ( $post->ID === $featured_article_id ) : ?> d-none<?php endif; ?>">
-							<a class="stretched-link" href="<?php echo get_permalink( $post->ID ); ?>">
-								<h4 class="listing-title mb-1"><?php echo wptexturize( $post->post_title ); ?></h4>
-							</a>
-							<span class="results-story-issue"><?php echo $issue->post_title; ?></span>
-							<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) { ?>
-								<span class="description"><?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } else if ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) { ?>
-								<span class="description"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
-							<?php } ?>
+						<?php foreach( $posts as $post ) : ?>
+						<li data-post-id="<?php echo $post->ID; ?>" class="position-relative mb-4 story-list-item <?php if ( $post->ID === $featured_article_id ) : ?> story-list-item-featured<?php endif; ?>">
+							<h4 class="h5 d-inline-block font-slab-serif font-weight-bold mb-1 mr-2">
+								<a class="stretched-link text-secondary" href="<?php echo get_permalink( $post->ID ); ?>">
+									<?php echo wptexturize( $post->post_title ); ?>
+								</a>
+							</h4>
+							<span class="results-story-issue">
+								<?php echo $issue->post_title; ?>
+							</span>
+
+							<?php if ( $desc = get_post_meta( $post->ID, 'story_description', TRUE ) ) : ?>
+							<div class="font-size-sm">
+								<?php echo wptexturize( strip_tags( $desc, '<b><em><i><u><strong>' ) ); ?>
+							</div>
+							<?php elseif ( $subtitle = get_post_meta( $post->ID, 'story_subtitle', TRUE ) ) : ?>
+							<div class="font-size-sm">
+								<?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?>
+							</span>
+							<?php endif; ?>
 						</li>
-					<?php } ?>
+						<?php endforeach; ?>
 					</ul>
 				</div>
 			</div>
 			<?php if ( $issue_count < count( $issues_sorted ) ): ?>
-			<hr class="mt-1 mt-lg-4 mb-4 mb-lg-5">
-			<?php
-			endif;
+			<hr class="mt-3 mt-md-5 mb-5">
+			<?php endif; ?>
+		<?php
 			endif;
 		endforeach;
 		?>
 		</div>
 	</div>
-	<?php 	return ob_get_clean();
+<?php
+	return ob_get_clean();
 }
-add_shortcode('archive-search', 'sc_archive_search');
+
+add_shortcode( 'archive-search', 'sc_archive_search' );
 
 
 /**

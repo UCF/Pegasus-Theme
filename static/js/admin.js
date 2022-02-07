@@ -362,7 +362,7 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
         // eslint-disable-next-line no-new
         new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
           toolbar: toolbar.attr('id'), // id of toolbar element
-          stylesheets: [`${THEME_CSS_URL}/editor.css`],
+          stylesheets: [`${THEME_CSS_URL}/wysihtml5.css`],
           parserRules: wysihtml5ParserRules // defined in parser rules set
         });
       }
@@ -387,7 +387,7 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
         // eslint-disable-next-line no-new
         new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
           toolbar: toolbar.attr('id'), // id of toolbar element
-          stylesheets: [`${THEME_CSS_URL}editor.css`],
+          stylesheets: [`${THEME_CSS_URL}wysihtml5.css`],
           parserRules: wysihtml5ParserRules // defined in parser rules set
         });
       },
@@ -461,7 +461,7 @@ WebcomAdmin.sliderMetaBoxes = function ($) {
       // eslint-disable-next-line no-new
       new wysihtml5.Editor(`ss_slide_caption[${attachmentId}]`, { // id of textarea element
         toolbar:      `wysihtml5-toolbar[${attachmentId}]`, // id of toolbar element
-        stylesheets:  [`${THEME_CSS_URL}editor.css`],
+        stylesheets: [`${THEME_CSS_URL}wysihtml5.css`],
         parserRules:  wysihtml5ParserRules // defined in parser rules set
       });
 

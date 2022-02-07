@@ -1,33 +1,9 @@
-// Iframes
-body:not(.ie8) .callout-inner > div:not([class]),
-body:not(.ie8) .wp-video-shortcode,
-body:not(.ie8) .mejs-shim,
-body:not(.ie8) .mejs-overlay,
-body:not(.ie8) .mejs-poster,
-.me-plugin,
-iframe {
-  width: 100% !important;
-}
+//
+// Style overrides required for iframes in this theme.
+//
 
-body:not(.ie8) .callout-inner > div:not([class]),
-body:not(.ie8) .wp-video-shortcode,
-body:not(.ie8) .mejs-overlay,
-body:not(.ie8) .mejs-poster,
-iframe {
-  @include media-breakpoint-down(sm) {
-    height: 280px !important;
-  }
-
-  @media (max-width: 480px) {
-    height: 220px !important;
-  }
-}
-
-iframe {
-  height: 360px;
-
-  &[name="google_conversion_frame"] {
-    height: 0 !important;
-    width: 0 !important;
-  }
+// sass-lint:disable no-qualifying-elements no-important
+iframe[name='google_conversion_frame'] {
+  height: 0 !important;
+  width: 0 !important;
 }
