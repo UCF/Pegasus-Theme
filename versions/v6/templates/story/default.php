@@ -9,10 +9,10 @@ $spotlight = get_field( 'sidebar_spotlight', $post );
 		<?php echo display_story_header_contents( $post ); ?>
 
 		<div class="row">
-			<div class="col-lg-8 offset-xl-1 mb-3">
+			<div class="col-lg-8 mb-3">
 				<?php echo the_content(); ?>
 			</div>
-			<div class="story-sidebar col-lg-4 col-xl-3 flex-lg-first">
+			<div class="story-sidebar col-lg-4 pr-lg-4 pr-xl-5 flex-lg-first">
 				<div class="row mb-4 mb-lg-5">
 					<div class="col-6 col-lg-12 byline-issue mb-lg-5">
 						<span class="d-block mb-2">TODO: Create byline field</span>
