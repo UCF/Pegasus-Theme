@@ -16,7 +16,9 @@ $author    = get_field( 'author_byline', $post );
 			<div class="story-sidebar col-lg-4 pr-lg-4 pr-xl-5 flex-lg-first">
 				<div class="row mb-4 mb-lg-5">
 					<div class="col-6 col-lg-12 byline-issue mb-lg-5">
+						<?php if ( $author ) : ?>
 						<span class="d-block mb-2"><?php echo $author; ?></span>
+						<?php endif; ?>
 						<a class="text-secondary font-weight-bold" href="<?php echo get_permalink( get_relevant_issue( $post ) ); ?>"><?php echo get_the_title( get_relevant_issue( $post ) ); ?></a>
 					</div>
 					<div class="col-6 col-lg-12 social-wrap">
