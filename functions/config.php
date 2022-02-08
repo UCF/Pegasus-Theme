@@ -147,6 +147,7 @@ $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+	'Poppins Light' => THEME_FONT_URL . '/poppins/stylesheet.css',
 );
 define( 'TEMPLATE_FONT_URLS', serialize( $template_fonts_array ) );
 $template_font_styles_array = array(
