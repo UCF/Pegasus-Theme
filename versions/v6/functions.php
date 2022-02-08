@@ -378,7 +378,7 @@ function display_story_header_contents( $post, $deck='' ) {
 		<div class="col-lg-10 offset-lg-1">
 			<div class="row">
 				<div class="col-12 description-col">
-					<span class="description lead">
+					<span class="description">
 						<?php echo $deck; ?>
 					</span>
 				</div>
