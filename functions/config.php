@@ -699,3 +699,24 @@ add_action( 'wp_head', 'site_icon_support' );
  * Remove paragraph tag from excerpts
  * */
 remove_filter( 'the_excerpt', 'wpautop' );
+
+
+/**
+ * Adds a custom ACF WYSIWYG toolbar called 'Inline Text' that only includes
+ * simple inline text formatting tools and link insertion/deletion.
+ * Ported over from Today-Child-Theme (with the adjustment of
+ * removing 'link' and 'unlink').
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ * @param array $toolbars Array of toolbar information from ACF
+ * @return array
+ */
+function pegasus_acf_inline_text_toolbar( $toolbars ) {
+	$toolbars['Inline Text'] = array();
+	$toolbars['Inline Text'][1] = array( 'bold', 'italic', 'undo', 'redo' );
+
+	return $toolbars;
+}
+
+add_filter( 'acf/fields/wysiwyg/toolbars', 'pegasus_acf_inline_text_toolbar' );

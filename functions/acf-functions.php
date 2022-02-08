@@ -19,13 +19,14 @@ function add_story_sidebar_acf_fields() {
 	);
 
 	$fields[] = array(
-		'key'       => 'author_byline',
-		'label'     => 'Author Byline',
-		'name'      => 'author_byline',
-		'type'      => 'textarea',
-		'required'  => 1,
-		'rows'      => 2,
-		'new_lines' => 'br',
+		'key'          => 'author_byline',
+		'label'        => 'Author Byline',
+		'name'         => 'author_byline',
+		'type'         => 'wysiwyg',
+		'required'     => 1,
+		'tabs'         => 'all',
+		'toolbar'      => 'inline_text',
+		'media_upload' => 0,
 	);
 
 
