@@ -1,3 +1,7 @@
+//
+// Site footer styles
+//
+
 // Pegasus logos
 .logo-large-white {
   @include sprite();
@@ -60,15 +64,10 @@
   &,
   & p,
   & a {
-    @include font-smoothing();
     color: #fff;
     font-family: $font-family-sans-serif;
     font-size: 14px;
     font-weight: 700;
-
-    .ie8 & {
-      font-weight: normal;
-    }
   }
 
   a {

@@ -4,56 +4,61 @@
 			$issue = get_relevant_issue( $post );
 			$args = array();
 
-			if ( $post->post_type == 'story' ) {
+			if ( $post->post_type === 'story' ) {
 				$args['exclude'] = $post->ID;
 			}
 
 			$stories = get_issue_stories( $issue, $args );
-			$perrow = 3; // .col-md-4 col-sm-4's
 
-			if ( $post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home() ):
+			if (
+				! in_array( $post->post_type, array( 'page', 'post', 'issue' ) )
+				&& ! is_home()
+				&& $stories
+			) :
 			?>
-			<aside id="more-stories">
+			<aside id="more-stories" aria-labelledby="more-stories-heading">
 				<div class="container">
-					<div class="row">
-						<div class="col-md-12 col-sm-12">
-							<h2 class="section-title">More UCF Stories</h2>
-						</div>
-					</div>
+					<h2 class="font-serif font-italic font-weight-normal my-4 py-2" id="more-stories-heading">
+						More UCF Stories
+					</h2>
 				</div>
+
+				<!-- -lg+ grid of stories -->
 				<div class="container story-list-grid d-none d-lg-block">
 					<div class="row">
-					<?php
-					$count = 0;
-					if ( $stories ) {
-						foreach ( $stories as $story ) {
-							if ( $count % $perrow == 0 && $count !== 0 ) {
-								print '</div><div class="row">';
-							}
-							$count++;
-
+						<?php
+						foreach ( $stories as $story ) :
 							$title = $story->post_title;
 							$subtitle = get_post_meta( $story->ID, 'story_subtitle', TRUE );
 							$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
-					?>
-						<article class="col-md-4 col-sm-4">
-							<a href="<?php echo get_permalink( $story ); ?>">
-								<?php if ( $thumb ) { ?>
-								<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
-								<?php } ?>
-								<h3 class="story-title"><?php echo wptexturize( $title ); ?></h3>
-								<?php if ( !empty( $subtitle ) ) { ?>
-								<span class="subtitle"><?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?></span>
-								<?php } ?>
-							</a>
-						</article>
-					<?php
-						}
-					}
-					?>
+						?>
+						<div class="col-lg-4">
+							<article>
+								<div class="position-relative">
+									<?php if ( $thumb ) : ?>
+									<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
+									<?php endif; ?>
+
+									<h3 class="story-title">
+										<a class="stretched-link text-secondary" href="<?php echo get_permalink( $story ); ?>">
+											<?php echo wptexturize( $title ); ?>
+										</a>
+									</h3>
+
+									<?php if ( !empty( $subtitle ) ) : ?>
+									<span class="subtitle">
+										<?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?>
+									</span>
+									<?php endif; ?>
+								</div>
+							</article>
+						</div>
+						<?php endforeach; ?>
 					</div>
 				</div>
-				<?php echo display_story_list( $issue, 'd-lg-none' ); ?>
+
+				<!-- -xs-md horizontally-scrolling story list -->
+				<?php echo display_story_list( $issue, 'd-lg-none', $stories ); ?>
 				<div class="controls d-lg-none">
 					<a class="backward icon icon-caret-left" href="#">Back</a>
 					<a class="forward icon icon-caret-right" href="#">Forward</a>

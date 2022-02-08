@@ -1,4 +1,8 @@
 //
+// Front page - unique styles
+//
+
+//
 // General
 //
 
@@ -17,9 +21,9 @@
 }
 
 .fp-heading {
-  @include gotham(8);
   color: $black;
   font-size: 34px;
+  font-weight: 800;
   letter-spacing: -.02em;
 
   @include media-breakpoint-up(md) {
@@ -32,10 +36,10 @@
 }
 
 .fp-subheading-underline {
-  @include gotham(6);
   color: $black;
   display: block;
   font-size: 14px;
+  font-weight: 600;
   letter-spacing: .1em;
   margin-bottom: 15px;
   padding-bottom: 12px;
@@ -59,10 +63,10 @@
 // Header
 //
 .fp-header-link {
-  @include gotham(6);
   color: $black;
   display: inline-block;
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: .06em;
   margin: 15px 0 25px;
   text-transform: uppercase;
@@ -117,9 +121,9 @@
 }
 
 .fp-header-subtitle {
-  @include archer();
   color: $black;
   display: inline-block;
+  font-family: $font-family-slab-serif;
   font-size: 12px;
   letter-spacing: .125em;
   text-transform: uppercase;
@@ -403,7 +407,6 @@
 }
 
 .fp-footer-logo {
-  @include gotham(4);
   display: block;
   font-size: 40px;
   letter-spacing: .06em;
@@ -469,7 +472,7 @@
 }
 
 .fp-address {
-  @include archer();
+  font-family: $font-family-slab-serif;
   font-size: 16px;
   margin-top: 20px;
 }

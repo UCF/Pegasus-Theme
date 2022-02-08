@@ -1,4 +1,7 @@
+//
 // Issue Cover - Default Template
+//
+
 .issue-template-default {
   background-color: #e5e5e5;
 
@@ -17,8 +20,8 @@
 
       span {
         background: #e5e5e5;
-        position: relative;
         padding-right: .5rem;
+        position: relative;
         top: .625rem; // half of what the h2 font-size is set to above
 
         @include media-breakpoint-down(sm) {
