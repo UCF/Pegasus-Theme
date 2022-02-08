@@ -20,7 +20,6 @@
 .pulldown-container {
   height: 0;
   opacity: 0;
-  padding: 0 0 30px;
   transition: opacity .4s ease-in-out;
   // Prevent list item jump in Firefox:
   transition-delay: .35s;
