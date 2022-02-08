@@ -18,11 +18,11 @@
 			?>
 			<aside id="more-stories" aria-labelledby="more-stories-heading">
 				<div class="container">
-					<h2 class="font-serif font-italic font-weight-normal my-4 py-2" id="more-stories-heading">
+					<h2 class="font-serif font-italic font-weight-normal mt-5 mb-4 py-2" id="more-stories-heading">
 						More UCF Stories
 					</h2>
 
-					<?php echo display_story_list( $issue, 'more-stories-list', $stories ); ?>
+					<?php echo display_story_list( $issue, 'more-stories-list mb-5', $stories ); ?>
 					<div class="story-list-controls hidden-xs-down d-lg-none">
 						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Back">
 							<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>

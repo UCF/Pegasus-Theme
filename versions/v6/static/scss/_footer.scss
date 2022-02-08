@@ -18,11 +18,12 @@
 
 // Subfooter - More Stories
 .more-stories-list {
+  padding-left: 0;
+  padding-right: 0;
+
   @include media-breakpoint-up(lg) {
     flex-wrap: wrap;
     overflow-x: initial;
-    padding-left: 0;
-    padding-right: 0;
   }
 
   .story-callout {
