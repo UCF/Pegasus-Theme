@@ -24,7 +24,6 @@ function add_story_sidebar_acf_fields() {
 		'name'         => 'author_byline',
 		'type'         => 'wysiwyg',
 		'required'     => 1,
-		'tabs'         => 'all',
 		'toolbar'      => 'inline_text',
 		'media_upload' => 0,
 	);
