@@ -108,31 +108,30 @@ const loadPulldownMenus = function ($) {
 
 const pulldownMenuScroll = function ($) {
   // Handle left/right nav arrow btn click in story list controls
-  $('.story-list + .controls a').on('click', function (e) {
+  $('.story-list-control-forward, .story-list-control-backward').on('click', function (e) {
     e.preventDefault();
 
-    const controlBtn = $(this),
-      parentContainer = controlBtn.parents('.controls').parent(),
-      itemList = parentContainer.find('.story-list'),
-      controlWrap = parentContainer.find('.controls');
+    const controlBtn = $(this);
+    const controlWrap = controlBtn.parents('.story-list-controls');
+    const parentContainer = controlWrap.parent();
+    const itemList = parentContainer.find('.story-list');
 
     // x-overflowing div width only calculates apparent window width.
     // Need to calculate the combined widths of all child items
     // to get the value that we need.
     let itemListWidth = controlWrap.outerWidth();
-    itemList.children('article').each(function () {
+    itemList.children('.story-callout').each(function () {
       itemListWidth += $(this).outerWidth();
-      itemListWidth += parseInt($(this).css('margin-left'), 10);
     });
 
     let newScrollVal = 0;
     const curScrollVal = itemList.scrollLeft();
 
     // Get the number of pixels to scroll the itemList
-    if (controlBtn.hasClass('forward')) {
+    if (controlBtn.hasClass('story-list-control-forward')) {
       newScrollVal = curScrollVal + parentContainer.width();
       newScrollVal = newScrollVal > itemListWidth - parentContainer.width() ? controlWrap.outerWidth() + itemListWidth - parentContainer.width() : newScrollVal;
-    } else if (controlBtn.hasClass('backward')) {
+    } else if (controlBtn.hasClass('story-list-control-backward')) {
       newScrollVal = curScrollVal - parentContainer.width();
       newScrollVal = newScrollVal < 0 ? 0 : newScrollVal;
     }

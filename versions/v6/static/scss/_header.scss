@@ -32,20 +32,6 @@
   }
 }
 
-.pulldown-stories .story-list article {
-  width: 180px;
-
-  @include media-breakpoint-down(md) {
-    width: 140px;
-
-    img {
-      // Fixed width/height required for lazyload
-      height: 93px;
-      width: 140px;
-    }
-  }
-}
-
 
 // Header Navigation: General - nav, nav ul
 #header-navigation {

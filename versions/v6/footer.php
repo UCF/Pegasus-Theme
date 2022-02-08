@@ -21,47 +21,16 @@
 					<h2 class="font-serif font-italic font-weight-normal my-4 py-2" id="more-stories-heading">
 						More UCF Stories
 					</h2>
-				</div>
 
-				<!-- -lg+ grid of stories -->
-				<div class="container story-list-grid d-none d-lg-block">
-					<div class="row">
-						<?php
-						foreach ( $stories as $story ) :
-							$title = $story->post_title;
-							$subtitle = get_post_meta( $story->ID, 'story_subtitle', TRUE );
-							$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
-						?>
-						<div class="col-lg-4">
-							<article>
-								<div class="position-relative">
-									<?php if ( $thumb ) : ?>
-									<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
-									<?php endif; ?>
-
-									<h3 class="story-title">
-										<a class="stretched-link text-secondary" href="<?php echo get_permalink( $story ); ?>">
-											<?php echo wptexturize( $title ); ?>
-										</a>
-									</h3>
-
-									<?php if ( !empty( $subtitle ) ) : ?>
-									<span class="subtitle">
-										<?php echo wptexturize( strip_tags( $subtitle, '<b><em><i><u><strong>' ) ); ?>
-									</span>
-									<?php endif; ?>
-								</div>
-							</article>
-						</div>
-						<?php endforeach; ?>
+					<?php echo display_story_list( $issue, 'more-stories-list', $stories ); ?>
+					<div class="story-list-controls hidden-xs-down d-lg-none">
+						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Back">
+							<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Forward">
+							<span class="fas fa-2x fa-caret-right" aria-hidden="true"></span>
+						</button>
 					</div>
-				</div>
-
-				<!-- -xs-md horizontally-scrolling story list -->
-				<?php echo display_story_list( $issue, 'd-lg-none', $stories ); ?>
-				<div class="controls d-lg-none">
-					<a class="backward icon icon-caret-left" href="#">Back</a>
-					<a class="forward icon icon-caret-right" href="#">Forward</a>
 				</div>
 			</aside>
 			<?php endif; ?>

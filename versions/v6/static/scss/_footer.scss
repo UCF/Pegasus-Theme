@@ -17,35 +17,26 @@
 }
 
 // Subfooter - More Stories
-#more-stories {
-  margin-bottom: 80px;
-  margin-top: 50px;
-  position: relative;
-
-  @include media-breakpoint-down(md) {
-    margin-bottom: 40px;
+.more-stories-list {
+  @include media-breakpoint-up(lg) {
+    flex-wrap: wrap;
+    overflow-x: initial;
+    padding-left: 0;
+    padding-right: 0;
   }
 
-  article {
-    a {
-      display: block;
-      overflow: hidden;
-
-      &:hover,
-      &:active {
-        text-decoration: none;
-      }
-    }
-
-    .story-title,
-    .subtitle {
-      display: block;
+  .story-callout {
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
+      flex-direction: row;
     }
   }
 
-  .story-list-grid article img {
-    float: left;
-    margin: 0 20px 20px 0;
+  .story-callout-img-wrap {
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 6rem;
+      padding-right: $grid-gutter-width-base / 2;
+    }
   }
 }
 
