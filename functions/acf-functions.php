@@ -10,6 +10,25 @@ function add_story_sidebar_acf_fields() {
 	$fields = array();
 
 	$fields[] = array(
+		'key'       => 'author_tab',
+		'label'     => 'Author',
+		'type'      => 'tab',
+		'required'  => 0,
+		'placement' => 'top',
+		'endpoint'  => 0,
+	);
+
+	$fields[] = array(
+		'key'      => 'author_byline',
+		'label'    => 'Author Byline',
+		'name'    => 'author_byline',
+		'type'    => 'text',
+		'required'    => 1,
+	);
+
+
+
+	$fields[] = array(
 		'key'       => 'spotlight_tab',
 		'label'     => 'Spotlight',
 		'type'      => 'tab',
