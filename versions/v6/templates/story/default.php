@@ -2,7 +2,7 @@
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
 $spotlight = get_field( 'sidebar_spotlight', $post );
-$author    = get_field( 'author_byline', $post );
+$author    = get_field( 'author_byline', $post, false ); // false here removes formatting logic
 ?>
 
 <article class="story <?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
