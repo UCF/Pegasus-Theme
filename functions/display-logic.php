@@ -32,11 +32,10 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	$title = wptexturize( $story->post_title );
 
 	$description = '';
-	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
-		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
-	}
-	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
-		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
+	if ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
+		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong><a>' ) );
+	} elseif ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
+		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong><a>' ) );
 	}
 
 	$category = null;
@@ -63,7 +62,6 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	</div>
 	<?php if ( $thumbnail ): ?>
 	<div class="story-callout-img-wrap">
-		<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
 		<?php echo $thumbnail; ?>
 
 		<?php if ( $show_category && $category ): ?>
@@ -71,7 +69,6 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 			<?php echo $category; ?>
 		</span>
 		<?php endif; ?>
-		</a>
 	</div>
 	<?php endif; ?>
 </article>
