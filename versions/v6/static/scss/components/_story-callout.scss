@@ -12,6 +12,7 @@
 
 .story-callout-img-wrap {
   margin-bottom: .75rem;
+  order: -1;
   position: relative;
 
   .story-callout-category {
@@ -25,6 +26,8 @@
 
 .story-callout-link {
   color: inherit;
+  display: flex;
+  flex-direction: column;
 
   @include hover-focus-active() {
     color: inherit;
