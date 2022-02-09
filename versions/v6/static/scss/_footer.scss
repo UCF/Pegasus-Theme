@@ -17,18 +17,47 @@
 }
 
 // Subfooter - More Stories
-.more-stories-list {
-  padding-left: 0;
-  padding-right: 0;
+.more-stories-list-wrap {
+  position: relative;
 
+  // Make a pseudo-container at -lg+:
+  @include media-breakpoint-up(lg) {
+    $gutter: map-get($grid-gutter-widths, 'lg');
+    $container-max-width: map-get($container-max-widths, 'lg');
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    width: $container-max-width;
+  }
+
+  @include media-breakpoint-up(xl) {
+    $gutter: map-get($grid-gutter-widths, 'xl');
+    $container-max-width: map-get($container-max-widths, 'xl');
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    width: $container-max-width;
+  }
+}
+
+.more-stories-list {
   @include media-breakpoint-up(lg) {
     flex-wrap: wrap;
     overflow-x: initial;
+    padding-left: 0;
+    padding-right: 0;
   }
 
   .story-callout {
     @include media-breakpoint-up(lg) {
       @include make-col(4);
+    }
+  }
+
+  .story-callout-link {
+    @include media-breakpoint-up(lg) {
+      display: flex;
       flex-direction: row;
     }
   }

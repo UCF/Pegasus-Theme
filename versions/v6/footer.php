@@ -21,7 +21,8 @@
 					<h2 class="font-serif font-italic font-weight-normal mt-5 mb-4 py-2" id="more-stories-heading">
 						More UCF Stories
 					</h2>
-
+				</div>
+				<div class="more-stories-list-wrap">
 					<?php echo display_story_list( $issue, 'more-stories-list mb-5', $stories ); ?>
 					<div class="story-list-controls hidden-xs-down d-lg-none">
 						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Back">

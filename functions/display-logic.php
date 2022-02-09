@@ -50,27 +50,28 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	ob_start();
 ?>
 <article class="story-callout <?php echo $css_class; ?> hover-parent">
-	<div class="story-callout-text-wrap">
-		<<?php echo $heading; ?> class="story-callout-title">
-			<a class="story-callout-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
-				<?php echo $title; ?>
-			</a>
-		</<?php echo $heading; ?>>
-		<div class="story-callout-description">
-			<?php echo $description; ?>
-		</div>
-	</div>
-	<?php if ( $thumbnail ): ?>
-	<div class="story-callout-img-wrap">
-		<?php echo $thumbnail; ?>
+	<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<?php if ( $thumbnail ): ?>
+		<div class="story-callout-img-wrap">
+			<?php echo $thumbnail; ?>
 
-		<?php if ( $show_category && $category ): ?>
-		<span class="story-callout-category badge badge-primary">
-			<?php echo $category; ?>
-		</span>
+			<?php if ( $show_category && $category ): ?>
+			<span class="story-callout-category badge badge-primary">
+				<?php echo $category; ?>
+			</span>
+			<?php endif; ?>
+		</div>
 		<?php endif; ?>
-	</div>
-	<?php endif; ?>
+
+		<div class="story-callout-text-wrap">
+			<<?php echo $heading; ?> class="story-callout-title">
+				<?php echo $title; ?>
+			</<?php echo $heading; ?>>
+			<div class="story-callout-description">
+				<?php echo $description; ?>
+			</div>
+		</div>
+	</a>
 </article>
 <?php
 return ob_get_clean();
