@@ -31,10 +31,16 @@
 					</div>
 				</div>
 				<?php echo display_story_list($relevant_issue)?>
-				<div class="controls">
-					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
-					<a class="backward icon icon-caret-left" href="#">Back</a>
-					<a class="forward icon icon-caret-right" href="#">Forward</a>
+				<div class="story-list-controls hidden-xs-down">
+					<button type="button" class="btn story-list-control close pulldown-toggle" data-pulldown-container=".pulldown-stories" aria-label="Close">
+						<span class="fas fa-2x fa-times" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Back">
+						<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>
+					</button>
+					<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Forward">
+						<span class="fas fa-2x fa-caret-right" aria-hidden="true"></span>
+					</button>
 				</div>
 			</div>
 		</aside>

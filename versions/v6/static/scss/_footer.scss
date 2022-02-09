@@ -17,35 +17,55 @@
 }
 
 // Subfooter - More Stories
-#more-stories {
-  margin-bottom: 80px;
-  margin-top: 50px;
+.more-stories-list-wrap {
   position: relative;
 
-  @include media-breakpoint-down(md) {
-    margin-bottom: 40px;
+  // Make a pseudo-container at -lg+:
+  @include media-breakpoint-up(lg) {
+    $gutter: map-get($grid-gutter-widths, 'lg');
+    $container-max-width: map-get($container-max-widths, 'lg');
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 100%;
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    width: $container-max-width;
   }
 
-  article {
-    a {
-      display: block;
-      overflow: hidden;
+  @include media-breakpoint-up(xl) {
+    $gutter: map-get($grid-gutter-widths, 'xl');
+    $container-max-width: map-get($container-max-widths, 'xl');
+    padding-left:  ($gutter / 2);
+    padding-right: ($gutter / 2);
+    width: $container-max-width;
+  }
+}
 
-      &:hover,
-      &:active {
-        text-decoration: none;
-      }
-    }
+.more-stories-list {
+  @include media-breakpoint-up(lg) {
+    flex-wrap: wrap;
+    overflow-x: initial;
+    padding-left: 0;
+    padding-right: 0;
+  }
 
-    .story-title,
-    .subtitle {
-      display: block;
+  .story-callout {
+    @include media-breakpoint-up(lg) {
+      @include make-col(4);
     }
   }
 
-  .story-list-grid article img {
-    float: left;
-    margin: 0 20px 20px 0;
+  .story-callout-link {
+    @include media-breakpoint-up(lg) {
+      flex-direction: row;
+    }
+  }
+
+  .story-callout-img-wrap {
+    @include media-breakpoint-up(lg) {
+      flex: 0 0 6rem;
+      padding-right: $grid-gutter-width-base / 2;
+    }
   }
 }
 
