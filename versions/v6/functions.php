@@ -14,31 +14,10 @@ function display_story_list( $issue, $class='', $stories=array() ) {
 	<?php if ( $stories ) : ?>
 	<div class="story-list <?php echo $class; ?>">
 		<?php
-		foreach ( $stories as $story ) :
-			$title = wptexturize( $story->post_title );
-			$subtitle = wptexturize( strip_tags( get_post_meta( $story->ID, 'story_subtitle', TRUE ) ) );
-			$thumb = get_featured_image_url( $story->ID, 'single-post-thumbnail-3x2' );
+		foreach ( $stories as $story ) {
+			echo display_story_callout( $story, '', false, 'single-post-thumbnail-3x2' );
+		}
 		?>
-		<article>
-			<div class="position-relative">
-				<?php if ( $thumb ) : ?>
-				<img class="lazy" data-original="<?php echo $thumb; ?>" alt="" />
-				<?php endif; ?>
-
-				<h3 class="story-title">
-					<a class="stretched-link text-secondary" href="<?php echo get_permalink( $story ); ?>">
-						<?php echo $title; ?>
-					</a>
-				</h3>
-
-				<?php if ( ! empty( $subtitle ) ) : ?>
-				<span class="subtitle">
-					<?php echo $subtitle; ?>
-				</span>
-				<?php endif; ?>
-			</div>
-		</article>
-		<?php endforeach; ?>
 	</div>
 	<?php else: ?>
 	<p>No stories found.</p>

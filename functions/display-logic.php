@@ -32,11 +32,10 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	$title = wptexturize( $story->post_title );
 
 	$description = '';
-	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
-		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
-	}
-	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
-		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
+	if ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
+		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong><a>' ) );
+	} elseif ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
+		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong><a>' ) );
 	}
 
 	$category = null;
@@ -51,29 +50,28 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	ob_start();
 ?>
 <article class="story-callout <?php echo $css_class; ?> hover-parent">
-	<div class="story-callout-text-wrap">
-		<<?php echo $heading; ?> class="story-callout-title">
-			<a class="story-callout-link stretched-link" href="<?php echo get_permalink( $story->ID ); ?>">
+	<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
+		<div class="story-callout-text-wrap">
+			<<?php echo $heading; ?> class="story-callout-title">
 				<?php echo $title; ?>
-			</a>
-		</<?php echo $heading; ?>>
-		<div class="story-callout-description">
-			<?php echo $description; ?>
+			</<?php echo $heading; ?>>
+			<div class="story-callout-description">
+				<?php echo $description; ?>
+			</div>
 		</div>
-	</div>
-	<?php if ( $thumbnail ): ?>
-	<div class="story-callout-img-wrap">
-		<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
-		<?php echo $thumbnail; ?>
 
-		<?php if ( $show_category && $category ): ?>
-		<span class="story-callout-category badge badge-primary">
-			<?php echo $category; ?>
-		</span>
+		<?php if ( $thumbnail ): ?>
+		<div class="story-callout-img-wrap">
+			<?php echo $thumbnail; ?>
+
+			<?php if ( $show_category && $category ): ?>
+			<span class="story-callout-category badge badge-primary">
+				<?php echo $category; ?>
+			</span>
+			<?php endif; ?>
+		</div>
 		<?php endif; ?>
-		</a>
-	</div>
-	<?php endif; ?>
+	</a>
 </article>
 <?php
 return ob_get_clean();

@@ -4,6 +4,7 @@
 //
 
 .story-callout {
+  color: $brand-secondary;
   display: flex;
   flex-direction: column;
   margin-bottom: 1.75rem;
@@ -24,7 +25,18 @@
 }
 
 .story-callout-link {
-  color: $black;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+
+  @include hover-focus-active() {
+    color: inherit;
+    text-decoration: none;
+
+    .story-callout-title {
+      text-decoration: underline;
+    }
+  }
 }
 
 .story-callout-title {
@@ -52,20 +64,19 @@
 .story-callout-overlay {
   position: relative;
 
+  @include media-breakpoint-up(md) {
+    color: $brand-inverse;
+  }
+
   .story-callout-text-wrap {
     @include media-breakpoint-up(md) {
       background-color: transparentize($brand-secondary, .4);
       bottom: 0;
-      color: $brand-inverse;
       left: 0;
       padding: 2rem;
       position: absolute;
       right: 0;
       text-align: center;
-
-      .story-callout-link {
-        color: $white;
-      }
     }
   }
 
@@ -76,12 +87,6 @@
   .story-callout-img-wrap {
     @include media-breakpoint-up(md) {
       margin-bottom: 0;
-    }
-  }
-
-  &:hover {
-    .story-callout-link {
-      text-decoration: underline;
     }
   }
 }

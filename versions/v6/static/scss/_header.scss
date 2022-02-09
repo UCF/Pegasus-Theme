@@ -20,7 +20,6 @@
 .pulldown-container {
   height: 0;
   opacity: 0;
-  padding: 0 0 30px;
   transition: opacity .4s ease-in-out;
   // Prevent list item jump in Firefox:
   transition-delay: .35s;
@@ -29,20 +28,6 @@
   &.active {
     height: auto;
     opacity: 1;
-  }
-}
-
-.pulldown-stories .story-list article {
-  width: 180px;
-
-  @include media-breakpoint-down(md) {
-    width: 140px;
-
-    img {
-      // Fixed width/height required for lazyload
-      height: 93px;
-      width: 140px;
-    }
   }
 }
 
