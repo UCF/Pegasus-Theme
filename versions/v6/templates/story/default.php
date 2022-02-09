@@ -2,7 +2,7 @@
 <?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
 $spotlight = get_field( 'sidebar_spotlight', $post );
-$author    = get_field( 'author_byline', $post, false ); // false here removes formatting logic
+$byline    = get_author_byline( $post );
 ?>
 
 <article class="story <?php echo $post->post_status; ?> post-list-item"  aria-label="<?php echo esc_attr( get_the_title() ); ?>">
@@ -16,10 +16,10 @@ $author    = get_field( 'author_byline', $post, false ); // false here removes f
 			<div class="story-sidebar col-lg-4 pr-lg-4 pr-xl-5 flex-lg-first">
 				<div class="row mb-4 mb-lg-5">
 					<div class="col-6 col-lg-12 byline-issue mb-lg-5">
-						<?php if ( $author ) : ?>
-						<span class="d-block mb-2"><?php echo $author; ?></span>
+						<?php if ( $byline ) : ?>
+						<span class="d-block mb-2"><?php echo $byline; ?></span>
 						<?php endif; ?>
-						<a class="text-secondary font-weight-bold" href="<?php echo get_permalink( get_relevant_issue( $post ) ); ?>"><?php echo get_the_title( get_relevant_issue( $post ) ); ?></a>
+						<a class="text-default-aw" href="<?php echo get_permalink( get_relevant_issue( $post ) ); ?>"><?php echo get_the_title( get_relevant_issue( $post ) ); ?></a>
 					</div>
 					<div class="col-6 col-lg-12 social-wrap">
 						<?php echo do_shortcode( '[ucf-social-links]' ); ?>
