@@ -50,8 +50,6 @@
   }
 
   .story-callout {
-    @include make-col(5);
-
     @include media-breakpoint-up(lg) {
       @include make-col(4);
     }
