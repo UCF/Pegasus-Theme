@@ -10,7 +10,13 @@
     font-size: 1.25rem;
   }
 
-  .description,
+  .lead {
+    @include media-breakpoint-down(md) {
+      font-size: 1.1rem; //override Athena's .lead font-size for md- breakpoints
+    }
+  }
+
+  .lead,
   .story-content,
   .byline-issue {
     font-family: $font-family-poppins;
