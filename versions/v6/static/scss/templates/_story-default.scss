@@ -3,11 +3,11 @@
 //
 
 .story-template-default {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   line-height: 1.65;
 
-  @include media-breakpoint-down(sm) {
-    font-size: 1.15rem;
+  @include media-breakpoint-up(md) {
+    font-size: 1.25rem;
   }
 
   .description,
