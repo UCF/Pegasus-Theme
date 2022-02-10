@@ -3,11 +3,16 @@
 //
 
 .story-template-default {
-  font-size: 1.1rem;
-  line-height: 1.65;
+  .lead,
+  .story-content,
+  .byline-issue {
+    font-family: $font-family-poppins;
+    font-size: 1.1rem;
+    line-height: 1.65;
 
-  @include media-breakpoint-up(md) {
-    font-size: 1.25rem;
+    @include media-breakpoint-up(md) {
+      font-size: 1.25rem;
+    }
   }
 
   .lead {
@@ -15,13 +20,6 @@
       font-size: 1.1rem; //override Athena's .lead font-size for md- breakpoints
     }
   }
-
-  .lead,
-  .story-content,
-  .byline-issue {
-    font-family: $font-family-poppins;
-  }
-
 
   .story-sidebar {
     font-size: .95rem;
