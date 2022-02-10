@@ -216,3 +216,20 @@ function get_home_gallery( $gallery ) {
 <?php
 	return trim( ob_get_clean() );
 }
+
+/**
+ * Returns the author byline after removing wpautop.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @param object Post object
+ * @return string Author byline string
+ **/
+function get_author_byline( $post ) {
+	$wpautop_priority = has_filter( 'the_content', 'wpautop' );
+	remove_filter( 'the_content', 'wpautop', $wpautop_priority );
+	$author_byline = nl2br( get_field( 'author_byline', $post ) );
+	add_filter( 'the_content', 'wpautop', $wpautop_priority );
+
+	return $author_byline;
+}

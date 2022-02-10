@@ -21,6 +21,10 @@
     @include make-col-ready();
     flex: 0 0 14rem;
     max-width: 14rem;
+
+    @include media-breakpoint-down(md) {
+      @include make-col(5);
+    }
   }
 
   .story-callout-description {
