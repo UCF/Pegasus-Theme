@@ -228,7 +228,7 @@ function get_home_gallery( $gallery ) {
 function get_author_byline( $post ) {
 	$wpautop_priority = has_filter( 'the_content', 'wpautop' );
 	remove_filter( 'the_content', 'wpautop', $wpautop_priority );
-	$author_byline = get_field( 'author_byline', $post );
+	$author_byline = nl2br( get_field( 'author_byline', $post ) );
 	add_filter( 'the_content', 'wpautop', $wpautop_priority );
 
 	return $author_byline;
