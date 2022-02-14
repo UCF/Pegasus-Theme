@@ -34,7 +34,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						<strong>Stories</strong> are where the meat of the content will reside. The Stories that will live on the website are hand picked from the physical magazine.
 					</p>
 					<p>
-						The <strong>Photo Essay</strong> is a type of content used to create a slideshow of images with captions in a Story or Issues. Photo Essays can be embedded onto Stories or Issues using a <strong>Shortcode</strong>.
+						The <strong>Photo Essay</strong> is a type of content that displays images with captions.
 					</p>
 					<br/>
 					<p>
@@ -198,8 +198,6 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 								<li><a href="<?php echo $admin_help_url; ?>#stories-about-headings">About Headings and Structuring Content</a></li>
 								<li><a href="<?php echo $admin_help_url; ?>#stories-add-headings">Adding Headings</a></li>
 								<li><a href="<?php echo $admin_help_url; ?>#stories-add-media">Adding Media</a></li>
-								<li><a href="<?php echo $admin_help_url; ?>#stories-add-shortcodes">Adding Content via Shortcodes</a></li>
-								<li><a href="<?php echo $admin_help_url; ?>#stories-add-slideshow">Adding a Slideshow</a></li>
 							</ul>
 						</li>
 						<li>
@@ -213,7 +211,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						</li>
 					</ul>
 
-					<h3 id="stories-creating-stories">Creating Stories:</h3>
+					<h3 id="stories-creating-stories">Creating Stories</h3>
 					<p>
 						To create a story, hover over the “Stories” link in the left-hand WordPress admin menu, and click “Add New”.
 					</p>
@@ -249,7 +247,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						</ul>
 					</div>
 
-					<h3 id="stories-adding-story-content">Adding Story Content:</h3>
+					<h3 id="stories-adding-story-content">Adding Story Content</h3>
 					<p>
 						To add content to a story, use the large text editor directly below the title field to type and/or paste content. Only body copy needs to be added here; the title, story description, content in the story's sidebar, and header image are handled separately.
 					</p>
@@ -317,7 +315,6 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 					<p>
 						Media can be added to the post content by clicking on the Add Media button under the story title.
 					</p>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-media-modal.jpg" />
 					<p>
 						In the window that appears, you can either browse existing media or upload a new file. Click on a file’s thumbnail to select it (if you just uploaded the file, it’ll be selected for you.)
 					</p>
@@ -325,7 +322,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						The media’s details can then be modified on the right, under Attachment Details and Attachment Display Settings. For images, you will need to add a caption (optional) and alt text. The caption will be displayed below the image; alt text will appear when you hover over the image, and provides additional information about the image to screenreaders and search engines. Adjust the image’s position under the Alignment dropdown and the size of the image if necessary (note some images may not provide an image size option.) Keep in mind that if no image position is selected, the image will automatically be stretched to the full width of the post content column.
 					</p>
 					<p>
-						Once you have filled out all the information, click the Insert into Post button. The media’s respective shortcode will then be placed where your cursor was last at in the editor.
+						Once you have filled out all the information, click the Insert into Post button.
 					</p>
 
 					<div class="well">
@@ -341,7 +338,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 								Choose a file format that best suits your image—generally, photographs are better suited as .jpg's; illustrations, logos, etc. are best suited as .png's.
 							</li>
 							<li>
-								When saving out images in PhotoShop, use the Save for Web and Devices tool to compare compression rates and file types. When saving out .jpg's, try to apply some level of quality compression to reduce the size of the file. A quality of 65 for .jpg's is usually adequate. Transparent .png's should be saved out as PNG-24 with transparency enabled.
+								When saving out images in Photoshop, use the Save for Web and Devices tool to compare compression rates and file types. When saving out .jpg's, try to apply some level of quality compression to reduce the size of the file. A quality of 65 for .jpg's is usually adequate. Transparent .png's should be saved out as PNG-24 with transparency enabled.
 							</li>
 							<li>
 								Running images through an image compression tool such as <a href="https://imageoptim.com/mac" target="_blank">ImageOptim</a> is recommended.
@@ -366,103 +363,20 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						</ul>
 					</div>
 
-					<h4 id="stories-add-shortcodes">Adding Content via Shortcodes</h4>
+					<h3 id="stories-saving">Saving a Story</h3>
 					<p>
-						Shortcodes are small snippets of code, wrapped in square brackets [], that do some function or add some
-						predefined content to your story.
+						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish metabox.
 					</p>
 					<p>
-						On this site, custom shortcodes are available to create blockquotes, callout boxes, sidebars, slideshows, and
-						other stylized content. Please visit the <a href="#shortcodes">Shortcodes documentation section</a> for
-						information about what shortcodes are available and what options they provide.
-					</p>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-add-shortcode.jpg" />
-					<p>
-						To add a shortcode to your story content, click the “Add Shortcode” button just under the title field.
-					</p>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-shortcode-modal.jpg" />
-					<p>
-						In the window that appears, select a shortcode, and update any available options if necessary. Click the “Insert into
-						Post” button to insert the shortcode where your cursor was last at in the editor.
+						If your story is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by clicking the blue "Publish" button in the Publish metabox.
 					</p>
 
-					<h4 id="stories-add-slideshow">Adding a Slideshow</h4>
+					<h3 id="stories-modifying">Modifying a Story</h3>
 					<p>
-						A slideshow is a rotating set of images with optional captions. All slideshows use photos from an existing
-						Photo Essay; make sure you’ve created a photo essay with your photos before trying to insert a slideshow shortcode.
+						To modify an existing story, click on "Stories" in the left-hand WordPress admin menu. You can modify any stories that have been created by you by clicking the title of the story.
 					</p>
 					<p>
-						Slideshows are added by using the [slideshow] shortcode. See the documentation above on
-						<a href="#stories-add-shortcodes">Adding Content via Shortcodes</a>, and the
-						<a href="#shortcodes">Shortcodes documentation section</a> for more details.
-					</p>
-					<p>
-						Slideshows can be added to story content in two ways—the entire story can be a full-screen slideshow, or a small
-						slideshow (an "embedded" slideshow) can be added between other content.
-					</p>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-photoessay-comparison.jpg" />
-					<p class="caption">
-						Note the differences between a story with an embedded slideshow, and a full-screen Photo Essay story. For full-screen
-						Photo Essay stories, the Story Template field must be set to "Photo essay".
-					</p>
-					<p>
-						<strong>If you’re creating a full-screen slideshow</strong>, the only content in the story editor should be the
-						slideshow shortcode. After the shortcode is inserted in the story content, make sure to update the Story Template
-						dropdown (in the Story Fields box, under the content editor) to use the Photo essay template.
-					</p>
-
-					<h3 id="stories-customization">Story Subtitle, Description, and Customization:</h3>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-fields.jpg" />
-					<p>
-						The Story Fields metabox, located underneath the story content editor, contains set of extra fields that add custom
-						settings to your story. Most of these fields are straightforward and provide descriptions.
-					</p>
-					<div class="well">
-						<p><strong>Things to keep in mind:</strong></p>
-						<ul>
-							<li>Stories that are not created by a developer should never use a “Custom” Story Template.</li>
-							<li>
-								The Default Template Header Font Family uses a pre-defined set of font sizes, line heights, and weights that
-								best suit headings at all sizes. These pre-defined settings cannot be modified and cannot be set for other
-								lines of text besides headings. Please do not use headings to style lines of text that are not actually headings;
-								read the <a href="#stories-about-headings">About Headings and Structuring Content documentation section</a> for
-								more information.
-							</li>
-							<li>
-								The Default Template Header Image’s recommended dimensions (1600x900px) are relatively large for the web—please
-								make sure your image is optimized for the web BEFORE uploading it to WordPress. See the
-								<a href="#stories-add-media">Adding Media documentation section</a> for more information.
-							</li>
-							<li>
-								The Default Template Header Image will be stretched and cropped at different window sizes. Please keep the
-								composition of the image in mind when designing it—the top and bottom edges of the image will be cropped at some
-								sizes, particularly mobile device size. Try to center the focus of the composition to the middle of the image.
-								Before publishing your story, upload the Header Image and test what it looks like in Preview mode by resizing your
-								browser window on the front-facing story.
-							</li>
-						</ul>
-					</div>
-
-					<h3 id="stories-saving">Saving a Story:</h3>
-					<img src="<?php echo THEME_HELP_IMG_URL?>/story-save.jpg" />
-					<p>
-						To save any changes to your story, click the gray "Save Draft" button on the right-hand side of the screen, in the Publish
-						metabox.
-					</p>
-					<p>
-						If your story is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by
-						clicking the blue "Publish" button in the Publish metabox.
-					</p>
-
-					<h3 id="stories-modifying">Modifying a Story:</h3>
-					<p>
-						To modify an existing story, click on "Stories" in the left-hand WordPress admin menu. You can modify any stories that
-						have been created by you by clicking the title of the story.
-					</p>
-					<p>
-						When modifying a story, you'll be presented with the same screen that you originally created the post with. Modify any content
-						as necessary and click the "Update" button in the Publish metabox to finish. <strong>Make sure you click the "Update"
-						button to save your changes!</strong>
+						When modifying a story, you'll be presented with the same screen that you originally created the post with. Modify any content as necessary and click the "Update" button in the Publish metabox to finish. <strong>Make sure you click the "Update" button to save your changes!</strong>
 					</p>
 
 				</li>
@@ -586,7 +500,6 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						If your photo essay is finished and you have tested it by clicking the "Preview" button in the Publish metabox, publish it by clicking the blue "Publish" button in the Publish metabox.
 					</p>
 				</li>
-
 
 				<li class="section" id="shortcodes">
 					<h2>Shortcodes</h2>
