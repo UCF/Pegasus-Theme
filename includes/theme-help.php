@@ -319,7 +319,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 						In the window that appears, you can either browse existing media or upload a new file. Click on a file’s thumbnail to select it (if you just uploaded the file, it’ll be selected for you.)
 					</p>
 					<p>
-						The media’s details can then be modified on the right, under Attachment Details and Attachment Display Settings. For images, you will need to add a caption (optional) and alt text. The caption will be displayed below the image; alt text will appear when you hover over the image, and provides additional information about the image to screenreaders and search engines. Adjust the image’s position under the Alignment dropdown and the size of the image if necessary (note some images may not provide an image size option.) Keep in mind that if no image position is selected, the image will automatically be stretched to the full width of the post content column.
+						The media’s details can then be modified on the right, under Attachment Details and Attachment Display Settings. For images, you will need to add a caption (optional) and alt text. The caption will be displayed below the image; alt text will appear when you hover over the image, and provides additional information about the image to screenreaders and search engines. Adjust the image’s position under the Alignment dropdown and the size of the image if necessary (note some images may not provide an image size option.)
 					</p>
 					<p>
 						Once you have filled out all the information, click the Insert into Post button.
@@ -461,9 +461,6 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 							</li>
 							<li>
 								All images uploaded to photo essays should be <strong>web-optimized</strong>! Please see the Media Specs/Guidelines section of the <a href="#stories">Story documentation</a> for basic image optimization requirements.
-							</li>
-							<li>
-								<strong>All images uploaded to a single photo essay must be the same height</strong>. Widths can vary, but the height must be consistent throughout all images.
 							</li>
 						</ul>
 					</div>
