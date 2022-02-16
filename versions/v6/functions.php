@@ -245,13 +245,13 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	ob_start();
 ?>
 
-	<section id="photo-essay-top" class="clearfix">
-		<div class="container">
+	<section id="photo-essay-top">
+		<div class="container mt-4">
 			<?php echo $header_contents; ?>
 		</div>
 	</section>
 
-	<section class="photo-essay-contents">
+	<section class="photo-essay-contents mb-4 mb-lg-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-md-10">
