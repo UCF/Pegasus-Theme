@@ -80,7 +80,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 					</p>
 					<ul>
 						<li>The "Name" value will be the year.</li>
-						<li>The "Slug", "Parent" and "Description" fields should be left blank.</li>
+						<li>The "Slug", "Popular Issues" and "Description" fields should be left blank.</li>
 					</ul>
 					<p>
 						Click the "Add New Issue" button to create the new term. You should see the term appear in the list on the right after a second or two.
@@ -91,7 +91,7 @@ $admin_help_url = admin_url('admin.php?page=theme-help');
 					<ul>
 						<li>The "Name" value will be the season and year, i.e. "Summer 2014".</li>
 						<li>The "Slug" value will be created automatically for you and should be left blank.</li>
-						<li>The "Parent" value should be the year term, i.e. "2014".</li>
+						<li>The "Popular Issues" value should be the year term the issue falls under, i.e. "2014".</li>
 						<li>Leave the "Description" field blank.</li>
 					</ul>
 					<p>
