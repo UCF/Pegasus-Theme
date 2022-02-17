@@ -65,8 +65,7 @@ function get_default_template_font_css( $font ) {
 		article.story h3,
 		article.story h4,
 		article.story h5,
-		article.story h6,
-		article.story blockquote {
+		article.story h6 {
 			color: '.$font['color'].';
 		}
 		article.story h1 {

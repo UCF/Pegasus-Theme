@@ -417,7 +417,7 @@ class Story extends CustomPostType {
 		);
 		$fields[] = array(
 			'name' => 'Header Font Color',
-			'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
+			'desc' => 'Color for h1-h6 titles. Hex values preferred.',
 			'id'   => $prefix.'default_color',
 			'type' => 'text',
 		);
