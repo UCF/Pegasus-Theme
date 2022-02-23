@@ -127,6 +127,6 @@ add_filter( 'body_class', 'v6_body_classes', 10, 1 );
  * @author Jo Dickson
  */
 add_filter( 'option_athena_sc_enable_tinymce_formatting', '__return_true' );
-add_filter( 'option_athena_sc_enable_optin_classes', '__return_true' );
+add_filter( 'option_athena_sc_enable_optin_classes', '__return_false' );
 add_filter( 'option_athena_sc_enable_responsive_embeds', '__return_true' );
 add_filter( 'option_athena_sc_remove_image_dims', '__return_false' );
