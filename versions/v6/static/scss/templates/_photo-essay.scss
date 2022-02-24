@@ -231,3 +231,11 @@
     margin-top: 20px;
   }
 }
+
+.photo-essay-item {
+  &:last-of-type {
+    .photo-essay-caption {
+      padding-bottom: 0;
+    }
+  }
+}
