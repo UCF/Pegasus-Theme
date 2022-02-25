@@ -1014,7 +1014,13 @@ function display_markup_or_template($post) {
 		else {
 			// Newer stories without a value should assume 'default' template
 			add_filter( 'the_content', 'kill_empty_p_tags', 999 );
-			$filename = 'templates/' . $post->post_type . '/default.php';
+
+			if ( get_page_template_slug( $post ) === 'template-fullwidth.php' ) {
+				$filename = 'templates/' . $post->post_type . '/full-width-story.php';
+			} else {
+				$filename = 'templates/' . $post->post_type . '/default.php';
+			}
+
 			$template = get_version_file_path( $filename, get_relevant_version( $post ) );
 			require_once( $template );
 		}
