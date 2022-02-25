@@ -1,6 +1,6 @@
-<?php disallow_direct_load('full-width-story.php');?>
-<?php add_filter('the_content', 'kill_empty_p_tags', 999); ?>
 <?php
+disallow_direct_load('full-width-story.php');
+add_filter('the_content', 'kill_empty_p_tags', 999);
 $display_header = get_field( 'story_fw_display_standard_header' );
 ?>
 
