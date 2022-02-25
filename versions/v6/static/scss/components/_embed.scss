@@ -1,0 +1,17 @@
+// sass-lint:disable no-qualifying-elements
+.embed {
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+
+  @include media-breakpoint-up(md) {
+    margin-bottom: 2rem;
+  }
+
+  * + & {
+    margin-top: 1.5rem;
+
+    @include media-breakpoint-up(md) {
+      margin-top: 2rem;
+    }
+  }
+}

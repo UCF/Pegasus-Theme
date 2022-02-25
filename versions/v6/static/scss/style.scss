@@ -9,11 +9,13 @@
 @import 'mixins';
 
 // Components
+@import 'components/blockquotes';
 @import 'components/buttons';
 @import 'components/iframes';
 @import 'components/ucf-events';
 @import 'components/story-callout';
 @import 'components/story-list';
+@import 'components/embed';
 
 // Shared template part styles
 @import 'header';
