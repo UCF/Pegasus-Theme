@@ -19,6 +19,7 @@ const del          = require('del');
 
 let config = {
   devPath: './dev',
+  staticPath: './static/',
   fontPath: './static/fonts',
   componentsPath: './static/components',
   packagesPath: './node_modules',
@@ -237,11 +238,17 @@ gulp.task('scss-build-fa5', (done) => {
   );
 });
 
+// Compile story editor stylesheet
+gulp.task('scss-build-editor-story', () => {
+  return buildCSS(`${config.versionPath}/static/scss/editor-story.scss`, `${config.staticPath}/css/`);
+});
+
 // All theme css-related tasks
 gulp.task('css', gulp.series(
   'scss-lint-version',
   'scss-build-version',
-  'scss-build-fa5'
+  'scss-build-fa5',
+  'scss-build-editor-story'
 ));
 
 
