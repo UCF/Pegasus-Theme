@@ -593,6 +593,10 @@ if (!empty($theme_options['cloud_font_key'])) {
 	array_push(Config::$styles, array('name' => 'font-cloudtypography-admin', 'admin' => True, 'src' => $theme_options['cloud_font_key']));
 }
 
+if ( get_relevant_version() >= 6 ) {
+	array_push( Config::$styles, array( 'name' => 'editor-story-css', 'src' => THEME_CSS_URL.'/editor-story.min.css', 'admin' => True ) );
+}
+
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
 	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js', 'deps' => array( 'jquery', 'iris' )),
