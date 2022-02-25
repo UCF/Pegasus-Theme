@@ -224,6 +224,11 @@ function add_story_sidebar_acf_fields() {
 					'operator' => '==',
 					'value'    => 'story',
 				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '!=',
+					'value'    => 'template-fullwidth.php'
+				)
 			),
 		),
 		'position'              => 'normal',
@@ -235,3 +240,52 @@ function add_story_sidebar_acf_fields() {
 }
 
 add_action( 'acf/init', 'add_story_sidebar_acf_fields', 10, 0 );
+
+
+/**
+ * Adds the ACF fields for the full width
+ * story options.
+ *
+ * @since 6.0.0
+ */
+function add_full_width_story_acf_fields() {
+	$fields = array();
+
+	$fields[] = array(
+		'key'               => 'story_fw_display_standard_header',
+		'label'             => 'Display Standard Header',
+		'name'              => 'story_fw_display_standard_header',
+		'type'              => 'true_false',
+		'instructions'      => 'Whether to display the standard story header. This includes the story\'s title (H1), deck, and header image (Featured Image or the Header Image, if set).',
+		'default_value'     => 1,
+		'ui'                => 1,
+	);
+
+	$group = array(
+		'key'                   => 'full_width_story_options',
+		'title'                 => 'Full Width Story Options',
+		'fields'                => $fields,
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'story',
+				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'template-fullwidth.php'
+				)
+			),
+		),
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'active'                => true
+	);
+
+	acf_add_local_field_group( $group );
+
+}
+
+add_action( 'acf/init', 'add_full_width_story_acf_fields', 10, 0 );
