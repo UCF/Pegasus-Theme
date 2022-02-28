@@ -17,13 +17,19 @@
  **/
 
 
-require_once( 'functions/base.php' );    # Base theme functions
-require_once( 'functions/feeds.php' );   # Feed-related functions
-require_once( 'functions/admin.php' );   # Admin/login functions
-require_once( 'custom-taxonomies.php' ); # Where taxonomies are defined
-require_once( 'custom-post-types.php' ); # Where post types are defined
-require_once( 'functions/config.php' );  # Where site-level configuration settings are defined
+require_once( 'functions/base.php' );            # Base theme functions
+require_once( 'custom-taxonomies.php' );         # Where taxonomies are defined
+require_once( 'custom-post-types.php' );         # Where post types are defined
+require_once( 'functions/config.php' );          # Where site-level configuration settings are defined
+require_once( 'functions/acf-functions.php' ); # Where related stories ACF fields and functions are defined
+require_once( 'functions/related-stories.php' ); # Where related stories ACF fields and functions are defined
 
+
+// Plugin extras/overrides
+
+if ( class_exists( 'UCF_Events_Common' ) ) {
+	include_once 'includes/ucf-events-functions.php';
+}
 
 /****************************************************************************
  *
@@ -39,11 +45,26 @@ function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
 		$request_uri = untrailingslashit( $_SERVER['REQUEST_URI'] );
 
-		// If the home page has been requested, always return the current issue
 		if ( $request_uri === get_site_url( get_current_blog_id(), '', 'relative' ) ) {
+			// If the home page has been requested, always return the current issue
 			$the_post = get_current_issue();
-		}
-		else {
+		} else if ( is_admin() ) {
+			// If we're on an admin screen, grab the post ID from the URL
+			// if we're on a post/page edit screen, and determine the version
+			// from that.  Otherwise, just assume the latest version
+			$request_uri_params_str = wp_parse_url( $request_uri, PHP_URL_QUERY );
+			parse_str( $request_uri_params_str, $request_uri_params );
+
+			if (
+				array_key_exists( 'post', $request_uri_params )
+				&& strpos( $request_uri, '/post.php' ) !== false
+			) {
+				$uri_post_id = $request_uri_params['post'];
+				$the_post = get_post( $uri_post_id );
+			} else {
+				$the_post = null;
+			}
+		} else {
 			global $post;
 
 			// If global $post hasn't been set yet, try fishing the requested url for
@@ -141,14 +162,20 @@ add_action( 'init', 'setup_version_files', 3 );
 
 
 /**
- * Loads version-specific CPT templates instead of templates from the theme's
- * root directory.
+ * Loads version-specific Front Page, Page and CPT templates instead of templates
+ * from the theme's root directory.
  *
- * Note: Pages and Posts should always use templates from the root directory
+ * Note: Posts should always use templates from the root directory
  * (they are not modified per-version).
  **/
 function by_version_template( $template ) {
 	global $post;
+
+	if ( is_front_page() ) {
+		$new_template = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
+	} elseif ( $post->post_type === 'page' ) {
+		$new_template = locate_template( array( get_version_file_path( 'page.php' ) ) );
+	}
 
 	if ( in_array( $post->post_type, array( 'story', 'issue', 'photo_essay' ) ) ) {
 		$new_template = locate_template( array( get_version_file_path( 'single-' . $post->post_type . '.php' ) ) );
@@ -157,6 +184,7 @@ function by_version_template( $template ) {
 	if ( !empty( $new_template ) ) {
 		return $new_template;
 	}
+
 	return $template;
 }
 add_filter( 'template_include', 'by_version_template', 99 );
@@ -195,27 +223,6 @@ function get_version_footer( $template_name='' ) {
 	$new_template = locate_template( array( get_version_file_path( 'footer' . $template_name . '.php' ) ) );
 	if ( !empty( $new_template ) ) {
 		return load_template( $new_template );
-	}
-}
-
-
-/**
- * Loads front-page.php or home.php using the relevant version's template.
- * Falls back to loading root index.php if no templates are found.
- **/
-function get_version_front_page() {
-	$new_template_front = locate_template( array( get_version_file_path( 'front-page.php' ) ) );
-	$new_template_home = locate_template( array( get_version_file_path( 'home.php' ) ) );
-
-	if ( !empty( $new_template_front ) ) {
-		return load_template( $new_template_front );
-	}
-	elseif ( !empty( $new_template_home ) ) {
-		return load_template( $new_template_home );
-	}
-	else {
-		// something is very wrong--fall back to root index.php
-		return load_template( get_stylesheet_directory() . '/index.php' );
 	}
 }
 
@@ -443,7 +450,24 @@ function get_featured_image_url($id, $size=null) {
  */
 function get_theme_option($key) {
 	global $theme_options;
-	return isset($theme_options[$key]) ? $theme_options[$key] : NULL;
+
+	// Added switch case in v6.0.0 for backward compatibility
+	// with UCF Social plugin:
+	switch ( $key ) {
+		case 'fb_url':
+			return get_option( 'ucf_social_facebook_url' );
+		case 'twitter_url':
+			return get_option( 'ucf_social_twitter_url' );
+		case 'instagram_url':
+			return get_option( 'ucf_social_instagram_url' );
+		case 'youtube_url':
+			return get_option( 'ucf_social_youtube_url' );
+		case 'flickr_url':
+		case 'share_url':
+			return null;
+		default:
+			return isset( $theme_options[$key] ) ? $theme_options[$key] : null;
+	}
 }
 
 
@@ -887,11 +911,18 @@ add_filter('wp_get_attachment_url', 'protocol_relative_attachment_url');
 
 /**
  * Prevent WordPress from wrapping images with captions with a
- * [caption] shortcode.
+ * [caption] shortcode in versions 5-.
  **/
-add_filter('disable_captions', function( $a ) {
-	return true;
-});
+function pegasus_disable_captions() {
+    $version = get_relevant_version();
+
+	if ( $version <= 5 ) {
+		return true;
+	}
+
+	return false;
+}
+add_filter( 'disable_captions', 'pegasus_disable_captions' );
 
 
 /**
@@ -983,7 +1014,13 @@ function display_markup_or_template($post) {
 		else {
 			// Newer stories without a value should assume 'default' template
 			add_filter( 'the_content', 'kill_empty_p_tags', 999 );
-			$filename = 'templates/' . $post->post_type . '/default.php';
+
+			if ( get_page_template_slug( $post ) === 'template-fullwidth.php' ) {
+				$filename = 'templates/' . $post->post_type . '/full-width-story.php';
+			} else {
+				$filename = 'templates/' . $post->post_type . '/default.php';
+			}
+
 			$template = get_version_file_path( $filename, get_relevant_version( $post ) );
 			require_once( $template );
 		}
@@ -1285,239 +1322,6 @@ function get_front_page_story_thumbnail_id( $story ) {
 	return $thumbnail_id;
 }
 
-
-/**
- * Displays a single story on the front page.
- **/
-function display_front_page_story( $story, $css_class='', $show_vertical=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
-	if ( !$story ) { return false; }
-
-	$thumbnail = null;
-	$thumbnail_id = get_front_page_story_thumbnail_id( $story );
-
-	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image(
-			$thumbnail_id,
-			$thumbnail_size,
-			false,
-			array(
-				'class' => 'fp-feature-img center-block img-responsive',
-				'alt' => '' // Intentionally blank to avoid redundant story title announcement
-			)
-		);
-	}
-
-	$title = wptexturize( $story->post_title );
-
-	$description = '';
-	if ( $story_description = get_post_meta( $story->ID, 'story_description', true ) ) {
-		$description = wptexturize( strip_tags( $story_description, '<b><em><i><u><strong>' ) );
-	}
-	elseif ( $story_subtitle = get_post_meta( $story->ID, 'story_subtitle', true ) ) {
-		$description = wptexturize( strip_tags( $story_subtitle, '<b><em><i><u><strong>' ) );
-	}
-
-	$vertical = null;
-	if ( $show_vertical ) {
-		$vertical = get_the_category( $story->ID );
-		if ( $vertical ) {
-			$vertical = $vertical[0];
-			$vertical = wptexturize( $vertical->name );
-		}
-	}
-
-	ob_start();
-?>
-<article class="fp-feature <?php echo $css_class; ?>">
-	<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
-		<?php if ( $thumbnail ): ?>
-		<div class="fp-feature-img-wrap">
-			<?php echo $thumbnail; ?>
-
-			<?php if ( $show_vertical && $vertical ): ?>
-			<span class="fp-vertical">
-				<?php echo $vertical; ?>
-			</span>
-			<?php endif; ?>
-		</div>
-		<?php endif; ?>
-	</a>
-	<div class="fp-feature-text-wrap">
-		<<?php echo $heading; ?> class="fp-feature-title">
-			<a class="fp-feature-link" href="<?php echo get_permalink( $story->ID ); ?>">
-				<?php echo $title; ?>
-			</a>
-		</<?php echo $heading; ?>>
-		<div class="fp-feature-description">
-			<?php echo $description; ?>
-		</div>
-	</div>
-</article>
-<?php 	return ob_get_clean();
-}
-
-
-/**
- * Displays a single Today article on the front page.
- **/
-function display_front_page_today_story( $article ) {
-	$url = $article->get_link();
-	$title = $article->get_title();
-	$publish_date = $article->get_date('m/d');
-
-	ob_start();
-?>
-<article class="fp-today-feed-item">
-	<a class="fp-today-item-link" href="<?php echo $url; ?>">
-		<div class="publish-date"><?php echo $publish_date; ?></div>
-		<?php echo $title; ?>
-	</a>
-</article>
-<?php 	return ob_get_clean();
-}
-
-
-/**
- * Displays a single event item on the front page.
- **/
-function display_front_page_event( $event ) {
-	$start = strtotime( $event['starts'] );
-	$description = substr( strip_tags( $event['description'] ), 0, 250 );
-	if ( strlen( $description ) == 250 ) {
-		$description .= '...';
-	}
-
-	ob_start();
-?>
-<div class="fp-event">
-	<div class="fp-event-when">
-		<span class="fp-event-day"><?php echo date( 'D', $start ); ?></span>
-		<span class="fp-event-date"><?php echo date( 'd', $start ); ?></span>
-		<span class="fp-event-month"><?php echo date( 'M', $start ); ?></span>
-	</div>
-	<div class="fp-event-content">
-		<span class="fp-vertical"><?php echo $event['category']; ?></span>
-		<span class="fp-event-title">
-			<a class="fp-event-link" href="<?php echo $event['url']; ?>"><?php echo $event['title']; ?></a>
-		</span>
-		<div class="fp-event-description">
-			<?php echo $description; ?>
-		</div>
-	</div>
-</div>
-<?php 	return ob_get_clean();
-}
-
-
-/**
- * Displays a single featured gallery on the front page.
- **/
-function display_front_page_gallery( $gallery, $css_class='' ) {
-	if ( !$gallery ) { return false; }
-
-	$title = wptexturize( $gallery->post_title );
-
-	$vertical = get_the_category( $gallery->ID );
-	if ( $vertical ) {
-		$vertical = $vertical[0];
-		$vertical = wptexturize( $vertical->name );
-	}
-
-	$thumbnail = null;
-	if ( get_relevant_version( $gallery ) >= 5 ) {
-		// Version 5+: fetch featured image ID
-		$thumbnail_id = get_post_thumbnail_id( $gallery );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail-3x2';
-	} else {
-		// Version 4 and prior: get the ID from the
-		// `story_frontpage_gallery_thumb` meta field
-		$thumbnail_id = intval( get_post_meta( $gallery->ID, 'story_frontpage_gallery_thumb', true ) );
-		$thumbnail_size = 'frontpage-featured-gallery-thumbnail';
-	}
-
-	if ( $thumbnail_id ) {
-		$thumbnail = wp_get_attachment_image(
-			$thumbnail_id,
-			$thumbnail_size,
-			false,
-			array(
-				'class' => 'img-responsive center-block fp-gallery-img',
-				'alt' => '' // Intentionally blank to avoid redundant story title announcement
-			)
-		);
-	}
-
-	ob_start();
-?>
-	<article class="fp-gallery <?php echo $css_class; ?>">
-		<a class="fp-gallery-link" href="<?php echo get_permalink( $gallery->ID ); ?>">
-			<h2 class="fp-heading fp-gallery-heading"><?php echo $title; ?></h2><?php if ( $vertical ): ?><span class="fp-vertical"><?php echo $vertical; ?></span><?php endif; ?>
-			<?php if ( $thumbnail ): ?>
-				<?php echo $thumbnail; ?>
-			<?php endif; ?>
-		</a>
-	</article>
-<?php 	return ob_get_clean();
-}
-
-
-/**
-* Displays social buttons (Facebook, Twitter, G+) for front page header.
-*
-* @return string
-* @author RJ Bruneel
-**/
-function display_social_header() {
-	global $wp;
-
-	$link = home_url( add_query_arg( array(), $wp->request ) );
-	$fb_url = 'http://www.facebook.com/sharer.php?u=' . $link;
-	$twitter_url = 'https://twitter.com/intent/tweet?text=' . urlencode( 'Pegasus Magazine' ) . '&url=' . $link;
-
-	ob_start();
-?>
-	<span class="social-icon-list-heading">Share</span>
-	<ul class="social-icon-list">
-		<li class="social-icon-list-item">
-			<a target="_blank" class="sprite facebook" href="<?php echo $fb_url; ?>">Share Pegasus Magazine on Facebook</a>
-		</li>
-		<li class="social-icon-list-item">
-			<a target="_blank" class="sprite twitter" href="<?php echo $twitter_url; ?>">Share Pegasus Magazine on Twitter</a>
-		</li>
-	</ul>
-<?php     return ob_get_clean();
-}
-
-
-/**
- * Displays the current issue's thumbnail and description, for use in the
- * "In This Issue" section of the front page.
- **/
-function display_front_page_issue_details() {
-	$current_issue = get_current_issue();
-	$current_issue_title = wptexturize( $current_issue->post_title );
-	$current_issue_thumbnail = get_featured_image_url( $current_issue->ID, 'full' );
-	$current_issue_cover_story = get_post_meta( $current_issue->ID, 'issue_cover_story', true );
-
-	ob_start();
-?>
-	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
-
-		<?php if ( $current_issue_thumbnail ): ?>
-		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">
-		<?php endif; ?>
-	</a>
-
-	<?php if ( $current_issue_title ): ?>
-	<div class="fp-issue-title">
-		<?php echo $current_issue_title; ?>
-	</div>
-	<?php endif; ?>
-<?php 	return ob_get_clean();
-}
-
-
 /**
  * Returns an array of Story objects for use in the "In This Issue" section of
  * the front page.
@@ -1593,17 +1397,35 @@ function active_issue_endpoint_callback( $request ) {
 	return new WP_REST_Response( $retval, 200 );
 }
 
+
 /****************************************************************************
  *
- * END site-level functions.  Don't add anything else below this line.
+ * END site-level functions. Don't add anything else below this line.
  *
- * START version-level functions here
+ * START version-level functions here.
  *
  ****************************************************************************/
 
+
+/**
+ * Requires certain functions files depending on what the relevant
+ * version is set to.
+ *
+ * This was updated in v6.0.0 in order to ensure backwards-compatibility
+ * with stories/pages when the relevant version is below 6.
+ **/
 function require_version_functions() {
+	$functions_dir = trailingslashit( get_template_directory() ) . 'functions/';
+	$version = get_relevant_version();
+
+	if ( $version <= 5 ) {
+		$functions_dir = trailingslashit( get_template_directory() ) . 'versions/v5/functions/';
+	}
+
+	require_once( $functions_dir . 'admin.php' );
+	require_once( $functions_dir . 'feeds.php' );
+	require_once( $functions_dir . 'display-logic.php' );
 	require_once( get_version_file_path( 'functions.php' ) );
 }
-add_action( 'init', 'require_version_functions' );
 
-?>
+add_action( 'init', 'require_version_functions', 5 );

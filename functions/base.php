@@ -14,7 +14,7 @@ class ArgumentException extends Exception {}
 
 class Config {
 	static
-		$body_classes      = array(), // Body classes (WILL BE DEPRECATED in v5)
+		$body_classes      = array(), // Body classes (DEPRECATED in v6)
 		$theme_settings    = array(), // Theme settings
 		$custom_post_types = array(), // Custom post types to register
 		$custom_taxonomies = array(), // Custom taxonomies to register
@@ -66,6 +66,7 @@ class Config {
 			'name'  => self::generate_name( $attr['src'], '.css' ),
 			'media' => 'all',
 			'admin' => False,
+			'deps'  => null
 		);
 		$attr = array_merge( $default, $attr );
 
@@ -78,7 +79,7 @@ class Config {
 			( !$attr['admin'] and !$is_admin )
 		) {
 			wp_deregister_style( $attr['name'] );
-			wp_enqueue_style( $attr['name'], $attr['src'], null, $cache_bust, $attr['media'] );
+			wp_enqueue_style( $attr['name'], $attr['src'], $attr['deps'], $cache_bust, $attr['media'] );
 		}
 	}
 
@@ -109,6 +110,7 @@ class Config {
 		$default = array(
 			'name'  => self::generate_name( $attr['src'], '.js' ),
 			'admin' => False,
+			'deps'  => null
 		);
 		$attr = array_merge( $default, $attr );
 
@@ -122,7 +124,7 @@ class Config {
 		) {
 			// Override previously defined scripts
 			wp_deregister_script( $attr['name'] );
-			wp_enqueue_script( $attr['name'], $attr['src'], null, $cache_bust, True );
+			wp_enqueue_script( $attr['name'], $attr['src'], $attr['deps'], $cache_bust, True );
 		}
 	}
 }
@@ -1078,7 +1080,7 @@ function header_links() {
 
 /**
  * Returns string to use for value of class attribute on body tag.
- * WILL BE DEPRECATED in v5; use WP's built-in body_class() instead.
+ * DEPRECATED in v6; use WP's built-in body_class() instead.
  **/
 function body_classes(){
 	$classes = Config::$body_classes;

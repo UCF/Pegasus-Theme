@@ -1,184 +1,167 @@
+/* eslint-disable sort-vars */
 // Define globals for JSHint validation:
-/* global send_to_editor, tinymce, wysihtml5, wp */
+/* global send_to_editor, tinymce, wysihtml5, wp, THEME_CSS_URL, USE_SC_INTERFACE */
 
 
 // Adds filter method to array objects
 // https://developer.mozilla.org/en/JavaScript/Reference/Global_Objects/Array/filter
 
-/* jshint ignore:start */
-if (!Array.prototype.filter) {
-  Array.prototype.filter = function(a) {
-    "use strict";
-    if (this === void 0 || this === null) throw new TypeError;
-    var b = Object(this);
-    var c = b.length >>> 0;
-    if (typeof a !== "function") throw new TypeError;
-    var d = [];
-    var e = arguments[1];
-    for (var f = 0; f < c; f++) {
-      if (f in b) {
-        var g = b[f];
-        if (a.call(e, g, f, b)) d.push(g)
-      }
-    }
-    return d
+
+const WebcomAdmin = {};
+
+
+WebcomAdmin.__init__ = function ($) {
+  // Allows forms with input fields of type file to upload files
+  $('input[type="file"]').parents('form').attr('enctype', 'multipart/form-data');
+  $('input[type="file"]').parents('form').attr('encoding', 'multipart/form-data');
+
+  // Initialize all the color selectors
+  const colorInput = $('.shortcode-color,#issue_default_color,#story_default_color,#story_default_header_img_background_color');
+  if (colorInput.length) {
+    colorInput.iris();
   }
-}
-/* jshint ignore:end */
-
-
-var WebcomAdmin = {};
-
-
-WebcomAdmin.__init__ = function($){
-	// Allows forms with input fields of type file to upload files
-	$('input[type="file"]').parents('form').attr('enctype','multipart/form-data');
-	$('input[type="file"]').parents('form').attr('encoding','multipart/form-data');
-
-    // Initialize all the color selectors
-    var colorInput = $('.shortcode-color,#issue_default_color,#story_default_color,#story_default_header_img_background_color');
-    if (colorInput.length) {
-      colorInput.iris();
-    }
 };
 
 
-WebcomAdmin.shortcodeInterfaceTool = function($) {
-  var cls = this;
-  cls.shortcodeForm = $('#select-shortcode-form');
-  cls.shortcodeButton = cls.shortcodeForm.find('button');
-  cls.shortcodeSelect = cls.shortcodeForm.find('#shortcode-select');
-  cls.shortcodeEditors = cls.shortcodeForm.find('#shortcode-editors');
-  cls.shortcodeDescriptions = cls.shortcodeForm.find('#shortcode-descriptions');
+WebcomAdmin.shortcodeInterfaceTool = function ($) {
+  this.shortcodeForm = $('#select-shortcode-form');
+  this.shortcodeButton = this.shortcodeForm.find('button');
+  this.shortcodeSelect = this.shortcodeForm.find('#shortcode-select');
+  this.shortcodeEditors = this.shortcodeForm.find('#shortcode-editors');
+  this.shortcodeDescriptions = this.shortcodeForm.find('#shortcode-descriptions');
 
-  cls.shortcodeInsert = function(shortcode, parameters, enclosingText) {
-    var text = '[' + shortcode;
+  this.shortcodeInsert = (shortcode, parameters, enclosingText) => {
+    let text = `[${shortcode}`;
 
     if (parameters) {
-      for (var key in parameters) {
-        text += " " + key + "=\"" + parameters[key] + "\"";
+      // eslint-disable-next-line guard-for-in
+      for (const key in parameters) {
+        text += ` ${key}="${parameters[key]}"`;
       }
     }
 
-    text +=  "]";
+    text +=  ']';
     if (enclosingText) {
       text += enclosingText;
     }
-    text += "[/" + shortcode + "]";
+    text += `[/${shortcode}]`;
 
     send_to_editor(text);
   };
 
-  cls.shortcodeAction = function() {
-    var selected = cls.shortcodeSelect.find(':selected');
-    if (selected.length < 1 || selected.val() === '') { return; }
+  this.shortcodeAction = () => {
+    const selected = this.shortcodeSelect.find(':selected');
+    if (selected.length < 1 || selected.val() === '') {
+      return;
+    }
 
-    var editor = cls.shortcodeEditors.find('li.shortcode-' + cls.shortcodeSelected);
-    var dummyText = selected.attr('data-enclosing') || null;
-    var highlightedWysiwygText = tinymce.activeEditor ? tinymce.activeEditor.selection.getContent() : null;
-    var enclosingText = null;
+    const editor = this.shortcodeEditors.find(`li.shortcode-${this.shortcodeSelected}`);
+    const dummyText = selected.attr('data-enclosing') || null;
+    const highlightedWysiwygText = tinymce.activeEditor ? tinymce.activeEditor.selection.getContent() : null;
+    let enclosingText = null;
 
     if (dummyText && highlightedWysiwygText) {
       enclosingText = highlightedWysiwygText;
-    }
-    else {
+    } else {
       enclosingText = dummyText;
     }
 
-    var parameters = {};
+    const parameters = {};
     if (editor.length === 1) {
-      editor.children().each(function() {
-        var formElement = $(this);
-        switch(formElement.prop('tagName')) {
+      editor.children().each(function () {
+        const formElement = $(this);
+        switch (formElement.prop('tagName')) {
           case 'INPUT':
           case 'TEXTAREA':
           case 'SELECT':
             parameters[formElement.attr('data-parameter')] = formElement.val();
             break;
-          }
+          default:
+            break;
+        }
       });
     }
 
-    cls.shortcodeInsert(selected.val(), parameters, enclosingText);
+    this.shortcodeInsert(selected.val(), parameters, enclosingText);
   };
 
-  cls.shortcodeSelectAction = function() {
-    cls.shortcodeSelected = cls.shortcodeSelect.val();
+  this.shortcodeSelectAction = () => {
+    this.shortcodeSelected = this.shortcodeSelect.val();
 
-    cls.shortcodeEditors.find('li').hide();
-    cls.shortcodeDescriptions.find('li').hide();
-    cls.shortcodeEditors.find('.shortcode-' + cls.shortcodeSelected).show();
-    cls.shortcodeDescriptions.find('.shortcode-' + cls.shortcodeSelected).show();
+    this.shortcodeEditors.find('li').hide();
+    this.shortcodeDescriptions.find('li').hide();
+    this.shortcodeEditors.find(`.shortcode-${this.shortcodeSelected}`).show();
+    this.shortcodeDescriptions.find(`.shortcode-${this.shortcodeSelected}`).show();
   };
 
-  cls.shortcodeSelectAction();
+  this.shortcodeSelectAction();
 
   // Option change for select, cause action
-  cls.shortcodeSelect.change(cls.shortcodeSelectAction);
+  this.shortcodeSelect.change(this.shortcodeSelectAction);
 
   // Button to insert shortcode
-  cls.shortcodeButton.click(cls.shortcodeAction);
+  this.shortcodeButton.click(this.shortcodeAction);
 };
 
 
-WebcomAdmin.themeOptions = function($){
-	var cls      = this;
-	cls.active   = null;
-	cls.parent   = $('.i-am-a-fancy-admin');
-	cls.sections = $('.i-am-a-fancy-admin .fields .section');
-	cls.buttons  = $('.i-am-a-fancy-admin .sections .section a');
-  cls.buttonWrap = $('.i-am-a-fancy-admin .sections');
-  cls.sectionLinks = $('.i-am-a-fancy-admin .fields .section a[href^="#"]');
+WebcomAdmin.themeOptions = function ($) {
+  this.active   = null;
+  this.parent   = $('.i-am-a-fancy-admin');
+  this.sections = $('.i-am-a-fancy-admin .fields .section');
+  this.buttons  = $('.i-am-a-fancy-admin .sections .section a');
+  this.buttonWrap = $('.i-am-a-fancy-admin .sections');
+  this.sectionLinks = $('.i-am-a-fancy-admin .fields .section a[href^="#"]');
 
-	this.showSection = function(){
-		var button  = $(this);
-		var href    = button.attr('href');
-		var section = $(href);
+  this.showSection = (e) => {
+    const button  = $(e.target);
+    const href    = button.attr('href');
+    const section = $(href);
 
-    if (cls.buttonWrap.find('.section a[href="'+href+'"]') && section.is(cls.sections)) {
+    if (this.buttonWrap.find(`.section a[href="${href}"]`) && section.is(this.sections)) {
       // Switch active styles
-      cls.buttons.removeClass('active');
+      this.buttons.removeClass('active');
       button.addClass('active');
 
-      cls.active.hide();
-      cls.active = section;
-      cls.active.show();
+      this.active.hide();
+      this.active = section;
+      this.active.show();
 
-      history.pushState({}, "", button.attr('href'));
-      var http_referrer = cls.parent.find('input[name="_wp_http_referer"]');
-      http_referrer.val(window.location);
-      return false;
+      history.pushState({}, '', button.attr('href'));
+      const httpReferrer = this.parent.find('input[name="_wp_http_referer"]');
+      httpReferrer.val(window.location);
     }
-	};
 
-	this.__init__ = function(){
-		cls.active = cls.sections.first();
-		cls.sections.not(cls.active).hide();
-		cls.buttons.first().addClass('active');
-		cls.buttons.click(this.showSection);
-    cls.sectionLinks.click(this.showSection);
+    return false;
+  };
 
-		if (window.location.hash){
-			cls.buttons.filter('[href="' + window.location.hash + '"]').click();
-		}
+  this.__init__ = () => {
+    this.active = this.sections.first();
+    this.sections.not(this.active).hide();
+    this.buttons.first().addClass('active');
+    this.buttons.click(this.showSection);
+    this.sectionLinks.click(this.showSection);
 
-		var fadeTimer = setInterval(function(){
-			$('.updated').fadeOut(1000);
-			clearInterval(fadeTimer);
-		}, 2000);
-	};
+    if (window.location.hash) {
+      this.buttons.filter(`[href="${window.location.hash}"]`).click();
+    }
 
-	if (cls.parent.length > 0){
-		cls.__init__();
-	}
+    const fadeTimer = setInterval(() =>  {
+      $('.updated').fadeOut(1000);
+      clearInterval(fadeTimer);
+    }, 2000);
+  };
+
+  if (this.parent.length > 0) {
+    this.__init__();
+  }
 };
 
 
-WebcomAdmin.wysiwygFields = function($) {
-  var $toolbars = $('.wysihtml5-editor');
+WebcomAdmin.wysiwygFields = function ($) {
+  const $toolbars = $('.wysihtml5-editor');
 
   // White list of tags to allow
-  var wysihtml5ParserRules = {
+  const wysihtml5ParserRules = {
     tags: {
       br:     {},
       strong: {},
@@ -187,46 +170,48 @@ WebcomAdmin.wysiwygFields = function($) {
       em:     {},
       u:      {},
       a:      {
+        // eslint-disable-next-line camelcase
         set_attributes: {
-          target: "_blank"
+          target: '_blank'
         },
+        // eslint-disable-next-line camelcase
         check_attributes: {
-          href:   "url" // important to avoid XSS
+          href:   'url' // important to avoid XSS
         }
       }
     }
   };
 
-  $toolbars.each(function() {
-    var $toolbar = $(this),
-        toolbarID = $toolbar.attr('id'),
-        editor;
+  $toolbars.each(function () {
+    const $toolbar = $(this),
+      toolbarID = $toolbar.attr('id');
     // Theme Option field IDs contain brackets, which are invalid markup;
     // getting the textarea via vanilla js and passing the whole node to
     // wysihtml5 is easier than trying to pass its ID:
-    var textarea = document.getElementById($toolbar.attr('data-textarea-id'));
+    const textarea = document.getElementById($toolbar.attr('data-textarea-id'));
 
-      // Initialize the wysihtml5 editor
-      if ($(textarea).length > 0) {
-          var editor = new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
-              toolbar: toolbarID, // id of toolbar element
-              parserRules: wysihtml5ParserRules, // defined in parser rules set
-          });
-      }
+    // Initialize the wysihtml5 editor
+    if ($(textarea).length > 0) {
+      // eslint-disable-next-line no-new
+      new wysihtml5.Editor(textarea, { // id of textarea element or DOM node
+        toolbar: toolbarID, // id of toolbar element
+        parserRules: wysihtml5ParserRules // defined in parser rules set
+      });
+    }
   });
 };
 
 
-WebcomAdmin.sliderMetaBoxes = function($) {
+WebcomAdmin.sliderMetaBoxes = function ($) {
   // Slider Meta Box Updates:
   // (only run this code if we're on a screen with #slider-slides-settings-basic;
   // i.e. if we're on a slider edit screen:
   if ($('body.post-type-photo_essay').length > 0) {
-    var frame;
-    var slideCountWidget = $('#slider-slides-settings-count'),
-        slideCountField = $('input#ss_slider_slidecount'),
-        slideOrderField = $('input#ss_slider_slideorder'),
-        keyField = 'input[name^="ss_slide_image["]'; // Related to some arbitrary unique field in each slide, from which an ID can be grabbed
+    let frame;
+    const slideCountWidget = $('#slider-slides-settings-count'),
+      slideCountField = $('input#ss_slider_slidecount'),
+      slideOrderField = $('input#ss_slider_slideorder'),
+      keyField = 'input[name^="ss_slide_image["]'; // Related to some arbitrary unique field in each slide, from which an ID can be grabbed
 
     // Admin panel adjustments for Photo Essay previews
     // Autosaving Photo Essays kills serialized data (which we use for slide images/
@@ -239,27 +224,28 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     // Returns all jquery objects that correspond to a single duplicate-able slide.
     // Necessary for determining slide count + order.
     // This should be customized per site.
-    var getAllSlides = function() {
+    const getAllSlides = function () {
       return $('li.custom_repeatable.postbox');
     };
 
     // Return all slides that have enough content to be deemed not empty
-    var getValidSlides = function() {
-      var slides = [];
-      var allSlides = getAllSlides();
+    const getValidSlides = function () {
+      const slides = [];
+      const allSlides = getAllSlides();
 
-      $.each(allSlides, function() {
-        var slide = $(this),
-            inputID = getInputID(slide.find(keyField).attr('name')),
-            inputs = slide.find('input[name*="['+inputID+']"]'),
-            textareas = slide.find('textarea[name*="['+inputID+']"]'),
-            fields = inputs.add(textareas);
+      $.each(allSlides, function () {
+        const slide = $(this),
+          inputID = getInputID(slide.find(keyField).attr('name')),
+          inputs = slide.find(`input[name*="[${inputID}]"]`),
+          textareas = slide.find(`textarea[name*="[${inputID}]"]`),
+          fields = inputs.add(textareas);
 
-        $.each(fields, function() {
-          if (($(this).val() && typeof $(this).val() !== 'undefined' && $(this).val !== '') || $(this).hasClass('has-value')) {
+        $.each(fields, function () {
+          if ($(this).val() && typeof $(this).val() !== 'undefined' && $(this).val !== '' || $(this).hasClass('has-value')) {
             slides.push(slide);
-            return false;
           }
+
+          return false;
         });
       });
       return slides;
@@ -268,23 +254,23 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     // Parses a string value to extract an input ID.
     // Assumes passed value is an input name/id, structured as "fieldname[id]".
     // Returns an input ID.
-    var getInputID = function(string) {
-      var inputID = string.split('[')[1];
+    const getInputID = function (string) {
+      let inputID = string.split('[')[1];
       inputID = inputID.substr(0, inputID.length - 1);
 
       return inputID;
     };
 
     // Function that updates Slide Count value:
-    var updateSlideCount = function() {
-      var validSlides = getValidSlides();
+    const updateSlideCount = function () {
+      const validSlides = getValidSlides();
 
       if (slideCountWidget.is('hidden')) {
         slideCountWidget.show();
       }
 
-      var slideCount = validSlides.length;
-      //alert('slideCount is: '+ slideCount + '; input value is: ' + SlideCountField.attr('value'));
+      const slideCount = validSlides.length;
+      // alert('slideCount is: '+ slideCount + '; input value is: ' + SlideCountField.attr('value'));
       slideCountField.attr('value', slideCount);
 
       if (slideCountWidget.is('visible')) {
@@ -294,14 +280,14 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
 
     // Update the Slide Sort Order:
-    var updateSliderSortOrder = function() {
-      var sortOrder = [];
-      var orderString = '';
-      var validSlides = getValidSlides();
+    const updateSliderSortOrder = function () {
+      const sortOrder = [];
+      let orderString = '';
+      const validSlides = getValidSlides();
 
-      $.each(validSlides, function() {
-        var fieldName = $(this).find('input[name*="["], textarea[name*="["]')[0].getAttribute('name');
-        var inputID = getInputID(fieldName);
+      $.each(validSlides, function () {
+        const fieldName = $(this).find('input[name*="["], textarea[name*="["]')[0].getAttribute('name');
+        const inputID = getInputID(fieldName);
         sortOrder[sortOrder.length] = inputID;
       });
 
@@ -309,10 +295,10 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         slideCountWidget.show();
       }
 
-      $.each(sortOrder, function(index, value) {
+      $.each(sortOrder, (index, value) => {
         // make sure we only have number values (i.e. only slider widgets):
         if (!isNaN(value)) {
-          orderString += value + ",";
+          orderString += `${value},`;
         }
       });
       // add each value to Slide Order field value:
@@ -333,48 +319,51 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     // Update slide count when a slide's content changes:
     $(getAllSlides())
       .find('input, textarea')
-        .on('change', function() {
-          updateSlideCount();
-          updateSliderSortOrder();
-        });
+      .on('change', () => {
+        updateSlideCount();
+        updateSliderSortOrder();
+      });
 
-        // White list of tags to allow
-        var wysihtml5ParserRules = {
-            classes: {
-                "wysiwyg-text-align-center": {}
-            },
-            tags: {
-                br:     {},
-                strong: {},
-                b:      {},
-                i:      {},
-                em:     {},
-                u:      {},
-                div:    {},
-                a:      {
-                    set_attributes: {
-                        target: "_blank"
-                    },
-                    check_attributes: {
-                        href:   "url" // important to avoid XSS
-                    }
-                }
-            }
-        };
+    // White list of tags to allow
+    const wysihtml5ParserRules = {
+      classes: {
+        'wysiwyg-text-align-center': {}
+      },
+      tags: {
+        br:     {},
+        strong: {},
+        b:      {},
+        i:      {},
+        em:     {},
+        u:      {},
+        div:    {},
+        a:      {
+          // eslint-disable-next-line camelcase
+          set_attributes: {
+            target: '_blank'
+          },
+          // eslint-disable-next-line camelcase
+          check_attributes: {
+            href:   'url' // important to avoid XSS
+          }
+        }
+      }
+    };
 
-    $(getAllSlides()).each(function() {
-      var slideContent = $(this);
+    $(getAllSlides()).each(function () {
+      const slideContent = $(this);
       WebcomAdmin.sliderHeaderTitleAction($, slideContent);
 
       // Initialize the wysihtml5 editor
       // DO NOT initialize the hidden clone object as it is initialize when slide is created
-      if (slideContent.find('div[id^="wysihtml5-toolbar["]').attr('id').indexOf("xxxxxx") === -1) {
-        var toolbar = slideContent.find('div[id^="wysihtml5-toolbar["]');
-        var textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
-        var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-            toolbar: toolbar.attr('id'), // id of toolbar element
-            stylesheets: [THEME_CSS_URL + "/editor.css"],
-            parserRules: wysihtml5ParserRules, // defined in parser rules set
+      if (slideContent.find('div[id^="wysihtml5-toolbar["]').attr('id').indexOf('xxxxxx') === -1) {
+        const toolbar = slideContent.find('div[id^="wysihtml5-toolbar["]');
+        const textarea = slideContent.find('textarea[id^="ss_slide_caption["]');
+        // eslint-disable-next-line no-new
+        new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+          toolbar: toolbar.attr('id'), // id of toolbar element
+          stylesheets: [`${THEME_CSS_URL}/wysihtml5.css`],
+          parserRules: wysihtml5ParserRules // defined in parser rules set
         });
       }
     });
@@ -383,66 +372,68 @@ WebcomAdmin.sliderMetaBoxes = function($) {
     $('#ss_slides_all').sortable({
       handle : 'h3.hndle',
       placeholder : 'sortable-placeholder',
-      sort : function() {
-        $('.sortable-placeholder').height( $(this).find('.ui-sortable-helper').height() );
+      sort : function () {
+        $('.sortable-placeholder').height($(this).find('.ui-sortable-helper').height());
       },
-      stop : function ( event, ui ) {
-        var html5iframe = $(ui.item).find('iframe.wysihtml5-sandbox'),
-            toolbar = $(ui.item).find('div[id^="wysihtml5-toolbar["]'),
-            textarea = $(ui.item).find('textarea[id^="ss_slide_caption["]');
+      stop : function (event, ui) {
+        const html5iframe = $(ui.item).find('iframe.wysihtml5-sandbox'),
+          toolbar = $(ui.item).find('div[id^="wysihtml5-toolbar["]'),
+          textarea = $(ui.item).find('textarea[id^="ss_slide_caption["]');
 
         textarea.show();
         html5iframe.remove();
         toolbar.hide();
 
-        var editor = new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
-            toolbar: toolbar.attr('id'), // id of toolbar element
-            stylesheets: [THEME_CSS_URL + "editor.css"],
-            parserRules: wysihtml5ParserRules, // defined in parser rules set
+        // eslint-disable-next-line no-new
+        new wysihtml5.Editor(textarea.attr('id'), { // id of textarea element
+          toolbar: toolbar.attr('id'), // id of toolbar element
+          stylesheets: [`${THEME_CSS_URL}wysihtml5.css`],
+          parserRules: wysihtml5ParserRules // defined in parser rules set
         });
       },
-      update : function( event, ui ) {
-          updateSliderSortOrder();
+      update : function () {
+        updateSliderSortOrder();
       },
       tolerance :'pointer'
     });
 
 
     // Toggle slide with header click
-    $('#slider_slides').delegate('.custom_repeatable .hndle', 'click', function() {
-      $(this).siblings('.inside').toggle().end().parent().toggleClass('closed');
+    $('#slider_slides').on('click', '.custom_repeatable .hndle', function () {
+      $(this).siblings('.inside').toggle().end().parent()
+        .toggleClass('closed');
     });
 
 
     // Create a new slide
-    var createSlide = function(attachment) {
-      var newSlideSibling = $('#ss_slides_all li.postbox:last-child'),
-          slideCloner = $('#ss_slides_all li.cloner'),
-          newSlide = slideCloner.clone(true).removeClass('cloner');
+    const createSlide = function (attachment) {
+      const newSlideSibling = $('#ss_slides_all li.postbox:last-child'),
+        slideCloner = $('#ss_slides_all li.cloner'),
+        newSlide = slideCloner.clone(true).removeClass('cloner');
 
-      var attachment_id = attachment.attributes.id,
-          attachment_filename = attachment.attributes.filename,
-          attachment_url = attachment.attributes.url,
-          attachment_alt = attachment.attributes.alt,
-          attachment_title = attachment.attributes.title,
-          attachment_caption = attachment.attributes.caption;
+      const attachmentId = attachment.attributes.id,
+        attachmentFilename = attachment.attributes.filename,
+        attachmentUrl = attachment.attributes.url,
+        attachmentTitle = attachment.attributes.title,
+        attachmentCaption = attachment.attributes.caption;
 
       // Update 'name' attributes
-      $('textarea, input[type="text"], input[type="select"], input[type="file"], input[type="hidden"]', newSlide).val('').attr('name', function(index, name) {
-        return name.replace('xxxxxx', attachment_id);
+      $('textarea, input[type="text"], input[type="select"], input[type="file"], input[type="hidden"]', newSlide).val('').attr('name', (index, name) => {
+        return name.replace('xxxxxx', attachmentId);
       });
-      $('input[type="checkbox"], input[type="radio"]', newSlide).attr('name', function(index, name) {
-        return name.replace('xxxxxx', attachment_id);
+      $('input[type="checkbox"], input[type="radio"]', newSlide).attr('name', (index, name) => {
+        return name.replace('xxxxxx', attachmentId);
       });
       // Update 'for' attributes (in <label>)
-      $('label', newSlide).val('').attr('for', function(index, forval) {
+      $('label', newSlide).val('').attr('for', (index, forval) => {
         if (forval) {
-          return forval.replace('xxxxxx', attachment_id);
+          return forval.replace('xxxxxx', attachmentId);
         }
+        return undefined;
       });
       // Update 'id' attributes
-      $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"], div[id^="wysihtml5-toolbar"]', newSlide).attr('id', function(index, idval) {
-          return idval.replace('xxxxxx', attachment_id);
+      $('textarea, input[type="text"], input[type="select"], input[type="checkbox"], input[type="radio"], div[id^="wysihtml5-toolbar"]', newSlide).attr('id', (index, idval) => {
+        return idval.replace('xxxxxx', attachmentId);
       });
 
       // Remove other existing data from previous slide:
@@ -450,28 +441,29 @@ WebcomAdmin.sliderMetaBoxes = function($) {
       $('input[type="radio"]', newSlide).removeAttr('checked');
 
       // Update slide header title:
-      $('.slide-handle-header', newSlide).text(attachment_title);
+      $('.slide-handle-header', newSlide).text(attachmentTitle);
       WebcomAdmin.sliderHeaderTitleAction($, newSlide);
 
       // Update new slide values with anything made available
       // from the attachment object provided
       $('label[for^="ss_slide_image["]', newSlide)
         .parent('th')
-          .next('td')
-              .find('img')
-                .attr('src', attachment_url)
-                .siblings('span')
-                  .text(attachment_filename);
+        .next('td')
+        .find('img')
+        .attr('src', attachmentUrl)
+        .siblings('span')
+        .text(attachmentFilename);
 
-      $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachment_caption);
-      $('input[id^="file_img_"]', newSlide).attr('value', attachment_id);
+      $('textarea[id^="ss_slide_caption"]', newSlide).attr('value', attachmentCaption);
+      $('input[id^="file_img_"]', newSlide).attr('value', attachmentId);
       newSlide.insertAfter(newSlideSibling).show();
 
-            var editor = new wysihtml5.Editor("ss_slide_caption[" + attachment_id + "]", { // id of textarea element
-              toolbar:      "wysihtml5-toolbar[" + attachment_id + "]", // id of toolbar element
-              stylesheets:  [THEME_CSS_URL + "editor.css"],
-              parserRules:  wysihtml5ParserRules, // defined in parser rules set
-            });
+      // eslint-disable-next-line no-new
+      new wysihtml5.Editor(`ss_slide_caption[${attachmentId}]`, { // id of textarea element
+        toolbar:      `wysihtml5-toolbar[${attachmentId}]`, // id of toolbar element
+        stylesheets: [`${THEME_CSS_URL}wysihtml5.css`],
+        parserRules:  wysihtml5ParserRules // defined in parser rules set
+      });
 
       // Update slide count, order
       updateSlideCount();
@@ -482,9 +474,9 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
 
     // Remove a slide
-    $('.repeatable-remove').on('click', function() {
+    $('.repeatable-remove').on('click', function () {
       $(this).parent().remove();
-      //hideOnlyRemoveBtn();
+      // hideOnlyRemoveBtn();
       updateSlideCount();
       updateSliderSortOrder();
       return false;
@@ -492,7 +484,7 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 
 
     // Handle Media Library modal toggle
-    $('#slide_modal_toggle').on('click', function(event){
+    $('#slide_modal_toggle').on('click', (event) =>  {
       event.preventDefault();
 
       if (!frame) {
@@ -500,14 +492,18 @@ WebcomAdmin.sliderMetaBoxes = function($) {
         frame = wp.media({
           title: 'Select Slide Images',
           multiple: true,
-          library: { type: 'image' },
-          button : { text : 'Create New Slides' }
+          library: {
+            type: 'image'
+          },
+          button : {
+            text : 'Create New Slides'
+          }
         });
-        frame.on('select', function() {
-          var selection = frame.state().get('selection');
-          selection.each(function(attachment) {
-              //console.log(attachment.attributes);
-              createSlide(attachment);
+        frame.on('select', () => {
+          const selection = frame.state().get('selection');
+          selection.each((attachment) => {
+            // console.log(attachment.attributes);
+            createSlide(attachment);
           });
         });
       }
@@ -519,49 +515,51 @@ WebcomAdmin.sliderMetaBoxes = function($) {
 };
 
 
-WebcomAdmin.sliderHeaderTitleAction = function($, field) {
-  $('input[type="text"][id^="ss_slide_title"]', field).unbind().keyup({'slideDiv': field}, function(e) {
-    var titleFieldValue = $(this).val();
-    var slideHeader = $('.slide-handle-header', e.data.slideDiv);
+WebcomAdmin.sliderHeaderTitleAction = function ($, field) {
+  $('input[type="text"][id^="ss_slide_title"]', field).unbind().keyup({
+    slideDiv: field
+  }, function (e) {
+    const titleFieldValue = $(this).val();
+    const slideHeader = $('.slide-handle-header', e.data.slideDiv);
     slideHeader.text(titleFieldValue);
   });
 };
 
 
-WebcomAdmin.storyFieldToggle = function($) {
-  var templateField = $('#story_template');
+WebcomAdmin.storyFieldToggle = function ($) {
+  const templateField = $('#story_template');
 
-  var toggleFields = function(val) {
+  const toggleFields = function (val) {
     if (val === '') {
       val = 'default';
     }
-    var fields = {
-      "defaultFields" : ["story_description", "story_default_font", "story_default_color", "story_default_header_img"],
-      "photo_essayFields": ["story_description", "story_default_font", "story_default_header_img"],
-      "customFields" : ["story_html", "story_stylesheet", "story_javascript", "story_fonts"],
+    const fields = {
+      defaultFields : ['story_description', 'story_default_font', 'story_default_color', 'story_default_header_img'],
+      // eslint-disable-next-line camelcase
+      photo_essayFields: ['story_description', 'story_default_font', 'story_default_header_img'],
+      customFields : ['story_html', 'story_stylesheet', 'story_javascript', 'story_fonts']
     };
-    var fieldsOnKey = val + 'Fields';
-    var fieldsOn = fields[fieldsOnKey];
+    const fieldsOnKey = `${val}Fields`;
+    const fieldsOn = fields[fieldsOnKey];
 
     delete fields[fieldsOnKey];
-    var fieldsOff = fields;
+    const fieldsOff = fields;
 
     if (fieldsOff) {
-      $.each(fieldsOff, function(key, array) {
-        $.each(array, function(k, f) {
-          $('label[for="' + f + '"]').parents('tr').hide();
+      $.each(fieldsOff, (key, array) => {
+        $.each(array, (k, f) => {
+          $(`label[for="${f}"]`).parents('tr').hide();
         });
       });
     }
     if (fieldsOn) {
-      $.each(fieldsOn, function(key, field) {
+      $.each(fieldsOn, (key, field) => {
         if ($.isArray(field)) {
-          $.each(val, function(k, f) {
-            $('label[for="' + f + '"]').parents('tr').fadeIn();
+          $.each(val, (k, f) => {
+            $(`label[for="${f}"]`).parents('tr').fadeIn();
           });
-        }
-        else {
-          $('label[for="' + field + '"]').parents('tr').fadeIn();
+        } else {
+          $(`label[for="${field}"]`).parents('tr').fadeIn();
         }
       });
     }
@@ -571,45 +569,44 @@ WebcomAdmin.storyFieldToggle = function($) {
   toggleFields(templateField.val());
 
   // Toggle fields on Story Template field change
-  templateField.on('change', function() {
+  templateField.on('change', function () {
     toggleFields($(this).val());
   });
 };
 
 
-WebcomAdmin.issueFieldToggle = function($) {
-  var templateField = $('#issue_template');
+WebcomAdmin.issueFieldToggle = function ($) {
+  const templateField = $('#issue_template');
 
-  var toggleFields = function(val) {
+  const toggleFields = function (val) {
     if (val === '') {
       val = 'default';
     }
-    var fields = {
-      "defaultFields" : ["issue_story_1", "issue_story_2", "issue_story_3"],
-      "customFields" : ["issue_html", "issue_stylesheet_home", "issue_javascript_home"],
+    const fields = {
+      defaultFields : ['issue_story_1', 'issue_story_2', 'issue_story_3'],
+      customFields : ['issue_html', 'issue_stylesheet_home', 'issue_javascript_home']
     };
-    var fieldsOnKey = val + 'Fields';
-    var fieldsOn = fields[fieldsOnKey];
+    const fieldsOnKey = `${val}Fields`;
+    const fieldsOn = fields[fieldsOnKey];
 
     delete fields[fieldsOnKey];
-    var fieldsOff = fields;
+    const fieldsOff = fields;
 
     if (fieldsOff) {
-      $.each(fieldsOff, function(key, array) {
-        $.each(array, function(k, f) {
-          $('label[for="' + f + '"]').parents('tr').hide();
+      $.each(fieldsOff, (key, array) => {
+        $.each(array, (k, f) => {
+          $(`label[for="${f}"]`).parents('tr').hide();
         });
       });
     }
     if (fieldsOn) {
-      $.each(fieldsOn, function(key, field) {
+      $.each(fieldsOn, (key, field) => {
         if ($.isArray(field)) {
-          $.each(val, function(k, f) {
-            $('label[for="' + f + '"]').parents('tr').fadeIn();
+          $.each(val, (k, f) => {
+            $(`label[for="${f}"]`).parents('tr').fadeIn();
           });
-        }
-        else {
-          $('label[for="' + field + '"]').parents('tr').fadeIn();
+        } else {
+          $(`label[for="${field}"]`).parents('tr').fadeIn();
         }
       });
     }
@@ -619,7 +616,7 @@ WebcomAdmin.issueFieldToggle = function($) {
   toggleFields(templateField.val());
 
   // Toggle fields on Story Template field change
-  templateField.on('change', function() {
+  templateField.on('change', function () {
     toggleFields($(this).val());
   });
 };
@@ -628,18 +625,20 @@ WebcomAdmin.issueFieldToggle = function($) {
 /**
  * Adds file uploader functionality to File fields.
  * Mostly copied from https://codex.wordpress.org/Javascript_Reference/wp.media
+ * @param {jQuery} $ The jQuery Object
+ * @returns {void}
  **/
-WebcomAdmin.fileUploader = function($) {
-  $('.meta-file-wrap').each(function() {
-    var frame,
-        $container = $(this),
-        $field = $container.find('.meta-file-field'),
-        $uploadBtn = $container.find('.meta-file-upload'),
-        $deleteBtn = $container.find('.meta-file-delete'),
-        $previewContainer = $container.find('.meta-file-preview');
+WebcomAdmin.fileUploader = function ($) {
+  $('.meta-file-wrap').each(function () {
+    let frame;
+    const $container = $(this),
+      $field = $container.find('.meta-file-field'),
+      $uploadBtn = $container.find('.meta-file-upload'),
+      $deleteBtn = $container.find('.meta-file-delete'),
+      $previewContainer = $container.find('.meta-file-preview');
 
     // Add new btn click
-    $uploadBtn.on('click', function(e) {
+    $uploadBtn.on('click', (e) => {
       e.preventDefault();
 
       // If the media frame already exists, reopen it.
@@ -654,17 +653,17 @@ WebcomAdmin.fileUploader = function($) {
         button: {
           text: 'Use this file'
         },
-        multiple: false  // Set to true to allow multiple files to be selected
+        multiple: false // Set to true to allow multiple files to be selected
       });
 
       // When an image is selected in the media frame...
-      frame.on('select', function() {
+      frame.on('select', () => {
 
         // Get media attachment details from the frame state
-        var attachment = frame.state().get('selection').first().toJSON();
+        const attachment = frame.state().get('selection').first().toJSON();
 
         // Send the attachment URL to our custom image input field.
-        $previewContainer.html( '<img src="' + attachment.iconOrThumb + '"><br>' + attachment.filename );
+        $previewContainer.html(`<img src="${attachment.iconOrThumb}"><br>${attachment.filename}`);
 
         // Send the attachment id to our hidden input
         $field.val(attachment.id);
@@ -681,7 +680,7 @@ WebcomAdmin.fileUploader = function($) {
     });
 
     // Delete selected btn click
-    $deleteBtn.on('click', function(e) {
+    $deleteBtn.on('click', (e) => {
       e.preventDefault();
 
       // Clear out the preview image
@@ -700,13 +699,15 @@ WebcomAdmin.fileUploader = function($) {
 };
 
 
-(function($){
-	WebcomAdmin.__init__($);
-	WebcomAdmin.themeOptions($);
-	WebcomAdmin.shortcodeInterfaceTool($);
+(function ($) {
+  WebcomAdmin.__init__($);
+  WebcomAdmin.themeOptions($);
+  if (USE_SC_INTERFACE) {
+    WebcomAdmin.shortcodeInterfaceTool($);
+  }
   WebcomAdmin.wysiwygFields($);
   WebcomAdmin.sliderMetaBoxes($);
   WebcomAdmin.storyFieldToggle($);
   WebcomAdmin.issueFieldToggle($);
   WebcomAdmin.fileUploader($);
-})(jQuery);
+}(jQuery));

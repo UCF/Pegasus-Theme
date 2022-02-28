@@ -1,0 +1,44 @@
+//
+// Our Awards page - unique styles
+//
+
+.trophy-container {
+  .award-silver,
+  .award-bronze,
+  .award-gold,
+  .award-judge {
+    align-items: center;
+    display: flex;
+  }
+
+  .fa-trophy {
+    font-size: 2rem;
+    margin-right: .5rem;
+  }
+
+  .trophy-title {
+    font-size: .85rem;
+    font-weight: lighter;
+    text-transform: uppercase;
+  }
+
+  .award-silver {
+    color: #757575;
+  }
+
+  .award-bronze {
+    color: #b16c35;
+  }
+
+  .award-gold {
+    color: #c29d2e;
+  }
+
+  .award-judge {
+    color: $brand-info-aw;
+  }
+}
+
+.award-container {
+  font-size: .85rem;
+}

@@ -1,0 +1,71 @@
+//
+// Component for displaying a horizontally-scrolling
+// list of story callouts.
+//
+
+.story-list {
+  @include make-row();
+  -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-vendor-prefixes
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+  padding-bottom: calc(15px + 1.5rem); // caret height, plus extra
+  padding-left: $grid-gutter-width-base / 2;
+  padding-right: $grid-gutter-width-base / 2;
+  width: 100%;
+
+  @include media-breakpoint-up(sm) {
+    padding-right: calc(#{($grid-gutter-width-base / 2)} + 4rem); // rough width of .story-list-control's, plus grid gutter
+  }
+
+  .story-callout {
+    @include make-col-ready();
+    flex: 0 0 14rem;
+    max-width: 14rem;
+
+    @include media-breakpoint-down(md) {
+      @include make-col(5);
+    }
+  }
+
+  .story-callout-description {
+    font-size: .75rem;
+  }
+}
+
+.story-list-controls {
+  background: $white;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  text-align: center;
+  top: 0;
+  z-index: 6;
+}
+
+.story-list-control {
+  @include button-variant($gray, $white, $white);
+  @include button-outline-variant-overrides($gray, $white, $white, $brand-primary);
+  cursor: pointer;
+
+  &.close {
+    font-size: $font-size-sm;
+    left: 0;
+    margin-left: 0;
+    opacity: 1;
+    padding: $btn-padding-x $btn-padding-y;
+    position: absolute;
+    right: 0;
+    top: 2rem;
+    width: 100%;
+  }
+}
+
+.story-list-control-forward,
+.story-list-control-backward {
+  margin-bottom: .5rem;
+  margin-top: .5rem;
+}

@@ -1,0 +1,92 @@
+//
+// Generic component for displaying a link to a story
+// with image, title and deck.
+//
+
+.story-callout {
+  color: $brand-secondary;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.75rem;
+}
+
+.story-callout-img-wrap {
+  margin-bottom: .75rem;
+  order: -1;
+  position: relative;
+
+  .story-callout-category {
+    bottom: 0;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
+
+.story-callout-link {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+
+  @include hover-focus-active() {
+    color: inherit;
+    text-decoration: none;
+
+    .story-callout-title {
+      text-decoration: underline;
+    }
+  }
+}
+
+.story-callout-title {
+  font-size: 1rem;
+  line-height: 1.4;
+  margin-bottom: .5rem;
+
+  .story-callout-overlay & {
+    font-size: 1.4rem;
+
+    @include media-breakpoint-up(lg) {
+      font-size: 1.75rem;
+    }
+  }
+}
+
+.story-callout-description {
+  font-size: .85rem;
+}
+
+
+// .story-callout modifier that puts title, deck
+// in a translucent overlay hugging the bottom of
+// the image
+.story-callout-overlay {
+  position: relative;
+
+  @include media-breakpoint-up(md) {
+    color: $brand-inverse;
+  }
+
+  .story-callout-text-wrap {
+    @include media-breakpoint-up(md) {
+      background-color: transparentize($brand-secondary, .4);
+      bottom: 0;
+      left: 0;
+      padding: 2rem;
+      position: absolute;
+      right: 0;
+      text-align: center;
+    }
+  }
+
+  .story-callout-description {
+    font-size: 1rem;
+  }
+
+  .story-callout-img-wrap {
+    @include media-breakpoint-up(md) {
+      margin-bottom: 0;
+    }
+  }
+}

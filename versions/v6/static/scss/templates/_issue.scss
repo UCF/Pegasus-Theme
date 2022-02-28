@@ -1,0 +1,35 @@
+//
+// Issue Cover - Default Template
+//
+
+.issue-template-default {
+  background-color: #e5e5e5;
+
+  .heading-wrap {
+    h2 {
+      border-bottom: 1px solid $gray-darker;
+      color: $gray-darker;
+      display: block;
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      position: relative;
+
+      @include media-breakpoint-down(sm) {
+        margin-bottom: 1.25rem;
+      }
+
+      span {
+        background: #e5e5e5;
+        padding-right: .5rem;
+        position: relative;
+        top: .625rem; // half of what the h2 font-size is set to above
+
+        @include media-breakpoint-down(sm) {
+          display: block;
+          padding-bottom: .35rem;
+          top: 0;
+        }
+      }
+    }
+  }
+}

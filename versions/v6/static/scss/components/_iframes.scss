@@ -1,0 +1,9 @@
+//
+// Style overrides required for iframes in this theme.
+//
+
+// sass-lint:disable no-qualifying-elements no-important
+iframe[name='google_conversion_frame'] {
+  height: 0 !important;
+  width: 0 !important;
+}

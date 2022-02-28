@@ -1,0 +1,97 @@
+//
+// Archives page - unique styles
+//
+
+.page-archives {
+
+  // Main archive list by issue
+  .post-type-search-term {
+    .story-list-item-featured {
+      display: none;
+    }
+
+    .results-story-issue {
+      display: none;
+    }
+  }
+
+  // Search results
+  .post-type-search-results {
+    > div,
+    > p {
+      // Handle either results div or no results found <p>
+      margin-bottom: 0;
+      margin-top: 0;
+      position: relative;
+
+      &:before {
+        // Triangle caret shape above results box
+        border-bottom: 15px solid darken($body-bg, 3%); // match .bg-faded
+        border-left: 50px solid transparent;
+        border-right: 50px solid transparent;
+        content: '';
+        display: block;
+        height: 0;
+        left: 0;
+        margin: auto;
+        position: absolute;
+        right: 0;
+        top: -15px;
+        width: 0;
+
+        @include media-breakpoint-down(sm) {
+          right: 0;
+        }
+      }
+    }
+
+    > p {
+      text-align: center;
+    }
+
+    ul {
+      @include make-row();
+      list-style: none;
+      margin-bottom: 0;
+      padding: 7.5rem 0 3rem;
+      position: relative;
+
+      &:before {
+        color: $gray-dark;
+        content: 'Search Results';
+        display: block;
+        left: 0;
+        letter-spacing: .05em;
+        position: absolute;
+        text-align: center;
+        text-transform: uppercase;
+        top: 3rem;
+        width: 100%;
+      }
+    }
+
+    li {
+      @include make-col-ready();
+      @include make-col(12);
+      margin-bottom: 1.5rem;
+
+      @include media-breakpoint-up(md) {
+        @include make-col(6);
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    .results-story-issue {
+      color: $gray-dark;
+      display: inline-block;
+      font-size: .8rem;
+      margin-bottom: .25rem;
+      text-transform: uppercase;
+    }
+  }
+
+  .post-type-search-message {
+    padding: 1.25rem;
+  }
+}

@@ -417,14 +417,18 @@ class Story extends CustomPostType {
 		);
 		$fields[] = array(
 			'name' => 'Header Font Color',
-			'desc' => 'Color for h1-h6 titles, as well as blockquotes and dropcaps.  Hex values preferred.',
+			'desc' => 'Color for h1-h6 titles. Hex values preferred.',
 			'id'   => $prefix.'default_color',
 			'type' => 'text',
 		);
 
 		if (
 			$story_version < 5
-			|| $story_version >= 5 && ! get_post_meta( $post->ID, 'story_template', true )
+			|| $story_version >= 5
+			&& (
+				! $post
+				|| ( $post && ! get_post_meta( $post->ID, 'story_template', true ) )
+			)
 		) {
 			if ( $story_version < 5 ) {
 				$default_header_img_desc = 'Large feature image to go at the very top of the story.  Recommended dimensions: 1600x900px';

@@ -37,7 +37,7 @@ define('DEV_MODE', isset( $theme_options['dev_mode'] ) ? intval($theme_options['
 /**
  * Version definitions.  Versions should always be whole numbers (no decimals).
  **/
-define( 'LATEST_VERSION', 5 ); // The most up-to-date major version of the theme
+define( 'LATEST_VERSION', 6 ); // The most up-to-date major version of the theme
 define( 'EARLIEST_VERSION', 1 ); // the very first version
 define( 'VERSIONS', serialize( range( EARLIEST_VERSION, LATEST_VERSION ) ) );
 define( 'VERSIONS_PATH', 'versions/' );
@@ -82,6 +82,7 @@ $custom_available_fonts_array = array(
 	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' 	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
 	'League Spartan' 		=> THEME_FONT_URL . '/league-spartan/stylesheet.css',
+	'Poppins'		 		=> THEME_FONT_URL . '/poppins/stylesheet.css',
 );
 define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 
@@ -123,9 +124,9 @@ $template_font_styles_base_array = array(
 	'text-align' => 'left',
 	'font-style' => 'normal',
 	'letter-spacing' => '-0.012em',
-	'size-desktop' => '60px',
-	'size-tablet' => '60px',
-	'size-mobile' => '40px',
+	'size-desktop' => '3.75rem',
+	'size-tablet' => '3.75rem',
+	'size-mobile' => '2.5rem',
 	'text-transform' => 'none'
 );
 define('TEMPLATE_FONT_STYLES_BASE', serialize($template_font_styles_base_array));
@@ -147,6 +148,7 @@ $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
+	'Poppins' => THEME_FONT_URL . '/poppins/stylesheet.css',
 );
 define( 'TEMPLATE_FONT_URLS', serialize( $template_fonts_array ) );
 $template_font_styles_array = array(
@@ -487,50 +489,6 @@ Config::$theme_settings = array(
 			'value'       => isset( $theme_options['search_per_page'] ) ? $theme_options['search_per_page'] : null,
 		)),
 	),
-	'Social' => array(
-		new TextField(array(
-			'name'        => 'Facebook URL',
-			'id'          => THEME_OPTIONS_NAME.'[fb_url]',
-			'description' => 'URL of the Facebook page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.facebook.com/UCF',
-			'value'       => isset( $theme_options['fb_url'] ) ? $theme_options['fb_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Twitter URL',
-			'id'          => THEME_OPTIONS_NAME.'[twitter_url]',
-			'description' => 'URL of the Twitter page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://twitter.com/UCF',
-			'value'       => isset( $theme_options['twitter_url'] ) ? $theme_options['twitter_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Flickr URL',
-			'id'          => THEME_OPTIONS_NAME.'[flickr_url]',
-			'description' => 'URL of the Flickr page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.flickr.com/groups/ucf/',
-			'value'       => isset( $theme_options['flickr_url'] ) ? $theme_options['flickr_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'YouTube URL',
-			'id'          => THEME_OPTIONS_NAME.'[youtube_url]',
-			'description' => 'URL of the YouTube page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => 'http://www.youtube.com/user/UCF',
-			'value'       => isset( $theme_options['youtube_url'] ) ? $theme_options['youtube_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Instagram URL',
-			'id'          => THEME_OPTIONS_NAME.'[instagram_url]',
-			'description' => 'URL of the Instagram page related to this site. If this field is left empty, this social media link will not appear in the footer.',
-			'default'     => '',
-			'value'       => isset( $theme_options['instagram_url'] ) ? $theme_options['instagram_url'] : null,
-		)),
-		new TextField(array(
-			'name'        => 'Share URL',
-			'id'          => THEME_OPTIONS_NAME.'[share_url]',
-			'description' => 'URL of the Share page related to this site. If this field is left empty, this share link will not appear in the footer.',
-			'default'     => '',
-			'value'       => isset( $theme_options['share_url'] ) ? $theme_options['share_url'] : null,
-		)),
-	),
 	'Devices' => array(
 		new TextField(array(
 			'name'        => 'iTunes Store iPad App URL',
@@ -579,6 +537,22 @@ Orlando, FL 32816',
 			'value'       => isset( $theme_options['cloud_font_key'] ) ? $theme_options['cloud_font_key'] : null,
 		))
 	),
+	'News Feeds' => array(
+		new TextField(array(
+			'name'        => 'UCF Today API Base URL',
+			'id'          => THEME_OPTIONS_NAME.'[news_api_base_url]',
+			'description' => 'The base URL for the UCF Today wp-json feed.',
+			'default'     => 'https://www.ucf.edu/news/wp-json/wp/v2/posts/',
+			'value'       => isset( $theme_options['news_api_base_url'] ) ? $theme_options['news_api_base_url'] : null,
+		)),
+		new TextField(array(
+			'name'        => 'Default Related Story Count',
+			'id'          => THEME_OPTIONS_NAME.'[related_stories_count]',
+			'description' => 'The max number of stories to list in the related stories section.',
+			'default'     => 3,
+			'value'       => isset( $theme_options['related_stories_count'] ) ? $theme_options['related_stories_count'] : null
+		)),
+	),
 	'Developers' => array(
 		new RadioField(array(
 			'name'        => 'Enable Developer Mode',
@@ -595,35 +569,6 @@ Orlando, FL 32816',
 	),
 );
 
-/**
- * If Yoast SEO is activated, assume we're handling ALL SEO-related
- * modifications with it.  Don't add Facebook Opengraph theme options.
- **/
-include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-
-if ( !is_plugin_active( 'wordpress-seo/wp-seo.php' ) ) {
-	array_unshift( Config::$theme_settings['Social'],
-		new RadioField(array(
-			'name'        => 'Enable OpenGraph',
-			'id'          => THEME_OPTIONS_NAME.'[enable_og]',
-			'description' => 'Turn on the opengraph meta information used by Facebook.',
-			'default'     => 1,
-			'choices'     => array(
-				'On'  => 1,
-				'Off' => 0,
-			),
-			'value'       => isset( $theme_options['enable_og'] ) ? $theme_options['enable_og'] : null,
-	    )),
-		new TextField(array(
-			'name'        => 'Facebook Admins',
-			'id'          => THEME_OPTIONS_NAME.'[fb_admins]',
-			'description' => 'Comma seperated facebook usernames or user ids of those responsible for administrating any facebook pages created from pages on this site. Example: <em>592952074, abe.lincoln</em>',
-			'default'     => null,
-			'value'       => isset( $theme_options['fb_admins'] ) ? $theme_options['fb_admins'] : null,
-		))
-	);
-}
-
 Config::$links = array(
 	// NOTE: canonical is handled in functions/base.php
 	array( 'rel' => 'alternate', 'type' => 'application/rss+xml', 'href' => get_bloginfo('rss_url'), )
@@ -637,6 +582,7 @@ Config::$styles = array(
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
+	array('name' => 'font-poppins', 'src' => $custom_available_fonts_array['Poppins']),
 );
 
 foreach ($template_fonts_array as $key => $val) {
@@ -651,7 +597,7 @@ if (!empty($theme_options['cloud_font_key'])) {
 
 Config::$scripts = array(
     array('admin' => True, 'src' => THEME_COMPONENTS_URL.'/wysihtml5-0.3.0.min.js',),
-	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js',),
+	array('admin' => True, 'src' => THEME_JS_URL.'/admin.js', 'deps' => array( 'jquery', 'iris' )),
 	THEME_COMPONENTS_URL.'/jquery.cookie.js',
 	array( 'name' => 'ucfhb-script', 'src' => '//universityheader.ucf.edu/bar/js/university-header.js?use-1200-breakpoint=1', ),
 	array('name' => 'placeholders', 'src' => THEME_COMPONENTS_URL.'/placeholders.js',),
@@ -687,6 +633,7 @@ function __init__(){
 	add_image_size( 'frontpage-featured-gallery-thumbnail-3x2', 515, 343, true ); // 3x2
 	add_image_size( 'single-post-thumbnail', 220, 230, true ); // almost 1x1
 	add_image_size( 'single-post-thumbnail-3x2', 220, 147, true ); // 3x2
+	add_image_size( 'single-post-thumbnail-300x200', 300, 200, true ); // 3x2
 	add_image_size( 'issue-thumbnail', 190, 248 ); // almost 10x13 (but does not crop)
 	add_image_size( 'issue-cover-feature', 768, 432, true ); // 16x9
 	add_image_size( 'issue-cover-feature-3x2', 768, 512, true ); // 3x2
@@ -748,3 +695,30 @@ function site_icon_support() {
 	wp_site_icon();
 }
 add_action( 'wp_head', 'site_icon_support' );
+
+
+/**
+ * Remove paragraph tag from excerpts
+ * */
+remove_filter( 'the_excerpt', 'wpautop' );
+
+
+/**
+ * Adds a custom ACF WYSIWYG toolbar called 'Inline Text' that only includes
+ * simple inline text formatting tools and link insertion/deletion.
+ * Ported over from Today-Child-Theme (with the adjustment of
+ * removing 'link' and 'unlink').
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ * @param array $toolbars Array of toolbar information from ACF
+ * @return array
+ */
+function pegasus_acf_inline_text_toolbar( $toolbars ) {
+	$toolbars['Inline Text'] = array();
+	$toolbars['Inline Text'][1] = array( 'bold', 'italic', 'undo', 'redo' );
+
+	return $toolbars;
+}
+
+add_filter( 'acf/fields/wysiwyg/toolbars', 'pegasus_acf_inline_text_toolbar' );

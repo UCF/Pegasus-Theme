@@ -1,0 +1,22 @@
+//
+// Stories - Full width template
+//
+
+.story-template-template-fullwidth {
+  .lead,
+  .story-content {
+    font-family: $font-family-poppins;
+    font-size: 1.1rem;
+    line-height: 1.65;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.25rem;
+    }
+  }
+
+  .lead {
+    @include media-breakpoint-down(md) {
+      font-size: 1.1rem; //override Athena's .lead font-size for md- breakpoints
+    }
+  }
+}

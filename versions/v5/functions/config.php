@@ -95,4 +95,29 @@ function add_id_to_ucfhb($url) {
 }
 add_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
 
+
+/**
+ * Disable various content/WYSIWYG formatting options
+ * provided by the Athena Shortcode plugin, since v5
+ * and prior roll their own WYSIWYG and formatting
+ * options.
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ */
+add_filter( 'option_athena_sc_enable_tinymce_formatting', '__return_false' );
+add_filter( 'option_athena_sc_enable_optin_classes', '__return_false' );
+add_filter( 'option_athena_sc_enable_responsive_embeds', '__return_false' );
+add_filter( 'option_athena_sc_remove_image_dims', '__return_false' );
+
+
+/**
+ * Disable shortcodes provided by the Athena Shortcodes plugin,
+ * since this version has its own which may result in conflicts.
+ *
+ * @since 6.0.0
+ * @author Jo Dickson
+ */
+add_filter( 'athena_sc_add_shortcode', '__return_empty_array' );
+
 ?>

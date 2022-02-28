@@ -1,0 +1,24 @@
+// Adds font smoothing to an element
+@mixin font-smoothing() {
+  // sass-lint:disable-block no-vendor-prefixes
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Adds necessary CSS for a spritesheet-based element.
+// Extended elements should provide a fixed width, height, and
+// background-position.
+@mixin sprite {
+  background-image: url('../img/spritesheet.png');
+  background-repeat: no-repeat;
+  display: block;
+  overflow: hidden;
+  text-indent: 150%;
+  white-space: nowrap;
+
+  // sass-lint:disable-block no-vendor-prefixes
+  @media screen and (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    background-image: url('../img/spritesheet-r.png');
+    background-size: 193px 144px;
+  }
+}
