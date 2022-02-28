@@ -240,7 +240,7 @@ gulp.task('scss-build-fa5', (done) => {
 
 // Compile story editor stylesheet
 gulp.task('scss-build-editor-story', () => {
-  return buildCSS(`${config.versionPath}/static/scss/editor-story.scss`, `${config.staticPath}/css/`);
+  return buildCSS(`${config.versionPath}/static/scss/editor-story.scss`);
 });
 
 // All theme css-related tasks
