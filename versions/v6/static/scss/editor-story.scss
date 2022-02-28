@@ -13,6 +13,10 @@
 @import './ucf-athena-framework/src/scss/mixins';
 
 
+// Import Poppins google font to be used in the editor
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+
 // sass-lint:disable no-ids
 #tinymce.content {
   max-width: 730px;
@@ -34,7 +38,8 @@
 
   p {
     font-family: $font-family-poppins;
-    font-size: 1.1rem;
+    font-weight: 300;
+    font-size: 1.2rem;
     line-height: 1.65;
   }
 
@@ -55,7 +60,7 @@
     }
 
     p {
-      font-size: 1.2em;
+      font-size: 1.4em;
       padding-top: 1.75rem;
 
       i,
@@ -63,6 +68,10 @@
         font-style: normal;
       }
     }
+  }
+
+  b, strong {
+    font-weight: bold;
   }
 
   br ~ blockquote:not(.blockquote) {
