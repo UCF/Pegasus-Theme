@@ -1,0 +1,91 @@
+//
+// Theme variables and variable overrides
+//
+@import 'variables';
+
+
+//
+// Third-party assets
+//
+
+// Athena Framework variables, mixins
+@import './ucf-athena-framework/src/scss/variables';
+@import './ucf-athena-framework/src/scss/mixins';
+
+
+// Import Poppins google font to be used in the editor
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;700&display=swap');
+
+
+// sass-lint:disable no-ids
+#tinymce.content {
+  max-width: 730px;
+  font-family: $font-family-poppins;
+
+  * + h1,
+  * + h2,
+  * + h3,
+  * + h4,
+  * + h5,
+  * + h6,
+  * + .h1,
+  * + .h2,
+  * + .h3,
+  * + .h4,
+  * + .h5,
+  * + .h6 {
+    margin-top: 1em;
+  }
+
+  p {
+    font-family: $font-family-poppins;
+    font-size: 1.2rem;
+    font-weight: 300;
+    line-height: 1.65;
+  }
+
+  blockquote:not(.blockquote) {
+    font-style: normal;
+    margin: 2.5rem 0;
+    padding: 0;
+    position: relative;
+
+    &::before {
+      border-top: 8px solid;
+      content: "";
+      display: inline-block;
+      left: 0;
+      position: absolute;
+      top: 0;
+      width: 20%;
+    }
+
+    p {
+      font-size: 1.4em;
+      padding-top: 1.75rem;
+
+      i,
+      em {
+        font-style: normal;
+      }
+    }
+  }
+
+  b, strong {
+    font-weight: bold;
+  }
+
+  br ~ blockquote:not(.blockquote) {
+    @include media-breakpoint-up(sm) {
+      margin-top: 1.5rem;
+    }
+  }
+
+  .figure-caption,
+  .wp-caption-dd {
+      color: #636c72;
+      font-size: 1rem;
+      margin-top: .5rem;
+  }
+}
+// sass-lint:enable no-ids
