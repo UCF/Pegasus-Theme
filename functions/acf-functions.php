@@ -60,9 +60,9 @@ class Pegasus_Story_Version_ACF_Location extends ACF_Location {
 		return $result;
 	}
 }
-
-acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' );
-
+if ( function_exists('acf_register_location_type') ) {
+	acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' );
+}
 
 /**
  * Adds the ACF fields for the story sidebar
