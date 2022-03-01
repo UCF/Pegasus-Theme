@@ -61,7 +61,7 @@ class Pegasus_Story_Version_ACF_Location extends ACF_Location {
 	}
 }
 
-add_action( 'acf/init', acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' ) );
+acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' );
 
 
 /**
