@@ -29,7 +29,7 @@ class Pegasus_Story_Version_ACF_Location extends ACF_Location {
 
 	public function get_values( $rule ) {
 		$choices = array(
-			'6' => 6
+			'6' => '6'
 		);
 
 		return $choices;
@@ -39,7 +39,7 @@ class Pegasus_Story_Version_ACF_Location extends ACF_Location {
 
 		// Check screen args for "post_id" which will exist when editing a post.
 		// Return false for all other edit screens.
-		if( isset($screen['post_id']) ) {
+		if ( isset( $screen['post_id'] ) ) {
 			$post_id = $screen['post_id'];
 		} else {
 			return false;
@@ -51,15 +51,12 @@ class Pegasus_Story_Version_ACF_Location extends ACF_Location {
 			return false;
 		}
 
-		$post_version =  get_relevant_version( $post );
+		$post_version   = get_relevant_version( $post );
+		$acf_rule_value = intval( $rule['value'] );
 
-		// Compare the Post's author attribute to rule value.
-		$result = ( $post_version == $rule['value'] );
+		// Compare the post's version to rule value.
+		$result = ( $post_version == $acf_rule_value );
 
-		// Return result taking into account the operator type.
-		if ( $rule['operator'] == '!=' ) {
-			return !$result;
-		}
 		return $result;
 	}
 }
