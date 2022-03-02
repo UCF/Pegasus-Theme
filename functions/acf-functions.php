@@ -8,61 +8,97 @@ if ( ! class_exists( 'acf_pro' ) ) return;
 
 
 /**
- * Class that extends ACF_Location in order to add
- * a custom Story version location to utilize for only
- * displaying ACF fields in v6+.
- */
-class Pegasus_Story_Version_ACF_Location extends ACF_Location {
+ * Adds a Story Version rule type.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @param array $choices Array of location rule choices
+ * @return array $choices
+ **/
+function acf_location_rules_types( $choices ) {
+	$choices['Story']['story_version'] = 'Story Version';
 
-	public function initialize() {
-		$this->name        = 'story_version';
-		$this->label       = __( "Story Version", 'acf' );
-		$this->category    = 'Story';
-		$this->object_type = 'post';
-	}
-
-	public static function get_operators( $rule ) {
-		return array(
-			'>=' => ( "greater than or equal to" )
-		);
-	}
-
-	public function get_values( $rule ) {
-		$choices = array(
-			'6' => '6'
-		);
-
-		return $choices;
-	}
-
-	public function match( $rule, $screen, $field_group ) {
-
-		// Check screen args for "post_id" which will exist when editing a post.
-		// Return false for all other edit screens.
-		if ( isset( $screen['post_id'] ) ) {
-			$post_id = $screen['post_id'];
-		} else {
-			return false;
-		}
-
-		// Load the post object for this edit screen.
-		$post = get_post( $post_id );
-		if( !$post ) {
-			return false;
-		}
-
-		$post_version   = get_relevant_version( $post );
-		$acf_rule_value = intval( $rule['value'] );
-
-		// Compare the post's version to rule value.
-		$result = ( $post_version == $acf_rule_value );
-
-		return $result;
-	}
+	return $choices;
 }
-if ( function_exists('acf_register_location_type') ) {
-	acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' );
+
+add_filter('acf/location/rule_types', 'acf_location_rules_types');
+
+
+/**
+ * Adds a 'greater than or equal to' operator
+ * to the Story Version location rule.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @param array $choices Array of operator choices for the Story Version location choices.
+ * @return array $choices
+ **/
+function acf_location_rules_operators_story_version( $choices ) {
+	$choices['>='] = 'greater than or equal to';
+
+	return $choices;
 }
+
+add_filter('acf/location/rule_operators/story_version', 'acf_location_rules_operators_story_version');
+
+
+/**
+ * Adds 6 as a choice for the Story Version location rule.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @param array $choices Array of values for the Story Version location rule.
+ * @return array $choices
+ **/
+function acf_location_rule_values_story_version( $choices ) {
+	$choices[6] = 6;
+
+	return $choices;
+}
+
+add_filter('acf/location/rule_values/story_version', 'acf_location_rule_values_story_version');
+
+
+/**
+ * Adds functionality to match the custom Story Version
+ * location rules depending on the selected operator and value.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ * @param bool $match The match result.
+ * @param array $rule The location rule.
+ * @param array $options The current edit screen data.
+ * @param array $field_group The field group array.
+ * @return bool $match
+ **/
+function acf_location_rule_match_story_version( $match, $rule, $options, $field_group ) {
+	// Check screen args for "post_id" which will exist when editing a post.
+	// Return false for all other edit screens.
+	if ( isset( $options['post_id'] ) ) {
+		$post_id = $options['post_id'];
+	} else {
+		return false;
+	}
+
+	// Load the post object for this edit screen.
+	$post = get_post( $post_id );
+	if ( !$post ) {
+		return false;
+	}
+
+	$post_version   = get_relevant_version( $post );
+	$acf_rule_value = intval( $rule['value'] );
+
+	$match = false;
+
+	if ( $rule['operator'] == ">=" ) {
+		$match = ( $post_version >= $acf_rule_value );
+	}
+
+	return $match;
+}
+add_filter('acf/location/rule_match/story_version', 'acf_location_rule_match_story_version', 10, 4);
+
 
 /**
  * Adds the ACF fields for the story sidebar
