@@ -10,7 +10,7 @@ if ( ! class_exists( 'acf_pro' ) ) return;
 /**
  * Adds a Story Version rule type.
  *
- * @since 6.0.0
+ * @since 6.0.1
  * @author Cadie Stockman
  * @param array $choices Array of location rule choices
  * @return array $choices
@@ -28,7 +28,7 @@ add_filter('acf/location/rule_types', 'acf_location_rules_types');
  * Adds a 'greater than or equal to' operator
  * to the Story Version location rule.
  *
- * @since 6.0.0
+ * @since 6.0.1
  * @author Cadie Stockman
  * @param array $choices Array of operator choices for the Story Version location choices.
  * @return array $choices
@@ -45,7 +45,7 @@ add_filter('acf/location/rule_operators/story_version', 'acf_location_rules_oper
 /**
  * Adds 6 as a choice for the Story Version location rule.
  *
- * @since 6.0.0
+ * @since 6.0.1
  * @author Cadie Stockman
  * @param array $choices Array of values for the Story Version location rule.
  * @return array $choices
@@ -63,7 +63,7 @@ add_filter('acf/location/rule_values/story_version', 'acf_location_rule_values_s
  * Adds functionality to match the custom Story Version
  * location rules depending on the selected operator and value.
  *
- * @since 6.0.0
+ * @since 6.0.1
  * @author Cadie Stockman
  * @param bool $match The match result.
  * @param array $rule The location rule.
