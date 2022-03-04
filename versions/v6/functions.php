@@ -65,8 +65,7 @@ function get_default_template_font_css( $font ) {
 		article.story h3,
 		article.story h4,
 		article.story h5,
-		article.story h6,
-		article.story blockquote {
+		article.story h6 {
 			color: '.$font['color'].';
 		}
 		article.story h1 {
@@ -245,13 +244,13 @@ function display_photo_essay( $photo_essay, $story=null ) {
 	ob_start();
 ?>
 
-	<section id="photo-essay-top" class="clearfix">
-		<div class="container">
+	<section id="photo-essay-top">
+		<div class="container mt-4">
 			<?php echo $header_contents; ?>
 		</div>
 	</section>
 
-	<section class="photo-essay-contents">
+	<section class="photo-essay-contents mb-4 mb-lg-5">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 col-md-10">
@@ -348,24 +347,20 @@ function display_story_header_contents( $post, $deck='' ) {
 
 	ob_start();
 ?>
-	<div class="row title-wrap">
+	<div class="row">
 		<div class="col-lg-10 offset-lg-1">
-			<h1 class="mb-2 mb-md-3"><?php echo wptexturize( $post->post_title ); ?></h1>
+			<h1 class="mb-2 mb-lg-3"><?php echo wptexturize( $post->post_title ); ?></h1>
 		</div>
 	</div>
-	<div class="row description-wrap mb-4">
+	<div class="row mb-4">
 		<div class="col-lg-10 offset-lg-1">
-			<div class="row">
-				<div class="col-12 description-col">
-					<span class="description">
-						<?php echo $deck; ?>
-					</span>
-				</div>
-			</div>
+			<span class="lead">
+				<?php echo $deck; ?>
+			</span>
 		</div>
 	</div>
 	<?php if ( $header_img ) : ?>
-	<div class="row header-img-wrap mb-4">
+	<div class="row mb-4">
 		<div class="col-12">
 			<?php echo $header_img; ?>
 		</div>

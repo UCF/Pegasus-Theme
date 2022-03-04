@@ -127,6 +127,54 @@ add_filter( 'body_class', 'v6_body_classes', 10, 1 );
  * @author Jo Dickson
  */
 add_filter( 'option_athena_sc_enable_tinymce_formatting', '__return_true' );
-add_filter( 'option_athena_sc_enable_optin_classes', '__return_true' );
+add_filter( 'option_athena_sc_enable_optin_classes', '__return_false' );
 add_filter( 'option_athena_sc_enable_responsive_embeds', '__return_true' );
 add_filter( 'option_athena_sc_remove_image_dims', '__return_false' );
+
+
+/**
+ * Enqueue admin editor styles.
+ * Adapted from 'today_enqueue_admin_assets()'
+ * in the Today Child Theme.
+ *
+ * @since 6.0.0
+ * @author Cadie Stockman
+ */
+function pegasus_enqueue_admin_editor_styles() {
+	// get_current_screen() returns null on this hook,
+	// so sniff the request URI instead when is_admin() is true
+	if ( is_admin() ) {
+
+		// If debug mode is enabled, force editor stylesheets to
+		// reload on every page refresh.  Caching of these stylesheets
+		// is very aggressive
+		$cache_bust = '';
+		if ( WP_DEBUG === true ) {
+			$cache_bust = date( 'YmdHis' );
+		}
+		else {
+			$theme = wp_get_theme();
+			$cache_bust = $theme->get( 'Version' );
+		}
+
+		// Enqueue assets on New Post screen
+		if ( stristr( $_SERVER['REQUEST_URI'], 'post-new.php' ) !== false ) {
+			// Enqueue story-specific editor styles
+			if ( ! isset( $_GET['post_type'] ) ) {
+				add_editor_style( THE_POST_VERSION_URL . '/static/css/editor-story.min.css?v=' . $cache_bust );
+			}
+		}
+		// Enqueue assets on Edit Post screen
+		else if ( stristr( $_SERVER['REQUEST_URI'], 'post.php' ) !== false ) {
+			// Enqueue story-specific editor styles
+			global $post;
+			if ( is_object( $post ) && get_post_type( $post->ID ) === 'story' ) {
+				add_editor_style( THE_POST_VERSION_URL . '/static/css/editor-story.min.css?v=' . $cache_bust );
+			}
+		}
+
+	}
+}
+
+add_action( 'init', 'pegasus_enqueue_admin_editor_styles', 99 ); // Enqueue late to ensure styles are enqueued after Athena SC Plugin's styles
+add_action( 'pre_get_posts', 'pegasus_enqueue_admin_editor_styles' ); // Also register on this hook for Edit Post view, so that $post is defined at the correct time

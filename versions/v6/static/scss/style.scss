@@ -9,11 +9,13 @@
 @import 'mixins';
 
 // Components
+@import 'components/blockquotes';
 @import 'components/buttons';
 @import 'components/iframes';
 @import 'components/ucf-events';
 @import 'components/story-callout';
 @import 'components/story-list';
+@import 'components/embed';
 
 // Shared template part styles
 @import 'header';
@@ -22,6 +24,7 @@
 // Templates
 @import 'templates/issue';
 @import 'templates/story-default';
+@import 'templates/story-full-width';
 @import 'templates/photo-essay';
 
 // Pages

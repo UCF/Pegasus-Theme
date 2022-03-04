@@ -3,19 +3,23 @@
 //
 
 .story-template-default {
-  font-size: 1.25rem;
-  line-height: 1.65;
-
-  @include media-breakpoint-down(sm) {
-    font-size: 1.15rem;
-  }
-
-  .description,
+  .lead,
   .story-content,
   .byline-issue {
     font-family: $font-family-poppins;
+    font-size: 1.1rem;
+    line-height: 1.65;
+
+    @include media-breakpoint-up(md) {
+      font-size: 1.25rem;
+    }
   }
 
+  .lead {
+    @include media-breakpoint-down(md) {
+      font-size: 1.1rem; //override Athena's .lead font-size for md- breakpoints
+    }
+  }
 
   .story-sidebar {
     font-size: .95rem;
@@ -34,6 +38,7 @@
       color: $gray-dark !important;
       font-family: $font-family-sans-serif !important;
       font-size: 1rem;
+      font-style: normal;
       font-weight: bold !important;
       letter-spacing: .1rem !important;
       text-transform: uppercase !important;

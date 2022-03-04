@@ -82,6 +82,7 @@ $custom_available_fonts_array = array(
 	'Montserrat'			=> THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' 	=> THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
 	'League Spartan' 		=> THEME_FONT_URL . '/league-spartan/stylesheet.css',
+	'Poppins'		 		=> THEME_FONT_URL . '/poppins/stylesheet.css',
 );
 define('CUSTOM_AVAILABLE_FONTS', serialize($custom_available_fonts_array));
 
@@ -147,7 +148,7 @@ $template_fonts_array = array(
 	'Aleo' => THEME_FONT_URL . '/aleo/stylesheet.css',
 	'Montserrat' => THEME_FONT_URL . '/montserrat/stylesheet.css',
 	'Open Sans Condensed' => THEME_FONT_URL . '/open-sans-condensed/stylesheet.css',
-	'Poppins Light' => THEME_FONT_URL . '/poppins/stylesheet.css',
+	'Poppins' => THEME_FONT_URL . '/poppins/stylesheet.css',
 );
 define( 'TEMPLATE_FONT_URLS', serialize( $template_fonts_array ) );
 $template_font_styles_array = array(
@@ -581,6 +582,7 @@ Config::$styles = array(
 	array('name' => 'font-icomoon', 'src' => THEME_FONT_URL.'/icomoon/style.css'),
 	array('name' => 'font-montserrat', 'src' => $custom_available_fonts_array['Montserrat']),
 	array('name' => 'font-aleo', 'src' => $custom_available_fonts_array['Aleo']),
+	array('name' => 'font-poppins', 'src' => $custom_available_fonts_array['Poppins']),
 );
 
 foreach ($template_fonts_array as $key => $val) {

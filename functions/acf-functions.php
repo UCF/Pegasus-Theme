@@ -1,4 +1,68 @@
 <?php
+/**
+ * Responsible for ACF related functionality
+ **/
+
+// Exit early if ACF Pro is not activated
+if ( ! class_exists( 'acf_pro' ) ) return;
+
+
+/**
+ * Class that extends ACF_Location in order to add
+ * a custom Story version location to utilize for only
+ * displaying ACF fields in v6+.
+ */
+class Pegasus_Story_Version_ACF_Location extends ACF_Location {
+
+	public function initialize() {
+		$this->name        = 'story_version';
+		$this->label       = __( "Story Version", 'acf' );
+		$this->category    = 'Story';
+		$this->object_type = 'post';
+	}
+
+	public static function get_operators( $rule ) {
+		return array(
+			'>=' => ( "greater than or equal to" )
+		);
+	}
+
+	public function get_values( $rule ) {
+		$choices = array(
+			'6' => '6'
+		);
+
+		return $choices;
+	}
+
+	public function match( $rule, $screen, $field_group ) {
+
+		// Check screen args for "post_id" which will exist when editing a post.
+		// Return false for all other edit screens.
+		if ( isset( $screen['post_id'] ) ) {
+			$post_id = $screen['post_id'];
+		} else {
+			return false;
+		}
+
+		// Load the post object for this edit screen.
+		$post = get_post( $post_id );
+		if( !$post ) {
+			return false;
+		}
+
+		$post_version   = get_relevant_version( $post );
+		$acf_rule_value = intval( $rule['value'] );
+
+		// Compare the post's version to rule value.
+		$result = ( $post_version == $acf_rule_value );
+
+		return $result;
+	}
+}
+
+acf_register_location_type( 'Pegasus_Story_Version_ACF_Location' );
+
 
 /**
  * Adds the ACF fields for the story sidebar
@@ -224,6 +288,16 @@ function add_story_sidebar_acf_fields() {
 					'operator' => '==',
 					'value'    => 'story',
 				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '!=',
+					'value'    => 'template-fullwidth.php'
+				),
+				array(
+					'param' => 'story_version',
+					'operator' => '>=',
+					'value' => '6',
+				)
 			),
 		),
 		'position'              => 'normal',
@@ -235,3 +309,57 @@ function add_story_sidebar_acf_fields() {
 }
 
 add_action( 'acf/init', 'add_story_sidebar_acf_fields', 10, 0 );
+
+
+/**
+ * Adds the ACF fields for the full width
+ * story options.
+ *
+ * @since 6.0.0
+ */
+function add_full_width_story_acf_fields() {
+	$fields = array();
+
+	$fields[] = array(
+		'key'               => 'story_fw_display_standard_header',
+		'label'             => 'Display Standard Header',
+		'name'              => 'story_fw_display_standard_header',
+		'type'              => 'true_false',
+		'instructions'      => 'Whether to display the standard story header. This includes the story\'s title (H1), deck, and header image (Featured Image or the Header Image, if set).',
+		'default_value'     => 1,
+		'ui'                => 1,
+	);
+
+	$group = array(
+		'key'                   => 'full_width_story_options',
+		'title'                 => 'Full Width Story Options',
+		'fields'                => $fields,
+		'location'              => array(
+			array(
+				array(
+					'param'    => 'post_type',
+					'operator' => '==',
+					'value'    => 'story',
+				),
+				array(
+					'param'    => 'page_template',
+					'operator' => '==',
+					'value'    => 'template-fullwidth.php'
+				),
+				array(
+					'param' => 'story_version',
+					'operator' => '>=',
+					'value' => '6',
+				)
+			),
+		),
+		'position'              => 'normal',
+		'style'                 => 'default',
+		'active'                => true
+	);
+
+	acf_add_local_field_group( $group );
+
+}
+
+add_action( 'acf/init', 'add_full_width_story_acf_fields', 10, 0 );

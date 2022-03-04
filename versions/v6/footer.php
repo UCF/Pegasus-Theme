@@ -18,8 +18,8 @@
 			?>
 			<aside id="more-stories" aria-labelledby="more-stories-heading">
 				<div class="container">
-					<h2 class="font-serif font-italic font-weight-normal mt-5 mb-4 py-2" id="more-stories-heading">
-						More UCF Stories
+					<h2 class="h4 text-default-aw text-uppercase mb-4" id="more-stories-heading">
+						More from the <?php echo get_the_title( $issue ); ?> Issue
 					</h2>
 				</div>
 				<div class="more-stories-list-wrap">
@@ -40,7 +40,7 @@
 				<div class="bg-secondary">
 					<div class="container py-4 text-center">
 						<?php if ( ! is_singular( 'issue' ) ) : ?>
-						<hr class="w-75 mb-4" role="presentation">
+						<hr class="w-md-75 mb-4" role="presentation">
 						<?php endif; ?>
 
 						<?php echo do_shortcode( '[ucf-social-icons]' ); ?>
