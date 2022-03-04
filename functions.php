@@ -49,20 +49,35 @@ function get_relevant_version( $the_post=null ) {
 			// If the home page has been requested, always return the current issue
 			$the_post = get_current_issue();
 		} else if ( is_admin() ) {
-			// If we're on an admin screen, grab the post ID from the URL
-			// if we're on a post/page edit screen, and determine the version
-			// from that.  Otherwise, just assume the latest version
-			$request_uri_params_str = wp_parse_url( $request_uri, PHP_URL_QUERY );
-			parse_str( $request_uri_params_str, $request_uri_params );
-
-			if (
-				array_key_exists( 'post', $request_uri_params )
-				&& strpos( $request_uri, '/post.php' ) !== false
-			) {
-				$uri_post_id = $request_uri_params['post'];
-				$the_post = get_post( $uri_post_id );
+			if ( wp_doing_ajax() ) {
+				// If this is an admin-ajax request, sniff $_POST data
+				// for a post ID.  There are a lot of different possible
+				// actions that could be happening here, but if this is a POST
+				// admin-ajax request and there is a `post_id` somewhere in
+				// $_POST, assume we should care about it:
+				// https://github.com/WordPress/WordPress/blob/master/wp-admin/includes/ajax-actions.php
+				// https://github.com/WordPress/WordPress/blob/master/wp-admin/admin-ajax.php
+				if ( isset( $_POST['post_id'] ) ) {
+					$the_post = get_post( $_POST['post_id'] );
+				} else {
+					$the_post = null;
+				}
 			} else {
-				$the_post = null;
+				// If we're on an admin screen, grab the post ID from the URL
+				// if we're on a post/page edit screen, and determine the version
+				// from that.  Otherwise, just assume the latest version
+				$request_uri_params_str = wp_parse_url( $request_uri, PHP_URL_QUERY );
+				parse_str( $request_uri_params_str, $request_uri_params );
+
+				if (
+					array_key_exists( 'post', $request_uri_params )
+					&& strpos( $request_uri, '/post.php' ) !== false
+				) {
+					$uri_post_id = $request_uri_params['post'];
+					$the_post = get_post( $uri_post_id );
+				} else {
+					$the_post = null;
+				}
 			}
 		} else {
 			global $post;
