@@ -10,7 +10,7 @@
 
   .photo-essay-item {
     margin-bottom: 0;
-    margin-top: $grid-gutter-width-base / 2;
+    margin-top: $grid-gutter-width-base * .5;
   }
 
   .img-col {
@@ -143,7 +143,7 @@
     background-color: darken($body-bg, 3%); // match .bg-faded
     margin-left: 40px;
     min-height: 100vh;
-    padding: ($grid-gutter-width-base / 2);
+    padding: ($grid-gutter-width-base * .5);
     text-align: center;
     width: 120px;
 
@@ -165,7 +165,7 @@
 
   .photo-essay-nav-link {
     display: block;
-    margin: 0 auto ($grid-gutter-width-base / 2);
+    margin: 0 auto ($grid-gutter-width-base * .5);
 
     &:hover,
     &:active,

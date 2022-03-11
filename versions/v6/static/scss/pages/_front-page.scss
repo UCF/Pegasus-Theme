@@ -6,6 +6,8 @@
 // General
 //
 
+@use 'sass:math';
+
 .fp-divider {
   border-top: 3px solid $ucf-gold;
   margin-bottom: 30px;
@@ -206,10 +208,10 @@
     content: '';
     display: none;
     height: $border-width-thickest;
-    left: $grid-gutter-width-base / 2;
+    left: $grid-gutter-width-base * .5;
     position: absolute;
-    right: $grid-gutter-width-base / 2;
-    top: -$border-width-thickest / 2;
+    right: $grid-gutter-width-base * .5;
+    top: -$border-width-thickest * .5;
   }
 
   // thick bottom "border", for use on bottom row cols
@@ -241,12 +243,12 @@
   }
 
   @include media-breakpoint-up(sm) {
-    padding-left: $grid-gutter-width-base / 1.5;
-    padding-right: $grid-gutter-width-base / 1.5;
+    padding-left: math.div($grid-gutter-width-base, 1.5);
+    padding-right: math.div($grid-gutter-width-base, 1.5);
 
     &::before {
-      left: $grid-gutter-width-base / 1.5;
-      right: $grid-gutter-width-base / 1.5;
+      left: math.div($grid-gutter-width-base, 1.5);
+      right: math.div($grid-gutter-width-base, 1.5);
     }
   }
 
