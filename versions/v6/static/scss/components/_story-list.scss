@@ -9,12 +9,12 @@
   flex-wrap: nowrap;
   overflow-x: scroll;
   padding-bottom: calc(15px + 1.5rem); // caret height, plus extra
-  padding-left: $grid-gutter-width-base / 2;
-  padding-right: $grid-gutter-width-base / 2;
+  padding-left: $grid-gutter-width-base * .5;
+  padding-right: $grid-gutter-width-base * .5;
   width: 100%;
 
   @include media-breakpoint-up(sm) {
-    padding-right: calc(#{($grid-gutter-width-base / 2)} + 4rem); // rough width of .story-list-control's, plus grid gutter
+    padding-right: calc(#{($grid-gutter-width-base * .5)} + 4rem); // rough width of .story-list-control's, plus grid gutter
   }
 
   .story-callout {
