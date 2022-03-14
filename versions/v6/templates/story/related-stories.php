@@ -14,7 +14,7 @@ if ( $related_stories ) :
 			</div>
 			<?php endif; ?>
 			<div class="col-sm-8 col-lg-12 position-static">
-				<a class="stretched-link text-secondary font-weight-bold" href="<?php echo $story['url']; ?>">
+				<a class="stretched-link text-secondary font-weight-bold text-decoration-none hover-text-underline" href="<?php echo $story['url']; ?>">
 					<?php echo $story['title']; ?>
 				</a>
 			</div>
