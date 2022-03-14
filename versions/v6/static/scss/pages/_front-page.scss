@@ -71,12 +71,14 @@
   font-weight: 600;
   letter-spacing: .06em;
   margin: 15px 0 25px;
+  text-decoration: none;
   text-transform: uppercase;
 
   &:hover,
   &:active,
   &:focus {
     color: $black;
+    text-decoration: underline;
   }
 }
 
@@ -128,12 +130,14 @@
   font-family: $font-family-slab-serif;
   font-size: 12px;
   letter-spacing: .125em;
+  text-decoration: none;
   text-transform: uppercase;
 
   &:hover,
   &:active,
   &:focus {
     color: $black;
+    text-decoration: underline;
   }
 
   @include media-breakpoint-up(md) {
@@ -425,9 +429,6 @@
   &:active,
   &:focus {
     color: $ucf-gold;
-  }
-
-  &:hover {
     text-decoration: none;
   }
 }
@@ -460,6 +461,11 @@
 
   a {
     color: $white;
+    text-decoration: none;
+
+    @include hover-focus-active {
+      text-decoration: underline;
+    }
   }
 }
 
