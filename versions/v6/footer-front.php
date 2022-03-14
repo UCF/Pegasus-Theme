@@ -15,7 +15,6 @@
 					</div>
 					<div class="col-md-3 offset-md-1 d-none d-md-block">
 						<h2 class="fp-subheading-underline fp-footer-heading">About</h2>
-						<ul class="list-unstyled">
 						<?php
 						$defaults = array(
 							'theme_location' => 'footer-middle-menu',

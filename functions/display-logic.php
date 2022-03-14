@@ -50,9 +50,9 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 	ob_start();
 ?>
 <article class="story-callout <?php echo $css_class; ?> hover-parent">
-	<a class="story-callout-link" href="<?php echo get_permalink( $story->ID ); ?>">
+	<a class="story-callout-link hover-parent text-decoration-none" href="<?php echo get_permalink( $story->ID ); ?>">
 		<div class="story-callout-text-wrap">
-			<<?php echo $heading; ?> class="story-callout-title">
+			<<?php echo $heading; ?> class="story-callout-title hover-child-text-underline">
 				<?php echo $title; ?>
 			</<?php echo $heading; ?>>
 			<div class="story-callout-description">
@@ -89,11 +89,11 @@ function display_front_page_today_story( $article ) {
 	ob_start();
 ?>
 <article aria-label="<?php echo esc_attr( $title ); ?>">
-	<a href="<?php echo $url; ?>">
+	<a class="hover-parent text-decoration-none" href="<?php echo $url; ?>">
 		<time class="fp-today-item-date" datetime="<?php echo $publish_date; ?>">
 			<?php echo $publish_date; ?>
 		</time>
-		<strong class="fp-today-item-title">
+		<strong class="fp-today-item-title hover-child-text-underline">
 			<?php echo $title; ?>
 		</strong>
 	</a>
@@ -200,8 +200,8 @@ function get_home_gallery( $gallery ) {
 	?>
 	<div class="card border-0 bg-faded mx-auto hover-parent">
 		<div class="card-block p-4">
-			<a class="stretched-link" href="<?php echo get_permalink( $gallery ); ?>">
-				<h2 class="text-secondary"><?php echo $gallery->post_title; ?></h2>
+			<a class="stretched-link text-decoration-none hover-parent" href="<?php echo get_permalink( $gallery ); ?>">
+				<h2 class="text-secondary hover-child-text-underline"><?php echo $gallery->post_title; ?></h2>
 			</a>
 
 			<?php if ( $vertical ) : ?>
