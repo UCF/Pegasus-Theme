@@ -7,6 +7,8 @@ $twitter_url = get_theme_option( 'twitter_url' );
 ?>
 
 <div class="container">
+	<h2 class="sr-only">Featured Stories</h2>
+
 	<?php if ( $feature_1 = get_theme_option( 'front_page_featured_story_1' ) ): ?>
 		<?php
 		$feature_1_post = get_post( $feature_1 );
