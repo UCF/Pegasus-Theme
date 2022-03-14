@@ -117,7 +117,7 @@ if ( $story_2 ) {
 			<div class="col-4 col-lg-auto">
 				<div class="position-static mb-4">
 					<img class="img-fluid" src="<?php echo get_featured_image_url( $issue->ID, 'issue-thumbnail' ); ?>" alt="">
-					<a class="stretched-link" href="<?php echo get_permalink( $issue->ID ); ?>">
+					<a class="stretched-link text-decoration-none hover-text-underline" href="<?php echo get_permalink( $issue->ID ); ?>">
 						<h3 class="h5 text-secondary mt-1 mt-md-3"><?php echo wptexturize( $issue->post_title ); ?></h3>
 					</a>
 				</div>
