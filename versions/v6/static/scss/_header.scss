@@ -273,9 +273,14 @@ li#nav-about {
     font-family: $font-family-serif;
     font-size: 12px;
     font-style: italic;
+    text-decoration: none;
 
     @include media-breakpoint-down(md) {
       font-size: 11px;
+    }
+
+    @include hover-focus-active {
+      text-decoration: underline;
     }
   }
 }
