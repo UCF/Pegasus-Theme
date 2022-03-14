@@ -29,9 +29,9 @@
 							Pegasus
 						</a>
 
-						<p class="fp-copyright">
+						<div class="fp-copyright">
 							&copy; <?php echo get_theme_option( 'org_name' ); ?>
-						</p>
+						</div>
 						<p class="fp-address">
 							<?php echo nl2br( get_theme_option( 'org_address' ) ); ?>
 						</p>
