@@ -15,7 +15,6 @@
 					</div>
 					<div class="col-md-3 offset-md-1 d-none d-md-block">
 						<h2 class="fp-subheading-underline fp-footer-heading">About</h2>
-						<ul class="list-unstyled">
 						<?php
 						$defaults = array(
 							'theme_location' => 'footer-middle-menu',
@@ -30,9 +29,9 @@
 							Pegasus
 						</a>
 
-						<p class="fp-copyright">
+						<div class="fp-copyright">
 							&copy; <?php echo get_theme_option( 'org_name' ); ?>
-						</p>
+						</div>
 						<p class="fp-address">
 							<?php echo nl2br( get_theme_option( 'org_address' ) ); ?>
 						</p>
