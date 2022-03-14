@@ -61,7 +61,7 @@ function pegasus_events_display_modern_date( $content, $items, $args, $display_t
 					<?php echo $event->category; ?>
 				</div>
 				<div class="ucf-event-title-wrapper">
-					<a class="ucf-event-title" href="<?php echo $event->url; ?>">
+					<a class="ucf-event-title stretched-link text-decoration-none hover-text-underline" href="<?php echo $event->url; ?>">
 						<?php echo $event->title; ?>
 					</a>
 				</div>
