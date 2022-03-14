@@ -133,7 +133,7 @@ function sc_archive_search($params=array(), $content='') {
 				<div class="col-md-5 pr-md-4 pr-lg-5">
 					<div class="position-relative mb-4">
 						<h2 class="mb-4" id="<?php echo $issue->post_name; ?>">
-							<a class="stretched-link text-secondary" href="<?php echo get_permalink( $issue->ID ); ?>">
+							<a class="stretched-link text-secondary text-decoration-none hover-text-underline" href="<?php echo get_permalink( $issue->ID ); ?>">
 								<?php echo wptexturize( $issue->post_title ); ?>
 							</a>
 						</h2>
@@ -150,7 +150,7 @@ function sc_archive_search($params=array(), $content='') {
 						</h3>
 						<div class="position-relative">
 							<h4 class="font-slab-serif font-weight-bold">
-								<a class="stretched-link text-secondary"  href="<?php echo get_permalink( $featured_article->ID ); ?>">
+								<a class="stretched-link text-secondary text-decoration-none hover-text-underline"  href="<?php echo get_permalink( $featured_article->ID ); ?>">
 									<?php echo wptexturize( $featured_article->post_title ); ?>
 								</a>
 							</h4>
@@ -176,7 +176,7 @@ function sc_archive_search($params=array(), $content='') {
 						<?php foreach( $posts as $post ) : ?>
 						<li data-post-id="<?php echo $post->ID; ?>" class="position-relative mb-4 story-list-item <?php if ( $post->ID === $featured_article_id ) : ?> story-list-item-featured<?php endif; ?>">
 							<h4 class="h5 d-inline-block font-slab-serif font-weight-bold mb-1 mr-2">
-								<a class="stretched-link text-secondary" href="<?php echo get_permalink( $post->ID ); ?>">
+								<a class="stretched-link text-secondary text-decoration-none hover-text-underline" href="<?php echo get_permalink( $post->ID ); ?>">
 									<?php echo wptexturize( $post->post_title ); ?>
 								</a>
 							</h4>
