@@ -1,14 +1,24 @@
+main article.story .lead {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+
+main article.story a {
+  text-decoration: underline;
+}
+
 main article.story h1 {
 	letter-spacing: -.03em;
 	font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
 	font-size: 72px;
-	color: #5DA944;
+	color: #488334;
 }
 
 main article.story p.lead::first-letter{
 	font-family: "Gotham SSm 7r", "Gotham SSm A", "Gotham SSm B", sans-serif;
 	font-weight: bold;
-	color: #5DA944;
+	color: #488334;
 }
 
 @media (max-width:  768px) {
@@ -50,7 +60,7 @@ main article.story #stop-carousel .carousel-control {
 	font-size: 20px;
 	color: #fff;
 	border: none;
-	background: rgba(0, 0, 0, .25);
+	background: rgba(0, 0, 0, .45);
 	text-align: center;
 	text-shadow: 0 1px 2px rgba(0,0,0,.6);
 	opacity: 0.75;
@@ -100,6 +110,7 @@ main article.story #stop-carousel .item {
 
 main article.story #stop-carousel .item p {
 	margin: 0;
+  line-height: 1.5;
 }
 
 main article.story #stop-carousel .item.active {
@@ -109,7 +120,7 @@ main article.story #stop-carousel .item.active {
 
 main article.story .carousel-caption {
 	position: absolute !important;
-	background-color: rgba(0, 0, 0, 0.45);
+	background-color: rgba(0, 0, 0, 0.65);
 	top: 15px;
 	left: 15px;
 	padding: 15px;
@@ -119,8 +130,8 @@ main article.story .carousel-caption {
 
 main article.story .photo-credit-caption {
 	position: absolute !important;
-	background-color: rgba(0, 0, 0, 0.45);
-	font-size: 12px;
+	background-color: rgba(0, 0, 0, 0.50);
+	font-size: .9rem;
 	color: #fff;
 	padding: 5px;
 	bottom: 0;
@@ -184,7 +195,7 @@ main article.story #stop-subtitle {
 	margin-bottom: 15px;
 	font-weight: bold;
 	font-family: "Gotham SSm 8r", "Gotham SSm A", "Gotham SSm B", sans-serif;
-	color: #5DA944;
+	color: #488334;
 }
 
 main article.story #stop-content {
@@ -281,16 +292,4 @@ main article.story .map-stop-content .smaller-title {
 #map-canvas {
 	height: 275px !important;
 	margin-bottom: 1.0em;
-}
-
-main article.story .video-intro-text {
-	font-size: 20px;
-	line-height: 28px;
-	margin-bottom: 30px;
-	margin-top: 30px;
-}
-
-main article.story #roadtrip-trailer {
-	background: #000;
-	width: 100%;
 }
