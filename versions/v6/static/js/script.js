@@ -15,7 +15,7 @@
 
 
 // Define globals for JSHint validation:
-/* global, IPAD_DEPLOYED, _gaq, Chart */
+/* global, _gaq, Chart */
 
 
 const togglePulldown = function ($) {
@@ -193,21 +193,6 @@ const mobileNavToggle = function ($) {
     $('#header-navigation ul, #header-navigation .header-logo')
       .toggleClass('mobile-nav-visible');
   });
-};
-
-const handleIpad = function ($) {
-  // Is this the user's first visit to the site?
-  const ipad  = navigator.userAgent.match(/iPad/i) !== null,
-    ipadHide = $.cookie('ipad-hide');
-
-  // eslint-disable-next-line no-undef
-  if ((ipadHide === null || !ipadHide) && ipad && IPAD_DEPLOYED) {
-    $('#ipad')
-      .modal()
-      .on('hidden', () => {
-        $.cookie('ipad-hide', true);
-      });
-  }
 };
 
 
@@ -464,7 +449,6 @@ if (typeof jQuery !== 'undefined') {
       loadPulldownMenus($);
       pulldownMenuScroll($);
       mobileNavToggle($);
-      handleIpad($);
       lazyLoadAssets($);
       socialButtonTracking($);
       removeEmptyPTags($);

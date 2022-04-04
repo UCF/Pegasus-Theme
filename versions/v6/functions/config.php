@@ -58,7 +58,6 @@ function v6_hook_frontend_theme_scripts() {
 	<?php endif; ?>
 
 	<script type="text/javascript">
-		var IPAD_DEPLOYED = false;
 		var PROTOCOL = '<?php echo is_ssl() ? 'https://' : 'http://'; ?>';
 		var THEME_COMPONENTS_URL = PROTOCOL + '<?php echo str_replace( array( 'http://', 'https://'), '', THEME_COMPONENTS_URL ); ?>';
 
