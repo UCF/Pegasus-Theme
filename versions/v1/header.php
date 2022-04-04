@@ -116,4 +116,5 @@
 			</div>
 		</header>
 
-		<div class="container" id="body_content">
+		<main>
+			<div class="container" id="body_content">
