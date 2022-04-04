@@ -74,19 +74,11 @@
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-							<span class="footer-logo <?php if ( ipad_deployed() ) : ?>pull-left<?php endif; ?>">
-								<a class="sprite logo-large-white <?php if ( ipad_deployed() ) : ?>pull-right<?php endif; ?>" href="<?php echo get_site_url(); ?>">
+							<span class="footer-logo">
+								<a class="sprite logo-large-white" href="<?php echo get_site_url(); ?>">
 								Pegasus Magazine
 							</a>
 						</span>
-
-						<?php if ( ipad_deployed() ) : ?>
-						<span class="footer-ipad-app pull-right">
-							<a class="sprite ipad-app-btn pull-left" href="<?php echo get_theme_option('ipad_app_url'); ?>">
-								Download on the App Store
-							</a>
-						</span>
-						<?php endif; ?>
 
 						<?php 						$defaults = array(
 							'theme_location'  => 'footer-menu',

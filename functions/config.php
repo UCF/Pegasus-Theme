@@ -489,15 +489,6 @@ Config::$theme_settings = array(
 			'value'       => isset( $theme_options['search_per_page'] ) ? $theme_options['search_per_page'] : null,
 		)),
 	),
-	'Devices' => array(
-		new TextField(array(
-			'name'        => 'iTunes Store iPad App URL',
-			'id'          => THEME_OPTIONS_NAME.'[ipad_app_url]',
-			'description' => 'URL of the Pegasus Magazine iPad app in the iTunes store. Used for the iPad modal. The modal and footer link will not be displayed if this field is blank.',
-			'default'     => '',
-			'value'       => isset( $theme_options['ipad_app_url'] ) ? $theme_options['ipad_app_url'] : null,
-		))
-	),
 	'Issues' => array(
 		new SelectField(array(
 			'name'        => 'Current Issue',
