@@ -76,7 +76,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="span12">
-							<span class="footer-logo">
+								<span class="footer-logo">
 									<a class="sprite logo-large-white" href="<?php echo get_site_url(); ?>">
 									Pegasus Magazine
 								</a>
