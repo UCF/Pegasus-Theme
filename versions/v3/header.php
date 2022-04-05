@@ -52,12 +52,12 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
-		<aside class="container-wide" id="pulldown">
+		<aside class="container-wide" id="pulldown" aria-labelledby="pulldown-heading">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<h2 class="section-title">In This Issue</h2>
+							<h2 class="section-title" id="pulldown-heading">In This Issue</h2>
 						</div>
 					</div>
 				</div>
