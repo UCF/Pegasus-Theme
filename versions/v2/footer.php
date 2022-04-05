@@ -12,11 +12,11 @@
 
 		if ($post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home()):
 		?>
-		<aside class="container-wide" id="more-stories">
+		<aside class="container-wide" id="more-stories" aria-labelledby="more-stories-heading">
 			<div class="container">
 				<div class="row">
 					<div class="span12">
-						<h2 class="section-title">More UCF Stories</h2>
+						<h2 class="section-title" id="more-stories-heading">More UCF Stories</h2>
 					</div>
 				</div>
 			</div>
@@ -69,7 +69,7 @@
 			!empty($youtube_url)
 		):
 		?>
-		<aside class="container-wide" id="footer-social">
+		<aside class="container-wide" id="footer-social" aria-label="Follow UCF on social media">
 			<div class="container">
 				<div class="row">
 					<div class="span10 offset1 border-top">

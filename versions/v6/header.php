@@ -7,12 +7,12 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body <?php echo body_class(); ?>>
-		<aside id="pulldown">
+		<aside id="pulldown" aria-labelledby="pulldown-heading">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
 					<div class="row">
 						<div class="col-lg-12 col-md-12">
-							<h2 class="text-default-aw text-uppercase my-4 py-2">In This Issue</h2>
+							<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">In This Issue</h2>
 						</div>
 					</div>
 				</div>
