@@ -16,8 +16,10 @@
 											</div>
 											<div class="span12">
 												<ul class="thumbnails">
-												<?php 						                    extract( get_navigation_stories() );
-												foreach( $top_stories as $story ) : ?>
+												<?php
+												extract( get_navigation_stories() );
+												foreach( $top_stories as $story ) :
+												?>
 													<li class="span3">
 														<a href="<?php echo get_permalink($story->ID); ?>">
 															<div class="thumbnail">
@@ -76,13 +78,14 @@
 				<div class="container">
 					<div class="row">
 						<div class="span12">
-								<span class="footer-logo">
-									<a class="sprite logo-large-white" href="<?php echo get_site_url(); ?>">
+							<span class="footer-logo">
+								<a class="sprite logo-large-white" href="<?php echo get_site_url(); ?>">
 									Pegasus Magazine
 								</a>
 							</span>
 
-							<?php 						$defaults = array(
+							<?php
+							$defaults = array(
 								'theme_location'  => 'footer-menu',
 								'container'       => false,
 								'menu_class'      => 'navigation',
