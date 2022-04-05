@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * Dynamically populate the Alumni Notes 'Class Year' form field with years ranging from 1969 to the current year
  *
@@ -112,7 +112,7 @@ function display_story_list($issue, $class=null) {
 function display_social($url, $title) {
     $tweet_title = urlencode('Pegasus Magazine: '.$title);
     ob_start(); ?>
-    <aside class="social">
+    <aside class="social" aria-label="Share">
         <a class="share-facebook" target="_blank" data-button-target="<?php echo $url?>" href="http://www.facebook.com/sharer.php?u=<?php echo $url?>" title="Like this story on Facebook">
             Like "<?php echo $title?>" on Facebook
         </a>
