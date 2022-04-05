@@ -42,10 +42,10 @@
 
 	<div class="row">
 		<div class="col-sm-7 col-md-8">
-			<aside class="fp-today-feed">
+			<aside class="fp-today-feed" aria-labelledby="the-feed-heading">
 				<a href="https://today.ucf.edu/">
 					<span class="fp-today-feed-more pull-right hidden-xs hidden-sm">Check out more stories at <span class="ucf-today">UCFToday</span> <span class="fa fa-share-square-o ucf-gold"></span></span>
-					<h2 class="fp-heading fp-today-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
+					<h2 class="fp-heading fp-today-heading" id="the-feed-heading">The Feed <span class="fa fa-caret-right ucf-gold"></span></h2>
 				</a>
 				<?php
 				$articles = get_news( 0, 10, get_theme_option( 'front_page_today_feed_url' ) );
@@ -89,8 +89,8 @@
 		if ( $twitter_url = get_theme_option( 'twitter_url' ) ):
 		?>
 			<div class="col-sm-5 col-md-4 hidden-xs">
-				<aside class="fp-trending-feed">
-					<h2 class="fp-subheading-underline fp-trending-heading">What&rsquo;s Trending</h2>
+				<aside class="fp-trending-feed" aria-labelledby="whats-trending-heading">
+					<h2 class="fp-subheading-underline fp-trending-heading" id="whats-trending-heading">What&rsquo;s Trending</h2>
 					<div class="twitter-widget">
 						<a class="twitter-timeline"
 							href="<?php echo $twitter_url; ?>"
