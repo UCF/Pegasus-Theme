@@ -13,11 +13,11 @@
 
 			if ( $post->post_type !== 'page' && $post->post_type !== 'post' && $post->post_type !== 'issue' && !is_home() ):
 			?>
-			<aside class="container-wide" id="more-stories">
+			<aside class="container-wide" id="more-stories" aria-labelledby="more-stories-heading">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<h2 class="section-title">More UCF Stories</h2>
+							<h2 class="section-title" id="more-stories-heading">More UCF Stories</h2>
 						</div>
 					</div>
 				</div>
@@ -73,7 +73,7 @@
 				!empty( $youtube_url )
 			):
 			?>
-			<aside class="container-wide" id="footer-social">
+			<aside class="container-wide" id="footer-social" aria-label="Follow UCF on social media">
 				<div class="container">
 					<div class="row">
 						<div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1 border-top">
@@ -106,19 +106,11 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-md-12 col-sm-12">
-							<span class="footer-logo <?php if ( ipad_deployed() ) { ?>pull-left<?php } ?>">
-								<a class="logo-large-white <?php if ( ipad_deployed() ) { ?>pull-right<?php } ?>" href="<?php echo get_site_url(); ?>">
+							<span class="footer-logo">
+								<a class="logo-large-white" href="<?php echo get_site_url(); ?>">
 									Pegasus Magazine
 								</a>
 							</span>
-
-							<?php if ( ipad_deployed() ) { ?>
-							<span class="footer-ipad-app pull-right">
-								<a class="ipad-app-btn pull-left" href="<?php echo get_theme_option( 'ipad_app_url' ); ?>">
-									Download on the App Store
-								</a>
-							</span>
-							<?php } ?>
 
 							<?php
 							$defaults = array(

@@ -487,15 +487,6 @@ function get_theme_option($key) {
 
 
 /*
- * Is the iPad app deployed or not
- */
-function ipad_deployed() {
-	$ipad_app_url = get_theme_option('ipad_app_url');
-	return (is_null($ipad_app_url) || $ipad_app_url == '') ? False : True;
-}
-
-
-/*
  * Modify the permalinks for the Issue post type to the following form:
  * http://ucf.edu/pegasus/<issue slug>/
  */
