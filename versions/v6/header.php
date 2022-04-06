@@ -7,6 +7,8 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body <?php echo body_class(); ?>>
+	<a class="skip-navigation bg-complementary text-inverse box-shadow-soft" href="#content">Skip to main content</a>
+
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -78,4 +80,4 @@
 			</div>
 		</header>
 
-		<main>
+		<main id="content">

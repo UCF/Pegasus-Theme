@@ -5,6 +5,7 @@
 	</head>
 
 	<body <?php echo body_class( 'front-page' ); ?>>
+	<a class="skip-navigation bg-complementary text-inverse box-shadow-soft" href="#content">Skip to main content</a>
 		<div id="ipad" class="modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog">
 				<div class="modal-content">
@@ -51,4 +52,4 @@
 			</div>
 		</header>
 
-		<main class="front-page-main">
+		<main class="front-page-main" id="content">
