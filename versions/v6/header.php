@@ -8,6 +8,7 @@
 
 	<body <?php echo body_class(); ?>>
 		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
+		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<aside id="pulldown" aria-labelledby="pulldown-heading">
 			<div class="pulldown-container pulldown-stories">
 				<div class="container">
