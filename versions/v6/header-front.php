@@ -5,6 +5,7 @@
 	</head>
 
 	<body <?php echo body_class( 'front-page' ); ?>>
+		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
 		<header class="front-page-header">
 			<div class="container mt-4 mt-lg-5 mb-5 mb-md-0">
 				<div class="row">
@@ -37,4 +38,4 @@
 			</div>
 		</header>
 
-		<main class="front-page-main">
+		<main class="front-page-main" id="content">
