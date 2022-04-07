@@ -16,7 +16,7 @@
 						<a class="font-serif small text-secondary d-inline-block" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
 							The Magazine of the University of Central Florida
 						</a>
-						<span class="d-inline-block mx-2" aria-hidden="true">|</span>
+						<span class="d-inline-block mx-3" aria-hidden="true">|</span>
 						<a class="navbar-link nav-archives" href="<?php echo get_permalink( get_page_by_title( 'Archives' ) ); ?>">
 							<span class="navbar-link-icon" aria-hidden="true"></span>
 							<span class="navbar-link-text">Archives</span>
