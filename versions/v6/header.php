@@ -39,9 +39,7 @@
 					<div class="container">
 						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">In This Issue</h2>
 					</div>
-					<div tabindex="0">
-						<?php echo display_story_list( $relevant_issue ); ?>
-					</div>
+					<?php echo display_story_list( $relevant_issue ); ?>
 				</div>
 			</div>
 			<nav class="site-nav navbar navbar-light bg-secondary">
