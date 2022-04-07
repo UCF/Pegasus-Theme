@@ -59,7 +59,7 @@ const pulldownInit = function ($) {
     }
   });
 
-  $storyList.find('.story-callout-link:last-child').on('keydown', (e) => {
+  $storyList.find('.story-callout:last-of-type').find('.story-callout-link').on('keydown', (e) => {
     if (e.key === 'Tab' && !e.shiftKey) {
       e.preventDefault();
 
