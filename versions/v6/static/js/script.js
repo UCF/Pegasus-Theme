@@ -18,182 +18,182 @@
 /* global, _gaq, Chart */
 
 
-const togglePulldown = function ($) {
-  // Unset tabbability on links inside a hidden pulldown.
-  $('#pulldown a').attr('tabindex', '-1');
+// const togglePulldown = function ($) {
+//   // Unset tabbability on links inside a hidden pulldown.
+//   $('#pulldown a').attr('tabindex', '-1');
 
-  $('.pulldown-toggle').on('click', function (e) {
-    e.preventDefault();
+//   $('.pulldown-toggle').on('click', function (e) {
+//     e.preventDefault();
 
-    const toggle = $(this),
-      pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
-      pulldownWrap = $('#pulldown');
+//     const toggle = $(this),
+//       pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
+//       pulldownWrap = $('#pulldown');
 
-    // Trigger lazyload if it hasn't been triggered
-    pulldownContainer
-      .find('img.lazy')
-      .trigger('triggerLazy');
+//     // Trigger lazyload if it hasn't been triggered
+//     pulldownContainer
+//       .find('img.lazy')
+//       .trigger('triggerLazy');
 
-    // Make sure that any previously set tabindex values are reset to -1.
-    pulldownWrap
-      .find('a')
-      .attr('tabindex', '-1');
+//     // Make sure that any previously set tabindex values are reset to -1.
+//     pulldownWrap
+//       .find('a')
+//       .attr('tabindex', '-1');
 
-    // If another pulldown is active while a different pulldown is activated,
-    // deactivate any existing active pulldowns and activate the new toggle
-    // and pulldown.
-    if ($('#pulldown.active').length > 0 && !pulldownContainer.hasClass('active')) {
-      $('.pulldown-container.active, .pulldown-toggle.active')
-        .removeClass('active');
-      pulldownContainer
-        .addClass('active')
-        .find('a')
-        .attr('tabindex', '0');
-      toggle.addClass('active');
-    } else if (!$('#nav-mobile a').hasClass('active')) {
-      // If the activated pulldown is not active, activate it and its toggle.
-      // Else, deactivate it.
-      // When mobile navigation is active, disable this functionality.
-      pulldownWrap.toggleClass('active');
-      pulldownContainer.toggleClass('active');
+//     // If another pulldown is active while a different pulldown is activated,
+//     // deactivate any existing active pulldowns and activate the new toggle
+//     // and pulldown.
+//     if ($('#pulldown.active').length > 0 && !pulldownContainer.hasClass('active')) {
+//       $('.pulldown-container.active, .pulldown-toggle.active')
+//         .removeClass('active');
+//       pulldownContainer
+//         .addClass('active')
+//         .find('a')
+//         .attr('tabindex', '0');
+//       toggle.addClass('active');
+//     } else if (!$('#nav-mobile a').hasClass('active')) {
+//       // If the activated pulldown is not active, activate it and its toggle.
+//       // Else, deactivate it.
+//       // When mobile navigation is active, disable this functionality.
+//       pulldownWrap.toggleClass('active');
+//       pulldownContainer.toggleClass('active');
 
-      if (pulldownContainer.hasClass('active')) {
-        pulldownContainer.find('a').attr('tabindex', '0');
-      } else {
-        pulldownContainer.find('a').attr('tabindex', '-1');
-      }
+//       if (pulldownContainer.hasClass('active')) {
+//         pulldownContainer.find('a').attr('tabindex', '0');
+//       } else {
+//         pulldownContainer.find('a').attr('tabindex', '-1');
+//       }
 
-      toggle.toggleClass('active');
-    }
+//       toggle.toggleClass('active');
+//     }
 
-    // If toggle is a close button, always remove .active classes and tabbability.
-    if (toggle.hasClass('close')) {
-      $('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
-        .addBack()
-        .removeClass('active');
-      pulldownWrap
-        .find('a')
-        .attr('tabindex', '-1');
-    }
+//     // If toggle is a close button, always remove .active classes and tabbability.
+//     if (toggle.hasClass('close')) {
+//       $('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
+//         .addBack()
+//         .removeClass('active');
+//       pulldownWrap
+//         .find('a')
+//         .attr('tabindex', '-1');
+//     }
 
-    // Check newly-assigned .active classes on #pulldown.
-    // Set a fixed height for #pulldown so that transitions work properly
-    // if #pulldown has been assigned an active class
-    if (pulldownWrap.hasClass('active')) {
-      const newHeight = pulldownContainer.height() - 20; // subtract 20 to hide scrollbars
-      pulldownWrap.css('height', newHeight);
-      pulldownContainer.find('.controls').css('height', newHeight);
-    } else {
-      pulldownWrap.css('height', 0);
-    }
-  });
-};
+//     // Check newly-assigned .active classes on #pulldown.
+//     // Set a fixed height for #pulldown so that transitions work properly
+//     // if #pulldown has been assigned an active class
+//     if (pulldownWrap.hasClass('active')) {
+//       const newHeight = pulldownContainer.height() - 20; // subtract 20 to hide scrollbars
+//       pulldownWrap.css('height', newHeight);
+//       pulldownContainer.find('.controls').css('height', newHeight);
+//     } else {
+//       pulldownWrap.css('height', 0);
+//     }
+//   });
+// };
 
-const loadPulldownMenus = function ($) {
-  $('.pulldown-toggle').each(function () {
-    const toggle = $(this),
-      pulldownContainer = $(toggle.attr('data-pulldown-container')),
-      storyList = pulldownContainer.find('.story-list');
+// const loadPulldownMenus = function ($) {
+//   $('.pulldown-toggle').each(function () {
+//     const toggle = $(this),
+//       pulldownContainer = $(toggle.attr('data-pulldown-container')),
+//       storyList = pulldownContainer.find('.story-list');
 
-    pulldownContainer
-      .find('img.lazy')
-      .lazyload({
-        effect: 'fadeIn',
-        container: storyList,
-        event: 'triggerLazy'
-      })
-      .end();
-  });
-};
+//     pulldownContainer
+//       .find('img.lazy')
+//       .lazyload({
+//         effect: 'fadeIn',
+//         container: storyList,
+//         event: 'triggerLazy'
+//       })
+//       .end();
+//   });
+// };
 
-const pulldownMenuScroll = function ($) {
-  // Handle left/right nav arrow btn click in story list controls
-  $('.story-list-control-forward, .story-list-control-backward').on('click', function (e) {
-    e.preventDefault();
+// const pulldownMenuScroll = function ($) {
+//   // Handle left/right nav arrow btn click in story list controls
+//   $('.story-list-control-forward, .story-list-control-backward').on('click', function (e) {
+//     e.preventDefault();
 
-    const controlBtn = $(this);
-    const controlWrap = controlBtn.parents('.story-list-controls');
-    const parentContainer = controlWrap.parent();
-    const itemList = parentContainer.find('.story-list');
+//     const controlBtn = $(this);
+//     const controlWrap = controlBtn.parents('.story-list-controls');
+//     const parentContainer = controlWrap.parent();
+//     const itemList = parentContainer.find('.story-list');
 
-    // x-overflowing div width only calculates apparent window width.
-    // Need to calculate the combined widths of all child items
-    // to get the value that we need.
-    let itemListWidth = controlWrap.outerWidth();
-    itemList.children('.story-callout').each(function () {
-      itemListWidth += $(this).outerWidth();
-    });
+//     // x-overflowing div width only calculates apparent window width.
+//     // Need to calculate the combined widths of all child items
+//     // to get the value that we need.
+//     let itemListWidth = controlWrap.outerWidth();
+//     itemList.children('.story-callout').each(function () {
+//       itemListWidth += $(this).outerWidth();
+//     });
 
-    let newScrollVal = 0;
-    const curScrollVal = itemList.scrollLeft();
+//     let newScrollVal = 0;
+//     const curScrollVal = itemList.scrollLeft();
 
-    // Get the number of pixels to scroll the itemList
-    if (controlBtn.hasClass('story-list-control-forward')) {
-      newScrollVal = curScrollVal + parentContainer.width();
-      newScrollVal = newScrollVal > itemListWidth - parentContainer.width() ? controlWrap.outerWidth() + itemListWidth - parentContainer.width() : newScrollVal;
-    } else if (controlBtn.hasClass('story-list-control-backward')) {
-      newScrollVal = curScrollVal - parentContainer.width();
-      newScrollVal = newScrollVal < 0 ? 0 : newScrollVal;
-    }
+//     // Get the number of pixels to scroll the itemList
+//     if (controlBtn.hasClass('story-list-control-forward')) {
+//       newScrollVal = curScrollVal + parentContainer.width();
+//       newScrollVal = newScrollVal > itemListWidth - parentContainer.width() ? controlWrap.outerWidth() + itemListWidth - parentContainer.width() : newScrollVal;
+//     } else if (controlBtn.hasClass('story-list-control-backward')) {
+//       newScrollVal = curScrollVal - parentContainer.width();
+//       newScrollVal = newScrollVal < 0 ? 0 : newScrollVal;
+//     }
 
-    // Animate scrolling
-    if (curScrollVal !== newScrollVal) {
-      itemList.animate({
-        scrollLeft: newScrollVal
-      }, 400);
-    }
-  });
-};
+//     // Animate scrolling
+//     if (curScrollVal !== newScrollVal) {
+//       itemList.animate({
+//         scrollLeft: newScrollVal
+//       }, 400);
+//     }
+//   });
+// };
 
-const mobileNavToggle = function ($) {
-  // Handle window resizing with mobile navigation active.
-  // Unset any active pulldown containers, toggles and logo/nav mods.
-  $(window).on('resize', function () {
-    if (
+// const mobileNavToggle = function ($) {
+//   // Handle window resizing with mobile navigation active.
+//   // Unset any active pulldown containers, toggles and logo/nav mods.
+//   $(window).on('resize', function () {
+//     if (
 
-      $(this).width() > 767 &&
-        $('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
-       ||
+//       $(this).width() > 767 &&
+//         $('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
+//        ||
 
-        $(this).width() < 768 &&
-        !$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
+//         $(this).width() < 768 &&
+//         !$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
 
-    ) {
-      $('#header-navigation ul, #header-navigation .header-logo')
-        .removeClass('mobile-nav-visible');
-      $('#pulldown.active, #pulldown .active, #nav-mobile .active')
-        .removeClass('active');
-      $('#nav-mobile .close')
-        .removeClass('close');
-      $('#pulldown')
-        .css('height', 0);
-    }
-  });
+//     ) {
+//       $('#header-navigation ul, #header-navigation .header-logo')
+//         .removeClass('mobile-nav-visible');
+//       $('#pulldown.active, #pulldown .active, #nav-mobile .active')
+//         .removeClass('active');
+//       $('#nav-mobile .close')
+//         .removeClass('close');
+//       $('#pulldown')
+//         .css('height', 0);
+//     }
+//   });
 
-  // Handle link click (this assumes the mobile toggle link has
-  // a default data-pulldown-container attribute value set)
-  $('#nav-mobile a').on('click', function (e) {
-    e.preventDefault();
+//   // Handle link click (this assumes the mobile toggle link has
+//   // a default data-pulldown-container attribute value set)
+//   $('#nav-mobile a').on('click', function (e) {
+//     e.preventDefault();
 
-    const toggle = $(this),
-      navList = toggle.parents('ul'),
-      activeContainerToggle = navList.find(`li a[data-pulldown-container="${toggle.attr('data-pulldown-container')}"]`);
+//     const toggle = $(this),
+//       navList = toggle.parents('ul'),
+//       activeContainerToggle = navList.find(`li a[data-pulldown-container="${toggle.attr('data-pulldown-container')}"]`);
 
-    // Toggle the menu/close btn icons and the
-    // primary pulldown toggle link's .active class
-    if (toggle.hasClass('active')) {
-      toggle.addClass('close');
-      activeContainerToggle.addClass('active');
-    } else {
-      toggle.removeClass('close');
-      activeContainerToggle.removeClass('active');
-    }
+//     // Toggle the menu/close btn icons and the
+//     // primary pulldown toggle link's .active class
+//     if (toggle.hasClass('active')) {
+//       toggle.addClass('close');
+//       activeContainerToggle.addClass('active');
+//     } else {
+//       toggle.removeClass('close');
+//       activeContainerToggle.removeClass('active');
+//     }
 
-    // Show Issue, Archive nav links; hide Pegasus logo
-    $('#header-navigation ul, #header-navigation .header-logo')
-      .toggleClass('mobile-nav-visible');
-  });
-};
+//     // Show Issue, Archive nav links; hide Pegasus logo
+//     $('#header-navigation ul, #header-navigation .header-logo')
+//       .toggleClass('mobile-nav-visible');
+//   });
+// };
 
 
 const lazyLoadAssets = function ($) {
@@ -445,10 +445,10 @@ const twitterWidget = function () {
 if (typeof jQuery !== 'undefined') {
   (function () {
     $(() => {
-      togglePulldown($);
-      loadPulldownMenus($);
-      pulldownMenuScroll($);
-      mobileNavToggle($);
+      // togglePulldown($);
+      // loadPulldownMenus($);
+      // pulldownMenuScroll($);
+      // mobileNavToggle($);
       lazyLoadAssets($);
       socialButtonTracking($);
       removeEmptyPTags($);
