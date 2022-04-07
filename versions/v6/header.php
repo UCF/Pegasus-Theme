@@ -7,6 +7,8 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body <?php echo body_class(); ?>>
+		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
+		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<header class="site-header" id="header-navigation">
 			<div class="header-pulldown collapse bg-faded" id="pulldown">
 				<div class="container pt-3 hidden-md-up">
@@ -77,4 +79,4 @@
 			</nav>
 		</header>
 
-		<main>
+		<main id="content">
