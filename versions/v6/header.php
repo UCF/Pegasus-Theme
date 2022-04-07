@@ -10,7 +10,7 @@
 		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
 		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<header class="site-header" id="header-navigation">
-			<div class="header-pulldown collapse bg-faded" id="pulldown">
+			<div class="header-pulldown collapse bg-faded" id="pulldown" tabindex="-1">
 				<div class="container pt-3 hidden-md-up">
 					<div class="d-flex flex-row align-items-center justify-content-center">
 						<a class="font-serif small text-secondary d-inline-block" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
@@ -25,20 +25,22 @@
 					<hr role="presentation" class="mt-3 mb-4">
 				</div>
 				<div class="pulldown-container pulldown-stories">
+					<div class="story-list-controls hidden-xs-down">
+						<button id="pulldown-close" type="button" class="btn story-list-control close" data-toggle="collapse" data-target="#pulldown" aria-expanded="true" aria-controls="pulldown" aria-label="Close">
+							<span class="fas fa-2x fa-times" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Scroll left">
+							<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>
+						</button>
+						<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Scroll right">
+							<span class="fas fa-2x fa-caret-right" aria-hidden="true"></span>
+						</button>
+					</div>
 					<div class="container">
 						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">In This Issue</h2>
 					</div>
-					<?php echo display_story_list( $relevant_issue ); ?>
-					<div class="story-list-controls hidden-xs-down">
-						<button type="button" class="btn story-list-control close" data-toggle="collapse" data-target="#pulldown" aria-expanded="true" aria-controls="pulldown" aria-label="Close">
-							<span class="fas fa-2x fa-times" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Back">
-							<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>
-						</button>
-						<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Forward">
-							<span class="fas fa-2x fa-caret-right" aria-hidden="true"></span>
-						</button>
+					<div tabindex="0">
+						<?php echo display_story_list( $relevant_issue ); ?>
 					</div>
 				</div>
 			</div>
@@ -57,7 +59,7 @@
 							<?php endif; ?>
 						</a>
 
-						<a class="font-serif small text-secondary text-decoration-none hover-text-underline d-inline-block hidden-md-down ml-3 mt-1" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
+						<a class="font-serif small text-secondary text-decoration-none hover-text-underline d-inline-block hidden-sm-down ml-3 mt-1" href="<?php echo get_permalink( get_page_by_title( 'About the Magazine' ) ); ?>">
 							The Magazine of the University of Central Florida
 						</a>
 					</div>
