@@ -37,7 +37,7 @@
 						</button>
 					</div>
 					<div class="container">
-						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">
+						<h2 class="text-uppercase my-4 py-2" id="pulldown-heading">
 							<span class="mr-1">In This Issue</span>
 							<span class="d-inline-block font-size-lg text-transform-none"><?php echo $relevant_issue->post_title; ?></span>
 						</h2>
@@ -70,6 +70,7 @@
 						<button class="navbar-toggler collapsed nav-pulldown-toggle hidden-md-up" type="button" data-toggle="collapse" data-target="#pulldown" aria-controls="pulldown" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
+						<!-- <a class="nav-mobile nav-pulldown-toggle hidden-md-up" data-toggle="collapse" aria-expanded="false" aria-controls="pulldown" href="#pulldown" aria-label="Menu"></a> -->
 						<button class="navbar-link nav-pulldown-toggle nav-issue btn btn-link p-0 mr-3 hidden-sm-down" data-toggle="collapse" aria-expanded="false" aria-controls="pulldown" data-target="#pulldown">
 							<span class="navbar-link-icon" aria-hidden="true"></span>
 							<span class="navbar-link-text">In This Issue</span>
