@@ -5,20 +5,8 @@
 	</head>
 
 	<body <?php echo body_class( 'front-page' ); ?>>
-		<div id="ipad" class="modal" tabindex="-1" role="dialog">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<strong>Pegasus Magazine is available on the iPad!</strong>
-					</div>
-					<div class="modal-body">
-						<a href="<?php echo get_theme_option( 'ipad_app_url' ); ?>" class="btn btn-primary">Go to iTunes</a>
-						<a href="#" class="btn" data-dismiss="modal">Continue to Web Version</a>
-					</div>
-				</div>
-			</div>
-		</div>
-
+		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
+		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<header class="front-page-header">
 			<div class="container mt-4 mt-lg-5 mb-5 mb-md-0">
 				<div class="row">
@@ -51,4 +39,4 @@
 			</div>
 		</header>
 
-		<main class="front-page-main">
+		<main class="front-page-main" id="content">

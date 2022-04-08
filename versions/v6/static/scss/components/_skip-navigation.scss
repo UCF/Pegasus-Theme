@@ -1,0 +1,12 @@
+.skip-navigation {
+  @include sr-only();
+  @include sr-only-focusable();
+  box-shadow: .5em .5em 1em rgba(0,0,0,.325);
+
+  &:focus {
+    left: $spacer-x;
+    position: absolute;
+    top: calc(#{$ucf-header-height} + #{$spacer-y});
+    z-index: 9999;
+  }
+}

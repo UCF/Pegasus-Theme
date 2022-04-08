@@ -58,14 +58,6 @@
 										<?php } ?>
 									</div>
 									<?php endif; ?>
-
-									<?php if ( ipad_deployed() ) { ?>
-									<span class="footer-ipad-app">
-										<a class="ipad-app-btn" href="<?php echo get_theme_option( 'ipad_app_url' ); ?>">
-											Download the Digital Edition
-										</a>
-									</span>
-									<?php } ?>
 								</div>
 							</div>
 						</div>
