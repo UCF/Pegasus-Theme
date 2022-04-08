@@ -25,21 +25,14 @@ const pulldownInit = function ($) {
   const $pulldownToggle = $header.find('.nav-pulldown-toggle');
   const $closeBtn = $header.find('#pulldown-close');
 
-  // Define lazyload behavior:
-  $pulldown
-    .find('img.lazy')
-    .lazyload({
-      effect: 'fadeIn',
-      container: $storyList,
-      event: 'triggerLazy'
-    })
-    .end();
-
   // Trigger lazyload the first time the pulldown is expanded:
   $pulldown.one('show.bs.collapse', () => {
     $pulldown
       .find('img.lazy')
-      .trigger('triggerLazy');
+      .lazyload({
+        effect: 'fadeIn',
+        container: $storyList
+      });
   });
 
   // Handle keyboard behavior on pulldown toggles when the pulldown

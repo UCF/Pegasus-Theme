@@ -70,7 +70,6 @@
 						<button class="navbar-toggler collapsed nav-pulldown-toggle hidden-md-up" type="button" data-toggle="collapse" data-target="#pulldown" aria-controls="pulldown" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
-						<!-- <a class="nav-mobile nav-pulldown-toggle hidden-md-up" data-toggle="collapse" aria-expanded="false" aria-controls="pulldown" href="#pulldown" aria-label="Menu"></a> -->
 						<button class="navbar-link nav-pulldown-toggle nav-issue btn btn-link p-0 mr-3 hidden-sm-down" data-toggle="collapse" aria-expanded="false" aria-controls="pulldown" data-target="#pulldown">
 							<span class="navbar-link-icon" aria-hidden="true"></span>
 							<span class="navbar-link-text">In This Issue</span>

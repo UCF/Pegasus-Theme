@@ -46,7 +46,7 @@
     left: calc(50% - 2rem);
     pointer-events: none;
     position: absolute;
-    top: -1.5rem; // TODO magic number
+    top: -1.5rem; // approximate/magic number
     width: 0;
     z-index: 6;
   }
@@ -104,7 +104,7 @@
   }
 
   .navbar-link-text {
-    text-underline-offset: 5px; // TODO magic number
+    text-underline-offset: 5px;
   }
 }
 
