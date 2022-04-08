@@ -5,7 +5,7 @@
 
 .story-list-wrap {
   @include media-breakpoint-up(sm) {
-    padding-right: calc(#{($grid-gutter-width-base * .5)} + 4rem); // rough width of .story-list-control's, plus grid gutter
+    padding-right: calc(#{($grid-gutter-width-base * .5)} + 3rem); // rough width of .story-list-control's, plus grid gutter
   }
 }
 

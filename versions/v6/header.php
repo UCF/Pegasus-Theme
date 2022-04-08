@@ -26,18 +26,21 @@
 				<hr role="presentation" class="mt-3 mb-4 hidden-md-up">
 				<div class="pulldown-container pulldown-stories">
 					<div class="story-list-controls hidden-xs-down">
-						<button id="pulldown-close" type="button" class="btn story-list-control close" data-toggle="collapse" data-target="#pulldown" aria-expanded="true" aria-controls="pulldown" aria-label="Close">
+						<button id="pulldown-close" type="button" class="btn story-list-control close" data-toggle="collapse" data-target="#pulldown" aria-expanded="true" aria-controls="pulldown" aria-label="Close article pulldown">
 							<span class="fas fa-2x fa-times" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Scroll left">
+						<button type="button" class="btn story-list-control story-list-control-backward" aria-label="Scroll articles left">
 							<span class="fas fa-2x fa-caret-left" aria-hidden="true"></span>
 						</button>
-						<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Scroll right">
+						<button type="button" class="btn story-list-control story-list-control-forward" aria-label="Scroll articles right">
 							<span class="fas fa-2x fa-caret-right" aria-hidden="true"></span>
 						</button>
 					</div>
 					<div class="container">
-						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">In This Issue</h2>
+						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">
+							<span class="mr-1">In This Issue</span>
+							<span class="d-inline-block font-size-lg text-transform-none"><?php echo $relevant_issue->post_title; ?></span>
+						</h2>
 					</div>
 					<div class="story-list-wrap">
 						<?php echo display_story_list( $relevant_issue ); ?>
