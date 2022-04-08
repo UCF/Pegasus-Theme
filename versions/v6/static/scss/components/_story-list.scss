@@ -3,6 +3,12 @@
 // list of story callouts.
 //
 
+.story-list-wrap {
+  @include media-breakpoint-up(sm) {
+    padding-right: calc(#{($grid-gutter-width-base * .5)} + 3rem); // rough width of .story-list-control's, plus grid gutter
+  }
+}
+
 .story-list {
   @include make-row();
   -webkit-overflow-scrolling: touch; // sass-lint:disable-line no-vendor-prefixes
@@ -12,10 +18,6 @@
   padding-left: $grid-gutter-width-base * .5;
   padding-right: $grid-gutter-width-base * .5;
   width: 100%;
-
-  @include media-breakpoint-up(sm) {
-    padding-right: calc(#{($grid-gutter-width-base * .5)} + 4rem); // rough width of .story-list-control's, plus grid gutter
-  }
 
   .story-callout {
     @include make-col-ready();

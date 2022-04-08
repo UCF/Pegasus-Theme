@@ -18,93 +18,79 @@
 /* global, _gaq, Chart */
 
 
-const togglePulldown = function ($) {
-  // Unset tabbability on links inside a hidden pulldown.
-  $('#pulldown a').attr('tabindex', '-1');
+const pulldownInit = function ($) {
+  const $header = $('#header-navigation');
+  const $pulldown = $header.children('.header-pulldown');
+  const $storyList = $header.find('.story-list');
+  const $pulldownToggle = $header.find('.nav-pulldown-toggle');
+  const $closeBtn = $header.find('#pulldown-close');
 
-  $('.pulldown-toggle').on('click', function (e) {
-    e.preventDefault();
-
-    const toggle = $(this),
-      pulldownContainer = $(toggle.attr('data-pulldown-container')), // The pulldown container to put content in
-      pulldownWrap = $('#pulldown');
-
-    // Trigger lazyload if it hasn't been triggered
-    pulldownContainer
-      .find('img.lazy')
-      .trigger('triggerLazy');
-
-    // Make sure that any previously set tabindex values are reset to -1.
-    pulldownWrap
-      .find('a')
-      .attr('tabindex', '-1');
-
-    // If another pulldown is active while a different pulldown is activated,
-    // deactivate any existing active pulldowns and activate the new toggle
-    // and pulldown.
-    if ($('#pulldown.active').length > 0 && !pulldownContainer.hasClass('active')) {
-      $('.pulldown-container.active, .pulldown-toggle.active')
-        .removeClass('active');
-      pulldownContainer
-        .addClass('active')
-        .find('a')
-        .attr('tabindex', '0');
-      toggle.addClass('active');
-    } else if (!$('#nav-mobile a').hasClass('active')) {
-      // If the activated pulldown is not active, activate it and its toggle.
-      // Else, deactivate it.
-      // When mobile navigation is active, disable this functionality.
-      pulldownWrap.toggleClass('active');
-      pulldownContainer.toggleClass('active');
-
-      if (pulldownContainer.hasClass('active')) {
-        pulldownContainer.find('a').attr('tabindex', '0');
-      } else {
-        pulldownContainer.find('a').attr('tabindex', '-1');
-      }
-
-      toggle.toggleClass('active');
-    }
-
-    // If toggle is a close button, always remove .active classes and tabbability.
-    if (toggle.hasClass('close')) {
-      $('#pulldown.active, .pulldown-container.active, .pulldown-toggle.active')
-        .addBack()
-        .removeClass('active');
-      pulldownWrap
-        .find('a')
-        .attr('tabindex', '-1');
-    }
-
-    // Check newly-assigned .active classes on #pulldown.
-    // Set a fixed height for #pulldown so that transitions work properly
-    // if #pulldown has been assigned an active class
-    if (pulldownWrap.hasClass('active')) {
-      const newHeight = pulldownContainer.height() - 20; // subtract 20 to hide scrollbars
-      pulldownWrap.css('height', newHeight);
-      pulldownContainer.find('.controls').css('height', newHeight);
-    } else {
-      pulldownWrap.css('height', 0);
-    }
-  });
-};
-
-const loadPulldownMenus = function ($) {
-  $('.pulldown-toggle').each(function () {
-    const toggle = $(this),
-      pulldownContainer = $(toggle.attr('data-pulldown-container')),
-      storyList = pulldownContainer.find('.story-list');
-
-    pulldownContainer
+  // Trigger lazyload the first time the pulldown is expanded:
+  $pulldown.one('show.bs.collapse', () => {
+    $pulldown
       .find('img.lazy')
       .lazyload({
         effect: 'fadeIn',
-        container: storyList,
-        event: 'triggerLazy'
-      })
-      .end();
+        container: $storyList
+      });
+  });
+
+  // Handle keyboard behavior on pulldown toggles when the pulldown
+  // is expanded:
+  $pulldownToggle.on('keydown', function (e) {
+    if (e.key === 'Tab' && !e.shiftKey && $(this).attr('aria-expanded') === 'true') {
+      e.preventDefault();
+
+      // Prioritize focusing on the close button in
+      // the pulldown if it's visible.  Otherwise,
+      // fall back to focusing on the pulldown itself.
+      if ($closeBtn.is(':visible')) {
+        $closeBtn.focus();
+      } else {
+        $pulldown.focus();
+      }
+    }
+  });
+
+  $storyList.find('.story-callout:last-of-type').find('.story-callout-link').on('keydown', (e) => {
+    if (e.key === 'Tab' && !e.shiftKey) {
+      e.preventDefault();
+
+      // Focus back on the current visible pulldown toggle
+      // once all stories in the story list have been tabbed
+      // through.  (Assumes only one pulldown toggle is
+      // visible at any given time.)
+      //
+      // This isn't great, since it puts keyboard users in
+      // a loop, but we don't always have a subsequent
+      // navbar item to focus on next, and there's not a great
+      // way of determining the next focusable element in the
+      // DOM without a third-party plugin.
+      $pulldownToggle.filter(':visible').first().focus();
+    }
+  });
+
+  // Handle keyboard behavior on the pulldown close button:
+  $closeBtn.on('keydown', (e) => {
+    if (e.key === 'Tab' && e.shiftKey) {
+      e.preventDefault();
+
+      // Focus back on the current visible pulldown toggle
+      // when the user reverse tabs from the close button.
+      // (Assumes only one pulldown toggle is visible at
+      // any given time.)
+      $pulldownToggle.filter(':visible').first().focus();
+    }
+  });
+
+  // Focus back on the current visible pulldown toggle
+  // once the pulldown is closed.  (Assumes only one
+  // pulldown toggle is visible at any given time.)
+  $pulldown.on('hide.bs.collapse', () => {
+    $pulldownToggle.filter(':visible').first().focus();
   });
 };
+
 
 const pulldownMenuScroll = function ($) {
   // Handle left/right nav arrow btn click in story list controls
@@ -142,56 +128,6 @@ const pulldownMenuScroll = function ($) {
         scrollLeft: newScrollVal
       }, 400);
     }
-  });
-};
-
-const mobileNavToggle = function ($) {
-  // Handle window resizing with mobile navigation active.
-  // Unset any active pulldown containers, toggles and logo/nav mods.
-  $(window).on('resize', function () {
-    if (
-
-      $(this).width() > 767 &&
-        $('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
-       ||
-
-        $(this).width() < 768 &&
-        !$('#header-navigation ul, #header-navigation .header-logo').hasClass('mobile-nav-visible')
-
-    ) {
-      $('#header-navigation ul, #header-navigation .header-logo')
-        .removeClass('mobile-nav-visible');
-      $('#pulldown.active, #pulldown .active, #nav-mobile .active')
-        .removeClass('active');
-      $('#nav-mobile .close')
-        .removeClass('close');
-      $('#pulldown')
-        .css('height', 0);
-    }
-  });
-
-  // Handle link click (this assumes the mobile toggle link has
-  // a default data-pulldown-container attribute value set)
-  $('#nav-mobile a').on('click', function (e) {
-    e.preventDefault();
-
-    const toggle = $(this),
-      navList = toggle.parents('ul'),
-      activeContainerToggle = navList.find(`li a[data-pulldown-container="${toggle.attr('data-pulldown-container')}"]`);
-
-    // Toggle the menu/close btn icons and the
-    // primary pulldown toggle link's .active class
-    if (toggle.hasClass('active')) {
-      toggle.addClass('close');
-      activeContainerToggle.addClass('active');
-    } else {
-      toggle.removeClass('close');
-      activeContainerToggle.removeClass('active');
-    }
-
-    // Show Issue, Archive nav links; hide Pegasus logo
-    $('#header-navigation ul, #header-navigation .header-logo')
-      .toggleClass('mobile-nav-visible');
   });
 };
 
@@ -445,10 +381,8 @@ const twitterWidget = function () {
 if (typeof jQuery !== 'undefined') {
   (function () {
     $(() => {
-      togglePulldown($);
-      loadPulldownMenus($);
+      pulldownInit($);
       pulldownMenuScroll($);
-      mobileNavToggle($);
       lazyLoadAssets($);
       socialButtonTracking($);
       removeEmptyPTags($);
