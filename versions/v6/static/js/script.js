@@ -67,9 +67,12 @@ const pulldownInit = function ($) {
       // once all stories in the story list have been tabbed
       // through.  (Assumes only one pulldown toggle is
       // visible at any given time.)
+      //
       // This isn't great, since it puts keyboard users in
       // a loop, but we don't always have a subsequent
-      // navbar item to focus on next.
+      // navbar item to focus on next, and there's not a great
+      // way of determining the next focusable element in the
+      // DOM without a third-party plugin.
       $pulldownToggle.filter(':visible').first().focus();
     }
   });

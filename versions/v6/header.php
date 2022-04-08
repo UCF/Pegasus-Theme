@@ -22,8 +22,8 @@
 							<span class="navbar-link-text">Archives</span>
 						</a>
 					</div>
-					<hr role="presentation" class="mt-3 mb-4">
 				</div>
+				<hr role="presentation" class="mt-3 mb-4 hidden-md-up">
 				<div class="pulldown-container pulldown-stories">
 					<div class="story-list-controls hidden-xs-down">
 						<button id="pulldown-close" type="button" class="btn story-list-control close" data-toggle="collapse" data-target="#pulldown" aria-expanded="true" aria-controls="pulldown" aria-label="Close">
@@ -39,7 +39,9 @@
 					<div class="container">
 						<h2 class="text-default-aw text-uppercase my-4 py-2" id="pulldown-heading">In This Issue</h2>
 					</div>
-					<?php echo display_story_list( $relevant_issue ); ?>
+					<div class="story-list-wrap">
+						<?php echo display_story_list( $relevant_issue ); ?>
+					</div>
 				</div>
 			</div>
 			<nav class="site-nav navbar navbar-light bg-secondary">
