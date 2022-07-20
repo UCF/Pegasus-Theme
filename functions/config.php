@@ -24,7 +24,8 @@ define('THEME_OPTIONS_GROUP', 'settings');
 define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 
 $theme_options = get_option(THEME_OPTIONS_NAME);
-define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null ) ;
+define('GTM_ID', isset( $theme_options['gtm_id'] ) ? $theme_options['gtm_id'] : null );
+define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
 define('CB_UID', isset( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
 define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
@@ -389,6 +390,13 @@ Config::$theme_settings = array(
 			'description' => 'Example: <em>some.domain.com</em>',
 			'default'     => null,
 			'value'       => isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null,
+		)),
+		new TextField(array(
+			'name'        => 'Google Tag Manager ID',
+			'id'          => THEME_OPTIONS_NAME.'[gtm_id]',
+			'description' => 'Example: <em>GTM-XXXXXX</em>',
+			'default'     => null,
+			'value'       => isset( $theme_options['gtm_id'] ) ? $theme_options['gtm_id'] : null,
 		)),
 	),
 	'Front Page' => array(
