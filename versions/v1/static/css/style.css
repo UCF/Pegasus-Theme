@@ -60,7 +60,7 @@
  * General
  **************************/
 
-p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.38em;}
+p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.5;}
 p.excerpt {font-size:23px;font-style:italic;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
@@ -592,7 +592,7 @@ article.story ol,
 article.story ul {
 	font-family: Georgia, serif;
 	font-size: 16px;
-	line-height: 1.38em;
+	line-height: 1.5;
 	margin-top: 0;
 }
 article.story p { margin-bottom: 16px; }
@@ -886,7 +886,7 @@ article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 #footer-navigation p,
 #footer-navigation a {
 	font-family: 'Gotham SSm A', 'Gotham SSm B', serif;
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: 700;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
@@ -897,7 +897,7 @@ article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 .ie8 #footer-navigation a {
 	font-weight: normal;
 }
-#footer-navigation a { font-size: 18px; }
+#footer-navigation a { font-size: 1.3em; }
 
 /* Footer logo/iPad btn positioning */
 #footer-navigation .footer-logo {
