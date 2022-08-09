@@ -2,6 +2,35 @@
  * Utility
  **************************/
 
+ .skip-navigation {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+    -webkit-box-shadow: .5em .5em 1em rgba(0,0,0,.325);
+    box-shadow: .5em .5em 1em rgba(0,0,0,.325)
+}
+
+.skip-navigation:active,.skip-navigation:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto
+}
+
+.skip-navigation:focus {
+    left: 1rem;
+    position: absolute;
+    top: calc(50px + 1rem);
+    z-index: 9999
+}
+
 .container-wide {width:100%;}
 .container-tall {height: 100%;}
 
