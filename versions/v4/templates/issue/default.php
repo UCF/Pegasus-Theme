@@ -63,7 +63,7 @@
 				<article>
 					<div class="home-article-1 thumb">
 					<?php if ( $story_1 ): ?>
-						<a href="<?php echo get_permalink( $story_1->ID ); ?>"></a>
+						<a href="<?php echo get_permalink( $story_1->ID ); ?>" aria-label="<?php echo $story_1->post_title; ?>"></a>
 						<?php if ( $story_1->thumb ) { ?>
 						<img class="img-responsive" src="<?php echo $story_1->thumb; ?>" alt="<?php echo $story_1->post_title; ?>" title="<?php echo $story_1->post_title; ?>" />
 						<?php } ?>
@@ -117,7 +117,7 @@
 		?>
 			<article class="thumb-wrapper col-md-20percent col-sm-20percent col-xs-4">
 				<div class="thumb">
-					<a href="<?php echo get_permalink( $story->ID ); ?>"></a>
+					<a href="<?php echo get_permalink( $story->ID ); ?>" aria-label="<?php echo $story->post_title; ?>"></a>
 					<img src="<?php echo get_featured_image_url( $story->ID ); ?>" alt="<?php echo $story->post_title; ?>" title="<?php echo $story->post_title; ?>" />
 					<div class="description">
 						<h3><?php echo wptexturize( $story->post_title ); ?></h3>
