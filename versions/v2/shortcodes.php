@@ -768,7 +768,7 @@ function sc_photo_essay_slider( $atts, $content = null ) {
 									</div>
 									<div class="description-wrap">
 										<span class="description"><?php echo get_post_meta($post->ID, 'story_description', TRUE)?></span>
-										<a class="ss-control ss-play" href="#2"><i class="icon-caret-right"></i>
+										<a class="ss-control ss-play" href="#2" aria-label="play slideshow"><i class="icon-caret-right"></i></a>
 										<?php echo display_social(get_permalink($post), $post->post_title)?>
 									</div>
 								</div>
