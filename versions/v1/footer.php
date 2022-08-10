@@ -23,7 +23,7 @@
 													<li class="span3">
 														<a href="<?php echo get_permalink($story->ID); ?>">
 															<div class="thumbnail">
-																<img src="<?php echo get_featured_image_url($story->ID); ?>" />
+																<img src="<?php echo get_featured_image_url($story->ID); ?>" alt="" />
 															</div>
 															<div class="title">
 																<span class="title_text">
@@ -41,6 +41,7 @@
 												</ul>
 											</div>
 										</div>
+										<?php if( $bottom_stories ) : ?>
 										<div class="row footer_stories bottom">
 											<div class="span12">
 												<ul class="thumbnails">
@@ -48,7 +49,7 @@
 													<li class="span2">
 														<a href="<?php echo get_permalink($story->ID); ?>">
 															<div class="thumbnail">
-																<img src="<?php echo get_featured_image_url( $story->ID ); ?>" />
+																<img src="<?php echo get_featured_image_url( $story->ID ); ?>" alt="" />
 															</div>
 															<div class="title">
 																<span class="title_text">
@@ -66,6 +67,7 @@
 												</ul>
 											</div>
 										</div>
+										<?php endif; ?>
 									</div>
 								</div>
 							</div>

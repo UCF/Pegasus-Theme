@@ -2,6 +2,35 @@
  * Utility
  **************************/
 
+ .skip-navigation {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+    -webkit-box-shadow: .5em .5em 1em rgba(0,0,0,.325);
+    box-shadow: .5em .5em 1em rgba(0,0,0,.325)
+}
+
+.skip-navigation:active,.skip-navigation:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    margin: 0;
+    overflow: visible;
+    clip: auto
+}
+
+.skip-navigation:focus {
+    left: 1rem;
+    position: absolute;
+    top: calc(50px + 1rem);
+    z-index: 9999
+}
+
 .container-wide {width:100%;}
 .container-tall {height: 100%;}
 
@@ -31,7 +60,7 @@
  * General
  **************************/
 
-p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.38em;}
+p {margin-top:1em;margin-bottom:1.5em;font-size:14px;line-height:1.5;}
 p.excerpt {font-size:23px;font-style:italic;}
 p.caption {font-family:"Helvetica Neue",Helvetica,sans-serif;font-size:12px;}
 
@@ -435,7 +464,6 @@ li#nav-about a {
 	font-weight: 700;
 	font-size: 18px;
 	line-height: 30px;
-	color: #828282;
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	display: block;
@@ -563,7 +591,7 @@ article.story ol,
 article.story ul {
 	font-family: Georgia, serif;
 	font-size: 16px;
-	line-height: 1.38em;
+	line-height: 1.5;
 	margin-top: 0;
 }
 article.story p { margin-bottom: 16px; }
@@ -857,7 +885,7 @@ article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 #footer-navigation p,
 #footer-navigation a {
 	font-family: 'Gotham SSm A', 'Gotham SSm B', serif;
-	font-size: 14px;
+	font-size: 1em;
 	font-weight: 700;
 	color: #fff;
 	-webkit-font-smoothing: antialiased;
@@ -868,7 +896,7 @@ article.story.ss-photo-essay .ss-essay-intro .social .share-googleplus {
 .ie8 #footer-navigation a {
 	font-weight: normal;
 }
-#footer-navigation a { font-size: 18px; }
+#footer-navigation a { font-size: 1.3em; }
 
 /* Footer logo/iPad btn positioning */
 #footer-navigation .footer-logo {
