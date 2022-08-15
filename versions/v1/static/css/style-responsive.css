@@ -105,7 +105,7 @@
 	 * Footer
 	 **************************/
 
-	#footer-navigation a { font-size: 14px; }
+	#footer-navigation a { font-size: 1.2em; }
 
 	#footer-navigation .footer-logo,
 	#footer-navigation .footer-ipad-app { padding-bottom: 30px; }
@@ -115,7 +115,7 @@
 
 	#footer-navigation .copyright,
 	#footer-navigation .address {
-		font-size: 13px;
+		font-size: 1em;
 	}
 
 
