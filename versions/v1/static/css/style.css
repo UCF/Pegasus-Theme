@@ -1551,10 +1551,10 @@ h2#footer_logo {
     -webkit-box-shadow: inset 0 0 8px rgba(0,0,0,0.6);
 }
 .footer_stories .thumbnail img {float: left;} /* float req'd for inset box-shadow */
-.footer_stories .title {color:#FFF;margin-top:10px;font-size:14px;padding-left:2px;padding-bottom:10px;font-weight:bold;}
+.footer_stories .title {color:#FFF;margin-top:10px;font-size:1em;padding-left:2px;padding-bottom:10px;font-weight:bold;}
 .footer_stories a .subtitle_text { font-weight: 200; }
-.footer_stories.bottom .title {font-size:13px;margin-top:0px;padding-left:0;}
+.footer_stories.bottom .title {font-size:.9em;margin-top:0px;padding-left:0;}
 .footer_stories.bottom a .subtitle_text,
 .footer_stories.bottom a .title_colon {display:none;}
 
-.footer_stories.bottom li { height: 202px; overflow: hidden; }
+.footer_stories.bottom li { height: 202px; }
