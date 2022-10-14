@@ -67,7 +67,7 @@
 	<?php $relevant_issue = get_relevant_issue($post); ?>
 
 	<body class="<?php echo body_classes()?> <?php  if ($post->post_type == 'page' || is_404() || is_search() ) { print 'subpage'; } ?>">
-		<a class="skip-navigation bg-complementary text-inverse" href="#body_content">Skip to main content</a>
+		<a class="skip-navigation bg-complementary text-inverse" href="#content">Skip to main content</a>
 		<div id="ucfhb" style="min-height: 50px; background-color: #000;"></div>
 		<aside class="container-wide" id="pulldown" aria-labelledby="pulldown-heading">
 			<div class="pulldown-container pulldown-stories">
