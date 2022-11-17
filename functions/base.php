@@ -461,20 +461,6 @@ function post_type( $post ) {
 
 
 /**
- * Returns true if the current request is on the login screen.
- *
- * @return boolean
- * @author Jared Lang
- **/
-function is_login() {
-	return in_array( $GLOBALS['pagenow'], array(
-			'wp-login.php',
-			'wp-register.php',
-		) );
-}
-
-
-/**
  * Destroy empty <p> tags because wpautop is dumb.
  **/
 function kill_empty_p_tags( $content ) {
