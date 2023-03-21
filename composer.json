@@ -1,0 +1,8 @@
+{
+    "name": "ucf/pegasus-theme",
+    "description": "Wordpress theme for Pegasus Magazine.  Built off of UCF's Generic Theme.",
+    "type": "wordpress-theme",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
