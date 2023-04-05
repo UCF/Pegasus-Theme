@@ -215,7 +215,7 @@ function display_front_page_issue_details() {
 	ob_start();
 ?>
 	<a class="fp-issue-link" href="<?php echo get_permalink( $current_issue->ID ); ?>">
-		<h2 class="h3 fp-subheading fp-issue-title">In This Issue</h2>
+		<span class="h3 fp-subheading fp-issue-title">In This Issue</span>
 
 		<?php if ( $current_issue_thumbnail ): ?>
 		<img class="img-responsive center-block fp-issue-img" src="<?php echo $current_issue_thumbnail; ?>" alt="<?php echo $current_issue_title; ?>" title="<?php echo $current_issue_title; ?>">

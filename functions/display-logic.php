@@ -116,7 +116,7 @@ function display_front_page_issue_details() {
 	ob_start();
 ?>
 	<div class="fp-issue position-relative mb-4 mb-md-0 hover-parent">
-		<h2 class="fp-issue-title text-uppercase my-3">In This Issue</h2>
+		<span class="h2 fp-issue-title text-uppercase my-3">In This Issue</span>
 
 		<?php if ( $current_issue_thumbnail ): ?>
 		<img class="img-fluid hover-child-filter-brightness" src="<?php echo $current_issue_thumbnail; ?>" alt="">
