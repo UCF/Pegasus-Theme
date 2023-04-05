@@ -57,7 +57,7 @@ if ( $story_2 ) {
 
 <div class="container pt-4 pb-4 pb-lg-5">
 	<div class="heading-wrap">
-		<h1 class="h2 issue-heading"><span><?php echo $post->post_title; ?> <span class="sr-only">Issue of the Magazine of the University of Central Florida</span></span></h1>
+		<h1 class="h2 issue-heading"><span><?php echo $post->post_title; ?> <span class="d-none">Issue of the Magazine of the University of Central Florida</span></span></h1>
 	</div>
 
 	<?php if ( $story_1 ) : ?>

@@ -80,7 +80,7 @@ if ( $story_2 ) {
 	<section class="container home-stories">
 		<div class="row">
 			<div class="col-md-12 col-sm-12 heading-wrap">
-				<h1 class="h2 issue-heading"><span><?php echo $post->post_title; ?> <span class="sr-only">Issue of the Magazine of the University of Central Florida</span></span></h1>
+				<h1 class="h2 issue-heading"><span><?php echo $post->post_title; ?> <span class="d-none">Issue of the Magazine of the University of Central Florida</span></span></h1>
 			</div>
 		</div>
 		<div class="row">
