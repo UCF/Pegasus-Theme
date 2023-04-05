@@ -23,7 +23,7 @@ function display_story_list( $issue, $class=null ) {
 						<?php if ( $thumb ) { ?>
 						<img class="lazy" data-original="<?php echo $thumb; ?>" alt="<?php echo $title; ?>" title="<?php echo $title; ?>" />
 						<?php } ?>
-						<h3 class="story-title"><?php echo $title; ?></h3>
+						<span class="h3 story-title"><?php echo $title; ?></span>
 						<?php if ( !empty( $subtitle ) ) { ?>
 						<span class="subtitle"><?php echo $subtitle; ?></span>
 						<?php } ?>
