@@ -74,7 +74,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="span12">
-							<h2 class="section-title" id="pulldown-heading">In This Issue</h2>
+							<span class="h2 section-title" id="pulldown-heading">In This Issue</span>
 						</div>
 					</div>
 				</div>
