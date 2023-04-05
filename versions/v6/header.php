@@ -51,7 +51,7 @@
 				<div class="container px-0 px-sm-3">
 					<div class="d-flex flex-row align-items-center">
 						<a href="<?php echo get_site_url(); ?>">
-							<?php if ( is_home() || $post->post_type === 'issue' ) : ?>
+							<?php if ( is_home() ) : ?>
 							<h1 class="header-logo">
 								<span class="sr-only">Pegasus</span>
 							</h1>
