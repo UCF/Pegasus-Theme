@@ -31,7 +31,7 @@
 			<div class="container">
 				<div class="row">
 					<nav class="col-md-12 col-sm-12" role="navigation">
-						<?php if ( is_home() ) { ?>
+						<?php if ( is_home() || $post->post_type == 'issue' ) { ?>
 						<h1 class="header-logo">
 							<a href="<?php echo get_site_url()?>">Pegasus</a>
 						</h1>

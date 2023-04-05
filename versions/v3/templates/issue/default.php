@@ -68,7 +68,7 @@
 						<img class="img-responsive" src="<?php echo $story_1->thumb; ?>" alt="<?php echo $story_1->post_title; ?>" title="<?php echo $story_1->post_title; ?>" />
 						<?php } ?>
 						<div class="description">
-							<h1 class="h2 issue-heading"><span><?php echo wptexturize( $story_1->post_title ); ?></span></h1>
+							<h2><?php echo wptexturize( $story_1->post_title ); ?></h2>
 						</div>
 					<?php endif; ?>
 					</div>
