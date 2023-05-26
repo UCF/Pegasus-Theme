@@ -50,7 +50,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 </script>
 	<?php endif; ?>
 
-	<?php if( GA_ACCOUNT or CB_UID ): ?>
+	<?php if ( GA4_ACCOUNT ) : ?>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo GA4_ACCOUNT; ?>"></script>
+	<script>
+		window.dataLayer = window.dataLayer || [];
+		function gtag(){dataLayer.push(arguments);}
+		gtag('js', new Date());
+
+		gtag('config', '<?php echo GA4_ACCOUNT; ?>');
+	</script>
+	<?php elseif( GA_ACCOUNT or CB_UID ): ?>
 
 	<script type="text/javascript">
 		var _sf_startpt = (new Date()).getTime();

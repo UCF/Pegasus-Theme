@@ -1,5 +1,5 @@
 // Define globals for JSHint validation:
-/* global GA_ACCOUNT */
+/* global GA_ACCOUNT, GA4_ACCOUNT */
 /* eslint-disable camelcase */
 /* eslint-disable sort-vars */
 
@@ -14,7 +14,9 @@ if (!window.console) {
 }
 
 Webcom.analytics = function () {
-  if (typeof GA_ACCOUNT !== 'undefined' && Boolean(GA_ACCOUNT)) {
+  const usingGa4 = typeof GA4_ACCOUNT !== 'undefined' && Boolean(GA4_ACCOUNT);
+
+  if (!usingGa4 && typeof GA_ACCOUNT !== 'undefined' && Boolean(GA_ACCOUNT)) {
     (function () {
       const ga   = document.createElement('script');
       ga.type  = 'text/javascript';
