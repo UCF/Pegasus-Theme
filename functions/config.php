@@ -26,6 +26,7 @@ define('THEME_OPTIONS_PAGE_TITLE', 'Theme Options');
 $theme_options = get_option(THEME_OPTIONS_NAME);
 define('GTM_ID', isset( $theme_options['gtm_id'] ) ? $theme_options['gtm_id'] : null );
 define('GA_ACCOUNT', isset( $theme_options['ga_account'] ) ? $theme_options['ga_account'] : null );
+define('GA4_ACCOUNT', isset( $theme_options['ga4_account'] ) ? $theme_options['ga4_account'] : null );
 define('CB_UID', isset( $theme_options['cb_uid'] ) ? $theme_options['cb_uid'] : null );
 define('CB_DOMAIN', isset( $theme_options['cb_domain'] ) ? $theme_options['cb_domain'] : null );
 
@@ -369,6 +370,13 @@ Config::$theme_settings = array(
 			'description' => 'Example: <em>12C1203B5086AECE94EB3A3D9830B2E</em>',
 			'default'     => null,
 			'value'       => isset( $theme_options['bw_verify'] ) ? $theme_options['bw_verify'] : null,
+		)),
+		new TextField(array(
+			'name'        => 'Google Analytics 4 Account',
+			'id'          => THEME_OPTIONS_NAME.'[ga4_account]',
+			'description' => 'Example: <em>G-123EFG456K. Leave blank for development. Takes precedence over Google Analytics Account (UA).',
+			'default'     => null,
+			'value'       => isset( $theme_options['ga4_account'] ) ? $theme_options['ga4_account'] : null,
 		)),
 		new TextField(array(
 			'name'        => 'Google Analytics Account',

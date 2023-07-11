@@ -13064,7 +13064,7 @@ li#nav-about a {
   padding-top: 11px;
 }
 
-#home .heading-wrap .issue-heading {
+#home .heading-wrap h2 {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   border-bottom: 1px solid #828282;
@@ -13079,13 +13079,13 @@ li#nav-about a {
 }
 
 @media (max-width:767px) {
-  #home .heading-wrap .issue-heading {
+  #home .heading-wrap h2 {
     margin-bottom: 15px;
     margin-top: 15px;
   }
 }
 
-#home .heading-wrap .issue-heading span {
+#home .heading-wrap h2 span {
   background: #e5e5e5;
   padding-left: 10px;
   padding-right: 10px;
@@ -13095,7 +13095,7 @@ li#nav-about a {
 }
 
 @media (max-width:767px) {
-  #home .heading-wrap .issue-heading span {
+  #home .heading-wrap h2 span {
     display: block;
     padding-bottom: 5px;
     top: 0;

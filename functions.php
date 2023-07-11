@@ -43,7 +43,7 @@ if ( class_exists( 'UCF_Events_Common' ) ) {
  **/
 function get_relevant_version( $the_post=null ) {
 	if ( !$the_post ) {
-		$request_uri = untrailingslashit( $_SERVER['REQUEST_URI'] );
+		$request_uri = untrailingslashit( strtok( $_SERVER['REQUEST_URI'], '?') );
 
 		if ( $request_uri === get_site_url( get_current_blog_id(), '', 'relative' ) ) {
 			// If the home page has been requested, always return the current issue
