@@ -108,7 +108,7 @@ $twitter_url = get_theme_option( 'twitter_url' );
 					<?php $i = 1; ?>
 					<?php foreach ( $current_issue_stories as $issue_story ): ?>
 						<div class="col-8 col-sm-6 col-md-4">
-							<?php echo display_story_callout( $issue_story, '', true ); ?>
+							<?php echo display_story_callout( $issue_story, '', true, 'frontpage-story-thumbnail', 'span' ); ?>
 						</div>
 
 						<?php if ( $i !== count( $current_issue_stories ) && $i % 3 === 0 ): ?>

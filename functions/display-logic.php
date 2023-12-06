@@ -11,7 +11,7 @@
  * @author Cadie Stockman
  * @return string HTML markup for the story
  **/
-function display_story_callout( $story, $css_class='', $show_category=false, $thumbnail_size='frontpage-story-thumbnail', $heading='p' ) {
+function display_story_callout( $story, $css_class='', $show_category=false, $thumbnail_size='frontpage-story-thumbnail', $heading='h3' ) {
 	if ( ! $story ) return false;
 
 	$thumbnail = null;
