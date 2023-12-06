@@ -52,7 +52,7 @@ function display_story_callout( $story, $css_class='', $show_category=false, $th
 <article class="story-callout <?php echo $css_class; ?> hover-parent">
 	<a class="story-callout-link hover-parent text-decoration-none" href="<?php echo get_permalink( $story->ID ); ?>">
 		<div class="story-callout-text-wrap">
-			<<?php echo $heading; ?> class="story-callout-title hover-child-text-underline">
+			<<?php echo $heading; ?> class="h3 story-callout-title hover-child-text-underline">
 				<?php echo $title; ?>
 			</<?php echo $heading; ?>>
 			<div class="story-callout-description">
