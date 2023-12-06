@@ -86,7 +86,7 @@
 						</div>
 					</div>
 				</div>
-				<?php echo display_story_list($relevant_issue)?>
+				<?php echo display_story_list($relevant_issue ,'' , 'span')?>
 				<div class="controls">
 					<a class="close pulldown-toggle" data-pulldown-container=".pulldown-stories" href="#">Close</a>
 					<a class="backward icon icon-caret-left" href="#">Back</a>

@@ -15,7 +15,7 @@ function display_story_list( $issue, $class='', $stories=array() ) {
 	<div class="story-list <?php echo $class; ?>">
 		<?php
 		foreach ( $stories as $story ) {
-			echo display_story_callout( $story, '', false, 'single-post-thumbnail-3x2' );
+			echo display_story_callout( $story, '', false, 'single-post-thumbnail-3x2', 'span' );
 		}
 		?>
 	</div>

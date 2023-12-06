@@ -25,7 +25,7 @@ function class_year_input($input, $field, $value, $lead_id, $form_id){
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
-function display_story_list($issue, $class=null) {
+function display_story_list($issue, $class=null, $heading='h3') {
 	$class = !empty($class) ? $class : '';
 	if ($issue) {
 		$stories = get_issue_stories($issue);
@@ -46,7 +46,7 @@ function display_story_list($issue, $class=null) {
 						<?php if ($thumb) { ?>
 						<img class="lazy" data-original="<?php echo $thumb?>" alt="<?php echo $title?>" title="<?php echo $title?>" />
 						<?php } ?>
-						<h3 class="story-title"><?php echo $title?></h3>
+						<<?php echo $heading ?> class="h3 story-title"><?php echo $title?></<?php echo $heading ?>>
 						<?php if (!empty($subtitle)) { ?>
 						<span class="subtitle"><?php echo $subtitle?></span>
 						<?php } ?>
