@@ -2,7 +2,7 @@
  * Displays a list of stories in the current relevant issue.
  * List is swipe/touch friendly and spans the full width of the screen.
  */
-function display_story_list( $issue, $class=null, $heading ) {
+function display_story_list( $issue, $class=null, $heading='h3' ) {
 	$class = !empty( $class ) ? $class : '';
 	if ( $issue ) {
 		$stories = get_issue_stories( $issue );
