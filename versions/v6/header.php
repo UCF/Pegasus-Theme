@@ -38,7 +38,7 @@
 					</div>
 					<div class="container">
 						<div class="text-uppercase my-4 py-2" id="pulldown-heading">
-							<span class="mr-1 h2">In This Issue</span>
+							<span class="h2 mr-1">In This Issue</span>
 							<span class="d-inline-block font-size-lg text-transform-none"><?php echo $relevant_issue->post_title; ?></span>
 						</div>
 					</div>
