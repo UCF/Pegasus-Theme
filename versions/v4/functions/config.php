@@ -106,16 +106,17 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 add_action( 'wp_head', 'v4_hook_frontend_theme_scripts' );
 
 /**
- * Add ID attribute to registered University Header script.
- **/
-function add_id_to_ucfhb($url) {
-    if ( (false !== strpos($url, 'bar/js/university-header.js')) || (false !== strpos($url, 'bar/js/university-header-full.js')) ) {
-      remove_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
-      return "$url' id='ucfhb-script";
-    }
-    return $url;
+  * Add ID attribute to registered University Header script.
+  **/
+function ucfhb_script_handle( $tag, $handle, $src ) {
+	if ( false !== strpos( $src, 'universityheader.ucf.edu' ) ) {
+		$tag = str_replace( "{$handle}-js", 'ucfhb-script', $tag );
+	}
+
+	return $tag;
 }
-add_filter('clean_url', 'add_id_to_ucfhb', 10, 3);
+
+add_filter( 'script_loader_tag', 'ucfhb_script_handle', 10, 3 );
 
 
 /**
