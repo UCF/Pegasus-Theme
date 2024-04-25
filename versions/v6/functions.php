@@ -46,20 +46,6 @@ function get_default_template_font_css( $font ) {
 			font-style: '.$font['font-style'].';
 			letter-spacing: '.$font['letter-spacing'].';
 		}
-		article.story .lead::first-letter {
-			font-family: '.$font['font-family'].';
-			font-weight: '.$font['font-weight'].';
-			text-transform: '.$font['text-transform'].';
-			font-style: '.$font['font-style'].';
-			letter-spacing: '.$font['letter-spacing'].';
-		}
-		article.story .lead:first-letter {
-			font-family: '.$font['font-family'].';
-			font-weight: '.$font['font-weight'].';
-			text-transform: '.$font['text-transform'].';
-			font-style: '.$font['font-style'].';
-			letter-spacing: '.$font['letter-spacing'].';
-		}
 		article.story h1,
 		article.story h2,
 		article.story h3,
