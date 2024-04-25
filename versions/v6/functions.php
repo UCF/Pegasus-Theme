@@ -347,18 +347,10 @@ function display_story_header_contents( $post, $deck='' ) {
 
 	ob_start();
 ?>
-	<div class="row">
-		<div class="col-lg-10 offset-lg-1">
-			<h1 class="mb-2 mb-lg-3"><?php echo wptexturize( $post->post_title ); ?></h1>
-		</div>
-	</div>
-	<div class="row mb-4">
-		<div class="col-lg-10 offset-lg-1">
-			<span class="lead">
-				<?php echo $deck; ?>
-			</span>
-		</div>
-	</div>
+	<h1 class="mb-2 mb-lg-3"><?php echo wptexturize( $post->post_title ); ?></h1>
+	<p class="lead">
+		<?php echo $deck; ?>
+	</p>
 	<?php if ( $header_img ) : ?>
 	<div class="row mb-4">
 		<div class="col-12">
