@@ -29,7 +29,7 @@
 		<header class="container-wide" id="header-navigation">
 			<div class="container">
 				<div class="row">
-					<nav class="col-md-12 col-sm-12" role="navigation">
+					<nav class="col-md-12 col-sm-12" aria-label="Main Navigation">
 						<?php if ( is_home() || $post->post_type == 'issue' ) { ?>
 						<h1 class="header-logo">
 							<a href="<?php echo get_site_url()?>">Pegasus</a>
