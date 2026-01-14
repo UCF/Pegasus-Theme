@@ -322,8 +322,7 @@ function display_story_header_contents( $post, $deck='' ) {
 			'story-featured-image',
 			false,
 			array(
-				'class' => 'img-fluid',
-				'alt' => ''
+				'class' => 'img-fluid'
 			)
 		);
 	}

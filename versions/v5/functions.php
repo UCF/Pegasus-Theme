@@ -486,8 +486,7 @@ function display_story_header_contents( $post, $deck='' ) {
 			'story-featured-image',
 			false,
 			array(
-				'class' => 'story-header-image',
-				'alt' => ''
+				'class' => 'story-header-image'
 			)
 		);
 	}
