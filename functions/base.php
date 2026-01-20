@@ -136,6 +136,12 @@ class Config {
  * @author Jared Lang
  * */
 abstract class Field {
+	public $name;
+	public $id;
+	public $value;
+	public $description;
+	public $default;
+
 	protected function check_for_default() {
 		if ( ( $this->value === null || $this->value === '' ) && isset( $this->default ) ) {
 			$this->value = $this->default;
@@ -190,6 +196,8 @@ abstract class Field {
  * @author Jared Lang
  * */
 abstract class ChoicesField extends Field{
+	public $choices;
+
 	// Ensure 'default' value is added to choices if it isn't already
 	protected function add_default_to_choices() {
 		if ( isset( $this->default ) && !array_key_exists( $this->default, $this->choices ) ) {
