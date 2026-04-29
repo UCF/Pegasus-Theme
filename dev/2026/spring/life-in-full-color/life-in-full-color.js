@@ -67,7 +67,7 @@ if (isTouch) {
   });
 } else {
   // Hover: show on butterfly AND in panel. When mouse leaves a wing, clear
-  // the butterfly visual AND the panel â€” so nothing is shown unless a button
+  // the butterfly visual AND the panel — so nothing is shown unless a button
   // was clicked to pin a selection.
   quadrants.forEach(q => {
     q.addEventListener('mouseenter', () => {

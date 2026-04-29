@@ -1,534 +1,544 @@
 :root {
-    --bg: #0a0612;
-    --bg-soft: #000000;
-    --text: #f4eee6;
-    --text-muted: #a89fb0;
-    --rule: rgba(244, 238, 230, 0.12);
+  --bg: #0a0612;
+  --bg-soft: #000000;
+  --text: #f4eee6;
+  --text-muted: #a89fb0;
+  --rule: rgba(244, 238, 230, 0.36);
 
-    --ucf-gold: #FFCC00;
+  --ucf-gold: #FFCC00;
 
-    --military: #3d6a8f;
-    --military-glow: #5a9fd4;
-    --vehicle: #c94a3a;
-    --vehicle-glow: #ff7a5c;
-    --building: #4a8f5c;
-    --building-glow: #7dd89a;
-    --aviation: #7a5cc9;
-    --aviation-glow: #a78bff;
-  }
+  --military: #3d6a8f;
+  --military-glow: #5a9fd4;
+  --vehicle: #c94a3a;
+  --vehicle-glow: #ff7a5c;
+  --building: #4a8f5c;
+  --building-glow: #7dd89a;
+  --aviation: #7a5cc9;
+  --aviation-glow: #a78bff;
+}
 
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-  .wrapper { max-width: 1200px; margin: 0 auto; }
+.wrapper { max-width: 1200px; margin: 0 auto; }
 
-  .section-header { text-align: left; margin-bottom: 3.5rem; max-width: 760px; }
+.section-header { text-align: left; margin-bottom: 3.5rem; max-width: 760px; }
 
-  .anchor {
-    display: inline-block;
-    background: var(--ucf-gold);
-    color: #000;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 900;
-    font-size: 0.75rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 0.4rem 0.7rem 0.35rem;
-    margin-bottom: 1.25rem;
-    line-height: 1;
-  }
+.anchor {
+  display: inline-block;
+  background: var(--ucf-gold);
+  color: #000;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  padding: 0.4rem 0.7rem 0.35rem;
+  margin-bottom: 1.25rem;
+  line-height: 1;
+}
 
-  h1 {
-    color: #902d68;
-    font-size: 58px;
-  }
+h1 {
+  font-size: 58px;
+}
 
-  h2 {
-    font-weight: 900;
-    font-size: clamp(2.25rem, 6vw, 4.5rem);
-    line-height: 0.95;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    margin-bottom: 1.5rem;
-  }
+@media (max-width: 768px) {
+  h1 { font-size: 36px; }
+}
 
-  .section-header .lead {
-    font-weight: 400;
-    font-size: 1.0625rem;
-    line-height: 1.6;
-    color: var(--text-muted);
-    max-width: 560px;
-  }
+h1,
+h2 {
+  color: #902d68;
+}
 
-  .interactive-container {
-    display: grid;
-    grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
-    grid-template-rows: auto auto;
-    column-gap: 3rem;
-    row-gap: 2.5rem;
-    align-items: start;
-    background: var(--bg-soft);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    padding: 3rem;
-    position: relative;
-    overflow: hidden;
-  }
+.infographic-title {
+  color: #ff70c5;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 6vw, 4.5rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
 
-  .butterfly-stage {
-    grid-column: 1;
-    grid-row: 1;
-  }
+.section-header .lead {
+  font-weight: 400;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  max-width: 560px;
+}
 
-  .info-panel {
-    grid-column: 2;
-    grid-row: 1;
-  }
+.interactive-container {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr);
+  grid-template-rows: auto auto;
+  column-gap: 3rem;
+  row-gap: 2.5rem;
+  align-items: start;
+  background: var(--bg-soft);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  padding: 3rem;
+  position: relative;
+  overflow: hidden;
+}
 
-  .full-width-detail {
-    grid-column: 1 / -1;
-    grid-row: 2;
-  }
+.butterfly-stage {
+  grid-column: 1;
+  grid-row: 1;
+}
 
-  /* Stage sized to photo aspect ratio (1024x680) */
-  .butterfly-stage {
-    position: relative;
-    aspect-ratio: 1024 / 680;
-    width: 100%;
-    border-radius: 4px;
-    overflow: hidden;
-  }
+.info-panel {
+  grid-column: 2;
+  grid-row: 1;
+}
 
-  .butterfly-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: filter 0.5s ease;
-  }
+.full-width-detail {
+  grid-column: 1 / -1;
+  grid-row: 2;
+}
 
-  .butterfly-stage.has-active .butterfly-photo {
-    filter: brightness(0.7);
-  }
+/* Stage sized to photo aspect ratio (1024x680) */
+.butterfly-stage {
+  position: relative;
+  aspect-ratio: 1024 / 680;
+  width: 100%;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-  .hotspot-overlay {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-  }
+.butterfly-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: filter 0.5s ease;
+}
 
-  .wing-quadrant {
-    cursor: pointer;
-    pointer-events: auto;
-  }
+.butterfly-stage.has-active .butterfly-photo {
+  filter: brightness(0.7);
+}
 
-  /* Color wash tints the photo via mix-blend-mode on a clean black background */
-  .wing-overlay {
-    fill: currentColor;
-    opacity: 0;
-    mix-blend-mode: color;
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
+.hotspot-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
 
-  /* Glow outline */
-  .wing-glow {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2.5;
-    opacity: 0;
-    filter: drop-shadow(0 0 14px currentColor);
-    transition: opacity 0.5s ease;
-    pointer-events: none;
-  }
+.wing-quadrant {
+  cursor: pointer;
+  pointer-events: auto;
+}
 
-  .wing-hotspot {
-    fill: transparent;
-    pointer-events: all;
-  }
+/* Color wash tints the photo via mix-blend-mode on a clean black background */
+.wing-overlay {
+  fill: currentColor;
+  opacity: 0;
+  mix-blend-mode: color;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
 
-  .wing-quadrant.active .wing-overlay,
-  .wing-quadrant:hover .wing-overlay {
-    opacity: 0.55;
-  }
+/* Glow outline */
+.wing-glow {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+  opacity: 0;
+  filter: drop-shadow(0 0 14px currentColor);
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
 
-  .wing-quadrant.active .wing-glow,
-  .wing-quadrant:hover .wing-glow {
-    opacity: 0.85;
-  }
+.wing-hotspot {
+  fill: transparent;
+  pointer-events: all;
+}
 
-  /* ============ IDLE-STATE HINTS ============
-     Two layered cues to invite exploration:
-     (1) Slow breathing glow on each wing, staggered so the pulses don't
-         sync up. Stops the moment any wing is hovered or activated.
-     (2) One-time shimmer sweep on page load: a diagonal bright band
-         crosses each wing in sequence, clipped to the wing shape.
-  */
+.wing-quadrant.active .wing-overlay,
+.wing-quadrant:hover .wing-overlay {
+  opacity: 0.55;
+}
 
-  .wing-breathing {
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 3;
-    filter: drop-shadow(0 0 16px currentColor) drop-shadow(0 0 6px currentColor);
-    pointer-events: none;
-    animation: breathe 3.5s ease-in-out infinite;
-  }
+.wing-quadrant.active .wing-glow,
+.wing-quadrant:hover .wing-glow {
+  opacity: 0.85;
+}
 
-  @keyframes breathe {
-    0%, 100% { opacity: 0.15; }
-    50%      { opacity: 0.6; }
-  }
+/* ============ IDLE-STATE HINTS ============
+    Two layered cues to invite exploration:
+    (1) Slow breathing glow on each wing, staggered so the pulses don't
+        sync up. Stops the moment any wing is hovered or activated.
+    (2) One-time shimmer sweep on page load: a diagonal bright band
+        crosses each wing in sequence, clipped to the wing shape.
+*/
 
-  /* Stagger the four wings so they don't pulse in unison */
-  .wing-quadrant[data-zone="military"]  .wing-breathing { animation-delay: 0s; }
-  .wing-quadrant[data-zone="building"]  .wing-breathing { animation-delay: 0.7s; }
-  .wing-quadrant[data-zone="vehicle"]   .wing-breathing { animation-delay: 1.4s; }
-  .wing-quadrant[data-zone="aviation"]  .wing-breathing { animation-delay: 2.1s; }
+.wing-breathing {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 3;
+  filter: drop-shadow(0 0 16px currentColor) drop-shadow(0 0 6px currentColor);
+  pointer-events: none;
+  animation: breathe 3.5s ease-in-out infinite;
+}
 
-  /* Stop the breathing when any wing is active or being hovered.
-     We fade the breathing element independently so the hover-glow can take over cleanly. */
-  .butterfly-stage.has-active .wing-breathing,
-  .wing-quadrant:hover .wing-breathing {
-    animation-play-state: paused;
-    opacity: 0;
-    transition: opacity 0.25s ease;
-  }
+@keyframes breathe {
+  0%, 100% { opacity: 0.15; }
+  50%      { opacity: 0.6; }
+}
 
-  /* Shimmer sweep â€” a bright diagonal band that travels across each wing once on load */
-  .wing-shimmer-group {
-    pointer-events: none;
-    opacity: 0;
-    animation: shimmer-fade 2s ease-out forwards;
-  }
+/* Stagger the four wings so they don't pulse in unison */
+.wing-quadrant[data-zone="military"]  .wing-breathing { animation-delay: 0s; }
+.wing-quadrant[data-zone="building"]  .wing-breathing { animation-delay: 0.7s; }
+.wing-quadrant[data-zone="vehicle"]   .wing-breathing { animation-delay: 1.4s; }
+.wing-quadrant[data-zone="aviation"]  .wing-breathing { animation-delay: 2.1s; }
 
-  @keyframes shimmer-fade {
-    0%   { opacity: 0; }
-    5%   { opacity: 1; }
-    95%  { opacity: 1; }
-    100% { opacity: 0; }
-  }
+/* Stop the breathing when any wing is active or being hovered.
+    We fade the breathing element independently so the hover-glow can take over cleanly. */
+.butterfly-stage.has-active .wing-breathing,
+.wing-quadrant:hover .wing-breathing {
+  animation-play-state: paused;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
 
+/* Shimmer sweep — a bright diagonal band that travels across each wing once on load */
+.wing-shimmer-group {
+  pointer-events: none;
+  opacity: 0;
+  animation: shimmer-fade 2s ease-out forwards;
+}
+
+@keyframes shimmer-fade {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  95%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.wing-shimmer-band {
+  animation: shimmer-sweep 2s ease-out forwards;
+}
+
+@keyframes shimmer-sweep {
+  from { transform: translateX(-1200px); }
+  to   { transform: translateX(1200px); }
+}
+
+/* Stagger the shimmer so it rolls across the butterfly like a wave */
+.wing-quadrant[data-zone="military"]  .wing-shimmer-group,
+.wing-quadrant[data-zone="military"]  .wing-shimmer-band   { animation-delay: 0.5s; }
+.wing-quadrant[data-zone="building"]  .wing-shimmer-group,
+.wing-quadrant[data-zone="building"]  .wing-shimmer-band   { animation-delay: 0.9s; }
+.wing-quadrant[data-zone="vehicle"]   .wing-shimmer-group,
+.wing-quadrant[data-zone="vehicle"]   .wing-shimmer-band   { animation-delay: 1.3s; }
+.wing-quadrant[data-zone="aviation"]  .wing-shimmer-group,
+.wing-quadrant[data-zone="aviation"]  .wing-shimmer-band   { animation-delay: 1.7s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .wing-breathing,
+  .wing-shimmer-group,
   .wing-shimmer-band {
-    animation: shimmer-sweep 2s ease-out forwards;
-  }
-
-  @keyframes shimmer-sweep {
-    from { transform: translateX(-1200px); }
-    to   { transform: translateX(1200px); }
-  }
-
-  /* Stagger the shimmer so it rolls across the butterfly like a wave */
-  .wing-quadrant[data-zone="military"]  .wing-shimmer-group,
-  .wing-quadrant[data-zone="military"]  .wing-shimmer-band   { animation-delay: 0.5s; }
-  .wing-quadrant[data-zone="building"]  .wing-shimmer-group,
-  .wing-quadrant[data-zone="building"]  .wing-shimmer-band   { animation-delay: 0.9s; }
-  .wing-quadrant[data-zone="vehicle"]   .wing-shimmer-group,
-  .wing-quadrant[data-zone="vehicle"]   .wing-shimmer-band   { animation-delay: 1.3s; }
-  .wing-quadrant[data-zone="aviation"]  .wing-shimmer-group,
-  .wing-quadrant[data-zone="aviation"]  .wing-shimmer-band   { animation-delay: 1.7s; }
-
-  @media (prefers-reduced-motion: reduce) {
-    .wing-breathing,
-    .wing-shimmer-group,
-    .wing-shimmer-band {
-      animation: none;
-      opacity: 0;
-    }
-  }
-
-  /* Zone labels */
-  .zone-label {
-    position: absolute;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    font-size: 0.8125rem;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    color: var(--text);
-    background: rgba(0, 0, 0, 0.7);
-    padding: 0.35rem 0.6rem;
-    pointer-events: none;
-    transition: color 0.4s ease, opacity 0.4s ease;
-    white-space: nowrap;
-    opacity: 0.75;
-  }
-
-  .butterfly-stage.has-active .zone-label:not(.active) { opacity: 0.25; }
-  .zone-label.active { opacity: 1; }
-
-  .zone-label.military { top: 4%;   left: 3%; }
-  .zone-label.vehicle  { top: 4%;   right: 3%; }
-  .zone-label.building { bottom: 4%; left: 3%; }
-  .zone-label.aviation { bottom: 4%; right: 3%; }
-
-  /* ============ INFO PANEL â€” NEW STRUCTURE ============
-     Right column holds intro + 4 buttons only. Detail band lives below
-     the whole interactive (see .full-width-detail).
-  */
-
-  .info-panel {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 1.75rem;
-  }
-
-  /* --- Intro block (top) --- */
-  .panel-intro {
-    flex: 0 0 auto;
-  }
-
-  .panel-intro h3 {
-    font-weight: 800;
-    font-size: 1.5rem;
-    line-height: 1.1;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin-bottom: 0.875rem;
-  }
-
-  .panel-intro p {
-    font-weight: 400;
-    font-size: 0.9375rem;
-    line-height: 1.55;
-    color: var(--text-muted);
-  }
-
-  .panel-intro p span {
-    color: var(--text);
-    font-weight: 600;
-  }
-
-  /* --- Button row (always visible) --- */
-  .panel-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    flex: 0 0 auto;
-  }
-
-  .app-button {
-    --btn-accent: var(--text-muted);
-    display: flex;
-    align-items: center;
-    gap: 0.875rem;
-    width: 100%;
-    padding: 0.875rem 1rem;
-    background: transparent;
-    border: 1px solid var(--rule);
-    border-left: 3px solid var(--btn-accent);
-    color: var(--text);
-    font-family: 'Oswald', sans-serif;
-    font-weight: 600;
-    font-size: 0.875rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    text-align: left;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-  }
-
-  .app-button:hover {
-    border-color: var(--btn-accent);
-    background: rgba(255, 255, 255, 0.03);
-  }
-
-  .app-button.active {
-    --btn-accent: var(--accent);
-    background: rgba(255, 255, 255, 0.04);
-    border-color: var(--btn-accent);
-    padding-left: 1.25rem;
-  }
-
-  .app-button[data-zone="military"] { --accent: var(--military-glow); }
-  .app-button[data-zone="vehicle"]  { --accent: var(--vehicle-glow); }
-  .app-button[data-zone="building"] { --accent: var(--building-glow); }
-  .app-button[data-zone="aviation"] { --accent: var(--aviation-glow); }
-
-  .app-button.active {
-    --btn-accent: var(--accent);
-  }
-
-  .app-button-icon {
-    width: 28px;
-    height: 28px;
-    flex-shrink: 0;
-    color: var(--btn-accent);
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    transition: color 0.3s ease;
-  }
-
-  .app-button.active .app-button-icon {
-    color: var(--accent);
-  }
-
-  .app-button-label {
-    flex: 1;
-    line-height: 1.2;
-  }
-
-  .app-button-arrow {
-    width: 16px;
-    height: 16px;
-    opacity: 0.4;
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    color: var(--btn-accent);
-  }
-
-  .app-button.active .app-button-arrow {
-    opacity: 1;
-    color: var(--accent);
-    transform: translateX(3px);
-  }
-
-  /* --- Full-width detail band (below butterfly + panel) --- */
-  .full-width-detail {
-    position: relative;
-    /* Fixed height so the band never resizes as we swap details.
-       Sized to comfortably fit the longest detail block. */
-    min-height: 240px;
-    border-top: 1px solid var(--rule);
-    padding-top: 2.25rem;
-  }
-
-  .detail-content {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 2.25rem; /* match parent's padding-top */
-    opacity: 0;
-    transform: translateY(45px);
-    transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
-                transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
-    pointer-events: none;
-  }
-
-  .detail-content.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-  }
-
-  /* Layout:
-     Row 1: title spans left column only (right column is empty here)
-     Row 2: body paragraph (left) and highlight (right) â€” these align at the top.
-     The highlight starts at the same Y as the body paragraph. */
-  .detail-content {
-    display: grid;
-    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
-    grid-template-areas:
-      "title   ."
-      "body    highlight";
-    column-gap: 3rem;
-    row-gap: 1.25rem;
-    align-items: start;
-  }
-
-  .detail-content h4 {
-    grid-area: title;
-    font-weight: 800;
-    font-size: 2rem;
-    line-height: 1;
-    letter-spacing: 0.01em;
-    text-transform: uppercase;
-    color: var(--text);
-    margin: 0;
-  }
-
-  .detail-content .body-text {
-    grid-area: body;
-    font-weight: 400;
-    font-size: 1rem;
-    line-height: 1.65;
-    color: var(--text-muted);
-    margin: 0;
-    max-width: 56ch;
-  }
-
-  .detail-content .highlight {
-    grid-area: highlight;
-    display: block;
-    padding: 1.25rem 1.25rem;
-    background: rgba(255, 255, 255, 0.04);
-    border-left: 3px solid var(--ucf-gold);
-    font-weight: 500;
-    font-size: 1.0625rem;
-    color: var(--text);
-    line-height: 1.5;
-    margin: 0;
-  }
-
-  /* Empty-state hint â€” shown when no detail is active */
-  .detail-hint {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 2.25rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    min-height: 180px;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  .detail-hint.hidden {
+    animation: none;
     opacity: 0;
   }
+}
 
-  .detail-hint-arrow {
-    width: 24px;
-    height: 24px;
-    color: var(--text-muted);
-    stroke: currentColor;
-    fill: none;
-    stroke-width: 1.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    animation: hint-bob 2.4s ease-in-out infinite;
-  }
+/* Zone labels */
+.zone-label {
+  position: absolute;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(0, 0, 0, 0.7);
+  padding: 0.35rem 0.6rem;
+  pointer-events: none;
+  transition: color 0.4s ease, opacity 0.4s ease;
+  white-space: nowrap;
+  opacity: 0.75;
+}
 
-  @keyframes hint-bob {
-    0%, 100% { transform: translateY(0); opacity: 0.5; }
-    50%      { transform: translateY(-6px); opacity: 1; }
-  }
+.butterfly-stage.has-active .zone-label:not(.active) { opacity: 0.25; }
+.zone-label.active { opacity: 1; }
 
-  .detail-hint-text {
-    font-family: 'Oswald', sans-serif;
-    font-weight: 500;
-    font-size: 0.8125rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--text-muted);
-  }
+.zone-label.military { top: 4%;   left: 3%; }
+.zone-label.vehicle  { top: 4%;   right: 3%; }
+.zone-label.building { bottom: 4%; left: 3%; }
+.zone-label.aviation { bottom: 4%; right: 3%; }
 
-  @media (prefers-reduced-motion: reduce) {
-    .detail-hint-arrow { animation: none; }
-  }
+/* ============ INFO PANEL — NEW STRUCTURE ============
+    Right column holds intro + 4 buttons only. Detail band lives below
+    the whole interactive (see .full-width-detail).
+*/
 
-  @media (max-width: 820px) {
-    .interactive-container { grid-template-columns: 1fr; column-gap: 0; row-gap: 2rem; padding: 2rem 1.5rem; }
-    .butterfly-stage { grid-column: 1; grid-row: 1; }
-    .info-panel { grid-column: 1; grid-row: 2; }
-    .full-width-detail { grid-column: 1; grid-row: 3; min-height: 380px; }
-    .detail-content { grid-template-columns: 1fr; gap: 1.5rem; }
-    .zone-label { font-size: 0.625rem; letter-spacing: 0.12em; }
-    .panel-intro h3 { font-size: 1.25rem; }
-    .app-button { font-size: 0.8125rem; padding: 0.75rem 0.875rem; }
-    .detail-content h4 { font-size: 1.5rem; }
-  }
+.info-panel {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+/* --- Intro block (top) --- */
+.panel-intro {
+  flex: 0 0 auto;
+}
+
+.panel-intro h3 {
+  font-weight: 800;
+  font-size: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 0.875rem;
+}
+
+.panel-intro p {
+  font-weight: 400;
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.panel-intro p span {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* --- Button row (always visible) --- */
+.panel-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  flex: 0 0 auto;
+}
+
+.app-button {
+  --btn-accent: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.4rem 1rem;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--btn-accent);
+  color: var(--text);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.app-button:hover {
+  border-color: var(--btn-accent);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.app-button.active {
+  --btn-accent: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--btn-accent);
+  padding-left: 1.25rem;
+}
+
+.app-button[data-zone="military"] { --accent: var(--military-glow); }
+.app-button[data-zone="vehicle"]  { --accent: var(--vehicle-glow); }
+.app-button[data-zone="building"] { --accent: var(--building-glow); }
+.app-button[data-zone="aviation"] { --accent: var(--aviation-glow); }
+
+.app-button.active {
+  --btn-accent: var(--accent);
+}
+
+.app-button-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+  color: var(--btn-accent);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: color 0.3s ease;
+}
+
+.app-button.active .app-button-icon {
+  color: var(--accent);
+}
+
+.app-button-label {
+  flex: 1;
+  line-height: 1.2;
+}
+
+.app-button-arrow {
+  width: 16px;
+  height: 16px;
+  opacity: 0.4;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  color: var(--btn-accent);
+}
+
+.app-button.active .app-button-arrow {
+  opacity: 1;
+  color: var(--accent);
+  transform: translateX(3px);
+}
+
+/* --- Full-width detail band (below butterfly + panel) --- */
+.full-width-detail {
+  position: relative;
+  /* Fixed height so the band never resizes as we swap details.
+      Sized to comfortably fit the longest detail block. */
+  min-height: 240px;
+  border-top: 1px solid var(--rule);
+  padding-top: 2.25rem;
+}
+
+.detail-content {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2.25rem; /* match parent's padding-top */
+  opacity: 0;
+  transform: translateY(45px);
+  transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
+              transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
+  pointer-events: none;
+}
+
+.detail-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+/* Layout:
+    Row 1: title spans left column only (right column is empty here)
+    Row 2: body paragraph (left) and highlight (right) — these align at the top.
+    The highlight starts at the same Y as the body paragraph. */
+.detail-content {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  grid-template-areas:
+    "title   ."
+    "body    highlight";
+  column-gap: 3rem;
+  row-gap: 1.25rem;
+  align-items: start;
+}
+
+.detail-content h4 {
+  grid-area: title;
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin: 0;
+}
+
+.detail-content .body-text {
+  grid-area: body;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0;
+  max-width: 56ch;
+}
+
+.detail-content .highlight {
+  grid-area: highlight;
+  display: block;
+  padding: 0 1.25rem;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--ucf-gold);
+  font-weight: 500;
+  font-size: 1.0625rem;
+  color: var(--text);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Empty-state hint — shown when no detail is active */
+.detail-hint {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  min-height: 180px;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.detail-hint.hidden {
+  opacity: 0;
+}
+
+.detail-hint-arrow {
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation: hint-bob 2.4s ease-in-out infinite;
+}
+
+@keyframes hint-bob {
+  0%, 100% { transform: translateY(0); opacity: 0.5; }
+  50%      { transform: translateY(-6px); opacity: 1; }
+}
+
+.detail-hint-text {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  font-size: 0.8125rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .detail-hint-arrow { animation: none; }
+}
+
+@media (max-width: 820px) {
+  body { padding: 2rem 1rem; }
+  .interactive-container { grid-template-columns: 1fr; column-gap: 0; row-gap: 2rem; padding: 2rem 1.5rem; }
+  .butterfly-stage { grid-column: 1; grid-row: 1; }
+  .info-panel { grid-column: 1; grid-row: 2; }
+  .full-width-detail { grid-column: 1; grid-row: 3; min-height: 380px; }
+  .detail-content { grid-template-columns: 1fr; gap: 1.5rem; }
+  .zone-label { font-size: 0.625rem; letter-spacing: 0.12em; }
+  .panel-intro h3 { font-size: 1.25rem; }
+  .app-button { font-size: 0.8125rem; padding: 0.75rem 0.875rem; }
+  .detail-content h4 { font-size: 1.5rem; }
+}
