@@ -337,6 +337,22 @@ h2 {
   right: 3%;
 }
 
+.zone-heading.military {
+  color: var(--military-glow);
+}
+
+.zone-heading.vehicle {
+  color: var(--vehicle-glow);
+}
+
+.zone-heading.building {
+  color: var(--building-glow);
+}
+
+.zone-heading.aviation {
+  color: var(--aviation-glow);
+}
+
 /* ============ INFO PANEL — NEW STRUCTURE ============
     Right column holds intro + 4 buttons only. Detail band lives below
     the whole interactive (see .full-width-detail).
@@ -548,7 +564,7 @@ h2 {
   display: block;
   padding: 0 1.25rem;
   background: rgba(255, 255, 255, 0.04);
-  border-left: 3px solid var(--ucf-gold);
+  border-left: 3px solid var(--accent);
   font-weight: 500;
   font-size: 1.0625rem;
   color: var(--text);
@@ -649,6 +665,9 @@ h2 {
   .app-button {
     font-size: 0.8125rem;
     padding: 0.75rem 0.875rem;
+  }
+  .detail-content {
+    display: inline-block;
   }
   .detail-content h4 {
     font-size: 1.5rem;
