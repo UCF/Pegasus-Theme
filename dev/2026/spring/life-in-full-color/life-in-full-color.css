@@ -5,7 +5,7 @@
   --text-muted: #a89fb0;
   --rule: rgba(244, 238, 230, 0.36);
 
-  --ucf-gold: #FFCC00;
+  --ucf-gold: #ffcc00;
 
   --military: #3d6a8f;
   --military-glow: #5a9fd4;
@@ -17,17 +17,27 @@
   --aviation-glow: #a78bff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-.wrapper { max-width: 1200px; margin: 0 auto; }
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
-.section-header { text-align: left; margin-bottom: 3.5rem; max-width: 760px; }
+.section-header {
+  text-align: left;
+  margin-bottom: 3.5rem;
+  max-width: 760px;
+}
 
 .anchor {
   display: inline-block;
   background: var(--ucf-gold);
   color: #000;
-  font-family: 'Montserrat', sans-serif;
   font-weight: 900;
   font-size: 0.75rem;
   letter-spacing: 0.18em;
@@ -42,7 +52,9 @@ h1 {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 36px; }
+  h1 {
+    font-size: 36px;
+  }
 }
 
 h1,
@@ -50,8 +62,12 @@ h2 {
   color: #902d68;
 }
 
+.text-blue {
+  color: #1f9aff;
+}
+
 .infographic-title {
-  color: #ff70c5;
+  color: #1f9aff;
   font-weight: 900;
   font-size: clamp(2.25rem, 6vw, 4.5rem);
   line-height: 0.95;
@@ -185,15 +201,28 @@ h2 {
 }
 
 @keyframes breathe {
-  0%, 100% { opacity: 0.15; }
-  50%      { opacity: 0.6; }
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* Stagger the four wings so they don't pulse in unison */
-.wing-quadrant[data-zone="military"]  .wing-breathing { animation-delay: 0s; }
-.wing-quadrant[data-zone="building"]  .wing-breathing { animation-delay: 0.7s; }
-.wing-quadrant[data-zone="vehicle"]   .wing-breathing { animation-delay: 1.4s; }
-.wing-quadrant[data-zone="aviation"]  .wing-breathing { animation-delay: 2.1s; }
+.wing-quadrant[data-zone="military"] .wing-breathing {
+  animation-delay: 0s;
+}
+.wing-quadrant[data-zone="building"] .wing-breathing {
+  animation-delay: 0.7s;
+}
+.wing-quadrant[data-zone="vehicle"] .wing-breathing {
+  animation-delay: 1.4s;
+}
+.wing-quadrant[data-zone="aviation"] .wing-breathing {
+  animation-delay: 2.1s;
+}
 
 /* Stop the breathing when any wing is active or being hovered.
     We fade the breathing element independently so the hover-glow can take over cleanly. */
@@ -212,10 +241,18 @@ h2 {
 }
 
 @keyframes shimmer-fade {
-  0%   { opacity: 0; }
-  5%   { opacity: 1; }
-  95%  { opacity: 1; }
-  100% { opacity: 0; }
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  95% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .wing-shimmer-band {
@@ -223,19 +260,31 @@ h2 {
 }
 
 @keyframes shimmer-sweep {
-  from { transform: translateX(-1200px); }
-  to   { transform: translateX(1200px); }
+  from {
+    transform: translateX(-1200px);
+  }
+  to {
+    transform: translateX(1200px);
+  }
 }
 
 /* Stagger the shimmer so it rolls across the butterfly like a wave */
-.wing-quadrant[data-zone="military"]  .wing-shimmer-group,
-.wing-quadrant[data-zone="military"]  .wing-shimmer-band   { animation-delay: 0.5s; }
-.wing-quadrant[data-zone="building"]  .wing-shimmer-group,
-.wing-quadrant[data-zone="building"]  .wing-shimmer-band   { animation-delay: 0.9s; }
-.wing-quadrant[data-zone="vehicle"]   .wing-shimmer-group,
-.wing-quadrant[data-zone="vehicle"]   .wing-shimmer-band   { animation-delay: 1.3s; }
-.wing-quadrant[data-zone="aviation"]  .wing-shimmer-group,
-.wing-quadrant[data-zone="aviation"]  .wing-shimmer-band   { animation-delay: 1.7s; }
+.wing-quadrant[data-zone="military"] .wing-shimmer-group,
+.wing-quadrant[data-zone="military"] .wing-shimmer-band {
+  animation-delay: 0.5s;
+}
+.wing-quadrant[data-zone="building"] .wing-shimmer-group,
+.wing-quadrant[data-zone="building"] .wing-shimmer-band {
+  animation-delay: 0.9s;
+}
+.wing-quadrant[data-zone="vehicle"] .wing-shimmer-group,
+.wing-quadrant[data-zone="vehicle"] .wing-shimmer-band {
+  animation-delay: 1.3s;
+}
+.wing-quadrant[data-zone="aviation"] .wing-shimmer-group,
+.wing-quadrant[data-zone="aviation"] .wing-shimmer-band {
+  animation-delay: 1.7s;
+}
 
 @media (prefers-reduced-motion: reduce) {
   .wing-breathing,
@@ -249,7 +298,6 @@ h2 {
 /* Zone labels */
 .zone-label {
   position: absolute;
-  font-family: 'Oswald', sans-serif;
   font-weight: 600;
   font-size: 0.8125rem;
   letter-spacing: 0.18em;
@@ -258,18 +306,36 @@ h2 {
   background: rgba(0, 0, 0, 0.7);
   padding: 0.35rem 0.6rem;
   pointer-events: none;
-  transition: color 0.4s ease, opacity 0.4s ease;
+  transition:
+    color 0.4s ease,
+    opacity 0.4s ease;
   white-space: nowrap;
   opacity: 0.75;
 }
 
-.butterfly-stage.has-active .zone-label:not(.active) { opacity: 0.25; }
-.zone-label.active { opacity: 1; }
+.butterfly-stage.has-active .zone-label:not(.active) {
+  opacity: 0.25;
+}
+.zone-label.active {
+  opacity: 1;
+}
 
-.zone-label.military { top: 4%;   left: 3%; }
-.zone-label.vehicle  { top: 4%;   right: 3%; }
-.zone-label.building { bottom: 4%; left: 3%; }
-.zone-label.aviation { bottom: 4%; right: 3%; }
+.zone-label.military {
+  top: 12%;
+  left: 3%;
+}
+.zone-label.vehicle {
+  top: 12%;
+  right: 3%;
+}
+.zone-label.building {
+  bottom: 4%;
+  left: 3%;
+}
+.zone-label.aviation {
+  bottom: 4%;
+  right: 3%;
+}
 
 /* ============ INFO PANEL — NEW STRUCTURE ============
     Right column holds intro + 4 buttons only. Detail band lives below
@@ -329,10 +395,10 @@ h2 {
   border: 1px solid var(--rule);
   border-left: 3px solid var(--btn-accent);
   color: var(--text);
-  font-family: 'Oswald', sans-serif;
   font-weight: 600;
   font-size: 0.875rem;
   letter-spacing: 0.15em;
+  min-height: 50px;
   text-transform: uppercase;
   text-align: left;
   cursor: pointer;
@@ -352,10 +418,18 @@ h2 {
   padding-left: 1.25rem;
 }
 
-.app-button[data-zone="military"] { --accent: var(--military-glow); }
-.app-button[data-zone="vehicle"]  { --accent: var(--vehicle-glow); }
-.app-button[data-zone="building"] { --accent: var(--building-glow); }
-.app-button[data-zone="aviation"] { --accent: var(--aviation-glow); }
+.app-button[data-zone="military"] {
+  --accent: var(--military-glow);
+}
+.app-button[data-zone="vehicle"] {
+  --accent: var(--vehicle-glow);
+}
+.app-button[data-zone="building"] {
+  --accent: var(--building-glow);
+}
+.app-button[data-zone="aviation"] {
+  --accent: var(--aviation-glow);
+}
 
 .app-button.active {
   --btn-accent: var(--accent);
@@ -387,7 +461,9 @@ h2 {
   width: 16px;
   height: 16px;
   opacity: 0.4;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
   stroke: currentColor;
   fill: none;
   stroke-width: 1.5;
@@ -419,8 +495,9 @@ h2 {
   top: 2.25rem; /* match parent's padding-top */
   opacity: 0;
   transform: translateY(45px);
-  transition: opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
-              transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
+  transition:
+    opacity 0.5s cubic-bezier(0.34, 1.3, 0.64, 1),
+    transform 0.55s cubic-bezier(0.34, 1.3, 0.64, 1);
   pointer-events: none;
 }
 
@@ -513,12 +590,18 @@ h2 {
 }
 
 @keyframes hint-bob {
-  0%, 100% { transform: translateY(0); opacity: 0.5; }
-  50%      { transform: translateY(-6px); opacity: 1; }
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(-6px);
+    opacity: 1;
+  }
 }
 
 .detail-hint-text {
-  font-family: 'Oswald', sans-serif;
   font-weight: 500;
   font-size: 0.8125rem;
   letter-spacing: 0.2em;
@@ -527,17 +610,47 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .detail-hint-arrow { animation: none; }
+  .detail-hint-arrow {
+    animation: none;
+  }
 }
 
 @media (max-width: 820px) {
-  .interactive-container { grid-template-columns: 1fr; column-gap: 0; row-gap: 2rem; padding: 2rem 1.5rem; }
-  .butterfly-stage { grid-column: 1; grid-row: 1; }
-  .info-panel { grid-column: 1; grid-row: 2; }
-  .full-width-detail { grid-column: 1; grid-row: 3; min-height: 380px; }
-  .detail-content { grid-template-columns: 1fr; gap: 1.5rem; }
-  .zone-label { font-size: 0.625rem; letter-spacing: 0.12em; }
-  .panel-intro h3 { font-size: 1.25rem; }
-  .app-button { font-size: 0.8125rem; padding: 0.75rem 0.875rem; }
-  .detail-content h4 { font-size: 1.5rem; }
+  .interactive-container {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    row-gap: 2rem;
+    padding: 2rem 1.5rem;
+  }
+  .butterfly-stage {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .info-panel {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .full-width-detail {
+    grid-column: 1;
+    grid-row: 3;
+    min-height: 380px;
+  }
+  .detail-content {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .zone-label {
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+  }
+  .panel-intro h3 {
+    font-size: 1.25rem;
+  }
+  .app-button {
+    font-size: 0.8125rem;
+    padding: 0.75rem 0.875rem;
+  }
+  .detail-content h4 {
+    font-size: 1.5rem;
+  }
 }
